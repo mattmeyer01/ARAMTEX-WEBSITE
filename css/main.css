@@ -806,6 +806,60 @@ h1, h2, h3, p { margin: 0; }
   .hero__title .line, .hero__sub, .hero__ctas { animation: none !important; }
 }
 
+/* ------------------------------------------------ hero: warstwy kinowe */
+.hero__grade {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background: radial-gradient(120% 95% at 68% 45%, rgba(0, 0, 0, 0) 42%, rgba(4, 9, 20, 0.5) 100%);
+}
+.hero__grade::after {
+  content: "";
+  position: absolute; inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+}
+.hero__sweep {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  background: linear-gradient(105deg, rgba(0, 0, 0, 0) 42%, rgba(255, 214, 166, 0.13) 50%, rgba(0, 0, 0, 0) 58%);
+  background-size: 250% 100%;
+  background-position: 132% 0;
+  animation: hero-sweep 1.9s ease-out 1.05s forwards;
+}
+@keyframes hero-sweep { to { background-position: -32% 0; } }
+.hero__spot {
+  position: absolute; inset: 0;
+  pointer-events: none;
+  --sx: 68%; --sy: 45%;
+  background: radial-gradient(340px circle at var(--sx) var(--sy), rgba(255, 196, 130, 0.16), rgba(0, 0, 0, 0) 62%);
+  mix-blend-mode: screen;
+}
+.hero__tech {
+  position: absolute;
+  right: 3%;
+  bottom: 10%;
+  width: min(46vw, 40rem);
+  height: auto;
+  color: rgba(244, 242, 236, 0.72);
+  pointer-events: none;
+}
+.hero__tech text {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  fill: currentColor;
+}
+.hero__tech line { stroke: currentColor; stroke-width: 0.8; }
+.hero__bg { transform-style: preserve-3d; }
+@media (max-width: 48rem) {
+  .hero__tech, .hero__spot { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero__sweep, .hero__spot { display: none; }
+}
+
 /* ------------------------------------------------ pas ruchu (cinema) */
 .progress {
   position: fixed;

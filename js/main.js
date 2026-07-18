@@ -31,55 +31,6 @@
     });
   }
 
-  /* ---------------- hero parallax (B1 cutout rig) ---------------- */
-  var hero = document.querySelector(".hero");
-  if (hero && !reduceMotion) {
-    var layers = hero.querySelectorAll("[data-depth]");
-    var px = 0, py = 0, targetX = 0, targetY = 0, ticking = false;
-
-    var apply = function () {
-      ticking = false;
-      var sy = window.scrollY;
-      if (sy > window.innerHeight) return;
-      px += (targetX - px) * 0.08;
-      py += (targetY - py) * 0.08;
-      layers.forEach(function (el) {
-        var d = parseFloat(el.getAttribute("data-depth")) || 0;
-        var scroll = sy * d;
-        var isBg = el.parentElement.classList.contains("hero__bg") || el.classList.contains("hero__bg");
-        if (el.tagName === "IMG" && el.closest(".hero__bg")) {
-          el.style.transform = "translate3d(0," + scroll * 0.5 + "px,0)";
-        } else {
-          el.style.transform =
-            "translate3d(" + (-px * d * 40) + "px," + (scroll * -0.6 - py * d * 40) + "px,0)";
-        }
-        void isBg;
-      });
-      if (Math.abs(targetX - px) > 0.001 || Math.abs(targetY - py) > 0.001) queue();
-    };
-    var queue = function () {
-      if (!ticking) {
-        ticking = true;
-        window.requestAnimationFrame(apply);
-      }
-    };
-    window.addEventListener("scroll", queue, { passive: true });
-    if (window.matchMedia("(pointer: fine)").matches) {
-      hero.addEventListener("pointermove", function (e) {
-        var r = hero.getBoundingClientRect();
-        targetX = (e.clientX - r.left) / r.width - 0.5;
-        targetY = (e.clientY - r.top) / r.height - 0.5;
-        queue();
-      });
-      hero.addEventListener("pointerleave", function () {
-        targetX = 0;
-        targetY = 0;
-        queue();
-      });
-    }
-    queue();
-  }
-
   /* ---------------- wejscia sekcji (transform-only, zawsze widoczne) ---------------- */
   var risers = document.querySelectorAll(".rise");
   if (reduceMotion || !("IntersectionObserver" in window)) {
