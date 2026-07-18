@@ -208,8 +208,8 @@ h1, h2, h3, p { margin: 0; }
 .hero__scrim {
   position: absolute; inset: 0;
   background:
-    linear-gradient(90deg, rgba(9, 17, 33, 0.94) 0%, rgba(9, 17, 33, 0.84) 30%, rgba(9, 17, 33, 0.42) 56%, rgba(9, 17, 33, 0) 78%),
-    linear-gradient(0deg, rgba(9, 17, 33, 0.55) 0%, rgba(9, 17, 33, 0) 42%);
+    linear-gradient(90deg, rgba(9, 17, 33, 0.88) 0%, rgba(9, 17, 33, 0.68) 28%, rgba(9, 17, 33, 0.26) 52%, rgba(9, 17, 33, 0) 72%),
+    linear-gradient(0deg, rgba(9, 17, 33, 0.45) 0%, rgba(9, 17, 33, 0) 40%);
 }
 .hero__rig {
   position: absolute;
