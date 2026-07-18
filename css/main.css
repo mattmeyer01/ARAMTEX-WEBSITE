@@ -147,8 +147,8 @@ h1, h2, h3, p { margin: 0; }
   content: "";
   position: absolute;
   left: 0; right: 100%; bottom: 0;
-  height: 1px;
-  background: currentColor;
+  height: 2px;
+  background: var(--copper);
   transition: right 0.3s ease;
 }
 .nav__link:hover::after, .nav__link:focus-visible::after { right: 0; }
@@ -190,52 +190,71 @@ h1, h2, h3, p { margin: 0; }
 .nav--dark .nav__burger { color: var(--paper-on-dark); border-color: var(--hairline-on-dark); }
 .nav.is-solid .nav__burger { color: var(--ink); border-color: var(--hairline); }
 
-/* ------------------------------------------------ hero (B1 cutout parallax) */
+/* ------------------------------------------------ hero: schemat rurociagu */
 .hero {
   position: relative;
-  min-height: 100dvh;
+  min-height: max(85vh, 46rem);
   display: flex;
   align-items: flex-start;
   overflow: hidden;
   color: var(--paper-on-dark);
-  background: var(--ink);
+  background: linear-gradient(180deg, #0a1f44 0%, #071630 100%);
 }
-.hero__bg, .hero__bg img { position: absolute; inset: 0; }
-.hero__bg img {
-  width: 100%; height: 112%;
-  object-fit: cover;
-  object-position: 72% 50%;
-  will-change: transform;
-}
-.hero__scrim {
+/* siatka techniczna (blueprint) */
+.hero::before {
+  content: "";
   position: absolute; inset: 0;
-  background:
-    linear-gradient(90deg, rgba(9, 17, 33, 0.88) 0%, rgba(9, 17, 33, 0.68) 28%, rgba(9, 17, 33, 0.26) 52%, rgba(9, 17, 33, 0) 72%),
-    linear-gradient(0deg, rgba(9, 17, 33, 0.45) 0%, rgba(9, 17, 33, 0) 40%);
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.9) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.9) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.04;
 }
-.hero__rig {
+/* miedziany glow w prawym gornym rogu */
+.hero::after {
+  content: "";
   position: absolute;
-  right: clamp(0rem, 6vw, 7rem);
-  top: 14%;
-  width: clamp(15rem, 34vw, 30rem);
-  will-change: transform;
+  top: -20%; right: -10%;
+  width: 55vw; height: 55vw;
+  max-width: 60rem; max-height: 60rem;
+  pointer-events: none;
+  background: radial-gradient(circle, #b87333 0%, rgba(184, 115, 51, 0) 65%);
+  opacity: 0.08;
 }
-.hero__rig img { width: 100%; filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.45)); }
-.hero__annot {
+.hero__pipeline {
   position: absolute;
-  inset: -9% -12%;
-  width: 124%; height: 118%;
-  color: var(--paper-on-dark);
-  opacity: 0.85;
-  will-change: transform;
+  left: 0; right: 0; bottom: 4%;
+  color: #b87333;
+  pointer-events: none;
 }
-.hero__annot text {
+.hero__pipeline svg { display: block; width: 100%; height: auto; }
+.hero__pipeline .pl-pipe { stroke: currentColor; stroke-width: 3; stroke-linecap: round; }
+.hero__pipeline .pl-fit rect,
+.hero__pipeline .pl-fit path,
+.hero__pipeline .pl-fit line { stroke: currentColor; stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; fill: none; }
+.hero__pipeline .pl-label rect { stroke: currentColor; stroke-width: 1; fill: none; }
+.hero__pipeline .pl-label line { stroke: currentColor; stroke-width: 1; opacity: 0.7; }
+.hero__pipeline .pl-label circle { fill: currentColor; }
+.hero__pipeline .pl-label text {
+  fill: #fff;
   font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: 0.08em;
-  fill: currentColor;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-anchor: middle;
 }
-.hero__annot line, .hero__annot rect { stroke: currentColor; stroke-width: 0.75; }
+.hero__methods {
+  display: none;
+  margin: 0.75rem var(--gutter) 0;
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(244, 242, 236, 0.7);
+}
 .hero__content {
   position: relative;
   z-index: 2;
@@ -781,12 +800,11 @@ h1, h2, h3, p { margin: 0; }
   .nav__tel { display: none; }
   .nav__burger { display: grid; place-items: center; }
   .tiles { grid-template-columns: 1fr; }
-  .hero__bg img { object-position: 62% 50%; }
-  .hero__scrim {
-    background:
-      linear-gradient(0deg, rgba(9, 17, 33, 0.92) 0%, rgba(9, 17, 33, 0.62) 52%, rgba(9, 17, 33, 0.3) 100%);
-  }
-  .hero__rig { right: -8%; top: 10%; width: clamp(13rem, 52vw, 17rem); opacity: 0.9; }
+  .hero { min-height: max(85vh, 42rem); }
+  .hero__ctas { width: 100%; }
+  .cta-copper, .cta-outline { display: block; width: 100%; text-align: center; }
+  .hero__pipeline .pl-label { display: none; }
+  .hero__methods { display: block; }
   .steps { grid-template-columns: 1fr; }
   .steps__line { display: none; }
   .aud__row, .aud__row:nth-child(even) { grid-template-columns: 1fr; gap: 1rem; }
@@ -800,64 +818,9 @@ h1, h2, h3, p { margin: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero__bg img, .hero__rig, .hero__annot { transform: none !important; }
   .tile__media img, .tile__idx span, .cta-copper, .cta-outline, .cta-route .route-arrow,
   .nav__cta::before, .nav__link::after, .cta-brackets i, .cta-band, .cta-stamp { transition: none !important; }
   .hero__title .line, .hero__sub, .hero__ctas { animation: none !important; }
-}
-
-/* ------------------------------------------------ hero: warstwy kinowe */
-.hero__grade {
-  position: absolute; inset: 0;
-  pointer-events: none;
-  background: radial-gradient(120% 95% at 68% 45%, rgba(0, 0, 0, 0) 42%, rgba(4, 9, 20, 0.5) 100%);
-}
-.hero__grade::after {
-  content: "";
-  position: absolute; inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
-  opacity: 0.05;
-  mix-blend-mode: overlay;
-}
-.hero__sweep {
-  position: absolute; inset: 0;
-  pointer-events: none;
-  background: linear-gradient(105deg, rgba(0, 0, 0, 0) 42%, rgba(255, 214, 166, 0.13) 50%, rgba(0, 0, 0, 0) 58%);
-  background-size: 250% 100%;
-  background-position: 132% 0;
-  animation: hero-sweep 1.9s ease-out 1.05s forwards;
-}
-@keyframes hero-sweep { to { background-position: -32% 0; } }
-.hero__spot {
-  position: absolute; inset: 0;
-  pointer-events: none;
-  --sx: 68%; --sy: 45%;
-  background: radial-gradient(340px circle at var(--sx) var(--sy), rgba(255, 196, 130, 0.16), rgba(0, 0, 0, 0) 62%);
-  mix-blend-mode: screen;
-}
-.hero__tech {
-  position: absolute;
-  right: 3%;
-  bottom: 10%;
-  width: min(46vw, 40rem);
-  height: auto;
-  color: rgba(244, 242, 236, 0.72);
-  pointer-events: none;
-}
-.hero__tech text {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  fill: currentColor;
-}
-.hero__tech line { stroke: currentColor; stroke-width: 0.8; }
-.hero__bg { transform-style: preserve-3d; }
-@media (max-width: 48rem) {
-  .hero__tech, .hero__spot { display: none; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .hero__sweep, .hero__spot { display: none; }
 }
 
 /* ------------------------------------------------ pas ruchu (cinema) */

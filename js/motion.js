@@ -78,55 +78,19 @@
     });
   }
 
-  /* ---------- hero: ken burns na scroll + tilt 3D + reflektor kursora ---------- */
-  var heroEl = document.querySelector(".hero");
-  var heroImg = document.querySelector(".hero__bg img");
-  if (heroImg) {
-    gsap.fromTo(heroImg,
-      { scale: 1.14, yPercent: -2.5 },
-      {
-        scale: 1.02,
-        yPercent: 2.5,
-        ease: "none",
-        scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true }
-      }
-    );
-  }
-  if (heroEl && finePointer) {
-    var spot = document.querySelector(".hero__spot");
-    gsap.set(".hero__bg", { transformPerspective: 1200, transformOrigin: "center" });
-    var tiltY = gsap.quickTo(".hero__bg", "rotationY", { duration: 0.7, ease: "power3.out" });
-    var tiltX = gsap.quickTo(".hero__bg", "rotationX", { duration: 0.7, ease: "power3.out" });
-    heroEl.addEventListener("pointermove", function (e) {
-      var r = heroEl.getBoundingClientRect();
-      var nx = (e.clientX - r.left) / r.width - 0.5;
-      var ny = (e.clientY - r.top) / r.height - 0.5;
-      tiltY(nx * 1.7);
-      tiltX(-ny * 1.2);
-      if (spot) {
-        spot.style.setProperty("--sx", (e.clientX - r.left) + "px");
-        spot.style.setProperty("--sy", (e.clientY - r.top) + "px");
-      }
-    });
-    heroEl.addEventListener("pointerleave", function () {
-      tiltY(0);
-      tiltX(0);
-    });
-  }
-
-  /* ---------- hero: rysujace sie linie wymiarowe ---------- */
-  var tech = document.querySelector(".hero__tech");
-  if (tech) {
-    gsap.fromTo(tech.querySelectorAll("line"),
+  /* ---------- hero: schemat rurociagu rysuje sie od lewej ---------- */
+  var pipeline = document.querySelector(".hero__pipeline svg");
+  if (pipeline) {
+    gsap.fromTo(pipeline.querySelectorAll(".pl-draw"),
       { strokeDasharray: "1 1", strokeDashoffset: 1 },
-      { strokeDashoffset: 0, duration: 1.1, stagger: 0.14, delay: 1.05, ease: "power2.inOut" }
+      { strokeDashoffset: 0, duration: 0.55, stagger: 0.09, delay: 0.55, ease: "power1.inOut" }
     );
-    gsap.from(tech.querySelectorAll("text"), {
-      y: 8,
+    gsap.from(pipeline.querySelectorAll(".pl-label"), {
+      y: 12,
       autoAlpha: 0,
-      duration: 0.6,
-      stagger: 0.15,
-      delay: 1.5,
+      duration: 0.55,
+      stagger: 0.16,
+      delay: 1.7,
       ease: "power2.out"
     });
   }

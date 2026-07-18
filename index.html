@@ -25,7 +25,7 @@
   <meta name="twitter:image" content="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_214457_cbba2348-648e-4545-9ecc-25a325f3cabd.png">
   <link rel="preload" href="assets/fonts/outfit-latin-ext-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/outfit-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/main.css?v=7">
+  <link rel="stylesheet" href="css/main.css?v=8">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -45,16 +45,11 @@
 
 <header class="nav nav--dark" id="nav">
   <div class="wrap nav__inner">
-    <a class="brand" href="index.html" aria-label="Armatex, strona główna">
-      <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><rect width="26" height="26" fill="#182226"/><path d="M13 4.5 L20.5 21.5 H17.4 L13 10.6 L8.6 21.5 H5.5 Z" fill="#F4F2EC"/><rect x="8" y="16.4" width="10" height="1.6" fill="#1E44B8"/></svg>
-      ARMATEX
-    </a>
+    <a class="brand" href="index.html" aria-label="Armatex, strona główna">ARMATEX</a>
     <nav class="nav__links" id="navLinks" aria-label="Nawigacja główna">
-      <a class="nav__link" href="katalog.html">Katalog</a>
-      <a class="nav__link" href="#zaplecze">Zaplecze</a>
+      <a class="nav__link" href="katalog.html">Oferta</a>
       <a class="nav__link" href="#dokumenty">Dokumenty</a>
-      <a class="nav__link" href="#dla-kogo">Dla kogo</a>
-      <a class="nav__cta" href="#kontakt">Zapytaj o ofertę</a>
+      <a class="nav__link" href="#kontakt">Kontakt</a>
     </nav>
     <a class="nav__tel" href="tel:+48223004050">+48 22 300 40 50</a>
     <button class="nav__burger" id="navBurger" aria-expanded="false" aria-controls="navLinks" aria-label="Otwórz menu">
@@ -65,27 +60,8 @@
 
 <main>
 
-  <!-- 1 · HERO: image-as-canvas + cutout parallax (B1) -->
+  <!-- 1 · HERO: schemat rurociągu, 4 metody łączenia -->
   <section class="hero" id="start">
-    <div class="hero__bg" data-depth="0.10"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260718_085922_7ebcf398-095a-4c4b-8e34-b2a51c9ce8dd.png" alt="Armatura mosiężna i miedziana Armatex: zawory i złączki na granatowym tle" fetchpriority="high"></div>
-    <div class="hero__scrim" aria-hidden="true"></div>
-    <div class="hero__grade" aria-hidden="true"></div>
-    <div class="hero__sweep" aria-hidden="true"></div>
-    <div class="hero__spot" aria-hidden="true"></div>
-
-    <svg class="hero__tech" aria-hidden="true" viewBox="0 0 600 400" fill="none" preserveAspectRatio="xMidYMid meet">
-      <text x="40" y="38">Mosiądz CW617N · Miedź Cu-DHP</text>
-      <line pathLength="1" x1="40" y1="50" x2="250" y2="50"/>
-      <line pathLength="1" x1="40" y1="360" x2="560" y2="360"/>
-      <line pathLength="1" x1="40" y1="352" x2="40" y2="368"/>
-      <line pathLength="1" x1="560" y1="352" x2="560" y2="368"/>
-      <text x="300" y="344" text-anchor="middle">DN 15 do 108 mm</text>
-      <line pathLength="1" x1="586" y1="70" x2="586" y2="300"/>
-      <line pathLength="1" x1="578" y1="70" x2="594" y2="70"/>
-      <line pathLength="1" x1="578" y1="300" x2="594" y2="300"/>
-      <text x="576" y="185" transform="rotate(90 576 185)" text-anchor="middle">PN 16 / PN 25</text>
-    </svg>
-
     <div class="wrap hero__content">
       <p class="hero__brands">Besco · Pegler Yorkshire · 30 lat na rynku</p>
       <h1 class="hero__title">
@@ -97,11 +73,70 @@
         <a class="cta-copper" href="katalog.html">Zobacz ofertę</a>
         <a class="cta-outline" href="#kontakt">Kontakt handlowy</a>
       </div>
-      <div class="hero__meta">
-        <span>Obsługa B2B</span>
-        <span>Cała Polska</span>
-        <span>Towar z atestami</span>
-      </div>
+    </div>
+
+    <div class="hero__pipeline" aria-hidden="true">
+      <svg viewBox="0 0 1440 340" fill="none" preserveAspectRatio="xMidYMax meet">
+        <!-- rura: segmenty miedzy zlaczkami -->
+        <line class="pl-draw pl-pipe" pathLength="1" x1="0" y1="250" x2="170" y2="250"/>
+        <!-- 1. press: karby na koncach -->
+        <g class="pl-fit">
+          <rect class="pl-draw" pathLength="1" x="170" y="222" width="16" height="56" rx="8"/>
+          <rect class="pl-draw" pathLength="1" x="186" y="228" width="78" height="44" rx="6"/>
+          <rect class="pl-draw" pathLength="1" x="264" y="222" width="16" height="56" rx="8"/>
+        </g>
+        <line class="pl-draw pl-pipe" pathLength="1" x1="280" y1="250" x2="525" y2="250"/>
+        <!-- 2. push-fit: mufa z kolnierzami -->
+        <g class="pl-fit">
+          <rect class="pl-draw" pathLength="1" x="522" y="224" width="16" height="52" rx="3"/>
+          <rect class="pl-draw" pathLength="1" x="538" y="230" width="84" height="40" rx="4"/>
+          <rect class="pl-draw" pathLength="1" x="622" y="224" width="16" height="52" rx="3"/>
+          <line class="pl-draw" pathLength="1" x1="550" y1="230" x2="550" y2="270"/>
+          <line class="pl-draw" pathLength="1" x1="610" y1="230" x2="610" y2="270"/>
+        </g>
+        <line class="pl-draw pl-pipe" pathLength="1" x1="638" y1="250" x2="842" y2="250"/>
+        <!-- 3. skrecana: szesciokatne nakretki -->
+        <g class="pl-fit">
+          <path class="pl-draw" pathLength="1" d="M842 232 L850 224 H868 L876 232 V268 L868 276 H850 L842 268 Z"/>
+          <rect class="pl-draw" pathLength="1" x="876" y="230" width="48" height="40" rx="3"/>
+          <path class="pl-draw" pathLength="1" d="M924 232 L932 224 H950 L958 232 V268 L950 276 H932 L924 268 Z"/>
+        </g>
+        <line class="pl-draw pl-pipe" pathLength="1" x1="958" y1="250" x2="1186" y2="250"/>
+        <!-- 4. kielich lutowany: rozszerzone konce -->
+        <g class="pl-fit">
+          <rect class="pl-draw" pathLength="1" x="1198" y="230" width="84" height="40" rx="4"/>
+          <path class="pl-draw" pathLength="1" d="M1198 230 L1186 222 M1198 270 L1186 278"/>
+          <path class="pl-draw" pathLength="1" d="M1282 230 L1294 222 M1282 270 L1294 278"/>
+        </g>
+        <line class="pl-draw pl-pipe" pathLength="1" x1="1294" y1="250" x2="1440" y2="250"/>
+
+        <!-- etykiety -->
+        <g class="pl-label">
+          <rect x="157" y="96" width="136" height="34" rx="17"/>
+          <text x="225" y="118">Zaciskanie</text>
+          <line x1="225" y1="130" x2="225" y2="212"/>
+          <circle cx="225" cy="218" r="3.5"/>
+        </g>
+        <g class="pl-label">
+          <rect x="522" y="96" width="116" height="34" rx="17"/>
+          <text x="580" y="118">Na wcisk</text>
+          <line x1="580" y1="130" x2="580" y2="214"/>
+          <circle cx="580" cy="220" r="3.5"/>
+        </g>
+        <g class="pl-label">
+          <rect x="834" y="96" width="132" height="34" rx="17"/>
+          <text x="900" y="118">Skręcanie</text>
+          <line x1="900" y1="130" x2="900" y2="214"/>
+          <circle cx="900" cy="220" r="3.5"/>
+        </g>
+        <g class="pl-label">
+          <rect x="1174" y="96" width="132" height="34" rx="17"/>
+          <text x="1240" y="118">Lutowanie</text>
+          <line x1="1240" y1="130" x2="1240" y2="212"/>
+          <circle cx="1240" cy="218" r="3.5"/>
+        </g>
+      </svg>
+      <p class="hero__methods">Zaciskanie · Na wcisk · Skręcanie · Lutowanie</p>
     </div>
   </section>
 
@@ -351,10 +386,10 @@
   </div>
 </footer>
 
-<script src="js/main.js?v=7" defer></script>
-<script src="assets/vendor/gsap.min.js?v=7" defer></script>
-<script src="assets/vendor/ScrollTrigger.min.js?v=7" defer></script>
-<script src="assets/vendor/lenis.min.js?v=7" defer></script>
-<script src="js/motion.js?v=7" defer></script>
+<script src="js/main.js?v=8" defer></script>
+<script src="assets/vendor/gsap.min.js?v=8" defer></script>
+<script src="assets/vendor/ScrollTrigger.min.js?v=8" defer></script>
+<script src="assets/vendor/lenis.min.js?v=8" defer></script>
+<script src="js/motion.js?v=8" defer></script>
 </body>
 </html>
