@@ -57,6 +57,8 @@
   --hairline: rgba(24, 34, 38, 0.18);
   --cobalt: #1e44b8;
   --cobalt-deep: #132a66;
+  --copper: #c9784a;
+  --copper-light: #da8a5b;
   --paper-on-dark: rgba(244, 242, 236, 0.92);
   --hairline-on-dark: rgba(244, 242, 236, 0.22);
   --sans: "Outfit", "Segoe UI", system-ui, sans-serif;
@@ -193,7 +195,7 @@ h1, h2, h3, p { margin: 0; }
   position: relative;
   min-height: 100dvh;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   overflow: hidden;
   color: var(--paper-on-dark);
   background: var(--ink);
@@ -238,7 +240,16 @@ h1, h2, h3, p { margin: 0; }
   position: relative;
   z-index: 2;
   width: 100%;
-  padding-block: clamp(6rem, 12vh, 9rem) clamp(2.5rem, 7vh, 5rem);
+  padding-block: clamp(7.5rem, 18vh, 11rem) clamp(2.5rem, 7vh, 5rem);
+}
+.hero__brands {
+  font-family: var(--mono);
+  font-weight: 500;
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: 1.2rem;
 }
 .hero__title {
   font-size: clamp(2.2rem, 4.6vw, 4rem);
@@ -253,9 +264,38 @@ h1, h2, h3, p { margin: 0; }
   max-width: 38ch;
   font-size: clamp(1rem, 1.3vw, 1.1rem);
   line-height: 1.55;
-  color: rgba(244, 242, 236, 0.85);
+  color: #a8b2c4;
   text-shadow: 0 1px 14px rgba(9, 17, 33, 0.55);
 }
+
+/* CTA hero: miedziany blok (primary) */
+.cta-copper {
+  display: inline-block;
+  background: var(--copper);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.95rem 1.7rem;
+  transition: background 0.25s ease, transform 0.15s ease;
+}
+.cta-copper:hover, .cta-copper:focus-visible { background: var(--copper-light); }
+.cta-copper:active { transform: translateY(1px); }
+
+/* CTA hero: obrys (secondary) */
+.cta-outline {
+  display: inline-block;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.9rem 1.7rem;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.15s ease;
+}
+.cta-outline:hover, .cta-outline:focus-visible { background: #fff; color: var(--cobalt-deep); }
+.cta-outline:active { transform: translateY(1px); }
 .hero__ctas {
   margin-top: 2.2rem;
   display: flex;
@@ -278,34 +318,6 @@ h1, h2, h3, p { margin: 0; }
   text-transform: uppercase;
   color: rgba(244, 242, 236, 0.65);
 }
-
-/* CTA #1: rama wypelniana kobaltem (tylko hero) */
-.cta-frame {
-  position: relative;
-  display: inline-block;
-  padding: 0.95rem 1.6rem;
-  border: 1px solid var(--paper-on-dark);
-  color: var(--paper-on-dark);
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 0.95rem;
-  letter-spacing: 0.01em;
-  overflow: hidden;
-  isolation: isolate;
-}
-.cta-frame::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--cobalt);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-  z-index: -1;
-}
-.cta-frame:hover::before, .cta-frame:focus-visible::before { transform: scaleX(1); }
-.cta-frame:hover, .cta-frame:focus-visible { border-color: var(--cobalt); }
-.cta-frame:active { transform: translateY(1px); }
 
 /* CTA #2: link ze strzalka jadaca po sciezce rury */
 .cta-route {
@@ -789,7 +801,7 @@ h1, h2, h3, p { margin: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   .hero__bg img, .hero__rig, .hero__annot { transform: none !important; }
-  .tile__media img, .tile__idx span, .cta-frame::before, .cta-route .route-arrow,
+  .tile__media img, .tile__idx span, .cta-copper, .cta-outline, .cta-route .route-arrow,
   .nav__cta::before, .nav__link::after, .cta-brackets i, .cta-band, .cta-stamp { transition: none !important; }
   .hero__title .line, .hero__sub, .hero__ctas { animation: none !important; }
 }

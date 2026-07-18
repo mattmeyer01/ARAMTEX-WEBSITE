@@ -63,7 +63,7 @@
       ease: "power4.out",
       delay: 0.05
     });
-    gsap.from([".hero__sub", ".hero__ctas", ".hero__meta"], {
+    gsap.from([".hero__brands", ".hero__sub", ".hero__ctas", ".hero__meta"], {
       y: 26,
       duration: 0.9,
       stagger: 0.1,
@@ -77,7 +77,7 @@
     yPercent: 14,
     scale: 0.96,
     autoAlpha: 0.25,
-    transformOrigin: "left bottom",
+    transformOrigin: "left top",
     ease: "none",
     scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true }
   });
@@ -177,7 +177,7 @@
 
   /* ---------- magnetyczne CTA (tylko precyzyjny kursor) ---------- */
   if (finePointer) {
-    document.querySelectorAll(".cta-frame, .nav__cta, .cta-stamp").forEach(function (el) {
+    document.querySelectorAll(".cta-copper, .cta-outline, .nav__cta, .cta-stamp").forEach(function (el) {
       el.addEventListener("pointermove", function (e) {
         var r = el.getBoundingClientRect();
         gsap.to(el, {
