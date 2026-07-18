@@ -252,11 +252,11 @@ h1, h2, h3, p { margin: 0; }
   margin-bottom: 1.2rem;
 }
 .hero__title {
-  font-size: clamp(2.2rem, 4.6vw, 4rem);
-  line-height: 1.04;
+  font-size: clamp(1.9rem, 3.6vw, 3.4rem);
+  line-height: 1.06;
   letter-spacing: -0.03em;
   font-weight: 650;
-  max-width: 14ch;
+  max-width: 26ch;
   text-shadow: 0 2px 24px rgba(9, 17, 33, 0.55);
 }
 .hero__sub {
@@ -826,6 +826,7 @@ main > .section:not(.metrics):not(.docs) { background-color: var(--paper); }
 .tile__media, .docs__media, .aud__media { will-change: transform; }
 .hero__content { will-change: transform, opacity; }
 .hero__title.js-split .line > span { animation: none; transform: none; }
+.hero__title .word { display: inline-block; white-space: nowrap; }
 .hero__title .ch { display: inline-block; will-change: transform; }
 .h2 .w { display: inline-block; }
 @media (prefers-reduced-motion: reduce) {

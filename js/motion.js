@@ -45,14 +45,20 @@
     title.classList.add("js-split");
     var chars = [];
     title.querySelectorAll(".line > span").forEach(function (lineSpan) {
-      var text = lineSpan.textContent;
+      var words = lineSpan.textContent.split(" ");
       lineSpan.textContent = "";
-      Array.from(text).forEach(function (ch) {
-        var s = document.createElement("span");
-        s.className = "ch";
-        s.textContent = ch === " " ? " " : ch;
-        lineSpan.appendChild(s);
-        chars.push(s);
+      words.forEach(function (word, wi) {
+        var w = document.createElement("span");
+        w.className = "word";
+        Array.from(word).forEach(function (ch) {
+          var s = document.createElement("span");
+          s.className = "ch";
+          s.textContent = ch;
+          w.appendChild(s);
+          chars.push(s);
+        });
+        lineSpan.appendChild(w);
+        if (wi < words.length - 1) lineSpan.appendChild(document.createTextNode(" "));
       });
     });
     gsap.from(chars, {
