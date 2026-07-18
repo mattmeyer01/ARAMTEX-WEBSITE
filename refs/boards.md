@@ -19,7 +19,8 @@ dokumentacja kierunku.
 
 | Asset | URL |
 |-------|-----|
-| Hero: magazyn (tło) | https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_213913_6ea522d4-6c24-459d-a5c1-5488de886bb2.png |
+| Hero: armatura na granacie (aktualne tło, wybór klienta) | https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260718_085027_20883ef4-6552-4f60-83f9-fb88d742835c.png |
+| Hero: magazyn (poprzednie tło, używane w sekcji "Dla kogo") | https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_213913_6ea522d4-6c24-459d-a5c1-5488de886bb2.png |
 | Hero: zawór (oryginał) | https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_213927_bd5ce46a-1c84-4eec-8886-e1121d9109c5.png |
 | Hero: zawór (cutout, przezroczysty) | https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_215313_ebcb22d4-4dfb-4a3d-945c-fc118c0f434e.png |
 | Kategoria 01: zawory | https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_213930_4bc04639-75de-4dac-ae47-7b9c7355053f.png |

@@ -207,7 +207,7 @@ h1, h2, h3, p { margin: 0; }
 .hero__scrim {
   position: absolute; inset: 0;
   background:
-    linear-gradient(15deg, rgba(24, 34, 38, 0.92) 0%, rgba(24, 34, 38, 0.55) 45%, rgba(24, 34, 38, 0.15) 100%);
+    linear-gradient(15deg, rgba(10, 18, 34, 0.88) 0%, rgba(10, 18, 34, 0.42) 45%, rgba(10, 18, 34, 0.05) 100%);
 }
 .hero__rig {
   position: absolute;
