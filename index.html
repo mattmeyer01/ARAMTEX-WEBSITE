@@ -41,6 +41,8 @@
 </head>
 <body>
 
+<div class="progress" id="scrollProgress" aria-hidden="true"></div>
+
 <header class="nav nav--dark" id="nav">
   <div class="wrap nav__inner">
     <a class="brand" href="index.html" aria-label="Armatex, strona główna">
@@ -158,11 +160,11 @@
   <section class="metrics section" id="zaplecze">
     <div class="wrap metrics__grid">
       <div class="metric rise">
-        <div class="metric__num">5 000</div>
+        <div class="metric__num" data-count="5000">5 000</div>
         <div class="metric__cap">pozycji magazynowych od ręki</div>
       </div>
       <div class="metric rise">
-        <div class="metric__num metric__num--cobalt">24 h</div>
+        <div class="metric__num metric__num--cobalt" data-count="24" data-suffix=" h">24 h</div>
         <div class="metric__cap">wysyłka z magazynu centralnego</div>
       </div>
       <div class="metric rise">
@@ -183,7 +185,7 @@
         <h2 class="h2">Od zapytania do dostawy</h2>
       </div>
       <div class="steps">
-        <svg class="steps__line" aria-hidden="true" preserveAspectRatio="none" viewBox="0 0 100 2"><line x1="0" y1="1" x2="100" y2="1" vector-effect="non-scaling-stroke"/></svg>
+        <svg class="steps__line" aria-hidden="true" preserveAspectRatio="none" viewBox="0 0 100 2"><line class="route-base" x1="0" y1="1" x2="100" y2="1" vector-effect="non-scaling-stroke"/><line class="route-draw" x1="0" y1="1" x2="100" y2="1" pathLength="1" vector-effect="non-scaling-stroke"/></svg>
         <div class="step rise">
           <div class="step__glyph" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-10"/><path d="M3 7l9 6l9-6"/></svg></div>
           <div class="step__idx">Krok 01</div>
@@ -356,5 +358,9 @@
 </footer>
 
 <script src="js/main.js" defer></script>
+<script src="assets/vendor/gsap.min.js" defer></script>
+<script src="assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="assets/vendor/lenis.min.js" defer></script>
+<script src="js/motion.js" defer></script>
 </body>
 </html>

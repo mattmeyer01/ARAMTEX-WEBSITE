@@ -10,7 +10,10 @@ katalogowa produktu: mono etykiety specyfikacji, cyfry indeksowe, linie miary (h
 motyw pieczęci/atestu. Każda sekcja to kolejna rubryka karty.
 
 ## Delivery tier
-**editorial** (B2B: typografia + bespoke chrome + mikro-ruch; bez ciężkiego scroll-scrubu).
+**cinema** (podniesiony z editorial na życzenie klienta): Lenis + GSAP ScrollTrigger,
+przypięte hero z nasuwającymi się sekcjami, kinetyczna typografia per znak/słowo,
+scrub zdjęć, liczniki metryk, rysująca się linia procesu, magnetyczne CTA.
+Wszystko za bramką prefers-reduced-motion, biblioteki self-hosted w assets/vendor/.
 
 ## Locked palette
 - Tło / papier: `#F4F2EC` (limestone paper), panele: `#ECE9E0`
