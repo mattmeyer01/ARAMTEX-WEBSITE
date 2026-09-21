@@ -79,7 +79,7 @@
   }
 
   /* ---------- hero: schemat rurociagu rysuje sie od lewej ---------- */
-  var pipeline = document.querySelector(".hero__pipeline svg");
+  var pipeline = document.querySelector(".hero__pipeline");
   if (pipeline) {
     gsap.fromTo(pipeline.querySelectorAll(".pl-draw"),
       { strokeDasharray: "1 1", strokeDashoffset: 1 },
