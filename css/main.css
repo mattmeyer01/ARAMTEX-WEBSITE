@@ -1,6 +1,6 @@
 /* ============================================================
    ARMATEX.PL - system wizualny "karta katalogowa"
-   Paleta: limestone #F4F2EC / ink #182226 / czerwien logo #D14732 / granat #0A1F44
+   Paleta: limestone #F4F2EC / ink #182226 / czerwien marki #DC291E / granat #0A1F44
    Typografia: Outfit (display+body) / IBM Plex Mono (etykiety)
    Narozniki: ostre. Glebia: jedna zmiana powierzchni. Hairline 1px.
    ============================================================ */
@@ -55,10 +55,10 @@
   --ink-70: rgba(24, 34, 38, 0.72);
   --ink-45: rgba(24, 34, 38, 0.45);
   --hairline: rgba(24, 34, 38, 0.18);
-  --cobalt: #d14732;
+  --cobalt: #dc291e;
   --cobalt-deep: #0a1f44;
-  --copper: #d14732;
-  --copper-light: #e25b44;
+  --copper: #dc291e;
+  --copper-light: #e84a40;
   --paper-on-dark: rgba(244, 242, 236, 0.92);
   --hairline-on-dark: rgba(244, 242, 236, 0.22);
   --sans: "Outfit", "Segoe UI", system-ui, sans-serif;
@@ -223,13 +223,13 @@ h1, h2, h3, p { margin: 0; }
   width: 55vw; height: 55vw;
   max-width: 60rem; max-height: 60rem;
   pointer-events: none;
-  background: radial-gradient(circle, #c1301f 0%, rgba(193, 48, 31, 0) 65%);
+  background: radial-gradient(circle, #dc291e 0%, rgba(220, 41, 30, 0) 65%);
   opacity: 0.08;
 }
 .hero__pipeline {
   margin-top: auto;
   padding-bottom: 2.5vh;
-  color: #c1301f;
+  color: #dc291e;
   pointer-events: none;
 }
 .hero__pipeline svg { display: block; width: 100%; height: auto; }
