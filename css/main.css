@@ -807,6 +807,8 @@ h1, h2, h3, p { margin: 0; }
   .hero { min-height: max(85vh, 42rem); }
   .hero__ctas { width: 100%; }
   .cta-copper, .cta-outline { display: block; width: 100%; text-align: center; }
+  .hero__pipeline { overflow: hidden; }
+  .hero__pipeline svg { width: 300%; margin-left: -100%; }
   .hero__pipeline .pl-label { display: none; }
   .hero__methods { display: block; }
   .steps { grid-template-columns: 1fr; }
