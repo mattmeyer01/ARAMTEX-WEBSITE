@@ -222,13 +222,13 @@ h1, h2, h3, p { margin: 0; }
   width: 55vw; height: 55vw;
   max-width: 60rem; max-height: 60rem;
   pointer-events: none;
-  background: radial-gradient(circle, #d14732 0%, rgba(209, 71, 50, 0) 65%);
+  background: radial-gradient(circle, #c1301f 0%, rgba(193, 48, 31, 0) 65%);
   opacity: 0.08;
 }
 .hero__pipeline {
   position: absolute;
   left: 0; right: 0; bottom: 4%;
-  color: var(--copper);
+  color: #c1301f;
   pointer-events: none;
 }
 .hero__pipeline svg { display: block; width: 100%; height: auto; }
