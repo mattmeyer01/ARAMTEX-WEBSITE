@@ -1,6 +1,6 @@
 /* ============================================================
    ARMATEX.PL - system wizualny "karta katalogowa"
-   Paleta: limestone #F4F2EC / petrol ink #182226 / kobalt #1E44B8
+   Paleta: limestone #F4F2EC / ink #182226 / czerwien logo #D14732 / granat #0A1F44
    Typografia: Outfit (display+body) / IBM Plex Mono (etykiety)
    Narozniki: ostre. Glebia: jedna zmiana powierzchni. Hairline 1px.
    ============================================================ */
@@ -55,10 +55,10 @@
   --ink-70: rgba(24, 34, 38, 0.72);
   --ink-45: rgba(24, 34, 38, 0.45);
   --hairline: rgba(24, 34, 38, 0.18);
-  --cobalt: #1e44b8;
-  --cobalt-deep: #132a66;
-  --copper: #c9784a;
-  --copper-light: #da8a5b;
+  --cobalt: #d14732;
+  --cobalt-deep: #0a1f44;
+  --copper: #d14732;
+  --copper-light: #e25b44;
   --paper-on-dark: rgba(244, 242, 236, 0.92);
   --hairline-on-dark: rgba(244, 242, 236, 0.22);
   --sans: "Outfit", "Segoe UI", system-ui, sans-serif;
@@ -133,7 +133,10 @@ h1, h2, h3, p { margin: 0; }
   font-size: 1.15rem;
   letter-spacing: 0.02em;
 }
-.brand svg { display: block; }
+.brand img { height: 26px; width: auto; display: block; }
+.brand .logo-dark { display: none; }
+.nav.is-solid .brand .logo-light { display: none; }
+.nav.is-solid .brand .logo-dark { display: block; }
 .nav--dark .brand, .nav--dark .nav__link, .nav--dark .nav__cta, .nav--dark .nav__tel { color: var(--paper-on-dark); }
 .nav.is-solid .brand, .nav.is-solid .nav__link, .nav.is-solid .nav__cta, .nav.is-solid .nav__tel { color: var(--ink); }
 .nav__links { display: flex; align-items: center; gap: 1.75rem; }
@@ -211,7 +214,7 @@ h1, h2, h3, p { margin: 0; }
   background-size: 48px 48px;
   opacity: 0.04;
 }
-/* miedziany glow w prawym gornym rogu */
+/* czerwony glow w prawym gornym rogu */
 .hero::after {
   content: "";
   position: absolute;
@@ -219,13 +222,13 @@ h1, h2, h3, p { margin: 0; }
   width: 55vw; height: 55vw;
   max-width: 60rem; max-height: 60rem;
   pointer-events: none;
-  background: radial-gradient(circle, #b87333 0%, rgba(184, 115, 51, 0) 65%);
+  background: radial-gradient(circle, #d14732 0%, rgba(209, 71, 50, 0) 65%);
   opacity: 0.08;
 }
 .hero__pipeline {
   position: absolute;
   left: 0; right: 0; bottom: 4%;
-  color: #b87333;
+  color: var(--copper);
   pointer-events: none;
 }
 .hero__pipeline svg { display: block; width: 100%; height: auto; }
@@ -669,7 +672,7 @@ h1, h2, h3, p { margin: 0; }
   font-size: 0.9rem;
   border: 1px solid var(--hairline);
 }
-.form__status.is-ok { display: block; border-color: var(--cobalt); color: var(--cobalt-deep); background: rgba(30, 68, 184, 0.06); }
+.form__status.is-ok { display: block; border-color: var(--cobalt-deep); color: var(--cobalt-deep); background: rgba(10, 31, 68, 0.06); }
 .form__status.is-err { display: block; border-color: #a3251c; color: #a3251c; background: rgba(163, 37, 28, 0.05); }
 
 /* ------------------------------------------------ stopka */
