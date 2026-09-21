@@ -98,7 +98,7 @@
       var data = {};
       new FormData(form).forEach(function (v, k) { data[k] = v; });
 
-      fetch("https://formsubmit.co/ajax/contact@matmeyer.com", {
+      fetch("https://formsubmit.co/ajax/armatex1@gmail.com", {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify(data)
@@ -114,7 +114,7 @@
         })
         .catch(function () {
           status.classList.add("is-err");
-          status.textContent = "Nie udało się wysłać formularza. Napisz do nas: biuro@armatex.pl lub zadzwoń +48 22 300 40 50.";
+          status.textContent = "Nie udało się wysłać formularza. Napisz do nas: armatex1@gmail.com lub zadzwoń 798 807 106.";
         })
         .finally(function () {
           btn.disabled = false;

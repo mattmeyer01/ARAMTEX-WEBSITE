@@ -19,13 +19,13 @@ hostowalna na dowolnym serwerze statycznym (GitHub Pages, Cloudflare Pages, S3, 
 
 ## Ważne przed startem produkcyjnym
 
-1. **Dane kontaktowe są przykładowe.** Telefon `+48 22 300 40 50`, adres
-   `ul. Przemysłowa 12, Pruszków` i e-mail `biuro@armatex.pl` należy podmienić na
-   prawdziwe (występują w: `index.html`, `katalog.html`, `js/main.js`).
+1. **Dane kontaktowe** to realne dane firmy: sprzedaż Piotr Stelmach (798 807 106,
+   piotr@armatex.pl) i Martyna Zielińska (515 231 693, armatex1@gmail.com),
+   e-mail ogólny armatex1@gmail.com, biuro i magazyny: ul. Składowa 3a, 10-421 Olsztyn.
 2. **Formularz** wysyła przez [FormSubmit](https://formsubmit.co) na adres
-   `contact@matmeyer.com` (miejsca: atrybut `action` w `index.html` oraz URL w
-   `js/main.js`). Pierwsza wysyłka wymaga potwierdzenia aktywacyjnego z FormSubmit.
-   Docelowo można podmienić na własny endpoint / CRM.
+   `armatex1@gmail.com` (miejsca: atrybut `action` w `index.html` oraz URL w
+   `js/main.js`). Pierwsza wysyłka wymaga kliknięcia linku aktywacyjnego, który
+   FormSubmit wyśle na ten adres. Docelowo można podmienić na własny endpoint / CRM.
 3. **Zdjęcia** są linkowane z CDN generatora Higgsfield (pełna lista w
    `refs/boards.md`). Rekomendacja: pobrać je i przenieść do `assets/img/`,
    a ścieżki podmienić, żeby uniezależnić się od zewnętrznego CDN.
