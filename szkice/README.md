@@ -43,3 +43,5 @@ Hero, panele metod łączenia, magazyn i tło kontaktu ładują się z CDN Higgs
 - `pliki/katalog-besco-2026.pdf`: katalog Besco 2026 (66 stron) z poprawionym tytułem w metadanych
   (oryginał miał tytuł „画册 11.11”). Link w menu „Oferta → Katalogi”, na stronie katalogu i na stronach
   systemów Besco; otwiera się w nowej karcie.
+- `img/linie/*.webp`: zdjęcia produktów do tabel „Linie w systemie” (po jednym na linię), wycięte z katalogów
+  Besco 2026, Tectite 2026 i cennika Kuterlite na białym tle.

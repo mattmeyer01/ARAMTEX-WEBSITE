@@ -137,8 +137,13 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .sy-tw { margin-top: clamp(1.8rem, 3vw, 2.6rem); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
 .sy-lines { width: 100%; border-collapse: collapse; font-size: .92rem; }
 .sy-lines thead th { text-align: left; font: 500 .66rem/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-60); background: var(--stone); padding: .85rem 1rem; }
-.sy-lines tbody th, .sy-lines td { text-align: left; vertical-align: top; padding: .9rem 1rem; border-top: 1px solid var(--line); font-weight: 400; }
+.sy-lines tbody th, .sy-lines td { text-align: left; vertical-align: middle; padding: .9rem 1rem; border-top: 1px solid var(--line); font-weight: 400; }
 .sy-lines tbody th b { display: block; font-weight: 600; }
+.sy-row { display: flex; align-items: center; gap: 1rem; }
+.sy-thumb { flex: none; width: 76px; height: 76px; display: grid; place-items: center; padding: 6px; background: #fff; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.sy-thumb img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; transition: transform .5s var(--ease-out); }
+.sy-lines tbody tr:hover .sy-thumb img { transform: scale(1.08); }
+.sy-lines tbody tr:hover .sy-thumb { border-color: var(--ink-40); }
 .sy-lines .num { font-variant-numeric: tabular-nums; white-space: nowrap; }
 .sy-lines td { color: var(--ink-60); }
 .sy-lines td.num { color: var(--ink); }
@@ -373,6 +378,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
   .sy-lines td:not(.sy-cnt):not(.sy-act) { grid-column: 1 / -1; display: grid; grid-template-columns: 7.5rem 1fr; gap: .75rem; }
   .sy-lines td[data-l]::before { content: attr(data-l); font: 500 .6rem/1.9 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-40); }
   .sy-lines .sy-cnt { grid-column: 2; grid-row: 1; }
+  .sy-thumb { width: 64px; height: 64px; }
   .sy-lines .sy-cnt::before { display: block; }
   .sy-lines .sy-act { grid-column: 1 / -1; text-align: left; }
   .sy-terms ul { grid-template-columns: 1fr; }
