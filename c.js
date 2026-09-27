@@ -1,4 +1,4 @@
-/* Szkic C · wspólny skrypt stron (roboczy, niepublikowany) */
+/* Armatex · wspólny skrypt stron */
 (function () {
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -222,7 +222,7 @@
 
   })();
 
-  // Prefill z "Poproś o dostęp" i nieaktywny formularz szkicu
+  // Prefill tematu zapytania z parametru ?temat=
   // Strony grup produktów: ilość + jednostka (karton / worek / opak. / szt.) i "Dodaj" do listy do wyceny (ta sama co w katalogu)
   var qas = $$('.qty[data-add]');
   if (qas.length) (function () {

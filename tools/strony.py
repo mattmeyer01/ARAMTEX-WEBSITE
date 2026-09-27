@@ -230,7 +230,6 @@ def nav(cur):
   <span class="label">Katalogi</span><a href="katalog.html"{cs("katalog")}>Wyszukiwarka indeksów Besco<small>1 936</small></a><a href="{PDF}" target="_blank" rel="noopener">Katalog Besco 2026<small>PDF · 3 MB</small></a>
   <span class="label">Armatex</span><a href="wspolpraca.html"{cs("wspolpraca")}>Współpraca</a><a href="kontakt.html"{cs("kontakt")}>Kontakt<small>798 807 106</small></a>
 </nav>
-<div class="badge" aria-hidden="true">Szkic C · nieopublikowany</div>
 '''
 FOOT='''<footer class="foot">
   <div class="wrap foot__g">
@@ -309,6 +308,10 @@ hero=re.sub(r'<div class="hero__media" data-hf>.*?</picture>\s*</div>',lambda m:
 assert 'hero-paleta-2000' in hero and 'data-hf>' not in hero.split('hero__media')[1][:5]
 assert 'hb-end' in hero and 'data-topic' not in hero
 kontakt_home=frag('  <section class="section close" id="kontakt">','  </section>')
+# tło sekcji kontaktu: lokalne zdjęcie palety (to samo co w hero), bez zewnętrznego CDN
+kontakt_home=re.sub(r'<div class="close__bg" aria-hidden="true" data-hf><img [^>]*></div>',
+    '<div class="close__bg" aria-hidden="true"><img src="../img/hero/hero-paleta-1200.webp" srcset="../img/hero/hero-paleta-1200.webp 1200w, ../img/hero/hero-paleta-2000.webp 2000w" sizes="100vw" alt="" width="2000" height="1116" loading="lazy" decoding="async"></div>',kontakt_home)
+assert 'cloudfront' not in kontakt_home
 kontakt_home=kontakt_home.replace('<h2 class="h2">Porozmawiajmy o warunkach dla Twojej hurtowni.</h2>','<h2 class="h2">Porozmawiajmy o ofercie dla Twojej hurtowni.</h2>')
 kontakt_home=kontakt_home.replace('<h3>Zapytanie o warunki współpracy</h3>','<h3>Zapytanie ofertowe</h3>')
 steps=frag('      <div class="steps">','      </div>\n      <div class="aud">').replace('      <div class="aud">','').rstrip()
@@ -391,7 +394,7 @@ home=f'''
   <!-- 6 · KONTAKT -->
 {kontakt_home}
 '''
-pre='  <link rel="preconnect" href="https://d8j0ntlcm91z4.cloudfront.net" crossorigin>\n'+''.join('  '+l+'\n' for l in re.findall(r'<link rel="preload" as="image"[^>]*>',SRC))
+pre=''.join('  '+l+'\n' for l in re.findall(r'<link rel="preload" as="image"[^>]*>',SRC))
 pre=re.sub(r'\s*<link rel="preload" as="image"[^>]*>','',pre)
 pre+='  <link rel="preload" as="image" href="../img/hero/hero-paleta-2000.webp" imagesrcset="../img/hero/hero-paleta-1200.webp 1200w, ../img/hero/hero-paleta-2000.webp 2000w" imagesizes="100vw" media="(min-width: 721px)" fetchpriority="high">\n'
 pre+='  <link rel="preload" as="image" href="../img/hero/hero-paleta-m.webp" media="(max-width: 720px)" fetchpriority="high">\n'

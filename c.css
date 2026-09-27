@@ -1,6 +1,6 @@
-/* Szkic C · wspólne style stron (roboczy, niepublikowany) */
+/* Armatex · wspólne style stron */
 /* ================================================================
-   SZKIC C · Armatex premium (roboczy, niepublikowany)
+   Armatex premium
    Asortyment i dane: katalog Besco Fittings & Connectors 2026 (1 936 pozycji).
    Zdjęcia produktów: katalog Besco. Zdjęcia sesyjne: Higgsfield (CDN).
    Wzorce sekcji: BYQ Supply (Stringer Range Grid, Stringer FAQ, Stringer
@@ -43,7 +43,6 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .ulink { font: 500 .72rem/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase; text-decoration: none; padding-bottom: .35rem; border-bottom: 1px solid currentColor; white-space: nowrap; transition: color .2s; background: none; border-top: 0; border-inline: 0; cursor: pointer; }
 .ulink:hover { color: var(--red); }
 .appr { display: inline-block; font: 500 .66rem/1 var(--mono); letter-spacing: .08em; padding: .38rem .5rem; border: 1px solid var(--line); border-radius: 6px; color: var(--ink-60); background: var(--white); }
-.badge { position: fixed; z-index: 90; left: 1rem; bottom: 1rem; background: #ffe14d; color: #111; font: 500 .66rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; padding: .5rem .8rem; border-radius: 99px; box-shadow: 0 8px 24px rgba(0,0,0,.2); pointer-events: none; }
 
 /* ---------- przyciski: magnetyczny (BYQ Magnetic Button) */
 .mag { position: relative; display: inline-flex; align-items: center; justify-content: center; min-height: 56px; padding: 0 1.75rem; border-radius: 99px; border: 0; background: var(--red); color: #fff; font-weight: 600; font-size: 1rem; text-decoration: none; cursor: pointer; isolation: isolate; transition: background .25s; }
@@ -401,7 +400,6 @@ button, input, textarea, select { font: inherit; color: inherit; }
   .res .pk { grid-column: 3; grid-row: 1; }
   .res .add { grid-column: 3; grid-row: 2; min-width: 80px; height: 34px; }
   .pill { right: auto; left: 50%; transform: translateX(-50%); }
-  .badge { display: none; }
 }
 /* ================================================================
    Wersja wielostronicowa: menu, nagłówek podstrony, karty systemów
