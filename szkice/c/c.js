@@ -75,6 +75,18 @@
     });
   }
 
+  // Lista do wyceny: pozycja = [art, {q, l, u, p}], p = [[jednostka, szt. w jednostce], ...], u = indeks w p
+  function packFix(v, def) {
+    if (!v.p || !v.p.length) { v.p = def || [['szt.', 1]]; v.u = v.p.length - 1; }
+    if (!(v.u >= 0 && v.u < v.p.length)) v.u = 0;
+    return v;
+  }
+  function packTxt(v) {
+    var u = v.p[v.u], n = u[1];
+    if (n === 1) return v.q + ' szt.';
+    return v.q + ' × ' + u[0] + ' (' + n + ' szt.) = ' + String(v.q * n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' szt.';
+  }
+
   if ($('#q')) (function () {
   // ===== Katalog Besco: wyszukiwarka + zapytanie =====
   var DATA = null, INDEX = null, loading = null, page = 0, PER = 24, hits = [];
@@ -157,38 +169,51 @@
     for (var i = 0; i < INDEX.length; i++) if (INDEX[i].r[1] === art) return INDEX[i].g[2] + ' ' + INDEX[i].r[2];
     return '';
   }
+  function packsOf(art) {
+    if (INDEX) for (var i = 0; i < INDEX.length; i++) if (INDEX[i].r[1] === art) { var r = INDEX[i].r; return [['karton', r[4]], ['worek', r[3]], ['szt.', 1]]; }
+    return null;
+  }
   function drawRfq() {
     var ul = $('#rfqList'), h = '', n = rfq.size;
     rfq.forEach(function (v, art) {
+      packFix(v, packsOf(art));
+      var opts = v.p.map(function (u, i) { return '<option value="' + i + '"' + (i === v.u ? ' selected' : '') + '>' + esc(u[0]) + (u[1] > 1 ? ' (' + fmt(u[1]) + ' szt.)' : '') + '</option>'; }).join('');
       h += '<li><div><code>' + esc(art) + '</code><small>' + esc(v.l || label(art)) + '</small></div>' +
-        '<input type="number" min="1" step="1" value="' + v.q + '" aria-label="Ilość ' + esc(art) + '" data-art="' + esc(art) + '">' +
-        '<button class="rm" type="button" data-art="' + esc(art) + '" aria-label="Usuń ' + esc(art) + '">×</button></li>';
+        '<button class="rm" type="button" data-art="' + esc(art) + '" aria-label="Usuń ' + esc(art) + '">×</button>' +
+        '<div class="rfq__q"><input type="number" min="1" step="1" value="' + v.q + '" aria-label="Ilość ' + esc(art) + '" data-art="' + esc(art) + '">' +
+        '<select aria-label="Jednostka ' + esc(art) + '" data-art="' + esc(art) + '">' + opts + '</select>' +
+        '<span class="tot">' + (v.p[v.u][1] > 1 ? '= ' + fmt(v.q * v.p[v.u][1]) + ' szt.' : '') + '</span></div></li>';
     });
     ul.innerHTML = h;
     $('#rfqN').textContent = n + ' poz.'; $('#pillN').textContent = n;
     $('#pill').classList.toggle('on', n > 0);
     $('#toForm').disabled = !n;
-    $('#rfqHint').textContent = n ? 'Sprawdź ilości i przenieś listę do formularza.' : 'Dodaj pozycje z listy. Ilości zmienisz tutaj.';
+    $('#rfqHint').textContent = n ? 'Ustaw ilość i jednostkę (karton, worek, sztuki), potem przenieś listę do formularza.' : 'Dodaj pozycje z listy. Ilość i jednostkę ustawisz tutaj.';
   }
   res.addEventListener('click', function (e) {
     var b = e.target.closest('.add'); if (!b) return;
     var art = b.dataset.art;
-    if (rfq.has(art)) rfq.delete(art); else rfq.set(art, { q: 1, l: label(art) });
+    if (rfq.has(art)) rfq.delete(art); else { var nv = packFix({ q: 1, l: label(art) }, packsOf(art)); nv.u = 0; rfq.set(art, nv); }
     b.classList.toggle('is-in', rfq.has(art)); b.textContent = rfq.has(art) ? 'Dodano' : 'Dodaj';
     save(); drawRfq();
   });
-  $('#rfqList').addEventListener('input', function (e) {
-    var i = e.target; if (!i.dataset.art) return;
-    var v = rfq.get(i.dataset.art); if (v) { v.q = Math.max(1, parseInt(i.value, 10) || 1); save(); }
-  });
+  function upd(e) {
+    var i = e.target, v = i.dataset.art && rfq.get(i.dataset.art); if (!v) return;
+    if (i.tagName === 'SELECT') v.u = +i.value; else v.q = Math.max(1, parseInt(i.value, 10) || 1);
+    save();
+    var t = i.parentNode.querySelector('.tot'), n = v.p[v.u][1];
+    t.textContent = n > 1 ? '= ' + fmt(v.q * n) + ' szt.' : '';
+  }
+  $('#rfqList').addEventListener('input', upd);
+  $('#rfqList').addEventListener('change', upd);
   $('#rfqList').addEventListener('click', function (e) {
     var b = e.target.closest('.rm'); if (!b) return;
     rfq.delete(b.dataset.art); save(); drawRfq();
     var btn = res.querySelector('.add[data-art="' + CSS.escape(b.dataset.art) + '"]'); if (btn) { btn.classList.remove('is-in'); btn.textContent = 'Dodaj'; }
   });
   $('#toForm').addEventListener('click', function () {
-    var lines = ['Lista indeksów do wyceny (katalog Besco 2026):'];
-    rfq.forEach(function (v, art) { lines.push(art + ' · ' + (v.l || label(art)) + ' · ' + v.q + ' szt.'); });
+    var lines = ['Lista pozycji do wyceny:'];
+    rfq.forEach(function (v, art) { lines.push(art + ' · ' + (v.l || label(art)) + ' · ' + packTxt(packFix(v, packsOf(art)))); });
     location.href = 'kontakt.html?temat=' + encodeURIComponent(lines.join('\n')) + '#formularz';
   });
   drawRfq();
@@ -198,22 +223,31 @@
   })();
 
   // Prefill z "Poproś o dostęp" i nieaktywny formularz szkicu
-  // Strony grup produktów: "Dodaj" zapisuje pozycję na liście do wyceny (ta sama co w katalogu)
-  var addBtns = $$('[data-add]');
-  if (addBtns.length) (function () {
+  // Strony grup produktów: ilość + jednostka (karton / worek / opak. / szt.) i "Dodaj" do listy do wyceny (ta sama co w katalogu)
+  var qas = $$('.qa[data-add]');
+  if (qas.length) (function () {
     var KEY = 'armatex-rfq', list = new Map();
     try { JSON.parse(localStorage.getItem(KEY) || '[]').forEach(function (x) { list.set(x[0], x[1]); }); } catch (e) {}
+    function save() { try { localStorage.setItem(KEY, JSON.stringify(Array.from(list.entries()))); } catch (e) {} }
+    function packs(sel) { return Array.prototype.map.call(sel.options, function (o) { return [o.dataset.u, +o.dataset.n]; }); }
     function sync() {
-      addBtns.forEach(function (b) { var on = list.has(b.dataset.add); b.classList.toggle('is-in', on); b.textContent = on ? 'Dodano' : 'Dodaj'; });
+      qas.forEach(function (w) {
+        var v = list.get(w.dataset.add), b = w.querySelector('.add'), sel = w.querySelector('select');
+        if (v) { packFix(v, packs(sel)); w.querySelector('input').value = v.q; sel.value = v.u; }
+        w.classList.toggle('is-in', !!v); b.classList.toggle('is-in', !!v); b.textContent = v ? 'Dodano' : 'Dodaj';
+        b.setAttribute('aria-pressed', !!v);
+      });
       var pill = $('#pill'); if (pill) { $('#pillN').textContent = list.size; pill.classList.toggle('on', list.size > 0); }
     }
-    addBtns.forEach(function (b) {
-      b.addEventListener('click', function () {
-        var a = b.dataset.add;
-        if (list.has(a)) list.delete(a); else list.set(a, { q: 1, l: b.dataset.l });
-        try { localStorage.setItem(KEY, JSON.stringify(Array.from(list.entries()))); } catch (e) {}
-        sync();
+    qas.forEach(function (w) {
+      var a = w.dataset.add, inp = w.querySelector('input'), sel = w.querySelector('select');
+      function cur() { return { q: Math.max(1, parseInt(inp.value, 10) || 1), l: w.dataset.l, u: +sel.value, p: packs(sel) }; }
+      w.querySelector('.add').addEventListener('click', function () {
+        if (list.has(a)) list.delete(a); else list.set(a, cur());
+        save(); sync();
       });
+      function upd() { if (list.has(a)) { list.set(a, cur()); save(); } }
+      inp.addEventListener('input', upd); sel.addEventListener('change', upd);
     });
     sync();
   })();
