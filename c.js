@@ -129,7 +129,7 @@
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function render() {
     var slice = hits.slice(page * PER, (page + 1) * PER), h = '';
-    if (!hits.length) { res.innerHTML = '<li class="fd__empty" style="display:block">Brak pozycji dla tego zapytania. Sprawdź numer albo zadzwoń: 798 807 106.</li>'; more.hidden = true; return; }
+    if (!hits.length) { res.innerHTML = '<li class="fd__empty" style="display:block">Brak pozycji dla tego zapytania. Sprawdź numer albo zadzwoń: 513 191 502.</li>'; more.hidden = true; return; }
     slice.forEach(function (x) {
       var r = x.r, g = x.g, inq = rfq.has(r[1]);
       h += '<li><img src="' + BASE + 'img/besco/' + g[4] + '.webp" alt="" width="56" height="56" loading="lazy" decoding="async">' +
@@ -304,7 +304,7 @@
         st.textContent = 'Dziękujemy. Zapytanie dotarło, odpowiemy w ciągu jednego dnia roboczego.';
         try { localStorage.removeItem('armatex-rfq'); } catch (err) {}
       })
-      .catch(function () { st.classList.add('is-err'); st.textContent = 'Nie udało się wysłać formularza. Napisz na armatex1@gmail.com lub zadzwoń: 798 807 106.'; })
+      .catch(function () { st.classList.add('is-err'); st.textContent = 'Nie udało się wysłać formularza. Napisz na armatex1@gmail.com lub zadzwoń: 513 191 502.'; })
       .then(function () { btn.disabled = false; });
   });
 })();
