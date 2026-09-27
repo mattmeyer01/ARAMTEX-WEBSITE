@@ -720,3 +720,4 @@ a.chip:hover { border-color: var(--ink); }
 .e404__c { text-decoration: none; transition: border-color .2s, transform .2s; }
 .e404__c:hover { border-color: var(--ink-40); transform: translateY(-2px); }
 @media (max-width: 560px) { .e404 { flex-direction: column; } .e404 .mag { width: 100%; } }
+.person__h { display: block; margin: .15rem 0 .1rem; font-size: .88rem; color: var(--on-60); }
