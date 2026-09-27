@@ -623,7 +623,7 @@ h1, h2, h3, p { margin: 0; }
   margin-bottom: 0.45rem;
   color: var(--ink-70);
 }
-.field input, .field textarea {
+.field input, .field textarea, .field select {
   width: 100%;
   border: 1px solid var(--hairline);
   background: #fbfaf7;
@@ -634,12 +634,18 @@ h1, h2, h3, p { margin: 0; }
   border-radius: 0;
   transition: border-color 0.2s ease;
 }
-.field input:focus, .field textarea:focus {
+.field input:focus, .field textarea:focus, .field select:focus {
   outline: 2px solid var(--cobalt);
   outline-offset: -1px;
   border-color: var(--cobalt);
 }
 .field textarea { resize: vertical; min-height: 8rem; }
+.field select {
+  appearance: none; cursor: pointer; padding-right: 2.2rem;
+  background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(-45deg, transparent 50%, currentColor 50%);
+  background-position: calc(100% - 1.05rem) 55%, calc(100% - 0.75rem) 55%;
+  background-size: 0.3rem 0.3rem; background-repeat: no-repeat;
+}
 .field__err {
   display: none;
   margin-top: 0.4rem;
