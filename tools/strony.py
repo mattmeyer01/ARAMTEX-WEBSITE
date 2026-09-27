@@ -155,7 +155,7 @@ LD_ORG=ld({"@context":"https://schema.org","@graph":[
    "description":"Dystrybutor złączek i armatury Besco oraz Pegler Yorkshire dla hurtowni instalacyjnych w całej Polsce: złączki zaciskane (press), na wcisk, skręcane i lutowane.",
    "telephone":"+48 513 191 502","email":"biuro@armatex.pl",
    "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"18:00"}],
-   "legalName":"Przedsiębiorstwo Handlowo-Usługowe Armatex Spółka Jawna A.J. Bunda","taxID":"7393814110",
+   "legalName":"P.H.U. ARMATEX Sp. J. A. J. Bunda","taxID":"7393814110",
    "identifier":[{"@type":"PropertyValue","propertyID":"KRS","value":"0000371628"},{"@type":"PropertyValue","propertyID":"REGON","value":"280563743"}],
    "address":{"@type":"PostalAddress","streetAddress":"ul. Składowa 3a","postalCode":"10-421","addressLocality":"Olsztyn","addressCountry":"PL"},
    "areaServed":{"@type":"Country","name":"Polska"},
@@ -248,7 +248,7 @@ FOOT='''<footer class="foot">
     <div><h4>Armatex</h4><ul><li><a href="katalog.html">Wyszukiwarka indeksów Besco</a></li><li><a href="'''+PDF+'''" target="_blank" rel="noopener">Katalog Besco 2026 (PDF)</a></li><li><a href="do-pobrania.html">Do pobrania</a></li><li><a href="poradniki.html">Poradniki</a></li><li><a href="o-firmie.html">O firmie</a></li><li><a href="wspolpraca.html">Współpraca</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
     <div><h4>Kontakt</h4><ul><li><a href="tel:+48513191502">513 191 502</a></li><li><a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a></li><li>ul. Składowa 3a, 10-421 Olsztyn</li><li>pn–pt 7:00–18:00</li></ul></div>
   </div>
-  <div class="wrap foot__legal">Przedsiębiorstwo Handlowo-Usługowe Armatex Spółka Jawna A.J. Bunda · ul. Siewna 24, 10-831 Olsztyn · NIP 7393814110 · KRS 0000371628 · REGON 280563743</div>
+  <div class="wrap foot__legal">P.H.U. ARMATEX Sp. J. A. J. Bunda · ul. Siewna 24, 10-831 Olsztyn · NIP 7393814110 · KRS 0000371628 · REGON 280563743</div>
   <div class="wrap foot__bar"><span>© 2026 Armatex</span><a href="polityka-prywatnosci.html">Polityka prywatności</a></div>
 </footer>
 '''
@@ -1051,7 +1051,7 @@ pol_body='''
         <p>Ta polityka opisuje, jakie dane osobowe zbieramy przez stronę armatex.pl, w jakim celu, jak długo je przechowujemy i jakie prawa Ci przysługują. Opisuje też, jakie informacje strona zapisuje w Twojej przeglądarce.</p>
 
         <h2 id="administrator">1. Administrator danych</h2>
-        <p>Administratorem danych osobowych jest <strong>Przedsiębiorstwo Handlowo-Usługowe Armatex Spółka Jawna A.J. Bunda</strong> z siedzibą w Olsztynie, ul. Siewna 24, 10-831 Olsztyn, wpisana do rejestru przedsiębiorców Krajowego Rejestru Sądowego pod numerem KRS 0000371628, NIP 7393814110, REGON 280563743 (dalej: „Armatex”).</p>
+        <p>Administratorem danych osobowych jest <strong>P.H.U. ARMATEX Sp. J. A. J. Bunda</strong> z siedzibą w Olsztynie, ul. Siewna 24, 10-831 Olsztyn, wpisana do rejestru przedsiębiorców Krajowego Rejestru Sądowego pod numerem KRS 0000371628, NIP 7393814110, REGON 280563743 (dalej: „Armatex”).</p>
         <p>W sprawach dotyczących danych osobowych możesz się z nami skontaktować:</p>
         <ul>
           <li>e-mailem: <a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a>,</li>
