@@ -205,9 +205,10 @@ ICO_PDF='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width
 def nav(cur):
     cs=lambda k: ' aria-current="page"' if k==cur else ''
     ddlinks=''.join(f'<a href="{s["slug"]}.html"{cs(s["slug"])}>{img(s["pics"][0][0],"")}<b>{s["name"]}</b><span>{s["brand"]} · {s["cntw"]}</span></a>' for s in SYS)
-    ddcur=' aria-current="page"' if cur in [s['slug'] for s in SYS]+['katalog'] else ''
+    ddcur=' aria-current="page"' if cur in [s['slug'] for s in SYS]+['katalog','do-pobrania'] else ''
     kat=(f'<a href="katalog.html"{cs("katalog")}><span class="dd__ico">{ICO_SEARCH}</span><b>Wyszukiwarka indeksów Besco</b><span>1 936 indeksów · lista do wyceny</span></a>'
-         f'<a href="{PDF}" target="_blank" rel="noopener"><span class="dd__ico">{ICO_PDF}</span><b>Katalog Besco 2026</b><span>PDF · 3 MB · 66 stron</span></a>')
+         f'<a href="{PDF}" target="_blank" rel="noopener"><span class="dd__ico">{ICO_PDF}</span><b>Katalog Besco 2026</b><span>PDF · 3 MB · 66 stron</span></a>'
+         f'<a href="do-pobrania.html"{cs("do-pobrania")}><span class="dd__ico">{ICO_PDF}</span><b>Do pobrania</b><span>katalogi, atesty, deklaracje</span></a>')
     mlinks=''.join(f'<a href="{s["slug"]}.html"{cs(s["slug"])}>{s["name"]}<small>{s["brand"]}</small></a>' for s in SYS)
     return f'''<header class="nav" id="nav">
   <div class="wrap">
@@ -217,6 +218,8 @@ def nav(cur):
     </a>
     <nav class="nav__links" aria-label="Nawigacja główna">
       <div class="dd"><button type="button" aria-expanded="false" aria-controls="dd-m"{ddcur}>Oferta</button><div class="dd__m" id="dd-m"><span class="dd__h">Systemy złączek</span>{ddlinks}<span class="dd__h">Katalogi</span>{kat}</div></div>
+      <a href="poradniki.html"{' aria-current="page"' if cur=="poradniki" else ''}>Poradniki</a>
+      <a href="o-firmie.html"{cs("o-firmie")}>O firmie</a>
       <a href="wspolpraca.html"{cs("wspolpraca")}>Współpraca</a>
       <a href="kontakt.html"{cs("kontakt")}>Kontakt</a>
     </nav>
@@ -227,8 +230,8 @@ def nav(cur):
 </header>
 <nav class="mnav" id="mnav" aria-label="Menu mobilne">
   <span class="label">Oferta</span>{mlinks}
-  <span class="label">Katalogi</span><a href="katalog.html"{cs("katalog")}>Wyszukiwarka indeksów Besco<small>1 936</small></a><a href="{PDF}" target="_blank" rel="noopener">Katalog Besco 2026<small>PDF · 3 MB</small></a>
-  <span class="label">Armatex</span><a href="wspolpraca.html"{cs("wspolpraca")}>Współpraca</a><a href="kontakt.html"{cs("kontakt")}>Kontakt<small>798 807 106</small></a>
+  <span class="label">Katalogi</span><a href="katalog.html"{cs("katalog")}>Wyszukiwarka indeksów Besco<small>1 936</small></a><a href="{PDF}" target="_blank" rel="noopener">Katalog Besco 2026<small>PDF · 3 MB</small></a><a href="do-pobrania.html"{cs("do-pobrania")}>Do pobrania<small>dokumenty</small></a>
+  <span class="label">Armatex</span><a href="poradniki.html"{cs("poradniki")}>Poradniki</a><a href="o-firmie.html"{cs("o-firmie")}>O firmie</a><a href="wspolpraca.html"{cs("wspolpraca")}>Współpraca</a><a href="kontakt.html"{cs("kontakt")}>Kontakt<small>798 807 106</small></a>
 </nav>
 '''
 FOOT='''<footer class="foot">
@@ -238,7 +241,7 @@ FOOT='''<footer class="foot">
       <p>Dystrybutor złączek i armatury Besco oraz Pegler Yorkshire dla hurtowni instalacyjnych w całej Polsce.</p>
     </div>
     <div><h4>Oferta</h4><ul>'''+''.join(f'<li><a href="{s["slug"]}.html">{s["name"]}</a></li>' for s in SYS)+'''</ul></div>
-    <div><h4>Armatex</h4><ul><li><a href="katalog.html">Wyszukiwarka indeksów Besco</a></li><li><a href="'''+PDF+'''" target="_blank" rel="noopener">Katalog Besco 2026 (PDF)</a></li><li><a href="wspolpraca.html">Współpraca</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
+    <div><h4>Armatex</h4><ul><li><a href="katalog.html">Wyszukiwarka indeksów Besco</a></li><li><a href="'''+PDF+'''" target="_blank" rel="noopener">Katalog Besco 2026 (PDF)</a></li><li><a href="do-pobrania.html">Do pobrania</a></li><li><a href="poradniki.html">Poradniki</a></li><li><a href="o-firmie.html">O firmie</a></li><li><a href="wspolpraca.html">Współpraca</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
     <div><h4>Kontakt</h4><ul><li><a href="tel:+48798807106">798 807 106</a></li><li><a href="mailto:armatex1@gmail.com">armatex1@gmail.com</a></li><li>ul. Składowa 3a, 10-421 Olsztyn</li></ul></div>
   </div>
   <div class="wrap foot__bar"><span>© 2026 Armatex</span></div>
@@ -739,9 +742,301 @@ for G in GROUPS:
     crumbs=ld_crumbs([(sysp['name'],sysp['slug']+'.html'),(f'{G["name"]} {G["code"]}',G['slug']+'.html')])
     page(G['slug']+'.html',title,desc,sysp['slug'],body,crumbs+lst)
 
+# ---------------- O firmie, Poradniki, Do pobrania
+import datetime as _dt
+DZIS=_dt.date.today().isoformat()
+def gslug(code, name_part=''):
+    """Adres strony grupy produktów po kodzie (i fragmencie nazwy, gdy kod się powtarza)."""
+    for G in GROUPS:
+        if G['code']==code and name_part in G['name']: return G['slug']+'.html'
+    raise KeyError(code)
+def glink(code, text, name_part=''): return f'<a href="{gslug(code,name_part)}">{text}</a>'
+def phead(crumbs, kicker, h1, lead, facts=(), ctas=''):
+    cr=''.join(f'<li><a href="{u}">{n}</a></li>' for n,u in crumbs[:-1])+f'<li aria-current="page">{crumbs[-1][0]}</li>'
+    fx=''.join(f'<div><dt class="label">{k}</dt><dd>{v}</dd></div>' for k,v in facts)
+    return f'''
+  <section class="phead">
+    <div class="wrap">
+      <ol class="crumbs"><li><a href="index.html">Armatex</a></li>{cr}</ol>
+      <div>
+        <span class="label kicker">{kicker}</span>
+        <h1>{h1}</h1>
+        <p class="lead">{lead}</p>
+        {('<div class="phead__ctas">'+ctas+'</div>') if ctas else ''}
+      </div>
+      {('<dl class="phead__facts">'+fx+'</dl>') if fx else ''}
+    </div>
+  </section>
+'''
+CTA_BOX=f'''      <div class="cta" style="margin-top:clamp(3rem,6vw,4.5rem)">
+        <div><h2>Porozmawiajmy o ofercie dla Twojej hurtowni.</h2><p>Napisz, które systemy chcesz prowadzić. Ofertę przygotujemy w ciągu jednego dnia roboczego.</p></div>
+        <div class="cta__b"><a class="mag" href="kontakt.html#formularz"><span>Zapytaj o ofertę</span></a><a class="ghost" href="tel:+48798807106">798 807 106</a></div>
+      </div>'''
+
+# ---- O firmie
+firma=phead([('O firmie','o-firmie.html')],'O firmie','Armatex. Dystrybutor złączek dla hurtowni.',
+  'Od 30 lat pracujemy na rynku instalacyjnym. Z magazynu w Olsztynie dostarczamy złączki i armaturę Besco oraz Pegler Yorkshire do hurtowni w całej Polsce.',
+  [('Na rynku','30 lat'),('Indeksy','ok. 2 900'),('Wysyłka','24 h')],
+  f'<a class="mag" href="{ask("Jesteśmy hurtownią i chcemy poznać ofertę Armatex.")}"><span>Zapytaj o ofertę</span></a><a class="ghost" href="wspolpraca.html">Jak współpracujemy</a>')+f'''
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="yard__grid">
+        <div>
+          <span class="label kicker">Czym się zajmujemy</span>
+          <h2 class="h2">Hurtownia hurtowni instalacyjnych.</h2>
+        </div>
+        <p class="lead">Nie sprzedajemy inwestorom i nie wykonujemy instalacji. Naszymi klientami są hurtownie, dlatego cała oferta, logistyka i obsługa są ustawione pod ich zatowarowanie: pełne opakowania producenta, stany na najczęściej rotujące pozycje i jedna faktura na cały program.</p>
+      </div>
+      <div class="gain gain--3">
+        <div class="in"><span class="label">01</span><b>Cztery metody łączenia</b><p>Złączki zaciskane, na wcisk, skręcane i lutowane od dwóch producentów. Około 2 900 indeksów w jednym miejscu.</p></div>
+        <div class="in"><span class="label">02</span><b>Magazyn w Olsztynie</b><p>ul. Składowa 3a. Typowe zamówienie hurtowni kompletujemy tego samego dnia, wysyłka w 24 godziny od potwierdzenia.</p></div>
+        <div class="in"><span class="label">03</span><b>Oferta w jeden dzień</b><p>Na zapytanie odpowiadamy w ciągu jednego dnia roboczego: ceny, dostępność i terminy dostaw.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight section--stone">
+    <div class="wrap">
+      <span class="label kicker">Marki</span>
+      <h2 class="h2">Dwóch producentów, pełne programy.</h2>
+      <div class="aud aud--2">
+        <div class="in"><span class="label">Besco Fittings &amp; Connectors</span><h3>Press, gaz, stal i lutowane</h3><p>Miedź press w profilach V i M (12–108 mm), linie do gazu, stal węglowa press, kształtki lutowane EN 1254, calowe ANSI i G-size oraz zawory kulowe press. 1 936 pozycji z katalogu 2026 w naszej <a href="katalog.html">wyszukiwarce</a>. Aprobaty DVGW, KIWA, WRAS, RISE i INiG, zależnie od linii.</p></div>
+        <div class="in"><span class="label">Pegler Yorkshire</span><h3>Tectite i Kuterlite</h3><p>Złączki na wcisk <a href="zlaczki-na-wcisk-tectite.html">Tectite</a> (Classic, Pro, 316, Carbon) z gwarancją producenta 25 lat oraz złączki skręcane <a href="zlaczki-skrecane-kuterlite.html">Kuterlite</a> do miedzi i rur PE, razem z zaworami.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="wrap">
+      <span class="label kicker">Zespół</span>
+      <h2 class="h2">Z kim rozmawiasz.</h2>
+      <div class="team">
+        <div class="in"><span class="team__av" aria-hidden="true">PS</span><div><span class="label">Sprzedaż</span><b>Piotr Stelmach</b><p><a href="tel:+48798807106">798 807 106</a> · <a href="mailto:piotr@armatex.pl">piotr@armatex.pl</a></p></div></div>
+        <div class="in"><span class="team__av" aria-hidden="true">MZ</span><div><span class="label">Sprzedaż</span><b>Martyna Zielińska</b><p><a href="tel:+48515231693">515 231 693</a> · <a href="mailto:martyna@armatex.pl">martyna@armatex.pl</a></p></div></div>
+        <div class="in"><span class="team__av" aria-hidden="true">A</span><div><span class="label">Biuro i magazyny</span><b>ul. Składowa 3a, 10-421 Olsztyn</b><p><a href="mailto:armatex1@gmail.com">armatex1@gmail.com</a></p></div></div>
+      </div>
+{CTA_BOX}
+    </div>
+  </section>
+'''
+page('o-firmie.html','O firmie – Armatex, dystrybutor złączek dla hurtowni','Armatex z Olsztyna: od 30 lat na rynku instalacyjnym. Dystrybutor złączek Besco i Pegler Yorkshire dla hurtowni w całej Polsce, wysyłka w 24 godziny.','o-firmie',firma,ld_crumbs([('O firmie','o-firmie.html')]))
+
+# ---- Poradniki
+PSRC='Źródło danych: katalog Besco Fittings &amp; Connectors 2026'
+ART=[]
+def art(slug,title,seo,desc,lead,mins,body,rel,src=PSRC):
+    ART.append(dict(slug=slug,title=title,desc=desc,lead=lead,mins=mins))
+    toc=''.join(f'<li><a href="#{a}">{t}</a></li>' for a,t in re.findall(r'<h2 id="([^"]+)">([^<]+)</h2>',body))
+    rl=''.join(f'<li>{x}</li>' for x in rel)
+    html=phead([('Poradniki','poradniki.html'),(title,slug+'.html')],f'Poradnik · {mins} min czytania',title,lead)+f'''
+  <section class="section section--tight">
+    <div class="wrap art">
+      <article class="prose">
+{body}
+        <p class="prose__src">{src}. Stan na {DZIS[:4]} r.</p>
+      </article>
+      <aside class="art__side">
+        <div class="art__box"><span class="label">W tym poradniku</span><ol>{toc}</ol></div>
+        <div class="art__box"><span class="label">Powiązane</span><ul>{rl}</ul></div>
+        <a class="mag" href="{ask('Pytanie po poradniku: '+title)}"><span>Zapytaj o ofertę</span></a>
+      </aside>
+    </div>
+  </section>
+'''
+    ldart=ld({"@context":"https://schema.org","@type":"Article","headline":title,"description":desc,"inLanguage":"pl-PL",
+      "datePublished":DZIS,"dateModified":DZIS,"mainEntityOfPage":SITE+slug+'.html',"image":SITE+"img/og/armatex-og.jpg",
+      "author":{"@type":"Organization","name":"Armatex","url":SITE},"publisher":{"@id":SITE+"#firma"}})
+    page(slug+'.html',seo,desc,'poradniki',html,ld_crumbs([('Poradniki','poradniki.html'),(title,slug+'.html')])+ldart)
+
+art('poradnik-profil-v-czy-m','Profil V czy M? Jak dobrać złączki zaciskane do zaciskarki',
+ 'Profil V czy M – złączki zaciskane Besco | Armatex',
+ 'Czym różni się profil V od M w złączkach zaciskanych, które linie Besco są w którym profilu i jak dobrać zatowarowanie hurtowni do szczęk klientów.',
+ 'Złączki zaciskane różnią się kształtem końcówki, a ten musi pasować do szczęk zaciskarki. Wyjaśniamy, czym są profile V i M i jak ustawić pod nie stany hurtowni.',5,f'''
+        <h2 id="co-to">Co oznacza profil złączki</h2>
+        <p>W systemach press złączkę zaciska się szczęką zaciskarki. Szczęka ma określony kontur, a złączka musi mieć końcówkę o tym samym konturze, żeby zaprasowanie było szczelne. Najczęściej spotykane kontury w instalacjach miedzianych to <strong>V</strong> i <strong>M</strong>. Oznaczenie konturu jest na szczęce, więc instalator zwykle wie, w jakim profilu pracuje.</p>
+        <p>Dla hurtowni oznacza to prostą rzecz: klient z szczękami V kupi złączki V, a klient z szczękami M kupi złączki M. Dwa profile to dwa osobne stany magazynowe tej samej kształtki.</p>
+        <h2 id="besco">Które linie Besco są w którym profilu</h2>
+        <div class="tw"><table>
+          <thead><tr><th>Linia</th><th>Profil</th><th>Średnice</th><th>Parametry</th><th>Aprobaty</th></tr></thead>
+          <tbody>
+            <tr><td>Miedź press · woda</td><td>V</td><td>12–54 mm</td><td>16 bar, −10…110 °C</td><td>DVGW, KIWA, WRAS, RISE</td></tr>
+            <tr><td>Miedź press · woda</td><td>M</td><td>12–108 mm</td><td>16 bar, −10…110 °C</td><td>DVGW, WRAS, RISE</td></tr>
+            <tr><td>Miedź press · gaz</td><td>V i M</td><td>15–35 mm</td><td>5 bar, −20…70 °C</td><td>DVGW, INiG</td></tr>
+            <tr><td>Stal węglowa press</td><td>M</td><td>12–108 mm</td><td>16 bar, −10…110 °C</td><td>–</td></tr>
+            <tr><td>Zawory kulowe press</td><td>V i M</td><td>15–54 mm</td><td>16 bar, −10…110 °C</td><td>DVGW, WRAS</td></tr>
+          </tbody>
+        </table></div>
+        <p>Miedź według EN 1254-7. Średnice powyżej 54 mm (do 108 mm) są w profilu M, zarówno w miedzi, jak i w stali węglowej.</p>
+        <h2 id="zgodnosc">Czy M można zacisnąć szczęką V?</h2>
+        <p>Według katalogu Besco 2026 złączki w profilu M można zaciskać także szczęką V w zakresie <strong>DN12–28</strong>. W tych średnicach jeden stan złączek M obsłuży klientów z oboma typami szczęk. Powyżej 28 mm trzymaj się profilu zgodnego ze szczęką.</p>
+        <h2 id="stany">Jak ustawić stany w hurtowni</h2>
+        <ul>
+          <li><strong>Małe średnice (12–28 mm):</strong> tu jest największa rotacja. Zapytaj stałych klientów, jakimi szczękami pracują, i ustaw proporcje V do M według tej odpowiedzi.</li>
+          <li><strong>Duże średnice (35–108 mm):</strong> powyżej 54 mm Besco oferuje tylko profil M, więc to on obsługuje większe inwestycje i kotłownie.</li>
+          <li><strong>Gaz:</strong> linie gazowe to osobne indeksy (GPG i seria 7000). Nie zastępuje się ich złączkami z linii wodnych.</li>
+          <li><strong>Pełne opakowania:</strong> każda pozycja ma w katalogu dwa opakowania zbiorcze (worek i karton), np. łuk {glink('GP5001','GP5001','Łuk 90')} 15 mm: 10 i 120 sztuk.</li>
+        </ul>
+        <h2 id="zamowienie">Jak zamówić</h2>
+        <p>Wszystkie indeksy znajdziesz w <a href="katalog.html?seria=cu-press-water-v#katalog">wyszukiwarce profilu V</a> i <a href="katalog.html?seria=cu-press-water-m#katalog">profilu M</a>. Dodaj pozycje do listy, ustaw ilości w kartonach lub workach i wyślij do wyceny.</p>''',
+ ['<a href="zlaczki-zaciskane-press.html">Złączki zaciskane press Besco</a>',glink('GP5001','Łuk 90° wz, profil V (GP5001)','Łuk 90'),glink('6001','Łuk 90° wz, profil M (6001)','Łuk 90'),'<a href="poradnik-numery-artykulow-besco.html">Jak czytać numery artykułów Besco</a>'])
+
+art('poradnik-numery-artykulow-besco','Jak czytać numery artykułów Besco',
+ 'Numery artykułów Besco – jak je czytać | Armatex',
+ 'Budowa numeru artykułu Besco: przedrostek linii, numer kształtu, przyrostki i rozmiar. Przykłady dla press V i M, gazu, stali, lutowanych, ANSI i G-size.',
+ 'Numer artykułu Besco mówi, z jakiej linii jest kształtka, jaki ma kształt i rozmiar. Po tym poradniku odczytasz go bez zaglądania do katalogu.',4,f'''
+        <h2 id="budowa">Budowa numeru</h2>
+        <p>Większość numerów ma cztery części: <strong>przedrostek linii</strong>, <strong>numer kształtu</strong>, opcjonalny <strong>przyrostek</strong> i <strong>rozmiar</strong> po myślniku. Na przykład <code>GP5001-15</code> to łuk 90° wz z linii press V do wody, średnica 15 mm.</p>
+        <h2 id="linie">Przedrostek: z jakiej linii jest kształtka</h2>
+        <div class="tw"><table>
+          <thead><tr><th>Początek numeru</th><th>Linia</th><th>Przykład</th></tr></thead>
+          <tbody>
+            <tr><td>cyfry 5… / 4…</td><td>Miedź lutowana EN 1254</td><td><code>5001-15</code></td></tr>
+            <tr><td>GP</td><td>Miedź press, profil V, woda</td><td><code>GP5001-15</code></td></tr>
+            <tr><td>GPG</td><td>Miedź press, profil V, gaz</td><td><code>GPG5001-15</code></td></tr>
+            <tr><td>6…</td><td>Miedź press, profil M, woda</td><td>grupa <code>6001</code></td></tr>
+            <tr><td>7…</td><td>Miedź press, profil M, gaz</td><td>grupa <code>7001</code></td></tr>
+            <tr><td>2…</td><td>Stal węglowa press, profil M</td><td><code>2270-15</code></td></tr>
+            <tr><td>K</td><td>Miedź calowa ANSI B16.22, seria K</td><td><code>K5001-1/2</code></td></tr>
+            <tr><td>G</td><td>Miedź G-size do wysokich ciśnień</td><td><code>G5001-22</code></td></tr>
+            <tr><td>GPV, GP600</td><td>Zawory kulowe press</td><td><code>GPV60015PP</code></td></tr>
+          </tbody>
+        </table></div>
+        <h2 id="ksztalt">Numer kształtu</h2>
+        <p>Ostatnie trzy cyfry numeru grupy oznaczają kształt i powtarzają się w różnych liniach. Łuk 90° wz to 5001 w lutowanych, GP5001 w press V, 6001 w press M i G5001 w G-size.</p>
+        <div class="tw"><table>
+          <thead><tr><th>Numer</th><th>Kształt</th><th>Numer</th><th>Kształt</th></tr></thead>
+          <tbody>
+            <tr><td>…001</td><td>Łuk 90° wz</td><td>…130</td><td>Trójnik</td></tr>
+            <tr><td>…002</td><td>Łuk 90° ww</td><td>…270</td><td>Mufa</td></tr>
+            <tr><td>…040</td><td>Łuk 45° wz</td><td>…240</td><td>Mufa redukcyjna ww</td></tr>
+            <tr><td>…041</td><td>Łuk 45° ww</td><td>…243</td><td>Redukcja wz</td></tr>
+            <tr><td>…090</td><td>Kolano 90° ww</td><td>…301</td><td>Zaślepka</td></tr>
+            <tr><td>…092</td><td>Kolano 90° wz</td><td>…085 / …086</td><td>Mijanka ww / wz</td></tr>
+          </tbody>
+        </table></div>
+        <p>W liniach lutowanej i press V pierwsza cyfra <strong>4</strong> zamiast 5 oznacza zwykle element z gwintem, np. {glink('4270','4270 (złączka z GW)')} obok {glink('5270','5270 (mufa)')}.</p>
+        <h2 id="przyrostki">Przyrostki literowe</h2>
+        <ul>
+          <li><strong>R</strong>: wersja redukcyjna, np. {glink('6130R','6130R, trójnik redukcyjny w profilu M')}.</li>
+          <li><strong>G</strong>: wersja z gwintem w profilu M i w stali, np. {glink('6090G','6090G, kolano 90° z GW')}.</li>
+          <li><strong>S</strong>: wersja przesuwna, np. {glink('GP5270S','GP5270S, mufa przesuwna')}.</li>
+        </ul>
+        <h2 id="rozmiar">Rozmiar po myślniku</h2>
+        <ul>
+          <li><code>-15</code>: jedna średnica, 15 mm.</li>
+          <li><code>-28.12</code>: kilka średnic oddzielonych kropką, np. mufa redukcyjna 28 × 12 mm.</li>
+          <li><code>-15.1/2</code>: średnica i gwint w calach, np. śrubunek {glink('4331','4331-15.1/2')} to 15 mm × 1/2″.</li>
+        </ul>
+        <p>Wyjątek: w liniach press M (woda i gaz) numery artykułów w tabelach katalogu to długie kody liczbowe, np. <code>682001212</code>. Wpisz je do wyszukiwarki w całości albo szukaj po numerze grupy, np. <code>6001</code>.</p>
+        <h2 id="szukaj">Szukanie po numerze</h2>
+        <p>Nasza <a href="katalog.html">wyszukiwarka</a> rozpoznaje numery grup i artykułów, także bez myślnika i kropek. Wpisz np. <code>GP5001</code>, żeby zobaczyć wszystkie średnice łuku, albo pełny numer, żeby od razu dodać pozycję do listy.</p>''',
+ ['<a href="katalog.html">Wyszukiwarka indeksów Besco</a>','<a href="poradnik-profil-v-czy-m.html">Profil V czy M?</a>','<a href="zlaczki-lutowane.html">Złączki lutowane Besco</a>'])
+
+GAS_V=[G for G in groups_of('cu-press-gas-v')]
+gas_list=''.join(f'<li><a href="{G["slug"]}.html">{G["name"]}</a> <code>{G["code"]}</code></li>' for G in GAS_V)
+art('poradnik-zlaczki-zaciskane-do-gazu','Złączki zaciskane do gazu: parametry, aprobaty i oznaczenia',
+ 'Złączki zaciskane do gazu Besco – parametry i aprobaty | Armatex',
+ 'Złączki press do gazu Besco w profilu V i M: średnice 15–35 mm, 5 bar, −20…70 °C, EN 1254-7, aprobaty DVGW i INiG. Numery, kształty i różnice względem linii wodnych.',
+ 'Linie gazowe to osobne indeksy z innymi parametrami niż złączki do wody. Zebraliśmy, co trzeba wiedzieć, zanim wprowadzisz je na półkę.',4,f'''
+        <h2 id="parametry">Parametry linii gazowych Besco</h2>
+        <div class="tw"><table>
+          <thead><tr><th></th><th>Profil V</th><th>Profil M</th></tr></thead>
+          <tbody>
+            <tr><td>Oznaczenie</td><td>GPG…</td><td>seria 7000</td></tr>
+            <tr><td>Średnice</td><td>15–35 mm</td><td>15–35 mm</td></tr>
+            <tr><td>Ciśnienie</td><td>do 5 bar</td><td>do 5 bar</td></tr>
+            <tr><td>Temperatura</td><td>−20…70 °C</td><td>−20…70 °C</td></tr>
+            <tr><td>Media</td><td>gaz ziemny, LPG</td><td>gaz ziemny, LPG</td></tr>
+            <tr><td>Norma</td><td>EN 1254-7</td><td>EN 1254-7</td></tr>
+            <tr><td>Aprobaty</td><td>DVGW, INiG</td><td>DVGW, INiG</td></tr>
+            <tr><td>Pozycje w katalogu</td><td>110</td><td>101</td></tr>
+          </tbody>
+        </table></div>
+        <h2 id="roznice">Czym różnią się od złączek do wody</h2>
+        <p>Linie wodne press pracują do 16 bar i od −10 do 110 °C, a gazowe do 5 bar i od −20 do 70 °C. Do instalacji gazowych nie stosuje się złączek z linii wodnych, nawet jeśli pasują wymiarem i profilem. Dlatego w magazynie i na półce warto trzymać je osobno, z wyraźnym opisem „gaz”.</p>
+        <p>Profil V lub M dobiera się tak samo jak w linii wodnej, według szczęk zaciskarki klienta. Więcej w poradniku <a href="poradnik-profil-v-czy-m.html">Profil V czy M?</a>.</p>
+        <h2 id="ksztalty">Kształty w linii V (GPG)</h2>
+        <ul class="cols">{gas_list}</ul>
+        <h2 id="dokumenty">Dokumenty dla klientów</h2>
+        <p>Przy instalacjach gazowych instalatorzy i inwestorzy częściej pytają o dokumenty. Aprobaty i deklaracje do linii gazowych udostępniamy hurtowniom w <a href="do-pobrania.html">bazie dokumentów</a> po weryfikacji. Samą instalację gazową wykonuje instalator z uprawnieniami, zgodnie z przepisami.</p>''',
+ ['<a href="katalog.html?seria=cu-press-gas-v,cu-press-gas-m#katalog">Wszystkie indeksy gazowe w wyszukiwarce</a>','<a href="zlaczki-zaciskane-press.html">Złączki zaciskane press Besco</a>','<a href="do-pobrania.html">Do pobrania: katalogi i dokumenty</a>'])
+
+art('poradnik-metody-laczenia-rur','Zaciskane, na wcisk, skręcane czy lutowane? Porównanie metod łączenia',
+ 'Złączki zaciskane, na wcisk, skręcane, lutowane – porównanie | Armatex',
+ 'Porównanie czterech metod łączenia rur: złączki zaciskane (press), na wcisk (push-fit), skręcane i lutowane. Narzędzia, średnice, rury i typowi klienci.',
+ 'Każda metoda łączenia ma swoich klientów. Porównujemy narzędzia, zakresy średnic i zastosowania, żeby łatwiej było ułożyć ofertę hurtowni.',5,f'''
+        <h2 id="tabela">Porównanie w jednej tabeli</h2>
+        <div class="tw"><table>
+          <thead><tr><th></th><th>Zaciskane (press)</th><th>Na wcisk</th><th>Skręcane</th><th>Lutowane</th></tr></thead>
+          <tbody>
+            <tr><td>Marka w ofercie</td><td>Besco</td><td>Tectite</td><td>Kuterlite</td><td>Besco</td></tr>
+            <tr><td>Narzędzia</td><td>zaciskarka ze szczękami V lub M</td><td>obcinak, gratownik, miernik głębokości</td><td>klucze</td><td>palnik, lut, topnik</td></tr>
+            <tr><td>Średnice</td><td>12–108 mm</td><td>10–54 mm</td><td>6–54 mm (miedź), 20–63 mm (PE)</td><td>6–108 mm, calowe 1/4″–4 1/8″</td></tr>
+            <tr><td>Rury</td><td>miedź, stal węglowa</td><td>miedź, PEX i PB z tulejką, stal zależnie od linii</td><td>miedź, PE</td><td>miedź</td></tr>
+            <tr><td>Ogień przy montażu</td><td>nie</td><td>nie</td><td>nie</td><td>tak</td></tr>
+            <tr><td>Demontaż</td><td>nie</td><td>Classic, Pro i 316 tak</td><td>tak, pierścień zostaje na rurze</td><td>tylko przez rozlutowanie</td></tr>
+          </tbody>
+        </table></div>
+        <h2 id="press">Zaciskane (press)</h2>
+        <p>Szybki montaż bez ognia, ale wymaga zaciskarki ze szczękami w odpowiednim profilu. Typowi klienci to firmy instalacyjne przy kotłowniach, pionach i większych inwestycjach. Besco ma także linie do gazu i stal węglową do ogrzewania i sprężonego powietrza. <a href="zlaczki-zaciskane-press.html">Złączki zaciskane Besco</a></p>
+        <h2 id="wcisk">Na wcisk (push-fit)</h2>
+        <p>Montaż bez zaciskarki, prądu i ognia: rurę trzeba uciąć, zgratować i wsunąć na wymaganą głębokość. Dobre do serwisu, remontów i prac w miejscach, gdzie nie można użyć palnika. Producent daje 25 lat gwarancji na Tectite Sprint, Classic, Pro i 316. <a href="zlaczki-na-wcisk-tectite.html">Złączki na wcisk Tectite</a></p>
+        <h2 id="skrecane">Skręcane</h2>
+        <p>Pierścień zaciska się na rurze przy dokręcaniu nakrętki. Wystarczą klucze. To klasyczny towar ladowy do podłączeń kotłów, podgrzewaczy i armatury, a seria K700 łączy też rury PE. <a href="zlaczki-skrecane-kuterlite.html">Złączki skręcane Kuterlite</a></p>
+        <h2 id="lutowane">Lutowane</h2>
+        <p>Kształtki kapilarne do lutowania miękkiego i twardego. Najszerszy zakres średnic i rozmiarów, w tym calowe ANSI B16.22 i G-size do 80 bar dla chłodnictwa i przemysłu. <a href="zlaczki-lutowane.html">Złączki lutowane Besco</a></p>
+        <h2 id="oferta">Co to oznacza dla hurtowni</h2>
+        <p>Te metody nie konkurują ze sobą, tylko obsługują różnych klientów: instalatora z zaciskarką, serwisanta bez narzędzi, klienta przy ladzie i chłodnika. Pełna oferta czterech metod od jednego dostawcy pozwala obsłużyć ich wszystkich z jednej faktury.</p>''',
+ ['<a href="index.html#systemy">Wszystkie systemy złączek</a>','<a href="poradnik-profil-v-czy-m.html">Profil V czy M?</a>','<a href="poradnik-zlaczki-zaciskane-do-gazu.html">Złączki zaciskane do gazu</a>'],
+ src='Źródło danych: katalogi Besco 2026 i Tectite 2026, cennik Kuterlite (październik 2024)')
+
+cards=''.join(f'<a class="pcard2" href="{a["slug"]}.html"><span class="label">Poradnik · {a["mins"]} min</span><b>{a["title"]}</b><p>{a["lead"]}</p><span class="pcard2__go" aria-hidden="true">Czytaj →</span></a>' for a in ART)
+porad=phead([('Poradniki','poradniki.html')],'Poradniki','Poradniki dla hurtowni instalacyjnych.',
+  'Praktyczna wiedza o złączkach Besco i Pegler Yorkshire: jak dobrać profil, jak czytać numery artykułów, co wiedzieć o liniach gazowych i czym różnią się metody łączenia.')+f'''
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="pgrid">{cards}</div>
+{CTA_BOX}
+    </div>
+  </section>
+'''
+page('poradniki.html','Poradniki o złączkach dla hurtowni | Armatex','Poradniki o złączkach Besco i Pegler Yorkshire: profil V czy M, numery artykułów Besco, złączki do gazu i porównanie metod łączenia rur.','poradniki',porad,
+  ld_crumbs([('Poradniki','poradniki.html')])+ld({"@context":"https://schema.org","@type":"ItemList","name":"Poradniki Armatex","itemListElement":[{"@type":"ListItem","position":i,"url":SITE+a['slug']+'.html',"name":a['title']} for i,a in enumerate(ART,1)]}))
+
+# ---- Do pobrania
+DOCS=[
+ ('besco','katalog','Katalog Besco Fittings &amp; Connectors 2026','Pełny katalog: press V i M, gaz, stal, lutowane, ANSI, G-size, zawory. Numery artykułów i opakowania.','PDF · 3 MB · 66 stron',f'<a class="ghost ghost--pdf" href="{PDF}" target="_blank" rel="noopener">Pobierz</a>'),
+ ('besco','katalog','Wyszukiwarka indeksów Besco','1 936 pozycji z katalogu 2026 z listą do wyceny. Szybsza niż przeglądanie PDF.','online','<a class="ghost" href="katalog.html">Otwórz</a>'),
+ ('pegler','katalog','Katalog Tectite 2026','Złączki i zawory na wcisk Pegler Yorkshire: Classic, Pro, 316, Carbon, akcesoria Tec-Tools.','PDF · wyślemy e-mailem',f'<a class="ghost" href="{ask("Prosimy o przesłanie katalogu Tectite 2026.")}">Poproś</a>'),
+ ('besco pegler','atest','Atesty higieniczne','Atesty PZH do złączek stosowanych w instalacjach wody pitnej.','dla hurtowni po weryfikacji',f'<a class="ghost" href="{ask("Jesteśmy hurtownią i prosimy o dostęp do atestów higienicznych.")}">Poproś o dostęp</a>'),
+ ('besco pegler','dop','Deklaracje właściwości użytkowych','Deklaracje DoP do wyrobów budowlanych, do przekazania klientom i inwestorom.','dla hurtowni po weryfikacji',f'<a class="ghost" href="{ask("Jesteśmy hurtownią i prosimy o dostęp do deklaracji właściwości użytkowych.")}">Poproś o dostęp</a>'),
+ ('besco pegler','aprobata','Certyfikaty i aprobaty producentów','DVGW, KIWA, WRAS, RISE, INiG, zależnie od linii produktów.','dla hurtowni po weryfikacji',f'<a class="ghost" href="{ask("Jesteśmy hurtownią i prosimy o dostęp do certyfikatów i aprobat.")}">Poproś o dostęp</a>'),
+]
+TYPES=[('','Wszystko'),('katalog','Katalogi'),('atest','Atesty'),('dop','Deklaracje'),('aprobata','Aprobaty')]
+BRANDS=[('','Obie marki'),('besco','Besco'),('pegler','Pegler Yorkshire')]
+chips=lambda k,L: ''.join(f'<button type="button" class="chip" data-{k}="{v}" aria-pressed="{str(not v).lower()}">{n}</button>' for v,n in L)
+rows=''.join(f'<li data-b="{b}" data-t="{t}"><div><b>{n}</b><p>{d}</p></div><span class="label">{m}</span>{btn}</li>' for b,t,n,d,m,btn in DOCS)
+dl=phead([('Do pobrania','do-pobrania.html')],'Do pobrania','Katalogi i dokumenty.',
+  'Katalogi pobierzesz od razu. Atesty, deklaracje i aprobaty udostępniamy hurtowniom po weryfikacji, w ciągu jednego dnia roboczego.',
+  [('Katalog Besco','PDF'),('Dokumenty','po weryfikacji')])+f'''
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="dlf" role="group" aria-label="Filtr dokumentów">
+        <div class="dlf__g"><span class="label">Rodzaj</span>{chips('t',TYPES)}</div>
+        <div class="dlf__g"><span class="label">Marka</span>{chips('b',BRANDS)}</div>
+      </div>
+      <ul class="dll" id="dll">{rows}</ul>
+      <p class="dll__none" id="dllNone" hidden>Brak dokumentów dla tego filtra.</p>
+{CTA_BOX}
+    </div>
+  </section>
+'''
+page('do-pobrania.html','Do pobrania: katalogi i dokumenty złączek | Armatex','Katalog Besco 2026 do pobrania, katalog Tectite oraz atesty, deklaracje właściwości użytkowych i aprobaty dla hurtowni po weryfikacji.','do-pobrania',dl,ld_crumbs([('Do pobrania','do-pobrania.html')]))
+
+
 # ---------------- sitemap.xml i robots.txt (do wersji produkcyjnej)
 import datetime
-urls=['']+[x['slug']+'.html' for x in SYS]+['katalog.html','wspolpraca.html','kontakt.html']+[G['slug']+'.html' for G in GROUPS]
+urls=['']+[x['slug']+'.html' for x in SYS]+['katalog.html','do-pobrania.html','o-firmie.html','poradniki.html']+[a['slug']+'.html' for a in ART]+['wspolpraca.html','kontakt.html']+[G['slug']+'.html' for G in GROUPS]
 today=datetime.date.today().isoformat()
 sm='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{SITE}{u}</loc><lastmod>{today}</lastmod></url>\n' for u in urls)+'</urlset>\n'
 open(OUT+'sitemap.xml','w',encoding='utf-8').write(sm)

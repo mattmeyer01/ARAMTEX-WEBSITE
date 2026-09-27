@@ -8,7 +8,9 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
 
 - `index.html`: strona główna; strony systemów `zlaczki-zaciskane-press.html`, `zlaczki-na-wcisk-tectite.html`,
   `zlaczki-skrecane-kuterlite.html`, `zlaczki-lutowane.html`; `katalog.html` (wyszukiwarka 1 936 indeksów Besco
-  z listą do wyceny), `wspolpraca.html`, `kontakt.html`.
+  z listą do wyceny), `do-pobrania.html` (katalogi i dokumenty z filtrem), `o-firmie.html`, `wspolpraca.html`, `kontakt.html`.
+- Poradniki: `poradniki.html` i artykuły `poradnik-*.html` (dane Article w JSON-LD). Nowy poradnik dodaje się
+  wywołaniem `art(...)` w `tools/strony.py`; lista, menu i sitemap aktualizują się same.
 - Strony grup produktów: 161 × `besco-*.html`, 224 × `tectite-*.html` / `kuterlite-*.html`. Tabela rozmiarów
   z numerami artykułów, wybór ilości i jednostki (karton, worek, opakowanie, sztuki) i „Dodaj” do listy do wyceny.
   Lista jest zapisywana w przeglądarce (`localStorage`, klucz `armatex-rfq`) i trafia do formularza.
