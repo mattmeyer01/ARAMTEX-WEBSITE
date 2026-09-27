@@ -31,6 +31,10 @@ dokumentacja kierunku.
 | Kategoria 05: rury PP-R / PEX | https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_214514_2058c31f-3f36-4c46-9ffa-ec76b009e98d.png |
 | Kategoria 06: uszczelnienia | https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_214516_c61b1084-0189-476d-8a26-c8a018915a37.png |
 | Dokumenty: stos kart | https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_214518_d61cc7fc-c820-4161-968d-29ee1119d524.png |
+| Besco 01: złączki miedziane press profil V | https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144122_f73e4d82-a734-486a-90da-a5e64a10ffbb.png |
+| Besco 02: złączki miedziane press profil M (duże średnice) | https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144121_fe4e184d-a384-43ed-b749-2d56b527106e.png |
+| Besco 03: złączki press do gazu (żółte oznaczenie) | https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144122_4be0de82-9066-4ec7-a5e0-4844e2dc6d04.png |
+| Besco 04: złączki miedziane lutowane | https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144121_372d205b-aa3b-401e-ab23-c3e65d703a5a.png |
 | Karta OG (1376x768) | https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_214457_cbba2348-648e-4545-9ecc-25a325f3cabd.png |
 
 Miniatury: każdy plik ma wariant `_min.webp` (użyty w kaflach na stronie głównej).
