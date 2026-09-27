@@ -51,21 +51,30 @@
   }
 
   /* ---------------- oferta: filtr metod laczenia ---------------- */
-  var ofBtns = document.querySelectorAll(".of-filter button");
-  var ofCards = document.querySelectorAll(".of-card");
-  var ofCount = document.getElementById("ofCount");
-  ofBtns.forEach(function (btn) {
-    btn.addEventListener("click", function () {
-      var m = btn.getAttribute("data-m"), shown = 0;
-      ofBtns.forEach(function (b) { b.setAttribute("aria-pressed", b === btn ? "true" : "false"); });
-      ofCards.forEach(function (c) {
-        var on = m === "all" || c.getAttribute("data-m") === m;
-        c.hidden = !on;
-        if (on) { shown++; c.classList.add("is-in"); }
-      });
-      if (ofCount) ofCount.textContent = "Pokazano " + shown + " z " + ofCards.length + " linii produktów.";
+  /* ---------------- oferta: zakladki systemow ---------------- */
+  var syTabs = Array.prototype.slice.call(document.querySelectorAll(".sy-tabs [role=tab]"));
+  function syShow(tab, focus) {
+    syTabs.forEach(function (t) {
+      var on = t === tab, panel = document.getElementById(t.getAttribute("aria-controls"));
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      t.tabIndex = on ? 0 : -1;
+      if (panel) panel.hidden = !on;
+    });
+    if (focus) tab.focus();
+  }
+  syTabs.forEach(function (tab, i) {
+    tab.addEventListener("click", function () { syShow(tab); });
+    tab.addEventListener("keydown", function (e) {
+      var n = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: syTabs.length - 1 }[e.key];
+      if (n === undefined) return;
+      e.preventDefault();
+      syShow(syTabs[(n + syTabs.length) % syTabs.length], true);
     });
   });
+  if (syTabs.length) {
+    var syStart = syTabs.filter(function (t) { return "#" + t.getAttribute("aria-controls") === location.hash; })[0];
+    syShow(syStart || syTabs[0]);
+  }
 
   /* ---------------- prefill tematu zapytania ---------------- */
   var msg = document.getElementById("f-msg");
