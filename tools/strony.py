@@ -254,7 +254,7 @@ def live_form(html):
     if 'id="form" novalidate>' not in html: return html
     html=html.replace('<form class="form" id="form" novalidate>',
         f'<form class="form" id="form" method="POST" action="https://formsubmit.co/{FORM_TO}" novalidate>\n'
-        '        <input type="hidden" name="_subject" value="Zapytanie hurtowni ze strony armatex.pl">\n'
+        '        <input type="hidden" name="_subject" value="Zapytanie o wycenę ze strony armatex.pl">\n'
         '        <input type="hidden" name="_template" value="table">\n'
         '        <input type="hidden" name="_captcha" value="false">\n'
         '        <input type="text" name="_honey" class="sr" tabindex="-1" autocomplete="off" aria-hidden="true">')
