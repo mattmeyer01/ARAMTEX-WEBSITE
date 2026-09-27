@@ -365,8 +365,6 @@ home=f'''
   </section>
 
   <!-- 4 · JAK ZACZĄĆ -->
-{docs}
-
   <section class="section" id="start">
     <div class="wrap">
       <span class="label kicker">Pierwsze zamówienie</span>
@@ -376,6 +374,8 @@ home=f'''
   </section>
 
   <!-- 5 · PYTANIA -->
+{docs.replace('<section class="docs"','<section class="docs docs--w"',1)}
+
   <section class="section" id="faq" style="padding-top:0">
     <div class="wrap faq">
       <div class="faq__intro">

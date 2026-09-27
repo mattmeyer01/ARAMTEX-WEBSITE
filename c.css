@@ -288,6 +288,11 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .docs__sheet img { width: 100%; }
 .docs__stamp { position: absolute; right: 9%; bottom: 10%; width: 118px; height: 118px; border-radius: 50%; border: 2px solid var(--red-soft); color: var(--red-soft); display: grid; place-items: center; text-align: center; transform: rotate(-12deg); font: 500 .62rem/1.35 var(--mono); letter-spacing: .12em; text-transform: uppercase; background: rgba(12,37,82,.85); }
 .docs__stamp b { display: block; font-size: 1.1rem; letter-spacing: .02em; font-family: var(--sans); font-weight: 700; }
+/* wersja węższa (strona główna): w szerokości treści, niższa */
+.docs--w { width: min(100% - 2 * var(--g), var(--max) - 2 * var(--g)); margin: 0 auto clamp(4rem, 8vw, 7rem); }
+.docs--w .docs__t { padding: clamp(2.5rem, 5vw, 4.5rem) clamp(1.5rem, 4vw, 4rem); }
+.docs--w .docs__m { min-height: 440px; }
+.docs--w .docs__sheet { width: min(72%, 400px); top: 10%; }
 
 /* ---------- FAQ (BYQ Stringer FAQ) */
 .faq { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(2rem, 6vw, 6rem); }
