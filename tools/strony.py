@@ -814,7 +814,7 @@ firma=phead([('O firmie','o-firmie.html')],'O firmie','Armatex. Dystrybutor zł�
       <div class="team">
         <div class="in"><span class="team__av" aria-hidden="true">PS</span><div><span class="label">Sprzedaż</span><b>Piotr Stelmach</b><p><a href="tel:+48798807106">798 807 106</a> · <a href="mailto:piotr@armatex.pl">piotr@armatex.pl</a></p></div></div>
         <div class="in"><span class="team__av" aria-hidden="true">MZ</span><div><span class="label">Sprzedaż</span><b>Martyna Zielińska</b><p><a href="tel:+48515231693">515 231 693</a> · <a href="mailto:martyna@armatex.pl">martyna@armatex.pl</a></p></div></div>
-        <div class="in"><span class="team__av" aria-hidden="true">A</span><div><span class="label">Biuro i magazyny</span><b>ul. Składowa 3a, 10-421 Olsztyn</b><p><a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a></p></div></div>
+        <div class="in"><span class="team__av" aria-hidden="true">A</span><div><span class="label">Biuro i magazyny</span><b>ul. Składowa 3a, 10-421 Olsztyn</b><p><a href="tel:+48513191502">513 191 502</a> · <a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a></p></div></div>
       </div>
 {CTA_BOX}
     </div>
