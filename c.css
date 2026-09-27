@@ -707,3 +707,7 @@ a.chip:hover { border-color: var(--ink); }
 .f.is-bad select { border-color: var(--red); }
 .consent .req { color: var(--red); }
 .consent input[aria-invalid="true"] { outline: 2px solid var(--red); outline-offset: 2px; }
+.consent a { color: inherit; text-underline-offset: 3px; }
+.consent a:hover { color: var(--red-2); }
+.foot__bar a { color: inherit; opacity: .7; text-decoration: none; }
+.foot__bar a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 3px; }
