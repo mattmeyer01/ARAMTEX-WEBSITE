@@ -705,3 +705,5 @@ a.chip:hover { border-color: var(--ink); }
 @media (max-width: 1260px) { .nav__links { gap: 1.25rem; } .nav__tel { display: none; } }
 .f .req { color: var(--red); }
 .f.is-bad select { border-color: var(--red); }
+.consent .req { color: var(--red); }
+.consent input[aria-invalid="true"] { outline: 2px solid var(--red); outline-offset: 2px; }
