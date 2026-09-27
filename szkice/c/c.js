@@ -198,6 +198,26 @@
   })();
 
   // Prefill z "Poproś o dostęp" i nieaktywny formularz szkicu
+  // Strony grup produktów: "Dodaj" zapisuje pozycję na liście do wyceny (ta sama co w katalogu)
+  var addBtns = $$('[data-add]');
+  if (addBtns.length) (function () {
+    var KEY = 'armatex-rfq', list = new Map();
+    try { JSON.parse(localStorage.getItem(KEY) || '[]').forEach(function (x) { list.set(x[0], x[1]); }); } catch (e) {}
+    function sync() {
+      addBtns.forEach(function (b) { var on = list.has(b.dataset.add); b.classList.toggle('is-in', on); b.textContent = on ? 'Dodano' : 'Dodaj'; });
+      var pill = $('#pill'); if (pill) { $('#pillN').textContent = list.size; pill.classList.toggle('on', list.size > 0); }
+    }
+    addBtns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        var a = b.dataset.add;
+        if (list.has(a)) list.delete(a); else list.set(a, { q: 1, l: b.dataset.l });
+        try { localStorage.setItem(KEY, JSON.stringify(Array.from(list.entries()))); } catch (e) {}
+        sync();
+      });
+    });
+    sync();
+  })();
+
   var m = $('#m');
   if (m) {
     var temat = new URLSearchParams(location.search).get('temat');

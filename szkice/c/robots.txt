@@ -1,0 +1,5 @@
+# Wersja produkcyjna (szkic ma noindex w każdej stronie)
+User-agent: *
+Allow: /
+
+Sitemap: https://armatex.pl/sitemap.xml

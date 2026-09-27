@@ -39,7 +39,15 @@ Hero, panele metod łączenia, magazyn i tło kontaktu ładują się z CDN Higgs
 - Dane strukturalne JSON-LD: `Organization` na stronie głównej, `BreadcrumbList` na podstronach,
   `ItemList` linii produktów na stronach systemów. Adresy w danych zakładają docelowe ścieżki w katalogu
   głównym `https://armatex.pl/`; przy innym układzie trzeba je zmienić.
-- Szkic ma `noindex`. Przed publikacją usuń go i dodaj `<link rel="canonical">` na każdej stronie.
+- Każda strona ma `rel="canonical"` i znaczniki Open Graph/Twitter z obrazkiem `img/og/armatex-og.jpg`
+  (1200 × 630). Dane firmy na stronie głównej: `WholesaleStore` (adres, telefon, handlowcy, marki) i `WebSite`.
+  Brakuje godzin otwarcia i linków do profili firmy (`openingHours`, `sameAs`): uzupełnić po uzyskaniu danych.
+- Strony grup produktów `besco-*.html` (161 stron, z `data/besco-2026.json`): tabela rozmiarów z numerami
+  artykułów i opakowaniami, parametry linii, przycisk „Dodaj” do listy do wyceny, linki do innych grup w linii.
+  Linkowane ze stron systemów („Produkty w systemie”) i ze spisu na stronie katalogu.
+- `c/sitemap.xml` (169 adresów) i `c/robots.txt` są przygotowane pod wersję produkcyjną w katalogu głównym
+  `https://armatex.pl/`.
+- Szkic ma `noindex`. Przed publikacją usuń go ze wszystkich stron.
 - `pliki/katalog-besco-2026.pdf`: katalog Besco 2026 (66 stron) z poprawionym tytułem w metadanych
   (oryginał miał tytuł „画册 11.11”). Link w menu „Oferta → Katalogi”, na stronie katalogu i na stronach
   systemów Besco; otwiera się w nowej karcie.

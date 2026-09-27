@@ -78,7 +78,8 @@ button, input, textarea, select { font: inherit; color: inherit; }
 @keyframes settle { from { transform: scale(1.08); } to { transform: none; } }
 .hero__media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,22,49,.7) 0%, rgba(7,22,49,0) 16%), linear-gradient(90deg, rgba(7,22,49,.92) 0%, rgba(7,22,49,.55) 42%, rgba(7,22,49,0) 70%), linear-gradient(0deg, rgba(7,22,49,.85) 0%, rgba(7,22,49,0) 38%); }
 .hero__body { position: relative; z-index: 2; min-height: max(100svh, 660px); display: flex; flex-direction: column; padding-block: 76px 0; }
-.hero__body > .hero__eyebrow { margin-top: auto; padding-top: 2rem; }
+.hero__body > h1 { margin-top: auto; padding-top: 2rem; }
+.hero h1 .hero__eyebrow { display: block; margin-bottom: 1.2rem; font-weight: 500; }
 .hero__body > .hero__ctas { margin-bottom: auto; padding-bottom: 2rem; }
 .hero__body > .hero__bar { margin-top: 0; }
 .hero__eyebrow { color: var(--red-soft); }
@@ -468,6 +469,48 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .syc__f .label { color: var(--ink-60); font-size: .62rem; letter-spacing: .08em; }
 .syc__go { font: 500 .66rem/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink); white-space: nowrap; transition: color .2s; }
 .syc:hover .syc__go { color: var(--red-2); }
+
+/* strony grup produktów i spisy grup */
+.gls { display: grid; gap: .6rem; margin-top: 1.4rem; }
+.gl { border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+.gl summary { list-style: none; display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding: 1rem 1.2rem; cursor: pointer; }
+.gl summary::-webkit-details-marker { display: none; }
+.gl summary b { font-weight: 600; }
+.gl summary b::before { content: "+"; display: inline-block; width: 1.2rem; color: var(--red-2); transition: transform .3s; }
+.gl[open] summary b::before { transform: rotate(45deg); }
+.gl summary .label { color: var(--ink-40); white-space: nowrap; }
+.gl__l { display: flex; flex-wrap: wrap; gap: .4rem; }
+.gl .gl__l { padding: 0 1.2rem 1.2rem; }
+a.chip { text-decoration: none; display: inline-flex; align-items: baseline; gap: .45rem; font: 500 .86rem/1.2 var(--sans); text-transform: none; letter-spacing: 0; color: var(--ink); padding: .55rem .8rem; }
+a.chip small { font: 500 .62rem/1 var(--mono); letter-spacing: .06em; color: var(--ink-40); }
+a.chip:hover { border-color: var(--ink); }
+.gp { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; }
+.gp__img { margin: 0; position: sticky; top: 100px; aspect-ratio: 1; display: grid; place-items: center; background: #F3F1EC; border-radius: var(--r); padding: 12%; }
+.gp__img img { width: 100%; height: auto; max-width: 320px; }
+.gp__t code { font: 500 .85rem/1.2 var(--mono); }
+.gp__t td.num { color: var(--ink); }
+.gp__t .add { min-width: 84px; height: 34px; }
+.gp__p { margin: 1.4rem 0 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.gp__p div { background: #fff; padding: .9rem 1rem; }
+.gp__p dt { color: var(--ink-40); }
+.gp__p dd { margin: .3rem 0 0; }
+.gp__p .appr { margin: 0 .2rem .2rem 0; }
+.gp__p div:last-child:nth-child(odd) { grid-column: 1 / -1; }
+@media (max-width: 900px) {
+  .gp { grid-template-columns: 1fr; }
+  .gp__img { position: static; max-width: 280px; }
+}
+@media (max-width: 720px) {
+  .gp__p { grid-template-columns: 1fr; }
+  .gp__p div:last-child:nth-child(odd) { grid-column: auto; }
+  .gl summary { flex-direction: column; gap: .3rem; }
+  .gp__t tr { grid-template-columns: 1fr auto; gap: .1rem 1rem; padding: .75rem 0; }
+  .gp__t td:not(.sy-act) { grid-template-columns: 6.5rem 1fr; font-size: .88rem; }
+  .gp__t tbody th { grid-column: 1; font-weight: 600; }
+  .gp__t tbody th::before { content: none; }
+  .gp__t .sy-act { grid-column: 2; grid-row: 1 / span 3; align-self: center; }
+  .gp__t td:not(.sy-act) { grid-column: 1; }
+}
 
 /* korzyści + liczby */
 .gain--3 { grid-template-columns: repeat(3, 1fr); }
