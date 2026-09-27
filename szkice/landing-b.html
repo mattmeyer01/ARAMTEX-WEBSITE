@@ -121,23 +121,7 @@
     .ticker__track span::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.55); }
     @keyframes tick { to { transform: translateX(-50%); } }
 
-    /* ---------- KATALOG: lista indeksowa */
     .section { padding-block: clamp(4rem, 8vw, 7rem); }
-    .cat__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; margin-bottom: 2.6rem; }
-    .cat__head p { color: var(--ink-60); max-width: 36ch; }
-    .cat__list { border-top: 1px solid var(--ink); }
-    .cat__item { position: relative; display: grid; grid-template-columns: 4rem 1.2fr 1fr 3rem; align-items: center; gap: 1.5rem; padding-block: 1.5rem; border-bottom: 1px solid var(--line); text-decoration: none; transition: padding 0.3s, background 0.3s; }
-    .cat__item:hover { background: var(--paper); padding-inline: 1.2rem; }
-    .cat__idx { font-family: var(--mono); font-size: 0.85rem; color: var(--ink-40); }
-    .cat__name { font-size: clamp(1.25rem, 2.2vw, 1.9rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; }
-    .cat__spec { font-family: var(--mono); font-size: 0.8rem; color: var(--ink-60); }
-    .cat__arrow { width: 3rem; height: 3rem; border-radius: 50%; border: 1.5px solid var(--line); display: grid; place-items: center; transition: background 0.25s, border-color 0.25s, color 0.25s; }
-    .cat__arrow svg { width: 16px; height: 16px; }
-    .cat__item:hover .cat__arrow { background: var(--red); border-color: var(--red); color: #fff; }
-    .cat__thumb { position: absolute; right: 5.5rem; top: 50%; width: 180px; aspect-ratio: 4/3; border-radius: 10px; overflow: hidden; transform: translateY(-50%) scale(0.85) rotate(-3deg); opacity: 0; pointer-events: none; transition: opacity 0.25s, transform 0.35s; box-shadow: 0 20px 40px -18px rgba(10,31,68,0.45); }
-    .cat__thumb img { width: 100%; height: 100%; object-fit: cover; }
-    .cat__item:hover .cat__thumb { opacity: 1; transform: translateY(-50%) scale(1) rotate(-3deg); }
-
     /* ---------- ZAPLECZE: granat */
     .yard { background: var(--navy); color: var(--on-navy); border-radius: calc(var(--r) * 2); margin-inline: clamp(0.5rem, 1.5vw, 1.25rem); overflow: hidden; }
     .yard__grid { display: grid; grid-template-columns: 1fr 1fr; }
@@ -148,7 +132,7 @@
     .yard__stats div { background: var(--navy-2); padding: 1.5rem 1.3rem; }
     .yard__stats b { display: block; font-size: clamp(2rem, 3.6vw, 3rem); font-weight: 650; letter-spacing: -0.04em; line-height: 1; color: #fff; }
     .yard__stats b i { font-style: normal; color: var(--red); }
-    .yard__stats span { display: block; margin-top: 0.55rem; color: var(--on-navy-60); font-size: 0.9rem; }
+    .yard__stats div > span { display: block; margin-top: 0.55rem; color: var(--on-navy-60); font-size: 0.9rem; }
     .yard__media { position: relative; min-height: 420px; }
     .yard__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     .yard__media::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, var(--navy) 0%, rgba(10,31,68,0) 35%); }
@@ -165,21 +149,6 @@
     .step:nth-child(2) { background: var(--ink); color: #fff; }
     .step:nth-child(2) p { color: rgba(255,255,255,0.65); }
     .step:nth-child(2) .chip { background: transparent; color: rgba(255,255,255,0.75); border-color: rgba(255,255,255,0.25); }
-
-    /* ---------- DLA KOGO: zakładki */
-    .aud { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(2rem, 5vw, 4rem); align-items: stretch; margin-top: 2.8rem; }
-    .aud__tabs { display: flex; flex-direction: column; }
-    .aud__tab { text-align: left; background: none; border: 0; border-top: 1px solid var(--line); padding: 1.4rem 0; font: inherit; color: var(--ink-40); cursor: pointer; transition: color 0.2s; }
-    .aud__tab:last-child { border-bottom: 1px solid var(--line); }
-    .aud__tab b { display: flex; justify-content: space-between; align-items: center; font-size: clamp(1.4rem, 2.6vw, 2.2rem); font-weight: 600; letter-spacing: -0.03em; }
-    .aud__tab b::after { content: "+"; font-weight: 400; font-size: 1.4rem; transition: transform 0.3s; }
-    .aud__tab p { max-height: 0; overflow: hidden; color: var(--ink-60); transition: max-height 0.4s ease, margin 0.3s; font-size: 0.98rem; }
-    .aud__tab[aria-selected="true"] { color: var(--ink); }
-    .aud__tab[aria-selected="true"] b::after { transform: rotate(45deg); color: var(--red); }
-    .aud__tab[aria-selected="true"] p { max-height: 8rem; margin-top: 0.7rem; }
-    .aud__media { position: relative; border-radius: calc(var(--r) + 6px); overflow: hidden; min-height: 380px; background: var(--navy); }
-    .aud__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s; }
-    .aud__media img.is-on { opacity: 1; }
 
     /* ---------- DOKUMENTY */
     .docs { background: var(--paper); }
@@ -232,25 +201,18 @@
 
     /* ---------- responsywność */
     @media (max-width: 980px) {
-      .hero__grid, .yard__grid, .aud, .docs__grid, .contact__grid { grid-template-columns: 1fr; }
+      .hero__grid, .yard__grid, .docs__grid, .contact__grid { grid-template-columns: 1fr; }
       .hero__visual { max-width: 560px; }
       .hero__stamp { top: -1rem; left: auto; right: 0.5rem; width: 108px; height: 108px; }
       .hero__stamp b { font-size: 1.5rem; }
       .yard__media { min-height: 300px; }
       .yard__media::before { background: linear-gradient(180deg, var(--navy) 0%, rgba(10,31,68,0) 40%); }
       .steps { grid-template-columns: 1fr; }
-      .aud__media { min-height: 280px; order: -1; }
       .docs__lock { left: 0.75rem; }
-      .cat__thumb { display: none; }
     }
     @media (max-width: 720px) {
       .topbar .hide-sm, .nav__links { display: none; }
       .nav .btn { margin-left: auto; }
-      .cat__head { flex-direction: column; align-items: flex-start; }
-      .cat__item { grid-template-columns: 2.4rem 1fr 2.6rem; gap: 0.9rem; }
-      .cat__spec { grid-column: 2; grid-row: 2; margin-top: -0.6rem; }
-      .cat__arrow { width: 2.6rem; height: 2.6rem; grid-column: 3; grid-row: 1 / span 2; }
-      .cat__item:hover { padding-inline: 0; background: none; }
       .hero__methods { grid-template-columns: repeat(2, 1fr); }
       .quick__row { flex-direction: column; }
       .quick input { padding: 0.9rem 1.1rem; }
@@ -261,6 +223,88 @@
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; }
       html { scroll-behavior: auto; }
+    }
+
+    /* ============ wzorce BYQ Supply (zaadaptowane do tokenów Armatex) ============ */
+    /* odsłanianie nagłówków słowo po słowie (Stringer) */
+    [data-words] .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+    [data-words] .w > span { display: inline-block; transform: translateY(125%); transition: transform 0.9s cubic-bezier(0.215, 0.61, 0.355, 1); }
+    [data-words].is-in .w > span { transform: none; }
+    [data-stagger] > * { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    [data-stagger].is-in > * { opacity: 1; transform: none; }
+    .ulink { font-family: var(--mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; color: var(--ink); padding-bottom: 0.3rem; border-bottom: 1px solid currentColor; transition: color 0.2s; white-space: nowrap; }
+    .ulink:hover, .ulink:focus-visible { color: var(--red); }
+
+    /* kafle ze specyfikacją (Stringer "Product Range Grid") */
+    .rg__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; padding-bottom: 2rem; border-bottom: 1px solid var(--line); }
+    .rg__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem 1rem; padding-block: 2rem; }
+    .rt { display: flex; flex-direction: column; gap: 0.55rem; text-decoration: none; color: var(--ink); }
+    .rt:focus-visible { outline: 2px solid var(--red); outline-offset: 4px; }
+    .rt__media { position: relative; display: block; aspect-ratio: 4 / 3; overflow: hidden; background: var(--paper); border-radius: 10px; margin-bottom: 0.45rem; }
+    .rt__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.215, 0.61, 0.355, 1); }
+    .rt:hover .rt__media img, .rt:focus-visible .rt__media img { transform: scale(1.05); }
+    .rt__idx { position: absolute; top: 0.8rem; left: 0.8rem; font-family: var(--mono); font-size: 0.7rem; font-weight: 500; background: #fff; border-radius: 999px; padding: 0.25rem 0.55rem; }
+    .rt__head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+    .rt__head b { font-weight: 600; font-size: 1.08rem; letter-spacing: -0.01em; }
+    .rt__go { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-40); transition: color 0.2s; }
+    .rt:hover .rt__go { color: var(--red); }
+    .rt__rule { display: block; height: 1px; background: var(--ink); transform: scaleX(0); transform-origin: left; transition: transform 0.4s; }
+    .rt:hover .rt__rule, .rt:focus-visible .rt__rule { transform: scaleX(1); }
+    .rt__desc { font-size: 0.9rem; color: var(--ink-60); line-height: 1.45; }
+    .rt__specs { display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; padding-top: 0.2rem; font-family: var(--mono); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; }
+    .rt__specs i { font-style: normal; color: var(--ink-40); margin-right: 0.45rem; }
+    .rg__foot { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1rem; align-items: center; padding-top: 1.5rem; border-top: 1px solid var(--line); }
+    .rg__foot .ulink { justify-self: end; }
+    .rg__stock { display: inline-flex; align-items: center; gap: 0.7rem; font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-60); }
+    .rg__stock i { width: 8px; height: 8px; background: var(--red); }
+    .rg__cap { font-size: 0.8rem; color: var(--ink-60); text-align: center; }
+
+    /* odometr (BYQ "Odometer Counter"): komórka cyfry, bęben, maska */
+    .odo { display: inline-flex; align-items: stretch; height: 1.1em; line-height: 1.1em; font-variant-numeric: tabular-nums; vertical-align: bottom;
+           -webkit-mask-image: linear-gradient(to bottom, transparent, #000 22%, #000 78%, transparent); mask-image: linear-gradient(to bottom, transparent, #000 22%, #000 78%, transparent); }
+    .odo-digit { display: block; position: relative; height: 1.1em; width: 0.62em; overflow: hidden; text-align: center; }
+    .odo-reel { display: flex; flex-direction: column; will-change: transform; }
+    .odo-num { display: block; height: 1.1em; line-height: 1.1em; }
+    .odo-sep { width: 0.25em; }
+    .yard__stats b { display: flex; align-items: flex-end; }
+    .yard__stats b i { line-height: 1.1em; white-space: pre; }
+
+    /* przyklejony kadr ze zmianą zdjęć (BYQ "Sticky Media Swap") */
+    .sms { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); column-gap: clamp(2rem, 5vw, 5rem); }
+    .sms__step { display: grid; align-items: center; min-height: 85vh; }
+    .sms__entry { display: grid; grid-template-columns: auto 1fr; column-gap: clamp(1rem, 2.4vw, 1.75rem); align-items: start; margin: 0; padding: 0.5rem 0; border: 0; background: none; font: inherit; text-align: left; cursor: pointer; color: rgba(17, 26, 43, 0.28); transition: color 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+    .sms__entry:hover { color: rgba(17, 26, 43, 0.55); }
+    .sms__entry.is-active { color: var(--ink); }
+    .sms__entry:focus-visible { outline: 2px solid var(--red); outline-offset: 8px; border-radius: 0.5rem; }
+    .sms__num { display: inline-block; font-family: var(--mono); font-size: 0.8rem; line-height: 1; padding-top: 0.55em; backface-visibility: hidden; transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+    .sms__entry.is-active .sms__num { color: var(--red); animation: sms-num-flip 0.55s cubic-bezier(0.16, 1, 0.3, 1); }
+    @keyframes sms-num-flip { from { transform: rotateX(-90deg); } to { transform: rotateX(0deg); } }
+    .sms__title { display: block; font-weight: 650; font-size: clamp(2.1rem, 1.1rem + 3.6vw, 4.1rem); line-height: 1.02; letter-spacing: -0.035em; }
+    .sms__line { display: block; margin-top: 0.9rem; max-width: 34ch; font-size: 1rem; line-height: 1.55; opacity: 0.75; }
+    .sms__stage { position: relative; min-height: 100%; }
+    .sms__frame { position: sticky; top: calc(72px + 1.5rem); height: calc(100vh - 72px - 3rem); border-radius: calc(var(--r) + 6px); background: var(--navy); overflow: hidden; isolation: isolate; transform: translateZ(0); }
+    .sms__frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; will-change: transform, clip-path, opacity; }
+    .sms__frame img:first-child { opacity: 1; }
+
+    @media (max-width: 980px) {
+      .rg__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .sms { display: block; position: relative; }
+      .sms__stage { position: absolute; inset: 0; padding-inline: var(--gutter); }
+      .sms__frame { top: calc(72px + 1rem); height: 46vh; }
+      .sms__step { position: relative; z-index: 1; min-height: 92vh; align-items: end; padding-bottom: 9vh; }
+      .sms__entry { background: rgba(255, 255, 255, 0.94); padding: 1rem; border-radius: var(--r); }
+    }
+    @media (max-width: 720px) {
+      .rg__head { flex-direction: column; align-items: flex-start; }
+      .rg__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .rg__foot { grid-template-columns: 1fr; }
+      .rg__foot .ulink { justify-self: start; }
+      .rg__cap { text-align: left; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      [data-words] .w > span, [data-stagger] > * { transform: none !important; opacity: 1 !important; }
     }
   </style>
 </head>
@@ -342,47 +386,64 @@
     </div>
   </div>
 
-  <!-- 2 · OFERTA: lista indeksowa z podglądem zdjęcia -->
+  <!-- 2 · OFERTA: kafle ze specyfikacją (wzorzec BYQ: Stringer "Product Range Grid") -->
   <section class="section" id="oferta">
     <div class="wrap">
-      <div class="cat__head">
+      <div class="rg__head">
         <div>
           <span class="kicker">Oferta</span>
-          <h2 class="h2">Sześć grup, jeden dostawca</h2>
+          <h2 class="h2" data-words>Sześć grup, jeden dostawca.</h2>
         </div>
-        <p>Pełne stany najczęściej zamawianych pozycji. Kliknij grupę, żeby zobaczyć szczegółowy asortyment.</p>
+        <a class="ulink" href="../katalog.html">Pełny katalog</a>
       </div>
-      <div class="cat__list">
-        <a class="cat__item" href="../katalog.html#zawory">
-          <span class="cat__idx">01</span><span class="cat__name">Zawory kulowe i zwrotne</span><span class="cat__spec">DN15 do DN50 · PN30</span>
-          <span class="cat__arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12L12 4M6 4h6v6"/></svg></span>
-          <span class="cat__thumb"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_213930_4bc04639-75de-4dac-ae47-7b9c7355053f_min.webp" alt="" loading="lazy"></span>
+      <div class="rg__grid" data-stagger>
+        <a class="rt" href="../katalog.html#zawory">
+          <span class="rt__media"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_213930_4bc04639-75de-4dac-ae47-7b9c7355053f_min.webp" alt="" loading="lazy"><span class="rt__idx">01</span></span>
+          <span class="rt__head"><b>Zawory kulowe i zwrotne</b><span class="rt__go">Zobacz</span></span>
+          <span class="rt__rule"></span>
+          <span class="rt__desc">Kulowe pełnoprzelotowe, gazowe z atestem, zwrotne i skośne.</span>
+          <span class="rt__specs"><span><i>DN</i>15–50</span><span><i>PN</i>do 30</span><span><i>Gwint</i>GW / GZ</span></span>
         </a>
-        <a class="cat__item" href="../katalog.html#zlaczki">
-          <span class="cat__idx">02</span><span class="cat__name">Złączki mosiężne gwintowane</span><span class="cat__spec">1/4" do 4"</span>
-          <span class="cat__arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12L12 4M6 4h6v6"/></svg></span>
-          <span class="cat__thumb"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_214506_76232568-fc15-4156-b90c-4620d62489d5_min.webp" alt="" loading="lazy"></span>
+        <a class="rt" href="../katalog.html#zlaczki">
+          <span class="rt__media"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_214506_76232568-fc15-4156-b90c-4620d62489d5_min.webp" alt="" loading="lazy"><span class="rt__idx">02</span></span>
+          <span class="rt__head"><b>Złączki mosiężne gwintowane</b><span class="rt__go">Zobacz</span></span>
+          <span class="rt__rule"></span>
+          <span class="rt__desc">Kolana, trójniki, mufy, nyple i śrubunki z mosiądzu.</span>
+          <span class="rt__specs"><span><i>Zakres</i>1/4"–4"</span><span><i>Typy</i>5 grup</span><span><i>Mat.</i>mosiądz</span></span>
         </a>
-        <a class="cat__item" href="../katalog.html#zaprasowywane">
-          <span class="cat__idx">03</span><span class="cat__name">Systemy zaprasowywane</span><span class="cat__spec">12 do 108 mm · profil M i V</span>
-          <span class="cat__arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12L12 4M6 4h6v6"/></svg></span>
-          <span class="cat__thumb"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_214509_c9c743e5-9570-4a9b-92a7-ceff717ac2b9_min.webp" alt="" loading="lazy"></span>
+        <a class="rt" href="../katalog.html#zaprasowywane">
+          <span class="rt__media"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_214509_c9c743e5-9570-4a9b-92a7-ceff717ac2b9_min.webp" alt="" loading="lazy"><span class="rt__idx">03</span></span>
+          <span class="rt__head"><b>Systemy zaprasowywane</b><span class="rt__go">Zobacz</span></span>
+          <span class="rt__rule"></span>
+          <span class="rt__desc">Złączki press inox 316L i stal węglowa, rury systemowe.</span>
+          <span class="rt__specs"><span><i>Ø</i>12–108 mm</span><span><i>Profil</i>M / V</span><span><i>Rura</i>6 m</span></span>
         </a>
-        <a class="cat__item" href="../katalog.html#grzewcza">
-          <span class="cat__idx">04</span><span class="cat__name">Armatura grzewcza</span><span class="cat__spec">Rozdzielacze 2 do 12 obwodów</span>
-          <span class="cat__arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12L12 4M6 4h6v6"/></svg></span>
-          <span class="cat__thumb"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_214512_72fcbd64-088b-4d7a-a8a9-ad9e01484435_min.webp" alt="" loading="lazy"></span>
+        <a class="rt" href="../katalog.html#grzewcza">
+          <span class="rt__media"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_214512_72fcbd64-088b-4d7a-a8a9-ad9e01484435_min.webp" alt="" loading="lazy"><span class="rt__idx">04</span></span>
+          <span class="rt__head"><b>Armatura grzewcza</b><span class="rt__go">Zobacz</span></span>
+          <span class="rt__rule"></span>
+          <span class="rt__desc">Rozdzielacze, termostaty, zawory równoważące i filtry.</span>
+          <span class="rt__specs"><span><i>Obwody</i>2–12</span><span><i>DN</i>15–50</span><span><i>Grupy</i>do 3 bar</span></span>
         </a>
-        <a class="cat__item" href="../katalog.html#rury">
-          <span class="cat__idx">05</span><span class="cat__name">Rury i systemy PP-R / PEX</span><span class="cat__spec">16 do 110 mm · PN20</span>
-          <span class="cat__arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12L12 4M6 4h6v6"/></svg></span>
-          <span class="cat__thumb"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_214514_2058c31f-3f36-4c46-9ffa-ec76b009e98d_min.webp" alt="" loading="lazy"></span>
+        <a class="rt" href="../katalog.html#rury">
+          <span class="rt__media"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_214514_2058c31f-3f36-4c46-9ffa-ec76b009e98d_min.webp" alt="" loading="lazy"><span class="rt__idx">05</span></span>
+          <span class="rt__head"><b>Rury i systemy PP-R / PEX</b><span class="rt__go">Zobacz</span></span>
+          <span class="rt__rule"></span>
+          <span class="rt__desc">Rury stabilizowane, kształtki do zgrzewania, PEX-AL-PEX.</span>
+          <span class="rt__specs"><span><i>PP-R</i>20–110 mm</span><span><i>PEX</i>16–32 mm</span><span><i>PN</i>20</span></span>
         </a>
-        <a class="cat__item" href="../katalog.html#uszczelnienia">
-          <span class="cat__idx">06</span><span class="cat__name">Uszczelnienia i akcesoria</span><span class="cat__spec">PTFE · pakuły · węże w oplocie</span>
-          <span class="cat__arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12L12 4M6 4h6v6"/></svg></span>
-          <span class="cat__thumb"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_214516_c61b1084-0189-476d-8a26-c8a018915a37_min.webp" alt="" loading="lazy"></span>
+        <a class="rt" href="../katalog.html#uszczelnienia">
+          <span class="rt__media"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_214516_c61b1084-0189-476d-8a26-c8a018915a37_min.webp" alt="" loading="lazy"><span class="rt__idx">06</span></span>
+          <span class="rt__head"><b>Uszczelnienia i akcesoria</b><span class="rt__go">Zobacz</span></span>
+          <span class="rt__rule"></span>
+          <span class="rt__desc">Taśmy PTFE, pakuły, nici, obejmy i węże w oplocie.</span>
+          <span class="rt__specs"><span><i>PTFE</i>12 / 19 mm</span><span><i>Nici</i>50–150 m</span><span><i>Węże</i>30–100 cm</span></span>
         </a>
+      </div>
+      <div class="rg__foot">
+        <span class="rg__stock"><i></i>Na stanie · wysyłka z Olsztyna</span>
+        <span class="rg__cap">Karty katalogowe i atesty do każdej pozycji na zapytanie.</span>
+        <a class="ulink" href="#kontakt">Wyceń listę pozycji</a>
       </div>
     </div>
   </section>
@@ -392,13 +453,13 @@
     <div class="yard__grid">
       <div class="yard__text">
         <span class="kicker">Zaplecze</span>
-        <h2 class="h2">Magazyn, który nie zatrzymuje budowy</h2>
+        <h2 class="h2" data-words>Magazyn, który nie zatrzymuje budowy</h2>
         <p>Typowe zamówienie kompletujemy tego samego dnia. Braki rynkowe zgłaszamy z wyprzedzeniem, zanim staną się Twoim problemem.</p>
         <div class="yard__stats">
-          <div><b>5 000<i>+</i></b><span>pozycji od ręki</span></div>
-          <div><b>24<i> h</i></b><span>wysyłka z magazynu</span></div>
-          <div><b>1<i> dzień</i></b><span>na wycenę zapytania</span></div>
-          <div><b>30<i> lat</i></b><span>na rynku instalacyjnym</span></div>
+          <div><b><span class="odo" data-odo="5000" aria-label="5 000">5 000</span><i>+</i></b><span>pozycji od ręki</span></div>
+          <div><b><span class="odo" data-odo="24" aria-label="24">24</span><i> h</i></b><span>wysyłka z magazynu</span></div>
+          <div><b><span class="odo" data-odo="1" aria-label="1">1</span><i> dzień</i></b><span>na wycenę zapytania</span></div>
+          <div><b><span class="odo" data-odo="30" aria-label="30">30</span><i> lat</i></b><span>na rynku instalacyjnym</span></div>
         </div>
       </div>
       <div class="yard__media">
@@ -412,8 +473,8 @@
   <section class="section" id="proces">
     <div class="wrap">
       <span class="kicker">Jak działamy</span>
-      <h2 class="h2">Od zapytania do dostawy w trzech krokach</h2>
-      <div class="steps">
+      <h2 class="h2" data-words>Od zapytania do dostawy w trzech krokach</h2>
+      <div class="steps" data-stagger>
         <div class="step"><span class="chip step__time">Dziś</span><div class="step__num">01</div><h3>Wysyłasz zapytanie</h3><p>Formularzem, mailem albo telefonicznie. Wystarczy lista pozycji lub specyfikacja z projektu.</p></div>
         <div class="step"><span class="chip step__time">Tego samego dnia</span><div class="step__num">02</div><h3>Otrzymujesz wycenę</h3><p>Z cenami hurtowymi, dostępnością i terminem realizacji dla każdej pozycji.</p></div>
         <div class="step"><span class="chip step__time">+24 h</span><div class="step__num">03</div><h3>Odbierasz dostawę</h3><p>Wysyłka w 24 godziny od potwierdzenia. Duże zamówienia dowozimy własnym transportem.</p></div>
@@ -421,21 +482,23 @@
     </div>
   </section>
 
-  <!-- 5 · DLA KOGO: zakładki + zmieniające się zdjęcie -->
-  <section class="section" id="dla-kogo" style="padding-top:0">
+  <!-- 5 · DLA KOGO: przyklejony kadr ze zmianą zdjęć (wzorzec BYQ: "Sticky Media Swap") -->
+  <section class="section sms-wrap" id="dla-kogo" style="padding-top:0">
     <div class="wrap">
       <span class="kicker">Dla kogo</span>
-      <h2 class="h2">Hurtownie, wykonawcy i przemysł</h2>
-      <div class="aud">
-        <div class="aud__tabs" role="tablist">
-          <button class="aud__tab" role="tab" aria-selected="true" data-i="0"><b>Hurtownie</b><p>Ceny progowe dla odbiorców regularnych, rezerwacje stanów pod kontrakty i wspólne planowanie zatowarowania na sezon.</p></button>
-          <button class="aud__tab" role="tab" aria-selected="false" data-i="1"><b>Wykonawcy</b><p>Wyceniamy całe specyfikacje z projektu, kompletujemy dostawy etapami i doradzamy zamienniki, kiedy pozycja ma długi termin.</p></button>
-          <button class="aud__tab" role="tab" aria-selected="false" data-i="2"><b>Przemysł</b><p>Armatura do mediów technicznych, szybka reakcja na awarie i dokumentacja wymagana przez działy utrzymania ruchu.</p></button>
-        </div>
-        <div class="aud__media">
-          <img class="is-on" src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_213913_6ea522d4-6c24-459d-a5c1-5488de886bb2.png" alt="Regały magazynowe" loading="lazy">
-          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_214509_c9c743e5-9570-4a9b-92a7-ceff717ac2b9_min.webp" alt="Złączki zaprasowywane i zaciskarka" loading="lazy">
-          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_214512_72fcbd64-088b-4d7a-a8a9-ad9e01484435_min.webp" alt="Armatura grzewcza" loading="lazy">
+      <h2 class="h2" data-words>Hurtownie, wykonawcy i przemysł</h2>
+    </div>
+    <div class="wrap sms" aria-label="Dla kogo pracujemy">
+      <div class="sms__entries">
+          <div class="sms__step"><button class="sms__entry is-active" type="button"><span class="sms__num" aria-hidden="true">01</span><span><span class="sms__title">Hurtownie</span><span class="sms__line">Ceny progowe dla odbiorców regularnych, rezerwacje stanów pod kontrakty i wspólne planowanie zatowarowania na sezon.</span></span></button></div>
+          <div class="sms__step"><button class="sms__entry" type="button"><span class="sms__num" aria-hidden="true">02</span><span><span class="sms__title">Wykonawcy</span><span class="sms__line">Wyceniamy całe specyfikacje z projektu, kompletujemy dostawy etapami i doradzamy zamienniki, kiedy pozycja ma długi termin.</span></span></button></div>
+          <div class="sms__step"><button class="sms__entry" type="button"><span class="sms__num" aria-hidden="true">03</span><span><span class="sms__title">Przemysł</span><span class="sms__line">Armatura do mediów technicznych, szybka reakcja na awarie i dokumentacja wymagana przez działy utrzymania ruchu.</span></span></button></div>
+      </div>
+      <div class="sms__stage" aria-hidden="true">
+        <div class="sms__frame">
+            <img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_213913_6ea522d4-6c24-459d-a5c1-5488de886bb2.png" alt="" loading="lazy">
+            <img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_214509_c9c743e5-9570-4a9b-92a7-ceff717ac2b9_min.webp" alt="" loading="lazy">
+            <img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_214512_72fcbd64-088b-4d7a-a8a9-ad9e01484435_min.webp" alt="" loading="lazy">
         </div>
       </div>
     </div>
@@ -446,7 +509,7 @@
     <div class="wrap docs__grid">
       <div>
         <span class="kicker">Baza dokumentów</span>
-        <h2 class="h2">Atesty i karty katalogowe do każdej pozycji</h2>
+        <h2 class="h2" data-words>Atesty i karty katalogowe do każdej pozycji</h2>
         <p class="lead">Bazę udostępniamy zweryfikowanym klientom. Dostęp przyznajemy w ciągu jednego dnia roboczego.</p>
         <div class="docs__cards">
           <div><span class="mono">PZH</span><b>Atesty higieniczne</b></div>
@@ -521,19 +584,95 @@
   </div>
 </footer>
 
+<script src="../assets/vendor/gsap.min.js"></script>
+<script src="../assets/vendor/ScrollTrigger.min.js"></script>
 <script>
-  // Zakładki "Dla kogo": przełączanie opisu i zdjęcia
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  // Nagłówki słowo po słowie + kaskadowe wejście kafli (wzorzec Stringer)
   (function () {
-    var tabs = document.querySelectorAll('.aud__tab');
-    var imgs = document.querySelectorAll('.aud__media img');
-    tabs.forEach(function (t) {
-      t.addEventListener('click', function () {
-        var i = +t.dataset.i;
-        tabs.forEach(function (x) { x.setAttribute('aria-selected', x === t ? 'true' : 'false'); });
-        imgs.forEach(function (im, j) { im.classList.toggle('is-on', j === i); });
-      });
+    document.querySelectorAll('[data-words]').forEach(function (h) {
+      var words = h.textContent.trim().split(/\s+/);
+      h.setAttribute('aria-label', h.textContent.trim());
+      h.innerHTML = words.map(function (w, i) {
+        return '<span class="w" aria-hidden="true"><span style="transition-delay:' + (i * 0.05) + 's">' + w + '</span></span>';
+      }).join(' ');
     });
+    document.querySelectorAll('[data-stagger]').forEach(function (g) {
+      Array.prototype.forEach.call(g.children, function (c, i) { c.style.transitionDelay = (i * 0.1) + 's'; });
+    });
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('[data-words],[data-stagger]').forEach(function (el) { io.observe(el); });
   })();
+
+  window.addEventListener('load', function () {
+    if (!window.gsap || !window.ScrollTrigger) return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Odometr (wzorzec "Odometer Counter"): SPINS 2, 0.85 s + 0.1 s na cyfrę, power4.out, start "top 80%"
+    var SPINS = 2;
+    document.querySelectorAll('.odo').forEach(function (odo) {
+      var digits = odo.dataset.odo.replace(/\D/g, '').split('').map(Number);
+      var n = digits.length, reels = [];
+      odo.innerHTML = '';
+      digits.forEach(function (d, i) {
+        var digit = document.createElement('span'); digit.className = 'odo-digit';
+        var reel = document.createElement('span'); reel.className = 'odo-reel';
+        for (var c = 0; c <= SPINS; c++) for (var k = 0; k <= 9; k++) {
+          var num = document.createElement('span'); num.className = 'odo-num'; num.textContent = k; reel.appendChild(num);
+        }
+        digit.appendChild(reel); odo.appendChild(digit); reels.push({ reel: reel, d: d });
+        var fromRight = n - i;
+        if (fromRight > 1 && (fromRight - 1) % 3 === 0) {
+          var sep = document.createElement('span'); sep.className = 'odo-sep'; sep.textContent = ' '; odo.appendChild(sep);
+        }
+      });
+      var stepH = reels[0].reel.firstChild.offsetHeight;
+      var targetY = function (d) { return -(SPINS * 10 + d) * stepH; };
+      if (reduce.matches) { reels.forEach(function (r) { gsap.set(r.reel, { y: targetY(r.d) }); }); return; }
+      var tl = gsap.timeline({ scrollTrigger: { trigger: odo, start: 'top 80%', once: true } });
+      reels.forEach(function (r, i) { tl.to(r.reel, { y: targetY(r.d), duration: 0.85 + i * 0.1, ease: 'power4.out' }, 0); });
+    });
+
+    // Przyklejony kadr (wzorzec "Sticky Media Swap"): wipe clip-path 0.85 s power3.inOut, skala 1.12 -> 1 w 1.25 s
+    (function () {
+      var steps = document.querySelectorAll('.sms__step');
+      var entries = document.querySelectorAll('.sms__entry');
+      var medias = document.querySelectorAll('.sms__frame img');
+      if (!steps.length) return;
+      var FULL = 'inset(0% 0% 0% 0%)', current = 0, swaps = 0;
+      medias.forEach(function (img, i) { gsap.set(img, { autoAlpha: i === 0 ? 1 : 0, zIndex: i === 0 ? 1 : 0, clipPath: FULL }); });
+      function swapTo(index) {
+        if (index === current) return;
+        var incoming = medias[index], outgoing = medias[current];
+        current = index;
+        entries.forEach(function (e, i) { e.classList.toggle('is-active', i === index); });
+        gsap.killTweensOf(medias);
+        if (reduce.matches) {
+          medias.forEach(function (img, i) { gsap.set(img, { autoAlpha: i === index ? 1 : 0, zIndex: i === index ? 1 : 0, clipPath: FULL, yPercent: 0, scale: 1 }); });
+          return;
+        }
+        swaps += 1;
+        var fromTop = swaps % 2 === 1;
+        medias.forEach(function (img) { if (img !== incoming && img !== outgoing) gsap.set(img, { autoAlpha: 0, zIndex: 0, yPercent: 0, scale: 1 }); });
+        gsap.set(outgoing, { zIndex: 1, autoAlpha: 1, clipPath: FULL });
+        gsap.set(incoming, { zIndex: 2, autoAlpha: 1, yPercent: 0, scale: 1.12, clipPath: fromTop ? 'inset(0% 0% 100% 0%)' : 'inset(100% 0% 0% 0%)' });
+        gsap.timeline({ defaults: { duration: 0.85, ease: 'power3.inOut' } })
+          .to(incoming, { clipPath: FULL }, 0)
+          .to(incoming, { scale: 1, duration: 1.25, ease: 'power2.out' }, 0)
+          .to(outgoing, { yPercent: fromTop ? 7 : -7, scale: 1.05 }, 0)
+          .set(outgoing, { autoAlpha: 0, zIndex: 0, yPercent: 0, scale: 1 });
+      }
+      steps.forEach(function (step, i) {
+        ScrollTrigger.create({ trigger: step, start: 'top center', end: 'bottom center', onToggle: function (self) { if (self.isActive) swapTo(i); } });
+      });
+      entries.forEach(function (e, i) {
+        e.addEventListener('click', function () { steps[i].scrollIntoView({ behavior: reduce.matches ? 'auto' : 'smooth', block: 'center' }); });
+      });
+    })();
+  });
 
   // Formularze w szkicu są nieaktywne: nic nie jest wysyłane
   (function () {
