@@ -450,51 +450,6 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .syc__go { font: 500 .66rem/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink); white-space: nowrap; transition: color .2s; }
 .syc:hover .syc__go { color: var(--red-2); }
 
-/* systemy: rozsuwane kafelki (BYQ Expanding Panels) */
-.methods { background: var(--navy-3); color: #fff; }
-.methods .lead { color: var(--on-60); margin-top: 1rem; }
-.methods .rg__head { border-bottom-color: var(--on-line); }
-.methods .ulink { color: #fff; }
-.methods .ulink:hover { color: var(--red-soft); }
-.panels { display: flex; gap: .6rem; height: clamp(500px, 72vh, 640px); margin-top: 2.5rem; }
-.panel { position: relative; display: block; flex: 1 1 0; min-width: 0; border-radius: var(--r); overflow: hidden; color: #fff; text-decoration: none; background: linear-gradient(160deg, #123066 0%, var(--navy-2) 55%, #0b2250 100%); transition: flex-grow .7s var(--ease-io); }
-.panel.is-open { flex-grow: 3.2; }
-.panel > img:first-child { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .35; transition: transform 1.2s var(--ease-out), opacity .5s; }
-.panel.is-open > img:first-child { opacity: .55; transform: scale(1.03); }
-.panel::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(7,22,49,.96) 0%, rgba(7,22,49,.35) 70%); }
-.panel:focus-visible { outline: 2px solid var(--red-soft); outline-offset: 3px; }
-.panel__ico { position: absolute; z-index: 2; left: 1.4rem; top: 1.4rem; width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: rgba(255,255,255,.1); border: 1px solid var(--on-line); }
-.panel__ico svg { width: 24px; height: 24px; }
-.panel__thumb { position: absolute; z-index: 2; right: 1.2rem; top: 1.2rem; width: 56px; height: 56px; object-fit: contain; background: #fff; border-radius: 10px; padding: 5px; transition: opacity .3s; }
-.panel.is-open .panel__thumb { opacity: 0; }
-.panel__stage { position: absolute; z-index: 2; left: 1.4rem; right: 1.4rem; top: 5.2rem; bottom: 14rem; display: flex; align-items: center; justify-content: center; gap: 6%; padding: 4% 8%; background: #fff; border-radius: 14px; opacity: 0; transform: translateY(12px) scale(.98); transition: opacity .35s, transform .6s var(--ease-out); pointer-events: none; }
-.panel.is-open .panel__stage { opacity: 1; transform: none; transition-delay: .18s; }
-.panel__stage img { flex: 1 1 0; min-width: 0; width: auto; height: auto; max-height: 100%; object-fit: contain; }
-.panel__stage img:nth-child(2) { transform: translateY(-8%); }
-.panel__c { position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; padding: 1.4rem; }
-.panel__n { color: var(--red-soft); white-space: nowrap; }
-.panel__br { opacity: 0; transition: opacity .3s; }
-.panel.is-open .panel__br { opacity: 1; transition-delay: .2s; }
-.panel__t { display: block; margin-top: .4rem; font-size: clamp(1.3rem, 2vw, 1.9rem); font-weight: 600; letter-spacing: -.02em; white-space: nowrap; }
-.panel__p, .panel__meta, .panel__go { display: block; max-height: 0; overflow: hidden; opacity: 0; transform: translateY(8px); transition: opacity .4s, transform .5s var(--ease-out), max-height .5s var(--ease-io); }
-.panel__p { max-width: 46ch; margin-top: .5rem; color: var(--on-60); font-size: .95rem; }
-.panel__meta { margin-top: .7rem; color: var(--on-60); font-size: .62rem; letter-spacing: .08em; }
-.panel__go { margin-top: .9rem; font-weight: 600; font-size: .95rem; }
-.panel__go svg { display: inline-block; width: 16px; height: 16px; margin-left: .35rem; vertical-align: -.15em; transition: transform .3s var(--ease-out); }
-.panel:hover .panel__go svg { transform: translateX(4px); }
-.panel.is-open .panel__p, .panel.is-open .panel__meta, .panel.is-open .panel__go { max-height: 8em; opacity: 1; transform: none; transition-delay: .2s; }
-@media (max-width: 900px) {
-  .panels { flex-direction: column; height: auto; }
-  .panel { flex: none; padding: 1.2rem; }
-  .panel__ico, .panel__stage, .panel__c { position: relative; inset: auto; }
-  .panel__ico { left: 0; top: 0; }
-  .panel__thumb { display: none; }
-  .panel__stage { left: 0; right: 0; height: 140px; margin-top: 1rem; opacity: 1; transform: none; }
-  .panel__br { opacity: 1; }
-  .panel__c { padding: 1.1rem 0 0; }
-  .panel__p, .panel__meta, .panel__go { max-height: none; opacity: 1; transform: none; }
-}
-
 /* korzyści + liczby */
 .gain--3 { grid-template-columns: repeat(3, 1fr); }
 .aud--2 { grid-template-columns: 1fr 1fr; }
@@ -568,7 +523,6 @@ button, input, textarea, select { font: inherit; color: inherit; }
   .foot__g { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .panel { transition: none; }
   *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
   .in { opacity: 1; transform: none; }
 }
