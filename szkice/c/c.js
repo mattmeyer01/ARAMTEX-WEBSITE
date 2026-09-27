@@ -63,6 +63,17 @@
   $$('.odo').forEach(function (o) { o._reels = buildOdo(o); io.observe(o); });
   $$('.in').forEach(function (el, i) { el.style.transitionDelay = (i % 3) * 0.1 + 's'; io.observe(el); });
 
+  // Systemy: rozsuwane kafelki (BYQ Expanding Panels). Na dotyku pierwsze stuknięcie otwiera kafelek, drugie przechodzi do systemu.
+  var panels = $$('.panel');
+  function openPanel(p) { panels.forEach(function (x) { x.classList.toggle('is-open', x === p); }); }
+  panels.forEach(function (p) {
+    p.addEventListener('pointerenter', function (e) { if (e.pointerType === 'mouse') openPanel(p); });
+    p.addEventListener('focus', function () { if (p.matches(':focus-visible')) openPanel(p); });
+    p.addEventListener('click', function (e) {
+      if (!p.classList.contains('is-open') && innerWidth > 900) { e.preventDefault(); openPanel(p); }
+    });
+  });
+
   // Magnetyczne CTA (BYQ Magnetic Button)
   if (!reduce && matchMedia('(hover: hover) and (pointer: fine)').matches) {
     $$('.mag').forEach(function (b) {
