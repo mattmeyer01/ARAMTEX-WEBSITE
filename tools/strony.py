@@ -245,7 +245,7 @@ FOOT='''<footer class="foot">
     <div><h4>Armatex</h4><ul><li><a href="katalog.html">Wyszukiwarka indeksów Besco</a></li><li><a href="'''+PDF+'''" target="_blank" rel="noopener">Katalog Besco 2026 (PDF)</a></li><li><a href="do-pobrania.html">Do pobrania</a></li><li><a href="poradniki.html">Poradniki</a></li><li><a href="o-firmie.html">O firmie</a></li><li><a href="wspolpraca.html">Współpraca</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
     <div><h4>Kontakt</h4><ul><li><a href="tel:+48513191502">513 191 502</a></li><li><a href="mailto:armatex1@gmail.com">armatex1@gmail.com</a></li><li>ul. Składowa 3a, 10-421 Olsztyn</li></ul></div>
   </div>
-  <div class="wrap foot__bar"><span>© 2026 Armatex</span></div>
+  <div class="wrap foot__bar"><span>© 2026 Armatex</span><a href="polityka-prywatnosci.html">Polityka prywatności</a></div>
 </footer>
 '''
 FORM_TO='armatex1@gmail.com'
@@ -272,7 +272,7 @@ def live_form(html):
         a=f'<label for="{fid}">{lab}</label>'; assert a in html, a
         html=html.replace(a,f'<label for="{fid}">{lab} <span class="req" aria-hidden="true">*</span></label>')
     a='value="tak" required> Wyrażam zgodę na przetwarzanie danych w celu obsługi zapytania. Administratorem danych jest Armatex.</label>'; assert a in html
-    html=html.replace(a,'value="tak" required> <span>Wyrażam zgodę na przetwarzanie danych w celu obsługi zapytania. Administratorem danych jest Armatex. <span class="req" aria-hidden="true">*</span></span></label>')
+    html=html.replace(a,'value="tak" required> <span>Wyrażam zgodę na <a href="polityka-prywatnosci.html" target="_blank">przetwarzanie danych</a> w celu obsługi zapytania. Administratorem danych jest Armatex. <span class="req" aria-hidden="true">*</span></span></label>')
     return html
 
 def page(name,title,desc,cur,body,extra=''):
@@ -1041,9 +1041,106 @@ dl=phead([('Do pobrania','do-pobrania.html')],'Do pobrania','Katalogi i dokument
 page('do-pobrania.html','Do pobrania: katalogi i dokumenty złączek | Armatex','Katalog Besco 2026 do pobrania, katalog Tectite oraz atesty, deklaracje właściwości użytkowych i aprobaty dla hurtowni po weryfikacji.','do-pobrania',dl,ld_crumbs([('Do pobrania','do-pobrania.html')]))
 
 
+# ---- Polityka prywatności
+POL_OD='27 września 2026 r.'
+pol_body='''
+        <p>Ta polityka opisuje, jakie dane osobowe zbieramy przez stronę armatex.pl, w jakim celu, jak długo je przechowujemy i jakie prawa Ci przysługują. Opisuje też, jakie informacje strona zapisuje w Twojej przeglądarce.</p>
+
+        <h2 id="administrator">1. Administrator danych</h2>
+        <p>Administratorem danych osobowych jest <strong>Przedsiębiorstwo Handlowo-Usługowe Armatex Spółka Jawna A.J. Bunda</strong> z siedzibą w Olsztynie, ul. Siewna 24, 10-831 Olsztyn, wpisana do rejestru przedsiębiorców Krajowego Rejestru Sądowego pod numerem KRS 0000371628, NIP 7393814110, REGON 280563743 (dalej: „Armatex”).</p>
+        <p>W sprawach dotyczących danych osobowych możesz się z nami skontaktować:</p>
+        <ul>
+          <li>e-mailem: <a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a>,</li>
+          <li>telefonicznie: <a href="tel:+48513191502">513 191 502</a>,</li>
+          <li>listownie: ul. Składowa 3a, 10-421 Olsztyn (biuro i magazyn) lub na adres siedziby.</li>
+        </ul>
+
+        <h2 id="zakres">2. Jakie dane zbieramy</h2>
+        <p><strong>Formularz zapytania.</strong> Gdy wysyłasz formularz, otrzymujemy dane, które w nim podasz: adres e-mail i numer telefonu (wymagane) oraz opcjonalnie imię i nazwisko, nazwę firmy, profil firmy, miejscowość lub województwo i treść zapytania, w tym listę pozycji do wyceny.</p>
+        <p><strong>Kontakt e-mailowy i telefoniczny.</strong> Gdy piszesz lub dzwonisz do nas bezpośrednio, przetwarzamy dane podane w tej korespondencji lub rozmowie.</p>
+        <p><strong>Dane techniczne.</strong> Przy każdym wyświetleniu strony serwer hostingu automatycznie rejestruje dane techniczne, takie jak adres IP, data i godzina, adres odwiedzanej podstrony oraz typ przeglądarki. Nie używamy ich do identyfikowania osób.</p>
+        <p>Podanie danych jest dobrowolne, ale bez adresu e-mail i numeru telefonu nie będziemy mogli odpowiedzieć na zapytanie wysłane przez formularz.</p>
+
+        <h2 id="cele">3. Cele i podstawy prawne przetwarzania</h2>
+        <div class="tw"><table>
+          <thead><tr><th>Cel</th><th>Podstawa prawna (RODO)</th></tr></thead>
+          <tbody>
+            <tr><td>Odpowiedź na zapytanie, przygotowanie wyceny lub oferty</td><td>art. 6 ust. 1 lit. a (zgoda wyrażona w formularzu) oraz art. 6 ust. 1 lit. b (działania na Twoje żądanie przed zawarciem umowy)</td></tr>
+            <tr><td>Dalszy kontakt handlowy i obsługa współpracy z firmą, którą reprezentujesz</td><td>art. 6 ust. 1 lit. f (prawnie uzasadniony interes: kontakt z kontrahentami)</td></tr>
+            <tr><td>Realizacja zamówień i umów, rozliczenia, obowiązki księgowe i podatkowe</td><td>art. 6 ust. 1 lit. b i c</td></tr>
+            <tr><td>Ustalenie, dochodzenie lub obrona roszczeń</td><td>art. 6 ust. 1 lit. f</td></tr>
+            <tr><td>Zapewnienie działania i bezpieczeństwa strony (dane techniczne)</td><td>art. 6 ust. 1 lit. f</td></tr>
+          </tbody>
+        </table></div>
+        <p>Nie podejmujemy wobec Ciebie decyzji w sposób zautomatyzowany i nie profilujemy Cię.</p>
+
+        <h2 id="odbiorcy">4. Komu przekazujemy dane</h2>
+        <p>Nie sprzedajemy danych. Dostęp do nich mają upoważnieni pracownicy Armatex oraz podmioty, które świadczą dla nas usługi i przetwarzają dane w naszym imieniu:</p>
+        <ul>
+          <li><strong>FormSubmit</strong> (formsubmit.co): przesyła wiadomości z formularza na naszą skrzynkę e-mail,</li>
+          <li><strong>dostawcy poczty e-mail</strong>, na których działa nasza skrzynka,</li>
+          <li><strong>GitHub, Inc.</strong> (GitHub Pages): hosting strony, w tym rejestrowanie danych technicznych,</li>
+          <li>biuro rachunkowe, firmy kurierskie i transportowe, dostawcy IT: w zakresie potrzebnym do realizacji zamówień i obsługi firmy.</li>
+        </ul>
+        <p>Dane możemy też przekazać organom publicznym, jeśli wymaga tego prawo.</p>
+
+        <h2 id="transfer">5. Przekazywanie danych poza EOG</h2>
+        <p>Część usługodawców (FormSubmit, GitHub, dostawcy poczty) może przetwarzać dane poza Europejskim Obszarem Gospodarczym, w szczególności w Stanach Zjednoczonych. Odbywa się to na podstawie mechanizmów przewidzianych w RODO, w szczególności decyzji Komisji Europejskiej stwierdzającej odpowiedni stopień ochrony (EU-US Data Privacy Framework) albo standardowych klauzul umownych zatwierdzonych przez Komisję. Informacje o zastosowanych zabezpieczeniach przekażemy na Twoją prośbę.</p>
+
+        <h2 id="okres">6. Jak długo przechowujemy dane</h2>
+        <ul>
+          <li><strong>Zapytania, na które nie doszło do współpracy:</strong> do 12 miesięcy od ostatniego kontaktu albo do wycofania zgody lub skutecznego sprzeciwu, jeśli nastąpi wcześniej.</li>
+          <li><strong>Dane związane z zamówieniami i umowami:</strong> przez czas współpracy, a potem do upływu terminów przedawnienia roszczeń i przez okres wymagany przepisami podatkowymi i rachunkowymi (co do zasady 5 lat od końca roku podatkowego).</li>
+          <li><strong>Dane techniczne w logach hostingu:</strong> przez okres ustalony przez dostawcę hostingu, zwykle nie dłużej niż kilka tygodni.</li>
+        </ul>
+
+        <h2 id="prawa">7. Twoje prawa</h2>
+        <p>Masz prawo:</p>
+        <ul>
+          <li>dostępu do swoich danych i otrzymania ich kopii,</li>
+          <li>sprostowania danych,</li>
+          <li>usunięcia danych,</li>
+          <li>ograniczenia przetwarzania,</li>
+          <li>przenoszenia danych,</li>
+          <li>wniesienia sprzeciwu wobec przetwarzania opartego na prawnie uzasadnionym interesie,</li>
+          <li>wycofania zgody w dowolnym momencie; wycofanie nie wpływa na zgodność z prawem przetwarzania, którego dokonano przed wycofaniem.</li>
+        </ul>
+        <p>Aby skorzystać z tych praw, napisz na <a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a>. Masz też prawo wnieść skargę do Prezesa Urzędu Ochrony Danych Osobowych (ul. Stawki 2, 00-193 Warszawa, <a href="https://uodo.gov.pl" rel="noopener" target="_blank">uodo.gov.pl</a>).</p>
+
+        <h2 id="cookies">8. Pliki cookies i pamięć przeglądarki</h2>
+        <p><strong>Strona nie używa plików cookies</strong> ani narzędzi analitycznych, reklamowych czy śledzących.</p>
+        <p>Strona korzysta z pamięci przeglądarki (localStorage) tylko w jednym celu: zapamiętuje <strong>listę pozycji do wyceny</strong>, którą sam tworzysz przyciskiem „Dodaj” w katalogu i na stronach produktów. Lista zawiera numery artykułów, nazwy produktów, ilości i jednostki. Zostaje wyłącznie na Twoim urządzeniu i nie jest do nas wysyłana, dopóki sam nie przeniesiesz jej do formularza i go nie wyślesz. To funkcja, o którą prosisz, dlatego nie wymaga odrębnej zgody (art. 399 ustawy – Prawo komunikacji elektronicznej).</p>
+        <p>Listę usuwamy automatycznie po wysłaniu formularza. Możesz ją też usunąć w każdej chwili: przyciskiem „×” przy pozycjach na liście albo czyszcząc dane witryny w ustawieniach przeglądarki.</p>
+
+        <h2 id="zewnetrzne">9. Treści i usługi zewnętrzne</h2>
+        <p>Jedno zdjęcie na stronie „Współpraca” jest wczytywane z zewnętrznego serwera (sieć CDN), który przy tym otrzymuje adres IP Twojego urządzenia, jak przy każdym pobraniu pliku z internetu. Strona zawiera też linki do innych serwisów, np. <a href="https://uodo.gov.pl" rel="noopener" target="_blank">uodo.gov.pl</a>. Za zasady prywatności tych serwisów odpowiadają ich właściciele.</p>
+
+        <h2 id="bezpieczenstwo">10. Bezpieczeństwo</h2>
+        <p>Strona jest udostępniana przez szyfrowane połączenie (HTTPS). Dostęp do danych z zapytań mają tylko osoby, które ich potrzebują do obsługi klientów.</p>
+
+        <h2 id="zmiany">11. Zmiany polityki</h2>
+        <p>Możemy aktualizować tę politykę, np. gdy dodamy nowe funkcje strony. Aktualna wersja jest zawsze dostępna na tej stronie. Jeśli zaczniemy używać plików cookies lub narzędzi analitycznych, poprosimy o zgodę przed ich uruchomieniem.</p>
+'''
+pol_toc=''.join(f'<li><a href="#{a}">{t}</a></li>' for a,t in re.findall(r'<h2 id="([^"]+)">([^<]+)</h2>',pol_body))
+pol=phead([('Polityka prywatności','polityka-prywatnosci.html')],'Dokumenty','Polityka prywatności.',
+  f'Zasady przetwarzania danych osobowych i informacja o plikach cookies na stronie armatex.pl. Obowiązuje od {POL_OD}')+f'''
+  <section class="section section--tight">
+    <div class="wrap art">
+      <article class="prose">
+{pol_body}
+        <p class="prose__src">Obowiązuje od {POL_OD}</p>
+      </article>
+      <aside class="art__side">
+        <div class="art__box"><span class="label">Spis treści</span><ol>{pol_toc}</ol></div>
+      </aside>
+    </div>
+  </section>
+'''
+page('polityka-prywatnosci.html','Polityka prywatności i cookies | Armatex','Polityka prywatności strony armatex.pl: administrator danych, cele i podstawy przetwarzania, okres przechowywania, prawa użytkownika i informacja o plikach cookies.','polityka',pol,ld_crumbs([('Polityka prywatności','polityka-prywatnosci.html')]))
+
 # ---------------- sitemap.xml i robots.txt (do wersji produkcyjnej)
 import datetime
-urls=['']+[x['slug']+'.html' for x in SYS]+['katalog.html','do-pobrania.html','o-firmie.html','poradniki.html']+[a['slug']+'.html' for a in ART]+['wspolpraca.html','kontakt.html']+[G['slug']+'.html' for G in GROUPS]
+urls=['']+[x['slug']+'.html' for x in SYS]+['katalog.html','do-pobrania.html','o-firmie.html','poradniki.html']+[a['slug']+'.html' for a in ART]+['wspolpraca.html','kontakt.html','polityka-prywatnosci.html']+[G['slug']+'.html' for G in GROUPS]
 today=datetime.date.today().isoformat()
 sm='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{SITE}{u}</loc><lastmod>{today}</lastmod></url>\n' for u in urls)+'</urlset>\n'
 open(OUT+'sitemap.xml','w',encoding='utf-8').write(sm)
