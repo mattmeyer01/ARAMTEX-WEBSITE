@@ -54,6 +54,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .mag svg { width: 18px; height: 18px; }
 .ghost { display: inline-flex; align-items: center; min-height: 56px; padding: 0 1.5rem; border-radius: 99px; text-decoration: none; font-weight: 600; box-shadow: inset 0 0 0 1.5px currentColor; transition: background .25s, color .25s; }
 .ghost:hover { background: #fff; color: var(--navy); }
+.ghost--pdf::before { content: ""; width: 14px; height: 14px; margin-right: .55rem; background: currentColor; -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%272.2%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpath d=%27M12 4v12M7 11l5 5 5-5M5 20h14%27/%3E%3C/svg%3E") center / contain no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27black%27 stroke-width=%272.2%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpath d=%27M12 4v12M7 11l5 5 5-5M5 20h14%27/%3E%3C/svg%3E") center / contain no-repeat; }
 
 /* ---------- nawigacja */
 .nav { position: fixed; inset: 0 0 auto; z-index: 60; color: #fff; transition: background .35s, color .35s, box-shadow .35s; }
@@ -400,6 +401,12 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .dd__m a:hover, .dd__m a:focus-visible, .dd__m a[aria-current="page"] { background: var(--stone); }
 .dd__m img { grid-row: span 2; width: 44px; height: 44px; object-fit: contain; background: #fff; border-radius: 8px; border: 1px solid var(--line); padding: 3px; }
 .dd__m b { font-weight: 600; font-size: .95rem; }
+.dd__h { display: block; padding: .7rem .7rem .35rem; font: 500 .6rem/1.2 var(--mono) !important; letter-spacing: .12em !important; text-transform: uppercase; color: var(--ink-40) !important; }
+.dd__h + a { margin-top: 0; }
+.dd__h:not(:first-child) { margin-top: .35rem; border-top: 1px solid var(--line); padding-top: .8rem; }
+.dd__ico { grid-row: span 2; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 8px; border: 1px solid var(--line); background: var(--stone); color: var(--ink) !important; }
+.dd__ico svg { width: 20px; height: 20px; }
+.dd__m a:hover .dd__ico { background: #fff; color: var(--red-2) !important; }
 .dd__m span { font: 500 .6rem/1.2 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-40); }
 .burger { display: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid currentColor; background: none; cursor: pointer; place-items: center; flex: none; }
 .burger i, .burger i::before, .burger i::after { display: block; width: 16px; height: 1.5px; background: currentColor; position: relative; transition: transform .3s var(--ease-out), background .2s; }

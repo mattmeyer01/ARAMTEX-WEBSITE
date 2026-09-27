@@ -40,4 +40,6 @@ Hero, panele metod łączenia, magazyn i tło kontaktu ładują się z CDN Higgs
   `ItemList` linii produktów na stronach systemów. Adresy w danych zakładają docelowe ścieżki w katalogu
   głównym `https://armatex.pl/`; przy innym układzie trzeba je zmienić.
 - Szkic ma `noindex`. Przed publikacją usuń go i dodaj `<link rel="canonical">` na każdej stronie.
-
+- `pliki/katalog-besco-2026.pdf`: katalog Besco 2026 (66 stron) z poprawionym tytułem w metadanych
+  (oryginał miał tytuł „画册 11.11”). Link w menu „Oferta → Katalogi”, na stronie katalogu i na stronach
+  systemów Besco; otwiera się w nowej karcie.
