@@ -224,7 +224,7 @@
 
   // Prefill z "Poproś o dostęp" i nieaktywny formularz szkicu
   // Strony grup produktów: ilość + jednostka (karton / worek / opak. / szt.) i "Dodaj" do listy do wyceny (ta sama co w katalogu)
-  var qas = $$('.qa[data-add]');
+  var qas = $$('.qty[data-add]');
   if (qas.length) (function () {
     var KEY = 'armatex-rfq', list = new Map();
     try { JSON.parse(localStorage.getItem(KEY) || '[]').forEach(function (x) { list.set(x[0], x[1]); }); } catch (e) {}
