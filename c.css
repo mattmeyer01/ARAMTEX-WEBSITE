@@ -62,7 +62,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .nav__logo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: left; transition: opacity .35s; }
 .nav__logo .dark { opacity: 0; }
 .nav__links { display: flex; gap: 1.8rem; margin-left: auto; }
-.nav__links a { text-decoration: none; font-size: .95rem; font-weight: 500; opacity: .82; transition: opacity .2s; }
+.nav__links a { text-decoration: none; font-size: .95rem; font-weight: 500; opacity: .82; transition: opacity .2s; white-space: nowrap; }
 .nav__links a:hover { opacity: 1; }
 .nav__tel { font: 500 .8rem var(--mono); letter-spacing: .06em; text-decoration: none; }
 .nav .mag { min-height: 44px; padding: 0 1.2rem; font-size: .9rem; }
@@ -698,3 +698,6 @@ a.chip:hover { border-color: var(--ink); }
   .dll li { grid-template-columns: 1fr; }
   .dll .ghost { grid-column: 1; grid-row: auto; justify-self: start; }
 }
+
+/* menu z 6 pozycjami: ciaśniej na węższych ekranach, telefon jest też w CTA */
+@media (max-width: 1260px) { .nav__links { gap: 1.25rem; } .nav__tel { display: none; } }
