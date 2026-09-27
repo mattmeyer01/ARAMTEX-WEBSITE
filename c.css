@@ -720,20 +720,15 @@ a.chip:hover { border-color: var(--ink); }
 @media (max-width: 560px) { .e404 { flex-direction: column; } .e404 .mag { width: 100%; } }
 .person__h { display: block; margin: .15rem 0 .1rem; font-size: .88rem; color: var(--on-60); }
 
-/* stopka: dane firmy i etykieta adresu */
-.foot__co { margin-top: 1.8rem; padding-top: 1.4rem; border-top: 1px solid var(--on-line); max-width: 34ch; }
-.foot__co b { display: block; color: #fff; font-weight: 600; font-size: .88rem; margin-bottom: .6rem; }
-.foot__co dl { margin: 0; display: grid; gap: .3rem; }
-.foot__co dl div { display: grid; grid-template-columns: 5.2rem 1fr; gap: .5rem; }
-.foot__co dt { font: 500 .62rem/1.9 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--on-60); opacity: .75; }
-.foot__co dd { margin: 0; font-variant-numeric: tabular-nums; user-select: all; }
+/* stopka: dane firmy w dolnym pasku */
+.foot__bar { align-items: flex-end; }
+.foot__co { display: grid; gap: .55rem; }
+.foot__name { color: #fff; font-weight: 500; }
+.foot__co dl { margin: 0; display: flex; flex-wrap: wrap; gap: .35rem 1.6rem; }
+.foot__co dl div { display: flex; gap: .45rem; align-items: baseline; }
+.foot__co dt { font: 500 .6rem/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; opacity: .7; }
+.foot__co dd { margin: 0; font-variant-numeric: tabular-nums; }
 .foot__addr small { display: block; font: 500 .62rem/1.6 var(--mono); letter-spacing: .1em; text-transform: uppercase; opacity: .75; }
-@media (min-width: 1081px) {
-  .foot__g > :nth-child(1) { grid-row: 1; }
-  .foot__g > :nth-child(2), .foot__g > :nth-child(3), .foot__g > :nth-child(4) { grid-row: 1 / span 2; }
-  .foot__g > .foot__co { grid-column: 1; grid-row: 2; margin-top: .4rem; }
-}
-@media (max-width: 1080px) { .foot__co { margin-top: 0; } }
 
 /* telefon: pływający przycisk „Zadzwoń” */
 .callfab { display: none; }
