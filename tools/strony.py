@@ -205,7 +205,7 @@ ICO_PDF='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width
 def nav(cur):
     cs=lambda k: ' aria-current="page"' if k==cur else ''
     ddlinks=''.join(f'<a href="{s["slug"]}.html"{cs(s["slug"])}>{img(s["pics"][0][0],"")}<b>{s["name"]}</b><span>{s["brand"]} · {s["cntw"]}</span></a>' for s in SYS)
-    ddcur=' aria-current="page"' if cur in [s['slug'] for s in SYS]+['katalog'] else ''
+    ddcur=' aria-current="page"' if cur in [s['slug'] for s in SYS]+[] else ''
     kat=(f'<a href="katalog.html"{cs("katalog")}><span class="dd__ico">{ICO_SEARCH}</span><b>Wyszukiwarka indeksów Besco</b><span>1 936 indeksów · lista do wyceny</span></a>'
          f'<a href="{PDF}" target="_blank" rel="noopener"><span class="dd__ico">{ICO_PDF}</span><b>Katalog Besco 2026</b><span>PDF · 3 MB · 66 stron</span></a>')
     mlinks=''.join(f'<a href="{s["slug"]}.html"{cs(s["slug"])}>{s["name"]}<small>{s["brand"]}</small></a>' for s in SYS)
@@ -217,11 +217,11 @@ def nav(cur):
     </a>
     <nav class="nav__links" aria-label="Nawigacja główna">
       <div class="dd"><button type="button" aria-expanded="false" aria-controls="dd-m"{ddcur}>Oferta</button><div class="dd__m" id="dd-m"><span class="dd__h">Systemy złączek</span>{ddlinks}<span class="dd__h">Katalogi</span>{kat}</div></div>
-      <a href="poradniki.html"{' aria-current="page"' if cur=="poradniki" else ''}>Poradniki</a>
-      <a href="do-pobrania.html"{cs("do-pobrania")}>Do pobrania</a>
-      <a href="o-firmie.html"{cs("o-firmie")}>O firmie</a>
+      <a href="katalog.html"{cs("katalog")}>Wyszukiwarka</a>
       <a href="wspolpraca.html"{cs("wspolpraca")}>Współpraca</a>
-      <a href="kontakt.html"{cs("kontakt")}>Kontakt</a>
+      <a href="do-pobrania.html"{cs("do-pobrania")}>Do pobrania</a>
+      <a href="poradniki.html"{cs("poradniki")}>Poradniki</a>
+      <a href="o-firmie.html"{cs("o-firmie")}>O firmie</a>
     </nav>
     <a class="nav__tel" href="tel:+48798807106">798 807 106</a>
     <a class="mag" href="{"#kontakt" if cur=="index" else "kontakt.html#formularz"}"><span>Zapytaj o ofertę</span></a>
@@ -231,7 +231,7 @@ def nav(cur):
 <nav class="mnav" id="mnav" aria-label="Menu mobilne">
   <span class="label">Oferta</span>{mlinks}
   <span class="label">Katalogi</span><a href="katalog.html"{cs("katalog")}>Wyszukiwarka indeksów Besco<small>1 936</small></a><a href="{PDF}" target="_blank" rel="noopener">Katalog Besco 2026<small>PDF · 3 MB</small></a>
-  <span class="label">Armatex</span><a href="poradniki.html"{cs("poradniki")}>Poradniki</a><a href="do-pobrania.html"{cs("do-pobrania")}>Do pobrania<small>katalogi i dokumenty</small></a><a href="o-firmie.html"{cs("o-firmie")}>O firmie</a><a href="wspolpraca.html"{cs("wspolpraca")}>Współpraca</a><a href="kontakt.html"{cs("kontakt")}>Kontakt<small>798 807 106</small></a>
+  <span class="label">Armatex</span><a href="wspolpraca.html"{cs("wspolpraca")}>Współpraca</a><a href="do-pobrania.html"{cs("do-pobrania")}>Do pobrania<small>katalogi i dokumenty</small></a><a href="poradniki.html"{cs("poradniki")}>Poradniki</a><a href="o-firmie.html"{cs("o-firmie")}>O firmie</a><a href="kontakt.html"{cs("kontakt")}>Kontakt<small>798 807 106</small></a>
 </nav>
 '''
 FOOT='''<footer class="foot">
