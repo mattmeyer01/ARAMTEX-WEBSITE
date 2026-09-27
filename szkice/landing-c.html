@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
-  <title>Szkic C · Armatex premium</title>
-  <meta name="description" content="Szkic roboczy: premium landing Armatex na asortymencie Besco 2026. Nie publikować.">
+  <title>Szkic C · Armatex dla hurtowni</title>
+  <meta name="description" content="Szkic roboczy: landing Armatex dla hurtowni, asortyment Besco 2026 i Pegler Yorkshire. Nie publikować.">
   <meta name="theme-color" content="#0A1F44">
   <link rel="icon" href="../assets/img/favicon-32.png?v=2" type="image/png" sizes="32x32">
   <link rel="preconnect" href="https://d8j0ntlcm91z4.cloudfront.net" crossorigin>
@@ -45,7 +45,7 @@
     img { display: block; max-width: 100%; height: auto; }
     a { color: inherit; }
     h1,h2,h3,p,figure { margin: 0; }
-    button, input, textarea { font: inherit; color: inherit; }
+    button, input, textarea, select { font: inherit; color: inherit; }
     :focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
     .wrap { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--g); }
     .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
@@ -131,44 +131,74 @@
     /* ---------- OFERTA: linie produktowe (BYQ Stringer Range Grid) */
     .rg__head { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 2rem; padding-bottom: 2.2rem; border-bottom: 1px solid var(--line); }
     .rg__head .lead { margin-top: 1rem; }
-    .rg__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.2rem 1.25rem; padding-block: 2.2rem; }
-    .line { display: flex; flex-direction: column; gap: .6rem; text-decoration: none; }
-    .line__m { position: relative; aspect-ratio: 4/3; border-radius: 12px; overflow: hidden; background: var(--stone); margin-bottom: .5rem; display: flex; align-items: center; justify-content: center; }
-    .trio { display: flex; align-items: center; justify-content: center; gap: 4%; width: 100%; padding: 0 7%; transition: transform .9s var(--ease-out); }
-    .trio img { width: 30%; aspect-ratio: 1; object-fit: contain; }
-    .trio img:nth-child(2) { width: 36%; }
-    .line:hover .trio, .line:focus-visible .trio { transform: scale(1.05); }
-    .line__n { position: absolute; left: .85rem; top: .85rem; background: #fff; border-radius: 99px; padding: .3rem .6rem; }
-    .line__c { position: absolute; right: .85rem; top: .85rem; color: var(--ink-60); }
-    .line__h { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
-    .line__h b { font-weight: 600; font-size: 1.14rem; letter-spacing: -.01em; }
-    .line__h .label { color: var(--ink-40); transition: color .2s; white-space: nowrap; }
-    .line:hover .line__h .label { color: var(--red); }
-    .line__rule { height: 1px; background: var(--ink); transform: scaleX(0); transform-origin: left; transition: transform .45s var(--ease-out); }
-    .line:hover .line__rule, .line:focus-visible .line__rule { transform: none; }
-    .line__d { font-size: .93rem; color: var(--ink-60); }
-    .line__s { display: flex; flex-wrap: wrap; gap: .35rem 1.3rem; }
-    .line__s span { font: 500 .7rem/1.3 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
-    .line__s i { font-style: normal; color: var(--ink-40); margin-right: .45rem; }
-    .line__a { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .2rem; }
+    .sy-stats { display: grid; grid-template-columns: repeat(3, auto); gap: 0 2rem; margin: 0; }
+    .sy-stats dt { color: var(--ink-40); }
+    .sy-stats dd { margin: .35rem 0 0; font-size: clamp(1.4rem, 2.2vw, 1.9rem); font-weight: 600; letter-spacing: -.02em; font-variant-numeric: tabular-nums; white-space: nowrap; }
 
-    /* tabela parametrów linii */
-    .ptab-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding-top: 2.4rem; border-top: 1px solid var(--line); }
-    .ptab-head h3 { font-size: 1.35rem; font-weight: 600; letter-spacing: -.015em; }
-    .ptab-head .label { color: var(--ink-40); }
-    .ptab-wrap { position: relative; margin-top: 1.2rem; overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
-    .ptab { width: 100%; min-width: 900px; border-collapse: collapse; font-size: .92rem; }
-    .ptab th { text-align: left; font: 500 .66rem/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-60); background: var(--stone); padding: .85rem 1rem; white-space: nowrap; }
-    .ptab td { padding: .8rem 1rem; border-top: 1px solid var(--line); vertical-align: top; }
-    .ptab td:first-child, .ptab th:first-child { position: sticky; left: 0; background: var(--white); z-index: 1; }
-    .ptab th:first-child { background: var(--stone); }
-    .ptab td:first-child b { font-weight: 600; }
-    .ptab .num { font-variant-numeric: tabular-nums; white-space: nowrap; }
-    .ptab .appr { margin: 0 .2rem .2rem 0; }
-    .ptab tr { transition: background .2s; }
-    .ptab tbody tr:hover td { background: #faf9f6; }
-    .ptab a { font: 500 .66rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--red); text-decoration: none; white-space: nowrap; }
-    .ptab a:hover { text-decoration: underline; }
+    /* zakładki systemów */
+    .sy { margin-top: 2.2rem; }
+    .sy-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: .5rem; padding: .5rem; background: var(--stone); border-radius: var(--r); }
+    .sy-tabs button { display: grid; gap: .3rem; justify-items: start; text-align: left; padding: 1rem 1.1rem; border: 0; border-radius: 12px; background: transparent; cursor: pointer; transition: background .25s, color .25s, box-shadow .25s; }
+    .sy-tabs button b { font-size: clamp(1.05rem, 1.5vw, 1.3rem); font-weight: 600; letter-spacing: -.015em; }
+    .sy-tab__i { color: var(--red-2); }
+    .sy-tab__m { color: var(--ink-60); letter-spacing: .06em; font-size: .64rem; }
+    .sy-tabs button:hover { background: rgba(255,255,255,.6); }
+    .sy-tabs button[aria-selected="true"] { background: var(--navy); color: #fff; box-shadow: 0 10px 30px -14px rgba(10,31,68,.6); }
+    .sy-tabs button[aria-selected="true"] .sy-tab__i { color: var(--red-soft); }
+    .sy-tabs button[aria-selected="true"] .sy-tab__m { color: var(--on-60); }
+    .sy-panel { padding-top: clamp(1.8rem, 3.5vw, 3rem); }
+    .sy-panel:focus-visible { outline-offset: 6px; border-radius: 8px; }
+    .sy-intro { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(1.5rem, 4vw, 4rem); align-items: center; }
+    .sy-pics { aspect-ratio: 16/11; display: flex; align-items: center; justify-content: center; gap: 5%; padding: 7%; background: #fff; border: 1px solid var(--line); border-radius: var(--r); }
+    .sy-pics span { flex: 1 1 0; min-width: 0; display: grid; place-items: center; transition: transform .9s var(--ease-out); }
+    .sy-pics img { width: auto; max-width: 100%; max-height: 15rem; object-fit: contain; }
+    .sy-pics--3 span:nth-child(2) { transform: translateY(-9%); }
+    .sy-pics--3 span:nth-child(3) { transform: translateY(7%); }
+    .sy-panel:not([hidden]) .sy-pics span { animation: syIn .8s var(--ease-out) both; }
+    .sy-panel:not([hidden]) .sy-pics span:nth-child(2) { animation-delay: .08s; }
+    .sy-panel:not([hidden]) .sy-pics span:nth-child(3) { animation-delay: .16s; }
+    @keyframes syIn { from { opacity: 0; translate: 0 14px; } }
+    .sy-h { margin-top: .9rem; font-size: clamp(1.6rem, 2.8vw, 2.4rem); line-height: 1.05; letter-spacing: -.03em; font-weight: 600; }
+    .sy-desc { margin-top: .9rem; color: var(--ink-60); max-width: 52ch; }
+    .sy-facts { margin: 1.4rem 0 0; display: grid; gap: .6rem; }
+    .sy-facts div { padding: 1rem 1.1rem; background: var(--stone); border-radius: 12px; }
+    .sy-facts dt { color: var(--ink-60); }
+    .sy-facts dd { margin: .4rem 0 0; font-size: .98rem; }
+    .sy-facts .sy-arg { background: var(--navy); color: #fff; }
+    .sy-facts .sy-arg dt { color: var(--red-soft); }
+    .sy-facts .sy-arg dd { font-weight: 500; }
+    .sy-ask { margin-top: 1.4rem; }
+    .sy-tw { margin-top: clamp(1.8rem, 3vw, 2.6rem); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+    .sy-lines { width: 100%; border-collapse: collapse; font-size: .92rem; }
+    .sy-lines thead th { text-align: left; font: 500 .66rem/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-60); background: var(--stone); padding: .85rem 1rem; }
+    .sy-lines tbody th, .sy-lines td { text-align: left; vertical-align: top; padding: .9rem 1rem; border-top: 1px solid var(--line); font-weight: 400; }
+    .sy-lines tbody th b { display: block; font-weight: 600; }
+    .sy-lines .num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .sy-lines td { color: var(--ink-60); }
+    .sy-lines td.num { color: var(--ink); }
+    .sy-lines .sy-cnt { text-align: right; font-weight: 600; }
+    .sy-lines thead th.num { text-align: right; }
+    .sy-lines tbody tr { transition: background .2s; }
+    .sy-lines tbody tr:hover { background: #faf9f6; }
+    .sy-par { display: block; margin-bottom: .35rem; color: var(--ink); }
+    .sy-lines .appr { margin: 0 .2rem .2rem 0; }
+    .sy-br { display: inline-flex; align-items: center; gap: .4rem; margin-top: .3rem; color: var(--ink-40); font-size: .62rem; }
+    .sy-br::before { content: ""; width: 6px; height: 6px; background: #b0185c; }
+    .sy-br--pegler::before { background: #1c6fb8; }
+    .sy-act { text-align: right; white-space: nowrap; }
+    .sy-find { font: 500 .66rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--red-2); text-decoration: none; }
+    .sy-find::after { content: " →"; }
+    .sy-find:hover { text-decoration: underline; }
+    .sy-na { font: 500 .62rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-40); }
+
+    /* warunki handlowe */
+    .sy-terms { margin-top: clamp(2rem, 4vw, 3rem); display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 2.2fr) auto; gap: 1.5rem 2.5rem; align-items: center; padding: clamp(1.4rem, 3vw, 2.2rem); background: var(--navy); color: #fff; border-radius: var(--r); }
+    .sy-terms h3 { font-size: 1.35rem; font-weight: 600; letter-spacing: -.015em; }
+    .sy-terms p { margin-top: .4rem; color: var(--on-60); font-size: .92rem; }
+    .sy-terms ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
+    .sy-terms li { font-size: .86rem; color: var(--on-60); }
+    .sy-terms li .label { display: block; color: var(--red-soft); }
+    .sy-terms li b { display: block; margin: .3rem 0 .25rem; color: #fff; font-size: .98rem; font-weight: 600; }
 
     /* ---------- KATALOG: wyszukiwarka pozycji Besco */
     .finder { background: var(--stone); }
@@ -340,9 +370,10 @@
     .f { display: flex; flex-direction: column; gap: .35rem; }
     .f--w { grid-column: 1 / -1; }
     .f label { font: 500 .66rem var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-60); }
-    .f input, .f textarea { color: var(--ink); background: var(--stone); border: 1px solid transparent; border-radius: 10px; padding: .85rem .9rem; outline: 0; transition: border-color .2s, background .2s; }
+    .f input, .f textarea, .f select { color: var(--ink); background: var(--stone); border: 1px solid transparent; border-radius: 10px; padding: .85rem .9rem; outline: 0; transition: border-color .2s, background .2s; }
+    .f select { appearance: none; cursor: pointer; padding-right: 2.4rem; background-image: linear-gradient(45deg, transparent 50%, currentColor 50%), linear-gradient(-45deg, transparent 50%, currentColor 50%); background-position: calc(100% - 1.15rem) 55%, calc(100% - .85rem) 55%; background-size: .3rem .3rem; background-repeat: no-repeat; }
     .f textarea { min-height: 150px; resize: vertical; font-family: var(--sans); }
-    .f input:focus, .f textarea:focus { border-color: var(--red); background: #fff; }
+    .f input:focus, .f textarea:focus, .f select:focus { border-color: var(--red); background: #fff; }
     .consent { display: flex; gap: .6rem; margin-top: 1rem; font-size: .82rem; color: var(--ink-60); }
     .consent input { accent-color: var(--red); margin-top: .2rem; }
     .form .mag { width: 100%; margin-top: 1.4rem; }
@@ -361,7 +392,9 @@
     @media (max-width: 1180px) { .pcard { display: none; } }
     @media (max-width: 1080px) {
       .nav__tel { display: none; }
-      .rg__grid { grid-template-columns: repeat(2, 1fr); }
+      .sy-terms { grid-template-columns: 1fr; }
+      .sy-terms ul { grid-template-columns: repeat(2, 1fr); }
+      .sy-tabs { grid-template-columns: repeat(2, 1fr); }
       .stats { grid-template-columns: repeat(2, 1fr); }
       .stat:nth-child(3) { border-left: 0; padding-left: 0; }
       .fd__g { grid-template-columns: 1fr; }
@@ -389,7 +422,20 @@
       .hero__body { padding-top: 7rem; }
       .hero__media img { object-position: 50% 100%; }
       .hero__media::after { background: linear-gradient(0deg, rgba(7,22,49,.96) 0%, rgba(7,22,49,.75) 45%, rgba(7,22,49,.2) 75%, rgba(7,22,49,.5) 100%); }
-      .rg__grid { grid-template-columns: 1fr; gap: 2.6rem; }
+      .sy-stats { grid-template-columns: repeat(3, 1fr); gap: 0 1rem; }
+      .sy-intro { grid-template-columns: 1fr; }
+      .sy-tabs button { padding: .8rem .85rem; }
+      .sy-tw { border: 0; border-radius: 0; }
+      .sy-lines thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+      .sy-lines, .sy-lines tbody { display: block; }
+      .sy-lines tr { display: grid; grid-template-columns: 1fr auto; gap: .4rem 1rem; padding: 1rem 0; border-top: 1px solid var(--line); }
+      .sy-lines tbody th, .sy-lines td { display: block; padding: 0; border: 0; }
+      .sy-lines td:not(.sy-cnt):not(.sy-act) { grid-column: 1 / -1; display: grid; grid-template-columns: 7.5rem 1fr; gap: .75rem; }
+      .sy-lines td[data-l]::before { content: attr(data-l); font: 500 .6rem/1.9 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-40); }
+      .sy-lines .sy-cnt { grid-column: 2; grid-row: 1; }
+      .sy-lines .sy-cnt::before { display: block; }
+      .sy-lines .sy-act { grid-column: 1 / -1; text-align: left; }
+      .sy-terms ul { grid-template-columns: 1fr; }
       .frame { aspect-ratio: 4/3; }
       .fr { grid-template-columns: 1fr; }
       .res li { grid-template-columns: 48px minmax(0, 1fr) auto; gap: .35rem .8rem; }
@@ -426,7 +472,7 @@
       <a href="#faq">FAQ</a>
     </nav>
     <a class="nav__tel" href="tel:+48798807106">798 807 106</a>
-    <a class="mag" href="#kontakt"><span>Zapytaj o ofertę</span></a>
+    <a class="mag" href="#kontakt" data-topic="Jesteśmy hurtownią i chcemy poznać warunki współpracy (Besco, Pegler Yorkshire)."><span>Warunki dla hurtowni</span></a>
   </div>
 </header>
 
@@ -448,10 +494,10 @@
     </aside>
     <div class="wrap hero__body">
       <p class="label hero__eyebrow">Besco · Pegler Yorkshire · 30 lat na rynku</p>
-      <h1 id="hero-t"><span class="ln"><span>Dowolna metoda łączenia.</span></span><span class="ln"><span>Jeden <em>dostawca.</em></span></span></h1>
-      <p class="hero__sub">Złączki miedziane i stalowe zaprasowywane, kształtki lutowane i zawory kulowe press do wody, CO, gazu i chłodnictwa. Wycena tego samego dnia, wysyłka w 24 godziny.</p>
+      <h1 id="hero-t"><span class="ln"><span>Cztery metody łączenia.</span></span><span class="ln"><span>Jeden <em>dystrybutor.</em></span></span></h1>
+      <p class="hero__sub">Złączki i armatura Besco oraz Pegler Yorkshire dla hurtowni instalacyjnych w całej Polsce: press, na wcisk, skręcane i lutowane. Indywidualne warunki dla każdej hurtowni, wysyłka w 24 godziny.</p>
       <div class="hero__ctas">
-        <a class="mag" href="#kontakt"><span>Zapytaj o ofertę <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></a>
+        <a class="mag" href="#kontakt" data-topic="Jesteśmy hurtownią i chcemy poznać warunki współpracy (Besco, Pegler Yorkshire)."><span>Warunki dla hurtowni <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></a>
         <a class="ghost" href="#katalog">Szukaj po numerze artykułu</a>
       </div>
       <div class="hero__bar">
@@ -459,95 +505,156 @@
         <div><span class="label">02</span><b>Na wcisk</b></div>
         <div><span class="label">03</span><b>Skręcanie</b></div>
         <div><span class="label">04</span><b>Lutowanie</b></div>
-        <a href="#katalog"><span class="label">Katalog Besco 2026</span><b>1 936 pozycji →</b></a>
+        <a href="#oferta"><span class="label">Besco · Pegler Yorkshire</span><b>ok. 2 900 indeksów →</b></a>
       </div>
     </div>
   </section>
 
   <div class="ticker" aria-hidden="true"><div class="ticker__t">
-    <span>Miedź press · profil V</span><span>Miedź press · profil M</span><span>Gaz · DVGW · INiG</span><span>Stal węglowa press</span><span>Lutowane EN 1254</span><span>ANSI B16.22</span><span>G-size do 80 bar</span><span>Zawory kulowe press</span><span>DVGW · KIWA · WRAS · RISE</span><span>Miedź press · profil V</span><span>Miedź press · profil M</span><span>Gaz · DVGW · INiG</span><span>Stal węglowa press</span><span>Lutowane EN 1254</span><span>ANSI B16.22</span><span>G-size do 80 bar</span><span>Zawory kulowe press</span><span>DVGW · KIWA · WRAS · RISE</span>
+    <span>Miedź press · profil V i M</span><span>Gaz · DVGW · INiG</span><span>Stal węglowa press</span><span>Tectite Classic · Pro · 316</span><span>Kuterlite K600 · K900 · K700</span><span>Zawory Pegler na wcisk</span><span>Lutowane EN 1254</span><span>ANSI B16.22 · G-size</span><span>Zawory kulowe press</span><span>Miedź press · profil V i M</span><span>Gaz · DVGW · INiG</span><span>Stal węglowa press</span><span>Tectite Classic · Pro · 316</span><span>Kuterlite K600 · K900 · K700</span><span>Zawory Pegler na wcisk</span><span>Lutowane EN 1254</span><span>ANSI B16.22 · G-size</span><span>Zawory kulowe press</span>
   </div></div>
 
-  <!-- 2 · OFERTA: linie produktowe Besco -->
+  <!-- 2 · OFERTA: cztery systemy dla hurtowni -->
   <section class="section" id="oferta">
     <div class="wrap">
       <div class="rg__head">
         <div>
-          <span class="label kicker">Oferta · Besco Fittings &amp; Connectors</span>
-          <h2 class="h2">Dziewięć linii. 1 936 pozycji.</h2>
-          <p class="lead">Złączki i kształtki miedziane, stal węglowa press i zawory kulowe z katalogu Besco 2026. Każda linia z parametrami i atestami producenta.</p>
+          <span class="label kicker">Oferta dla hurtowni · Besco i Pegler Yorkshire</span>
+          <h2 class="h2">Cztery systemy. Około 2 900 indeksów.</h2>
+          <p class="lead">Dystrybuujemy złączki i armaturę Besco oraz Pegler Yorkshire do hurtowni instalacyjnych w całej Polsce. U nas zatowarujesz pełny program: zaciskany, na wcisk, skręcany i lutowany.</p>
         </div>
-        <a class="ulink" href="#katalog">Szukaj w katalogu</a>
+        <dl class="sy-stats">
+          <div><dt class="label">Besco</dt><dd>1 936</dd></div>
+          <div><dt class="label">Pegler Yorkshire</dt><dd>ok. 1 000</dd></div>
+          <div><dt class="label">Średnice</dt><dd>6–108 mm</dd></div>
+        </dl>
       </div>
-      <div class="rg__grid">
-        <a class="line in" href="#katalog" data-series="cu-press-water-v,cu-press-water-m">
-          <span class="line__m"><span class="trio"><img src="img/besco/x59.webp" alt="" width="200" height="200" loading="lazy" decoding="async"><img src="img/besco/x115.webp" alt="Łuk press, trójnik press i mufa redukcyjna z miedzi" width="200" height="200" loading="lazy" decoding="async"><img src="img/besco/x354.webp" alt="" width="200" height="200" loading="lazy" decoding="async"></span><span class="label line__n">01</span><span class="label line__c">551 poz.</span></span>
-          <span class="line__h"><b>Miedź press · woda i CO</b><span class="label">Szukaj →</span></span>
-          <span class="line__rule"></span>
-          <span class="line__d">Profil V 12–54 mm i profil M 12–108 mm. Łuki, trójniki, redukcje, przejścia GW/GZ, śrubunki.</span>
-          <span class="line__s"><span><i>Ciśn.</i>16 bar</span><span><i>Temp.</i>−10…110 °C</span><span><i>Norma</i>EN 1254-7</span></span>
-          <span class="line__a"><span class="appr">DVGW</span><span class="appr">KIWA</span><span class="appr">WRAS</span><span class="appr">RISE</span></span>
-        </a>
-        <a class="line in" href="#katalog" data-series="cu-press-gas-v,cu-press-gas-m">
-          <span class="line__m"><span class="trio"><img src="img/besco/x248.webp" alt="" width="200" height="200" loading="lazy" decoding="async"><img src="img/besco/x261.webp" alt="Miedziane złączki press do gazu" width="200" height="200" loading="lazy" decoding="async"><img src="img/besco/x470.webp" alt="" width="200" height="200" loading="lazy" decoding="async"></span><span class="label line__n">02</span><span class="label line__c">211 poz.</span></span>
-          <span class="line__h"><b>Miedź press · gaz</b><span class="label">Szukaj →</span></span>
-          <span class="line__rule"></span>
-          <span class="line__d">Linie GP Gas w profilu V i M, 15–35 mm. Gaz ziemny i LPG.</span>
-          <span class="line__s"><span><i>Ciśn.</i>5 bar</span><span><i>Temp.</i>−20…70 °C</span><span><i>Norma</i>EN 1254-7</span></span>
-          <span class="line__a"><span class="appr">DVGW</span><span class="appr">INiG</span></span>
-        </a>
-        <a class="line in" href="#katalog" data-series="steel-press-m">
-          <span class="line__m"><span class="trio"><img src="img/besco/x877.webp" alt="" width="200" height="200" loading="lazy" decoding="async"><img src="img/besco/x878.webp" alt="Stalowe złączki press z czerwonymi oringami" width="200" height="200" loading="lazy" decoding="async"><img src="img/besco/x896.webp" alt="" width="200" height="200" loading="lazy" decoding="async"></span><span class="label line__n">03</span><span class="label line__c">256 poz.</span></span>
-          <span class="line__h"><b>Stal węglowa press</b><span class="label">Szukaj →</span></span>
-          <span class="line__rule"></span>
-          <span class="line__d">Profil M, 12–108 mm. Instalacje grzewcze i sprężone powietrze.</span>
-          <span class="line__s"><span><i>Ciśn.</i>16 bar</span><span><i>Temp.</i>−10…110 °C</span><span><i>Profil</i>M</span></span>
-          
-        </a>
-        <a class="line in" href="#katalog" data-series="cu-solder-en1254">
-          <span class="line__m"><span class="trio"><img src="img/besco/x546.webp" alt="" width="200" height="200" loading="lazy" decoding="async"><img src="img/besco/x591.webp" alt="Miedziane kształtki lutowane: łuk, trójnik, kolano" width="200" height="200" loading="lazy" decoding="async"><img src="img/besco/x576.webp" alt="" width="200" height="200" loading="lazy" decoding="async"></span><span class="label line__n">04</span><span class="label line__c">513 poz.</span></span>
-          <span class="line__h"><b>Miedź lutowana EN 1254</b><span class="label">Szukaj →</span></span>
-          <span class="line__rule"></span>
-          <span class="line__d">Kształtki do lutowania 6–108 mm. Woda, ogrzewanie, gaz, przemysł.</span>
-          <span class="line__s"><span><i>Ciśn.</i>25 bar</span><span><i>Temp.</i>−20…110 °C</span><span><i>Norma</i>EN 1254</span></span>
-          <span class="line__a"><span class="appr">DVGW</span><span class="appr">KIWA</span><span class="appr">WRAS</span></span>
-        </a>
-        <a class="line in" href="#katalog" data-series="cu-ansi-k,cu-g-size">
-          <span class="line__m"><span class="trio"><img src="img/besco/x771.webp" alt="" width="200" height="200" loading="lazy" decoding="async"><img src="img/besco/x790.webp" alt="Kształtki calowe i G-size do chłodnictwa" width="200" height="200" loading="lazy" decoding="async"><img src="img/besco/x865.webp" alt="" width="200" height="200" loading="lazy" decoding="async"></span><span class="label line__n">05</span><span class="label line__c">380 poz.</span></span>
-          <span class="line__h"><b>Chłodnictwo i przemysł</b><span class="label">Szukaj →</span></span>
-          <span class="line__rule"></span>
-          <span class="line__d">Calowe ANSI B16.22 (seria K) 1/4″–4 1/8″ oraz G-size 22–76,1 mm do 80 bar.</span>
-          <span class="line__s"><span><i>Ciśn.</i>20–80 bar</span><span><i>Temp.</i>do 150 °C</span><span><i>Norma</i>ANSI · EN 1254</span></span>
-          
-        </a>
-        <a class="line in" href="#katalog" data-series="press-ball-valve">
-          <span class="line__m"><span class="trio"><img src="img/besco/x960.webp" alt="" width="200" height="200" loading="lazy" decoding="async"><img src="img/besco/x961.webp" alt="Mosiężne zawory kulowe press z niebieską dźwignią" width="200" height="200" loading="lazy" decoding="async"><img src="img/besco/x959.webp" alt="" width="200" height="200" loading="lazy" decoding="async"></span><span class="label line__n">06</span><span class="label line__c">25 poz.</span></span>
-          <span class="line__h"><b>Zawory kulowe press</b><span class="label">Szukaj →</span></span>
-          <span class="line__rule"></span>
-          <span class="line__d">Press × press i press × GW, 15–54 mm, także z przedłużonym trzpieniem.</span>
-          <span class="line__s"><span><i>Ciśn.</i>16 bar</span><span><i>Temp.</i>−10…110 °C</span><span><i>Profil</i>V · M</span></span>
-          <span class="line__a"><span class="appr">DVGW</span><span class="appr">WRAS</span></span>
-        </a>
+      <div class="sy">
+        <div class="sy-tabs" role="tablist" aria-label="Systemy łączenia">
+          <button type="button" role="tab" id="sy-t-press" aria-controls="sy-press" aria-selected="true"><span class="label sy-tab__i">01</span><b>Zaciskane</b><span class="label sy-tab__m">Besco · 1 043 indeksy</span></button><button type="button" role="tab" id="sy-t-wcisk" aria-controls="sy-wcisk" aria-selected="false" tabindex="-1"><span class="label sy-tab__i">02</span><b>Na wcisk</b><span class="label sy-tab__m">Pegler Yorkshire · ok. 530 indeksów</span></button><button type="button" role="tab" id="sy-t-skret" aria-controls="sy-skret" aria-selected="false" tabindex="-1"><span class="label sy-tab__i">03</span><b>Skręcane</b><span class="label sy-tab__m">Pegler Yorkshire · ok. 470 indeksów</span></button><button type="button" role="tab" id="sy-t-lut" aria-controls="sy-lut" aria-selected="false" tabindex="-1"><span class="label sy-tab__i">04</span><b>Lutowane</b><span class="label sy-tab__m">Besco · 893 indeksy</span></button>
+        </div>
+        <div class="sy-panel" id="sy-press" role="tabpanel" aria-labelledby="sy-t-press" tabindex="0">
+          <div class="sy-intro">
+            <figure class="sy-pics sy-pics--3"><span><img src="img/oferta/besco-press-v.webp" alt="Miedziany trójnik press" width="207" height="154" loading="lazy" decoding="async"></span><span><img src="img/oferta/besco-gaz.webp" alt="Trójnik press do gazu z żółtym oznaczeniem" width="214" height="158" loading="lazy" decoding="async"></span><span><img src="img/oferta/besco-stal.webp" alt="Trójnik press ze stali węglowej" width="153" height="190" loading="lazy" decoding="async"></span></figure>
+            <div>
+              <span class="label kicker">01 · Besco</span>
+              <h3 class="sy-h">Złączki i zawory zaciskane</h3>
+              <p class="sy-desc">Miedziane systemy press w profilach V i M, serie do gazu, press ze stali węglowej oraz zawory kulowe. Miedź według EN 1254-7.</p>
+              <dl class="sy-facts">
+                <div><dt class="label">Kto kupuje w Twojej hurtowni</dt><dd>Firmy instalacyjne z zaciskarkami: kotłownie, piony i przyłącza w budownictwie wielorodzinnym i obiektach, instalacje gazowe.</dd></div>
+                <div class="sy-arg"><dt class="label">Argument sprzedażowy</dt><dd>Profil M można zaciskać szczęką V w zakresie DN12–28, więc jeden stan magazynowy obsłuży klientów z oboma typami szczęk.</dd></div>
+              </dl>
+              <a class="mag sy-ask" href="#kontakt" data-topic="Jesteśmy hurtownią. Prosimy o warunki współpracy na system zaciskany Besco."><span>Zapytaj o warunki</span></a>
+            </div>
+          </div>
+          <div class="sy-tw">
+            <table class="sy-lines">
+              <caption class="sr">Złączki i zawory zaciskane: linie produktów</caption>
+              <thead><tr><th scope="col">Linia</th><th scope="col">Średnice</th><th scope="col">Zastosowanie</th><th scope="col">Parametry</th><th scope="col" class="num">Indeksy</th><th scope="col"><span class="sr">Akcja</span></th></tr></thead>
+              <tbody>
+              <tr><th scope="row"><b>Miedź press, profil V</b><span class="label sy-br sy-br--besco">Besco</span></th><td class="num" data-l="Średnice">12–54 mm</td><td data-l="Zastosowanie">woda pitna, CO, przemysł</td><td data-l="Parametry"><span><span class="sy-par">16 bar</span><span class="appr">DVGW</span><span class="appr">KIWA</span><span class="appr">WRAS</span><span class="appr">RISE</span></span></td><td class="num sy-cnt" data-l="Indeksy">257</td><td class="sy-act"><a class="sy-find" href="#katalog" data-series="cu-press-water-v">Indeksy</a></td></tr>
+              <tr><th scope="row"><b>Miedź press, profil M</b><span class="label sy-br sy-br--besco">Besco</span></th><td class="num" data-l="Średnice">12–108 mm</td><td data-l="Zastosowanie">woda pitna, CO, przemysł</td><td data-l="Parametry"><span><span class="sy-par">16 bar</span><span class="appr">DVGW</span><span class="appr">WRAS</span><span class="appr">RISE</span></span></td><td class="num sy-cnt" data-l="Indeksy">294</td><td class="sy-act"><a class="sy-find" href="#katalog" data-series="cu-press-water-m">Indeksy</a></td></tr>
+              <tr><th scope="row"><b>Miedź press do gazu, V i M</b><span class="label sy-br sy-br--besco">Besco</span></th><td class="num" data-l="Średnice">15–35 mm</td><td data-l="Zastosowanie">gaz ziemny, LPG</td><td data-l="Parametry"><span><span class="sy-par">5 bar</span><span class="appr">DVGW</span><span class="appr">INiG</span></span></td><td class="num sy-cnt" data-l="Indeksy">211</td><td class="sy-act"><a class="sy-find" href="#katalog" data-series="cu-press-gas-v,cu-press-gas-m">Indeksy</a></td></tr>
+              <tr><th scope="row"><b>Stal węglowa press, profil M</b><span class="label sy-br sy-br--besco">Besco</span></th><td class="num" data-l="Średnice">12–108 mm</td><td data-l="Zastosowanie">CO w obiegu zamkniętym, sprężone powietrze</td><td data-l="Parametry"><span><span class="sy-par">16 bar</span></span></td><td class="num sy-cnt" data-l="Indeksy">256</td><td class="sy-act"><a class="sy-find" href="#katalog" data-series="steel-press-m">Indeksy</a></td></tr>
+              <tr><th scope="row"><b>Zawory kulowe press, kontur V i M</b><span class="label sy-br sy-br--besco">Besco</span></th><td class="num" data-l="Średnice">15–54 mm</td><td data-l="Zastosowanie">woda, CO</td><td data-l="Parametry"><span><span class="sy-par">16 bar</span><span class="appr">DVGW</span><span class="appr">WRAS</span></span></td><td class="num sy-cnt" data-l="Indeksy">25</td><td class="sy-act"><a class="sy-find" href="#katalog" data-series="press-ball-valve">Indeksy</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="sy-panel" id="sy-wcisk" role="tabpanel" aria-labelledby="sy-t-wcisk" tabindex="0" hidden>
+          <div class="sy-intro">
+            <figure class="sy-pics sy-pics--3"><span><img src="img/oferta/tectite-classic.webp" alt="Trójnik na wcisk Tectite Classic" width="310" height="235" loading="lazy" decoding="async"></span><span><img src="img/oferta/tectite-316.webp" alt="Trójnik Tectite 316 ze stali nierdzewnej" width="314" height="244" loading="lazy" decoding="async"></span><span><img src="img/oferta/pegler-tx300.webp" alt="Zawór kulowy na wcisk Pegler" width="442" height="407" loading="lazy" decoding="async"></span></figure>
+            <div>
+              <span class="label kicker">02 · Pegler Yorkshire</span>
+              <h3 class="sy-h">Złączki i zawory na wcisk Tectite</h3>
+              <p class="sy-desc">System push-fit montowany bez narzędzi, prądu i otwartego ognia. Łączy rury miedziane, PEX, PB, ze stali nierdzewnej i węglowej, zależnie od linii.</p>
+              <dl class="sy-facts">
+                <div><dt class="label">Kto kupuje w Twojej hurtowni</dt><dd>Serwisanci, instalatorzy bez zaciskarki i klienci remontowi. Montaż bez narzędzi sprawia, że towar schodzi również przy ladzie.</dd></div>
+                <div class="sy-arg"><dt class="label">Argument sprzedażowy</dt><dd>Producent daje 25 lat gwarancji na Tectite Sprint, Classic, Pro i 316, a 30 lat przy rurach Yorkshire.</dd></div>
+              </dl>
+              <a class="mag sy-ask" href="#kontakt" data-topic="Jesteśmy hurtownią. Prosimy o warunki współpracy na złączki i zawory Tectite."><span>Zapytaj o warunki</span></a>
+            </div>
+          </div>
+          <div class="sy-tw">
+            <table class="sy-lines">
+              <caption class="sr">Złączki i zawory na wcisk Tectite: linie produktów</caption>
+              <thead><tr><th scope="col">Linia</th><th scope="col">Średnice</th><th scope="col">Zastosowanie</th><th scope="col">Parametry</th><th scope="col" class="num">Indeksy</th><th scope="col"><span class="sr">Akcja</span></th></tr></thead>
+              <tbody>
+              <tr><th scope="row"><b>Tectite Classic</b><span class="label sy-br sy-br--pegler">Pegler Yorkshire</span></th><td class="num" data-l="Średnice">10–28 mm</td><td data-l="Zastosowanie">woda, CO · miedź, PEX, PB</td><td data-l="Parametry"><span><span class="sy-par">16 bar z miedzią</span><span class="appr">WRAS</span><span class="appr">PZH</span></span></td><td class="num sy-cnt" data-l="Indeksy">251</td><td class="sy-act"><span class="sy-na">na zapytanie</span></td></tr>
+              <tr><th scope="row"><b>Tectite Pro i Carbon</b><span class="label sy-br sy-br--pegler">Pegler Yorkshire</span></th><td class="num" data-l="Średnice">15–54 mm</td><td data-l="Zastosowanie">woda, CO, chłodzenie · także stal węglowa</td><td data-l="Parametry"><span><span class="sy-par">demontowalne</span></span></td><td class="num sy-cnt" data-l="Indeksy">115</td><td class="sy-act"><span class="sy-na">na zapytanie</span></td></tr>
+              <tr><th scope="row"><b>Tectite 316</b><span class="label sy-br sy-br--pegler">Pegler Yorkshire</span></th><td class="num" data-l="Średnice">15–54 mm</td><td data-l="Zastosowanie">rury ze stali nierdzewnej</td><td data-l="Parametry"><span><span class="sy-par">kwasoodporne</span></span></td><td class="num sy-cnt" data-l="Indeksy">114</td><td class="sy-act"><span class="sy-na">na zapytanie</span></td></tr>
+              <tr><th scope="row"><b>Zawory i filtry na wcisk</b><span class="label sy-br sy-br--pegler">Pegler Yorkshire</span></th><td class="num" data-l="Średnice">15–54 mm</td><td data-l="Zastosowanie">PT550, PT913, TX300, TX405, TX480</td><td data-l="Parametry"><span><span class="sy-par">kulowe, odcinające, mieszające</span></span></td><td class="num sy-cnt" data-l="Indeksy">19</td><td class="sy-act"><span class="sy-na">na zapytanie</span></td></tr>
+              <tr><th scope="row"><b>Akcesoria i narzędzia Tec-Tools</b><span class="label sy-br sy-br--pegler">Pegler Yorkshire</span></th><td class="num" data-l="Średnice">10–54 mm</td><td data-l="Zastosowanie">tulejki, gratowniki, mierniki</td><td data-l="Parametry"><span><span class="sy-par">do montażu systemu</span></span></td><td class="num sy-cnt" data-l="Indeksy">ok. 30</td><td class="sy-act"><span class="sy-na">na zapytanie</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="sy-panel" id="sy-skret" role="tabpanel" aria-labelledby="sy-t-skret" tabindex="0" hidden>
+          <div class="sy-intro">
+            <figure class="sy-pics sy-pics--3"><span><img src="img/oferta/kuterlite.webp" alt="Trójnik skręcany Kuterlite" width="225" height="196" loading="lazy" decoding="async"></span><span><img src="img/oferta/kuterlite-kolano.webp" alt="Kolano skręcane Kuterlite" width="147" height="165" loading="lazy" decoding="async"></span><span><img src="img/oferta/kuterlite-zawor.webp" alt="Zawór z końcówkami zaciskowymi Kuterlite" width="118" height="132" loading="lazy" decoding="async"></span></figure>
+            <div>
+              <span class="label kicker">03 · Pegler Yorkshire</span>
+              <h3 class="sy-h">Złączki skręcane Kuterlite</h3>
+              <p class="sy-desc">Mosiężne złączki zaciskowe z pierścieniem do rur miedzianych i PE. Montaż kluczem, bez lutowania i zaciskarki.</p>
+              <dl class="sy-facts">
+                <div><dt class="label">Kto kupuje w Twojej hurtowni</dt><dd>Serwis i podłączenia urządzeń: kotłów, podgrzewaczy i armatury. Klasyczny towar ladowy z rotacją przez cały rok.</dd></div>
+                <div class="sy-arg"><dt class="label">Argument sprzedażowy</dt><dd>Jedna marka na miedź 6–54 mm i rury PE 20–63 mm, razem z zaworami w tym samym systemie.</dd></div>
+              </dl>
+              <a class="mag sy-ask" href="#kontakt" data-topic="Jesteśmy hurtownią. Prosimy o warunki współpracy na złączki skręcane Kuterlite."><span>Zapytaj o warunki</span></a>
+            </div>
+          </div>
+          <div class="sy-tw">
+            <table class="sy-lines">
+              <caption class="sr">Złączki skręcane Kuterlite: linie produktów</caption>
+              <thead><tr><th scope="col">Linia</th><th scope="col">Średnice</th><th scope="col">Zastosowanie</th><th scope="col">Parametry</th><th scope="col" class="num">Indeksy</th><th scope="col"><span class="sr">Akcja</span></th></tr></thead>
+              <tbody>
+              <tr><th scope="row"><b>Kuterlite K600</b><span class="label sy-br sy-br--pegler">Pegler Yorkshire</span></th><td class="num" data-l="Średnice">6–28 mm</td><td data-l="Zastosowanie">rury miedziane</td><td data-l="Parametry"><span><span class="sy-par">seria podstawowa</span></span></td><td class="num sy-cnt" data-l="Indeksy">ok. 150</td><td class="sy-act"><span class="sy-na">na zapytanie</span></td></tr>
+              <tr><th scope="row"><b>Kuterlite K900 Pro (KN 900)</b><span class="label sy-br sy-br--pegler">Pegler Yorkshire</span></th><td class="num" data-l="Średnice">8–54 mm</td><td data-l="Zastosowanie">rury miedziane</td><td data-l="Parametry"><span><span class="sy-par">złączki, kolana, przejścia GW/GZ</span></span></td><td class="num sy-cnt" data-l="Indeksy">ok. 185</td><td class="sy-act"><span class="sy-na">na zapytanie</span></td></tr>
+              <tr><th scope="row"><b>Kuterlite K700</b><span class="label sy-br sy-br--pegler">Pegler Yorkshire</span></th><td class="num" data-l="Średnice">20–63 mm</td><td data-l="Zastosowanie">rury PE</td><td data-l="Parametry"><span><span class="sy-par">złączki PE × PE i PE × miedź</span></span></td><td class="num sy-cnt" data-l="Indeksy">ok. 65</td><td class="sy-act"><span class="sy-na">na zapytanie</span></td></tr>
+              <tr><th scope="row"><b>Zawory z końcówkami zaciskowymi</b><span class="label sy-br sy-br--pegler">Pegler Yorkshire</span></th><td class="num" data-l="Średnice">15–28 mm</td><td data-l="Zastosowanie">woda, podłączenia urządzeń</td><td data-l="Parametry"><span><span class="sy-par">kurki, zawory odcinające</span></span></td><td class="num sy-cnt" data-l="Indeksy">ok. 30</td><td class="sy-act"><span class="sy-na">na zapytanie</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="sy-panel" id="sy-lut" role="tabpanel" aria-labelledby="sy-t-lut" tabindex="0" hidden>
+          <div class="sy-intro">
+            <figure class="sy-pics sy-pics--2"><span><img src="img/oferta/besco-lut.webp" alt="Miedziany trójnik lutowany" width="197" height="163" loading="lazy" decoding="async"></span><span><img src="img/oferta/besco-k.webp" alt="Miedziane kolano lutowane" width="215" height="225" loading="lazy" decoding="async"></span></figure>
+            <div>
+              <span class="label kicker">04 · Besco</span>
+              <h3 class="sy-h">Złączki lutowane</h3>
+              <p class="sy-desc">Miedziane kształtki kapilarne do lutu miękkiego i twardego: metryczne serie 4000 i 5000 według EN 1254, calowe ANSI B16.22 oraz G-size do wysokich ciśnień.</p>
+              <dl class="sy-facts">
+                <div><dt class="label">Kto kupuje w Twojej hurtowni</dt><dd>Instalatorzy pracujący w klasycznej technologii, chłodnictwo i klimatyzacja oraz utrzymanie ruchu w przemyśle.</dd></div>
+                <div class="sy-arg"><dt class="label">Argument sprzedażowy</dt><dd>Jeden dostawca na kształtki metryczne, calowe i G-size do 80 bar, bez dokładania kolejnej marki.</dd></div>
+              </dl>
+              <a class="mag sy-ask" href="#kontakt" data-topic="Jesteśmy hurtownią. Prosimy o warunki współpracy na złączki lutowane Besco."><span>Zapytaj o warunki</span></a>
+            </div>
+          </div>
+          <div class="sy-tw">
+            <table class="sy-lines">
+              <caption class="sr">Złączki lutowane: linie produktów</caption>
+              <thead><tr><th scope="col">Linia</th><th scope="col">Średnice</th><th scope="col">Zastosowanie</th><th scope="col">Parametry</th><th scope="col" class="num">Indeksy</th><th scope="col"><span class="sr">Akcja</span></th></tr></thead>
+              <tbody>
+              <tr><th scope="row"><b>Seria 4000 i 5000, EN 1254</b><span class="label sy-br sy-br--besco">Besco</span></th><td class="num" data-l="Średnice">6–108 mm</td><td data-l="Zastosowanie">woda, CO, gaz, przemysł</td><td data-l="Parametry"><span><span class="sy-par">25 bar</span><span class="appr">DVGW</span><span class="appr">KIWA</span><span class="appr">WRAS</span></span></td><td class="num sy-cnt" data-l="Indeksy">513</td><td class="sy-act"><a class="sy-find" href="#katalog" data-series="cu-solder-en1254">Indeksy</a></td></tr>
+              <tr><th scope="row"><b>Calowe ANSI B16.22, seria K</b><span class="label sy-br sy-br--besco">Besco</span></th><td class="num" data-l="Średnice">1/4″–4 1/8″</td><td data-l="Zastosowanie">chłodnictwo, HVAC, przemysł</td><td data-l="Parametry"><span><span class="sy-par">25 bar</span></span></td><td class="num sy-cnt" data-l="Indeksy">315</td><td class="sy-act"><a class="sy-find" href="#katalog" data-series="cu-ansi-k">Indeksy</a></td></tr>
+              <tr><th scope="row"><b>G-size do wysokich ciśnień</b><span class="label sy-br sy-br--besco">Besco</span></th><td class="num" data-l="Średnice">22–76,1 mm</td><td data-l="Zastosowanie">chłodnictwo, przemysł</td><td data-l="Parametry"><span><span class="sy-par">20–80 bar · do 150 °C</span></span></td><td class="num sy-cnt" data-l="Indeksy">65</td><td class="sy-act"><a class="sy-find" href="#katalog" data-series="cu-g-size">Indeksy</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
-      <div class="ptab-head">
-        <h3>Parametry linii</h3>
-        <span class="label">Źródło: katalog Besco 2026</span>
-      </div>
-      <div class="ptab-wrap" role="region" aria-label="Tabela parametrów linii produktowych" tabindex="0">
-        <table class="ptab">
-          <thead><tr><th scope="col">Linia</th><th scope="col">Średnice</th><th scope="col">Ciśnienie</th><th scope="col">Temperatura</th><th scope="col">Zastosowanie</th><th scope="col">Norma i atesty</th><th scope="col">Pozycji</th><th scope="col"><span class="sr">Akcja</span></th></tr></thead>
-          <tbody>
-            <tr><td><b>Miedź press, profil V · woda</b></td><td class="num">12–54 mm</td><td class="num">16 bar</td><td class="num">−10…110 °C</td><td>woda, ogrzewanie, przemysł</td><td><span class="appr">EN 1254-7</span><span class="appr">DVGW</span><span class="appr">KIWA</span><span class="appr">WRAS</span><span class="appr">RISE</span></td><td class="num">257</td><td><a href="#katalog" data-series="cu-press-water-v">Szukaj</a></td></tr>
-            <tr><td><b>Miedź press, profil M · woda</b></td><td class="num">12–108 mm</td><td class="num">16 bar</td><td class="num">−10…110 °C</td><td>woda, ogrzewanie, przemysł</td><td><span class="appr">EN 1254-7</span><span class="appr">DVGW</span><span class="appr">WRAS</span><span class="appr">RISE</span></td><td class="num">294</td><td><a href="#katalog" data-series="cu-press-water-m">Szukaj</a></td></tr>
-            <tr><td><b>Miedź press, profil V · gaz</b></td><td class="num">15–35 mm</td><td class="num">5 bar</td><td class="num">−20…70 °C</td><td>gaz ziemny, LPG</td><td><span class="appr">EN 1254-7</span><span class="appr">DVGW</span><span class="appr">INiG</span></td><td class="num">110</td><td><a href="#katalog" data-series="cu-press-gas-v">Szukaj</a></td></tr>
-            <tr><td><b>Miedź press, profil M · gaz</b></td><td class="num">15–35 mm</td><td class="num">5 bar</td><td class="num">−20…70 °C</td><td>gaz ziemny, LPG</td><td><span class="appr">EN 1254-7</span><span class="appr">DVGW</span><span class="appr">INiG</span></td><td class="num">101</td><td><a href="#katalog" data-series="cu-press-gas-m">Szukaj</a></td></tr>
-            <tr><td><b>Stal węglowa press, profil M</b></td><td class="num">12–108 mm</td><td class="num">16 bar</td><td class="num">−10…110 °C</td><td>ogrzewanie, sprężone powietrze</td><td>–</td><td class="num">256</td><td><a href="#katalog" data-series="steel-press-m">Szukaj</a></td></tr>
-            <tr><td><b>Miedź lutowana EN 1254</b></td><td class="num">6–108 mm</td><td class="num">25 bar</td><td class="num">−20…110 °C</td><td>woda, ogrzewanie, gaz, przemysł</td><td><span class="appr">EN 1254</span><span class="appr">DVGW</span><span class="appr">KIWA</span><span class="appr">WRAS</span></td><td class="num">513</td><td><a href="#katalog" data-series="cu-solder-en1254">Szukaj</a></td></tr>
-            <tr><td><b>Miedź calowa ANSI B16.22 · seria K</b></td><td class="num">1/4″–4 1/8″</td><td class="num">25 bar</td><td class="num">−20…110 °C</td><td>woda, ogrzewanie, gaz, przemysł</td><td><span class="appr">ANSI B16.22</span></td><td class="num">315</td><td><a href="#katalog" data-series="cu-ansi-k">Szukaj</a></td></tr>
-            <tr><td><b>Miedź G-size · chłodnictwo i przemysł</b></td><td class="num">22–76,1 mm</td><td class="num">20–80 bar</td><td class="num">−20…150 °C</td><td>przemysł, chłodnictwo</td><td><span class="appr">EN 1254</span></td><td class="num">65</td><td><a href="#katalog" data-series="cu-g-size">Szukaj</a></td></tr>
-            <tr><td><b>Zawory kulowe press</b></td><td class="num">15–54 mm</td><td class="num">16 bar</td><td class="num">−10…110 °C</td><td>woda, ogrzewanie, przemysł</td><td><span class="appr">DVGW</span><span class="appr">WRAS</span></td><td class="num">25</td><td><a href="#katalog" data-series="press-ball-valve">Szukaj</a></td></tr>
-          </tbody>
-        </table>
+      <div class="sy-terms">
+        <div>
+          <h3>Warunki handlowe</h3>
+          <p>Każda hurtownia dostaje własną ofertę, przygotowaną w jeden dzień roboczy.</p>
+        </div>
+        <ul>
+          <li><span class="label">01</span><b>Oferta szyta na miarę</b>Warunki dopasowane do asortymentu, który prowadzisz, i do Twoich planów sprzedaży.</li>
+          <li><span class="label">02</span><b>Dostawy w całej Polsce</b>Wysyłka z magazynu w Olsztynie w 24 godziny.</li>
+          <li><span class="label">03</span><b>Zatowarowanie na sezon</b>Rezerwacje stanów i wspólne planowanie dostaw.</li>
+          <li><span class="label">04</span><b>Dokumenty dla Twoich klientów</b>Atesty, deklaracje i karty katalogowe.</li>
+        </ul>
+        <a class="mag" href="#kontakt" data-topic="Jesteśmy hurtownią i chcemy poznać warunki współpracy (Besco, Pegler Yorkshire)."><span>Zapytaj o warunki dla hurtowni</span></a>
       </div>
     </div>
   </section>
@@ -556,8 +663,8 @@
   <section class="section finder" id="katalog" aria-labelledby="katalog-t">
     <div class="wrap">
       <span class="label kicker">Katalog Besco 2026</span>
-      <h2 class="h2" id="katalog-t">Znajdź pozycję i dodaj do zapytania.</h2>
-      <p class="lead" style="margin-top:1rem">Wpisz numer artykułu, średnicę albo nazwę. Dodaj pozycje, podaj ilości i przenieś listę do formularza.</p>
+      <h2 class="h2" id="katalog-t">Zbuduj listę indeksów do wyceny.</h2>
+      <p class="lead" style="margin-top:1rem">Wpisz numer artykułu Besco, średnicę albo nazwę. Dodaj indeksy, które chcesz prowadzić, podaj ilości i przenieś listę do formularza. Warunki przygotujemy w jeden dzień roboczy.</p>
       <div class="fd__g">
         <div>
           <div class="fd__search">
@@ -583,7 +690,7 @@
           <div class="fd__more" id="more" hidden><button type="button">Pokaż kolejne</button></div>
         </div>
         <aside class="rfq" id="zapytanie" aria-labelledby="rfq-t">
-          <h3 id="rfq-t">Twoje zapytanie <span class="label" id="rfqN">0 poz.</span></h3>
+          <h3 id="rfq-t">Lista do wyceny <span class="label" id="rfqN">0 poz.</span></h3>
           <p id="rfqHint">Dodaj pozycje z listy. Ilości zmienisz tutaj.</p>
           <ul id="rfqList"></ul>
           <button class="mag" type="button" id="toForm" disabled><span>Przenieś do formularza</span></button>
@@ -598,31 +705,31 @@
     <div class="wrap">
       <span class="label kicker" style="color:var(--red-soft)">Metody łączenia</span>
       <h2 class="h2">Cztery technologie. Jedno zamówienie.</h2>
-      <p class="lead">Kompletujemy instalację niezależnie od tego, jak ją łączysz, bez szukania drugiego dostawcy.</p>
+      <p class="lead">Jeden dystrybutor na wszystkie cztery technologie, więc Twoja hurtownia obsłuży każdego instalatora bez szukania drugiego dostawcy.</p>
       <div class="panels" id="panels">
         <button class="panel is-open" type="button" aria-expanded="true">
           <img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_38c9a02c-03c6-4a5b-912e-0e33c5fa9e57_min.webp" data-fb="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_38c9a02c-03c6-4a5b-912e-0e33c5fa9e57.png" alt="" width="1856" height="2304" loading="lazy" decoding="async">
           <span class="panel__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 12h5M17 12h5"/><rect x="7" y="8" width="10" height="8" rx="2"/><path d="M9 8V6M15 8V6M9 16v2M15 16v2"/></svg></span>
           <span class="panel__prod" aria-hidden="true"><img src="img/besco/x113.webp" alt="" width="64" height="64" loading="lazy" decoding="async"><img src="img/besco/x249.webp" alt="" width="64" height="64" loading="lazy" decoding="async"><img src="img/besco/x877.webp" alt="" width="64" height="64" loading="lazy" decoding="async"></span>
-          <span class="panel__c"><span class="label panel__n">01</span><span class="panel__t">Zaciskanie</span><span class="panel__p">Złączki miedziane press w profilu V i M (12–108 mm, 16 bar), linie gazowe z atestem DVGW i INiG oraz stal węglowa press do CO i sprężonego powietrza.</span></span>
+          <span class="panel__c"><span class="label panel__n">01</span><span class="panel__t">Zaciskanie</span><span class="panel__p">Besco: miedź press w profilu V i M (12–108 mm, 16 bar), linie gazowe z atestem DVGW i INiG, stal węglowa press i zawory kulowe press.</span></span>
         </button>
         <button class="panel" type="button" aria-expanded="false">
           <img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_583d259f-eb30-42c5-978d-ea11725cee54_min.webp" data-fb="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_583d259f-eb30-42c5-978d-ea11725cee54.png" alt="" width="2400" height="1792" loading="lazy" decoding="async">
           <span class="panel__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 12h7M15 12h7"/><rect x="9" y="8" width="6" height="8" rx="1.5"/><path d="M5 9l3 3-3 3M19 9l-3 3 3 3"/></svg></span>
-          
-          <span class="panel__c"><span class="label panel__n">02</span><span class="panel__t">Na wcisk</span><span class="panel__p">Złączki wciskane do instalacji wody i CO. Montaż bez specjalistycznych narzędzi.</span></span>
+          <span class="panel__prod" aria-hidden="true"><img src="img/oferta/tectite-classic.webp" alt="" width="64" height="64" loading="lazy" decoding="async"><img src="img/oferta/tectite-316.webp" alt="" width="64" height="64" loading="lazy" decoding="async"><img src="img/oferta/pegler-tx300.webp" alt="" width="64" height="64" loading="lazy" decoding="async"></span>
+          <span class="panel__c"><span class="label panel__n">02</span><span class="panel__t">Na wcisk</span><span class="panel__p">Pegler Yorkshire Tectite: Classic, Pro, 316 i Carbon (10–54 mm) oraz zawory na wcisk. Montaż bez narzędzi i ognia, 25 lat gwarancji producenta.</span></span>
         </button>
         <button class="panel" type="button" aria-expanded="false">
           <img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144147_f956475d-11f9-4c54-b443-95dd38d078fd_min.webp" data-fb="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144147_f956475d-11f9-4c54-b443-95dd38d078fd.png" alt="" width="2400" height="1792" loading="lazy" decoding="async">
           <span class="panel__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 12h6M18 12h4"/><path d="M8 8h10v8H8z"/><path d="M10 8v8M12 8v8M14 8v8M16 8v8"/></svg></span>
-          <span class="panel__prod" aria-hidden="true"><img src="img/besco/x187.webp" alt="" width="64" height="64" loading="lazy" decoding="async"><img src="img/besco/x188.webp" alt="" width="64" height="64" loading="lazy" decoding="async"><img src="img/besco/x899.webp" alt="" width="64" height="64" loading="lazy" decoding="async"></span>
-          <span class="panel__c"><span class="label panel__n">03</span><span class="panel__t">Skręcanie</span><span class="panel__p">Przejścia z gwintem GW i GZ od 3/8″ do 3″, śrubunki z uszczelnieniem płaskim i stożkowym, półśrubunki i kolana ścienne.</span></span>
+          <span class="panel__prod" aria-hidden="true"><img src="img/oferta/kuterlite.webp" alt="" width="64" height="64" loading="lazy" decoding="async"><img src="img/oferta/kuterlite-kolano.webp" alt="" width="64" height="64" loading="lazy" decoding="async"><img src="img/oferta/kuterlite-zawor.webp" alt="" width="64" height="64" loading="lazy" decoding="async"></span>
+          <span class="panel__c"><span class="label panel__n">03</span><span class="panel__t">Skręcanie</span><span class="panel__p">Pegler Yorkshire Kuterlite: K600 i K900 Pro do miedzi (6–54 mm), K700 do rur PE (20–63 mm) oraz zawory z końcówkami zaciskowymi.</span></span>
         </button>
         <button class="panel" type="button" aria-expanded="false">
           <img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_2023de35-389d-4157-81a8-0960c78923b8_min.webp" data-fb="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_2023de35-389d-4157-81a8-0960c78923b8.png" alt="" width="3168" height="1344" loading="lazy" decoding="async">
           <span class="panel__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 14h8M14 14h8"/><path d="M10 11h4v6h-4z"/><path d="M12 3c1.5 2 1.5 3.5 0 5"/></svg></span>
           <span class="panel__prod" aria-hidden="true"><img src="img/besco/x546.webp" alt="" width="64" height="64" loading="lazy" decoding="async"><img src="img/besco/x790.webp" alt="" width="64" height="64" loading="lazy" decoding="async"><img src="img/besco/x853.webp" alt="" width="64" height="64" loading="lazy" decoding="async"></span>
-          <span class="panel__c"><span class="label panel__n">04</span><span class="panel__t">Lutowanie</span><span class="panel__p">Kształtki EN 1254 6–108 mm do 25 bar, calowe ANSI B16.22 od 1/4″ do 4 1/8″ i G-size do chłodnictwa do 80 bar.</span></span>
+          <span class="panel__c"><span class="label panel__n">04</span><span class="panel__t">Lutowanie</span><span class="panel__p">Besco: kształtki EN 1254 serii 4000 i 5000 (6–108 mm, 25 bar), calowe ANSI B16.22 od 1/4″ do 4 1/8″ i G-size do chłodnictwa do 80 bar.</span></span>
         </button>
       </div>
     </div>
@@ -634,17 +741,17 @@
       <div class="yard__grid">
         <div>
           <span class="label kicker">Zaplecze</span>
-          <h2 class="h2">Magazyn, który nie zatrzymuje budowy.</h2>
+          <h2 class="h2">Zaplecze, na którym oprzesz swoje stany.</h2>
         </div>
-        <p class="lead">Utrzymujemy pełne stany najczęściej zamawianych pozycji, dlatego typowe zamówienie kompletujemy tego samego dnia. Braki rynkowe zgłaszamy z wyprzedzeniem.</p>
+        <p class="lead">Trzymamy pełne stany najczęściej rotujących pozycji Besco i Pegler Yorkshire, dlatego typowe zamówienie hurtowni kompletujemy tego samego dnia. O brakach rynkowych informujemy z wyprzedzeniem, zanim zabraknie towaru na Twoich półkach.</p>
       </div>
       <figure class="frame" data-hf>
         <img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_594d4ac1-345a-48f3-aab4-a14c2429f78a_min.webp" data-fb="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_594d4ac1-345a-48f3-aab4-a14c2429f78a.png" alt="Regały magazynowe z armaturą instalacyjną" width="2752" height="1536" loading="lazy" decoding="async">
       </figure>
       <div class="stats">
-        <div class="stat"><b><span class="odo" data-odo="1936" aria-label="1 936">1 936</span></b><span>pozycji w katalogu Besco 2026</span></div>
-        <div class="stat"><b><span class="odo" data-odo="24" aria-label="24">24</span><i> h</i></b><span>wysyłka z magazynu</span></div>
-        <div class="stat"><b><span class="odo" data-odo="1" aria-label="1">1</span><i> dzień</i></b><span>na wycenę zapytania</span></div>
+        <div class="stat"><b><span class="odo" data-odo="1936" aria-label="1 936">1 936</span></b><span>indeksów Besco 2026 w wyszukiwarce</span></div>
+        <div class="stat"><b><span class="odo" data-odo="24" aria-label="24">24</span><i> h</i></b><span>wysyłka do hurtowni z magazynu</span></div>
+        <div class="stat"><b><span class="odo" data-odo="1" aria-label="1">1</span><i> dzień</i></b><span>na warunki handlowe</span></div>
         <div class="stat"><b><span class="odo" data-odo="30" aria-label="30">30</span><i> lat</i></b><span>na rynku instalacyjnym</span></div>
       </div>
     </div>
@@ -653,16 +760,16 @@
   <!-- 6 · PROCES + DLA KOGO -->
   <section class="section" id="proces" style="padding-top:0">
     <div class="wrap">
-      <span class="label kicker">Jak działamy</span>
-      <h2 class="h2">Od zapytania do dostawy.</h2>
+      <span class="label kicker">Współpraca</span>
+      <h2 class="h2">Jak zacząć współpracę.</h2>
       <div class="steps">
-        <div class="step in"><span class="label">Dziś</span><div class="step__n">01</div><h3>Wysyłasz zapytanie</h3><p>Formularzem, mailem albo telefonicznie. Wystarczy lista numerów Besco lub specyfikacja z projektu.</p></div>
-        <div class="step step--dark in"><span class="label">Tego samego dnia</span><div class="step__n">02</div><h3>Otrzymujesz wycenę</h3><p>Z cenami hurtowymi, dostępnością i terminem realizacji dla każdej pozycji.</p></div>
-        <div class="step in"><span class="label">+24 h</span><div class="step__n">03</div><h3>Odbierasz dostawę</h3><p>Wysyłka w 24 godziny od potwierdzenia. Duże zamówienia dowozimy własnym transportem.</p></div>
+        <div class="step in"><span class="label">Dziś</span><div class="step__n">01</div><h3>Wysyłasz listę asortymentu</h3><p>Formularzem, mailem albo telefonicznie. Wystarczą systemy lub indeksy, które chcesz prowadzić, i szacowane ilości.</p></div>
+        <div class="step step--dark in"><span class="label">W 1 dzień roboczy</span><div class="step__n">02</div><h3>Ustalamy warunki</h3><p>Oferta dopasowana do Twojej hurtowni: ceny, dostępność i terminy dostaw.</p></div>
+        <div class="step in"><span class="label">+24 h</span><div class="step__n">03</div><h3>Zatowarowujesz hurtownię</h3><p>Wysyłka w 24 godziny od potwierdzenia. Duże zamówienia dowozimy własnym transportem, kolejne uzupełnienia planujemy razem.</p></div>
       </div>
       <div class="aud">
-        <div class="in"><span class="label">Hurtownie</span><h3>Stała oferta uzupełnień</h3><p>Ceny progowe dla odbiorców regularnych, rezerwacje stanów pod kontrakty i zamawianie w pełnych opakowaniach producenta.</p></div>
-        <div class="in"><span class="label">Wykonawcy</span><h3>Kompletacja pod projekt</h3><p>Wyceniamy całe specyfikacje, kompletujemy dostawy etapami i doradzamy zamienniki, kiedy pozycja ma długi termin.</p></div>
+        <div class="in"><span class="label">Hurtownie</span><h3>Stały partner do uzupełniania stanów</h3><p>Ceny progowe dla odbiorców regularnych, rezerwacje stanów pod kontrakty Twoich klientów, zamawianie w pełnych opakowaniach producenta i planowanie zatowarowania przed sezonem grzewczym.</p></div>
+        <div class="in"><span class="label">Projekty</span><h3>Kompletacja pod większe inwestycje</h3><p>Wyceniamy całe specyfikacje, kompletujemy dostawy etapami i doradzamy zamienniki, kiedy pozycja ma długi termin.</p></div>
         <div class="in"><span class="label">Przemysł</span><h3>Utrzymanie ruchu bez przestojów</h3><p>Kształtki G-size do 80 bar, stal węglowa do sprężonego powietrza i dokumentacja wymagana przez działy UR.</p></div>
       </div>
     </div>
@@ -673,15 +780,15 @@
     <div class="docs__g">
       <div class="docs__t">
         <span class="label kicker">Baza dokumentów</span>
-        <h2 class="h2">Atesty i karty katalogowe do każdej pozycji.</h2>
-        <p class="lead">Bazę udostępniamy klientom po weryfikacji firmy, bez publicznego dostępu. Dostęp przyznajemy w ciągu jednego dnia roboczego.</p>
+        <h2 class="h2">Dokumenty, o które pytają Twoi klienci.</h2>
+        <p class="lead">Atesty i karty katalogowe do każdej pozycji. Hurtowniom udostępniamy bazę po weryfikacji, żeby handlowcy mogli od ręki odpowiedzieć instalatorom i inwestorom. Dostęp w ciągu jednego dnia roboczego.</p>
         <ul>
           <li><span>Karty katalogowe Besco 2026 z numerami i opakowaniami</span><span class="label">PDF</span></li>
           <li><span>Atesty higieniczne</span><span class="label">PZH</span></li>
           <li><span>Deklaracje właściwości użytkowych</span><span class="label">DoP</span></li>
-          <li><span>Aprobaty producenta: DVGW, KIWA, WRAS, RISE, INiG</span><span class="label">DVGW</span></li>
+          <li><span>Aprobaty producentów: DVGW, KIWA, WRAS, RISE, INiG, PZH</span><span class="label">DVGW</span></li>
         </ul>
-        <a class="ghost" href="#kontakt" data-topic="Proszę o dostęp do bazy dokumentów technicznych.">Poproś o dostęp</a>
+        <a class="ghost" href="#kontakt" data-topic="Jesteśmy hurtownią i prosimy o dostęp do bazy dokumentów technicznych.">Poproś o dostęp</a>
       </div>
       <div class="docs__m">
         <div class="docs__sheet"><img src="img/besco/karta-p3.webp" alt="Strona katalogu Besco 2026: złączki miedziane press profil V, tabela numerów artykułów" width="860" height="1167" loading="lazy" decoding="async"></div>
@@ -695,18 +802,19 @@
     <div class="wrap faq">
       <div class="faq__intro">
         <span class="label kicker">Pytania</span>
-        <h2 class="h2">Zanim wyślesz zapytanie.</h2>
+        <h2 class="h2">Pytania hurtowni.</h2>
         <p class="lead">Nie ma tu Twojego pytania? Handlowiec odpowie telefonicznie jeszcze dziś.</p>
         <a class="ulink" href="tel:+48798807106">Zadzwoń: 798 807 106</a>
       </div>
       <div>
-        <details class="qa" name="faq" open><summary>Jak szybko dostanę wycenę?<i aria-hidden="true"></i></summary><p>Tego samego dnia roboczego. Wycena zawiera ceny hurtowe, dostępność i termin realizacji dla każdej pozycji.</p></details>
-        <details class="qa" name="faq"><summary>Czy mogę zamówić po numerze artykułu Besco?<i aria-hidden="true"></i></summary><p>Tak. Wyszukiwarka na tej stronie obejmuje 1 936 pozycji z katalogu Besco 2026. Dodaj pozycje do zapytania, podaj ilości i przenieś listę do formularza.</p></details>
+        <details class="qa" name="faq" open><summary>Jak wyglądają warunki handlowe?<i aria-hidden="true"></i></summary><p>Każda hurtownia dostaje indywidualną ofertę, dopasowaną do asortymentu, który prowadzi, i planowanych zakupów. Przygotowujemy ją w ciągu jednego dnia roboczego, razem z dostępnością i terminami dostaw.</p></details>
+        <details class="qa" name="faq"><summary>Jakie marki i systemy dystrybuujecie?<i aria-hidden="true"></i></summary><p>Besco Fittings &amp; Connectors: miedź press w profilach V i M, serie gazowe, stal węglowa press, złączki lutowane i zawory kulowe press. Pegler Yorkshire: złączki na wcisk Tectite, złączki skręcane Kuterlite i zawory na wcisk. Razem około 2 900 indeksów.</p></details>
+        <details class="qa" name="faq"><summary>Czy mogę zamówić po numerze artykułu Besco?<i aria-hidden="true"></i></summary><p>Tak. Wyszukiwarka na tej stronie obejmuje 1 936 pozycji z katalogu Besco 2026. Dodaj indeksy do listy, podaj ilości i przenieś listę do formularza. Indeksy Pegler Yorkshire podaj w wiadomości.</p></details>
+        <details class="qa" name="faq"><summary>Czym różni się profil V od M?<i aria-hidden="true"></i></summary><p>To kształt końcówki press i szczęki zaciskarki. Miedź Besco jest w obu profilach (V 12–54 mm, M 12–108 mm), stal węglowa w profilu M. Złączki w profilu M można zaciskać także szczęką V w zakresie DN12–28.</p></details>
         <details class="qa" name="faq"><summary>Które złączki nadają się do gazu?<i aria-hidden="true"></i></summary><p>Linie GP Gas w profilu V i M: średnice 15–35 mm, do 5 bar, od −20 do 70 °C, norma EN 1254-7, atesty DVGW i INiG. Do instalacji gazowych nie stosuj złączek z linii wodnych.</p></details>
-        <details class="qa" name="faq"><summary>Czym różni się profil V od M?<i aria-hidden="true"></i></summary><p>To kształt końcówki press i szczęki zaciskarki. Złączkę zaciskasz szczękami o tym samym profilu. Miedź Besco jest w obu profilach (V 12–54 mm, M 12–108 mm), stal węglowa w profilu M.</p></details>
+        <details class="qa" name="faq"><summary>Jaką gwarancję mają złączki Tectite?<i aria-hidden="true"></i></summary><p>Producent daje 25 lat gwarancji na Tectite Sprint, Classic, Pro i 316 z rurami innych producentów oraz 30 lat z rurami Yorkshire i rurami rekomendowanymi, jeśli montaż jest zgodny z instrukcją.</p></details>
         <details class="qa" name="faq"><summary>Jaki jest czas dostawy?<i aria-hidden="true"></i></summary><p>Wysyłka z magazynu w Olsztynie w 24 godziny od potwierdzenia zamówienia. Duże zamówienia dowozimy własnym transportem.</p></details>
-        <details class="qa" name="faq"><summary>Jak uzyskać dostęp do bazy dokumentów?<i aria-hidden="true"></i></summary><p>Poproś o dostęp przez formularz. Po weryfikacji firmy udostępniamy karty katalogowe, atesty i deklaracje w ciągu jednego dnia roboczego.</p></details>
-        <details class="qa" name="faq"><summary>Jakie marki macie w ofercie?<i aria-hidden="true"></i></summary><p>Złączki, kształtki i zawory Besco Fittings &amp; Connectors (Krefeld, Niemcy) oraz Pegler Yorkshire.</p></details>
+        <details class="qa" name="faq"><summary>Jak uzyskać dostęp do bazy dokumentów?<i aria-hidden="true"></i></summary><p>Poproś o dostęp przez formularz. Po weryfikacji hurtowni udostępniamy karty katalogowe, atesty i deklaracje w ciągu jednego dnia roboczego.</p></details>
       </div>
     </div>
   </section>
@@ -717,7 +825,7 @@
     <div class="wrap close__g">
       <div>
         <span class="label kicker">Kontakt</span>
-        <h2 class="h2">Potrzebujesz dostawy na jutro?</h2>
+        <h2 class="h2">Porozmawiajmy o warunkach dla Twojej hurtowni.</h2>
         <a class="close__big" href="tel:+48798807106">798 807 106</a>
         <div class="people">
           <div class="person"><span class="person__a">PS</span><div><span class="label">Sprzedaż</span><b>Piotr Stelmach</b><a href="tel:+48798807106">798 807 106</a><a href="mailto:piotr@armatex.pl">piotr@armatex.pl</a></div></div>
@@ -726,8 +834,8 @@
         </div>
       </div>
       <form class="form" id="form" novalidate>
-        <h3>Zapytanie ofertowe</h3>
-        <p>Odpowiadamy tego samego dnia roboczego.</p>
+        <h3>Zapytanie o warunki współpracy</h3>
+        <p>Odpowiadamy w ciągu jednego dnia roboczego.</p>
         <div class="fr">
           <div class="f"><label for="n">Imię i nazwisko</label><input id="n" autocomplete="name"></div>
           <div class="f"><label for="c">Firma</label><input id="c" autocomplete="organization"></div>
@@ -736,7 +844,11 @@
           <div class="f"><label for="e">E-mail</label><input id="e" type="email" autocomplete="email"></div>
           <div class="f"><label for="t">Telefon</label><input id="t" type="tel" autocomplete="tel"></div>
         </div>
-        <div class="fr"><div class="f f--w"><label for="m">Lista pozycji lub wiadomość</label><textarea id="m" placeholder="np. GP5001-22 × 40 szt., 2270-28 × 12 szt."></textarea></div></div>
+        <div class="fr">
+          <div class="f"><label for="pf">Profil firmy</label><select id="pf"><option>Hurtownia instalacyjna</option><option>Wykonawca / firma instalacyjna</option><option>Przemysł / utrzymanie ruchu</option><option>Inny</option></select></div>
+          <div class="f"><label for="ms">Miasto / województwo</label><input id="ms" autocomplete="address-level2"></div>
+        </div>
+        <div class="fr"><div class="f f--w"><label for="m">Asortyment, ilości lub lista indeksów</label><textarea id="m" placeholder="np. Tectite Classic 15–22 mm, ok. 2 000 szt. miesięcznie; GP5001-22 × 400 szt."></textarea></div></div>
         <label class="consent"><input type="checkbox" id="ok"> Wyrażam zgodę na przetwarzanie danych w celu obsługi zapytania. Administratorem danych jest Armatex.</label>
         <button class="mag" type="submit"><span>Wyślij zapytanie</span></button>
         <p class="form__s" id="fs" role="status"></p>
@@ -749,7 +861,7 @@
 <footer class="foot">
   <div class="wrap">
     <img src="img/logo-light.webp" alt="Armatex" width="300" height="52" loading="lazy">
-    <span>© 2026 Armatex · Dystrybutor armatury instalacyjnej dla firm</span>
+    <span>© 2026 Armatex · Dystrybutor Besco i Pegler Yorkshire dla hurtowni</span>
     <a href="../index.html" data-home>Wróć do aktualnej wersji strony</a>
   </div>
 </footer>
@@ -935,13 +1047,31 @@
     var btn = res.querySelector('.add[data-art="' + CSS.escape(b.dataset.art) + '"]'); if (btn) { btn.classList.remove('is-in'); btn.textContent = 'Dodaj'; }
   });
   $('#toForm').addEventListener('click', function () {
-    var lines = ['Zapytanie z katalogu Besco 2026:'];
+    var lines = ['Lista indeksów do wyceny (katalog Besco 2026):'];
     rfq.forEach(function (v, art) { lines.push(art + ' · ' + (v.l || label(art)) + ' · ' + v.q + ' szt.'); });
     $('#m').value = lines.join('\n');
     $('#kontakt').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
     setTimeout(function () { $('#n').focus({ preventScroll: true }); }, reduce ? 0 : 700);
   });
   drawRfq();
+
+  // Oferta: zakładki systemów
+  var syTabs = $$('.sy-tabs [role=tab]');
+  function syShow(tab, focus) {
+    syTabs.forEach(function (t) {
+      var on = t === tab; t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1;
+      $('#' + t.getAttribute('aria-controls')).hidden = !on;
+    });
+    if (focus) tab.focus();
+  }
+  syTabs.forEach(function (tab, i) {
+    tab.addEventListener('click', function () { syShow(tab); });
+    tab.addEventListener('keydown', function (e) {
+      var n = { ArrowRight: i + 1, ArrowLeft: i - 1, Home: 0, End: syTabs.length - 1 }[e.key];
+      if (n === undefined) return;
+      e.preventDefault(); syShow(syTabs[(n + syTabs.length) % syTabs.length], true);
+    });
+  });
 
   // Prefill z "Poproś o dostęp" i nieaktywny formularz szkicu
   $$('[data-topic]').forEach(function (a) { a.addEventListener('click', function () { $('#m').value = a.dataset.topic; }); });
