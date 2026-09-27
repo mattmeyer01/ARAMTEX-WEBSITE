@@ -159,7 +159,7 @@ LD_ORG=ld({"@context":"https://schema.org","@graph":[
    "brand":[{"@type":"Brand","name":"Besco"},{"@type":"Brand","name":"Pegler Yorkshire"}],
    "contactPoint":[
      {"@type":"ContactPoint","contactType":"sales","name":"Piotr Stelmach","telephone":"+48 798 807 106","email":"piotr@armatex.pl","areaServed":"PL","availableLanguage":"pl"},
-     {"@type":"ContactPoint","contactType":"sales","name":"Martyna Zielińska","telephone":"+48 515 231 693","email":"martyna@armatex.pl","areaServed":"PL","availableLanguage":"pl"}]},
+     {"@type":"ContactPoint","contactType":"warehouse","name":"Martyna Zielińska","telephone":"+48 515 231 693","email":"martyna@armatex.pl","areaServed":"PL","availableLanguage":"pl"}]},
   {"@type":"WebSite","@id":SITE+"#www","url":SITE,"name":"Armatex","inLanguage":"pl-PL","publisher":{"@id":SITE+"#firma"}}]})
 def ld_crumbs(items):
     el=[{"@type":"ListItem","position":1,"name":"Armatex","item":SITE}]
@@ -588,7 +588,7 @@ wsp=f'''
       <div class="facts">
         <div class="in"><h3>Logistyka</h3><ul><li>Wysyłka z magazynu w 24 godziny od potwierdzenia zamówienia.</li><li>Duże zamówienia dowozimy własnym transportem.</li><li>Zamawianie w pełnych opakowaniach producenta.</li></ul></div>
         <div class="in"><h3>Zatowarowanie</h3><ul><li>Ceny progowe dla odbiorców regularnych.</li><li>Rezerwacje stanów pod kontrakty Twoich klientów.</li><li>Wspólne planowanie dostaw przed sezonem grzewczym.</li></ul></div>
-        <div class="in"><h3>Obsługa</h3><ul><li>Oferta w ciągu jednego dnia roboczego.</li><li>Dwoje handlowców: Piotr Stelmach i Martyna Zielińska.</li><li>Cały program Besco i Pegler Yorkshire na jednej fakturze.</li></ul></div>
+        <div class="in"><h3>Obsługa</h3><ul><li>Oferta w ciągu jednego dnia roboczego.</li><li>Sprzedaż: Piotr Stelmach, magazyn: Martyna Zielińska.</li><li>Cały program Besco i Pegler Yorkshire na jednej fakturze.</li></ul></div>
       </div>
     </div>
   </section>
@@ -813,8 +813,8 @@ firma=phead([('O firmie','o-firmie.html')],'O firmie','Armatex. Dystrybutor zł�
       <h2 class="h2">Z kim rozmawiasz.</h2>
       <div class="team">
         <div class="in"><span class="team__av" aria-hidden="true">PS</span><div><span class="label">Sprzedaż</span><b>Piotr Stelmach</b><p><a href="tel:+48798807106">798 807 106</a> · <a href="mailto:piotr@armatex.pl">piotr@armatex.pl</a></p></div></div>
-        <div class="in"><span class="team__av" aria-hidden="true">MZ</span><div><span class="label">Sprzedaż</span><b>Martyna Zielińska</b><p><a href="tel:+48515231693">515 231 693</a> · <a href="mailto:martyna@armatex.pl">martyna@armatex.pl</a></p></div></div>
-        <div class="in"><span class="team__av" aria-hidden="true">A</span><div><span class="label">Biuro i magazyny</span><b>ul. Składowa 3a, 10-421 Olsztyn</b><p><a href="tel:+48513191502">513 191 502</a> · <a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a></p></div></div>
+        <div class="in"><span class="team__av" aria-hidden="true">MZ</span><div><span class="label">Magazyn</span><b>Martyna Zielińska</b><p><a href="tel:+48515231693">515 231 693</a> · <a href="mailto:martyna@armatex.pl">martyna@armatex.pl</a></p></div></div>
+        <div class="in"><span class="team__av" aria-hidden="true">B</span><div><span class="label">Biuro</span><b>ul. Składowa 3a, 10-421 Olsztyn</b><p><a href="tel:+48513191502">513 191 502</a> · <a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a></p></div></div>
       </div>
 {CTA_BOX}
     </div>
