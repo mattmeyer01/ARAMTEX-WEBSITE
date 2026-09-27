@@ -734,3 +734,14 @@ a.chip:hover { border-color: var(--ink); }
   .foot__g > .foot__co { grid-column: 1; grid-row: 2; margin-top: .4rem; }
 }
 @media (max-width: 1080px) { .foot__co { margin-top: 0; } }
+
+/* telefon: pływający przycisk „Zadzwoń” */
+.callfab { display: none; }
+@media (max-width: 720px) {
+  .callfab { position: fixed; z-index: 65; right: 1rem; bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); display: inline-flex; align-items: center; gap: .5rem; height: 52px; padding: 0 1.15rem 0 1rem; border-radius: 99px; background: #16a34a; color: #fff; font-weight: 600; font-size: .95rem; text-decoration: none; box-shadow: 0 10px 28px -8px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.12) inset; }
+  .callfab svg { width: 20px; height: 20px; }
+  .callfab:active { transform: scale(.97); }
+  .menu-open .callfab { display: none; }
+  .pill { left: 1rem; transform: none; }
+  .foot__bar { padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px)); }
+}
