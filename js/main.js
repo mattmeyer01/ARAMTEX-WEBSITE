@@ -50,6 +50,23 @@
     risers.forEach(function (el) { io.observe(el); });
   }
 
+  /* ---------------- oferta: filtr metod laczenia ---------------- */
+  var ofBtns = document.querySelectorAll(".of-filter button");
+  var ofCards = document.querySelectorAll(".of-card");
+  var ofCount = document.getElementById("ofCount");
+  ofBtns.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var m = btn.getAttribute("data-m"), shown = 0;
+      ofBtns.forEach(function (b) { b.setAttribute("aria-pressed", b === btn ? "true" : "false"); });
+      ofCards.forEach(function (c) {
+        var on = m === "all" || c.getAttribute("data-m") === m;
+        c.hidden = !on;
+        if (on) { shown++; c.classList.add("is-in"); }
+      });
+      if (ofCount) ofCount.textContent = "Pokazano " + shown + " z " + ofCards.length + " linii produktów.";
+    });
+  });
+
   /* ---------------- prefill tematu zapytania ---------------- */
   var msg = document.getElementById("f-msg");
   if (msg) {
