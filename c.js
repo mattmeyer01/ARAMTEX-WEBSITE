@@ -286,13 +286,21 @@
     e.preventDefault();
     var st = $('#fs'), bad = null;
     st.className = 'form__s';
+    var msg = [];
     $$('[required]', form).forEach(function (i) {
-      var v = i.type === 'checkbox' ? i.checked : i.value.trim() !== '';
-      if (v && i.type === 'email') v = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(i.value.trim());
+      var val = i.value.trim(), v = i.type === 'checkbox' ? i.checked : val !== '', why = '';
+      if (v && i.type === 'email' && !/^[^\s@]+@[^\s@.]+(\.[^\s@.]+)*\.[a-z]{2,}$/i.test(val)) { v = false; why = 'Podaj poprawny adres e-mail, np. jan@firma.pl.'; }
+      if (v && i.type === 'tel' && val.replace(/\D/g, '').length < 9) { v = false; why = 'Podaj numer telefonu (co najmniej 9 cyfr).'; }
+      if (!v && !why) why = i.type === 'checkbox' ? 'Zaznacz zgodę na przetwarzanie danych.' : '';
       var f = i.closest('.f'); if (f) f.classList.toggle('is-bad', !v);
-      if (!v && !bad) bad = i;
+      i.setAttribute('aria-invalid', !v);
+      if (!v) { if (!bad) bad = i; if (why) msg.push(why); }
     });
-    if (bad) { st.classList.add('is-err'); st.textContent = 'Uzupełnij zaznaczone pola i zaznacz zgodę.'; bad.focus(); return; }
+    if (bad) {
+      var empty = $$('[required]', form).some(function (i) { return i.type !== 'checkbox' && !i.value.trim(); });
+      if (empty) msg.unshift('Uzupełnij pola oznaczone gwiazdką.');
+      st.classList.add('is-err'); st.textContent = msg.join(' '); bad.focus(); return;
+    }
     var btn = form.querySelector('button[type=submit]'), data = {};
     btn.disabled = true; st.textContent = 'Wysyłanie…';
     new FormData(form).forEach(function (v, k) { data[k] = v; });

@@ -703,3 +703,5 @@ a.chip:hover { border-color: var(--ink); }
 
 /* menu z 6 pozycjami: ciaśniej na węższych ekranach, telefon jest też w CTA */
 @media (max-width: 1260px) { .nav__links { gap: 1.25rem; } .nav__tel { display: none; } }
+.f .req { color: var(--red); }
+.f.is-bad select { border-color: var(--red); }

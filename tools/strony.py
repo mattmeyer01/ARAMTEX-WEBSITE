@@ -261,12 +261,16 @@ def live_form(html):
     for a,b in (('<input id="n" autocomplete="name">','<input id="n" name="Imię i nazwisko" autocomplete="name" required>'),
                 ('<input id="c" autocomplete="organization">','<input id="c" name="Firma" autocomplete="organization" required>'),
                 ('<input id="e" type="email" autocomplete="email">','<input id="e" name="email" type="email" autocomplete="email" required>'),
-                ('<input id="t" type="tel" autocomplete="tel">','<input id="t" name="Telefon" type="tel" autocomplete="tel">'),
+                ('<input id="t" type="tel" autocomplete="tel">','<input id="t" name="Telefon" type="tel" autocomplete="tel" inputmode="tel" required>'),
+                ('<input id="e" name="email" type="email" autocomplete="email" required>','<input id="e" name="email" type="email" autocomplete="email" inputmode="email" required>'),
                 ('<select id="pf">','<select id="pf" name="Profil firmy">'),
                 ('<input id="ms" autocomplete="address-level2">','<input id="ms" name="Miasto / województwo" autocomplete="address-level2">'),
                 ('<textarea id="m" ','<textarea id="m" name="Zapytanie" required '),
                 ('<input type="checkbox" id="ok">','<input type="checkbox" id="ok" name="Zgoda" value="tak" required>')):
         assert a in html, a; html=html.replace(a,b)
+    for fid,lab in (('n','Imię i nazwisko'),('c','Firma'),('e','E-mail'),('t','Telefon'),('m','Asortyment, ilości lub lista indeksów')):
+        a=f'<label for="{fid}">{lab}</label>'; assert a in html, a
+        html=html.replace(a,f'<label for="{fid}">{lab} <span class="req" aria-hidden="true">*</span></label>')
     return html
 
 def page(name,title,desc,cur,body,extra=''):
