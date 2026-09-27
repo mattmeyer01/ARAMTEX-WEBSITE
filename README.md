@@ -48,7 +48,7 @@ pozycji o nietypowym układzie tabel (kolektory TM80/TM81, węże TF90/TF92, cz�
 ## Formularz
 
 Formularz (strona główna i `kontakt.html`) wysyła przez [FormSubmit](https://formsubmit.co) na
-`armatex1@gmail.com` (stała `FORM_TO` w `tools/strony.py`). Pierwsza wysyłka z nowej domeny może wymagać
+`biuro@armatex.pl` (stała `FORM_TO` w `tools/strony.py`). Pierwsza wysyłka z nowej domeny może wymagać
 potwierdzenia linkiem, który FormSubmit wyśle na ten adres.
 
 ## Przed startem w wyszukiwarkach
@@ -62,3 +62,9 @@ potwierdzenia linkiem, który FormSubmit wyśle na ten adres.
 5. Tło sekcji kontaktu na stronie głównej ładuje się z CDN Higgsfield (`d8j0ntlcm91z4.cloudfront.net`);
    warto pobrać je do `img/` i podmienić adres.
 6. Potwierdź u Besco prawo do udostępniania katalogu PDF.
+
+## Strona 404
+
+`404.html` GitHub Pages podaje pod każdym nieistniejącym adresem, także zagnieżdżonym. Skrypt na początku `<head>`
+ustawia `<base>` na katalog strony (`/ARAMTEX-WEBSITE/` na github.io albo `/` na własnej domenie), żeby style,
+zdjęcia i linki działały. Wyszukiwarka na 404 przekazuje frazę do `katalog.html?q=…`.

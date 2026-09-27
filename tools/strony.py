@@ -153,7 +153,9 @@ LD_ORG=ld({"@context":"https://schema.org","@graph":[
   {"@type":"WholesaleStore","@id":SITE+"#firma","name":"Armatex","url":SITE,
    "logo":SITE+"img/logo-dark.webp","image":SITE+"img/og/armatex-og.jpg",
    "description":"Dystrybutor złączek i armatury Besco oraz Pegler Yorkshire dla hurtowni instalacyjnych w całej Polsce: złączki zaciskane (press), na wcisk, skręcane i lutowane.",
-   "telephone":"+48 513 191 502","email":"armatex1@gmail.com",
+   "telephone":"+48 513 191 502","email":"biuro@armatex.pl",
+   "legalName":"Przedsiębiorstwo Handlowo-Usługowe Armatex Spółka Jawna A.J. Bunda","taxID":"7393814110",
+   "identifier":[{"@type":"PropertyValue","propertyID":"KRS","value":"0000371628"},{"@type":"PropertyValue","propertyID":"REGON","value":"280563743"}],
    "address":{"@type":"PostalAddress","streetAddress":"ul. Składowa 3a","postalCode":"10-421","addressLocality":"Olsztyn","addressCountry":"PL"},
    "areaServed":{"@type":"Country","name":"Polska"},
    "brand":[{"@type":"Brand","name":"Besco"},{"@type":"Brand","name":"Pegler Yorkshire"}],
@@ -243,12 +245,13 @@ FOOT='''<footer class="foot">
     </div>
     <div><h4>Oferta</h4><ul>'''+''.join(f'<li><a href="{s["slug"]}.html">{s["name"]}</a></li>' for s in SYS)+'''</ul></div>
     <div><h4>Armatex</h4><ul><li><a href="katalog.html">Wyszukiwarka indeksów Besco</a></li><li><a href="'''+PDF+'''" target="_blank" rel="noopener">Katalog Besco 2026 (PDF)</a></li><li><a href="do-pobrania.html">Do pobrania</a></li><li><a href="poradniki.html">Poradniki</a></li><li><a href="o-firmie.html">O firmie</a></li><li><a href="wspolpraca.html">Współpraca</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
-    <div><h4>Kontakt</h4><ul><li><a href="tel:+48513191502">513 191 502</a></li><li><a href="mailto:armatex1@gmail.com">armatex1@gmail.com</a></li><li>ul. Składowa 3a, 10-421 Olsztyn</li></ul></div>
+    <div><h4>Kontakt</h4><ul><li><a href="tel:+48513191502">513 191 502</a></li><li><a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a></li><li>ul. Składowa 3a, 10-421 Olsztyn</li></ul></div>
   </div>
+  <div class="wrap foot__legal">Przedsiębiorstwo Handlowo-Usługowe Armatex Spółka Jawna A.J. Bunda · ul. Siewna 24, 10-831 Olsztyn · NIP 7393814110 · KRS 0000371628 · REGON 280563743</div>
   <div class="wrap foot__bar"><span>© 2026 Armatex</span><a href="polityka-prywatnosci.html">Polityka prywatności</a></div>
 </footer>
 '''
-FORM_TO='armatex1@gmail.com'
+FORM_TO='biuro@armatex.pl'
 def live_form(html):
     """Formularz wysyła przez FormSubmit (jak poprzednia wersja strony)."""
     if 'id="form" novalidate>' not in html: return html
@@ -1137,6 +1140,40 @@ pol=phead([('Polityka prywatności','polityka-prywatnosci.html')],'Dokumenty','P
   </section>
 '''
 page('polityka-prywatnosci.html','Polityka prywatności i cookies | Armatex','Polityka prywatności strony armatex.pl: administrator danych, cele i podstawy przetwarzania, okres przechowywania, prawa użytkownika i informacja o plikach cookies.','polityka',pol,ld_crumbs([('Polityka prywatności','polityka-prywatnosci.html')]))
+
+# ---- 404
+n404=f'''
+  <section class="phead">
+    <div class="wrap">
+      <div>
+        <span class="label kicker">Błąd 404</span>
+        <h1>Nie znaleźliśmy tej strony.</h1>
+        <p class="lead">Adres mógł się zmienić po przebudowie strony. Znajdź produkt po numerze artykułu albo zapytaj nas bezpośrednio.</p>
+        <form class="e404" action="katalog.html" method="get" role="search">
+          <label class="sr" for="q404">Numer artykułu lub nazwa</label>
+          <input id="q404" name="q" type="search" placeholder="np. GP5001-22 albo trójnik 28" autocomplete="off">
+          <button class="mag" type="submit"><span>Szukaj w katalogu</span></button>
+        </form>
+        <div class="phead__ctas"><a class="ghost" href="kontakt.html#formularz">Zapytaj o wycenę</a><a class="ghost" href="tel:+48513191502">513 191 502</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="wrap">
+      <span class="label kicker">Przydatne strony</span>
+      <h2 class="h2">Może szukasz jednej z nich.</h2>
+      <div class="gain">'''+''.join(f'<a class="e404__c" href="{x["slug"]}.html"><span class="label">{x["brand"]}</span><b>{x["name"]}</b><p>{x["sizes"]} · {x["cntw"]}</p></a>' for x in SYS)+'''</div>
+      <p class="lead" style="margin-top:2rem">Albo przejdź do <a href="index.html">strony głównej</a>, <a href="do-pobrania.html">katalogów do pobrania</a> lub <a href="poradniki.html">poradników</a>.</p>
+    </div>
+  </section>
+'''
+page('404.html','Nie znaleziono strony | Armatex','Strona nie istnieje. Znajdź produkt w katalogu Armatex lub zapytaj o wycenę.','404',n404)
+h=open(OUT+'404.html',encoding='utf-8').read()
+h=re.sub(r'\s*<link rel="canonical"[^>]*>','',h); h=re.sub(r'\s*<meta property="og:url"[^>]*>','',h)
+# GitHub Pages podaje 404.html pod dowolnym adresem: baza ścieżek ustawiana przed wczytaniem CSS
+h=h.replace('<head>\n','<head>\n  <script>document.write(\'<base href="\'+(/^\\/aramtex-website\\//i.test(location.pathname)?location.pathname.match(/^\\/[^/]+\\//)[0]:\'/\')+\'">\')</script>\n',1)
+open(OUT+'404.html','w',encoding='utf-8').write(h)
 
 # ---------------- sitemap.xml i robots.txt (do wersji produkcyjnej)
 import datetime
