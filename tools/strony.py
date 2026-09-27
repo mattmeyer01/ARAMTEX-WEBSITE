@@ -272,7 +272,7 @@ def live_form(html):
         a=f'<label for="{fid}">{lab}</label>'; assert a in html, a
         html=html.replace(a,f'<label for="{fid}">{lab} <span class="req" aria-hidden="true">*</span></label>')
     a='value="tak" required> Wyrażam zgodę na przetwarzanie danych w celu obsługi zapytania. Administratorem danych jest Armatex.</label>'; assert a in html
-    html=html.replace(a,'value="tak" required> <span>Wyrażam zgodę na przetwarzanie danych w celu obsługi zapytania. <span class="req" aria-hidden="true">*</span> Administratorem danych jest Armatex.</span></label>')
+    html=html.replace(a,'value="tak" required> <span>Wyrażam zgodę na przetwarzanie danych w celu obsługi zapytania. Administratorem danych jest Armatex. <span class="req" aria-hidden="true">*</span></span></label>')
     return html
 
 def page(name,title,desc,cur,body,extra=''):
