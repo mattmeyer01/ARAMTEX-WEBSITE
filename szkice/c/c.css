@@ -479,7 +479,13 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .gl summary b::before { content: "+"; display: inline-block; width: 1.2rem; color: var(--red-2); transition: transform .3s; }
 .gl[open] summary b::before { transform: rotate(45deg); }
 .gl summary .label { color: var(--ink-40); white-space: nowrap; }
-.gl__l { display: flex; flex-wrap: wrap; gap: .4rem; }
+.gl__l { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: .5rem; }
+.gcard { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: .8rem; align-items: center; padding: .45rem .8rem .45rem .45rem; background: #fff; border: 1px solid var(--line); border-radius: 12px; text-decoration: none; transition: border-color .2s, box-shadow .3s var(--ease-out), transform .3s var(--ease-out); }
+.gcard img { width: 56px; height: 56px; object-fit: contain; background: #F3F1EC; border-radius: 8px; transition: transform .4s var(--ease-out); }
+.gcard b { display: block; font-weight: 600; font-size: .92rem; line-height: 1.25; }
+.gcard small { display: block; margin-top: .2rem; font: 500 .62rem/1.2 var(--mono); letter-spacing: .06em; color: var(--ink-40); }
+.gcard:hover, .gcard:focus-visible { border-color: var(--ink-40); box-shadow: 0 10px 24px -16px rgba(10,31,68,.4); transform: translateY(-1px); }
+.gcard:hover img { transform: scale(1.08); }
 .gl .gl__l { padding: 0 1.2rem 1.2rem; }
 a.chip { text-decoration: none; display: inline-flex; align-items: baseline; gap: .45rem; font: 500 .86rem/1.2 var(--sans); text-transform: none; letter-spacing: 0; color: var(--ink); padding: .55rem .8rem; }
 a.chip small { font: 500 .62rem/1 var(--mono); letter-spacing: .06em; color: var(--ink-40); }
@@ -504,6 +510,10 @@ a.chip:hover { border-color: var(--ink); }
   .gp__p { grid-template-columns: 1fr; }
   .gp__p div:last-child:nth-child(odd) { grid-column: auto; }
   .gl summary { flex-direction: column; gap: .3rem; }
+  .gl__l { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .4rem; }
+  .gcard { grid-template-columns: 1fr; gap: .45rem; padding: .5rem; align-items: start; }
+  .gcard img { width: 100%; height: 72px; }
+  .gcard b { font-size: .86rem; }
   .gp__t tr { grid-template-columns: 1fr auto; gap: .1rem 1rem; padding: .75rem 0; }
   .gp__t td:not(.sy-act) { grid-template-columns: 6.5rem 1fr; font-size: .88rem; }
   .gp__t tbody th { grid-column: 1; font-weight: 600; }
