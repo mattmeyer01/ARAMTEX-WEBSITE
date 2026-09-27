@@ -11,7 +11,7 @@ def img(n, alt, cls=''):
     w,h=Image.open(f'{R}img/oferta/{n}.webp').size
     return f'<img src="../img/oferta/{n}.webp" alt="{alt}" width="{w}" height="{h}" loading="lazy" decoding="async"{cls}>'
 def ask(t): return 'kontakt.html?temat='+quote(t)+'#formularz'
-TEL='<a href="tel:+48798807106">798 807 106</a>'
+TEL='<a href="tel:+48513191502">513 191 502</a>'
 
 SYS=[
  dict(slug='zlaczki-zaciskane-press',name='Złączki zaciskane',h1='Złączki zaciskane press Besco',seotitle='Złączki zaciskane press Besco dla hurtowni | Armatex',metadesc='Złączki zaciskane (press) Besco: miedź V i M, linie do gazu, stal węglowa i zawory kulowe. 1 043 indeksy, 12–108 mm, dostawy do hurtowni w całej Polsce.',tab='Zaciskane',brand='Besco',cnt='1 043',cntw='1 043 indeksy',sizes='12–108 mm',
@@ -153,7 +153,7 @@ LD_ORG=ld({"@context":"https://schema.org","@graph":[
   {"@type":"WholesaleStore","@id":SITE+"#firma","name":"Armatex","url":SITE,
    "logo":SITE+"img/logo-dark.webp","image":SITE+"img/og/armatex-og.jpg",
    "description":"Dystrybutor złączek i armatury Besco oraz Pegler Yorkshire dla hurtowni instalacyjnych w całej Polsce: złączki zaciskane (press), na wcisk, skręcane i lutowane.",
-   "telephone":"+48 798 807 106","email":"armatex1@gmail.com",
+   "telephone":"+48 513 191 502","email":"armatex1@gmail.com",
    "address":{"@type":"PostalAddress","streetAddress":"ul. Składowa 3a","postalCode":"10-421","addressLocality":"Olsztyn","addressCountry":"PL"},
    "areaServed":{"@type":"Country","name":"Polska"},
    "brand":[{"@type":"Brand","name":"Besco"},{"@type":"Brand","name":"Pegler Yorkshire"}],
@@ -224,7 +224,7 @@ def nav(cur):
       <a href="o-firmie.html"{cs("o-firmie")}>O firmie</a>
       <a href="kontakt.html"{cs("kontakt")}>Kontakt</a>
     </nav>
-    <a class="nav__tel" href="tel:+48798807106">798 807 106</a>
+    <a class="nav__tel" href="tel:+48513191502">513 191 502</a>
     <a class="mag" href="{"#kontakt" if cur=="index" else "kontakt.html#formularz"}"><span>Zapytaj o wycenę</span></a>
     <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Otwórz menu"><i></i></button>
   </div>
@@ -232,7 +232,7 @@ def nav(cur):
 <nav class="mnav" id="mnav" aria-label="Menu mobilne">
   <span class="label">Oferta</span>{mlinks}
   <span class="label">Katalogi</span><a href="katalog.html"{cs("katalog")}>Wyszukiwarka indeksów Besco<small>1 936</small></a><a href="{PDF}" target="_blank" rel="noopener">Katalog Besco 2026<small>PDF · 3 MB</small></a>
-  <span class="label">Armatex</span><a href="wspolpraca.html"{cs("wspolpraca")}>Współpraca</a><a href="do-pobrania.html"{cs("do-pobrania")}>Do pobrania<small>katalogi i dokumenty</small></a><a href="poradniki.html"{cs("poradniki")}>Poradniki</a><a href="o-firmie.html"{cs("o-firmie")}>O firmie</a><a href="kontakt.html"{cs("kontakt")}>Kontakt<small>798 807 106</small></a>
+  <span class="label">Armatex</span><a href="wspolpraca.html"{cs("wspolpraca")}>Współpraca</a><a href="do-pobrania.html"{cs("do-pobrania")}>Do pobrania<small>katalogi i dokumenty</small></a><a href="poradniki.html"{cs("poradniki")}>Poradniki</a><a href="o-firmie.html"{cs("o-firmie")}>O firmie</a><a href="kontakt.html"{cs("kontakt")}>Kontakt<small>513 191 502</small></a>
 </nav>
 '''
 FOOT='''<footer class="foot">
@@ -243,7 +243,7 @@ FOOT='''<footer class="foot">
     </div>
     <div><h4>Oferta</h4><ul>'''+''.join(f'<li><a href="{s["slug"]}.html">{s["name"]}</a></li>' for s in SYS)+'''</ul></div>
     <div><h4>Armatex</h4><ul><li><a href="katalog.html">Wyszukiwarka indeksów Besco</a></li><li><a href="'''+PDF+'''" target="_blank" rel="noopener">Katalog Besco 2026 (PDF)</a></li><li><a href="do-pobrania.html">Do pobrania</a></li><li><a href="poradniki.html">Poradniki</a></li><li><a href="o-firmie.html">O firmie</a></li><li><a href="wspolpraca.html">Współpraca</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
-    <div><h4>Kontakt</h4><ul><li><a href="tel:+48798807106">798 807 106</a></li><li><a href="mailto:armatex1@gmail.com">armatex1@gmail.com</a></li><li>ul. Składowa 3a, 10-421 Olsztyn</li></ul></div>
+    <div><h4>Kontakt</h4><ul><li><a href="tel:+48513191502">513 191 502</a></li><li><a href="mailto:armatex1@gmail.com">armatex1@gmail.com</a></li><li>ul. Składowa 3a, 10-421 Olsztyn</li></ul></div>
   </div>
   <div class="wrap foot__bar"><span>© 2026 Armatex</span></div>
 </footer>
@@ -386,7 +386,7 @@ home=f'''
         <span class="label kicker">Pytania</span>
         <h2 class="h2">Pytania hurtowni.</h2>
         <p class="lead">Pytania techniczne o poszczególne systemy znajdziesz na ich stronach.</p>
-        <a class="ulink" href="tel:+48798807106">Zadzwoń: 798 807 106</a>
+        <a class="ulink" href="tel:+48513191502">Zadzwoń: 513 191 502</a>
       </div>
       <div>
 {faqlist([
@@ -496,7 +496,7 @@ for s in SYS:
         <span class="label kicker">Pytania techniczne</span>
         <h2 class="h2">Co warto wiedzieć.</h2>
         <p class="lead">Odpowiedzi według dokumentacji producenta. Resztę wyjaśni handlowiec.</p>
-        <a class="ulink" href="tel:+48798807106">Zadzwoń: 798 807 106</a>
+        <a class="ulink" href="tel:+48513191502">Zadzwoń: 513 191 502</a>
       </div>
       <div>
 {faqlist(s["faq"])}
@@ -605,7 +605,7 @@ wsp=f'''
       </div>
       <div class="cta" style="margin-top:clamp(3rem,6vw,4.5rem)">
         <div><h2>Porozmawiajmy o współpracy.</h2><p>Napisz, które systemy chcesz prowadzić. Ofertę przygotujemy w ciągu jednego dnia roboczego.</p></div>
-        <div class="cta__b"><a class="mag" href="kontakt.html#formularz"><span>Zapytaj o wycenę</span></a><a class="ghost" href="tel:+48798807106">798 807 106</a></div>
+        <div class="cta__b"><a class="mag" href="kontakt.html#formularz"><span>Zapytaj o wycenę</span></a><a class="ghost" href="tel:+48513191502">513 191 502</a></div>
       </div>
     </div>
   </section>
@@ -631,7 +631,7 @@ kontakt=f'''
     </div>
   </section>
 '''
-page('kontakt.html','Kontakt – zapytanie ofertowe dla hurtowni | Armatex','Kontakt z działem sprzedaży Armatex: złączki Besco i Pegler Yorkshire dla hurtowni. Telefon 798 807 106, Olsztyn, ul. Składowa 3a.','kontakt',kontakt,ld_crumbs([('Kontakt','kontakt.html')]))
+page('kontakt.html','Kontakt – zapytanie ofertowe dla hurtowni | Armatex','Kontakt z działem sprzedaży Armatex: złączki Besco i Pegler Yorkshire dla hurtowni. Telefon 513 191 502, Olsztyn, ul. Składowa 3a.','kontakt',kontakt,ld_crumbs([('Kontakt','kontakt.html')]))
 
 # ---------------- strony grup produktów (Besco, Tectite, Kuterlite)
 SYSD={x['slug']:x for x in SYS}
@@ -771,7 +771,7 @@ def phead(crumbs, kicker, h1, lead, facts=(), ctas=''):
 '''
 CTA_BOX=f'''      <div class="cta" style="margin-top:clamp(3rem,6vw,4.5rem)">
         <div><h2>Porozmawiajmy o ofercie dla Twojej hurtowni.</h2><p>Napisz, które systemy chcesz prowadzić. Ofertę przygotujemy w ciągu jednego dnia roboczego.</p></div>
-        <div class="cta__b"><a class="mag" href="kontakt.html#formularz"><span>Zapytaj o wycenę</span></a><a class="ghost" href="tel:+48798807106">798 807 106</a></div>
+        <div class="cta__b"><a class="mag" href="kontakt.html#formularz"><span>Zapytaj o wycenę</span></a><a class="ghost" href="tel:+48513191502">513 191 502</a></div>
       </div>'''
 
 # ---- O firmie
