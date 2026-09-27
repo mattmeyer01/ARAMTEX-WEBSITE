@@ -481,7 +481,8 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .gl summary .label { color: var(--ink-40); white-space: nowrap; }
 .gl__l { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: .5rem; }
 .gcard { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: .8rem; align-items: center; padding: .45rem .8rem .45rem .45rem; background: #fff; border: 1px solid var(--line); border-radius: 12px; text-decoration: none; transition: border-color .2s, box-shadow .3s var(--ease-out), transform .3s var(--ease-out); }
-.gcard img { width: 56px; height: 56px; object-fit: contain; background: #F3F1EC; border-radius: 8px; transition: transform .4s var(--ease-out); }
+.gcard img { width: 56px; height: 56px; object-fit: contain; background: #F3F1EC; border-radius: 8px; mix-blend-mode: multiply; transition: transform .4s var(--ease-out); }
+.gcard { isolation: isolate; }
 .gcard b { display: block; font-weight: 600; font-size: .92rem; line-height: 1.25; }
 .gcard small { display: block; margin-top: .2rem; font: 500 .62rem/1.2 var(--mono); letter-spacing: .06em; color: var(--ink-40); }
 .gcard:hover, .gcard:focus-visible { border-color: var(--ink-40); box-shadow: 0 10px 24px -16px rgba(10,31,68,.4); transform: translateY(-1px); }
@@ -492,7 +493,7 @@ a.chip small { font: 500 .62rem/1 var(--mono); letter-spacing: .06em; color: var
 a.chip:hover { border-color: var(--ink); }
 .gp { display: grid; grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: start; }
 .gp__img { margin: 0; position: sticky; top: 100px; aspect-ratio: 1; display: grid; place-items: center; background: #F3F1EC; border-radius: var(--r); padding: 12%; }
-.gp__img img { width: 100%; height: auto; max-width: 320px; }
+.gp__img img { width: 100%; height: auto; max-width: 320px; mix-blend-mode: multiply; }
 .gp__t code { font: 500 .85rem/1.2 var(--mono); }
 .gp__t td.num { color: var(--ink); }
 .gp__t .add { min-width: 84px; height: 34px; }

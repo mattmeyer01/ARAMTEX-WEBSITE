@@ -45,7 +45,13 @@ Hero, panele metod łączenia, magazyn i tło kontaktu ładują się z CDN Higgs
 - Strony grup produktów `besco-*.html` (161 stron, z `data/besco-2026.json`): tabela rozmiarów z numerami
   artykułów i opakowaniami, parametry linii, przycisk „Dodaj” do listy do wyceny, linki do innych grup w linii.
   Linkowane ze stron systemów („Produkty w systemie”) i ze spisu na stronie katalogu.
-- `c/sitemap.xml` (169 adresów) i `c/robots.txt` są przygotowane pod wersję produkcyjną w katalogu głównym
+- Strony grup Pegler Yorkshire `tectite-*.html` i `kuterlite-*.html` (224 strony) z `data/pegler.json`,
+  zdjęcia w `img/pegler/`. Dane generuje `tools/katalog_pegler.py` z katalogu Tectite 2026 i cennika
+  Kuterlite (październik 2024): kody, rozmiary, opakowania Kuterlite; bez cen. Nazwy Kuterlite są
+  tłumaczone na polską nomenklaturę, angielska nazwa zostaje na stronie jako „Nazwa w cenniku”.
+  Poza danymi zostało kilka pozycji o nietypowym układzie tabel (kolektory TM80/TM81, węże TF90/TF92,
+  część akcesoriów Kuterlite).
+- `c/sitemap.xml` (393 adresy) i `c/robots.txt` są przygotowane pod wersję produkcyjną w katalogu głównym
   `https://armatex.pl/`.
 - Szkic ma `noindex`. Przed publikacją usuń go ze wszystkich stron.
 - `pliki/katalog-besco-2026.pdf`: katalog Besco 2026 (66 stron) z poprawionym tytułem w metadanych
