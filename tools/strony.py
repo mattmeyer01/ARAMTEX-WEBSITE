@@ -246,9 +246,18 @@ FOOT='''<footer class="foot">
     </div>
     <div><h4>Oferta</h4><ul>'''+''.join(f'<li><a href="{s["slug"]}.html">{s["name"]}</a></li>' for s in SYS)+'''</ul></div>
     <div><h4>Armatex</h4><ul><li><a href="katalog.html">Wyszukiwarka indeksów Besco</a></li><li><a href="'''+PDF+'''" target="_blank" rel="noopener">Katalog Besco 2026 (PDF)</a></li><li><a href="do-pobrania.html">Do pobrania</a></li><li><a href="poradniki.html">Poradniki</a></li><li><a href="o-firmie.html">O firmie</a></li><li><a href="wspolpraca.html">Współpraca</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
-    <div><h4>Kontakt</h4><ul><li><a href="tel:+48513191502">513 191 502</a></li><li><a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a></li><li>ul. Składowa 3a, 10-421 Olsztyn</li><li>pn–pt 7:00–18:00</li></ul></div>
+    <div><h4>Kontakt</h4><ul><li><a href="tel:+48513191502">513 191 502</a></li><li><a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a></li><li class="foot__addr"><small>Biuro i magazyn</small>ul. Składowa 3a, 10-421 Olsztyn<br>pn–pt 7:00–18:00</li></ul></div>
+    <div class="foot__co">
+      <h4>Dane firmy</h4>
+      <b>P.H.U. ARMATEX Sp. J. A. J. Bunda</b>
+      <dl>
+        <div><dt>Siedziba</dt><dd>ul. Siewna 24, 10-831 Olsztyn</dd></div>
+        <div><dt>NIP</dt><dd>7393814110</dd></div>
+        <div><dt>KRS</dt><dd>0000371628</dd></div>
+        <div><dt>REGON</dt><dd>280563743</dd></div>
+      </dl>
+    </div>
   </div>
-  <div class="wrap foot__legal">P.H.U. ARMATEX Sp. J. A. J. Bunda · ul. Siewna 24, 10-831 Olsztyn · NIP 7393814110 · KRS 0000371628 · REGON 280563743</div>
   <div class="wrap foot__bar"><span>© 2026 Armatex</span><a href="polityka-prywatnosci.html">Polityka prywatności</a></div>
 </footer>
 '''
