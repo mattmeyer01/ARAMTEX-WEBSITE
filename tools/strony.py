@@ -321,6 +321,8 @@ stats='''      <div class="stats">
         <div class="stat"><b><span class="odo" data-odo="1" aria-label="1">1</span><i> dzień</i></b><span>na przygotowanie oferty</span></div>
         <div class="stat"><b><span class="odo" data-odo="4" aria-label="4">4</span><i> systemy</i></b><span>łączenia od jednego dystrybutora</span></div>
       </div>'''
+docs=frag('  <section class="docs" id="dokumenty">','  </section>').replace('<a class="ghost" href="#kontakt" data-topic="Jesteśmy hurtownią i prosimy o dostęp do bazy dokumentów technicznych.">','<a class="ghost" href="'+ask('Jesteśmy hurtownią i prosimy o dostęp do bazy dokumentów technicznych.')+'">').replace('src="img/besco/','src="../img/besco/')
+assert 'kontakt.html?temat=' in docs
 home=f'''
 {hero}
 
@@ -363,6 +365,8 @@ home=f'''
   </section>
 
   <!-- 4 · JAK ZACZĄĆ -->
+{docs}
+
   <section class="section" id="start">
     <div class="wrap">
       <span class="label kicker">Pierwsze zamówienie</span>
@@ -549,8 +553,6 @@ page('katalog.html','Katalog złączek Besco 2026 – wyszukiwarka indeksów | A
 
 # ---------------- współpraca
 frame=frag('      <figure class="frame" data-hf>','      </figure>')
-docs=frag('  <section class="docs" id="dokumenty">','  </section>').replace('<a class="ghost" href="#kontakt" data-topic="Jesteśmy hurtownią i prosimy o dostęp do bazy dokumentów technicznych.">','<a class="ghost" href="'+ask('Jesteśmy hurtownią i prosimy o dostęp do bazy dokumentów technicznych.')+'">').replace('src="img/besco/','src="../img/besco/')
-assert 'kontakt.html?temat=' in docs
 wsp=f'''
   <section class="phead">
     <div class="wrap">
