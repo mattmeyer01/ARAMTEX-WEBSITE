@@ -252,6 +252,28 @@
     sync();
   })();
 
+  // Do pobrania: filtr po rodzaju i marce
+  var dll = $('#dll');
+  if (dll) (function () {
+    var f = { t: '', b: '' };
+    function apply() {
+      var n = 0;
+      $$('li', dll).forEach(function (li) {
+        var ok = (!f.t || li.dataset.t === f.t) && (!f.b || li.dataset.b.split(' ').indexOf(f.b) !== -1);
+        li.hidden = !ok; if (ok) n++;
+      });
+      $('#dllNone').hidden = n > 0;
+    }
+    $$('.dlf .chip').forEach(function (c) {
+      c.addEventListener('click', function () {
+        var k = c.dataset.t !== undefined ? 't' : 'b';
+        f[k] = c.dataset[k];
+        $$('.dlf .chip[data-' + k + ']').forEach(function (x) { x.setAttribute('aria-pressed', x === c); });
+        apply();
+      });
+    });
+  })();
+
   var m = $('#m');
   if (m) {
     var temat = new URLSearchParams(location.search).get('temat');
