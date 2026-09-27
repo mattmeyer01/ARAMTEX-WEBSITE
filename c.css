@@ -711,3 +711,12 @@ a.chip:hover { border-color: var(--ink); }
 .consent a:hover { color: var(--red-2); }
 .foot__bar a { color: inherit; opacity: .7; text-decoration: none; }
 .foot__bar a:hover { opacity: 1; text-decoration: underline; text-underline-offset: 3px; }
+.foot__legal { padding-block: 1.1rem 0; font-size: .78rem; line-height: 1.6; color: var(--on-60); border-top: 1px solid var(--on-line); }
+.foot__legal + .foot__bar { border-top: 0; }
+.e404 { display: flex; gap: .6rem; margin-top: 2rem; max-width: 560px; }
+.e404 input { flex: 1; min-width: 0; height: 56px; padding: 0 1.1rem; border-radius: 99px; border: 1px solid var(--on-line); background: rgba(255,255,255,.08); color: #fff; font: inherit; }
+.e404 input::placeholder { color: var(--on-60); }
+.e404 input:focus { outline: 2px solid var(--red-soft); outline-offset: 2px; }
+.e404__c { text-decoration: none; transition: border-color .2s, transform .2s; }
+.e404__c:hover { border-color: var(--ink-40); transform: translateY(-2px); }
+@media (max-width: 560px) { .e404 { flex-direction: column; } .e404 .mag { width: 100%; } }

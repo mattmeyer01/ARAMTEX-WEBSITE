@@ -217,6 +217,8 @@
     location.href = 'kontakt.html?temat=' + encodeURIComponent(lines.join('\n')) + '#formularz';
   });
   drawRfq();
+  var q0 = new URLSearchParams(location.search).get('q');
+  if (q0) { qEl.value = q0; load().then(search); }
   var seria = new URLSearchParams(location.search).get('seria');
   if (seria) setSeries(seria.split(','));
 
@@ -312,7 +314,7 @@
         st.textContent = 'Dziękujemy. Zapytanie dotarło, odpowiemy w ciągu jednego dnia roboczego.';
         try { localStorage.removeItem('armatex-rfq'); } catch (err) {}
       })
-      .catch(function () { st.classList.add('is-err'); st.textContent = 'Nie udało się wysłać formularza. Napisz na armatex1@gmail.com lub zadzwoń: 513 191 502.'; })
+      .catch(function () { st.classList.add('is-err'); st.textContent = 'Nie udało się wysłać formularza. Napisz na biuro@armatex.pl lub zadzwoń: 513 191 502.'; })
       .then(function () { btn.disabled = false; });
   });
 })();
