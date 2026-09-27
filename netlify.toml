@@ -26,3 +26,9 @@
   for = "/*.html"
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
+
+# Szkice robocze: nieindeksowane, niepodlinkowane z nawigacji
+[[headers]]
+  for = "/szkice/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"

@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Szkic B · Armatex landing</title>
+  <link rel="icon" href="../assets/img/favicon-32.png?v=2" type="image/png" sizes="32x32">
+  <style>
+    /* ============================================================
+       SZKIC B: alternatywny landing Armatex (roboczy, niepublikowany)
+       Koncept: "Hurtownia na jutro rano" - jasny, katalogowy, czerwień
+       marki jako kolor akcji, granat jako materiał zaplecza.
+       ============================================================ */
+    @font-face { font-family: "Outfit"; src: url("../assets/fonts/outfit-latin-wght-normal.woff2") format("woff2-variations"); font-weight: 100 900; font-display: swap; unicode-range: U+0000-00FF, U+2013-2014, U+2018-201F; }
+    @font-face { font-family: "Outfit"; src: url("../assets/fonts/outfit-latin-ext-wght-normal.woff2") format("woff2-variations"); font-weight: 100 900; font-display: swap; unicode-range: U+0100-024F, U+1E00-1EFF; }
+    @font-face { font-family: "IBM Plex Mono"; src: url("../assets/fonts/ibm-plex-mono-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; unicode-range: U+0000-00FF; }
+    @font-face { font-family: "IBM Plex Mono"; src: url("../assets/fonts/ibm-plex-mono-latin-ext-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; unicode-range: U+0100-024F, U+1E00-1EFF; }
+    @font-face { font-family: "IBM Plex Mono"; src: url("../assets/fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; unicode-range: U+0000-00FF; }
+
+    :root {
+      --white: #ffffff;
+      --paper: #f5f4f0;
+      --line: #e3e1da;
+      --ink: #111a2b;
+      --ink-60: rgba(17, 26, 43, 0.62);
+      --ink-40: rgba(17, 26, 43, 0.4);
+      --red: #dc291e;
+      --red-dark: #b81f15;
+      --navy: #0a1f44;
+      --navy-2: #0d2754;
+      --on-navy: rgba(255, 255, 255, 0.9);
+      --on-navy-60: rgba(255, 255, 255, 0.6);
+      --on-navy-line: rgba(255, 255, 255, 0.14);
+      --sans: "Outfit", "Segoe UI", system-ui, sans-serif;
+      --mono: "IBM Plex Mono", Consolas, monospace;
+      --gutter: clamp(1rem, 4vw, 3.5rem);
+      --max: 1320px;
+      --r: 14px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--white); color: var(--ink); font-family: var(--sans); font-size: 1rem; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    h1, h2, h3, p { margin: 0; }
+    .wrap { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+    .mono { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; }
+    .kicker { font-family: var(--mono); font-size: 0.74rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); display: inline-flex; align-items: center; gap: 0.6rem; }
+    .kicker::before { content: ""; width: 1.4rem; height: 2px; background: currentColor; }
+    .h2 { font-size: clamp(1.8rem, 3.6vw, 3rem); line-height: 1.05; letter-spacing: -0.03em; font-weight: 650; margin-top: 0.9rem; }
+
+    /* ---------- odznaka szkicu */
+    .draft-badge { position: fixed; z-index: 100; left: 1rem; bottom: 1rem; background: #ffe14d; color: #111; font-family: var(--mono); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.45rem 0.75rem; border-radius: 999px; box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
+
+    /* ---------- przyciski */
+    .btn { display: inline-flex; align-items: center; gap: 0.7rem; font: 600 0.95rem/1 var(--sans); text-decoration: none; padding: 1rem 1.4rem; border-radius: 999px; border: 0; cursor: pointer; transition: background 0.2s, color 0.2s, transform 0.15s; }
+    .btn:active { transform: translateY(1px); }
+    .btn--red { background: var(--red); color: #fff; }
+    .btn--red:hover, .btn--red:focus-visible { background: var(--red-dark); }
+    .btn--ghost { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
+    .btn--ghost:hover, .btn--ghost:focus-visible { background: var(--ink); color: #fff; }
+    .btn svg { width: 16px; height: 16px; transition: transform 0.2s; }
+    .btn:hover svg { transform: translateX(3px); }
+
+    /* ---------- pasek górny */
+    .topbar { background: var(--navy); color: var(--on-navy-60); font-size: 0.8rem; }
+    .topbar .wrap { display: flex; justify-content: space-between; gap: 1rem; padding-block: 0.55rem; }
+    .topbar a { text-decoration: none; color: var(--on-navy); }
+    .topbar span + span, .topbar a + span { margin-left: 1.4rem; }
+
+    /* ---------- nawigacja */
+    .nav { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+    .nav .wrap { display: flex; align-items: center; gap: 2rem; height: 72px; }
+    .nav__logo img { height: 26px; width: auto; }
+    .nav__links { display: flex; gap: 1.8rem; margin-left: auto; }
+    .nav__links a { text-decoration: none; font-weight: 500; font-size: 0.95rem; color: var(--ink-60); transition: color 0.2s; }
+    .nav__links a:hover { color: var(--ink); }
+    .nav .btn { padding: 0.75rem 1.15rem; font-size: 0.88rem; }
+
+    /* ---------- HERO */
+    .hero { padding-block: clamp(2.5rem, 6vw, 5rem) clamp(3rem, 6vw, 5rem); background: linear-gradient(180deg, var(--paper) 0%, var(--white) 100%); }
+    .hero__grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+    .hero__trust { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.6rem; }
+    .chip { font-family: var(--mono); font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.4rem 0.75rem; border-radius: 999px; background: var(--white); border: 1px solid var(--line); color: var(--ink-60); }
+    .chip--red { background: var(--red); border-color: var(--red); color: #fff; }
+    .hero h1 { font-size: clamp(2.4rem, 5.4vw, 4.6rem); line-height: 0.98; letter-spacing: -0.04em; font-weight: 700; }
+    .hero h1 em { font-style: normal; color: var(--red); }
+    .hero__sub { margin-top: 1.4rem; font-size: clamp(1.02rem, 1.3vw, 1.15rem); color: var(--ink-60); max-width: 40ch; }
+
+    .quick { margin-top: 2rem; background: var(--white); border: 1px solid var(--line); border-radius: var(--r); padding: 0.5rem; box-shadow: 0 18px 40px -24px rgba(10, 31, 68, 0.35); }
+    .quick__head { display: flex; justify-content: space-between; align-items: center; padding: 0.6rem 0.8rem 0.4rem; }
+    .quick__head b { font-size: 0.92rem; }
+    .quick__head span { color: var(--ink-40); }
+    .quick textarea { width: 100%; min-height: 84px; resize: vertical; border: 0; outline: 0; font: 400 0.95rem/1.5 var(--mono); color: var(--ink); background: var(--paper); border-radius: calc(var(--r) - 6px); padding: 0.85rem 0.9rem; }
+    .quick textarea::placeholder { color: var(--ink-40); }
+    .quick__row { display: flex; gap: 0.5rem; margin-top: 0.5rem; }
+    .quick input { flex: 1; min-width: 0; border: 1px solid var(--line); border-radius: 999px; padding: 0 1.1rem; font: inherit; font-size: 0.95rem; outline: 0; }
+    .quick input:focus, .quick textarea:focus { box-shadow: 0 0 0 2px var(--red); }
+    .quick__msg { font-size: 0.85rem; color: var(--red); padding: 0.5rem 0.8rem 0.2rem; min-height: 1.4em; }
+
+    .hero__visual { position: relative; }
+    .hero__frame { position: relative; border-radius: calc(var(--r) + 6px); overflow: hidden; background: var(--navy); aspect-ratio: 4 / 4.4; }
+    .hero__frame img { width: 100%; height: 100%; object-fit: cover; object-position: 70% 50%; }
+    .hero__frame::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,31,68,0) 55%, rgba(10,31,68,0.75) 100%); }
+    .hero__methods { position: absolute; z-index: 2; left: 1rem; right: 1rem; bottom: 1rem; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.4rem; }
+    .hero__methods div { background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.22); border-radius: 10px; padding: 0.6rem 0.65rem; color: #fff; }
+    .hero__methods .mono { display: block; font-size: 0.62rem; color: rgba(255,255,255,0.6); }
+    .hero__methods b { display: block; font-weight: 600; font-size: 0.9rem; margin-top: 0.15rem; }
+    .hero__stamp { position: absolute; z-index: 3; top: -1.4rem; left: -1.4rem; width: 132px; height: 132px; border-radius: 50%; background: var(--red); color: #fff; display: grid; place-items: center; text-align: center; box-shadow: 0 16px 30px -12px rgba(220, 41, 30, 0.6); animation: spin 26s linear infinite; }
+    .hero__stamp svg { position: absolute; inset: 0; }
+    .hero__stamp text { fill: #fff; font: 500 9.5px var(--mono); letter-spacing: 0.22em; text-transform: uppercase; }
+    .hero__stamp b { font-size: 1.9rem; line-height: 1; letter-spacing: -0.03em; animation: spin 26s linear infinite reverse; }
+    .hero__stamp b small { display: block; font: 500 0.62rem var(--mono); letter-spacing: 0.12em; margin-top: 0.2rem; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ---------- pas marek / ticker */
+    .ticker { background: var(--red); color: #fff; overflow: hidden; white-space: nowrap; }
+    .ticker__track { display: inline-flex; gap: 3rem; padding-block: 1rem; animation: tick 38s linear infinite; }
+    .ticker__track span { font-weight: 600; font-size: 1.05rem; display: inline-flex; align-items: center; gap: 3rem; }
+    .ticker__track span::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.55); }
+    @keyframes tick { to { transform: translateX(-50%); } }
+
+    /* ---------- KATALOG: lista indeksowa */
+    .section { padding-block: clamp(4rem, 8vw, 7rem); }
+    .cat__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; margin-bottom: 2.6rem; }
+    .cat__head p { color: var(--ink-60); max-width: 36ch; }
+    .cat__list { border-top: 1px solid var(--ink); }
+    .cat__item { position: relative; display: grid; grid-template-columns: 4rem 1.2fr 1fr 3rem; align-items: center; gap: 1.5rem; padding-block: 1.5rem; border-bottom: 1px solid var(--line); text-decoration: none; transition: padding 0.3s, background 0.3s; }
+    .cat__item:hover { background: var(--paper); padding-inline: 1.2rem; }
+    .cat__idx { font-family: var(--mono); font-size: 0.85rem; color: var(--ink-40); }
+    .cat__name { font-size: clamp(1.25rem, 2.2vw, 1.9rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.1; }
+    .cat__spec { font-family: var(--mono); font-size: 0.8rem; color: var(--ink-60); }
+    .cat__arrow { width: 3rem; height: 3rem; border-radius: 50%; border: 1.5px solid var(--line); display: grid; place-items: center; transition: background 0.25s, border-color 0.25s, color 0.25s; }
+    .cat__arrow svg { width: 16px; height: 16px; }
+    .cat__item:hover .cat__arrow { background: var(--red); border-color: var(--red); color: #fff; }
+    .cat__thumb { position: absolute; right: 5.5rem; top: 50%; width: 180px; aspect-ratio: 4/3; border-radius: 10px; overflow: hidden; transform: translateY(-50%) scale(0.85) rotate(-3deg); opacity: 0; pointer-events: none; transition: opacity 0.25s, transform 0.35s; box-shadow: 0 20px 40px -18px rgba(10,31,68,0.45); }
+    .cat__thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .cat__item:hover .cat__thumb { opacity: 1; transform: translateY(-50%) scale(1) rotate(-3deg); }
+
+    /* ---------- ZAPLECZE: granat */
+    .yard { background: var(--navy); color: var(--on-navy); border-radius: calc(var(--r) * 2); margin-inline: clamp(0.5rem, 1.5vw, 1.25rem); overflow: hidden; }
+    .yard__grid { display: grid; grid-template-columns: 1fr 1fr; }
+    .yard__text { padding: clamp(2.5rem, 6vw, 5.5rem) var(--gutter); }
+    .yard .kicker { color: #ff6b61; }
+    .yard__text > p { margin-top: 1.2rem; color: var(--on-navy-60); max-width: 44ch; }
+    .yard__stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--on-navy-line); margin-top: 2.8rem; border-radius: var(--r); overflow: hidden; }
+    .yard__stats div { background: var(--navy-2); padding: 1.5rem 1.3rem; }
+    .yard__stats b { display: block; font-size: clamp(2rem, 3.6vw, 3rem); font-weight: 650; letter-spacing: -0.04em; line-height: 1; color: #fff; }
+    .yard__stats b i { font-style: normal; color: var(--red); }
+    .yard__stats span { display: block; margin-top: 0.55rem; color: var(--on-navy-60); font-size: 0.9rem; }
+    .yard__media { position: relative; min-height: 420px; }
+    .yard__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .yard__media::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, var(--navy) 0%, rgba(10,31,68,0) 35%); }
+    .yard__tag { position: absolute; z-index: 2; right: 1.4rem; bottom: 1.4rem; background: #fff; color: var(--ink); border-radius: 10px; padding: 0.8rem 1rem; font-size: 0.85rem; max-width: 15rem; }
+    .yard__tag b { display: block; font-size: 0.95rem; }
+
+    /* ---------- PROCES */
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.8rem; counter-reset: s; }
+    .step { position: relative; background: var(--paper); border-radius: var(--r); padding: 2rem 1.6rem 1.8rem; overflow: hidden; }
+    .step__num { font-size: 6rem; font-weight: 800; line-height: 0.8; letter-spacing: -0.06em; color: transparent; -webkit-text-stroke: 1.5px var(--red); }
+    .step h3 { margin-top: 1.4rem; font-size: 1.3rem; font-weight: 600; letter-spacing: -0.01em; }
+    .step p { margin-top: 0.55rem; color: var(--ink-60); }
+    .step__time { position: absolute; top: 1.4rem; right: 1.4rem; }
+    .step:nth-child(2) { background: var(--ink); color: #fff; }
+    .step:nth-child(2) p { color: rgba(255,255,255,0.65); }
+    .step:nth-child(2) .chip { background: transparent; color: rgba(255,255,255,0.75); border-color: rgba(255,255,255,0.25); }
+
+    /* ---------- DLA KOGO: zakładki */
+    .aud { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(2rem, 5vw, 4rem); align-items: stretch; margin-top: 2.8rem; }
+    .aud__tabs { display: flex; flex-direction: column; }
+    .aud__tab { text-align: left; background: none; border: 0; border-top: 1px solid var(--line); padding: 1.4rem 0; font: inherit; color: var(--ink-40); cursor: pointer; transition: color 0.2s; }
+    .aud__tab:last-child { border-bottom: 1px solid var(--line); }
+    .aud__tab b { display: flex; justify-content: space-between; align-items: center; font-size: clamp(1.4rem, 2.6vw, 2.2rem); font-weight: 600; letter-spacing: -0.03em; }
+    .aud__tab b::after { content: "+"; font-weight: 400; font-size: 1.4rem; transition: transform 0.3s; }
+    .aud__tab p { max-height: 0; overflow: hidden; color: var(--ink-60); transition: max-height 0.4s ease, margin 0.3s; font-size: 0.98rem; }
+    .aud__tab[aria-selected="true"] { color: var(--ink); }
+    .aud__tab[aria-selected="true"] b::after { transform: rotate(45deg); color: var(--red); }
+    .aud__tab[aria-selected="true"] p { max-height: 8rem; margin-top: 0.7rem; }
+    .aud__media { position: relative; border-radius: calc(var(--r) + 6px); overflow: hidden; min-height: 380px; background: var(--navy); }
+    .aud__media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.5s; }
+    .aud__media img.is-on { opacity: 1; }
+
+    /* ---------- DOKUMENTY */
+    .docs { background: var(--paper); }
+    .docs__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+    .docs__cards { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 2rem; }
+    .docs__cards div { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 1.1rem; }
+    .docs__cards .mono { color: var(--red); font-size: 0.66rem; }
+    .docs__cards b { display: block; margin-top: 0.35rem; font-weight: 600; font-size: 0.98rem; line-height: 1.3; }
+    .docs p.lead { margin-top: 1.1rem; color: var(--ink-60); max-width: 46ch; }
+    .docs .btn { margin-top: 2rem; }
+    .docs__media { position: relative; }
+    .docs__media img { border-radius: calc(var(--r) + 6px); width: 100%; aspect-ratio: 5/4; object-fit: cover; }
+    .docs__lock { position: absolute; left: -1rem; bottom: 1.5rem; background: var(--navy); color: #fff; border-radius: 12px; padding: 0.9rem 1.1rem; display: flex; gap: 0.8rem; align-items: center; font-size: 0.88rem; box-shadow: 0 16px 30px -14px rgba(10,31,68,0.6); }
+    .docs__lock svg { width: 22px; height: 22px; color: #ff6b61; flex: none; }
+
+    /* ---------- KONTAKT */
+    .contact__grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(2rem, 5vw, 4.5rem); }
+    .people { display: grid; gap: 0.75rem; margin-top: 2rem; }
+    .person { display: grid; grid-template-columns: 3.2rem 1fr; gap: 1rem; align-items: center; border: 1px solid var(--line); border-radius: var(--r); padding: 1rem 1.1rem; }
+    .person__avatar { width: 3.2rem; height: 3.2rem; border-radius: 50%; background: var(--navy); color: #fff; display: grid; place-items: center; font-weight: 600; }
+    .person .mono { color: var(--ink-40); font-size: 0.66rem; }
+    .person b { display: block; font-size: 1.05rem; }
+    .person a { text-decoration: none; margin-right: 1rem; font-size: 0.92rem; color: var(--ink-60); }
+    .person a:hover { color: var(--red); }
+    .address { margin-top: 1.4rem; color: var(--ink-60); font-size: 0.95rem; }
+    .form { background: var(--navy); color: #fff; border-radius: calc(var(--r) * 1.5); padding: clamp(1.5rem, 4vw, 2.6rem); }
+    .form h3 { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; }
+    .form > p { color: var(--on-navy-60); margin-top: 0.4rem; font-size: 0.95rem; }
+    .form__row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 0.75rem; }
+    .form__row:first-of-type { margin-top: 1.6rem; }
+    .fld { display: flex; flex-direction: column; gap: 0.35rem; }
+    .fld label { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--on-navy-60); }
+    .fld input, .fld textarea { background: rgba(255,255,255,0.06); border: 1px solid var(--on-navy-line); border-radius: 10px; color: #fff; font: inherit; padding: 0.85rem 0.9rem; outline: 0; }
+    .fld textarea { min-height: 120px; resize: vertical; }
+    .fld input:focus, .fld textarea:focus { border-color: var(--red); background: rgba(255,255,255,0.1); }
+    .fld--full { grid-column: 1 / -1; }
+    .consent { display: flex; gap: 0.6rem; margin-top: 1rem; font-size: 0.82rem; color: var(--on-navy-60); }
+    .consent input { accent-color: var(--red); margin-top: 0.2rem; }
+    .form .btn { margin-top: 1.4rem; width: 100%; justify-content: center; }
+    .form__status { margin-top: 0.8rem; font-size: 0.88rem; color: #ffb3ad; min-height: 1.3em; }
+
+    /* ---------- STOPKA */
+    .foot { background: var(--ink); color: rgba(255,255,255,0.6); margin-top: clamp(4rem, 8vw, 7rem); }
+    .foot__big { font-size: clamp(2.2rem, 7vw, 6rem); font-weight: 700; letter-spacing: -0.05em; line-height: 0.95; color: #fff; padding-top: clamp(3rem, 6vw, 5rem); }
+    .foot__big a { text-decoration: none; color: var(--red); }
+    .foot__big a:hover { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 8px; }
+    .foot__bar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; border-top: 1px solid rgba(255,255,255,0.12); margin-top: 3rem; padding-block: 1.6rem; font-size: 0.85rem; }
+    .foot__bar a { text-decoration: none; }
+    .foot__bar img { height: 20px; width: auto; }
+
+    /* ---------- responsywność */
+    @media (max-width: 980px) {
+      .hero__grid, .yard__grid, .aud, .docs__grid, .contact__grid { grid-template-columns: 1fr; }
+      .hero__visual { max-width: 560px; }
+      .hero__stamp { top: -1rem; left: auto; right: 0.5rem; width: 108px; height: 108px; }
+      .hero__stamp b { font-size: 1.5rem; }
+      .yard__media { min-height: 300px; }
+      .yard__media::before { background: linear-gradient(180deg, var(--navy) 0%, rgba(10,31,68,0) 40%); }
+      .steps { grid-template-columns: 1fr; }
+      .aud__media { min-height: 280px; order: -1; }
+      .docs__lock { left: 0.75rem; }
+      .cat__thumb { display: none; }
+    }
+    @media (max-width: 720px) {
+      .topbar .hide-sm, .nav__links { display: none; }
+      .nav .btn { margin-left: auto; }
+      .cat__head { flex-direction: column; align-items: flex-start; }
+      .cat__item { grid-template-columns: 2.4rem 1fr 2.6rem; gap: 0.9rem; }
+      .cat__spec { grid-column: 2; grid-row: 2; margin-top: -0.6rem; }
+      .cat__arrow { width: 2.6rem; height: 2.6rem; grid-column: 3; grid-row: 1 / span 2; }
+      .cat__item:hover { padding-inline: 0; background: none; }
+      .hero__methods { grid-template-columns: repeat(2, 1fr); }
+      .quick__row { flex-direction: column; }
+      .quick input { padding: 0.9rem 1.1rem; }
+      .quick .btn { justify-content: center; }
+      .yard__stats { grid-template-columns: 1fr 1fr; }
+      .docs__cards, .form__row { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      html { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="draft-badge" aria-hidden="true">Szkic B · nieopublikowany</div>
+
+<div class="topbar">
+  <div class="wrap">
+    <div><span>Hurtowe dostawy armatury w całej Polsce</span><span class="hide-sm">Pn–Pt 7:00–16:00</span></div>
+    <div><a href="tel:+48798807106">798 807 106</a><span class="hide-sm"><a href="mailto:armatex1@gmail.com">armatex1@gmail.com</a></span></div>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="nav__logo" href="#top" aria-label="Armatex"><img src="../assets/img/logo-dark.png" alt="Armatex"></a>
+    <nav class="nav__links" aria-label="Nawigacja szkicu">
+      <a href="#oferta">Oferta</a>
+      <a href="#zaplecze">Zaplecze</a>
+      <a href="#dla-kogo">Dla kogo</a>
+      <a href="#dokumenty">Dokumenty</a>
+    </nav>
+    <a class="btn btn--red" href="#kontakt">Zapytaj o ofertę</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- 1 · HERO: tekst + szybkie zapytanie / kadr produktowy z metodami łączenia -->
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div>
+        <div class="hero__trust">
+          <span class="chip chip--red">30 lat na rynku</span>
+          <span class="chip">Besco</span>
+          <span class="chip">Pegler Yorkshire</span>
+        </div>
+        <h1>Armatura na budowę <em>jutro rano.</em></h1>
+        <p class="hero__sub">Złączki miedziane, carbon steel i mosiężne dla instalacji CO, wody i gazu. Wklej listę pozycji, a wycenę dostaniesz jeszcze dziś.</p>
+
+        <form class="quick" id="quickForm" novalidate>
+          <div class="quick__head"><b>Szybkie zapytanie</b><span class="mono">Odpowiedź w 1 dzień</span></div>
+          <label class="sr" for="q-list" hidden>Lista pozycji</label>
+          <textarea id="q-list" placeholder="np. Kolano 90° press 22 mm × 40&#10;Zawór kulowy GW-GW DN25 × 12"></textarea>
+          <div class="quick__row">
+            <input id="q-contact" type="text" placeholder="Telefon lub e-mail" aria-label="Telefon lub e-mail">
+            <button class="btn btn--red" type="submit">Wyceń listę
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg>
+            </button>
+          </div>
+          <p class="quick__msg" id="quickMsg" role="status"></p>
+        </form>
+      </div>
+
+      <div class="hero__visual">
+        <div class="hero__stamp" aria-hidden="true">
+          <svg viewBox="0 0 132 132"><defs><path id="circ" d="M66 66 m-50 0 a50 50 0 1 1 100 0 a50 50 0 1 1 -100 0"/></defs><text><textPath href="#circ">Wysyłka z magazynu · Olsztyn · </textPath></text></svg>
+          <b>24 h<small>dostawa</small></b>
+        </div>
+        <div class="hero__frame">
+          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260718_085922_d615cb7f-e5ff-4946-b31c-74248cf04e22.png" alt="Zestaw armatury i złączek na granatowym tle">
+          <div class="hero__methods">
+            <div><span class="mono">01</span><b>Zaciskanie</b></div>
+            <div><span class="mono">02</span><b>Na wcisk</b></div>
+            <div><span class="mono">03</span><b>Skręcanie</b></div>
+            <div><span class="mono">04</span><b>Lutowanie</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ticker kategorii -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker__track">
+      <span>Zawory kulowe</span><span>Złączki mosiężne</span><span>Systemy press</span><span>Armatura grzewcza</span><span>PP-R / PEX</span><span>Uszczelnienia</span>
+      <span>Zawory kulowe</span><span>Złączki mosiężne</span><span>Systemy press</span><span>Armatura grzewcza</span><span>PP-R / PEX</span><span>Uszczelnienia</span>
+    </div>
+  </div>
+
+  <!-- 2 · OFERTA: lista indeksowa z podglądem zdjęcia -->
+  <section class="section" id="oferta">
+    <div class="wrap">
+      <div class="cat__head">
+        <div>
+          <span class="kicker">Oferta</span>
+          <h2 class="h2">Sześć grup, jeden dostawca</h2>
+        </div>
+        <p>Pełne stany najczęściej zamawianych pozycji. Kliknij grupę, żeby zobaczyć szczegółowy asortyment.</p>
+      </div>
+      <div class="cat__list">
+        <a class="cat__item" href="../katalog.html#zawory">
+          <span class="cat__idx">01</span><span class="cat__name">Zawory kulowe i zwrotne</span><span class="cat__spec">DN15 do DN50 · PN30</span>
+          <span class="cat__arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12L12 4M6 4h6v6"/></svg></span>
+          <span class="cat__thumb"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_213930_4bc04639-75de-4dac-ae47-7b9c7355053f_min.webp" alt="" loading="lazy"></span>
+        </a>
+        <a class="cat__item" href="../katalog.html#zlaczki">
+          <span class="cat__idx">02</span><span class="cat__name">Złączki mosiężne gwintowane</span><span class="cat__spec">1/4" do 4"</span>
+          <span class="cat__arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12L12 4M6 4h6v6"/></svg></span>
+          <span class="cat__thumb"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_214506_76232568-fc15-4156-b90c-4620d62489d5_min.webp" alt="" loading="lazy"></span>
+        </a>
+        <a class="cat__item" href="../katalog.html#zaprasowywane">
+          <span class="cat__idx">03</span><span class="cat__name">Systemy zaprasowywane</span><span class="cat__spec">12 do 108 mm · profil M i V</span>
+          <span class="cat__arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12L12 4M6 4h6v6"/></svg></span>
+          <span class="cat__thumb"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_214509_c9c743e5-9570-4a9b-92a7-ceff717ac2b9_min.webp" alt="" loading="lazy"></span>
+        </a>
+        <a class="cat__item" href="../katalog.html#grzewcza">
+          <span class="cat__idx">04</span><span class="cat__name">Armatura grzewcza</span><span class="cat__spec">Rozdzielacze 2 do 12 obwodów</span>
+          <span class="cat__arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12L12 4M6 4h6v6"/></svg></span>
+          <span class="cat__thumb"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_214512_72fcbd64-088b-4d7a-a8a9-ad9e01484435_min.webp" alt="" loading="lazy"></span>
+        </a>
+        <a class="cat__item" href="../katalog.html#rury">
+          <span class="cat__idx">05</span><span class="cat__name">Rury i systemy PP-R / PEX</span><span class="cat__spec">16 do 110 mm · PN20</span>
+          <span class="cat__arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12L12 4M6 4h6v6"/></svg></span>
+          <span class="cat__thumb"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_214514_2058c31f-3f36-4c46-9ffa-ec76b009e98d_min.webp" alt="" loading="lazy"></span>
+        </a>
+        <a class="cat__item" href="../katalog.html#uszczelnienia">
+          <span class="cat__idx">06</span><span class="cat__name">Uszczelnienia i akcesoria</span><span class="cat__spec">PTFE · pakuły · węże w oplocie</span>
+          <span class="cat__arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12L12 4M6 4h6v6"/></svg></span>
+          <span class="cat__thumb"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_214516_c61b1084-0189-476d-8a26-c8a018915a37_min.webp" alt="" loading="lazy"></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 · ZAPLECZE: granatowy blok z liczbami -->
+  <section class="yard" id="zaplecze">
+    <div class="yard__grid">
+      <div class="yard__text">
+        <span class="kicker">Zaplecze</span>
+        <h2 class="h2">Magazyn, który nie zatrzymuje budowy</h2>
+        <p>Typowe zamówienie kompletujemy tego samego dnia. Braki rynkowe zgłaszamy z wyprzedzeniem, zanim staną się Twoim problemem.</p>
+        <div class="yard__stats">
+          <div><b>5 000<i>+</i></b><span>pozycji od ręki</span></div>
+          <div><b>24<i> h</i></b><span>wysyłka z magazynu</span></div>
+          <div><b>1<i> dzień</i></b><span>na wycenę zapytania</span></div>
+          <div><b>30<i> lat</i></b><span>na rynku instalacyjnym</span></div>
+        </div>
+      </div>
+      <div class="yard__media">
+        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_213913_6ea522d4-6c24-459d-a5c1-5488de886bb2.png" alt="Regały magazynowe z armaturą" loading="lazy">
+        <div class="yard__tag"><b>ul. Składowa 3a, Olsztyn</b>Biuro i magazyny w jednym miejscu</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · PROCES -->
+  <section class="section" id="proces">
+    <div class="wrap">
+      <span class="kicker">Jak działamy</span>
+      <h2 class="h2">Od zapytania do dostawy w trzech krokach</h2>
+      <div class="steps">
+        <div class="step"><span class="chip step__time">Dziś</span><div class="step__num">01</div><h3>Wysyłasz zapytanie</h3><p>Formularzem, mailem albo telefonicznie. Wystarczy lista pozycji lub specyfikacja z projektu.</p></div>
+        <div class="step"><span class="chip step__time">Tego samego dnia</span><div class="step__num">02</div><h3>Otrzymujesz wycenę</h3><p>Z cenami hurtowymi, dostępnością i terminem realizacji dla każdej pozycji.</p></div>
+        <div class="step"><span class="chip step__time">+24 h</span><div class="step__num">03</div><h3>Odbierasz dostawę</h3><p>Wysyłka w 24 godziny od potwierdzenia. Duże zamówienia dowozimy własnym transportem.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · DLA KOGO: zakładki + zmieniające się zdjęcie -->
+  <section class="section" id="dla-kogo" style="padding-top:0">
+    <div class="wrap">
+      <span class="kicker">Dla kogo</span>
+      <h2 class="h2">Hurtownie, wykonawcy i przemysł</h2>
+      <div class="aud">
+        <div class="aud__tabs" role="tablist">
+          <button class="aud__tab" role="tab" aria-selected="true" data-i="0"><b>Hurtownie</b><p>Ceny progowe dla odbiorców regularnych, rezerwacje stanów pod kontrakty i wspólne planowanie zatowarowania na sezon.</p></button>
+          <button class="aud__tab" role="tab" aria-selected="false" data-i="1"><b>Wykonawcy</b><p>Wyceniamy całe specyfikacje z projektu, kompletujemy dostawy etapami i doradzamy zamienniki, kiedy pozycja ma długi termin.</p></button>
+          <button class="aud__tab" role="tab" aria-selected="false" data-i="2"><b>Przemysł</b><p>Armatura do mediów technicznych, szybka reakcja na awarie i dokumentacja wymagana przez działy utrzymania ruchu.</p></button>
+        </div>
+        <div class="aud__media">
+          <img class="is-on" src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_213913_6ea522d4-6c24-459d-a5c1-5488de886bb2.png" alt="Regały magazynowe" loading="lazy">
+          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_214509_c9c743e5-9570-4a9b-92a7-ceff717ac2b9_min.webp" alt="Złączki zaprasowywane i zaciskarka" loading="lazy">
+          <img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_214512_72fcbd64-088b-4d7a-a8a9-ad9e01484435_min.webp" alt="Armatura grzewcza" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · DOKUMENTY -->
+  <section class="section docs" id="dokumenty">
+    <div class="wrap docs__grid">
+      <div>
+        <span class="kicker">Baza dokumentów</span>
+        <h2 class="h2">Atesty i karty katalogowe do każdej pozycji</h2>
+        <p class="lead">Bazę udostępniamy zweryfikowanym klientom. Dostęp przyznajemy w ciągu jednego dnia roboczego.</p>
+        <div class="docs__cards">
+          <div><span class="mono">PZH</span><b>Atesty higieniczne</b></div>
+          <div><span class="mono">DoP</span><b>Deklaracje właściwości użytkowych</b></div>
+          <div><span class="mono">PDF / DWG</span><b>Karty katalogowe i rysunki</b></div>
+          <div><span class="mono">CE</span><b>Certyfikaty i aprobaty</b></div>
+        </div>
+        <a class="btn btn--ghost" href="#kontakt">Poproś o dostęp
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+      <div class="docs__media">
+        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260717_214518_d61cc7fc-c820-4161-968d-29ee1119d524.png" alt="Stos kart katalogowych i certyfikatów" loading="lazy">
+        <div class="docs__lock">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+          <span>Dostęp tylko dla<br>zweryfikowanych firm</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · KONTAKT -->
+  <section class="section" id="kontakt">
+    <div class="wrap contact__grid">
+      <div>
+        <span class="kicker">Kontakt</span>
+        <h2 class="h2">Zadzwoń do handlowca albo zostaw zapytanie</h2>
+        <div class="people">
+          <div class="person">
+            <span class="person__avatar">PS</span>
+            <div><span class="mono">Sprzedaż</span><b>Piotr Stelmach</b><a href="tel:+48798807106">798 807 106</a><a href="mailto:piotr@armatex.pl">piotr@armatex.pl</a></div>
+          </div>
+          <div class="person">
+            <span class="person__avatar">MZ</span>
+            <div><span class="mono">Sprzedaż</span><b>Martyna Zielińska</b><a href="tel:+48515231693">515 231 693</a><a href="mailto:martyna@armatex.pl">martyna@armatex.pl</a></div>
+          </div>
+        </div>
+        <p class="address">Biuro i magazyny: ul. Składowa 3a, 10-421 Olsztyn<br>E-mail ogólny: <a href="mailto:armatex1@gmail.com">armatex1@gmail.com</a></p>
+      </div>
+
+      <form class="form" id="draftForm" novalidate>
+        <h3>Zapytanie ofertowe</h3>
+        <p>Odpowiadamy tego samego dnia roboczego.</p>
+        <div class="form__row">
+          <div class="fld"><label for="d-name">Imię i nazwisko</label><input id="d-name" type="text" autocomplete="name"></div>
+          <div class="fld"><label for="d-company">Firma</label><input id="d-company" type="text" autocomplete="organization"></div>
+        </div>
+        <div class="form__row">
+          <div class="fld"><label for="d-email">E-mail</label><input id="d-email" type="email" autocomplete="email"></div>
+          <div class="fld"><label for="d-phone">Telefon</label><input id="d-phone" type="tel" autocomplete="tel"></div>
+        </div>
+        <div class="form__row">
+          <div class="fld fld--full"><label for="d-msg">Wiadomość</label><textarea id="d-msg" placeholder="Lista pozycji, ilości, termin."></textarea></div>
+        </div>
+        <label class="consent"><input type="checkbox"> Wyrażam zgodę na przetwarzanie danych w celu obsługi zapytania. Administratorem danych jest Armatex.</label>
+        <button class="btn btn--red" type="submit">Wyślij zapytanie</button>
+        <p class="form__status" id="draftStatus" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="foot__big">Potrzebujesz dostawy na jutro?<br><a href="tel:+48798807106">798 807 106</a></p>
+    <div class="foot__bar">
+      <img src="../assets/img/logo-light.png" alt="Armatex">
+      <span>© 2026 Armatex · ul. Składowa 3a, 10-421 Olsztyn</span>
+      <a href="../index.html">Wróć do aktualnej wersji strony</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Zakładki "Dla kogo": przełączanie opisu i zdjęcia
+  (function () {
+    var tabs = document.querySelectorAll('.aud__tab');
+    var imgs = document.querySelectorAll('.aud__media img');
+    tabs.forEach(function (t) {
+      t.addEventListener('click', function () {
+        var i = +t.dataset.i;
+        tabs.forEach(function (x) { x.setAttribute('aria-selected', x === t ? 'true' : 'false'); });
+        imgs.forEach(function (im, j) { im.classList.toggle('is-on', j === i); });
+      });
+    });
+  })();
+
+  // Formularze w szkicu są nieaktywne: nic nie jest wysyłane
+  (function () {
+    function mute(formId, msgId) {
+      var f = document.getElementById(formId), m = document.getElementById(msgId);
+      f.addEventListener('submit', function (e) {
+        e.preventDefault();
+        m.textContent = 'To szkic: formularz jest nieaktywny, nic nie zostało wysłane.';
+      });
+    }
+    mute('quickForm', 'quickMsg');
+    mute('draftForm', 'draftStatus');
+  })();
+</script>
+</body>
+</html>
