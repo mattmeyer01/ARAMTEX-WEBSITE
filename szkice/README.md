@@ -45,5 +45,5 @@ Hero, panele metod łączenia, magazyn i tło kontaktu ładują się z CDN Higgs
   systemów Besco; otwiera się w nowej karcie.
 - `img/linie/*.webp`: zdjęcia produktów do tabel „Linie w systemie” (po jednym na linię), wycięte z katalogów
   Besco 2026, Tectite 2026 i cennika Kuterlite na białym tle.
-- `img/hero/hero-zaciskarka-*.webp`: zdjęcie hero (sesja Higgsfield, wybrane przez klienta): 2000 i 1200 px
+- `img/hero/hero-paleta-*.webp`: zdjęcie hero z paletą towaru (sesja Higgsfield, wybrane przez klienta): 2000 i 1200 px
   na komputer oraz kadr 800 × 1001 na telefon. Lokalny plik, więc działa też bez CDN Higgsfield.

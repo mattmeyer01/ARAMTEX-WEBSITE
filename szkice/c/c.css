@@ -370,7 +370,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 @media (max-width: 720px) {
   .hero__body { padding-top: 76px; }
   .hero__media img { object-position: 50% 40%; }
-  .hero__media::after { background: linear-gradient(0deg, rgba(7,22,49,.96) 0%, rgba(7,22,49,.75) 45%, rgba(7,22,49,.2) 75%, rgba(7,22,49,.5) 100%); }
+  .hero__media::after { background: linear-gradient(0deg, rgba(7,22,49,.97) 0%, rgba(7,22,49,.86) 40%, rgba(7,22,49,.8) 75%, rgba(7,22,49,.62) 100%); }
   .sy-stats { grid-template-columns: repeat(3, 1fr); gap: 0 1rem; }
   .sy-intro { grid-template-columns: 1fr; }
   .sy-tw { border: 0; border-radius: 0; }
