@@ -222,9 +222,10 @@ def nav(cur):
       <a href="do-pobrania.html"{cs("do-pobrania")}>Do pobrania</a>
       <a href="poradniki.html"{cs("poradniki")}>Poradniki</a>
       <a href="o-firmie.html"{cs("o-firmie")}>O firmie</a>
+      <a href="kontakt.html"{cs("kontakt")}>Kontakt</a>
     </nav>
     <a class="nav__tel" href="tel:+48798807106">798 807 106</a>
-    <a class="mag" href="{"#kontakt" if cur=="index" else "kontakt.html#formularz"}"><span>Zapytaj o ofertę</span></a>
+    <a class="mag" href="{"#kontakt" if cur=="index" else "kontakt.html#formularz"}"><span>Zapytaj o wycenę</span></a>
     <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Otwórz menu"><i></i></button>
   </div>
 </header>
@@ -287,7 +288,7 @@ def faqlist(items, first_open=True):
 
 # ---------------- strona główna
 hero=frag('  <section class="hero"','  </section>')
-hero=hero.replace('<a class="mag" href="#kontakt" data-topic="Jesteśmy hurtownią i chcemy poznać warunki współpracy (Besco, Pegler Yorkshire)."><span>Warunki dla hurtowni <svg','<a class="mag" href="#kontakt"><span>Zapytaj o ofertę <svg')
+hero=hero.replace('<a class="mag" href="#kontakt" data-topic="Jesteśmy hurtownią i chcemy poznać warunki współpracy (Besco, Pegler Yorkshire)."><span>Warunki dla hurtowni <svg','<a class="mag" href="#kontakt"><span>Zapytaj o wycenę <svg')
 hero=hero.replace('<a class="ghost" href="#katalog">Szukaj po numerze artykułu</a>','<a class="ghost" href="#systemy">Zobacz systemy</a>')
 hb=hero[hero.index('<div class="hero__bar">'):hero.index('</div>\n    </div>\n  </section>')]
 newbar='<div class="hero__bar">\n'+''.join(f'        <a href="{s["slug"]}.html"><span class="label">{s["n"]}</span><b>{s["name"]}</b></a>\n' for s in SYS)+'        <a class="hb-end" href="katalog.html"><span class="label">Katalog Besco 2026</span><b>1 936 indeksów →</b></a>\n      '
@@ -316,7 +317,7 @@ kontakt_home=re.sub(r'<div class="close__bg" aria-hidden="true" data-hf><img [^>
     '<div class="close__bg" aria-hidden="true"><img src="../img/hero/hero-paleta-1200.webp" srcset="../img/hero/hero-paleta-1200.webp 1200w, ../img/hero/hero-paleta-2000.webp 2000w" sizes="100vw" alt="" width="2000" height="1116" loading="lazy" decoding="async"></div>',kontakt_home)
 assert 'cloudfront' not in kontakt_home
 kontakt_home=kontakt_home.replace('<h2 class="h2">Porozmawiajmy o warunkach dla Twojej hurtowni.</h2>','<h2 class="h2">Porozmawiajmy o ofercie dla Twojej hurtowni.</h2>')
-kontakt_home=kontakt_home.replace('<h3>Zapytanie o warunki współpracy</h3>','<h3>Zapytanie ofertowe</h3>')
+kontakt_home=kontakt_home.replace('<h3>Zapytanie o warunki współpracy</h3>','<h3>Zapytanie o wycenę</h3>')
 steps=frag('      <div class="steps">','      </div>\n      <div class="aud">').replace('      <div class="aud">','').rstrip()
 stats='''      <div class="stats">
         <div class="stat"><b><span class="odo" data-odo="30" aria-label="30">30</span><i> lat</i></b><span>na rynku instalacyjnym</span></div>
@@ -447,7 +448,7 @@ for s in SYS:
         <span class="label kicker">{s["n"]} · {s["brand"]}</span>
         <h1>{s["h1"]}</h1>
         <p class="lead">{s["desc"]}</p>
-        <div class="phead__ctas"><a class="mag" href="{ask(s["topic"])}"><span>Zapytaj o ofertę</span></a>{find}</div>
+        <div class="phead__ctas"><a class="mag" href="{ask(s["topic"])}"><span>Zapytaj o wycenę</span></a>{find}</div>
       </div>
       <dl class="phead__facts">
         <div><dt class="label">Indeksy</dt><dd>{s["cnt"]}</dd></div>
@@ -506,8 +507,8 @@ for s in SYS:
   <section class="section section--tight">
     <div class="wrap">
       <div class="cta">
-        <div><h2>Zapytaj o ofertę na {s["name"].lower()} {s["brand"]}.</h2><p>Ceny hurtowe, dostępność i terminy dostaw przygotujemy w ciągu jednego dnia roboczego.</p></div>
-        <div class="cta__b"><a class="mag" href="{ask(s["topic"])}"><span>Zapytaj o ofertę</span></a></div>
+        <div><h2>Zapytaj o wycenę na {s["name"].lower()} {s["brand"]}.</h2><p>Ceny hurtowe, dostępność i terminy dostaw przygotujemy w ciągu jednego dnia roboczego.</p></div>
+        <div class="cta__b"><a class="mag" href="{ask(s["topic"])}"><span>Zapytaj o wycenę</span></a></div>
       </div>
       <div class="shead" style="margin-top:clamp(3rem,6vw,4.5rem)"><h2 class="sy-h" style="margin:0">Pozostałe systemy</h2><a class="ulink" href="index.html#systemy">Wszystkie systemy</a></div>
       <div class="sys sys--3">
@@ -564,7 +565,7 @@ wsp=f'''
         <span class="label kicker">Współpraca z hurtowniami</span>
         <h1>Zaplecze, logistyka i dokumenty.</h1>
         <p class="lead">Dystrybuujemy złączki i armaturę Besco oraz Pegler Yorkshire do hurtowni instalacyjnych w całej Polsce. Tak wygląda współpraca z nami.</p>
-        <div class="phead__ctas"><a class="mag" href="{ask('Jesteśmy hurtownią i chcemy rozpocząć współpracę (Besco, Pegler Yorkshire).')}"><span>Zapytaj o ofertę</span></a></div>
+        <div class="phead__ctas"><a class="mag" href="{ask('Jesteśmy hurtownią i chcemy rozpocząć współpracę (Besco, Pegler Yorkshire).')}"><span>Zapytaj o wycenę</span></a></div>
       </div>
       <dl class="phead__facts">
         <div><dt class="label">Na rynku</dt><dd>30 lat</dd></div>
@@ -604,7 +605,7 @@ wsp=f'''
       </div>
       <div class="cta" style="margin-top:clamp(3rem,6vw,4.5rem)">
         <div><h2>Porozmawiajmy o współpracy.</h2><p>Napisz, które systemy chcesz prowadzić. Ofertę przygotujemy w ciągu jednego dnia roboczego.</p></div>
-        <div class="cta__b"><a class="mag" href="kontakt.html#formularz"><span>Zapytaj o ofertę</span></a><a class="ghost" href="tel:+48798807106">798 807 106</a></div>
+        <div class="cta__b"><a class="mag" href="kontakt.html#formularz"><span>Zapytaj o wycenę</span></a><a class="ghost" href="tel:+48798807106">798 807 106</a></div>
       </div>
     </div>
   </section>
@@ -694,7 +695,7 @@ for G in GROUPS:
         <span class="label kicker">{kicker}</span>
         <h1>{h1}</h1>
         <p class="lead">{lead.strip()}</p>
-        <div class="phead__ctas"><a class="mag" href="{ask(topic)}"><span>Zapytaj o ofertę</span></a>{pdfbtn}</div>
+        <div class="phead__ctas"><a class="mag" href="{ask(topic)}"><span>Zapytaj o wycenę</span></a>{pdfbtn}</div>
       </div>
       <dl class="phead__facts">
 {ftxt}
@@ -726,8 +727,8 @@ for G in GROUPS:
   <section class="section section--tight" style="padding-top:0">
     <div class="wrap">
       <div class="cta">
-        <div><h2>Zapytaj o ofertę: {G["name"]} {G["code"]}.</h2><p>Dodaj rozmiary do listy przyciskiem „Dodaj” albo od razu napisz do nas. Ceny hurtowe, dostępność i terminy przygotujemy w ciągu jednego dnia roboczego.</p></div>
-        <div class="cta__b"><a class="mag" href="{ask(topic)}"><span>Zapytaj o ofertę</span></a><a class="ghost" href="katalog.html#zapytanie">Moja lista</a></div>
+        <div><h2>Zapytaj o wycenę: {G["name"]} {G["code"]}.</h2><p>Dodaj rozmiary do listy przyciskiem „Dodaj” albo od razu napisz do nas. Ceny hurtowe, dostępność i terminy przygotujemy w ciągu jednego dnia roboczego.</p></div>
+        <div class="cta__b"><a class="mag" href="{ask(topic)}"><span>Zapytaj o wycenę</span></a><a class="ghost" href="katalog.html#zapytanie">Moja lista</a></div>
       </div>
       {f'<div class="shead" style="margin-top:clamp(3rem,6vw,4.5rem)"><h2 class="sy-h" style="margin:0">Inne produkty w linii</h2>{search}</div><div class="gl__l" style="margin-top:1.2rem">{rel}</div>' if rel else ''}
       <p style="margin-top:2rem"><a class="ulink" href="{sysp["slug"]}.html">Wszystkie {sysp["name"].lower()}</a></p>
@@ -770,14 +771,14 @@ def phead(crumbs, kicker, h1, lead, facts=(), ctas=''):
 '''
 CTA_BOX=f'''      <div class="cta" style="margin-top:clamp(3rem,6vw,4.5rem)">
         <div><h2>Porozmawiajmy o ofercie dla Twojej hurtowni.</h2><p>Napisz, które systemy chcesz prowadzić. Ofertę przygotujemy w ciągu jednego dnia roboczego.</p></div>
-        <div class="cta__b"><a class="mag" href="kontakt.html#formularz"><span>Zapytaj o ofertę</span></a><a class="ghost" href="tel:+48798807106">798 807 106</a></div>
+        <div class="cta__b"><a class="mag" href="kontakt.html#formularz"><span>Zapytaj o wycenę</span></a><a class="ghost" href="tel:+48798807106">798 807 106</a></div>
       </div>'''
 
 # ---- O firmie
 firma=phead([('O firmie','o-firmie.html')],'O firmie','Armatex. Dystrybutor złączek dla hurtowni.',
   'Od 30 lat pracujemy na rynku instalacyjnym. Z magazynu w Olsztynie dostarczamy złączki i armaturę Besco oraz Pegler Yorkshire do hurtowni w całej Polsce.',
   [('Na rynku','30 lat'),('Indeksy','ok. 2 900'),('Wysyłka','24 h')],
-  f'<a class="mag" href="{ask("Jesteśmy hurtownią i chcemy poznać ofertę Armatex.")}"><span>Zapytaj o ofertę</span></a><a class="ghost" href="wspolpraca.html">Jak współpracujemy</a>')+f'''
+  f'<a class="mag" href="{ask("Jesteśmy hurtownią i chcemy poznać ofertę Armatex.")}"><span>Zapytaj o wycenę</span></a><a class="ghost" href="wspolpraca.html">Jak współpracujemy</a>')+f'''
   <section class="section section--tight">
     <div class="wrap">
       <div class="yard__grid">
@@ -838,7 +839,7 @@ def art(slug,title,seo,desc,lead,mins,body,rel,src=PSRC):
       <aside class="art__side">
         <div class="art__box"><span class="label">W tym poradniku</span><ol>{toc}</ol></div>
         <div class="art__box"><span class="label">Powiązane</span><ul>{rl}</ul></div>
-        <a class="mag" href="{ask('Pytanie po poradniku: '+title)}"><span>Zapytaj o ofertę</span></a>
+        <a class="mag" href="{ask('Pytanie po poradniku: '+title)}"><span>Zapytaj o wycenę</span></a>
       </aside>
     </div>
   </section>
