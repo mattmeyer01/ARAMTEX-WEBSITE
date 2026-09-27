@@ -5,34 +5,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title>Szkic C · Armatex premium</title>
-  <meta name="description" content="Szkic roboczy: premium landing Armatex. Nie publikować.">
+  <meta name="description" content="Szkic roboczy: premium landing Armatex na asortymencie Besco 2026. Nie publikować.">
   <meta name="theme-color" content="#0A1F44">
   <link rel="icon" href="../assets/img/favicon-32.png?v=2" type="image/png" sizes="32x32">
   <link rel="preconnect" href="https://d8j0ntlcm91z4.cloudfront.net" crossorigin>
   <link rel="preload" href="../assets/fonts/outfit-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../assets/fonts/outfit-latin-ext-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="preload" as="image" href="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_f71ca1f9-b0b9-46a2-af54-14357f0f5abc_min.webp" media="(min-width: 721px)" fetchpriority="high">
-  <link rel="preload" as="image" href="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_c5cc2103-2b87-4e8f-8352-0e19ac20b5bb_min.webp" media="(max-width: 720px)" fetchpriority="high">
+  <link rel="preload" as="image" href="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_f71ca1f9-b0b9-46a2-af54-14357f0f5abc_min.webp" media="(min-width: 721px)" fetchpriority="high" data-hf>
+  <link rel="preload" as="image" href="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_c5cc2103-2b87-4e8f-8352-0e19ac20b5bb_min.webp" media="(max-width: 720px)" fetchpriority="high" data-hf>
   <style>
     /* ================================================================
        SZKIC C · Armatex premium (roboczy, niepublikowany)
-       Zdjęcia: sesja Higgsfield (Marketing Studio). Wzorce sekcji: BYQ Supply
-       (Stringer Range Grid, Stringer FAQ, Stringer Hero 8 reveal, Expanding
-       Panels, Odometer Counter, Magnetic Button) przepisane na vanilla CSS/JS.
-       Wydajność: brak bibliotek, animacje tylko transform/opacity/clip-path,
-       lazy-load wszystkiego poniżej hero.
+       Asortyment i dane: katalog Besco Fittings & Connectors 2026 (1 936 pozycji).
+       Zdjęcia produktów: katalog Besco. Zdjęcia sesyjne: Higgsfield (CDN).
+       Wzorce sekcji: BYQ Supply (Stringer Range Grid, Stringer FAQ, Stringer
+       Hero 8 reveal, Expanding Panels, Odometer Counter, Magnetic Button),
+       przepisane na vanilla CSS/JS. Bez bibliotek; dane wyszukiwarki
+       doczytywane dopiero przy użyciu.
        ================================================================ */
-    @font-face { font-family: "Outfit"; src: url("../assets/fonts/outfit-latin-wght-normal.woff2") format("woff2-variations"); font-weight: 100 900; font-display: swap; unicode-range: U+0000-00FF, U+2013-2014, U+2018-201F; }
+    @font-face { font-family: "Outfit"; src: url("../assets/fonts/outfit-latin-wght-normal.woff2") format("woff2-variations"); font-weight: 100 900; font-display: swap; unicode-range: U+0000-00FF, U+2013-2014, U+2018-201F, U+2026, U+2032-2033, U+2212; }
     @font-face { font-family: "Outfit"; src: url("../assets/fonts/outfit-latin-ext-wght-normal.woff2") format("woff2-variations"); font-weight: 100 900; font-display: swap; unicode-range: U+0100-024F, U+1E00-1EFF; }
-    @font-face { font-family: "Plex Mono"; src: url("../assets/fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; unicode-range: U+0000-00FF; }
+    @font-face { font-family: "Plex Mono"; src: url("../assets/fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; unicode-range: U+0000-00FF, U+2013-2014, U+2026, U+2032-2033, U+2212; }
     @font-face { font-family: "Plex Mono"; src: url("../assets/fonts/ibm-plex-mono-latin-ext-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; unicode-range: U+0100-024F, U+1E00-1EFF; }
 
     :root {
       --white: #fff; --stone: #f3f1ec; --stone-2: #e9e6df; --line: #e0ddd5;
-      --ink: #0f1829; --ink-60: rgba(15,24,41,.64); --ink-40: rgba(15,24,41,.42);
-      --red: #dc291e; --red-2: #b91f15;
+      --ink: #0f1829; --ink-60: rgba(15,24,41,.7); --ink-40: rgba(15,24,41,.62);
+      --red: #dc291e; --red-2: #b91f15; --red-soft: #ff7a70;
       --navy: #0a1f44; --navy-2: #0e2856; --navy-3: #071631;
-      --on: rgba(255,255,255,.92); --on-60: rgba(255,255,255,.62); --on-line: rgba(255,255,255,.14);
+      --on-60: rgba(255,255,255,.64); --on-line: rgba(255,255,255,.14);
       --sans: "Outfit", "Segoe UI", system-ui, sans-serif;
       --mono: "Plex Mono", ui-monospace, Consolas, monospace;
       --g: clamp(1rem, 4vw, 3.5rem); --max: 1360px; --r: 16px;
@@ -40,26 +41,27 @@
     }
     *,*::before,*::after { box-sizing: border-box; }
     html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-    body { margin: 0; background: var(--white); color: var(--ink); font: 400 1rem/1.55 var(--sans); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; overflow-x: clip; }
+    body { margin: 0; background: var(--white); color: var(--ink); font: 400 1rem/1.55 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: clip; }
     img { display: block; max-width: 100%; height: auto; }
     a { color: inherit; }
     h1,h2,h3,p,figure { margin: 0; }
-    button { font: inherit; color: inherit; }
+    button, input, textarea { font: inherit; color: inherit; }
     :focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
     .wrap { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--g); }
     .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-    .label { font: 500 .72rem/1.2 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+    .label { font: 500 .72rem/1.25 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
     .kicker { display: inline-flex; align-items: center; gap: .6rem; color: var(--red); }
     .kicker::before { content: ""; width: 8px; height: 8px; background: currentColor; }
     .h2 { font-size: clamp(2rem, 4.4vw, 3.6rem); line-height: 1.02; letter-spacing: -.035em; font-weight: 600; margin-top: 1rem; text-wrap: balance; }
-    .lead { color: var(--ink-60); font-size: clamp(1rem, 1.2vw, 1.12rem); max-width: 46ch; }
+    .lead { color: var(--ink-60); font-size: clamp(1rem, 1.2vw, 1.12rem); max-width: 50ch; }
     .section { padding-block: clamp(4.5rem, 9vw, 8.5rem); }
-    .ulink { font: 500 .72rem/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase; text-decoration: none; padding-bottom: .35rem; border-bottom: 1px solid currentColor; white-space: nowrap; transition: color .2s; }
+    .ulink { font: 500 .72rem/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase; text-decoration: none; padding-bottom: .35rem; border-bottom: 1px solid currentColor; white-space: nowrap; transition: color .2s; background: none; border-top: 0; border-inline: 0; cursor: pointer; }
     .ulink:hover { color: var(--red); }
-    .badge { position: fixed; z-index: 90; left: 1rem; bottom: 1rem; background: #ffe14d; color: #111; font: 500 .66rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; padding: .5rem .8rem; border-radius: 99px; box-shadow: 0 8px 24px rgba(0,0,0,.2); }
+    .appr { display: inline-block; font: 500 .66rem/1 var(--mono); letter-spacing: .08em; padding: .38rem .5rem; border: 1px solid var(--line); border-radius: 6px; color: var(--ink-60); background: var(--white); }
+    .badge { position: fixed; z-index: 90; left: 1rem; bottom: 1rem; background: #ffe14d; color: #111; font: 500 .66rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; padding: .5rem .8rem; border-radius: 99px; box-shadow: 0 8px 24px rgba(0,0,0,.2); pointer-events: none; }
 
     /* ---------- przyciski: magnetyczny (BYQ Magnetic Button) */
-    .mag { position: relative; display: inline-flex; align-items: center; justify-content: center; gap: .75rem; min-height: 56px; padding: 0 1.75rem; border-radius: 99px; border: 0; background: var(--red); color: #fff; font-weight: 600; font-size: 1rem; text-decoration: none; cursor: pointer; isolation: isolate; transition: background .25s; }
+    .mag { position: relative; display: inline-flex; align-items: center; justify-content: center; min-height: 56px; padding: 0 1.75rem; border-radius: 99px; border: 0; background: var(--red); color: #fff; font-weight: 600; font-size: 1rem; text-decoration: none; cursor: pointer; isolation: isolate; transition: background .25s; }
     .mag::before { content: ""; position: absolute; inset: -6px; z-index: -1; border-radius: inherit; background: radial-gradient(closest-side, rgba(220,41,30,.45), transparent); opacity: 0; transform: translate(var(--hx,0), var(--hy,0)); transition: opacity .3s; }
     .mag:hover::before { opacity: 1; }
     .mag:hover { background: var(--red-2); }
@@ -71,86 +73,173 @@
     /* ---------- nawigacja */
     .nav { position: fixed; inset: 0 0 auto; z-index: 60; color: #fff; transition: background .35s, color .35s, box-shadow .35s; }
     .nav .wrap { display: flex; align-items: center; gap: 2rem; height: 76px; }
-    .nav__logo { position: relative; display: block; width: 150px; height: 26px; }
+    .nav__logo { position: relative; display: block; width: 150px; height: 26px; flex: none; }
     .nav__logo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: left; transition: opacity .35s; }
     .nav__logo .dark { opacity: 0; }
-    .nav__links { display: flex; gap: 2rem; margin-left: auto; }
-    .nav__links a { text-decoration: none; font-size: .95rem; font-weight: 500; opacity: .8; transition: opacity .2s; }
+    .nav__links { display: flex; gap: 1.8rem; margin-left: auto; }
+    .nav__links a { text-decoration: none; font-size: .95rem; font-weight: 500; opacity: .82; transition: opacity .2s; }
     .nav__links a:hover { opacity: 1; }
     .nav__tel { font: 500 .8rem var(--mono); letter-spacing: .06em; text-decoration: none; }
     .nav .mag { min-height: 44px; padding: 0 1.2rem; font-size: .9rem; }
-    .nav.is-solid { background: rgba(255,255,255,.94); color: var(--ink); box-shadow: 0 1px 0 var(--line); backdrop-filter: saturate(1.4) blur(12px); }
+    .nav.is-solid { background: rgba(255,255,255,.95); color: var(--ink); box-shadow: 0 1px 0 var(--line); backdrop-filter: saturate(1.4) blur(12px); }
     .nav.is-solid .light { opacity: 0; } .nav.is-solid .dark { opacity: 1; }
 
     /* ---------- HERO */
-    .hero { position: relative; min-height: max(100svh, 640px); display: grid; align-items: end; color: #fff; background: var(--navy-3); overflow: hidden; }
+    .hero { position: relative; min-height: max(100svh, 660px); display: grid; align-items: end; color: #fff; background: radial-gradient(70% 80% at 80% 45%, #173a7a 0%, rgba(10,31,68,0) 60%), linear-gradient(180deg, var(--navy) 0%, var(--navy-3) 100%); overflow: hidden; }
+    .hero::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.9) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.9) 1px, transparent 1px); background-size: 56px 56px; opacity: .035; pointer-events: none; }
     .hero__media { position: absolute; inset: 0; }
     .hero__media img { width: 100%; height: 100%; object-fit: cover; object-position: 70% 50%; animation: settle 2.4s var(--ease-out) both; }
     @keyframes settle { from { transform: scale(1.08); } to { transform: none; } }
     .hero__media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(7,22,49,.92) 0%, rgba(7,22,49,.55) 42%, rgba(7,22,49,0) 70%), linear-gradient(0deg, rgba(7,22,49,.85) 0%, rgba(7,22,49,0) 38%); }
     .hero__body { position: relative; z-index: 2; padding-block: 8rem 0; }
-    .hero__eyebrow { color: #ff7a70; }
+    .hero__eyebrow { color: var(--red-soft); }
     .hero h1 { margin-top: 1.2rem; font-size: clamp(2.6rem, 5.4vw, 5.1rem); line-height: .94; letter-spacing: -.05em; font-weight: 600; max-width: 12ch; }
     .hero h1 .ln { display: block; overflow: hidden; padding-bottom: .06em; }
     .hero h1 .ln > span { display: block; animation: rise 1.1s var(--ease-out) both; }
-    .hero h1 .ln:nth-child(2) > span { animation-delay: .12s; color: #fff; }
+    .hero h1 .ln:nth-child(2) > span { animation-delay: .12s; }
     .hero h1 em { font-style: normal; color: var(--red); }
     @keyframes rise { from { transform: translateY(105%); } to { transform: none; } }
-    .hero__sub { margin-top: 1.6rem; max-width: 42ch; color: var(--on-60); font-size: clamp(1.02rem, 1.3vw, 1.18rem); animation: fade 1s .35s both; }
+    .hero__sub { margin-top: 1.6rem; max-width: 46ch; color: var(--on-60); font-size: clamp(1.02rem, 1.3vw, 1.18rem); animation: fade 1s .35s both; }
     .hero__ctas { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 2.2rem; animation: fade 1s .5s both; }
     @keyframes fade { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
     .hero__bar { margin-top: clamp(2.5rem, 6vh, 4.5rem); border-top: 1px solid var(--on-line); display: grid; grid-template-columns: repeat(4, 1fr) auto; }
-    .hero__bar > div { padding: 1.3rem 1.4rem 1.6rem 0; border-right: 1px solid var(--on-line); }
-    .hero__bar > div + div { padding-left: 1.4rem; }
+    .hero__bar > * { padding: 1.3rem 1.4rem 1.6rem 0; border-right: 1px solid var(--on-line); }
+    .hero__bar > * + * { padding-left: 1.4rem; }
     .hero__bar .label { color: var(--on-60); }
     .hero__bar b { display: block; margin-top: .35rem; font-weight: 500; font-size: 1.05rem; }
-    .hero__bar > div:last-child { border-right: 0; text-align: right; }
+    .hero__bar > a { border-right: 0; text-align: right; text-decoration: none; }
+    .hero__bar > a b { color: #fff; }
+    .hero__bar > a:hover b { color: var(--red-soft); }
+    /* karta produktu z okładki katalogu */
+    .pcard { position: absolute; z-index: 3; right: max(var(--g), calc((100% - var(--max)) / 2 + var(--g))); top: 50%; transform: translateY(-58%); width: min(360px, 30vw); background: #fff; color: var(--ink); border-radius: var(--r); padding: 1rem 1rem 1.1rem; box-shadow: 0 30px 60px -30px rgba(0,0,0,.6); animation: fade 1s .65s both; }
+    .hero__media + .pcard { display: none; }
+    .pcard img { width: 100%; aspect-ratio: 795/430; object-fit: contain; }
+    .pcard__t { display: flex; justify-content: space-between; align-items: baseline; gap: .5rem; margin-top: .6rem; }
+    .pcard__t b { font-weight: 600; font-size: 1.02rem; letter-spacing: -.01em; }
+    .pcard__t .label { color: var(--ink-40); }
+    .pcard__s { display: flex; flex-wrap: wrap; gap: .3rem 1rem; margin-top: .5rem; font: 500 .68rem/1.3 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+    .pcard__s i { font-style: normal; color: var(--ink-40); margin-right: .35rem; }
+    .pcard__a { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .75rem; }
 
     /* ---------- pas przewijany */
     .ticker { background: var(--red); color: #fff; overflow: hidden; }
-    .ticker__t { display: flex; width: max-content; animation: tick 40s linear infinite; }
+    .ticker__t { display: flex; width: max-content; animation: tick 46s linear infinite; }
     .ticker span { display: inline-flex; align-items: center; gap: 2.5rem; padding: 1rem 1.25rem; font-weight: 500; font-size: 1.05rem; white-space: nowrap; }
     .ticker span::after { content: ""; width: 6px; height: 6px; background: rgba(255,255,255,.6); transform: rotate(45deg); }
     @keyframes tick { to { transform: translateX(-50%); } }
 
-    /* ---------- OFERTA (BYQ Stringer Range Grid) */
-    .rg__head { display: flex; justify-content: space-between; align-items: flex-end; gap: 2rem; padding-bottom: 2.2rem; border-bottom: 1px solid var(--line); }
+    /* ---------- OFERTA: linie produktowe (BYQ Stringer Range Grid) */
+    .rg__head { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 2rem; padding-bottom: 2.2rem; border-bottom: 1px solid var(--line); }
+    .rg__head .lead { margin-top: 1rem; }
     .rg__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.2rem 1.25rem; padding-block: 2.2rem; }
-    .rt { display: flex; flex-direction: column; gap: .6rem; text-decoration: none; }
-    .rt__m { position: relative; aspect-ratio: 4/3; border-radius: 12px; overflow: hidden; background: var(--stone); margin-bottom: .5rem; }
-    .rt__m img { width: 100%; height: 100%; object-fit: cover; transition: transform .9s var(--ease-out); }
-    .rt:hover .rt__m img, .rt:focus-visible .rt__m img { transform: scale(1.045); }
-    .rt__i { position: absolute; left: .85rem; top: .85rem; background: #fff; border-radius: 99px; padding: .3rem .6rem; }
-    .rt__h { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
-    .rt__h b { font-weight: 600; font-size: 1.12rem; letter-spacing: -.01em; }
-    .rt__h .label { color: var(--ink-40); transition: color .2s; }
-    .rt:hover .rt__h .label { color: var(--red); }
-    .rt__rule { height: 1px; background: var(--ink); transform: scaleX(0); transform-origin: left; transition: transform .45s var(--ease-out); }
-    .rt:hover .rt__rule, .rt:focus-visible .rt__rule { transform: none; }
-    .rt__d { font-size: .92rem; color: var(--ink-60); }
-    .rt__s { display: flex; flex-wrap: wrap; gap: .35rem 1.4rem; }
-    .rt__s span { font: 500 .7rem/1.3 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
-    .rt__s i { font-style: normal; color: var(--ink-40); margin-right: .45rem; }
-    .rg__foot { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1rem; align-items: center; padding-top: 1.6rem; border-top: 1px solid var(--line); }
-    .rg__foot .kicker { color: var(--ink-60); }
-    .rg__foot .kicker::before { background: var(--red); }
-    .rg__foot p { font-size: .82rem; color: var(--ink-60); text-align: center; }
-    .rg__foot .ulink { justify-self: end; }
+    .line { display: flex; flex-direction: column; gap: .6rem; text-decoration: none; }
+    .line__m { position: relative; aspect-ratio: 4/3; border-radius: 12px; overflow: hidden; background: var(--stone); margin-bottom: .5rem; display: flex; align-items: center; justify-content: center; }
+    .trio { display: flex; align-items: center; justify-content: center; gap: 4%; width: 100%; padding: 0 7%; transition: transform .9s var(--ease-out); }
+    .trio img { width: 30%; aspect-ratio: 1; object-fit: contain; }
+    .trio img:nth-child(2) { width: 36%; }
+    .line:hover .trio, .line:focus-visible .trio { transform: scale(1.05); }
+    .line__n { position: absolute; left: .85rem; top: .85rem; background: #fff; border-radius: 99px; padding: .3rem .6rem; }
+    .line__c { position: absolute; right: .85rem; top: .85rem; color: var(--ink-60); }
+    .line__h { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+    .line__h b { font-weight: 600; font-size: 1.14rem; letter-spacing: -.01em; }
+    .line__h .label { color: var(--ink-40); transition: color .2s; white-space: nowrap; }
+    .line:hover .line__h .label { color: var(--red); }
+    .line__rule { height: 1px; background: var(--ink); transform: scaleX(0); transform-origin: left; transition: transform .45s var(--ease-out); }
+    .line:hover .line__rule, .line:focus-visible .line__rule { transform: none; }
+    .line__d { font-size: .93rem; color: var(--ink-60); }
+    .line__s { display: flex; flex-wrap: wrap; gap: .35rem 1.3rem; }
+    .line__s span { font: 500 .7rem/1.3 var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+    .line__s i { font-style: normal; color: var(--ink-40); margin-right: .45rem; }
+    .line__a { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .2rem; }
+
+    /* tabela parametrów linii */
+    .ptab-head { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding-top: 2.4rem; border-top: 1px solid var(--line); }
+    .ptab-head h3 { font-size: 1.35rem; font-weight: 600; letter-spacing: -.015em; }
+    .ptab-head .label { color: var(--ink-40); }
+    .ptab-wrap { position: relative; margin-top: 1.2rem; overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+    .ptab { width: 100%; min-width: 900px; border-collapse: collapse; font-size: .92rem; }
+    .ptab th { text-align: left; font: 500 .66rem/1.2 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-60); background: var(--stone); padding: .85rem 1rem; white-space: nowrap; }
+    .ptab td { padding: .8rem 1rem; border-top: 1px solid var(--line); vertical-align: top; }
+    .ptab td:first-child, .ptab th:first-child { position: sticky; left: 0; background: var(--white); z-index: 1; }
+    .ptab th:first-child { background: var(--stone); }
+    .ptab td:first-child b { font-weight: 600; }
+    .ptab .num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .ptab .appr { margin: 0 .2rem .2rem 0; }
+    .ptab tr { transition: background .2s; }
+    .ptab tbody tr:hover td { background: #faf9f6; }
+    .ptab a { font: 500 .66rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--red); text-decoration: none; white-space: nowrap; }
+    .ptab a:hover { text-decoration: underline; }
+
+    /* ---------- KATALOG: wyszukiwarka pozycji Besco */
+    .finder { background: var(--stone); }
+    .finder .kicker { color: var(--red-2); }
+    .fd__g { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: clamp(1.5rem, 3vw, 2.5rem); align-items: start; margin-top: 2.6rem; }
+    .fd__search { position: relative; }
+    .fd__search svg { position: absolute; left: 1.1rem; top: 50%; width: 20px; height: 20px; transform: translateY(-50%); color: var(--ink-40); pointer-events: none; }
+    .fd__search input { width: 100%; height: 62px; border-radius: 14px; border: 1px solid var(--line); background: #fff; padding: 0 1rem 0 3.1rem; font-size: 1.08rem; outline: 0; transition: border-color .2s, box-shadow .2s; }
+    .fd__search input:focus { border-color: var(--red); box-shadow: 0 0 0 4px rgba(220,41,30,.12); }
+    .fd__hint { margin-top: .6rem; font-size: .85rem; color: var(--ink-60); }
+    .fd__hint code { font: 500 .78rem var(--mono); background: #fff; border: 1px solid var(--line); border-radius: 5px; padding: .08rem .35rem; cursor: pointer; }
+    .chips { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1.1rem; }
+    .chip { font: 500 .68rem/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; padding: .6rem .75rem; border-radius: 99px; border: 1px solid var(--line); background: #fff; color: var(--ink-60); cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+    .chip:hover { border-color: var(--ink-40); color: var(--ink); }
+    .chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+    .fd__meta { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-top: 1.4rem; padding-bottom: .7rem; border-bottom: 1px solid var(--line); }
+    .fd__meta .label { color: var(--ink-60); }
+    .legend { font-size: .8rem; color: var(--ink-40); }
+    .res { list-style: none; margin: 0; padding: 0; }
+    .res li { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto auto auto; gap: .9rem 1rem; align-items: center; padding: .75rem 0; border-bottom: 1px solid var(--line); }
+    .res img { width: 56px; height: 56px; object-fit: contain; border-radius: 8px; }
+    .res b { font-weight: 600; }
+    .res .sz { margin-left: .4rem; font-variant-numeric: tabular-nums; }
+    .res small { display: block; color: var(--ink-40); font-size: .8rem; margin-top: .1rem; }
+    .res code { font: 500 .82rem/1.2 var(--mono); letter-spacing: .02em; white-space: nowrap; }
+    .res .pk { font: 500 .7rem/1.3 var(--mono); color: var(--ink-60); text-align: right; white-space: nowrap; }
+    .res .pk i { display: block; font-style: normal; color: var(--ink-40); letter-spacing: .06em; text-transform: uppercase; font-size: .6rem; }
+    .add { min-width: 92px; height: 38px; border-radius: 99px; border: 1.5px solid var(--ink); background: transparent; font-weight: 600; font-size: .85rem; cursor: pointer; transition: background .2s, color .2s, border-color .2s; }
+    .add:hover { background: var(--ink); color: #fff; }
+    .add.is-in { background: var(--red); border-color: var(--red); color: #fff; }
+    .fd__empty { padding: 2.2rem 0; color: var(--ink-60); }
+    .fd__more { margin-top: 1.2rem; }
+    .fd__more button { height: 44px; padding: 0 1.3rem; border-radius: 99px; border: 1px solid var(--line); background: #fff; font-weight: 600; cursor: pointer; }
+    .fd__more button:hover { border-color: var(--ink); }
+    .rfq { position: sticky; top: 100px; background: var(--navy); color: #fff; border-radius: var(--r); padding: 1.4rem; }
+    .rfq h3 { font-size: 1.2rem; font-weight: 600; letter-spacing: -.01em; display: flex; justify-content: space-between; align-items: baseline; }
+    .rfq h3 .label { color: var(--red-soft); }
+    .rfq > p { color: var(--on-60); font-size: .9rem; margin-top: .4rem; }
+    .rfq ul { list-style: none; margin: 1rem 0 0; padding: 0; max-height: 340px; overflow: auto; }
+    .rfq li { display: grid; grid-template-columns: minmax(0, 1fr) 64px 28px; gap: .5rem; align-items: center; padding: .55rem 0; border-top: 1px solid var(--on-line); }
+    .rfq li code { font: 500 .78rem var(--mono); display: block; }
+    .rfq li small { display: block; color: var(--on-60); font-size: .75rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .rfq input { width: 64px; height: 34px; border-radius: 8px; border: 1px solid var(--on-line); background: rgba(255,255,255,.06); color: #fff; text-align: center; font-variant-numeric: tabular-nums; }
+    .rfq .rm { width: 28px; height: 28px; border-radius: 50%; border: 0; background: rgba(255,255,255,.08); color: #fff; cursor: pointer; }
+    .rfq .rm:hover { background: var(--red); }
+    .rfq .mag { width: 100%; margin-top: 1.1rem; min-height: 50px; }
+    .rfq .mag[disabled] { opacity: .45; cursor: not-allowed; }
+    .rfq__src { margin-top: .8rem; font-size: .75rem; color: var(--on-60); }
+    .pill { position: fixed; z-index: 70; right: 1rem; bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); display: none; align-items: center; gap: .6rem; background: var(--ink); color: #fff; text-decoration: none; padding: .75rem 1rem; border-radius: 99px; box-shadow: 0 12px 30px rgba(0,0,0,.25); font-weight: 600; font-size: .9rem; }
+    .pill.on { display: inline-flex; }
+    .pill span { background: var(--red); border-radius: 99px; min-width: 1.6rem; height: 1.6rem; display: grid; place-items: center; font: 500 .75rem var(--mono); }
 
     /* ---------- METODY: rozsuwane panele (BYQ Expanding Panels) */
     .methods { background: var(--navy-3); color: #fff; }
-    .methods .lead { color: var(--on-60); }
-    .panels { display: flex; gap: .6rem; height: clamp(420px, 62vh, 620px); margin-top: 3rem; }
-    .panel { position: relative; flex: 1 1 0; min-width: 0; border-radius: var(--r); overflow: hidden; cursor: pointer; background: var(--navy-2); transition: flex-grow .7s var(--ease-io); border: 0; padding: 0; text-align: left; }
-    .panel.is-open { flex-grow: 3.4; }
-    .panel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease-out), opacity .5s; opacity: .55; }
-    .panel.is-open img { opacity: 1; transform: scale(1.02); }
-    .panel::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(7,22,49,.92) 0%, rgba(7,22,49,.15) 55%); }
+    .methods .lead { color: var(--on-60); margin-top: 1rem; }
+    .panels { display: flex; gap: .6rem; height: clamp(440px, 64vh, 640px); margin-top: 3rem; }
+    .panel { position: relative; flex: 1 1 0; min-width: 0; border-radius: var(--r); overflow: hidden; cursor: pointer; background: linear-gradient(160deg, #123066 0%, var(--navy-2) 55%, #0b2250 100%); transition: flex-grow .7s var(--ease-io); border: 0; padding: 0; text-align: left; color: #fff; }
+    .panel.is-open { flex-grow: 3.2; }
+    .panel > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s var(--ease-out), opacity .5s; opacity: .5; }
+    .panel.is-open > img { opacity: 1; transform: scale(1.02); }
+    .panel::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(7,22,49,.94) 0%, rgba(7,22,49,.2) 60%); }
+    .panel__ico { position: absolute; z-index: 2; left: 1.4rem; top: 1.4rem; width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: rgba(255,255,255,.1); border: 1px solid var(--on-line); }
+    .panel__ico svg { width: 24px; height: 24px; }
+    .panel__prod { position: absolute; z-index: 2; right: 1.2rem; top: 1.2rem; display: flex; gap: .4rem; opacity: 0; transform: translateY(-6px); transition: opacity .4s, transform .5s var(--ease-out); }
+    .panel.is-open .panel__prod { opacity: 1; transform: none; transition-delay: .2s; }
+    .panel__prod img { width: 64px; height: 64px; object-fit: contain; background: var(--stone); border-radius: 10px; padding: 4px; }
     .panel__c { position: absolute; z-index: 2; left: 0; right: 0; bottom: 0; padding: 1.4rem; }
-    .panel__n { color: #ff7a70; }
+    .panel__n { color: var(--red-soft); }
     .panel__t { display: block; margin-top: .4rem; font-size: clamp(1.3rem, 2vw, 1.9rem); font-weight: 600; letter-spacing: -.02em; white-space: nowrap; }
-    .panel__p { display: block; max-width: 40ch; margin-top: .6rem; color: var(--on-60); font-size: .95rem; max-height: 0; overflow: hidden; opacity: 0; transform: translateY(8px); transition: opacity .4s, transform .5s var(--ease-out), max-height .5s var(--ease-io); }
-    .panel.is-open .panel__p { max-height: 8em; opacity: 1; transform: none; transition-delay: .2s; }
+    .panel__p { display: block; max-width: 44ch; margin-top: .6rem; color: var(--on-60); font-size: .95rem; max-height: 0; overflow: hidden; opacity: 0; transform: translateY(8px); transition: opacity .4s, transform .5s var(--ease-out), max-height .5s var(--ease-io); }
+    .panel.is-open .panel__p { max-height: 9em; opacity: 1; transform: none; transition-delay: .2s; }
 
     /* ---------- ZAPLECZE: kadr odsłaniany przewijaniem (BYQ Stringer Hero 8) + odometr */
     .yard__grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(2rem, 6vw, 6rem); align-items: end; }
@@ -176,7 +265,7 @@
     .odo-r span { display: block; height: 1.1em; }
     .odo-s { width: .22em; }
 
-    /* ---------- PROCES */
+    /* ---------- PROCES + DLA KOGO */
     .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 3rem; }
     .step { position: relative; border-radius: var(--r); padding: 2rem 1.7rem; background: var(--stone); min-height: 300px; display: flex; flex-direction: column; }
     .step__n { font-size: 5.5rem; font-weight: 700; line-height: .8; letter-spacing: -.06em; color: transparent; -webkit-text-stroke: 1.5px var(--red); }
@@ -185,8 +274,6 @@
     .step .label { position: absolute; top: 1.6rem; right: 1.6rem; color: var(--ink-40); }
     .step--dark { background: var(--navy); color: #fff; }
     .step--dark p, .step--dark .label { color: var(--on-60); }
-
-    /* ---------- DLA KOGO */
     .aud { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--ink); margin-top: 3rem; }
     .aud > div { padding: 2rem 2rem 0 0; }
     .aud > div + div { padding-left: 2rem; border-left: 1px solid var(--line); }
@@ -198,14 +285,17 @@
     .docs { background: var(--navy); color: #fff; border-radius: calc(var(--r) * 2); margin-inline: clamp(.5rem, 1.5vw, 1.25rem); overflow: hidden; }
     .docs__g { display: grid; grid-template-columns: 1fr 1fr; }
     .docs__t { padding: clamp(3rem, 7vw, 6rem) var(--g); }
-    .docs .kicker { color: #ff7a70; }
+    .docs .kicker { color: var(--red-soft); }
     .docs .lead { color: var(--on-60); margin-top: 1.2rem; }
     .docs ul { list-style: none; padding: 0; margin: 2rem 0 0; border-top: 1px solid var(--on-line); }
     .docs li { display: flex; justify-content: space-between; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--on-line); }
-    .docs li .label { color: #ff7a70; }
+    .docs li .label { color: var(--red-soft); }
     .docs .ghost { margin-top: 2.2rem; }
-    .docs__m { position: relative; min-height: 460px; }
-    .docs__m img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .docs__m { position: relative; min-height: 520px; background: #0c2552; overflow: hidden; }
+    .docs__sheet { position: absolute; left: 50%; top: 12%; width: min(78%, 460px); transform: translateX(-50%) rotate(-3deg); box-shadow: 0 40px 80px -30px rgba(0,0,0,.7); border-radius: 6px; overflow: hidden; background: #fff; }
+    .docs__sheet img { width: 100%; }
+    .docs__stamp { position: absolute; right: 9%; bottom: 10%; width: 118px; height: 118px; border-radius: 50%; border: 2px solid var(--red-soft); color: var(--red-soft); display: grid; place-items: center; text-align: center; transform: rotate(-12deg); font: 500 .62rem/1.35 var(--mono); letter-spacing: .12em; text-transform: uppercase; background: rgba(12,37,82,.85); }
+    .docs__stamp b { display: block; font-size: 1.1rem; letter-spacing: .02em; font-family: var(--sans); font-weight: 700; }
 
     /* ---------- FAQ (BYQ Stringer FAQ) */
     .faq { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(2rem, 6vw, 6rem); }
@@ -220,7 +310,7 @@
     .qa summary i::before, .qa summary i::after { content: ""; position: absolute; left: 0; top: 7px; width: 16px; height: 2px; background: currentColor; }
     .qa summary i::after { transform: rotate(90deg); }
     .qa[open] summary i { transform: rotate(45deg); color: var(--red); }
-    .qa p { padding: 0 3rem 1.6rem 0; color: var(--ink-60); max-width: 60ch; }
+    .qa p { padding: 0 3rem 1.6rem 0; color: var(--ink-60); max-width: 62ch; }
     .qa::details-content { block-size: 0; overflow: hidden; transition: block-size .45s var(--ease-io), content-visibility .45s allow-discrete; }
     .qa[open]::details-content { block-size: auto; }
     @supports (interpolate-size: allow-keywords) { :root { interpolate-size: allow-keywords; } }
@@ -232,7 +322,7 @@
     .close__bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(7,22,49,.96) 30%, rgba(7,22,49,.7)); }
     .close .wrap { position: relative; }
     .close__g { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 6vw, 6rem); align-items: start; }
-    .close .kicker { color: #ff7a70; }
+    .close .kicker { color: var(--red-soft); }
     .close__big { display: block; margin-top: 2rem; font-size: clamp(2.2rem, 5vw, 4.4rem); font-weight: 600; letter-spacing: -.04em; line-height: 1; text-decoration: none; color: #fff; }
     .close__big:hover { color: var(--red); }
     .people { display: grid; gap: 1px; margin-top: 2.2rem; background: var(--on-line); border-radius: var(--r); overflow: hidden; }
@@ -250,8 +340,8 @@
     .f { display: flex; flex-direction: column; gap: .35rem; }
     .f--w { grid-column: 1 / -1; }
     .f label { font: 500 .66rem var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--ink-60); }
-    .f input, .f textarea { font: inherit; color: var(--ink); background: var(--stone); border: 1px solid transparent; border-radius: 10px; padding: .85rem .9rem; outline: 0; transition: border-color .2s, background .2s; }
-    .f textarea { min-height: 120px; resize: vertical; }
+    .f input, .f textarea { color: var(--ink); background: var(--stone); border: 1px solid transparent; border-radius: 10px; padding: .85rem .9rem; outline: 0; transition: border-color .2s, background .2s; }
+    .f textarea { min-height: 150px; resize: vertical; font-family: var(--sans); }
     .f input:focus, .f textarea:focus { border-color: var(--red); background: #fff; }
     .consent { display: flex; gap: .6rem; margin-top: 1rem; font-size: .82rem; color: var(--ink-60); }
     .consent input { accent-color: var(--red); margin-top: .2rem; }
@@ -263,31 +353,35 @@
     .foot img { width: 120px; height: auto; }
     .foot a { text-decoration: none; }
 
-    /* ---------- wejścia przy przewijaniu (IntersectionObserver) */
+    /* ---------- wejścia przy przewijaniu */
     .in { opacity: 0; transform: translateY(18px); transition: opacity .8s var(--ease-out), transform .8s var(--ease-out); }
     .in.on { opacity: 1; transform: none; }
 
     /* ---------- responsywność */
+    @media (max-width: 1180px) { .pcard { display: none; } }
     @media (max-width: 1080px) {
       .nav__tel { display: none; }
       .rg__grid { grid-template-columns: repeat(2, 1fr); }
       .stats { grid-template-columns: repeat(2, 1fr); }
       .stat:nth-child(3) { border-left: 0; padding-left: 0; }
+      .fd__g { grid-template-columns: 1fr; }
+      .rfq { position: static; }
     }
     @media (max-width: 900px) {
       .hero__bar { grid-template-columns: repeat(2, 1fr); }
-      .hero__bar > div:nth-child(2) { border-right: 0; }
-      .hero__bar > div:nth-child(3) { padding-left: 0; border-top: 1px solid var(--on-line); }
-      .hero__bar > div:nth-child(4) { border-top: 1px solid var(--on-line); border-right: 0; }
-      .hero__bar > div:last-child { display: none; }
-      .yard__grid, .docs__g, .faq, .close__g { grid-template-columns: 1fr; }
+      .hero__bar > *:nth-child(2) { border-right: 0; }
+      .hero__bar > *:nth-child(3) { padding-left: 0; border-top: 1px solid var(--on-line); }
+      .hero__bar > *:nth-child(4) { border-top: 1px solid var(--on-line); border-right: 0; }
+      .hero__bar > a { grid-column: 1 / -1; text-align: left; padding-left: 0; border-top: 1px solid var(--on-line); }
+      .yard__grid, .docs__g, .faq, .close__g, .rg__head { grid-template-columns: 1fr; }
       .faq__intro { position: static; }
       .steps, .aud { grid-template-columns: 1fr; }
       .aud > div + div { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); margin-top: 2rem; }
-      .docs__m { min-height: 300px; }
+      .docs__m { min-height: 420px; }
       .panels { flex-direction: column; height: auto; }
-      .panel { flex: none; height: 96px; transition: height .6s var(--ease-io); }
-      .panel.is-open { height: 360px; }
+      .panel { flex: none; height: 104px; transition: height .6s var(--ease-io); }
+      .panel.is-open { height: 400px; }
+      .panel__ico { top: 1.2rem; }
     }
     @media (max-width: 720px) {
       .nav__links { display: none; }
@@ -295,13 +389,17 @@
       .hero__body { padding-top: 7rem; }
       .hero__media img { object-position: 50% 100%; }
       .hero__media::after { background: linear-gradient(0deg, rgba(7,22,49,.96) 0%, rgba(7,22,49,.75) 45%, rgba(7,22,49,.2) 75%, rgba(7,22,49,.5) 100%); }
-      .rg__head { flex-direction: column; align-items: flex-start; }
       .rg__grid { grid-template-columns: 1fr; gap: 2.6rem; }
-      .rg__foot { grid-template-columns: 1fr; }
-      .rg__foot p { text-align: left; }
-      .rg__foot .ulink { justify-self: start; }
       .frame { aspect-ratio: 4/3; }
       .fr { grid-template-columns: 1fr; }
+      .res li { grid-template-columns: 48px minmax(0, 1fr) auto; gap: .35rem .8rem; }
+      .res img { width: 48px; height: 48px; grid-row: span 2; }
+      .res code { grid-column: 2; }
+      .res .pk { grid-column: 3; grid-row: 1; }
+      .res .add { grid-column: 3; grid-row: 2; min-width: 80px; height: 34px; }
+      .panel__prod img { width: 52px; height: 52px; }
+      .pill { right: auto; left: 50%; transform: translateX(-50%); }
+      .badge { display: none; }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
@@ -312,6 +410,7 @@
 <body>
 
 <div class="badge" aria-hidden="true">Szkic C · nieopublikowany</div>
+<a class="pill" id="pill" href="#zapytanie">Zapytanie <span id="pillN">0</span></a>
 
 <header class="nav" id="nav">
   <div class="wrap">
@@ -321,6 +420,7 @@
     </a>
     <nav class="nav__links" aria-label="Nawigacja szkicu">
       <a href="#oferta">Oferta</a>
+      <a href="#katalog">Katalog Besco</a>
       <a href="#metody">Metody łączenia</a>
       <a href="#zaplecze">Zaplecze</a>
       <a href="#faq">FAQ</a>
@@ -332,127 +432,203 @@
 
 <main id="top">
 
-  <!-- 1 · HERO: pełnoekranowe zdjęcie produktowe (Higgsfield) -->
+  <!-- 1 · HERO -->
   <section class="hero" aria-labelledby="hero-t">
-    <div class="hero__media">
+    <div class="hero__media" data-hf>
       <picture>
         <source media="(max-width: 720px)" srcset="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_c5cc2103-2b87-4e8f-8352-0e19ac20b5bb_min.webp">
         <img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_f71ca1f9-b0b9-46a2-af54-14357f0f5abc_min.webp" data-fb="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_f71ca1f9-b0b9-46a2-af54-14357f0f5abc.png" alt="Mosiężny zawór kulowy z czerwoną dźwignią i złączki zaprasowywane" width="2752" height="1536" fetchpriority="high">
       </picture>
     </div>
+    <aside class="pcard" aria-label="Produkt z okładki katalogu Besco 2026">
+      <img src="img/besco/okladka-mufa.webp" alt="Miedziana mufa zaprasowywana Besco z oznaczeniem GP DVGW 35" width="795" height="430">
+      <div class="pcard__t"><b>Mufa press, profil V</b><span class="label">Besco 2026</span></div>
+      <div class="pcard__s"><span><i>Ø</i>12–54 mm</span><span><i>Ciśn.</i>16 bar</span><span><i>Temp.</i>−10…110 °C</span></div>
+      <div class="pcard__a"><span class="appr">DVGW</span><span class="appr">KIWA</span><span class="appr">WRAS</span><span class="appr">RISE</span><span class="appr">EN 1254-7</span></div>
+    </aside>
     <div class="wrap hero__body">
       <p class="label hero__eyebrow">Besco · Pegler Yorkshire · 30 lat na rynku</p>
       <h1 id="hero-t"><span class="ln"><span>Dowolna metoda łączenia.</span></span><span class="ln"><span>Jeden <em>dostawca.</em></span></span></h1>
-      <p class="hero__sub">Złączki miedziane, carbon steel i mosiężne dla instalacji CO, wody i gazu. Wycena tego samego dnia, wysyłka w 24 godziny.</p>
+      <p class="hero__sub">Złączki miedziane i stalowe zaprasowywane, kształtki lutowane i zawory kulowe press do wody, CO, gazu i chłodnictwa. Wycena tego samego dnia, wysyłka w 24 godziny.</p>
       <div class="hero__ctas">
         <a class="mag" href="#kontakt"><span>Zapytaj o ofertę <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></span></a>
-        <a class="ghost" href="#oferta">Zobacz asortyment</a>
+        <a class="ghost" href="#katalog">Szukaj po numerze artykułu</a>
       </div>
       <div class="hero__bar">
         <div><span class="label">01</span><b>Zaciskanie</b></div>
         <div><span class="label">02</span><b>Na wcisk</b></div>
         <div><span class="label">03</span><b>Skręcanie</b></div>
         <div><span class="label">04</span><b>Lutowanie</b></div>
-        <div><span class="label">Magazyn</span><b>Olsztyn · cała Polska</b></div>
+        <a href="#katalog"><span class="label">Katalog Besco 2026</span><b>1 936 pozycji →</b></a>
       </div>
     </div>
   </section>
 
   <div class="ticker" aria-hidden="true"><div class="ticker__t">
-    <span>Zawory kulowe</span><span>Złączki mosiężne</span><span>Systemy press</span><span>Armatura grzewcza</span><span>PP-R / PEX</span><span>Uszczelnienia</span><span>Atesty PZH</span><span>Deklaracje DoP</span>
-    <span>Zawory kulowe</span><span>Złączki mosiężne</span><span>Systemy press</span><span>Armatura grzewcza</span><span>PP-R / PEX</span><span>Uszczelnienia</span><span>Atesty PZH</span><span>Deklaracje DoP</span>
+    <span>Miedź press · profil V</span><span>Miedź press · profil M</span><span>Gaz · DVGW · INiG</span><span>Stal węglowa press</span><span>Lutowane EN 1254</span><span>ANSI B16.22</span><span>G-size do 80 bar</span><span>Zawory kulowe press</span><span>DVGW · KIWA · WRAS · RISE</span><span>Miedź press · profil V</span><span>Miedź press · profil M</span><span>Gaz · DVGW · INiG</span><span>Stal węglowa press</span><span>Lutowane EN 1254</span><span>ANSI B16.22</span><span>G-size do 80 bar</span><span>Zawory kulowe press</span><span>DVGW · KIWA · WRAS · RISE</span>
   </div></div>
 
-  <!-- 2 · OFERTA -->
+  <!-- 2 · OFERTA: linie produktowe Besco -->
   <section class="section" id="oferta">
     <div class="wrap">
       <div class="rg__head">
         <div>
-          <span class="label kicker">Oferta</span>
-          <h2 class="h2">Sześć grup. Jeden dostawca.</h2>
+          <span class="label kicker">Oferta · Besco Fittings &amp; Connectors</span>
+          <h2 class="h2">Dziewięć linii. 1 936 pozycji.</h2>
+          <p class="lead">Złączki i kształtki miedziane, stal węglowa press i zawory kulowe z katalogu Besco 2026. Każda linia z parametrami i atestami producenta.</p>
         </div>
-        <a class="ulink" href="../katalog.html">Pełny katalog</a>
+        <a class="ulink" href="#katalog">Szukaj w katalogu</a>
       </div>
       <div class="rg__grid">
-        <a class="rt in" href="../katalog.html#zawory">
-          <span class="rt__m"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_73b13c56-18e0-40ed-8293-71278e2f59d2_min.webp" data-fb="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_73b13c56-18e0-40ed-8293-71278e2f59d2.png" alt="Mosiężne zawory kulowe z czerwonymi dźwigniami" width="2400" height="1792" loading="lazy" decoding="async"><span class="label rt__i">01</span></span>
-          <span class="rt__h"><b>Zawory kulowe i zwrotne</b><span class="label">Zobacz</span></span>
-          <span class="rt__rule"></span>
-          <span class="rt__d">Kulowe pełnoprzelotowe, gazowe z atestem, zwrotne i skośne.</span>
-          <span class="rt__s"><span><i>DN</i>15–50</span><span><i>PN</i>do 30</span><span><i>Gwint</i>GW / GZ</span></span>
+        <a class="line in" href="#katalog" data-series="cu-press-water-v,cu-press-water-m">
+          <span class="line__m"><span class="trio"><img src="img/besco/x59.webp" alt="" width="200" height="200" loading="lazy" decoding="async"><img src="img/besco/x115.webp" alt="Łuk press, trójnik press i mufa redukcyjna z miedzi" width="200" height="200" loading="lazy" decoding="async"><img src="img/besco/x354.webp" alt="" width="200" height="200" loading="lazy" decoding="async"></span><span class="label line__n">01</span><span class="label line__c">551 poz.</span></span>
+          <span class="line__h"><b>Miedź press · woda i CO</b><span class="label">Szukaj →</span></span>
+          <span class="line__rule"></span>
+          <span class="line__d">Profil V 12–54 mm i profil M 12–108 mm. Łuki, trójniki, redukcje, przejścia GW/GZ, śrubunki.</span>
+          <span class="line__s"><span><i>Ciśn.</i>16 bar</span><span><i>Temp.</i>−10…110 °C</span><span><i>Norma</i>EN 1254-7</span></span>
+          <span class="line__a"><span class="appr">DVGW</span><span class="appr">KIWA</span><span class="appr">WRAS</span><span class="appr">RISE</span></span>
         </a>
-        <a class="rt in" href="../katalog.html#zlaczki">
-          <span class="rt__m"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144147_f956475d-11f9-4c54-b443-95dd38d078fd_min.webp" data-fb="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144147_f956475d-11f9-4c54-b443-95dd38d078fd.png" alt="Mosiężne złączki gwintowane: kolana, trójniki, nyple i śrubunki" width="2400" height="1792" loading="lazy" decoding="async"><span class="label rt__i">02</span></span>
-          <span class="rt__h"><b>Złączki mosiężne gwintowane</b><span class="label">Zobacz</span></span>
-          <span class="rt__rule"></span>
-          <span class="rt__d">Kolana, trójniki, mufy, nyple i śrubunki z mosiądzu.</span>
-          <span class="rt__s"><span><i>Zakres</i>1/4"–4"</span><span><i>Mat.</i>mosiądz</span></span>
+        <a class="line in" href="#katalog" data-series="cu-press-gas-v,cu-press-gas-m">
+          <span class="line__m"><span class="trio"><img src="img/besco/x248.webp" alt="" width="200" height="200" loading="lazy" decoding="async"><img src="img/besco/x261.webp" alt="Miedziane złączki press do gazu" width="200" height="200" loading="lazy" decoding="async"><img src="img/besco/x470.webp" alt="" width="200" height="200" loading="lazy" decoding="async"></span><span class="label line__n">02</span><span class="label line__c">211 poz.</span></span>
+          <span class="line__h"><b>Miedź press · gaz</b><span class="label">Szukaj →</span></span>
+          <span class="line__rule"></span>
+          <span class="line__d">Linie GP Gas w profilu V i M, 15–35 mm. Gaz ziemny i LPG.</span>
+          <span class="line__s"><span><i>Ciśn.</i>5 bar</span><span><i>Temp.</i>−20…70 °C</span><span><i>Norma</i>EN 1254-7</span></span>
+          <span class="line__a"><span class="appr">DVGW</span><span class="appr">INiG</span></span>
         </a>
-        <a class="rt in" href="../katalog.html#zaprasowywane">
-          <span class="rt__m"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_2e5808b9-77a0-4cf9-a186-66543e5d4543_min.webp" data-fb="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_2e5808b9-77a0-4cf9-a186-66543e5d4543.png" alt="Złączki zaprasowywane ze stali nierdzewnej i węglowej ze szczęką zaciskarki" width="2400" height="1792" loading="lazy" decoding="async"><span class="label rt__i">03</span></span>
-          <span class="rt__h"><b>Systemy zaprasowywane</b><span class="label">Zobacz</span></span>
-          <span class="rt__rule"></span>
-          <span class="rt__d">Złączki press inox 316L i stal węglowa, rury systemowe.</span>
-          <span class="rt__s"><span><i>Ø</i>12–108 mm</span><span><i>Profil</i>M / V</span><span><i>Rura</i>6 m</span></span>
+        <a class="line in" href="#katalog" data-series="steel-press-m">
+          <span class="line__m"><span class="trio"><img src="img/besco/x877.webp" alt="" width="200" height="200" loading="lazy" decoding="async"><img src="img/besco/x878.webp" alt="Stalowe złączki press z czerwonymi oringami" width="200" height="200" loading="lazy" decoding="async"><img src="img/besco/x896.webp" alt="" width="200" height="200" loading="lazy" decoding="async"></span><span class="label line__n">03</span><span class="label line__c">256 poz.</span></span>
+          <span class="line__h"><b>Stal węglowa press</b><span class="label">Szukaj →</span></span>
+          <span class="line__rule"></span>
+          <span class="line__d">Profil M, 12–108 mm. Instalacje grzewcze i sprężone powietrze.</span>
+          <span class="line__s"><span><i>Ciśn.</i>16 bar</span><span><i>Temp.</i>−10…110 °C</span><span><i>Profil</i>M</span></span>
+          
         </a>
-        <a class="rt in" href="../katalog.html#grzewcza">
-          <span class="rt__m"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_1908da9f-926e-4ccc-a3af-281689b8d763_min.webp" data-fb="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_1908da9f-926e-4ccc-a3af-281689b8d763.png" alt="Mosiężny rozdzielacz z przepływomierzami, zawór termostatyczny i filtr" width="2400" height="1792" loading="lazy" decoding="async"><span class="label rt__i">04</span></span>
-          <span class="rt__h"><b>Armatura grzewcza</b><span class="label">Zobacz</span></span>
-          <span class="rt__rule"></span>
-          <span class="rt__d">Rozdzielacze, termostaty, zawory równoważące i filtry.</span>
-          <span class="rt__s"><span><i>Obwody</i>2–12</span><span><i>DN</i>15–50</span></span>
+        <a class="line in" href="#katalog" data-series="cu-solder-en1254">
+          <span class="line__m"><span class="trio"><img src="img/besco/x546.webp" alt="" width="200" height="200" loading="lazy" decoding="async"><img src="img/besco/x591.webp" alt="Miedziane kształtki lutowane: łuk, trójnik, kolano" width="200" height="200" loading="lazy" decoding="async"><img src="img/besco/x576.webp" alt="" width="200" height="200" loading="lazy" decoding="async"></span><span class="label line__n">04</span><span class="label line__c">513 poz.</span></span>
+          <span class="line__h"><b>Miedź lutowana EN 1254</b><span class="label">Szukaj →</span></span>
+          <span class="line__rule"></span>
+          <span class="line__d">Kształtki do lutowania 6–108 mm. Woda, ogrzewanie, gaz, przemysł.</span>
+          <span class="line__s"><span><i>Ciśn.</i>25 bar</span><span><i>Temp.</i>−20…110 °C</span><span><i>Norma</i>EN 1254</span></span>
+          <span class="line__a"><span class="appr">DVGW</span><span class="appr">KIWA</span><span class="appr">WRAS</span></span>
         </a>
-        <a class="rt in" href="../katalog.html#rury">
-          <span class="rt__m"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_583d259f-eb30-42c5-978d-ea11725cee54_min.webp" data-fb="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_583d259f-eb30-42c5-978d-ea11725cee54.png" alt="Rury PP-R i PEX-AL-PEX ze złączkami" width="2400" height="1792" loading="lazy" decoding="async"><span class="label rt__i">05</span></span>
-          <span class="rt__h"><b>Rury i systemy PP-R / PEX</b><span class="label">Zobacz</span></span>
-          <span class="rt__rule"></span>
-          <span class="rt__d">Rury stabilizowane, kształtki do zgrzewania, PEX-AL-PEX.</span>
-          <span class="rt__s"><span><i>PP-R</i>20–110 mm</span><span><i>PEX</i>16–32 mm</span><span><i>PN</i>20</span></span>
+        <a class="line in" href="#katalog" data-series="cu-ansi-k,cu-g-size">
+          <span class="line__m"><span class="trio"><img src="img/besco/x771.webp" alt="" width="200" height="200" loading="lazy" decoding="async"><img src="img/besco/x790.webp" alt="Kształtki calowe i G-size do chłodnictwa" width="200" height="200" loading="lazy" decoding="async"><img src="img/besco/x865.webp" alt="" width="200" height="200" loading="lazy" decoding="async"></span><span class="label line__n">05</span><span class="label line__c">380 poz.</span></span>
+          <span class="line__h"><b>Chłodnictwo i przemysł</b><span class="label">Szukaj →</span></span>
+          <span class="line__rule"></span>
+          <span class="line__d">Calowe ANSI B16.22 (seria K) 1/4″–4 1/8″ oraz G-size 22–76,1 mm do 80 bar.</span>
+          <span class="line__s"><span><i>Ciśn.</i>20–80 bar</span><span><i>Temp.</i>do 150 °C</span><span><i>Norma</i>ANSI · EN 1254</span></span>
+          
         </a>
-        <a class="rt in" href="../katalog.html#uszczelnienia">
-          <span class="rt__m"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_ecfc9668-7d39-4c22-8872-2a1c3785af96_min.webp" data-fb="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_ecfc9668-7d39-4c22-8872-2a1c3785af96.png" alt="Taśma PTFE, pakuły lniane i węże w oplocie" width="2400" height="1792" loading="lazy" decoding="async"><span class="label rt__i">06</span></span>
-          <span class="rt__h"><b>Uszczelnienia i akcesoria</b><span class="label">Zobacz</span></span>
-          <span class="rt__rule"></span>
-          <span class="rt__d">Taśmy PTFE, pakuły, nici, obejmy i węże w oplocie.</span>
-          <span class="rt__s"><span><i>PTFE</i>12 / 19 mm</span><span><i>Węże</i>30–100 cm</span></span>
+        <a class="line in" href="#katalog" data-series="press-ball-valve">
+          <span class="line__m"><span class="trio"><img src="img/besco/x960.webp" alt="" width="200" height="200" loading="lazy" decoding="async"><img src="img/besco/x961.webp" alt="Mosiężne zawory kulowe press z niebieską dźwignią" width="200" height="200" loading="lazy" decoding="async"><img src="img/besco/x959.webp" alt="" width="200" height="200" loading="lazy" decoding="async"></span><span class="label line__n">06</span><span class="label line__c">25 poz.</span></span>
+          <span class="line__h"><b>Zawory kulowe press</b><span class="label">Szukaj →</span></span>
+          <span class="line__rule"></span>
+          <span class="line__d">Press × press i press × GW, 15–54 mm, także z przedłużonym trzpieniem.</span>
+          <span class="line__s"><span><i>Ciśn.</i>16 bar</span><span><i>Temp.</i>−10…110 °C</span><span><i>Profil</i>V · M</span></span>
+          <span class="line__a"><span class="appr">DVGW</span><span class="appr">WRAS</span></span>
         </a>
       </div>
-      <div class="rg__foot">
-        <span class="label kicker">Na stanie · wysyłka z Olsztyna</span>
-        <p>Karty katalogowe i atesty do każdej pozycji na zapytanie.</p>
-        <a class="ulink" href="#kontakt">Wyceń listę pozycji</a>
+      <div class="ptab-head">
+        <h3>Parametry linii</h3>
+        <span class="label">Źródło: katalog Besco 2026</span>
+      </div>
+      <div class="ptab-wrap" role="region" aria-label="Tabela parametrów linii produktowych" tabindex="0">
+        <table class="ptab">
+          <thead><tr><th scope="col">Linia</th><th scope="col">Średnice</th><th scope="col">Ciśnienie</th><th scope="col">Temperatura</th><th scope="col">Zastosowanie</th><th scope="col">Norma i atesty</th><th scope="col">Pozycji</th><th scope="col"><span class="sr">Akcja</span></th></tr></thead>
+          <tbody>
+            <tr><td><b>Miedź press, profil V · woda</b></td><td class="num">12–54 mm</td><td class="num">16 bar</td><td class="num">−10…110 °C</td><td>woda, ogrzewanie, przemysł</td><td><span class="appr">EN 1254-7</span><span class="appr">DVGW</span><span class="appr">KIWA</span><span class="appr">WRAS</span><span class="appr">RISE</span></td><td class="num">257</td><td><a href="#katalog" data-series="cu-press-water-v">Szukaj</a></td></tr>
+            <tr><td><b>Miedź press, profil M · woda</b></td><td class="num">12–108 mm</td><td class="num">16 bar</td><td class="num">−10…110 °C</td><td>woda, ogrzewanie, przemysł</td><td><span class="appr">EN 1254-7</span><span class="appr">DVGW</span><span class="appr">WRAS</span><span class="appr">RISE</span></td><td class="num">294</td><td><a href="#katalog" data-series="cu-press-water-m">Szukaj</a></td></tr>
+            <tr><td><b>Miedź press, profil V · gaz</b></td><td class="num">15–35 mm</td><td class="num">5 bar</td><td class="num">−20…70 °C</td><td>gaz ziemny, LPG</td><td><span class="appr">EN 1254-7</span><span class="appr">DVGW</span><span class="appr">INiG</span></td><td class="num">110</td><td><a href="#katalog" data-series="cu-press-gas-v">Szukaj</a></td></tr>
+            <tr><td><b>Miedź press, profil M · gaz</b></td><td class="num">15–35 mm</td><td class="num">5 bar</td><td class="num">−20…70 °C</td><td>gaz ziemny, LPG</td><td><span class="appr">EN 1254-7</span><span class="appr">DVGW</span><span class="appr">INiG</span></td><td class="num">101</td><td><a href="#katalog" data-series="cu-press-gas-m">Szukaj</a></td></tr>
+            <tr><td><b>Stal węglowa press, profil M</b></td><td class="num">12–108 mm</td><td class="num">16 bar</td><td class="num">−10…110 °C</td><td>ogrzewanie, sprężone powietrze</td><td>–</td><td class="num">256</td><td><a href="#katalog" data-series="steel-press-m">Szukaj</a></td></tr>
+            <tr><td><b>Miedź lutowana EN 1254</b></td><td class="num">6–108 mm</td><td class="num">25 bar</td><td class="num">−20…110 °C</td><td>woda, ogrzewanie, gaz, przemysł</td><td><span class="appr">EN 1254</span><span class="appr">DVGW</span><span class="appr">KIWA</span><span class="appr">WRAS</span></td><td class="num">513</td><td><a href="#katalog" data-series="cu-solder-en1254">Szukaj</a></td></tr>
+            <tr><td><b>Miedź calowa ANSI B16.22 · seria K</b></td><td class="num">1/4″–4 1/8″</td><td class="num">25 bar</td><td class="num">−20…110 °C</td><td>woda, ogrzewanie, gaz, przemysł</td><td><span class="appr">ANSI B16.22</span></td><td class="num">315</td><td><a href="#katalog" data-series="cu-ansi-k">Szukaj</a></td></tr>
+            <tr><td><b>Miedź G-size · chłodnictwo i przemysł</b></td><td class="num">22–76,1 mm</td><td class="num">20–80 bar</td><td class="num">−20…150 °C</td><td>przemysł, chłodnictwo</td><td><span class="appr">EN 1254</span></td><td class="num">65</td><td><a href="#katalog" data-series="cu-g-size">Szukaj</a></td></tr>
+            <tr><td><b>Zawory kulowe press</b></td><td class="num">15–54 mm</td><td class="num">16 bar</td><td class="num">−10…110 °C</td><td>woda, ogrzewanie, przemysł</td><td><span class="appr">DVGW</span><span class="appr">WRAS</span></td><td class="num">25</td><td><a href="#katalog" data-series="press-ball-valve">Szukaj</a></td></tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
 
-  <!-- 3 · METODY ŁĄCZENIA: rozsuwane panele -->
+  <!-- 3 · KATALOG: wyszukiwarka pozycji -->
+  <section class="section finder" id="katalog" aria-labelledby="katalog-t">
+    <div class="wrap">
+      <span class="label kicker">Katalog Besco 2026</span>
+      <h2 class="h2" id="katalog-t">Znajdź pozycję i dodaj do zapytania.</h2>
+      <p class="lead" style="margin-top:1rem">Wpisz numer artykułu, średnicę albo nazwę. Dodaj pozycje, podaj ilości i przenieś listę do formularza.</p>
+      <div class="fd__g">
+        <div>
+          <div class="fd__search">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <label class="sr" for="q">Szukaj w katalogu Besco 2026</label>
+            <input id="q" type="search" autocomplete="off" spellcheck="false" placeholder="np. GP5001-22, trójnik 28, 1 1/2">
+          </div>
+          <p class="fd__hint">Przykłady: <code data-q="GP5001-22">GP5001-22</code> <code data-q="trójnik 28">trójnik 28</code> <code data-q="zawór kulowy">zawór kulowy</code> <code data-q="22 × 1/2">22 × 1/2</code></p>
+          <div class="chips" role="group" aria-label="Filtr linii">
+            <button class="chip" type="button" data-s="" aria-pressed="true">Wszystkie</button>
+            <button class="chip" type="button" data-s="cu-press-water-v" aria-pressed="false">Miedź press V · woda</button>
+            <button class="chip" type="button" data-s="cu-press-water-m" aria-pressed="false">Miedź press M · woda</button>
+            <button class="chip" type="button" data-s="cu-press-gas-v" aria-pressed="false">Miedź press V · gaz</button>
+            <button class="chip" type="button" data-s="cu-press-gas-m" aria-pressed="false">Miedź press M · gaz</button>
+            <button class="chip" type="button" data-s="steel-press-m" aria-pressed="false">Stal węglowa press</button>
+            <button class="chip" type="button" data-s="cu-solder-en1254" aria-pressed="false">Lutowane EN 1254</button>
+            <button class="chip" type="button" data-s="cu-ansi-k" aria-pressed="false">ANSI B16.22 · K</button>
+            <button class="chip" type="button" data-s="cu-g-size" aria-pressed="false">G-size do 80 bar</button>
+            <button class="chip" type="button" data-s="press-ball-valve" aria-pressed="false">Zawory kulowe press</button>
+          </div>
+          <div class="fd__meta"><span class="label" id="cnt" aria-live="polite">1 936 pozycji w katalogu</span><span class="legend">ww · kielich–kielich, wz · kielich–bosy koniec, GW/GZ · gwint wewn./zewn.</span></div>
+          <ul class="res" id="res"><li class="fd__empty" style="display:block">Katalog doczyta się automatycznie. Wpisz numer albo wybierz linię.</li></ul>
+          <div class="fd__more" id="more" hidden><button type="button">Pokaż kolejne</button></div>
+        </div>
+        <aside class="rfq" id="zapytanie" aria-labelledby="rfq-t">
+          <h3 id="rfq-t">Twoje zapytanie <span class="label" id="rfqN">0 poz.</span></h3>
+          <p id="rfqHint">Dodaj pozycje z listy. Ilości zmienisz tutaj.</p>
+          <ul id="rfqList"></ul>
+          <button class="mag" type="button" id="toForm" disabled><span>Przenieś do formularza</span></button>
+          <p class="rfq__src">Dane: katalog Besco Fittings &amp; Connectors 2026. Numery i opakowania według producenta.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · METODY ŁĄCZENIA -->
   <section class="section methods" id="metody">
     <div class="wrap">
-      <span class="label kicker" style="color:#ff7a70">Metody łączenia</span>
+      <span class="label kicker" style="color:var(--red-soft)">Metody łączenia</span>
       <h2 class="h2">Cztery technologie. Jedno zamówienie.</h2>
-      <p class="lead" style="margin-top:1rem">Kompletujemy instalację niezależnie od tego, jak ją łączysz. Bez szukania drugiego dostawcy.</p>
+      <p class="lead">Kompletujemy instalację niezależnie od tego, jak ją łączysz, bez szukania drugiego dostawcy.</p>
       <div class="panels" id="panels">
         <button class="panel is-open" type="button" aria-expanded="true">
           <img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_38c9a02c-03c6-4a5b-912e-0e33c5fa9e57_min.webp" data-fb="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_38c9a02c-03c6-4a5b-912e-0e33c5fa9e57.png" alt="" width="1856" height="2304" loading="lazy" decoding="async">
-          <span class="panel__c"><span class="label panel__n">01</span><span class="panel__t">Zaciskanie</span><span class="panel__p">Systemy zaprasowywane z inoxu, stali węglowej i miedzi. Szybki montaż bez otwartego ognia.</span></span>
+          <span class="panel__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 12h5M17 12h5"/><rect x="7" y="8" width="10" height="8" rx="2"/><path d="M9 8V6M15 8V6M9 16v2M15 16v2"/></svg></span>
+          <span class="panel__prod" aria-hidden="true"><img src="img/besco/x113.webp" alt="" width="64" height="64" loading="lazy" decoding="async"><img src="img/besco/x249.webp" alt="" width="64" height="64" loading="lazy" decoding="async"><img src="img/besco/x877.webp" alt="" width="64" height="64" loading="lazy" decoding="async"></span>
+          <span class="panel__c"><span class="label panel__n">01</span><span class="panel__t">Zaciskanie</span><span class="panel__p">Złączki miedziane press w profilu V i M (12–108 mm, 16 bar), linie gazowe z atestem DVGW i INiG oraz stal węglowa press do CO i sprężonego powietrza.</span></span>
         </button>
         <button class="panel" type="button" aria-expanded="false">
           <img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_583d259f-eb30-42c5-978d-ea11725cee54_min.webp" data-fb="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_583d259f-eb30-42c5-978d-ea11725cee54.png" alt="" width="2400" height="1792" loading="lazy" decoding="async">
+          <span class="panel__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 12h7M15 12h7"/><rect x="9" y="8" width="6" height="8" rx="1.5"/><path d="M5 9l3 3-3 3M19 9l-3 3 3 3"/></svg></span>
+          
           <span class="panel__c"><span class="label panel__n">02</span><span class="panel__t">Na wcisk</span><span class="panel__p">Złączki wciskane do instalacji wody i CO. Montaż bez specjalistycznych narzędzi.</span></span>
         </button>
         <button class="panel" type="button" aria-expanded="false">
           <img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144147_f956475d-11f9-4c54-b443-95dd38d078fd_min.webp" data-fb="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144147_f956475d-11f9-4c54-b443-95dd38d078fd.png" alt="" width="2400" height="1792" loading="lazy" decoding="async">
-          <span class="panel__c"><span class="label panel__n">03</span><span class="panel__t">Skręcanie</span><span class="panel__p">Mosiężne złączki gwintowane od 1/4" do 4" i śrubunki z uszczelnieniem stożkowym.</span></span>
+          <span class="panel__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 12h6M18 12h4"/><path d="M8 8h10v8H8z"/><path d="M10 8v8M12 8v8M14 8v8M16 8v8"/></svg></span>
+          <span class="panel__prod" aria-hidden="true"><img src="img/besco/x187.webp" alt="" width="64" height="64" loading="lazy" decoding="async"><img src="img/besco/x188.webp" alt="" width="64" height="64" loading="lazy" decoding="async"><img src="img/besco/x899.webp" alt="" width="64" height="64" loading="lazy" decoding="async"></span>
+          <span class="panel__c"><span class="label panel__n">03</span><span class="panel__t">Skręcanie</span><span class="panel__p">Przejścia z gwintem GW i GZ od 3/8″ do 3″, śrubunki z uszczelnieniem płaskim i stożkowym, półśrubunki i kolana ścienne.</span></span>
         </button>
         <button class="panel" type="button" aria-expanded="false">
           <img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_2023de35-389d-4157-81a8-0960c78923b8_min.webp" data-fb="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_2023de35-389d-4157-81a8-0960c78923b8.png" alt="" width="3168" height="1344" loading="lazy" decoding="async">
-          <span class="panel__c"><span class="label panel__n">04</span><span class="panel__t">Lutowanie</span><span class="panel__p">Kształtki miedziane do instalacji wody, CO i gazu łączone lutowaniem.</span></span>
+          <span class="panel__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M2 14h8M14 14h8"/><path d="M10 11h4v6h-4z"/><path d="M12 3c1.5 2 1.5 3.5 0 5"/></svg></span>
+          <span class="panel__prod" aria-hidden="true"><img src="img/besco/x546.webp" alt="" width="64" height="64" loading="lazy" decoding="async"><img src="img/besco/x790.webp" alt="" width="64" height="64" loading="lazy" decoding="async"><img src="img/besco/x853.webp" alt="" width="64" height="64" loading="lazy" decoding="async"></span>
+          <span class="panel__c"><span class="label panel__n">04</span><span class="panel__t">Lutowanie</span><span class="panel__p">Kształtki EN 1254 6–108 mm do 25 bar, calowe ANSI B16.22 od 1/4″ do 4 1/8″ i G-size do chłodnictwa do 80 bar.</span></span>
         </button>
       </div>
     </div>
   </section>
 
-  <!-- 4 · ZAPLECZE: kadr odsłaniany przewijaniem + odometr -->
+  <!-- 5 · ZAPLECZE -->
   <section class="section" id="zaplecze">
     <div class="wrap">
       <div class="yard__grid">
@@ -462,11 +638,11 @@
         </div>
         <p class="lead">Utrzymujemy pełne stany najczęściej zamawianych pozycji, dlatego typowe zamówienie kompletujemy tego samego dnia. Braki rynkowe zgłaszamy z wyprzedzeniem.</p>
       </div>
-      <figure class="frame">
+      <figure class="frame" data-hf>
         <img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_594d4ac1-345a-48f3-aab4-a14c2429f78a_min.webp" data-fb="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_594d4ac1-345a-48f3-aab4-a14c2429f78a.png" alt="Regały magazynowe z armaturą instalacyjną" width="2752" height="1536" loading="lazy" decoding="async">
       </figure>
       <div class="stats">
-        <div class="stat"><b><span class="odo" data-odo="5000" aria-label="5 000">5 000</span><i>+</i></b><span>pozycji magazynowych od ręki</span></div>
+        <div class="stat"><b><span class="odo" data-odo="1936" aria-label="1 936">1 936</span></b><span>pozycji w katalogu Besco 2026</span></div>
         <div class="stat"><b><span class="odo" data-odo="24" aria-label="24">24</span><i> h</i></b><span>wysyłka z magazynu</span></div>
         <div class="stat"><b><span class="odo" data-odo="1" aria-label="1">1</span><i> dzień</i></b><span>na wycenę zapytania</span></div>
         <div class="stat"><b><span class="odo" data-odo="30" aria-label="30">30</span><i> lat</i></b><span>na rynku instalacyjnym</span></div>
@@ -474,25 +650,25 @@
     </div>
   </section>
 
-  <!-- 5 · PROCES -->
+  <!-- 6 · PROCES + DLA KOGO -->
   <section class="section" id="proces" style="padding-top:0">
     <div class="wrap">
       <span class="label kicker">Jak działamy</span>
       <h2 class="h2">Od zapytania do dostawy.</h2>
       <div class="steps">
-        <div class="step in"><span class="label">Dziś</span><div class="step__n">01</div><h3>Wysyłasz zapytanie</h3><p>Formularzem, mailem albo telefonicznie. Wystarczy lista pozycji lub specyfikacja z projektu.</p></div>
+        <div class="step in"><span class="label">Dziś</span><div class="step__n">01</div><h3>Wysyłasz zapytanie</h3><p>Formularzem, mailem albo telefonicznie. Wystarczy lista numerów Besco lub specyfikacja z projektu.</p></div>
         <div class="step step--dark in"><span class="label">Tego samego dnia</span><div class="step__n">02</div><h3>Otrzymujesz wycenę</h3><p>Z cenami hurtowymi, dostępnością i terminem realizacji dla każdej pozycji.</p></div>
         <div class="step in"><span class="label">+24 h</span><div class="step__n">03</div><h3>Odbierasz dostawę</h3><p>Wysyłka w 24 godziny od potwierdzenia. Duże zamówienia dowozimy własnym transportem.</p></div>
       </div>
       <div class="aud">
-        <div class="in"><span class="label">Hurtownie</span><h3>Stała oferta uzupełnień</h3><p>Ceny progowe dla odbiorców regularnych, rezerwacje stanów pod kontrakty i wspólne planowanie zatowarowania na sezon.</p></div>
+        <div class="in"><span class="label">Hurtownie</span><h3>Stała oferta uzupełnień</h3><p>Ceny progowe dla odbiorców regularnych, rezerwacje stanów pod kontrakty i zamawianie w pełnych opakowaniach producenta.</p></div>
         <div class="in"><span class="label">Wykonawcy</span><h3>Kompletacja pod projekt</h3><p>Wyceniamy całe specyfikacje, kompletujemy dostawy etapami i doradzamy zamienniki, kiedy pozycja ma długi termin.</p></div>
-        <div class="in"><span class="label">Przemysł</span><h3>Utrzymanie ruchu bez przestojów</h3><p>Armatura do mediów technicznych, szybka reakcja na awarie i dokumentacja wymagana przez działy UR.</p></div>
+        <div class="in"><span class="label">Przemysł</span><h3>Utrzymanie ruchu bez przestojów</h3><p>Kształtki G-size do 80 bar, stal węglowa do sprężonego powietrza i dokumentacja wymagana przez działy UR.</p></div>
       </div>
     </div>
   </section>
 
-  <!-- 6 · DOKUMENTY -->
+  <!-- 7 · DOKUMENTY -->
   <section class="docs" id="dokumenty">
     <div class="docs__g">
       <div class="docs__t">
@@ -500,18 +676,21 @@
         <h2 class="h2">Atesty i karty katalogowe do każdej pozycji.</h2>
         <p class="lead">Bazę udostępniamy klientom po weryfikacji firmy, bez publicznego dostępu. Dostęp przyznajemy w ciągu jednego dnia roboczego.</p>
         <ul>
+          <li><span>Karty katalogowe Besco 2026 z numerami i opakowaniami</span><span class="label">PDF</span></li>
           <li><span>Atesty higieniczne</span><span class="label">PZH</span></li>
           <li><span>Deklaracje właściwości użytkowych</span><span class="label">DoP</span></li>
-          <li><span>Karty katalogowe i rysunki techniczne</span><span class="label">PDF</span></li>
-          <li><span>Certyfikaty i aprobaty techniczne</span><span class="label">CE</span></li>
+          <li><span>Aprobaty producenta: DVGW, KIWA, WRAS, RISE, INiG</span><span class="label">DVGW</span></li>
         </ul>
         <a class="ghost" href="#kontakt" data-topic="Proszę o dostęp do bazy dokumentów technicznych.">Poproś o dostęp</a>
       </div>
-      <div class="docs__m"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_02e6b0c9-16f0-4131-acf0-ce6fea1487e9_min.webp" data-fb="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_02e6b0c9-16f0-4131-acf0-ce6fea1487e9.png" alt="Karty katalogowe z rysunkiem technicznym zaworu i czerwoną pieczęcią atestu" width="2400" height="1792" loading="lazy" decoding="async"></div>
+      <div class="docs__m">
+        <div class="docs__sheet"><img src="img/besco/karta-p3.webp" alt="Strona katalogu Besco 2026: złączki miedziane press profil V, tabela numerów artykułów" width="860" height="1167" loading="lazy" decoding="async"></div>
+        <div class="docs__stamp" aria-hidden="true"><span><b>EN 1254</b>atesty<br>na zapytanie</span></div>
+      </div>
     </div>
   </section>
 
-  <!-- 7 · FAQ -->
+  <!-- 8 · FAQ -->
   <section class="section" id="faq">
     <div class="wrap faq">
       <div class="faq__intro">
@@ -522,18 +701,19 @@
       </div>
       <div>
         <details class="qa" name="faq" open><summary>Jak szybko dostanę wycenę?<i aria-hidden="true"></i></summary><p>Tego samego dnia roboczego. Wycena zawiera ceny hurtowe, dostępność i termin realizacji dla każdej pozycji.</p></details>
-        <details class="qa" name="faq"><summary>W jakiej formie wysłać zapytanie?<i aria-hidden="true"></i></summary><p>Wystarczy lista pozycji z ilościami albo specyfikacja z projektu. Możesz użyć formularza, maila lub zadzwonić do handlowca.</p></details>
+        <details class="qa" name="faq"><summary>Czy mogę zamówić po numerze artykułu Besco?<i aria-hidden="true"></i></summary><p>Tak. Wyszukiwarka na tej stronie obejmuje 1 936 pozycji z katalogu Besco 2026. Dodaj pozycje do zapytania, podaj ilości i przenieś listę do formularza.</p></details>
+        <details class="qa" name="faq"><summary>Które złączki nadają się do gazu?<i aria-hidden="true"></i></summary><p>Linie GP Gas w profilu V i M: średnice 15–35 mm, do 5 bar, od −20 do 70 °C, norma EN 1254-7, atesty DVGW i INiG. Do instalacji gazowych nie stosuj złączek z linii wodnych.</p></details>
+        <details class="qa" name="faq"><summary>Czym różni się profil V od M?<i aria-hidden="true"></i></summary><p>To kształt końcówki press i szczęki zaciskarki. Złączkę zaciskasz szczękami o tym samym profilu. Miedź Besco jest w obu profilach (V 12–54 mm, M 12–108 mm), stal węglowa w profilu M.</p></details>
         <details class="qa" name="faq"><summary>Jaki jest czas dostawy?<i aria-hidden="true"></i></summary><p>Wysyłka z magazynu w Olsztynie w 24 godziny od potwierdzenia zamówienia. Duże zamówienia dowozimy własnym transportem.</p></details>
-        <details class="qa" name="faq"><summary>Co, jeśli pozycja ma długi termin?<i aria-hidden="true"></i></summary><p>Doradzimy zamiennik o tych samych parametrach. Braki rynkowe zgłaszamy z wyprzedzeniem, zanim zatrzymają budowę.</p></details>
-        <details class="qa" name="faq"><summary>Jak uzyskać dostęp do bazy dokumentów?<i aria-hidden="true"></i></summary><p>Poproś o dostęp przez formularz. Po weryfikacji firmy udostępniamy atesty PZH, deklaracje DoP, karty katalogowe i certyfikaty w ciągu jednego dnia roboczego.</p></details>
-        <details class="qa" name="faq"><summary>Jakie marki macie w ofercie?<i aria-hidden="true"></i></summary><p>Między innymi Besco i Pegler Yorkshire. Pełny asortyment w sześciu grupach znajdziesz w katalogu.</p></details>
+        <details class="qa" name="faq"><summary>Jak uzyskać dostęp do bazy dokumentów?<i aria-hidden="true"></i></summary><p>Poproś o dostęp przez formularz. Po weryfikacji firmy udostępniamy karty katalogowe, atesty i deklaracje w ciągu jednego dnia roboczego.</p></details>
+        <details class="qa" name="faq"><summary>Jakie marki macie w ofercie?<i aria-hidden="true"></i></summary><p>Złączki, kształtki i zawory Besco Fittings &amp; Connectors (Krefeld, Niemcy) oraz Pegler Yorkshire.</p></details>
       </div>
     </div>
   </section>
 
-  <!-- 8 · KONTAKT -->
+  <!-- 9 · KONTAKT -->
   <section class="section close" id="kontakt">
-    <div class="close__bg" aria-hidden="true"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_2023de35-389d-4157-81a8-0960c78923b8_min.webp" data-fb="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_2023de35-389d-4157-81a8-0960c78923b8.png" alt="" width="3168" height="1344" loading="lazy" decoding="async"></div>
+    <div class="close__bg" aria-hidden="true" data-hf><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_2023de35-389d-4157-81a8-0960c78923b8_min.webp" data-fb="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_2023de35-389d-4157-81a8-0960c78923b8.png" alt="" width="3168" height="1344" loading="lazy" decoding="async"></div>
     <div class="wrap close__g">
       <div>
         <span class="label kicker">Kontakt</span>
@@ -556,8 +736,8 @@
           <div class="f"><label for="e">E-mail</label><input id="e" type="email" autocomplete="email"></div>
           <div class="f"><label for="t">Telefon</label><input id="t" type="tel" autocomplete="tel"></div>
         </div>
-        <div class="fr"><div class="f f--w"><label for="m">Lista pozycji lub wiadomość</label><textarea id="m" placeholder="np. Kolano press 22 mm × 40, zawór kulowy DN25 × 12"></textarea></div></div>
-        <label class="consent"><input type="checkbox"> Wyrażam zgodę na przetwarzanie danych w celu obsługi zapytania. Administratorem danych jest Armatex.</label>
+        <div class="fr"><div class="f f--w"><label for="m">Lista pozycji lub wiadomość</label><textarea id="m" placeholder="np. GP5001-22 × 40 szt., 2270-28 × 12 szt."></textarea></div></div>
+        <label class="consent"><input type="checkbox" id="ok"> Wyrażam zgodę na przetwarzanie danych w celu obsługi zapytania. Administratorem danych jest Armatex.</label>
         <button class="mag" type="submit"><span>Wyślij zapytanie</span></button>
         <p class="form__s" id="fs" role="status"></p>
       </form>
@@ -570,28 +750,30 @@
   <div class="wrap">
     <img src="img/logo-light.webp" alt="Armatex" width="300" height="52" loading="lazy">
     <span>© 2026 Armatex · Dystrybutor armatury instalacyjnej dla firm</span>
-    <a href="../index.html">Wróć do aktualnej wersji strony</a>
+    <a href="../index.html" data-home>Wróć do aktualnej wersji strony</a>
   </div>
 </footer>
 
 <script>
 (function () {
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
-  // Obraz nie ma wersji _min.webp? Wróć do oryginału PNG.
-  document.querySelectorAll('img[data-fb]').forEach(function (img) {
+  // Zdjęcie bez wersji _min.webp: wróć do oryginału
+  $$('img[data-fb]').forEach(function (img) {
     img.addEventListener('error', function () {
       if (img.dataset.done) return; img.dataset.done = 1;
-      var pic = img.parentNode; if (pic.tagName === 'PICTURE') pic.querySelectorAll('source').forEach(function (s) { s.remove(); });
+      var pic = img.parentNode; if (pic.tagName === 'PICTURE') $$('source', pic).forEach(function (s) { s.remove(); });
       img.src = img.dataset.fb;
     });
   });
 
   // Nawigacja: przezroczysta nad hero, pełna niżej
-  var nav = document.getElementById('nav'), hero = document.querySelector('.hero');
-  new IntersectionObserver(function (e) { nav.classList.toggle('is-solid', !e[0].isIntersecting); }, { rootMargin: '-80px 0px 0px 0px' }).observe(hero);
+  var nav = $('#nav');
+  new IntersectionObserver(function (e) { nav.classList.toggle('is-solid', !e[0].isIntersecting); }, { rootMargin: '-80px 0px 0px 0px' }).observe($('.hero'));
 
-  // Wejścia sekcji + odometr (BYQ Odometer: SPINS 2, 0.85 s + 0.1 s na cyfrę, ease-out quart)
+  // Wejścia + odometr (BYQ Odometer: 2 obroty, 0.85 s + 0.1 s na cyfrę)
   var SP = 2;
   function buildOdo(o) {
     var ds = o.dataset.odo.split('').map(Number), n = ds.length, reels = [];
@@ -607,9 +789,8 @@
   }
   function runOdo(reels) {
     reels.forEach(function (x) {
-      var pct = (SP * 10 + x[1]) / ((SP + 1) * 10) * 100;
       x[0].style.transition = reduce ? 'none' : 'transform ' + (0.85 + x[2] * 0.1) + 's cubic-bezier(.165,.84,.44,1)';
-      x[0].style.transform = 'translateY(-' + pct + '%)';
+      x[0].style.transform = 'translateY(-' + ((SP * 10 + x[1]) / ((SP + 1) * 10) * 100) + '%)';
     });
   }
   var io = new IntersectionObserver(function (es) {
@@ -618,22 +799,22 @@
       var t = e.target; io.unobserve(t);
       if (t._reels) runOdo(t._reels); else t.classList.add('on');
     });
-  }, { rootMargin: '0px 0px -20% 0px' });
-  document.querySelectorAll('.odo').forEach(function (o) { o._reels = buildOdo(o); io.observe(o); });
-  document.querySelectorAll('.in').forEach(function (el, i) { el.style.transitionDelay = (i % 3) * 0.1 + 's'; io.observe(el); });
+  }, { rootMargin: '0px 0px -15% 0px' });
+  $$('.odo').forEach(function (o) { o._reels = buildOdo(o); io.observe(o); });
+  $$('.in').forEach(function (el, i) { el.style.transitionDelay = (i % 3) * 0.1 + 's'; io.observe(el); });
 
-  // Rozsuwane panele (BYQ Expanding Panels): hover/focus/klik
-  var panels = document.querySelectorAll('.panel');
-  function open(p) { panels.forEach(function (x) { var on = x === p; x.classList.toggle('is-open', on); x.setAttribute('aria-expanded', on); }); }
+  // Rozsuwane panele (BYQ Expanding Panels)
+  var panels = $$('.panel');
+  function openPanel(p) { panels.forEach(function (x) { var on = x === p; x.classList.toggle('is-open', on); x.setAttribute('aria-expanded', on); }); }
   panels.forEach(function (p) {
-    p.addEventListener('click', function () { open(p); });
-    p.addEventListener('focus', function () { if (p.matches(':focus-visible')) open(p); });
-    if (matchMedia('(hover: hover)').matches) p.addEventListener('pointerenter', function () { open(p); });
+    p.addEventListener('click', function () { openPanel(p); });
+    p.addEventListener('focus', function () { if (p.matches(':focus-visible')) openPanel(p); });
+    if (matchMedia('(hover: hover)').matches) p.addEventListener('pointerenter', function () { openPanel(p); });
   });
 
   // Magnetyczne CTA (BYQ Magnetic Button)
   if (!reduce && matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    document.querySelectorAll('.mag').forEach(function (b) {
+    $$('.mag').forEach(function (b) {
       b.addEventListener('pointermove', function (e) {
         var r = b.getBoundingClientRect(), x = e.clientX - r.left - r.width / 2, y = e.clientY - r.top - r.height / 2;
         b.style.setProperty('--mx', x * 0.18 + 'px'); b.style.setProperty('--my', y * 0.3 + 'px');
@@ -643,9 +824,128 @@
     });
   }
 
+  // ===== Katalog Besco: wyszukiwarka + zapytanie =====
+  var DATA = null, INDEX = null, loading = null, page = 0, PER = 24, hits = [];
+  var active = new Set(), qEl = $('#q'), res = $('#res'), cnt = $('#cnt'), more = $('#more');
+  var fmt = function (n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); };
+  var norm = function (s) {
+    return s.toLowerCase().replace(/[″"]/g, '').replace(/×/g, 'x').replace(/\s*x\s*/g, 'x').replace(/,/g, '.')
+      .replace(/ą/g, 'a').replace(/ć/g, 'c').replace(/ę/g, 'e').replace(/ł/g, 'l').replace(/ń/g, 'n').replace(/ó/g, 'o').replace(/ś/g, 's').replace(/[źż]/g, 'z')
+      .replace(/\s+/g, ' ').trim();
+  };
+  var squash = function (s) { return s.toLowerCase().replace(/[\s\-.]/g, ''); };
+  function load() {
+    if (loading) return loading;
+    loading = fetch('data/besco-2026.json').then(function (r) { return r.json(); }).then(function (d) {
+      DATA = d;
+      INDEX = d.rows.map(function (r) {
+        var g = d.groups[r[0]], s = d.series[g[0]];
+        return { r: r, g: g, s: s, sid: s.id, hay: norm([r[1], r[2], g[2], g[3], g[1], s.short].join(' ')), art: squash(r[1]) };
+      });
+      search();
+    }).catch(function () { res.innerHTML = '<li class="fd__empty" style="display:block">Nie udało się wczytać katalogu. Odśwież stronę.</li>'; });
+    return loading;
+  }
+  new IntersectionObserver(function (e, o) { if (e[0].isIntersecting) { load(); o.disconnect(); } }, { rootMargin: '600px 0px' }).observe($('#katalog'));
+  qEl.addEventListener('focus', load);
+
+  function search() {
+    if (!INDEX) return;
+    var q = norm(qEl.value), toks = q ? q.split(' ') : [], qa = squash(qEl.value);
+    hits = INDEX.filter(function (x) {
+      if (active.size && !active.has(x.sid)) return false;
+      if (!toks.length) return true;
+      if (qa.length > 3 && x.art.indexOf(qa) === 0) return true;
+      return toks.every(function (t) { return x.hay.indexOf(t) !== -1 || x.art.indexOf(squash(t)) !== -1; });
+    });
+    if (qa) hits.sort(function (a, b) { return (b.art === qa) - (a.art === qa); });
+    page = 0; res.innerHTML = ''; render();
+    cnt.textContent = (toks.length || active.size) ? fmt(hits.length) + ' z ' + fmt(INDEX.length) + ' pozycji' : fmt(INDEX.length) + ' pozycji w katalogu';
+  }
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function render() {
+    var slice = hits.slice(page * PER, (page + 1) * PER), h = '';
+    if (!hits.length) { res.innerHTML = '<li class="fd__empty" style="display:block">Brak pozycji dla tego zapytania. Sprawdź numer albo zadzwoń: 798 807 106.</li>'; more.hidden = true; return; }
+    slice.forEach(function (x) {
+      var r = x.r, g = x.g, inq = rfq.has(r[1]);
+      h += '<li><img src="img/besco/' + g[4] + '.webp" alt="" width="56" height="56" loading="lazy" decoding="async">' +
+        '<div><b>' + esc(g[2]) + '</b><span class="sz">' + esc(r[2]) + '</span><small>' + esc(g[3]) + ' · ' + esc(x.s.short) + '</small></div>' +
+        '<code>' + esc(r[1]) + '</code>' +
+        '<span class="pk"><i>worek / karton</i>' + r[3] + ' / ' + fmt(r[4]) + '</span>' +
+        '<button class="add' + (inq ? ' is-in' : '') + '" type="button" data-art="' + esc(r[1]) + '" aria-label="Dodaj ' + esc(r[1]) + ' do zapytania">' + (inq ? 'Dodano' : 'Dodaj') + '</button></li>';
+    });
+    res.insertAdjacentHTML('beforeend', h);
+    page++; more.hidden = page * PER >= hits.length;
+    more.firstElementChild.textContent = 'Pokaż kolejne (' + fmt(hits.length - page * PER) + ')';
+  }
+  var t0; qEl.addEventListener('input', function () { clearTimeout(t0); t0 = setTimeout(function () { load().then(search); }, 120); });
+  more.firstElementChild.addEventListener('click', render);
+  $$('.fd__hint code').forEach(function (c) { c.addEventListener('click', function () { qEl.value = c.dataset.q; load().then(search); }); });
+  function setSeries(list) {
+    active = new Set(list.filter(Boolean));
+    $$('.chip').forEach(function (c) { c.setAttribute('aria-pressed', c.dataset.s ? active.has(c.dataset.s) : !active.size); });
+    load().then(search);
+  }
+  $$('.chip').forEach(function (c) {
+    c.addEventListener('click', function () {
+      if (!c.dataset.s) return setSeries([]);
+      var s = new Set(active); s.has(c.dataset.s) ? s.delete(c.dataset.s) : s.add(c.dataset.s); setSeries(Array.from(s));
+    });
+  });
+  $$('[data-series]').forEach(function (a) {
+    a.addEventListener('click', function () { qEl.value = ''; setSeries(a.dataset.series.split(',')); });
+  });
+
+  // Zapytanie (lista pozycji) – pamiętane lokalnie w przeglądarce
+  var rfq = new Map(), KEY = 'armatex-rfq';
+  try { JSON.parse(localStorage.getItem(KEY) || '[]').forEach(function (x) { rfq.set(x[0], x[1]); }); } catch (e) {}
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(Array.from(rfq.entries()))); } catch (e) {} }
+  function label(art) {
+    if (!INDEX) return '';
+    for (var i = 0; i < INDEX.length; i++) if (INDEX[i].r[1] === art) return INDEX[i].g[2] + ' ' + INDEX[i].r[2];
+    return '';
+  }
+  function drawRfq() {
+    var ul = $('#rfqList'), h = '', n = rfq.size;
+    rfq.forEach(function (v, art) {
+      h += '<li><div><code>' + esc(art) + '</code><small>' + esc(v.l || label(art)) + '</small></div>' +
+        '<input type="number" min="1" step="1" value="' + v.q + '" aria-label="Ilość ' + esc(art) + '" data-art="' + esc(art) + '">' +
+        '<button class="rm" type="button" data-art="' + esc(art) + '" aria-label="Usuń ' + esc(art) + '">×</button></li>';
+    });
+    ul.innerHTML = h;
+    $('#rfqN').textContent = n + ' poz.'; $('#pillN').textContent = n;
+    $('#pill').classList.toggle('on', n > 0);
+    $('#toForm').disabled = !n;
+    $('#rfqHint').textContent = n ? 'Sprawdź ilości i przenieś listę do formularza.' : 'Dodaj pozycje z listy. Ilości zmienisz tutaj.';
+  }
+  res.addEventListener('click', function (e) {
+    var b = e.target.closest('.add'); if (!b) return;
+    var art = b.dataset.art;
+    if (rfq.has(art)) rfq.delete(art); else rfq.set(art, { q: 1, l: label(art) });
+    b.classList.toggle('is-in', rfq.has(art)); b.textContent = rfq.has(art) ? 'Dodano' : 'Dodaj';
+    save(); drawRfq();
+  });
+  $('#rfqList').addEventListener('input', function (e) {
+    var i = e.target; if (!i.dataset.art) return;
+    var v = rfq.get(i.dataset.art); if (v) { v.q = Math.max(1, parseInt(i.value, 10) || 1); save(); }
+  });
+  $('#rfqList').addEventListener('click', function (e) {
+    var b = e.target.closest('.rm'); if (!b) return;
+    rfq.delete(b.dataset.art); save(); drawRfq();
+    var btn = res.querySelector('.add[data-art="' + CSS.escape(b.dataset.art) + '"]'); if (btn) { btn.classList.remove('is-in'); btn.textContent = 'Dodaj'; }
+  });
+  $('#toForm').addEventListener('click', function () {
+    var lines = ['Zapytanie z katalogu Besco 2026:'];
+    rfq.forEach(function (v, art) { lines.push(art + ' · ' + (v.l || label(art)) + ' · ' + v.q + ' szt.'); });
+    $('#m').value = lines.join('\n');
+    $('#kontakt').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth' });
+    setTimeout(function () { $('#n').focus({ preventScroll: true }); }, reduce ? 0 : 700);
+  });
+  drawRfq();
+
   // Prefill z "Poproś o dostęp" i nieaktywny formularz szkicu
-  document.querySelectorAll('[data-topic]').forEach(function (a) { a.addEventListener('click', function () { document.getElementById('m').value = a.dataset.topic; }); });
-  document.getElementById('form').addEventListener('submit', function (e) { e.preventDefault(); document.getElementById('fs').textContent = 'To szkic: formularz jest nieaktywny, nic nie zostało wysłane.'; });
+  $$('[data-topic]').forEach(function (a) { a.addEventListener('click', function () { $('#m').value = a.dataset.topic; }); });
+  $('#form').addEventListener('submit', function (e) { e.preventDefault(); $('#fs').textContent = 'To szkic: formularz jest nieaktywny, nic nie zostało wysłane.'; });
 })();
 </script>
 </body>
