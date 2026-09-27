@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Kontakt · Armatex (szkic C)</title>
+  <meta name="description" content="Szkic roboczy: kontakt i zapytanie ofertowe dla hurtowni. Nie publikować.">
+  <meta name="theme-color" content="#0A1F44">
+  <link rel="icon" href="../../assets/img/favicon-32.png?v=2" type="image/png" sizes="32x32">
+  <link rel="preload" href="../../assets/fonts/outfit-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/outfit-latin-ext-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="c.css">
+  <script src="c.js" defer></script>
+</head>
+<body data-base="../">
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="nav__logo" href="index.html" aria-label="Armatex, strona główna">
+      <img class="light" src="../img/logo-light.webp" alt="" width="300" height="52">
+      <img class="dark" src="../img/logo-dark.webp" alt="" width="300" height="52">
+    </a>
+    <nav class="nav__links" aria-label="Nawigacja główna">
+      <div class="dd"><button type="button" aria-expanded="false" aria-controls="dd-m">Oferta</button><div class="dd__m" id="dd-m"><a href="zaciskane.html"><img src="../img/oferta/besco-press-v.webp" alt="" width="207" height="154" loading="lazy" decoding="async"><b>Zaciskane</b><span>Besco · 1 043 indeksy</span></a><a href="na-wcisk.html"><img src="../img/oferta/tectite-classic.webp" alt="" width="310" height="235" loading="lazy" decoding="async"><b>Na wcisk</b><span>Pegler Yorkshire · ok. 530 indeksów</span></a><a href="skrecane.html"><img src="../img/oferta/kuterlite.webp" alt="" width="225" height="196" loading="lazy" decoding="async"><b>Skręcane</b><span>Pegler Yorkshire · ok. 470 indeksów</span></a><a href="lutowane.html"><img src="../img/oferta/besco-lut.webp" alt="" width="197" height="163" loading="lazy" decoding="async"><b>Lutowane</b><span>Besco · 893 indeksy</span></a></div></div>
+      <a href="katalog.html">Katalog Besco</a>
+      <a href="wspolpraca.html">Współpraca</a>
+      <a href="kontakt.html" aria-current="page">Kontakt</a>
+    </nav>
+    <a class="nav__tel" href="tel:+48798807106">798 807 106</a>
+    <a class="mag" href="kontakt.html#formularz"><span>Zapytaj o ofertę</span></a>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Otwórz menu"><i></i></button>
+  </div>
+</header>
+<nav class="mnav" id="mnav" aria-label="Menu mobilne">
+  <span class="label">Oferta</span><a href="zaciskane.html">Zaciskane<small>Besco</small></a><a href="na-wcisk.html">Na wcisk<small>Pegler Yorkshire</small></a><a href="skrecane.html">Skręcane<small>Pegler Yorkshire</small></a><a href="lutowane.html">Lutowane<small>Besco</small></a>
+  <span class="label">Armatex</span><a href="katalog.html">Katalog Besco<small>1 936 indeksów</small></a><a href="wspolpraca.html">Współpraca</a><a href="kontakt.html" aria-current="page">Kontakt<small>798 807 106</small></a>
+</nav>
+<div class="badge" aria-hidden="true">Szkic C · nieopublikowany</div>
+
+<main id="top">
+
+  <section class="section close close--top" id="formularz" data-top>
+    <div class="close__bg" aria-hidden="true" data-hf><img src="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_2023de35-389d-4157-81a8-0960c78923b8_min.webp" data-fb="https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_144146_2023de35-389d-4157-81a8-0960c78923b8.png" alt="" width="3168" height="1344" loading="lazy" decoding="async"></div>
+    <div class="wrap close__g">
+      <div>
+        <ol class="crumbs"><li><a href="index.html">Armatex</a></li><li aria-current="page">Kontakt</li></ol>
+        <span class="label kicker" style="margin-top:1.5rem">Kontakt</span>
+        <h1 class="h2">Porozmawiajmy o ofercie dla Twojej hurtowni.</h1>
+        <a class="close__big" href="tel:+48798807106">798 807 106</a>
+        <div class="people">
+          <div class="person"><span class="person__a">PS</span><div><span class="label">Sprzedaż</span><b>Piotr Stelmach</b><a href="tel:+48798807106">798 807 106</a><a href="mailto:piotr@armatex.pl">piotr@armatex.pl</a></div></div>
+          <div class="person"><span class="person__a">MZ</span><div><span class="label">Sprzedaż</span><b>Martyna Zielińska</b><a href="tel:+48515231693">515 231 693</a><a href="mailto:martyna@armatex.pl">martyna@armatex.pl</a></div></div>
+          <div class="person"><span class="person__a">A</span><div><span class="label">Biuro i magazyny</span><b>ul. Składowa 3a, 10-421 Olsztyn</b><a href="mailto:armatex1@gmail.com">armatex1@gmail.com</a></div></div>
+        </div>
+      </div>
+      <form class="form" id="form" novalidate>
+        <h3>Zapytanie ofertowe</h3>
+        <p>Odpowiadamy w ciągu jednego dnia roboczego.</p>
+        <div class="fr">
+          <div class="f"><label for="n">Imię i nazwisko</label><input id="n" autocomplete="name"></div>
+          <div class="f"><label for="c">Firma</label><input id="c" autocomplete="organization"></div>
+        </div>
+        <div class="fr">
+          <div class="f"><label for="e">E-mail</label><input id="e" type="email" autocomplete="email"></div>
+          <div class="f"><label for="t">Telefon</label><input id="t" type="tel" autocomplete="tel"></div>
+        </div>
+        <div class="fr">
+          <div class="f"><label for="pf">Profil firmy</label><select id="pf"><option>Hurtownia instalacyjna</option><option>Wykonawca / firma instalacyjna</option><option>Przemysł / utrzymanie ruchu</option><option>Inny</option></select></div>
+          <div class="f"><label for="ms">Miasto / województwo</label><input id="ms" autocomplete="address-level2"></div>
+        </div>
+        <div class="fr"><div class="f f--w"><label for="m">Asortyment, ilości lub lista indeksów</label><textarea id="m" placeholder="np. Tectite Classic 15–22 mm, ok. 2 000 szt. miesięcznie; GP5001-22 × 400 szt."></textarea></div></div>
+        <label class="consent"><input type="checkbox" id="ok"> Wyrażam zgodę na przetwarzanie danych w celu obsługi zapytania. Administratorem danych jest Armatex.</label>
+        <button class="mag" type="submit"><span>Wyślij zapytanie</span></button>
+        <p class="form__s" id="fs" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="wrap">
+      <span class="label kicker">Zanim napiszesz</span>
+      <h2 class="h2">Co warto podać w zapytaniu.</h2>
+      <div class="gain gain--3">
+        <div class="in"><span class="label">01</span><b>Systemy lub indeksy</b><p>Które systemy chcesz prowadzić. Numery Besco zbierzesz w <a href="katalog.html">katalogu z wyszukiwarką</a>.</p></div>
+        <div class="in"><span class="label">02</span><b>Szacowane ilości</b><p>Miesięcznie albo na sezon, żeby oferta od razu obejmowała dostępność.</p></div>
+        <div class="in"><span class="label">03</span><b>Lokalizację hurtowni</b><p>Miasto lub województwo i preferowany sposób dostawy.</p></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__g">
+    <div>
+      <img src="../img/logo-light.webp" alt="Armatex" width="300" height="52" loading="lazy">
+      <p>Dystrybutor złączek i armatury Besco oraz Pegler Yorkshire dla hurtowni instalacyjnych w całej Polsce.</p>
+    </div>
+    <div><h4>Oferta</h4><ul><li><a href="zaciskane.html">Zaciskane</a></li><li><a href="na-wcisk.html">Na wcisk</a></li><li><a href="skrecane.html">Skręcane</a></li><li><a href="lutowane.html">Lutowane</a></li></ul></div>
+    <div><h4>Armatex</h4><ul><li><a href="katalog.html">Katalog Besco</a></li><li><a href="wspolpraca.html">Współpraca</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
+    <div><h4>Kontakt</h4><ul><li><a href="tel:+48798807106">798 807 106</a></li><li><a href="mailto:armatex1@gmail.com">armatex1@gmail.com</a></li><li>ul. Składowa 3a, 10-421 Olsztyn</li></ul></div>
+  </div>
+  <div class="wrap foot__bar"><span>© 2026 Armatex · szkic roboczy</span><a href="../../index.html" data-home>Wróć do aktualnej wersji strony</a></div>
+</footer>
+</body>
+</html>

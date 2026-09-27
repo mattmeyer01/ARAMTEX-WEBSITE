@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Złączki i zawory zaciskane · Armatex (szkic C)</title>
+  <meta name="description" content="Szkic roboczy: Złączki i zawory zaciskane dla hurtowni. Nie publikować.">
+  <meta name="theme-color" content="#0A1F44">
+  <link rel="icon" href="../../assets/img/favicon-32.png?v=2" type="image/png" sizes="32x32">
+  <link rel="preload" href="../../assets/fonts/outfit-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../../assets/fonts/outfit-latin-ext-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="c.css">
+  <script src="c.js" defer></script>
+</head>
+<body data-base="../">
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="nav__logo" href="index.html" aria-label="Armatex, strona główna">
+      <img class="light" src="../img/logo-light.webp" alt="" width="300" height="52">
+      <img class="dark" src="../img/logo-dark.webp" alt="" width="300" height="52">
+    </a>
+    <nav class="nav__links" aria-label="Nawigacja główna">
+      <div class="dd"><button type="button" aria-expanded="false" aria-controls="dd-m" aria-current="page">Oferta</button><div class="dd__m" id="dd-m"><a href="zaciskane.html" aria-current="page"><img src="../img/oferta/besco-press-v.webp" alt="" width="207" height="154" loading="lazy" decoding="async"><b>Zaciskane</b><span>Besco · 1 043 indeksy</span></a><a href="na-wcisk.html"><img src="../img/oferta/tectite-classic.webp" alt="" width="310" height="235" loading="lazy" decoding="async"><b>Na wcisk</b><span>Pegler Yorkshire · ok. 530 indeksów</span></a><a href="skrecane.html"><img src="../img/oferta/kuterlite.webp" alt="" width="225" height="196" loading="lazy" decoding="async"><b>Skręcane</b><span>Pegler Yorkshire · ok. 470 indeksów</span></a><a href="lutowane.html"><img src="../img/oferta/besco-lut.webp" alt="" width="197" height="163" loading="lazy" decoding="async"><b>Lutowane</b><span>Besco · 893 indeksy</span></a></div></div>
+      <a href="katalog.html">Katalog Besco</a>
+      <a href="wspolpraca.html">Współpraca</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+    <a class="nav__tel" href="tel:+48798807106">798 807 106</a>
+    <a class="mag" href="kontakt.html#formularz"><span>Zapytaj o ofertę</span></a>
+    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Otwórz menu"><i></i></button>
+  </div>
+</header>
+<nav class="mnav" id="mnav" aria-label="Menu mobilne">
+  <span class="label">Oferta</span><a href="zaciskane.html" aria-current="page">Zaciskane<small>Besco</small></a><a href="na-wcisk.html">Na wcisk<small>Pegler Yorkshire</small></a><a href="skrecane.html">Skręcane<small>Pegler Yorkshire</small></a><a href="lutowane.html">Lutowane<small>Besco</small></a>
+  <span class="label">Armatex</span><a href="katalog.html">Katalog Besco<small>1 936 indeksów</small></a><a href="wspolpraca.html">Współpraca</a><a href="kontakt.html">Kontakt<small>798 807 106</small></a>
+</nav>
+<div class="badge" aria-hidden="true">Szkic C · nieopublikowany</div>
+
+<main id="top">
+
+  <section class="phead">
+    <div class="wrap">
+      <ol class="crumbs"><li><a href="index.html">Armatex</a></li><li><a href="index.html#systemy">Oferta</a></li><li aria-current="page">Zaciskane</li></ol>
+      <div>
+        <span class="label kicker">01 · Besco</span>
+        <h1>Złączki i zawory zaciskane</h1>
+        <p class="lead">Miedziane systemy press w profilach V i M, serie do gazu, press ze stali węglowej oraz zawory kulowe. Miedź według EN 1254-7.</p>
+        <div class="phead__ctas"><a class="mag" href="kontakt.html?temat=Prosz%C4%99%20o%20ofert%C4%99%20na%20system%20zaciskane%3A%20Z%C5%82%C4%85czki%20i%20zawory%20zaciskane.#formularz"><span>Zapytaj o ofertę</span></a><a class="ghost" href="katalog.html?seria=cu-press-water-v,cu-press-water-m,cu-press-gas-v,cu-press-gas-m,steel-press-m,press-ball-valve#katalog">Szukaj indeksów</a></div>
+      </div>
+      <dl class="phead__facts">
+        <div><dt class="label">Indeksy</dt><dd>1 043</dd></div>
+        <div><dt class="label">Średnice</dt><dd>12–108 mm</dd></div>
+        <div><dt class="label">Producent</dt><dd>Besco</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="sy-intro">
+        <figure class="sy-pics sy-pics--3"><span><img src="../img/oferta/besco-press-v.webp" alt="Miedziany trójnik press" width="207" height="154" loading="lazy" decoding="async"></span><span><img src="../img/oferta/besco-gaz.webp" alt="Trójnik press do gazu z żółtym oznaczeniem" width="214" height="158" loading="lazy" decoding="async"></span><span><img src="../img/oferta/besco-stal.webp" alt="Trójnik press ze stali węglowej" width="153" height="190" loading="lazy" decoding="async"></span></figure>
+        <div>
+          <span class="label kicker">Dla Twojej hurtowni</span>
+          <h2 class="sy-h">Komu to sprzedasz i jak.</h2>
+          <dl class="sy-facts">
+            <div><dt class="label">Kto kupuje w Twojej hurtowni</dt><dd>Firmy instalacyjne z zaciskarkami: kotłownie, piony i przyłącza w budownictwie wielorodzinnym i obiektach, instalacje gazowe.</dd></div>
+            <div class="sy-arg"><dt class="label">Argument sprzedażowy</dt><dd>Profil M można zaciskać szczęką V w zakresie DN12–28, więc jeden stan magazynowy obsłuży klientów z oboma typami szczęk.</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight" id="linie" style="padding-top:0">
+    <div class="wrap">
+      <div class="shead"><h2 class="sy-h" style="margin:0">Linie w systemie</h2><span class="label" style="color:var(--ink-40)">Źródło: katalog Besco 2026</span></div>
+      <div class="sy-tw">
+        <table class="sy-lines">
+          <caption class="sr">Złączki i zawory zaciskane: linie produktów</caption>
+          <thead><tr><th scope="col">Linia</th><th scope="col">Średnice</th><th scope="col">Zastosowanie</th><th scope="col">Parametry</th><th scope="col" class="num">Indeksy</th><th scope="col"><span class="sr">Akcja</span></th></tr></thead>
+          <tbody>
+              <tr><th scope="row"><b>Miedź press, profil V</b><span class="label sy-br sy-br--besco">Besco</span></th><td class="num" data-l="Średnice">12–54 mm</td><td data-l="Zastosowanie">woda pitna, CO, przemysł</td><td data-l="Parametry"><span><span class="sy-par">16 bar</span><span class="appr">DVGW</span><span class="appr">KIWA</span><span class="appr">WRAS</span><span class="appr">RISE</span></span></td><td class="num sy-cnt" data-l="Indeksy">257</td><td class="sy-act"><a class="sy-find" href="katalog.html?seria=cu-press-water-v#katalog">Indeksy</a></td></tr>
+              <tr><th scope="row"><b>Miedź press, profil M</b><span class="label sy-br sy-br--besco">Besco</span></th><td class="num" data-l="Średnice">12–108 mm</td><td data-l="Zastosowanie">woda pitna, CO, przemysł</td><td data-l="Parametry"><span><span class="sy-par">16 bar</span><span class="appr">DVGW</span><span class="appr">WRAS</span><span class="appr">RISE</span></span></td><td class="num sy-cnt" data-l="Indeksy">294</td><td class="sy-act"><a class="sy-find" href="katalog.html?seria=cu-press-water-m#katalog">Indeksy</a></td></tr>
+              <tr><th scope="row"><b>Miedź press do gazu, V i M</b><span class="label sy-br sy-br--besco">Besco</span></th><td class="num" data-l="Średnice">15–35 mm</td><td data-l="Zastosowanie">gaz ziemny, LPG</td><td data-l="Parametry"><span><span class="sy-par">5 bar</span><span class="appr">DVGW</span><span class="appr">INiG</span></span></td><td class="num sy-cnt" data-l="Indeksy">211</td><td class="sy-act"><a class="sy-find" href="katalog.html?seria=cu-press-gas-v,cu-press-gas-m#katalog">Indeksy</a></td></tr>
+              <tr><th scope="row"><b>Stal węglowa press, profil M</b><span class="label sy-br sy-br--besco">Besco</span></th><td class="num" data-l="Średnice">12–108 mm</td><td data-l="Zastosowanie">CO w obiegu zamkniętym, sprężone powietrze</td><td data-l="Parametry"><span><span class="sy-par">16 bar</span></span></td><td class="num sy-cnt" data-l="Indeksy">256</td><td class="sy-act"><a class="sy-find" href="katalog.html?seria=steel-press-m#katalog">Indeksy</a></td></tr>
+              <tr><th scope="row"><b>Zawory kulowe press, kontur V i M</b><span class="label sy-br sy-br--besco">Besco</span></th><td class="num" data-l="Średnice">15–54 mm</td><td data-l="Zastosowanie">woda, CO</td><td data-l="Parametry"><span><span class="sy-par">16 bar</span><span class="appr">DVGW</span><span class="appr">WRAS</span></span></td><td class="num sy-cnt" data-l="Indeksy">25</td><td class="sy-act"><a class="sy-find" href="katalog.html?seria=press-ball-valve#katalog">Indeksy</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight section--stone" id="faq">
+    <div class="wrap faq">
+      <div class="faq__intro">
+        <span class="label kicker">Pytania techniczne</span>
+        <h2 class="h2">Co warto wiedzieć.</h2>
+        <p class="lead">Odpowiedzi według dokumentacji producenta. Resztę wyjaśni handlowiec.</p>
+        <a class="ulink" href="tel:+48798807106">Zadzwoń: 798 807 106</a>
+      </div>
+      <div>
+        <details class="qa" name="faq" open><summary>Czym różni się profil V od M?<i aria-hidden="true"></i></summary><p>To kształt końcówki press i szczęki zaciskarki. Miedź Besco jest w obu profilach (V 12–54 mm, M 12–108 mm), stal węglowa w profilu M. Złączki w profilu M można zaciskać także szczęką V w zakresie DN12–28.</p></details>
+        <details class="qa" name="faq"><summary>Które złączki nadają się do gazu?<i aria-hidden="true"></i></summary><p>Linie GP Gas w profilu V i M: średnice 15–35 mm, do 5 bar, od −20 do 70 °C, norma EN 1254-7, atesty DVGW i INiG. Do instalacji gazowych nie stosuje się złączek z linii wodnych.</p></details>
+        <details class="qa" name="faq"><summary>Do czego służy stal węglowa press?<i aria-hidden="true"></i></summary><p>Do zamkniętych instalacji grzewczych i sprężonego powietrza. Profil M, średnice 12–108 mm, do 16 bar, od −10 do 110 °C.</p></details>
+        <details class="qa" name="faq"><summary>Jakie aprobaty mają złączki miedziane press?<i aria-hidden="true"></i></summary><p>Profil V: DVGW, KIWA, WRAS i RISE. Profil M: DVGW, WRAS i RISE. Linie gazowe: DVGW i INiG. Wszystkie według EN 1254-7.</p></details>
+        <details class="qa" name="faq"><summary>Jakie zawory kulowe są w systemie?<i aria-hidden="true"></i></summary><p>Zawory kulowe press × press i press × GW w konturach V i M, 15–54 mm, także z przedłużonym trzpieniem. Do 16 bar, od −10 do 110 °C, aprobaty DVGW i WRAS.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="cta">
+        <div><h2>Zapytaj o ofertę na zaciskane Besco.</h2><p>Ceny hurtowe, dostępność i terminy dostaw przygotujemy w ciągu jednego dnia roboczego.</p></div>
+        <div class="cta__b"><a class="mag" href="kontakt.html?temat=Prosz%C4%99%20o%20ofert%C4%99%20na%20system%20zaciskane%3A%20Z%C5%82%C4%85czki%20i%20zawory%20zaciskane.#formularz"><span>Zapytaj o ofertę</span></a></div>
+      </div>
+      <div class="shead" style="margin-top:clamp(3rem,6vw,4.5rem)"><h2 class="sy-h" style="margin:0">Pozostałe systemy</h2><a class="ulink" href="index.html#systemy">Wszystkie systemy</a></div>
+      <div class="sys sys--3">
+        <a class="syc in" href="na-wcisk.html"><span class="syc__m"><img src="../img/oferta/tectite-classic.webp" alt="" width="310" height="235" loading="lazy" decoding="async"><img src="../img/oferta/tectite-316.webp" alt="" width="314" height="244" loading="lazy" decoding="async"><img src="../img/oferta/pegler-tx300.webp" alt="" width="442" height="407" loading="lazy" decoding="async"></span><span class="syc__b"><span class="label syc__k">02 · Pegler Yorkshire</span><h3>Na wcisk</h3><p>Tectite Classic, Pro, 316 i Carbon oraz zawory na wcisk. Montaż bez narzędzi i ognia.</p><span class="syc__f"><span class="label">ok. 530 indeksów · 10–54 mm</span><span class="syc__go">Zobacz →</span></span></span></a>
+        <a class="syc in" href="skrecane.html"><span class="syc__m"><img src="../img/oferta/kuterlite.webp" alt="" width="225" height="196" loading="lazy" decoding="async"><img src="../img/oferta/kuterlite-kolano.webp" alt="" width="147" height="165" loading="lazy" decoding="async"><img src="../img/oferta/kuterlite-zawor.webp" alt="" width="118" height="132" loading="lazy" decoding="async"></span><span class="syc__b"><span class="label syc__k">03 · Pegler Yorkshire</span><h3>Skręcane</h3><p>Kuterlite K600 i K900 Pro do miedzi, K700 do rur PE oraz zawory z końcówkami zaciskowymi.</p><span class="syc__f"><span class="label">ok. 470 indeksów · 6–63 mm</span><span class="syc__go">Zobacz →</span></span></span></a>
+        <a class="syc in" href="lutowane.html"><span class="syc__m"><img src="../img/oferta/besco-lut.webp" alt="" width="197" height="163" loading="lazy" decoding="async"><img src="../img/oferta/besco-k.webp" alt="" width="215" height="225" loading="lazy" decoding="async"></span><span class="syc__b"><span class="label syc__k">04 · Besco</span><h3>Lutowane</h3><p>Kształtki EN 1254 serii 4000 i 5000, calowe ANSI B16.22 i G-size do 80 bar.</p><span class="syc__f"><span class="label">893 indeksy · 6–108 mm</span><span class="syc__go">Zobacz →</span></span></span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__g">
+    <div>
+      <img src="../img/logo-light.webp" alt="Armatex" width="300" height="52" loading="lazy">
+      <p>Dystrybutor złączek i armatury Besco oraz Pegler Yorkshire dla hurtowni instalacyjnych w całej Polsce.</p>
+    </div>
+    <div><h4>Oferta</h4><ul><li><a href="zaciskane.html">Zaciskane</a></li><li><a href="na-wcisk.html">Na wcisk</a></li><li><a href="skrecane.html">Skręcane</a></li><li><a href="lutowane.html">Lutowane</a></li></ul></div>
+    <div><h4>Armatex</h4><ul><li><a href="katalog.html">Katalog Besco</a></li><li><a href="wspolpraca.html">Współpraca</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
+    <div><h4>Kontakt</h4><ul><li><a href="tel:+48798807106">798 807 106</a></li><li><a href="mailto:armatex1@gmail.com">armatex1@gmail.com</a></li><li>ul. Składowa 3a, 10-421 Olsztyn</li></ul></div>
+  </div>
+  <div class="wrap foot__bar"><span>© 2026 Armatex · szkic roboczy</span><a href="../../index.html" data-home>Wróć do aktualnej wersji strony</a></div>
+</footer>
+</body>
+</html>

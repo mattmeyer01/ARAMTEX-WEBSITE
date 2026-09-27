@@ -6,7 +6,8 @@ nagłówek `X-Robots-Tag` dla `/szkice/*` (patrz `netlify.toml`).
 | Plik | Co to jest |
 |------|------------|
 | `landing-b.html` | Szkic B: jasny landing z szybkim zapytaniem i wzorcami BYQ. |
-| `landing-c.html` | Szkic C (premium, dla hurtowni): cztery systemy Besco i Pegler Yorkshire w zakładkach, wyszukiwarka 1 936 pozycji Besco z listą do wyceny. |
+| `c/` | Szkic C (aktualny, dla hurtowni), wersja wielostronicowa: `index.html` (strona główna), strony systemów `zaciskane`, `na-wcisk`, `skrecane`, `lutowane`, `katalog.html` (wyszukiwarka 1 936 indeksów Besco z listą do wyceny), `wspolpraca.html`, `kontakt.html`. Wspólne `c.css` i `c.js`. |
+| `landing-c.html` | Poprzednia, jednostronicowa wersja szkicu C (archiwum). |
 
 ## Dane i zdjęcia produktów (szkic C)
 
