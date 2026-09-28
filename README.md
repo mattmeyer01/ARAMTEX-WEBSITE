@@ -48,9 +48,12 @@ pozycji o nietypowym układzie tabel (kolektory TM80/TM81, węże TF90/TF92, cz�
 
 ## Formularz
 
-Formularz (strona główna i `kontakt.html`) wysyła przez [FormSubmit](https://formsubmit.co) na
-`biuro@armatex.pl` (stała `FORM_TO` w `tools/strony.py`). Pierwsza wysyłka z nowej domeny może wymagać
-potwierdzenia linkiem, który FormSubmit wyśle na ten adres.
+Formularz (strona główna i `kontakt.html`) obsługuje **Netlify Forms** (formularz `zapytanie`,
+stała `FORM_NAME` w `tools/strony.py`). Netlify wykrywa go przy wdrożeniu po atrybucie `data-netlify`,
+zapisuje zgłoszenia w panelu (Forms) i wysyła powiadomienia. Jednorazowo w panelu Netlify:
+**Forms → Enable form detection**, potem po wdrożeniu **Forms → zapytanie → Form notifications →
+Email notification** na `biuro@armatex.pl`. Temat maila ustawia ukryte pole `subject`.
+Na kopii w GitHub Pages formularz nie działa (pokazuje komunikat z telefonem i e-mailem).
 
 ## Przed startem w wyszukiwarkach
 

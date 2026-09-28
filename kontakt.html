@@ -26,7 +26,7 @@
   <link rel="preload" href="assets/fonts/outfit-latin-ext-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Armatex", "item": "https://armatex.pl/"}, {"@type": "ListItem", "position": 2, "name": "Kontakt", "item": "https://armatex.pl/kontakt.html"}]}</script>
   <link rel="stylesheet" href="c.css?v=02d9cf4f">
-  <script src="c.js?v=2176f570" defer></script>
+  <script src="c.js?v=acc12f8b" defer></script>
 </head>
 <body>
 
@@ -72,11 +72,10 @@
           <div class="person"><span class="person__a">B</span><div><span class="label">Biuro</span><b>P.H.U. ARMATEX Sp. J. A. J. Bunda</b><span class="person__h">ul. Składowa 3a, 10-421 Olsztyn<br>pn–pt 7:00–18:00</span><a href="tel:+48513191502">513 191 502</a><a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a></div></div>
         </div>
       </div>
-      <form class="form" id="form" method="POST" action="https://formsubmit.co/biuro@armatex.pl" novalidate>
-        <input type="hidden" name="_subject" value="Zapytanie o wycenę ze strony armatex.pl">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="_honey" class="sr" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <form class="form" id="form" name="zapytanie" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="zapytanie">
+        <input type="hidden" name="subject" data-remove-prefix value="Zapytanie o wycenę ze strony armatex.pl">
+        <p class="sr" aria-hidden="true"><label>Nie wypełniaj: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
         <h2 class="form__t">Zapytanie o wycenę</h2>
         <p>Odpowiadamy w ciągu jednego dnia roboczego.</p>
         <div class="fr">

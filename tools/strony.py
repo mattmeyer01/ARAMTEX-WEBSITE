@@ -260,16 +260,15 @@ FOOT='''<footer class="foot">
 </footer>
 <a class="callfab" href="tel:+48513191502" aria-label="Zadzwoń: 513 191 502"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span>Zadzwoń</span></a>
 '''
-FORM_TO='biuro@armatex.pl'
+FORM_NAME='zapytanie'   # nazwa formularza w panelu Netlify (Forms); powiadomienia e-mail ustawia się tam
 def live_form(html):
-    """Formularz wysyła przez FormSubmit (jak poprzednia wersja strony)."""
+    """Formularz obsługuje Netlify Forms: wykrywa go przy wdrożeniu po data-netlify, zapisuje zgłoszenia w panelu i wysyła powiadomienia."""
     if 'id="form" novalidate>' not in html: return html
     html=html.replace('<form class="form" id="form" novalidate>',
-        f'<form class="form" id="form" method="POST" action="https://formsubmit.co/{FORM_TO}" novalidate>\n'
-        '        <input type="hidden" name="_subject" value="Zapytanie o wycenę ze strony armatex.pl">\n'
-        '        <input type="hidden" name="_template" value="table">\n'
-        '        <input type="hidden" name="_captcha" value="false">\n'
-        '        <input type="text" name="_honey" class="sr" tabindex="-1" autocomplete="off" aria-hidden="true">')
+        f'<form class="form" id="form" name="{FORM_NAME}" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>\n'
+        f'        <input type="hidden" name="form-name" value="{FORM_NAME}">\n'
+        '        <input type="hidden" name="subject" data-remove-prefix value="Zapytanie o wycenę ze strony armatex.pl">\n'
+        '        <p class="sr" aria-hidden="true"><label>Nie wypełniaj: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>')
     for a,b in (('<input id="n" autocomplete="name">','<input id="n" name="Imię i nazwisko" autocomplete="name">'),
                 ('<input id="c" autocomplete="organization">','<input id="c" name="Firma" autocomplete="organization">'),
                 ('<input id="e" type="email" autocomplete="email">','<input id="e" name="email" type="email" autocomplete="email" required>'),
@@ -1120,20 +1119,21 @@ pol_body='''
         <h2 id="odbiorcy">4. Komu przekazujemy dane</h2>
         <p>Nie sprzedajemy danych. Dostęp do nich mają upoważnieni pracownicy Armatex oraz podmioty, które świadczą dla nas usługi i przetwarzają dane w naszym imieniu:</p>
         <ul>
-          <li><strong>FormSubmit</strong> (formsubmit.co): przesyła wiadomości z formularza na naszą skrzynkę e-mail,</li>
+          <li><strong>Netlify, Inc.</strong>: hosting strony (w tym rejestrowanie danych technicznych) oraz obsługa formularza: przechowuje wysłane zgłoszenia i przesyła powiadomienia na naszą skrzynkę e-mail,</li>
           <li><strong>dostawcy poczty e-mail</strong>, na których działa nasza skrzynka,</li>
-          <li><strong>GitHub, Inc.</strong> (GitHub Pages): hosting strony, w tym rejestrowanie danych technicznych,</li>
+          <li><strong>GitHub, Inc.</strong>: przechowywanie kodu strony i jej kopia w serwisie GitHub Pages (dane techniczne przy wyświetleniu tej kopii),</li>
           <li>biuro rachunkowe, firmy kurierskie i transportowe, dostawcy IT: w zakresie potrzebnym do realizacji zamówień i obsługi firmy.</li>
         </ul>
         <p>Dane możemy też przekazać organom publicznym, jeśli wymaga tego prawo.</p>
 
         <h2 id="transfer">5. Przekazywanie danych poza EOG</h2>
-        <p>Część usługodawców (FormSubmit, GitHub, dostawcy poczty) może przetwarzać dane poza Europejskim Obszarem Gospodarczym, w szczególności w Stanach Zjednoczonych. Odbywa się to na podstawie mechanizmów przewidzianych w RODO, w szczególności decyzji Komisji Europejskiej stwierdzającej odpowiedni stopień ochrony (EU-US Data Privacy Framework) albo standardowych klauzul umownych zatwierdzonych przez Komisję. Informacje o zastosowanych zabezpieczeniach przekażemy na Twoją prośbę.</p>
+        <p>Część usługodawców (Netlify, GitHub, dostawcy poczty) może przetwarzać dane poza Europejskim Obszarem Gospodarczym, w szczególności w Stanach Zjednoczonych. Odbywa się to na podstawie mechanizmów przewidzianych w RODO, w szczególności decyzji Komisji Europejskiej stwierdzającej odpowiedni stopień ochrony (EU-US Data Privacy Framework) albo standardowych klauzul umownych zatwierdzonych przez Komisję. Informacje o zastosowanych zabezpieczeniach przekażemy na Twoją prośbę.</p>
 
         <h2 id="okres">6. Jak długo przechowujemy dane</h2>
         <ul>
           <li><strong>Zapytania, na które nie doszło do współpracy:</strong> do 12 miesięcy od ostatniego kontaktu albo do wycofania zgody lub skutecznego sprzeciwu, jeśli nastąpi wcześniej.</li>
           <li><strong>Dane związane z zamówieniami i umowami:</strong> przez czas współpracy, a potem do upływu terminów przedawnienia roszczeń i przez okres wymagany przepisami podatkowymi i rachunkowymi (co do zasady 5 lat od końca roku podatkowego).</li>
+          <li><strong>Zgłoszenia z formularza w panelu Netlify:</strong> usuwamy je okresowo, najpóźniej w terminach podanych wyżej dla zapytań.</li>
           <li><strong>Dane techniczne w logach hostingu:</strong> przez okres ustalony przez dostawcę hostingu, zwykle nie dłużej niż kilka tygodni.</li>
         </ul>
 
@@ -1156,7 +1156,7 @@ pol_body='''
         <p>Listę usuwamy automatycznie po wysłaniu formularza. Możesz ją też usunąć w każdej chwili: przyciskiem „×” przy pozycjach na liście albo czyszcząc dane witryny w ustawieniach przeglądarki.</p>
 
         <h2 id="zewnetrzne">9. Treści i usługi zewnętrzne</h2>
-        <p>Jedno zdjęcie na stronie „Współpraca” jest wczytywane z zewnętrznego serwera (sieć CDN), który przy tym otrzymuje adres IP Twojego urządzenia, jak przy każdym pobraniu pliku z internetu. Strona zawiera też linki do innych serwisów, np. <a href="https://uodo.gov.pl" rel="noopener" target="_blank">uodo.gov.pl</a>. Za zasady prywatności tych serwisów odpowiadają ich właściciele.</p>
+        <p>Wszystkie pliki strony (teksty, zdjęcia, czcionki, skrypty) są wczytywane z naszego hostingu, bez zewnętrznych serwerów. Strona zawiera linki do innych serwisów, np. <a href="https://uodo.gov.pl" rel="noopener" target="_blank">uodo.gov.pl</a>. Za zasady prywatności tych serwisów odpowiadają ich właściciele.</p>
 
         <h2 id="bezpieczenstwo">10. Bezpieczeństwo</h2>
         <p>Strona jest udostępniana przez szyfrowane połączenie (HTTPS). Dostęp do danych z zapytań mają tylko osoby, które ich potrzebują do obsługi klientów.</p>
