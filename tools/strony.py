@@ -195,6 +195,9 @@ def head(title,desc,extra='',path=''):
   <meta property="og:image:alt" content="Armatex: złączki Besco i Pegler Yorkshire dla hurtowni">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../../assets/img/favicon-32.png?v=2" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#0a1f44">
   <link rel="preload" href="../../assets/fonts/outfit-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="../../assets/fonts/outfit-latin-ext-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 {extra}  <link rel="stylesheet" href="c.css">
@@ -214,7 +217,7 @@ def nav(cur):
     return f'''<header class="nav" id="nav">
   <div class="wrap">
     <a class="nav__logo" href="index.html" aria-label="Armatex, strona główna">
-      <img class="light" src="../img/logo-light.webp" alt="" width="300" height="52">
+      <img class="light" src="../img/logo-light.webp" alt="" width="300" height="52" fetchpriority="high">
       <img class="dark" src="../img/logo-dark.webp" alt="" width="300" height="52">
     </a>
     <nav class="nav__links" aria-label="Nawigacja główna">
@@ -284,12 +287,40 @@ def live_form(html):
     html=html.replace(a,'value="tak" required> <span>Wyrażam zgodę na <a href="polityka-prywatnosci.html" target="_blank">przetwarzanie danych</a> w celu obsługi zapytania. Administratorem danych jest Armatex. <span class="req" aria-hidden="true">*</span></span></label>')
     return html
 
+
+# ---------------- pomocnicze: SEO i zasoby
+import hashlib
+ASSET_V={f:hashlib.md5(open(os.path.join(os.path.dirname(os.path.abspath(__file__)),'..',f),'rb').read()).hexdigest()[:8] for f in ('c.css','c.js')}
+
+def short_title(t,limit=60):
+    # Google ucina tytuły ok. 60 znaków: najpierw zdejmujemy „| Armatex”, potem nazwę linii po „–”
+    if len(t)>limit: t=t.replace(' | Armatex','')
+    if len(t)>limit and ' – ' in t: t=t.rsplit(' – ',1)[0]
+    return t
+
+def short_desc(d,limit=160):
+    if len(d)<=limit: return d
+    cut=d[:limit]
+    i=cut.rfind('. ')
+    if i>=100: return cut[:i+1]
+    return cut[:cut.rfind(' ')].rstrip(',;:–')+'…'
+
+_WH={}
+def img_wh(src):
+    f=os.path.join(os.path.dirname(os.path.abspath(__file__)),'..',src.replace('../',''))
+    if f not in _WH:
+        try: w,h=Image.open(f).size; _WH[f]=f'width="{w}" height="{h}"'
+        except Exception: _WH[f]=''
+    return _WH[f]
+
 def page(name,title,desc,cur,body,extra=''):
+    title,desc=short_title(title),short_desc(desc)
     html=head(title,desc,extra,'' if name=='index.html' else name)+'<body data-base="../">\n\n'+nav(cur)+'\n<main id="top">\n'+body+'\n</main>\n\n'+FOOT+'</body>\n</html>\n'
     # strona w katalogu głównym repo: ścieżki względne bez prefiksów szkicu
     for a,b in (('../../assets/','assets/'),('../img/','img/'),('../pliki/','pliki/'),('../data/','data/'),('<body data-base="../">','<body>')):
         html=html.replace(a,b)
     html=live_form(html)
+    html=html.replace('href="c.css"',f'href="c.css?v={ASSET_V["c.css"]}"').replace('src="c.js"',f'src="c.js?v={ASSET_V["c.js"]}"')
     open(OUT+name,'w',encoding='utf-8').write(html)
 
 def card(s,cls='syc in'):
@@ -572,7 +603,9 @@ kat=kat.replace('<button class="mag" type="button" id="toForm" disabled><span>Pr
 page('katalog.html','Katalog złączek Besco 2026 – wyszukiwarka indeksów | Armatex','Katalog złączek Besco 2026: wyszukiwarka 1 936 indeksów z opakowaniami zbiorczymi. Zbuduj listę i wyślij ją do wyceny dla swojej hurtowni.','katalog',kat,ld_crumbs([('Katalog złączek Besco','katalog.html')]))
 
 # ---------------- współpraca
-frame=frag('      <figure class="frame" data-hf>','      </figure>')
+frame='''      <figure class="frame">
+        <img src="../img/hero/hero-paleta-1200.webp" srcset="../img/hero/hero-paleta-1200.webp 1200w, ../img/hero/hero-paleta-2000.webp 2000w" sizes="(max-width: 1280px) 100vw, 1280px" alt="Paleta z kartonami złączek w magazynie Armatex w Olsztynie" width="1200" height="670" loading="lazy" decoding="async">
+      </figure>'''
 wsp=f'''
   <section class="phead">
     <div class="wrap">
@@ -721,7 +754,7 @@ for G in GROUPS:
 
   <section class="section section--tight">
     <div class="wrap gp">
-      <figure class="gp__img{' gp__img--w' if kind!='besco' else ''}"><img src="{G["img_src"]}" alt="{G["name"]} {G["brand"]} {G["code"]}" decoding="async"></figure>
+      <figure class="gp__img{' gp__img--w' if kind!='besco' else ''}"><img src="{G["img_src"]}" alt="{G["name"]} {G["brand"]} {G["code"]}" {img_wh(G["img_src"])} decoding="async"></figure>
       <div>
         <div class="shead"><h2 class="sy-h" style="margin:0">Rozmiary i numery artykułów</h2><span class="label" style="color:var(--ink-40)">Źródło: {src}</span></div>
         <div class="sy-tw">

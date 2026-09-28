@@ -1,10 +1,10 @@
 {
-  "name": "Armatex. Armatura i złączki dla firm",
+  "name": "Armatex – złączki Besco i Pegler Yorkshire",
   "short_name": "Armatex",
   "start_url": "./",
   "display": "browser",
-  "background_color": "#F4F2EC",
-  "theme_color": "#0A1F44",
+  "background_color": "#ffffff",
+  "theme_color": "#0a1f44",
   "icons": [
     { "src": "assets/img/icon-192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "assets/img/icon-512.png", "sizes": "512x512", "type": "image/png" },

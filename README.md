@@ -15,6 +15,7 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
   z numerami artykułów, wybór ilości i jednostki (karton, worek, opakowanie, sztuki) i „Dodaj” do listy do wyceny.
   Lista jest zapisywana w przeglądarce (`localStorage`, klucz `armatex-rfq`) i trafia do formularza.
 - `c.css`, `c.js`: wspólne style i skrypty.
+- `site.webmanifest`: nazwa i ikony strony dla telefonów (ikony w `assets/img/`).
 - `data/`: `besco-2026.json` (dane wyszukiwarki), `pegler.json` (Tectite, Kuterlite).
 - `img/`: logo, hero, zdjęcia produktów (`besco/`, `pegler/`, `oferta/`, `linie/`), obrazek udostępniania (`og/`).
 - `pliki/katalog-besco-2026.pdf`: katalog Besco 2026 (link w menu „Oferta → Katalogi”).
@@ -32,7 +33,7 @@ pip install pillow
 python3 tools/strony.py
 ```
 
-`c.css` i `c.js` edytuje się bezpośrednio.
+`c.css` i `c.js` edytuje się bezpośrednio, a potem uruchamia generator: dopisuje on do linków `?v=<hash treści>`, dzięki czemu Netlify może trzymać te pliki w cache przez rok, a po zmianie przeglądarki pobiorą nową wersję. Generator skraca też tytuły do ok. 60 znaków i opisy do 160.
 
 Dane produktów z katalogów PDF (PDF-y nie są trzymane w repo):
 

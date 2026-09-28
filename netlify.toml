@@ -5,6 +5,27 @@
   publish = "."
   command = ""
 
+# Naglowki bezpieczenstwa dla calej strony
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Strict-Transport-Security = "max-age=31536000"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+
+# c.css i c.js maja w linkach ?v=<hash tresci>, wiec moga byc cache'owane na rok
+[[headers]]
+  for = "/c.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/c.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
 # Dlugi cache dla wersjonowanych zasobow (?v=n w linkach robi reszte)
 [[headers]]
   for = "/assets/*"
