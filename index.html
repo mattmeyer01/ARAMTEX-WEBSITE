@@ -29,7 +29,7 @@
   <link rel="preload" as="image" href="img/hero/hero-paleta-m.webp" media="(max-width: 720px)" fetchpriority="high">
   <script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WholesaleStore", "@id": "https://armatex.pl/#firma", "name": "Armatex", "url": "https://armatex.pl/", "logo": "https://armatex.pl/img/logo-dark.webp", "image": "https://armatex.pl/img/og/armatex-og.jpg", "description": "Dystrybutor złączek i armatury Besco oraz Pegler Yorkshire dla hurtowni instalacyjnych w całej Polsce: złączki zaciskane (press), na wcisk, skręcane i lutowane.", "telephone": "+48 513 191 502", "email": "biuro@armatex.pl", "foundingDate": "1991", "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "07:00", "closes": "18:00"}], "legalName": "P.H.U. ARMATEX Sp. J. A. J. Bunda", "taxID": "7393814110", "identifier": [{"@type": "PropertyValue", "propertyID": "KRS", "value": "0000371628"}, {"@type": "PropertyValue", "propertyID": "REGON", "value": "280563743"}], "address": {"@type": "PostalAddress", "streetAddress": "ul. Składowa 3a", "postalCode": "10-421", "addressLocality": "Olsztyn", "addressCountry": "PL"}, "areaServed": {"@type": "Country", "name": "Polska"}, "brand": [{"@type": "Brand", "name": "Besco"}, {"@type": "Brand", "name": "Pegler Yorkshire"}], "contactPoint": [{"@type": "ContactPoint", "contactType": "sales", "name": "Piotr Stelmach", "telephone": "+48 798 807 106", "email": "piotr@armatex.pl", "areaServed": "PL", "availableLanguage": "pl"}, {"@type": "ContactPoint", "contactType": "warehouse", "name": "Martyna Zielińska", "telephone": "+48 515 231 693", "email": "martyna@armatex.pl", "areaServed": "PL", "availableLanguage": "pl"}]}, {"@type": "WebSite", "@id": "https://armatex.pl/#www", "url": "https://armatex.pl/", "name": "Armatex", "inLanguage": "pl-PL", "publisher": {"@id": "https://armatex.pl/#firma"}}]}</script>
   <link rel="stylesheet" href="c.css?v=02d9cf4f">
-  <script src="c.js?v=2176f570" defer></script>
+  <script src="c.js?v=acc12f8b" defer></script>
 </head>
 <body>
 
@@ -205,11 +205,10 @@
           <div class="person"><span class="person__a">B</span><div><span class="label">Biuro</span><b>P.H.U. ARMATEX Sp. J. A. J. Bunda</b><span class="person__h">ul. Składowa 3a, 10-421 Olsztyn<br>pn–pt 7:00–18:00</span><a href="tel:+48513191502">513 191 502</a><a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a></div></div>
         </div>
       </div>
-      <form class="form" id="form" method="POST" action="https://formsubmit.co/biuro@armatex.pl" novalidate>
-        <input type="hidden" name="_subject" value="Zapytanie o wycenę ze strony armatex.pl">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="text" name="_honey" class="sr" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <form class="form" id="form" name="zapytanie" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="zapytanie">
+        <input type="hidden" name="subject" data-remove-prefix value="Zapytanie o wycenę ze strony armatex.pl">
+        <p class="sr" aria-hidden="true"><label>Nie wypełniaj: <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
         <h2 class="form__t">Zapytanie o wycenę</h2>
         <p>Odpowiadamy w ciągu jednego dnia roboczego.</p>
         <div class="fr">

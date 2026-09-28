@@ -282,7 +282,7 @@
     if (temat) m.value = temat;
     $$('[data-topic]').forEach(function (a) { a.addEventListener('click', function () { m.value = a.dataset.topic; }); });
   }
-  // Formularz: walidacja i wysyłka przez FormSubmit (AJAX), bez przeładowania strony
+  // Formularz: walidacja i wysyłka do Netlify Forms (AJAX), bez przeładowania strony
   var form = $('#form');
   if (form) form.addEventListener('submit', function (e) {
     e.preventDefault();
@@ -303,12 +303,11 @@
       if (empty) msg.unshift('Uzupełnij pola oznaczone gwiazdką.');
       st.classList.add('is-err'); st.textContent = msg.join(' '); bad.focus(); return;
     }
-    var btn = form.querySelector('button[type=submit]'), data = {};
+    var btn = form.querySelector('button[type=submit]');
     btn.disabled = true; st.textContent = 'Wysyłanie…';
-    new FormData(form).forEach(function (v, k) { data[k] = v; });
-    fetch(form.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
-      method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify(data)
-    }).then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
+    fetch('/', {
+      method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString()
+    }).then(function (r) { if (!r.ok) throw new Error('http ' + r.status); })
       .then(function () {
         form.reset(); st.classList.add('is-ok');
         st.textContent = 'Dziękujemy. Zapytanie dotarło, odpowiemy w ciągu jednego dnia roboczego.';
