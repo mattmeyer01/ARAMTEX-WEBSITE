@@ -335,7 +335,7 @@ kontakt_home=kontakt_home.replace('<h2 class="h2">Porozmawiajmy o warunkach dla 
 kontakt_home=kontakt_home.replace('<h3>Zapytanie o warunki współpracy</h3>','<h2 class="form__t">Zapytanie o wycenę</h2>')
 steps=frag('      <div class="steps">','      </div>\n      <div class="aud">').replace('      <div class="aud">','').rstrip()
 stats='''      <div class="stats">
-        <div class="stat"><b><span class="odo" data-odo="1991" data-year aria-label="1991">1991</span><i> r.</i></b><span>założenia przedsiębiorstwa</span></div>
+        <div class="stat"><b><span class="odo" data-odo="1991" data-year aria-label="1991">1991</span><i> r</i></b><span>założenia przedsiębiorstwa</span></div>
         <div class="stat"><b><span class="odo" data-odo="24" aria-label="24">24</span><i> h</i></b><span>wysyłka z magazynu w Olsztynie</span></div>
         <div class="stat"><b><span class="odo" data-odo="1" aria-label="1">1</span><i> dzień</i></b><span>na przygotowanie oferty</span></div>
         <div class="stat"><b><span class="odo" data-odo="4" aria-label="4">4</span><i> systemy</i></b><span>łączenia od jednego dystrybutora</span></div>
