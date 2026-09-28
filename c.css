@@ -740,3 +740,6 @@ a.chip:hover { border-color: var(--ink); }
   .pill { left: 1rem; transform: none; }
   .foot__bar { padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0px)); }
 }
+
+/* telefon: bez paska metod w hero, zaraz pod nim jest sekcja oferty z tymi samymi systemami */
+@media (max-width: 720px) { .hero__bar { display: none; } }
