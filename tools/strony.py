@@ -399,17 +399,18 @@ home=f'''
     <div class="wrap faq">
       <div class="faq__intro">
         <span class="label kicker">Pytania</span>
-        <h2 class="h2">Pytania hurtowni.</h2>
-        <p class="lead">Pytania techniczne o poszczególne systemy znajdziesz na ich stronach.</p>
+        <h2 class="h2">Pytania partnerów.</h2>
+        <p class="lead">Od hurtowni, firm instalacyjnych i wykonawców. Pytania techniczne o poszczególne systemy znajdziesz na ich stronach.</p>
         <a class="ulink" href="tel:+48513191502">Zadzwoń: 513 191 502</a>
       </div>
       <div>
 {faqlist([
  ('Jak szybko dostanę ofertę?','W ciągu jednego dnia roboczego. Oferta zawiera ceny hurtowe, dostępność i terminy dostaw dla systemów lub indeksów, które chcesz prowadzić.'),
+ ('Czy współpracujecie tylko z hurtowniami?','Hurtownie instalacyjne to nasi główni partnerzy i pod nie ustawiamy stany, logistykę oraz warunki. Obsługujemy też firmy instalacyjne, generalnych wykonawców, zakłady przemysłowe i zarządców budynków, zwłaszcza przy większych inwestycjach i zamówieniach projektowych. <a href="kontakt.html#formularz">Napisz, czego potrzebujesz</a>, a dobierzemy formę współpracy.'),
  ('Jakie marki i systemy dystrybuujecie?','Besco Fittings &amp; Connectors: miedź press w profilach V i M, serie gazowe, stal węglowa press, złączki lutowane i zawory kulowe press. Pegler Yorkshire: złączki na wcisk Tectite, złączki skręcane Kuterlite i zawory na wcisk. Razem około 2 900 indeksów.'),
  ('Jaki jest czas dostawy?','Wysyłka z magazynu w Olsztynie w 24 godziny od potwierdzenia zamówienia. Duże zamówienia dowozimy własnym transportem.'),
  ('Czy mogę zamówić po numerze artykułu Besco?','Tak. <a href="katalog.html">Katalog z wyszukiwarką</a> obejmuje 1 936 pozycji Besco 2026. Dodaj indeksy do listy, podaj ilości i wyślij do wyceny.'),
- ('Jak uzyskać dostęp do dokumentów?','Poproś o dostęp przez formularz. Po weryfikacji hurtowni udostępniamy karty katalogowe, atesty i deklaracje w ciągu jednego dnia roboczego.')])}
+ ('Jak uzyskać dostęp do dokumentów?','Poproś o dostęp przez formularz. Po weryfikacji firmy udostępniamy karty katalogowe, atesty i deklaracje w ciągu jednego dnia roboczego.')])}
       </div>
     </div>
   </section>
