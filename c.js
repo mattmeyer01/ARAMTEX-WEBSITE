@@ -43,7 +43,7 @@
       box.className = 'odo-d'; r.className = 'odo-r';
       for (var c = 0; c <= SP; c++) for (var k = 0; k < 10; k++) h += '<span>' + k + '</span>';
       r.innerHTML = h; box.appendChild(r); o.appendChild(box); reels.push([r, d, i]);
-      if (n - i > 1 && (n - i - 1) % 3 === 0) { var s = document.createElement('span'); s.className = 'odo-s'; o.appendChild(s); }
+      if (!('year' in o.dataset) && n - i > 1 && (n - i - 1) % 3 === 0) { var s = document.createElement('span'); s.className = 'odo-s'; o.appendChild(s); }
     });
     return reels;
   }
