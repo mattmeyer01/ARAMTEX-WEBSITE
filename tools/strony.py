@@ -36,7 +36,7 @@ SYS=[
  dict(slug='zlaczki-na-wcisk-tectite',name='Złączki na wcisk',h1='Złączki na wcisk Tectite',seotitle='Złączki na wcisk Tectite (push-fit) dla hurtowni | Armatex',metadesc='Złączki i zawory na wcisk (push-fit) Pegler Yorkshire Tectite: Classic, Pro, 316 i Carbon, 10–54 mm. Około 530 indeksów, dostawy do hurtowni w całej Polsce.',tab='Na wcisk',brand='Pegler Yorkshire',cnt='ok. 530',cntw='ok. 530 indeksów',sizes='10–54 mm',
   title='Złączki i zawory na wcisk Tectite',
   short='Tectite Classic, Pro, 316 i Carbon oraz zawory na wcisk. Montaż bez narzędzi i ognia.',
-  desc='System push-fit montowany bez narzędzi, prądu i otwartego ognia. Łączy rury miedziane, PEX, PB, ze stali nierdzewnej i węglowej, zależnie od linii.',
+  desc='System push-fit montowany bez narzędzi, prądu i otwartego ognia. Łączy rury miedziane, PEX, PB, ze stali nierdzewnej i węglowej, zależnie od linii. Armatex jest oficjalnym przedstawicielem Pegler Yorkshire w Polsce.',
   who='Serwisanci, instalatorzy bez zaciskarki i klienci remontowi. Montaż bez narzędzi sprawia, że towar schodzi również przy ladzie.',
   arg='Producent daje 25 lat gwarancji na Tectite Sprint, Classic, Pro i 316, a 30 lat przy rurach Yorkshire.',
   pics=[('tectite-classic','Trójnik na wcisk Tectite Classic'),('tectite-316','Trójnik Tectite 316 ze stali nierdzewnej'),('pegler-tx300','Zawór kulowy na wcisk Pegler')],
@@ -54,7 +54,7 @@ SYS=[
  dict(slug='zlaczki-skrecane-kuterlite',name='Złączki skręcane',h1='Złączki skręcane Kuterlite',seotitle='Złączki skręcane Kuterlite dla hurtowni | Armatex',metadesc='Złączki skręcane (zaciskowe) Kuterlite: K600 i K900 Pro do miedzi, K700 do rur PE oraz zawory, 6–63 mm. Około 470 indeksów, dostawy do hurtowni w całej Polsce.',tab='Skręcane',brand='Pegler Yorkshire',cnt='ok. 470',cntw='ok. 470 indeksów',sizes='6–63 mm',
   title='Złączki skręcane Kuterlite',
   short='Kuterlite K600 i K900 Pro do miedzi, K700 do rur PE oraz zawory z końcówkami zaciskowymi.',
-  desc='Mosiężne złączki zaciskowe z pierścieniem do rur miedzianych i PE. Montaż kluczem, bez lutowania i zaciskarki.',
+  desc='Mosiężne złączki zaciskowe z pierścieniem do rur miedzianych i PE. Montaż kluczem, bez lutowania i zaciskarki. Armatex jest oficjalnym przedstawicielem Pegler Yorkshire w Polsce.',
   who='Serwis i podłączenia urządzeń: kotłów, podgrzewaczy i armatury. Klasyczny towar ladowy z rotacją przez cały rok.',
   arg='Jedna marka na miedź 6–54 mm i rury PE 20–63 mm, razem z zaworami w tym samym systemie.',
   pics=[('kuterlite','Trójnik skręcany Kuterlite'),('kuterlite-kolano','Kolano skręcane Kuterlite'),('kuterlite-zawor','Zawór z końcówkami zaciskowymi Kuterlite')],
@@ -153,7 +153,7 @@ LD_ORG=ld({"@context":"https://schema.org","@graph":[
   {"@type":"WholesaleStore","@id":SITE+"#firma","name":"Armatex","url":SITE,
    "logo":SITE+"img/logo-dark.webp","image":SITE+"img/og/armatex-og.jpg",
    "description":"Dystrybutor złączek i armatury Besco oraz Pegler Yorkshire dla hurtowni instalacyjnych w całej Polsce: złączki zaciskane (press), na wcisk, skręcane i lutowane.",
-   "telephone":"+48 513 191 502","email":"biuro@armatex.pl",
+   "telephone":"+48 513 191 502","email":"biuro@armatex.pl","foundingDate":"1991",
    "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"18:00"}],
    "legalName":"P.H.U. ARMATEX Sp. J. A. J. Bunda","taxID":"7393814110",
    "identifier":[{"@type":"PropertyValue","propertyID":"KRS","value":"0000371628"},{"@type":"PropertyValue","propertyID":"REGON","value":"280563743"}],
@@ -335,7 +335,7 @@ kontakt_home=kontakt_home.replace('<h2 class="h2">Porozmawiajmy o warunkach dla 
 kontakt_home=kontakt_home.replace('<h3>Zapytanie o warunki współpracy</h3>','<h2 class="form__t">Zapytanie o wycenę</h2>')
 steps=frag('      <div class="steps">','      </div>\n      <div class="aud">').replace('      <div class="aud">','').rstrip()
 stats='''      <div class="stats">
-        <div class="stat"><b><span class="odo" data-odo="30" aria-label="30">30</span><i> lat</i></b><span>na rynku instalacyjnym</span></div>
+        <div class="stat"><b><span class="odo" data-odo="1991" data-year aria-label="1991">1991</span></b><span>rok założenia firmy</span></div>
         <div class="stat"><b><span class="odo" data-odo="24" aria-label="24">24</span><i> h</i></b><span>wysyłka z magazynu w Olsztynie</span></div>
         <div class="stat"><b><span class="odo" data-odo="1" aria-label="1">1</span><i> dzień</i></b><span>na przygotowanie oferty</span></div>
         <div class="stat"><b><span class="odo" data-odo="4" aria-label="4">4</span><i> systemy</i></b><span>łączenia od jednego dystrybutora</span></div>
@@ -583,7 +583,7 @@ wsp=f'''
         <div class="phead__ctas"><a class="mag" href="{ask('Jesteśmy hurtownią i chcemy rozpocząć współpracę (Besco, Pegler Yorkshire).')}"><span>Zapytaj o wycenę</span></a></div>
       </div>
       <dl class="phead__facts">
-        <div><dt class="label">Na rynku</dt><dd>30 lat</dd></div>
+        <div><dt class="label">Na rynku</dt><dd>od 1991</dd></div>
         <div><dt class="label">Wysyłka</dt><dd>24 h</dd></div>
         <div><dt class="label">Magazyn</dt><dd>Olsztyn</dd></div>
       </dl>
@@ -791,8 +791,8 @@ CTA_BOX=f'''      <div class="cta" style="margin-top:clamp(3rem,6vw,4.5rem)">
 
 # ---- O firmie
 firma=phead([('O firmie','o-firmie.html')],'O firmie','Armatex. Dystrybutor złączek dla hurtowni.',
-  'Od 30 lat pracujemy na rynku instalacyjnym. Z magazynu w Olsztynie dostarczamy złączki i armaturę Besco oraz Pegler Yorkshire do hurtowni w całej Polsce.',
-  [('Na rynku','30 lat'),('Indeksy','ok. 2 900'),('Wysyłka','24 h')],
+  'Działamy od 1991 roku i jesteśmy oficjalnym przedstawicielem Pegler Yorkshire w Polsce. Z magazynu w Olsztynie dostarczamy złączki i armaturę Besco oraz Pegler Yorkshire do hurtowni w całej Polsce.',
+  [('Na rynku','od 1991'),('Indeksy','ok. 2 900'),('Wysyłka','24 h')],
   f'<a class="mag" href="{ask("Jesteśmy hurtownią i chcemy poznać ofertę Armatex.")}"><span>Zapytaj o wycenę</span></a><a class="ghost" href="wspolpraca.html">Jak współpracujemy</a>')+f'''
   <section class="section section--tight">
     <div class="wrap">
@@ -817,7 +817,7 @@ firma=phead([('O firmie','o-firmie.html')],'O firmie','Armatex. Dystrybutor zł�
       <h2 class="h2">Dwóch producentów, pełne programy.</h2>
       <div class="aud aud--2">
         <div class="in"><span class="label">Besco Fittings &amp; Connectors</span><h3>Press, gaz, stal i lutowane</h3><p>Miedź press w profilach V i M (12–108 mm), linie do gazu, stal węglowa press, kształtki lutowane EN 1254, calowe ANSI i G-size oraz zawory kulowe press. 1 936 pozycji z katalogu 2026 w naszej <a href="katalog.html">wyszukiwarce</a>. Aprobaty DVGW, KIWA, WRAS, RISE i INiG, zależnie od linii.</p></div>
-        <div class="in"><span class="label">Pegler Yorkshire</span><h3>Tectite i Kuterlite</h3><p>Złączki na wcisk <a href="zlaczki-na-wcisk-tectite.html">Tectite</a> (Classic, Pro, 316, Carbon) z gwarancją producenta 25 lat oraz złączki skręcane <a href="zlaczki-skrecane-kuterlite.html">Kuterlite</a> do miedzi i rur PE, razem z zaworami.</p></div>
+        <div class="in"><span class="label">Pegler Yorkshire · oficjalny przedstawiciel w Polsce</span><h3>Tectite i Kuterlite</h3><p>Jako oficjalny przedstawiciel Pegler Yorkshire w Polsce prowadzimy złączki na wcisk <a href="zlaczki-na-wcisk-tectite.html">Tectite</a> (Classic, Pro, 316, Carbon) z gwarancją producenta 25 lat oraz złączki skręcane <a href="zlaczki-skrecane-kuterlite.html">Kuterlite</a> do miedzi i rur PE, razem z zaworami.</p></div>
       </div>
     </div>
   </section>
@@ -835,7 +835,7 @@ firma=phead([('O firmie','o-firmie.html')],'O firmie','Armatex. Dystrybutor zł�
     </div>
   </section>
 '''
-page('o-firmie.html','O firmie – Armatex, dystrybutor złączek dla hurtowni','Armatex z Olsztyna: od 30 lat na rynku instalacyjnym. Dystrybutor złączek Besco i Pegler Yorkshire dla hurtowni w całej Polsce, wysyłka w 24 godziny.','o-firmie',firma,ld_crumbs([('O firmie','o-firmie.html')]))
+page('o-firmie.html','O firmie – Armatex, dystrybutor złączek dla hurtowni','Armatex z Olsztyna: od 1991 r. na rynku instalacyjnym, oficjalny przedstawiciel Pegler Yorkshire w Polsce. Dystrybutor złączek Besco i Pegler Yorkshire dla hurtowni w całej Polsce, wysyłka w 24 godziny.','o-firmie',firma,ld_crumbs([('O firmie','o-firmie.html')]))
 
 # ---- Poradniki
 PSRC='Źródło danych: katalog Besco Fittings &amp; Connectors 2026'
