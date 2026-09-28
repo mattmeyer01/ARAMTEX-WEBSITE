@@ -53,8 +53,7 @@ potwierdzenia linkiem, który FormSubmit wyśle na ten adres.
 
 ## Przed startem w wyszukiwarkach
 
-1. **Indeksowanie jest wyłączone** (`<meta name="robots" content="noindex, nofollow">` w `tools/strony.py`,
-   jak w poprzedniej wersji). Usuń tę linię i wygeneruj strony, gdy strona ma być widoczna w Google.
+1. **Indeksowanie jest włączone** (strona działa pod armatex.pl). Wyjątek: `404.html` ma `noindex`.
 2. Adresy kanoniczne, Open Graph, `sitemap.xml` i dane strukturalne zakładają domenę `https://armatex.pl/`
    (stała `SITE` w generatorze).
 3. Uzupełnij godziny otwarcia i profile firmy (`openingHours`, `sameAs`) w danych `WholesaleStore`.

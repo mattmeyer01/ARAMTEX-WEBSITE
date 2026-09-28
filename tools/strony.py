@@ -179,7 +179,6 @@ def head(title,desc,extra='',path=''):
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex, nofollow">
   <title>{title}</title>
   <meta name="description" content="{desc}">
   <meta name="theme-color" content="#0A1F44">
@@ -1177,7 +1176,7 @@ n404=f'''
 '''
 page('404.html','Nie znaleziono strony | Armatex','Strona nie istnieje. Znajdź produkt w katalogu Armatex lub zapytaj o wycenę.','404',n404)
 h=open(OUT+'404.html',encoding='utf-8').read()
-h=re.sub(r'\s*<link rel="canonical"[^>]*>','',h); h=re.sub(r'\s*<meta property="og:url"[^>]*>','',h)
+h=re.sub(r'\s*<link rel="canonical"[^>]*>','',h); h=h.replace('<meta charset="utf-8">','<meta charset="utf-8">\n  <meta name="robots" content="noindex">',1); h=re.sub(r'\s*<meta property="og:url"[^>]*>','',h)
 # GitHub Pages podaje 404.html pod dowolnym adresem: baza ścieżek ustawiana przed wczytaniem CSS
 h=h.replace('<head>\n','<head>\n  <script>document.write(\'<base href="\'+(/^\\/aramtex-website\\//i.test(location.pathname)?location.pathname.match(/^\\/[^/]+\\//)[0]:\'/\')+\'">\')</script>\n',1)
 open(OUT+'404.html','w',encoding='utf-8').write(h)
