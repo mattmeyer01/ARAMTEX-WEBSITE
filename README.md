@@ -67,3 +67,9 @@ potwierdzenia linkiem, który FormSubmit wyśle na ten adres.
 `404.html` GitHub Pages podaje pod każdym nieistniejącym adresem, także zagnieżdżonym. Skrypt na początku `<head>`
 ustawia `<base>` na katalog strony (`/ARAMTEX-WEBSITE/` na github.io albo `/` na własnej domenie), żeby style,
 zdjęcia i linki działały. Wyszukiwarka na 404 przekazuje frazę do `katalog.html?q=…`.
+
+## Przekierowania ze starej strony
+
+`_redirects` (Netlify) przekierowuje 301 adresy starej strony armatex.pl na nowe podstrony, np. `/tectite` → Złączki na
+wcisk, `/gutpress-v---copper` → Złączki zaciskane, `/dokumenty` → Do pobrania. Nowy stary adres, który wyjdzie w Google
+Search Console jako 404, dopisz tam jako kolejną linię.
