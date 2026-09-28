@@ -1,0 +1,38 @@
+# Przekierowania 301 ze starej strony armatex.pl (adresy z indeksu Google, IX 2026).
+# Czyta je Netlify; pierwsza pasująca reguła wygrywa. "!" wymusza przekierowanie
+# także wtedy, gdy pod adresem bez .html jest nowa strona (Pretty URLs).
+
+# Oferta
+/Oferta                      /#systemy                          301!
+/oferta                      /#systemy                          301!
+
+# Tectite (na wcisk)
+/tectite                     /zlaczki-na-wcisk-tectite.html     301!
+/tectite-classic             /zlaczki-na-wcisk-tectite.html     301!
+/webpage_18                  /zlaczki-na-wcisk-tectite.html     301!
+
+# Press (zaciskane): Gutpress V/M, stal węglowa, zawory zaciskane, XPress
+/gutpress-v---copper         /zlaczki-zaciskane-press.html      301!
+/gutpress-m--copper          /zlaczki-zaciskane-press.html      301!
+/webpage_15                  /zlaczki-zaciskane-press.html      301!
+/webpage_16                  /zlaczki-zaciskane-press.html      301!
+/webpage_17                  /zlaczki-zaciskane-press.html      301!
+/xpress-copper               /zlaczki-zaciskane-press.html      301!
+
+# Lutowane
+/ksztaltki-lutowane-besco    /zlaczki-lutowane.html             301!
+/endex                       /zlaczki-lutowane.html             301!
+
+# Skręcane
+/kuterlite                   /zlaczki-skrecane-kuterlite.html   301!
+
+# Dokumenty, kontakt, firma
+/dokumenty                   /do-pobrania.html                  301!
+/do-pobrania                 /do-pobrania.html                  301!
+/kontakt                     /kontakt.html                      301!
+/Kontakt                     /kontakt.html                      301!
+/o-firmie                    /o-firmie.html                     301!
+/index.php                   /                                  301!
+
+# Pozostałe stare podstrony bez odpowiednika
+/webpage_*                   /                                  301!
