@@ -56,14 +56,14 @@ SYS=[
   short='Kuterlite K600 i K900 Pro do miedzi, K700 do rur PE oraz zawory z końcówkami zaciskowymi.',
   desc='Mosiężne złączki zaciskowe z pierścieniem do rur miedzianych i PE. Montaż kluczem, bez lutowania i zaciskarki. Armatex jest oficjalnym przedstawicielem Pegler Yorkshire w Polsce.',
   who='Serwis i podłączenia urządzeń: kotłów, podgrzewaczy i armatury. Klasyczny towar ladowy z rotacją przez cały rok.',
-  arg='Jedna marka na miedź 6–54 mm i rury PE 20–63 mm, razem z zaworami w tym samym systemie.',
+  arg='Jedna marka na miedź 6–54 mm i rury PE 20–32 mm, razem z zaworami w tym samym systemie.',
   pics=[('kuterlite','Trójnik skręcany Kuterlite'),('kuterlite-kolano','Kolano skręcane Kuterlite'),('kuterlite-zawor','Zawór z końcówkami zaciskowymi Kuterlite')],
   seria='',src='cennik Kuterlite, październik 2024',
   lines=[('Kuterlite K600','Pegler Yorkshire','','6–28 mm','rury miedziane','seria podstawowa',[],'ok. 150','oferta/kuterlite'),
    ('Kuterlite K900 Pro (KN 900)','Pegler Yorkshire','','8–54 mm','rury miedziane','złączki, kolana, przejścia GW/GZ',[],'ok. 185','oferta/kuterlite-kolano'),
-   ('Kuterlite K700','Pegler Yorkshire','','20–63 mm','rury PE','złączki PE × PE i PE × miedź',[],'ok. 65','linie/kuterlite-k700'),
+   ('Kuterlite K700','Pegler Yorkshire','','20–32 mm','rury PE','złączki PE × PE i PE × miedź',[],'ok. 65','linie/kuterlite-k700'),
    ('Zawory z końcówkami zaciskowymi','Pegler Yorkshire','','15–28 mm','woda, podłączenia urządzeń','kurki, zawory odcinające',[],'ok. 30','oferta/kuterlite-zawor')],
-  faq=[('Czym różnią się serie K600, K900 Pro i K700?','K600 to seria podstawowa do rur miedzianych 6–28 mm. K900 Pro obejmuje złączki, kolana i przejścia GW/GZ do miedzi 8–54 mm (na armatex.pl jako KN 900). K700 łączy rury PE 20–63 mm, także z miedzią.'),
+  faq=[('Czym różnią się serie K600, K900 Pro i K700?','K600 to seria podstawowa do rur miedzianych 6–28 mm. K900 Pro obejmuje złączki, kolana i przejścia GW/GZ do miedzi 8–54 mm (na armatex.pl jako KN 900). K700 łączy rury PE 20–32 mm, także z miedzią i gwintem (tulejki, nakrętki i pierścienie do 63 mm).'),
    ('Czy montaż wymaga narzędzi?','Tylko kluczy. Pierścień zaciska się na rurze przy dokręcaniu nakrętki, bez lutowania i zaciskarki.'),
    ('Czy w systemie są zawory?','Tak: kurki i zawory z końcówkami zaciskowymi w średnicach 15–28 mm.'),
    ('Jak pakowane są złączki?','Każda pozycja ma w cenniku producenta dwa opakowania zbiorcze, na przykład złączka prosta K610 15 mm: 5 i 150 sztuk.')]),
@@ -1020,7 +1020,7 @@ art('poradnik-metody-laczenia-rur','Zaciskane, na wcisk, skręcane czy lutowane?
           <tbody>
             <tr><td>Marka w ofercie</td><td>Besco</td><td>Tectite</td><td>Kuterlite</td><td>Besco</td></tr>
             <tr><td>Narzędzia</td><td>zaciskarka ze szczękami V lub M</td><td>obcinak, gratownik, miernik głębokości</td><td>klucze</td><td>palnik, lut, topnik</td></tr>
-            <tr><td>Średnice</td><td>12–108 mm</td><td>10–54 mm</td><td>6–54 mm (miedź), 20–63 mm (PE)</td><td>6–108 mm, calowe 1/4″–4 1/8″</td></tr>
+            <tr><td>Średnice</td><td>12–108 mm</td><td>10–54 mm</td><td>6–54 mm (miedź), 20–32 mm (PE)</td><td>6–108 mm, calowe 1/4″–4 1/8″</td></tr>
             <tr><td>Rury</td><td>miedź, stal węglowa</td><td>miedź, PEX i PB z tulejką, stal zależnie od linii</td><td>miedź, PE</td><td>miedź</td></tr>
             <tr><td>Ogień przy montażu</td><td>nie</td><td>nie</td><td>nie</td><td>tak</td></tr>
             <tr><td>Demontaż</td><td>nie</td><td>Classic, Pro i 316 tak</td><td>tak, pierścień zostaje na rurze</td><td>tylko przez rozlutowanie</td></tr>
@@ -1039,9 +1039,203 @@ art('poradnik-metody-laczenia-rur','Zaciskane, na wcisk, skręcane czy lutowane?
  ['<a href="index.html#systemy">Wszystkie systemy złączek</a>','<a href="poradnik-profil-v-czy-m.html">Profil V czy M?</a>','<a href="poradnik-zlaczki-zaciskane-do-gazu.html">Złączki zaciskane do gazu</a>'],
  src='Źródło danych: katalogi Besco 2026 i Tectite 2026, cennik Kuterlite (październik 2024)')
 
+# ---- Poradniki: stal, Tectite czy press, Kuterlite a press, PE, aprobaty
+art('poradnik-zlaczki-do-stali-weglowej','Złączki do stali węglowej: gdzie wolno, a gdzie nie',
+ 'Złączki do stali węglowej – gdzie stosować | Armatex',
+ 'Gdzie stosować złączki do rur ze stali węglowej: ogrzewanie, chłodzenie, sprężone powietrze. Czego unikać: woda pitna i układy otwarte. Besco press i Tectite.',
+ 'Złączki do stali węglowej są tańsze i mocne, ale nie wszędzie się nadają. Zebraliśmy, do czego przewidują je producenci i gdzie lepiej sięgnąć po miedź lub stal nierdzewną.',5,f'''
+        <h2 id="zastosowania">Do czego producenci przewidują stal węglową</h2>
+        <p>W naszej ofercie są trzy rozwiązania do rur ze stali węglowej. Każde ma w katalogu producenta jasno opisane zastosowanie:</p>
+        <div class="tw"><table>
+          <thead><tr><th></th><th>Besco stal węglowa press</th><th>Tectite Carbon</th><th>Tectite Pro z rurą stalową</th></tr></thead>
+          <tbody>
+            <tr><td>Połączenie</td><td>zaciskane, profil M</td><td>na wcisk, niedemontowalne</td><td>na wcisk, demontowalne</td></tr>
+            <tr><td>Średnice</td><td>12–108 mm</td><td>15–54 mm</td><td>15–54 mm</td></tr>
+            <tr><td>Zastosowanie wg katalogu</td><td>ogrzewanie, sprężone powietrze</td><td>niewentylowane, zamknięte obiegi grzewcze i chłodzące</td><td>tylko obiegi zamknięte</td></tr>
+            <tr><td>Parametry</td><td>16 bar, −10…110 °C</td><td>20 bar do 30 °C, 16 bar przy 65 °C, 10 bar przy 114 °C</td><td>jak Tectite Pro z miedzią, w obiegu zamkniętym</td></tr>
+            <tr><td>Rury</td><td>stal węglowa</td><td>stal węglowa, także pokryta tworzywem</td><td>stal węglowa ocynkowana, miedź, PEX, PB</td></tr>
+          </tbody>
+        </table></div>
+        <p>Wspólny mianownik: <strong>układy zamknięte</strong>, czyli instalacje grzewcze i chłodzące, w których krąży ta sama woda, oraz sprężone powietrze w linii Besco.</p>
+        <h2 id="gdzie-nie">Gdzie stali węglowej nie stosować</h2>
+        <ul>
+          <li><strong>Woda pitna, ciepła i zimna woda użytkowa.</strong> Żaden z tych katalogów nie przewiduje stali węglowej do wody pitnej. Tu sprawdzą się miedź press Besco, <a href="zlaczki-na-wcisk-tectite.html">Tectite Classic i Sprint</a> z atestem PZH albo Tectite 316 ze stali nierdzewnej.</li>
+          <li><strong>Układy otwarte.</strong> Tectite Carbon jest opisany wyłącznie do niewentylowanych obiegów zamkniętych, a Tectite Pro z rurą stalową tylko do obiegów zamkniętych. W układzie otwartym do wody stale dopływa świeży tlen, a stal węglowa w natlenionej wodzie koroduje.</li>
+          <li><strong>Gaz.</strong> Besco nie opisuje stali press do gazu. Do instalacji gazowych mamy osobne linie z miedzi (GPG i seria 7000) z aprobatami DVGW i INiG. Więcej w poradniku <a href="poradnik-zlaczki-zaciskane-do-gazu.html">Złączki zaciskane do gazu</a>.</li>
+        </ul>
+        <h2 id="nierdzewna">Stal węglowa to nie stal nierdzewna</h2>
+        <p>Nazwy są podobne, ale to dwa różne materiały. Tectite 316 jest ze stali nierdzewnej i według producenta jest projektowany do instalacji wody pitnej oraz przemysłu spożywczego i farmaceutycznego. Złączki do stali węglowej łączą rury stalowe w ogrzewaniu i chłodzeniu. Nie zamienia się ich między sobą i nie łączy z rurami innego rodzaju niż przewiduje producent.</p>
+        <h2 id="hurtownia">Co to oznacza dla hurtowni</h2>
+        <ul>
+          <li><strong>Pytaj o medium.</strong> Przy zamówieniu złączek do stali warto dopytać, czy chodzi o ogrzewanie, chłodzenie czy wodę użytkową. Jedno pytanie oszczędza reklamację.</li>
+          <li><strong>Opisz półkę.</strong> Kształtki stalowe i miedziane press wyglądają inaczej, ale stalowe z różnych systemów łatwo pomylić. Wyraźny opis „stal węglowa, obiegi zamknięte” pomaga przy ladzie.</li>
+          <li><strong>Profil M.</strong> Linia stalowa Besco jest w profilu M, więc klient potrzebuje szczęk M. Zobacz poradnik <a href="poradnik-profil-v-czy-m.html">Profil V czy M?</a></li>
+        </ul>
+        <h2 id="zamowienie">Jak zamówić</h2>
+        <p>Wszystkie kształtki stalowe Besco znajdziesz w <a href="katalog.html?seria=steel-press-m#katalog">wyszukiwarce</a>, np. {glink('2270','mufa 2270','Mufa')}, {glink('2001','łuk 90° wz 2001','Łuk 90')} czy {glink('2510','kołnierz PN 16 2510','Kołnierz')}. Tectite Carbon i Pro wycenimy na zapytanie.</p>''',
+ ['<a href="zlaczki-zaciskane-press.html">Złączki zaciskane press Besco</a>','<a href="zlaczki-na-wcisk-tectite.html">Złączki na wcisk Tectite</a>','<a href="poradnik-tectite-czy-press.html">Tectite czy press?</a>','<a href="poradnik-profil-v-czy-m.html">Profil V czy M?</a>'],
+ src='Źródło danych: katalogi Besco 2026 i Tectite 2026')
+
+art('poradnik-tectite-czy-press','Tectite czy press? Kiedy złączki na wcisk, a kiedy zaciskane',
+ 'Tectite czy press – złączki na wcisk czy zaciskane | Armatex',
+ 'Złączki na wcisk Tectite czy zaciskane press Besco? Porównanie narzędzi, średnic, rur, ciśnień i temperatur. Kiedy które wybrać i jak ułożyć ofertę hurtowni.',
+ 'Obie metody łączą rury bez ognia, ale sprawdzają się w innych sytuacjach. Porównujemy Tectite i press Besco na danych z katalogów producentów.',5,f'''
+        <h2 id="porownanie">Porównanie w jednej tabeli</h2>
+        <div class="tw"><table>
+          <thead><tr><th></th><th>Na wcisk Tectite</th><th>Zaciskane press Besco</th></tr></thead>
+          <tbody>
+            <tr><td>Narzędzia</td><td>obcinak, gratownik, znacznik głębokości</td><td>zaciskarka ze szczękami V lub M</td></tr>
+            <tr><td>Średnice</td><td>10–54 mm (zależnie od linii)</td><td>12–108 mm</td></tr>
+            <tr><td>Rury</td><td>miedź, PEX i PB z tulejką, stal węglowa (Pro, Carbon), stal nierdzewna (316)</td><td>miedź; stal węglowa w osobnej linii</td></tr>
+            <tr><td>Demontaż</td><td>Classic, Pro i 316 tak; Sprint i Carbon nie</td><td>nie</td></tr>
+            <tr><td>Gaz</td><td>do gazu polecamy linie press Besco</td><td>osobne linie GPG i seria 7000, DVGW i INiG</td></tr>
+            <tr><td>Gwarancja producenta</td><td>25 lat (Sprint, Classic, Pro, 316), 30 lat z rurami Yorkshire</td><td>–</td></tr>
+          </tbody>
+        </table></div>
+        <h2 id="parametry">Ciśnienie i temperatura</h2>
+        <p>Press Besco do wody pracuje do <strong>16 bar</strong> w zakresie <strong>−10…110 °C</strong>. W Tectite dopuszczalne ciśnienie zależy od linii, rury i temperatury:</p>
+        <div class="tw"><table>
+          <thead><tr><th>Tectite z rurą</th><th>do 30 °C</th><th>65 °C</th><th>maks. temperatura</th></tr></thead>
+          <tbody>
+            <tr><td>Sprint, Pro (do 28 mm), 316 (do 28 mm) · miedź lub stal nierdzewna</td><td>20 bar</td><td>16 bar</td><td>10 bar przy 114 °C</td></tr>
+            <tr><td>Pro i 316 (od 35 mm)</td><td>16 bar</td><td>10 bar</td><td>6 bar przy 90 °C</td></tr>
+            <tr><td>Classic · miedź</td><td>16 bar</td><td>10 bar</td><td>6 bar przy 95 °C</td></tr>
+            <tr><td>Sprint, Classic · PEX lub PB</td><td>12 bar (do 20 °C)</td><td>6 bar</td><td>3 bar przy 92 °C</td></tr>
+          </tbody>
+        </table></div>
+        <p>Minimalna temperatura w tabeli Tectite to −24 °C z miedzią i −20 °C z PEX. Producent zaleca próbę ciśnieniową każdego układu po montażu, ciśnieniem do 1,5 raza wyższym od roboczego.</p>
+        <h2 id="tectite">Kiedy Tectite</h2>
+        <ul>
+          <li><strong>Serwis i remonty:</strong> bez zaciskarki, prądu i palnika. Wystarczy uciąć rurę prostopadle, zgratować, zaznaczyć głębokość i wsunąć.</li>
+          <li><strong>Miejsca, gdzie nie wolno użyć ognia</strong> ani nie zmieści się zaciskarka.</li>
+          <li><strong>Rury z tworzywa:</strong> PEX i PB z tulejką, także przejścia z miedzi na tworzywo w jednym systemie.</li>
+          <li><strong>Gdy liczy się demontaż:</strong> Classic, Pro i 316 można rozłączyć, np. przy tymczasowych podłączeniach.</li>
+        </ul>
+        <h2 id="press">Kiedy press</h2>
+        <ul>
+          <li><strong>Nowe inwestycje i duże średnice:</strong> press Besco w profilu M sięga 108 mm, Tectite 54 mm.</li>
+          <li><strong>Gaz:</strong> do instalacji gazowych mamy linie press z aprobatami DVGW i INiG.</li>
+          <li><strong>Firmy z zaciskarką:</strong> dla nich press to szybki, powtarzalny montaż. Profil dobiera się do szczęk, zobacz <a href="poradnik-profil-v-czy-m.html">Profil V czy M?</a></li>
+        </ul>
+        <h2 id="hurtownia">Co to oznacza dla hurtowni</h2>
+        <p>Tectite i press nie konkurują, tylko obsługują różnych klientów: serwisanta i instalatora bez zaciskarki oraz firmę wykonawczą przy większych instalacjach. Oba systemy są w naszej ofercie, więc hurtownia zamówi je na jednej fakturze.</p>''',
+ ['<a href="zlaczki-na-wcisk-tectite.html">Złączki na wcisk Tectite</a>','<a href="zlaczki-zaciskane-press.html">Złączki zaciskane press Besco</a>','<a href="poradnik-metody-laczenia-rur.html">Porównanie czterech metod łączenia</a>','<a href="poradnik-zlaczki-do-stali-weglowej.html">Złączki do stali węglowej</a>'],
+ src='Źródło danych: katalogi Besco 2026 i Tectite 2026')
+
+art('poradnik-kuterlite-a-zlaczki-zaciskane','Kuterlite a złączki zaciskane: czym się różnią złączki skręcane od press',
+ 'Złączki skręcane Kuterlite a zaciskane press | Armatex',
+ 'Złączki zaciskowe (skręcane) Kuterlite i zaciskane press to dwa różne systemy. Różnice: narzędzia, pierścień, średnice, rury, demontaż, zastosowania.',
+ '„Zaciskowe” i „zaciskane” brzmią prawie tak samo, ale to dwie różne metody łączenia. Wyjaśniamy, czym Kuterlite różni się od złączek press i kiedy które wybrać.',4,f'''
+        <h2 id="nazwy">Zaciskowe czy zaciskane: skąd pomyłka</h2>
+        <p><strong>Złączki zaciskowe</strong> to potoczna nazwa złączek skręcanych: na rurę zakłada się nakrętkę i pierścień zaciskowy, a przy dokręcaniu nakrętki pierścień zaciska się na rurze. Tak działa <a href="zlaczki-skrecane-kuterlite.html">Kuterlite</a>. <strong>Złączki zaciskane (press)</strong> zaciska się zaciskarką ze szczęką o określonym profilu, tak działa <a href="zlaczki-zaciskane-press.html">press Besco</a>. Klient, który prosi o „zaciskowe”, zwykle ma na myśli skręcane, ale warto dopytać.</p>
+        <h2 id="porownanie">Porównanie</h2>
+        <div class="tw"><table>
+          <thead><tr><th></th><th>Skręcane (zaciskowe) Kuterlite</th><th>Zaciskane press Besco</th></tr></thead>
+          <tbody>
+            <tr><td>Jak powstaje połączenie</td><td>nakrętka i pierścień zaciskowy, dokręcane kluczem</td><td>szczęka zaciskarki zaciska końcówkę złączki</td></tr>
+            <tr><td>Narzędzia</td><td>klucze</td><td>zaciskarka ze szczękami V lub M</td></tr>
+            <tr><td>Średnice</td><td>miedź 6–54 mm, PE 20–32 mm</td><td>12–108 mm</td></tr>
+            <tr><td>Rury</td><td>miedź, PE (seria K700), rury calowe z pierścieniem K978C</td><td>miedź; stal węglowa w osobnej linii</td></tr>
+            <tr><td>Demontaż</td><td>tak, pierścień zostaje na rurze</td><td>nie</td></tr>
+            <tr><td>Części zamienne</td><td>osobno nakrętki i pierścienie, np. {"<a href='kuterlite-pierscien-zaciskowy-k978b.html'>K978B</a>"}</td><td>–</td></tr>
+          </tbody>
+        </table></div>
+        <h2 id="serie">Serie Kuterlite</h2>
+        <ul>
+          <li><strong>K600:</strong> seria podstawowa do rur miedzianych 6–28 mm, np. <a href="kuterlite-zlaczka-prosta-k610.html">złączka prosta K610</a>.</li>
+          <li><strong>K900 Pro:</strong> złączki, kolana i przejścia GW/GZ do miedzi 8–54 mm. Końcówki typu A są do miedzi półtwardej (EN 1057 R250), a adapter <a href="kuterlite-adapter-typ-a-x-typ-b-do-miedzi-miekkiej-k900.html">K1870X</a> zmienia je na typ B do miedzi miękkiej (R220).</li>
+          <li><strong>K700:</strong> złączki do rur PE oraz przejścia PE × miedź i PE × gwint. Więcej w poradniku <a href="poradnik-zlaczki-do-rur-pe.html">Dobór złączki do rury PE</a>.</li>
+        </ul>
+        <h2 id="kiedy">Kiedy które</h2>
+        <ul>
+          <li><strong>Skręcane:</strong> podłączenia kotłów, podgrzewaczy i armatury, naprawy, miejsca, gdzie połączenie może trzeba będzie rozebrać. To towar ladowy: wystarczą klucze.</li>
+          <li><strong>Zaciskane press:</strong> całe instalacje, piony, kotłownie, duże średnice i gaz (osobne linie z aprobatami DVGW i INiG).</li>
+        </ul>
+        <h2 id="hurtownia">Co to oznacza dla hurtowni</h2>
+        <p>Skręcane i press to dwie osobne grupy klientów i dwa osobne stany. Przy skręcanych opłaca się trzymać też nakrętki i pierścienie na sztuki, bo klienci dokupują je przy naprawach.</p>''',
+ ['<a href="zlaczki-skrecane-kuterlite.html">Złączki skręcane Kuterlite</a>','<a href="zlaczki-zaciskane-press.html">Złączki zaciskane press Besco</a>','<a href="poradnik-zlaczki-do-rur-pe.html">Dobór złączki do rury PE</a>','<a href="poradnik-metody-laczenia-rur.html">Porównanie metod łączenia</a>'],
+ src='Źródło danych: katalog Besco 2026, cennik Kuterlite (październik 2024)')
+
+art('poradnik-zlaczki-do-rur-pe','Dobór złączki do rury PE: rozmiary, tulejki i przejścia',
+ 'Złączki do rur PE – jak dobrać | Armatex',
+ 'Jak dobrać złączkę skręcaną do rury PE: średnice 20, 25 i 32 mm, tulejka wzmacniająca, przejścia PE × miedź i PE × gwint, rury calowe. Seria Kuterlite K700.',
+ 'Rura PE, np. na przyłączu wody, często trzeba połączyć z miedzią albo gwintem. Pokazujemy, jak w pięciu krokach dobrać złączkę z serii Kuterlite K700.',4,f'''
+        <h2 id="kroki">Dobór w pięciu krokach</h2>
+        <ol>
+          <li><strong>Średnica zewnętrzna rury.</strong> Kształtki K700 są w rozmiarach <strong>20, 25 i 32 mm</strong>. Rozmiar złączki to średnica zewnętrzna rury PE.</li>
+          <li><strong>Metryczna czy calowa?</strong> Stare rury calowe (normy BS 1972 i BS 3284) łączy się przez adapter <a href="kuterlite-adapter-pe-metryczny-x-calowy-k710im.html">K710IM</a>: 20 mm × 1/2″, 25 mm × 3/4″, 32 mm × 1″.</li>
+          <li><strong>Na co przechodzimy?</strong> PE × PE, PE × miedź albo PE × gwint (tabela niżej).</li>
+          <li><strong>Tulejka wzmacniająca.</strong> <a href="kuterlite-tulejka-wzmacniajaca-k766m.html">K766M</a> w rozmiarze rury (20–63 mm). Do rur calowych BS 1972 klasy C jest <a href="kuterlite-tulejka-wzmacniajaca-k1766c.html">K1766C</a> (3/8″, 1/2″, 3/4″).</li>
+          <li><strong>Części zamienne.</strong> Nakrętki <a href="kuterlite-nakretka-zaciskowa-k778a.html">K778A</a> i pierścienie <a href="kuterlite-pierscien-zaciskowy-k778b.html">K778B</a> są też na sztuki, w rozmiarach 20, 25, 32 i 63 mm.</li>
+        </ol>
+        <h2 id="przejscia">Przejścia z rury PE</h2>
+        <div class="tw"><table>
+          <thead><tr><th>Potrzeba</th><th>Złączka</th><th>Rozmiary</th></tr></thead>
+          <tbody>
+            <tr><td>PE × PE, prosto</td><td><a href="kuterlite-zlaczka-prosta-pe-x-pe-k710.html">K710</a></td><td>20, 25, 32 mm; redukcje 25 × 20 i 32 × 25 mm</td></tr>
+            <tr><td>PE × miedź, skręcane</td><td><a href="kuterlite-zlaczka-prosta-pe-x-miedz-k710kp.html">K710KP</a></td><td>20 × 15, 25 × 22, 32 × 28 mm</td></tr>
+            <tr><td>PE × miedź, do lutowania</td><td><a href="kuterlite-adapter-pe-x-miedz-do-lutowania-k701.html">K701</a> (z pierścieniem lutu bezołowiowego)</td><td>25 × 22, 32 × 28 mm</td></tr>
+            <tr><td>PE × gwint zewnętrzny</td><td><a href="kuterlite-zlaczka-z-gz-gwint-stozkowy-pe-k711.html">K711</a>, kolano <a href="kuterlite-kolano-z-gz-gwint-stozkowy-pe-k716.html">K716</a></td><td>20 × 1/2″, 25 × 3/4″, 32 × 1″</td></tr>
+            <tr><td>PE × gwint wewnętrzny</td><td><a href="kuterlite-zlaczka-z-gw-pe-k712.html">K712</a>, kolano <a href="kuterlite-kolano-z-gw-pe-k717.html">K717</a>, ścienne <a href="kuterlite-kolano-scienne-z-gw-pe-k717w.html">K717W</a></td><td>20 × 1/2″, 25 × 3/4″, 32 × 1″</td></tr>
+            <tr><td>Rozgałęzienie</td><td>trójniki <a href="kuterlite-trojnik-rownoprzelotowy-pe-k718.html">K718</a>, <a href="kuterlite-trojnik-z-redukcja-odejscia-pe-k718b.html">K718B</a>, <a href="kuterlite-trojnik-z-odejsciem-gw-pe-k730.html">K730</a></td><td>20, 25, 32 mm</td></tr>
+          </tbody>
+        </table></div>
+        <p>Redukcję rozmiaru PE da się też zrobić zestawem <a href="kuterlite-zestaw-redukcyjny-k748r.html">K748R</a> (25 × 20, 32 × 20, 32 × 25 mm).</p>
+        <h2 id="uwagi">Zanim wydasz towar</h2>
+        <ul>
+          <li>Zapytaj klienta o średnicę zewnętrzną rury, a nie o „cal”. Rura PE 25 mm to nie rura 3/4″.</li>
+          <li>Do każdej złączki PE doliczaj tulejkę wzmacniającą w rozmiarze rury.</li>
+          <li>Ciśnienie i zastosowanie instalacji zależą także od samej rury PE. Przy nietypowym zastosowaniu potwierdzimy dobór z dokumentacją producenta.</li>
+        </ul>''',
+ ['<a href="zlaczki-skrecane-kuterlite.html">Złączki skręcane Kuterlite</a>','<a href="poradnik-kuterlite-a-zlaczki-zaciskane.html">Kuterlite a złączki zaciskane</a>','<a href="poradnik-metody-laczenia-rur.html">Porównanie metod łączenia</a>'],
+ src='Źródło danych: cennik Kuterlite (październik 2024)')
+
+art('poradnik-aprobaty-dvgw-kiwa-wras','Aprobaty DVGW, KIWA, WRAS, RISE i INiG: co oznaczają',
+ 'Aprobaty DVGW, KIWA, WRAS, RISE, INiG – co oznaczają | Armatex',
+ 'Co oznaczają aprobaty DVGW, KIWA, WRAS, RISE i INiG na złączkach, które linie Besco i Tectite je mają i jakie dokumenty są potrzebne w Polsce: atest PZH i DoP.',
+ 'Na złączkach i w katalogach widać skróty kilku instytucji z różnych krajów. Wyjaśniamy, co każdy z nich oznacza i o jakie dokumenty pytają klienci w Polsce.',5,f'''
+        <h2 id="skroty">Co oznacza każdy skrót</h2>
+        <div class="tw"><table>
+          <thead><tr><th>Skrót</th><th>Instytucja i kraj</th><th>Czego dotyczy</th></tr></thead>
+          <tbody>
+            <tr><td><strong>DVGW</strong></td><td>Deutscher Verein des Gas- und Wasserfaches, Niemcy</td><td>certyfikacja wyrobów do instalacji gazowych i wodnych</td></tr>
+            <tr><td><strong>KIWA</strong></td><td>Kiwa, Holandia</td><td>certyfikacja wyrobów do instalacji wodnych, m.in. wody pitnej</td></tr>
+            <tr><td><strong>WRAS</strong></td><td>Water Regulations Advisory Scheme, Wielka Brytania</td><td>zgodność z brytyjskimi przepisami o armaturze wodnej (Water Supply (Water Fittings) Regulations 1999)</td></tr>
+            <tr><td><strong>RISE</strong></td><td>Research Institutes of Sweden, Szwecja</td><td>badania i certyfikacja wyrobów, m.in. instalacyjnych</td></tr>
+            <tr><td><strong>INiG</strong></td><td>Instytut Nafty i Gazu – Państwowy Instytut Badawczy, Polska</td><td>badania i certyfikacja wyrobów dla gazownictwa</td></tr>
+            <tr><td><strong>PZH</strong></td><td>Narodowy Instytut Zdrowia Publicznego PZH – Państwowy Instytut Badawczy, Polska</td><td>atest higieniczny: wyrób może mieć kontakt z wodą przeznaczoną do spożycia</td></tr>
+          </tbody>
+        </table></div>
+        <p>Obok aprobat w katalogach pojawia się norma. <strong>EN 1254-7</strong> to europejska norma dla złączek z końcówkami zaciskanymi (press) do rur metalowych, a <strong>EN 1254</strong> w ogóle obejmuje złączki z miedzi i jej stopów.</p>
+        <h2 id="linie">Które linie mają które aprobaty</h2>
+        <div class="tw"><table>
+          <thead><tr><th>Linia</th><th>Aprobaty wg katalogu</th></tr></thead>
+          <tbody>
+            <tr><td>Besco miedź press, profil V · woda</td><td>DVGW, KIWA, WRAS, RISE</td></tr>
+            <tr><td>Besco miedź press, profil M · woda</td><td>DVGW, WRAS, RISE</td></tr>
+            <tr><td>Besco miedź press do gazu, V i M</td><td>DVGW, INiG</td></tr>
+            <tr><td>Besco lutowane EN 1254</td><td>DVGW, KIWA, WRAS</td></tr>
+            <tr><td>Besco zawory kulowe press</td><td>DVGW, WRAS</td></tr>
+            <tr><td>Tectite Sprint i Classic</td><td>WRAS, PZH</td></tr>
+            <tr><td>Tectite Pro i 316</td><td>WRAS</td></tr>
+          </tbody>
+        </table></div>
+        <p>Aprobata może obejmować tylko część średnic albo zastosowań danej linii. Zakres i ważność zawsze potwierdza sam certyfikat.</p>
+        <h2 id="polska">Jakie dokumenty są potrzebne w Polsce</h2>
+        <p>Zagraniczne aprobaty są mocnym argumentem jakościowym: wyrób przeszedł badania w kraju o wysokich wymaganiach. Na polskiej budowie klienci najczęściej pytają jednak o dwa dokumenty:</p>
+        <ul>
+          <li><strong>Atest higieniczny PZH</strong> przy instalacjach wody pitnej.</li>
+          <li><strong>Deklarację właściwości użytkowych (DoP)</strong>, którą producent wystawia dla wyrobu budowlanego.</li>
+        </ul>
+        <p>Przy instalacjach gazowych częściej pojawia się pytanie o certyfikat INiG. Co dokładnie jest wymagane w danej inwestycji, określa projekt i inspektor nadzoru.</p>
+        <h2 id="dokumenty">Jak zdobyć dokumenty</h2>
+        <p>Atesty, deklaracje i certyfikaty do linii Besco i Pegler Yorkshire udostępniamy hurtowniom w <a href="do-pobrania.html">bazie dokumentów</a> po weryfikacji. Jeśli klient pyta o konkretny indeks, podaj jego numer w <a href="kontakt.html#formularz">zapytaniu</a>, a dobierzemy właściwy dokument.</p>''',
+ ['<a href="do-pobrania.html">Do pobrania: katalogi i dokumenty</a>','<a href="poradnik-zlaczki-zaciskane-do-gazu.html">Złączki zaciskane do gazu</a>','<a href="zlaczki-zaciskane-press.html">Złączki zaciskane press Besco</a>','<a href="zlaczki-na-wcisk-tectite.html">Złączki na wcisk Tectite</a>'],
+ src='Źródło danych: katalogi Besco 2026 i Tectite 2026')
+
 cards=''.join(f'<a class="pcard2" href="{a["slug"]}.html"><span class="label">Poradnik · {a["mins"]} min</span><b>{a["title"]}</b><p>{a["lead"]}</p><span class="pcard2__go" aria-hidden="true">Czytaj →</span></a>' for a in ART)
 porad=phead([('Poradniki','poradniki.html')],'Poradniki','Poradniki dla hurtowni instalacyjnych.',
-  'Praktyczna wiedza o złączkach Besco i Pegler Yorkshire: jak dobrać profil, jak czytać numery artykułów, co wiedzieć o liniach gazowych i czym różnią się metody łączenia.')+f'''
+  'Praktyczna wiedza o złączkach Besco i Pegler Yorkshire: dobór profilu, numery artykułów, gaz, stal węglowa, rury PE, porównania metod łączenia i aprobaty.')+f'''
   <section class="section section--tight">
     <div class="wrap">
       <div class="pgrid">{cards}</div>
@@ -1049,7 +1243,7 @@ porad=phead([('Poradniki','poradniki.html')],'Poradniki','Poradniki dla hurtowni
     </div>
   </section>
 '''
-page('poradniki.html','Poradniki o złączkach dla hurtowni | Armatex','Poradniki o złączkach Besco i Pegler Yorkshire: profil V czy M, numery artykułów Besco, złączki do gazu i porównanie metod łączenia rur.','poradniki',porad,
+page('poradniki.html','Poradniki o złączkach dla hurtowni | Armatex','Poradniki o złączkach Besco i Pegler Yorkshire: profil V czy M, gaz, stal węglowa, rury PE, Tectite czy press, Kuterlite, aprobaty DVGW, KIWA i WRAS.','poradniki',porad,
   ld_crumbs([('Poradniki','poradniki.html')])+ld({"@context":"https://schema.org","@type":"ItemList","name":"Poradniki Armatex","itemListElement":[{"@type":"ListItem","position":i,"url":SITE+a['slug']+'.html',"name":a['title']} for i,a in enumerate(ART,1)]}))
 
 # ---- Do pobrania
