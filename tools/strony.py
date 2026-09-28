@@ -244,9 +244,9 @@ FOOT='''<footer class="foot">
       <img src="../img/logo-light.webp" alt="Armatex" width="300" height="52" loading="lazy">
       <p>Dystrybutor złączek i armatury Besco oraz Pegler Yorkshire dla hurtowni instalacyjnych w całej Polsce.</p>
     </div>
-    <div><h4>Oferta</h4><ul>'''+''.join(f'<li><a href="{s["slug"]}.html">{s["name"]}</a></li>' for s in SYS)+'''</ul></div>
-    <div><h4>Armatex</h4><ul><li><a href="katalog.html">Wyszukiwarka indeksów Besco</a></li><li><a href="'''+PDF+'''" target="_blank" rel="noopener">Katalog Besco 2026 (PDF)</a></li><li><a href="do-pobrania.html">Do pobrania</a></li><li><a href="poradniki.html">Poradniki</a></li><li><a href="o-firmie.html">O firmie</a></li><li><a href="wspolpraca.html">Współpraca</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
-    <div><h4>Kontakt</h4><ul><li><a href="tel:+48513191502">513 191 502</a></li><li><a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a></li><li class="foot__addr"><small>Biuro i magazyn</small>ul. Składowa 3a, 10-421 Olsztyn<br>pn–pt 7:00–18:00</li></ul></div>
+    <div><h2>Oferta</h2><ul>'''+''.join(f'<li><a href="{s["slug"]}.html">{s["name"]}</a></li>' for s in SYS)+'''</ul></div>
+    <div><h2>Armatex</h2><ul><li><a href="katalog.html">Wyszukiwarka indeksów Besco</a></li><li><a href="'''+PDF+'''" target="_blank" rel="noopener">Katalog Besco 2026 (PDF)</a></li><li><a href="do-pobrania.html">Do pobrania</a></li><li><a href="poradniki.html">Poradniki</a></li><li><a href="o-firmie.html">O firmie</a></li><li><a href="wspolpraca.html">Współpraca</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
+    <div><h2>Kontakt</h2><ul><li><a href="tel:+48513191502">513 191 502</a></li><li><a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a></li><li class="foot__addr"><small>Biuro i magazyn</small>ul. Składowa 3a, 10-421 Olsztyn<br>pn–pt 7:00–18:00</li></ul></div>
   </div>
   <div class="wrap foot__bar">
     <div class="foot__co">
@@ -333,7 +333,7 @@ kontakt_home=re.sub(r'<div class="close__bg" aria-hidden="true" data-hf><img [^>
     '<div class="close__bg" aria-hidden="true"><img src="../img/hero/hero-paleta-1200.webp" srcset="../img/hero/hero-paleta-1200.webp 1200w, ../img/hero/hero-paleta-2000.webp 2000w" sizes="100vw" alt="" width="2000" height="1116" loading="lazy" decoding="async"></div>',kontakt_home)
 assert 'cloudfront' not in kontakt_home
 kontakt_home=kontakt_home.replace('<h2 class="h2">Porozmawiajmy o warunkach dla Twojej hurtowni.</h2>','<h2 class="h2">Porozmawiajmy o ofercie dla Twojej hurtowni.</h2>')
-kontakt_home=kontakt_home.replace('<h3>Zapytanie o warunki współpracy</h3>','<h3>Zapytanie o wycenę</h3>')
+kontakt_home=kontakt_home.replace('<h3>Zapytanie o warunki współpracy</h3>','<h2 class="form__t">Zapytanie o wycenę</h2>')
 steps=frag('      <div class="steps">','      </div>\n      <div class="aud">').replace('      <div class="aud">','').rstrip()
 stats='''      <div class="stats">
         <div class="stat"><b><span class="odo" data-odo="30" aria-label="30">30</span><i> lat</i></b><span>na rynku instalacyjnym</span></div>
