@@ -322,14 +322,16 @@ def img_wh(src):
 # (sprawdzone pomiarem w przeglądarce).
 _INL='a|span|b|small|strong|em|i|code|abbr|mark|sup|sub|u|s|time'
 _GLUE=re.compile(r'(?<=[\w.,)%°″"])((?:</?(?:'+_INL+r')\b[^>]*>)+)(?=[\w(])')
-UNGLUE_SKIP=[r'<a href="mailto:', r'class="appr"']   # tu spacja byłaby widoczna (linki w jednym wierszu, znaczki inline-block)
+# Tu zwykła spacja byłaby widoczna (linki w jednym wierszu, znaczki inline-block): wstawiamy spację
+# o zerowej szerokości (.gs { font-size: 0 }), którą Google czyta, a przeglądarka nie rysuje.
+UNGLUE_ZW=[r'<a href="mailto:', r'class="appr"']
 def _unglue_part(t):
     def f(m):
         g=m.group(1)
-        if any(re.search(x,g) for x in UNGLUE_SKIP): return g
         if '</' not in g: return ' '+g if g.startswith('<small') else g
         i=max(k.end() for k in re.finditer(r'</[^>]+>',g))
-        return g[:i]+' '+g[i:]
+        sp='<span class="gs"> </span>' if any(re.search(x,g) for x in UNGLUE_ZW) else ' '
+        return g[:i]+sp+g[i:]
     return _GLUE.sub(f,t)
 def unglue(html):
     parts=re.split(r'(<script\b.*?</script>|<style\b.*?</style>|<svg\b.*?</svg>|<head>.*?</head>)',html,flags=re.S)
