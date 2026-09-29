@@ -248,7 +248,7 @@ FOOT='''<footer class="foot">
     </div>
     <div><h2>Oferta</h2><ul>'''+''.join(f'<li><a href="{s["slug"]}.html">{s["name"]}</a></li>' for s in SYS)+'''</ul></div>
     <div><h2>Armatex</h2><ul><li><a href="katalog.html">Wyszukiwarka indeksów Besco</a></li><li><a href="'''+PDF+'''" target="_blank" rel="noopener">Katalog Besco 2026 (PDF)</a></li><li><a href="do-pobrania.html">Do pobrania</a></li><li><a href="poradniki.html">Poradniki</a></li><li><a href="o-firmie.html">O firmie</a></li><li><a href="wspolpraca.html">Współpraca</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
-    <div><h2>Kontakt</h2><ul><li><a href="tel:+48513191502">513 191 502</a></li><li><a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a></li><li class="foot__addr"><small>Biuro i magazyn</small>ul. Składowa 3a, 10-421 Olsztyn<br>pn–pt 7:00–18:00</li></ul></div>
+    <div><h2>Kontakt</h2><ul><li><a href="tel:+48513191502">513 191 502</a></li><li><a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a></li><li class="foot__addr"><small>Biuro i magazyn</small> ul. Składowa 3a, 10-421 Olsztyn<br>pn–pt 7:00–18:00</li></ul></div>
   </div>
   <div class="wrap foot__bar">
     <div class="foot__co">
@@ -453,7 +453,7 @@ pre=re.sub(r'\s*<link rel="preload" as="image"[^>]*>','',pre)
 pre+='  <link rel="preload" as="image" href="../img/hero/hero-paleta-2000.webp" imagesrcset="../img/hero/hero-paleta-1200.webp 1200w, ../img/hero/hero-paleta-2000.webp 2000w" imagesizes="100vw" media="(min-width: 721px)" fetchpriority="high">\n'
 pre+='  <link rel="preload" as="image" href="../img/hero/hero-paleta-m.webp" media="(max-width: 720px)" fetchpriority="high">\n'
 pre=pre.replace('<link rel="preload" as="image" href="'+NEW+'_min.webp" media="(max-width: 720px)" fetchpriority="high" data-hf>','') if pre.count(NEW+'_min.webp')>1 else pre
-page('index.html','Armatex – Dystrybutor złączek Besco i Pegler Yorkshire','Dystrybutor złączek zaciskanych, na wcisk, skręcanych i lutowanych Besco oraz Pegler Yorkshire dla hurtowni w całej Polsce. Około 2 900 indeksów.','index',home,pre+LD_ORG)
+page('index.html','Armatex – Dystrybutor złączek Besco i Pegler Yorkshire','Armatex (P.H.U. ARMATEX Sp. J. A. J. Bunda), Olsztyn: dystrybutor złączek Besco i Pegler Yorkshire dla hurtowni w całej Polsce. Od 1991 r., wysyłka w 24 h.','index',home,pre+LD_ORG)
 
 # ---------------- strony systemów
 def thumb(ph,alt):
@@ -862,7 +862,7 @@ firma=phead([('O firmie','o-firmie.html')],'O firmie','Armatex. Dystrybutor zł�
       <div class="team">
         <div class="in"><span class="team__av" aria-hidden="true">PS</span><div><span class="label">Sprzedaż</span><b>Piotr Stelmach</b><p><a href="tel:+48798807106">798 807 106</a> · <a href="mailto:piotr@armatex.pl">piotr@armatex.pl</a></p></div></div>
         <div class="in"><span class="team__av" aria-hidden="true">MZ</span><div><span class="label">Magazyn</span><b>Martyna Zielińska</b><p><a href="tel:+48515231693">515 231 693</a> · <a href="mailto:martyna@armatex.pl">martyna@armatex.pl</a></p></div></div>
-        <div class="in"><span class="team__av" aria-hidden="true">B</span><div><span class="label">Biuro</span><b>P.H.U. ARMATEX Sp. J. A. J. Bunda</b><p>ul. Składowa 3a, 10-421 Olsztyn<br>pn–pt 7:00–18:00</p><p><a href="tel:+48513191502">513 191 502</a> · <a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a></p></div></div>
+        <div class="in"><span class="team__av" aria-hidden="true">B</span><div><span class="label">Biuro</span> <b>P.H.U. ARMATEX Sp. J. A. J. Bunda</b> <p>ul. Składowa 3a, 10-421 Olsztyn<br>pn–pt 7:00–18:00</p><p><a href="tel:+48513191502">513 191 502</a> · <a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a></p></div></div>
       </div>
 {CTA_BOX}
     </div>
