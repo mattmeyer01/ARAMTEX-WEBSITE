@@ -520,7 +520,7 @@ a.chip:hover { border-color: var(--ink); }
 .gp__p div { background: #fff; padding: .9rem 1rem; }
 .gp__p dt { color: var(--ink-40); }
 .gp__p dd { margin: .3rem 0 0; }
-.gp__p .appr { margin: 0 0 .2rem 0; }
+.gp__p .appr { margin: 0 .2rem .2rem 0; }
 .gp__p div:last-child:nth-child(odd) { grid-column: 1 / -1; }
 @media (max-width: 900px) {
   .gp { grid-template-columns: 1fr; }
