@@ -195,6 +195,7 @@ def head(title,desc,extra='',path=''):
   <meta property="og:image:alt" content="Armatex: złączki Besco i Pegler Yorkshire dla hurtowni">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="../../assets/img/favicon-32.png?v=2" type="image/png" sizes="32x32">
+  <link rel="icon" href="../../assets/img/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="../../assets/img/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#0a1f44">
