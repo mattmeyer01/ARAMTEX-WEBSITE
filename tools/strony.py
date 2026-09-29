@@ -315,6 +315,26 @@ def img_wh(src):
 
 
 
+
+# Google czyta sąsiednie elementy inline bez odstępu („BiuroP.H.U.”). Wstawiamy spację tylko tam,
+# gdzie przeglądarka jej nie rysuje (sąsiedzi są blokami albo elementami flex/grid), więc wygląd
+# się nie zmienia. Miejsca, w których spacja byłaby widoczna, wyklucza lista UNGLUE_SKIP
+# (sprawdzone pomiarem w przeglądarce).
+_INL='a|span|b|small|strong|em|i|code|abbr|mark|sup|sub|u|s|time'
+_GLUE=re.compile(r'(?<=[\w.,)%°″"])((?:</?(?:'+_INL+r')\b[^>]*>)+)(?=[\w(])')
+UNGLUE_SKIP=[r'<a href="mailto:', r'class="appr"']   # tu spacja byłaby widoczna (linki w jednym wierszu, znaczki inline-block)
+def _unglue_part(t):
+    def f(m):
+        g=m.group(1)
+        if any(re.search(x,g) for x in UNGLUE_SKIP): return g
+        if '</' not in g: return ' '+g if g.startswith('<small') else g
+        i=max(k.end() for k in re.finditer(r'</[^>]+>',g))
+        return g[:i]+' '+g[i:]
+    return _GLUE.sub(f,t)
+def unglue(html):
+    parts=re.split(r'(<script\b.*?</script>|<style\b.*?</style>|<svg\b.*?</svg>|<head>.*?</head>)',html,flags=re.S)
+    return ''.join(x if i%2 else _unglue_part(x) for i,x in enumerate(parts))
+
 def page(name,title,desc,cur,body,extra=''):
     title,desc=short_title(title),short_desc(desc)
     html=head(title,desc,extra,'' if name=='index.html' else name)+'<body data-base="../">\n\n'+nav(cur)+'\n<main id="top">\n'+body+'\n</main>\n\n'+FOOT+'</body>\n</html>\n'
@@ -322,6 +342,7 @@ def page(name,title,desc,cur,body,extra=''):
     for a,b in (('../../assets/','assets/'),('../img/','img/'),('../pliki/','pliki/'),('../data/','data/'),('<body data-base="../">','<body>')):
         html=html.replace(a,b)
     html=live_form(html)
+    html=unglue(html)
     html=html.replace('href="c.css"',f'href="c.css?v={ASSET_V["c.css"]}"').replace('src="c.js"',f'src="c.js?v={ASSET_V["c.js"]}"')
     open(OUT+name,'w',encoding='utf-8').write(html)
 
