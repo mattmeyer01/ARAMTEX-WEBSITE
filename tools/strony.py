@@ -51,7 +51,7 @@ SYS=[
    ('Jakie są parametry pracy?','Tectite Classic z rurą miedzianą: do 16 bar, od −24 do 95 °C. Limity dla innych rur i linii podaje tabela temperatur i ciśnień w katalogu producenta.'),
    ('Jaką gwarancję daje producent?','25 lat na Tectite Sprint, Classic, Pro i 316 z rurami innych producentów oraz 30 lat z rurami Yorkshire i rurami rekomendowanymi, jeśli montaż jest zgodny z instrukcją.'),
    ('Jakie zawory są w systemie?','Zawór kulowy PT550 (15–54 mm), filtr skośny PT913 (15–54 mm), zawór TX300 (15 i 22 mm), zawór mieszający TX405 (15 i 22 mm) i zawór odcinający TX480 (15 mm).')]),
- dict(slug='zlaczki-skrecane-kuterlite',name='Złączki skręcane',h1='Złączki skręcane Kuterlite',seotitle='Złączki skręcane Kuterlite dla hurtowni | Armatex',metadesc='Złączki skręcane (zaciskowe) Kuterlite: K600 i K900 Pro do miedzi, K700 do rur PE oraz zawory, 6–63 mm. Około 470 indeksów, dostawy do hurtowni w całej Polsce.',tab='Skręcane',brand='Pegler Yorkshire',cnt='ok. 470',cntw='ok. 470 indeksów',sizes='6–63 mm',
+ dict(slug='zlaczki-skrecane-kuterlite',name='Złączki skręcane',h1='Złączki skręcane Kuterlite',seotitle='Złączki skręcane Kuterlite dla hurtowni | Armatex',metadesc='Złączki skręcane (zaciskowe) Kuterlite: K600 i K900 Pro do miedzi 6–54 mm, K700 do rur PE 20–32 mm oraz zawory. Około 470 indeksów dla hurtowni.',tab='Skręcane',brand='Pegler Yorkshire',cnt='ok. 470',cntw='ok. 470 indeksów',sizes='6–63 mm',
   title='Złączki skręcane Kuterlite',
   short='Kuterlite K600 i K900 Pro do miedzi, K700 do rur PE oraz zawory z końcówkami zaciskowymi.',
   desc='Mosiężne złączki zaciskowe z pierścieniem do rur miedzianych i PE. Montaż kluczem, bez lutowania i zaciskarki. Armatex jest oficjalnym przedstawicielem Pegler Yorkshire w Polsce.',
@@ -312,6 +312,22 @@ def img_wh(src):
         except Exception: _WH[f]=''
     return _WH[f]
 
+
+# Google czyta sąsiednie elementy inline bez odstępu („BiuroP.H.U.”): wstawiamy spację między
+# zamknięciem jednego elementu a treścią następnego. W układach flex/grid spacja nie jest widoczna.
+_INL='a|span|b|small|strong|em|i|code|abbr|mark|sup|sub|u|s|time'
+_GLUE=re.compile(r'(?<=[\w.,)%°″"])((?:</?(?:'+_INL+r')\b[^>]*>)+)(?=[\w(])')
+def _unglue_part(t):
+    def f(m):
+        g=m.group(1)
+        if '</' not in g: return ' '+g if g.startswith('<small') else g
+        i=max(k.end() for k in re.finditer(r'</[^>]+>',g))
+        return g[:i]+' '+g[i:]
+    return _GLUE.sub(f,t)
+def unglue(html):
+    parts=re.split(r'(<script\b.*?</script>|<style\b.*?</style>|<svg\b.*?</svg>|<head>.*?</head>)',html,flags=re.S)
+    return ''.join(x if i%2 else _unglue_part(x) for i,x in enumerate(parts))
+
 def page(name,title,desc,cur,body,extra=''):
     title,desc=short_title(title),short_desc(desc)
     html=head(title,desc,extra,'' if name=='index.html' else name)+'<body data-base="../">\n\n'+nav(cur)+'\n<main id="top">\n'+body+'\n</main>\n\n'+FOOT+'</body>\n</html>\n'
@@ -319,6 +335,7 @@ def page(name,title,desc,cur,body,extra=''):
     for a,b in (('../../assets/','assets/'),('../img/','img/'),('../pliki/','pliki/'),('../data/','data/'),('<body data-base="../">','<body>')):
         html=html.replace(a,b)
     html=live_form(html)
+    html=unglue(html)
     html=html.replace('href="c.css"',f'href="c.css?v={ASSET_V["c.css"]}"').replace('src="c.js"',f'src="c.js?v={ASSET_V["c.js"]}"')
     open(OUT+name,'w',encoding='utf-8').write(html)
 
@@ -658,7 +675,7 @@ wsp=f'''
     </div>
   </section>
 '''
-page('wspolpraca.html','Współpraca z hurtowniami – dystrybutor złączek | Armatex','Jak współpracujemy z hurtowniami instalacyjnymi: magazyn w Olsztynie, wysyłka w 24 godziny, zatowarowanie na sezon i dokumenty do złączek Besco i Pegler Yorkshire.','wspolpraca',wsp,ld_crumbs([('Współpraca','wspolpraca.html')]))
+page('wspolpraca.html','Współpraca z hurtowniami – dystrybutor złączek | Armatex','Współpraca z Armatex dla hurtowni: magazyn w Olsztynie, wysyłka w 24 h, zatowarowanie na sezon, dokumenty do złączek Besco i Pegler Yorkshire.','wspolpraca',wsp,ld_crumbs([('Współpraca','wspolpraca.html')]))
 
 # ---------------- kontakt
 kon=kontakt_home.replace('<section class="section close" id="kontakt">','<section class="section close close--top" id="formularz" data-top>')
@@ -679,7 +696,7 @@ kontakt=f'''
     </div>
   </section>
 '''
-page('kontakt.html','Kontakt – zapytanie ofertowe dla hurtowni | Armatex','Kontakt z działem sprzedaży Armatex: złączki Besco i Pegler Yorkshire dla hurtowni. Telefon 513 191 502, Olsztyn, ul. Składowa 3a.','kontakt',kontakt,ld_crumbs([('Kontakt','kontakt.html')]))
+page('kontakt.html','Kontakt – zapytanie ofertowe dla hurtowni | Armatex','Kontakt z Armatex: tel. 513 191 502, biuro@armatex.pl, ul. Składowa 3a, Olsztyn, pn–pt 7:00–18:00. Zapytania o złączki Besco i Pegler Yorkshire.','kontakt',kontakt,ld_crumbs([('Kontakt','kontakt.html')]))
 
 # ---------------- strony grup produktów (Besco, Tectite, Kuterlite)
 SYSD={x['slug']:x for x in SYS}
@@ -705,7 +722,9 @@ for G in GROUPS:
     else:
         brand=G['brand']; h1=f'{G["name"]} {brand} {G["code"]}'
         title=f'{G["name"]} {G["code"]} {brand} – {ser["short"]} | Armatex'
-        desc=f'{G["name"]} {brand} {G["code"]} ({ser["name"]}): {n} {rozm} ({rng}). Numery artykułów{" i opakowania zbiorcze" if kind=="kuterlite" else ""} dla hurtowni.'
+        rng_mm=re.sub(r'(\d)mm',r'\1 mm',rng)
+        desc=f'{G["name"]} {brand} {G["code"]} ({ser["name"]}): {n} {rozm} ({rng_mm}). Numery artykułów{" i opakowania zbiorcze" if kind=="kuterlite" else ""} dla hurtowni.'
+        if len(desc)<=128: desc+=' Wycena w 1 dzień roboczy.'
         kicker=f'Pegler Yorkshire · {ser["name"]}'
         note=ser['note']
         if kind=='kuterlite' and 'rójnik' not in G['name']: note=re.sub(r'\s*Wymiary trójników[^.]*\.','',note).strip()
@@ -786,8 +805,7 @@ for G in GROUPS:
 '''
     bname={'besco':'Besco','tectite':'Pegler Yorkshire','kuterlite':'Pegler Yorkshire'}[kind]
     lst=ld({"@context":"https://schema.org","@type":"ItemList","name":f'{G["full"]} {G["code"]}',
-      "itemListElement":[{"@type":"ListItem","position":i,"item":{"@type":"Product","name":f'{G["full"]} {size_of(r)}',"sku":code_of(r),"mpn":code_of(r),
-        "brand":{"@type":"Brand","name":bname},"image":SITE+G['img_src'].replace('../','')}} for i,r in enumerate(rows,1)]})
+      "itemListElement":[{"@type":"ListItem","position":i,"name":f'{bname} {G["full"]} {size_of(r)}, nr art. {code_of(r)}'} for i,r in enumerate(rows,1)]})
     crumbs=ld_crumbs([(sysp['name'],sysp['slug']+'.html'),(f'{G["name"]} {G["code"]}',G['slug']+'.html')])
     page(G['slug']+'.html',title,desc,sysp['slug'],body,crumbs+lst)
 
@@ -868,7 +886,7 @@ firma=phead([('O firmie','o-firmie.html')],'O firmie','Armatex. Dystrybutor zł�
     </div>
   </section>
 '''
-page('o-firmie.html','O firmie – Armatex, dystrybutor złączek dla hurtowni','Armatex z Olsztyna: od 1991 r. na rynku instalacyjnym, oficjalny przedstawiciel Pegler Yorkshire w Polsce. Dystrybutor złączek Besco i Pegler Yorkshire dla hurtowni w całej Polsce, wysyłka w 24 godziny.','o-firmie',firma,ld_crumbs([('O firmie','o-firmie.html')]))
+page('o-firmie.html','O firmie – Armatex, dystrybutor złączek dla hurtowni','P.H.U. ARMATEX Sp. J. A. J. Bunda z Olsztyna: od 1991 r. na rynku instalacyjnym, oficjalny przedstawiciel Pegler Yorkshire w Polsce, dystrybutor Besco.','o-firmie',firma,ld_crumbs([('O firmie','o-firmie.html')]))
 
 # ---- Poradniki
 PSRC='Źródło danych: katalog Besco Fittings &amp; Connectors 2026'
@@ -1373,7 +1391,7 @@ pol=phead([('Polityka prywatności','polityka-prywatnosci.html')],'Dokumenty','P
     </div>
   </section>
 '''
-page('polityka-prywatnosci.html','Polityka prywatności i cookies | Armatex','Polityka prywatności strony armatex.pl: administrator danych, cele i podstawy przetwarzania, okres przechowywania, prawa użytkownika i informacja o plikach cookies.','polityka',pol,ld_crumbs([('Polityka prywatności','polityka-prywatnosci.html')]))
+page('polityka-prywatnosci.html','Polityka prywatności i cookies | Armatex','Polityka prywatności armatex.pl: administrator danych, cele przetwarzania, okres przechowywania, Twoje prawa i informacja o plikach cookies.','polityka',pol,ld_crumbs([('Polityka prywatności','polityka-prywatnosci.html')]))
 
 # ---- 404
 n404=f'''
