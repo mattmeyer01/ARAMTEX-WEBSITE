@@ -249,7 +249,7 @@ FOOT='''<footer class="foot">
     </div>
     <div><h2>Oferta</h2><ul>'''+''.join(f'<li><a href="{s["slug"]}.html">{s["name"]}</a></li>' for s in SYS)+'''</ul></div>
     <div><h2>Armatex</h2><ul><li><a href="katalog.html">Wyszukiwarka indeksów Besco</a></li><li><a href="'''+PDF+'''" target="_blank" rel="noopener">Katalog Besco 2026 (PDF)</a></li><li><a href="do-pobrania.html">Do pobrania</a></li><li><a href="poradniki.html">Poradniki</a></li><li><a href="o-firmie.html">O firmie</a></li><li><a href="wspolpraca.html">Współpraca</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
-    <div><h2>Kontakt</h2><ul><li><a href="tel:+48513191502">513 191 502</a></li><li><a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a></li><li class="foot__addr"><small>Biuro i magazyn</small> ul. Składowa 3a, 10-421 Olsztyn<br>pn–pt 7:00–18:00</li></ul></div>
+    <div><h2>Kontakt</h2><ul><li><a href="tel:+48513191502">513 191 502</a></li><li><a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a></li><li class="foot__addr"><small>Biuro i magazyn</small>ul. Składowa 3a, 10-421 Olsztyn<br>pn–pt 7:00–18:00</li></ul></div>
   </div>
   <div class="wrap foot__bar">
     <div class="foot__co">
@@ -314,20 +314,6 @@ def img_wh(src):
     return _WH[f]
 
 
-# Google czyta sąsiednie elementy inline bez odstępu („BiuroP.H.U.”): wstawiamy spację między
-# zamknięciem jednego elementu a treścią następnego. W układach flex/grid spacja nie jest widoczna.
-_INL='a|span|b|small|strong|em|i|code|abbr|mark|sup|sub|u|s|time'
-_GLUE=re.compile(r'(?<=[\w.,)%°″"])((?:</?(?:'+_INL+r')\b[^>]*>)+)(?=[\w(])')
-def _unglue_part(t):
-    def f(m):
-        g=m.group(1)
-        if '</' not in g: return ' '+g if g.startswith('<small') else g
-        i=max(k.end() for k in re.finditer(r'</[^>]+>',g))
-        return g[:i]+' '+g[i:]
-    return _GLUE.sub(f,t)
-def unglue(html):
-    parts=re.split(r'(<script\b.*?</script>|<style\b.*?</style>|<svg\b.*?</svg>|<head>.*?</head>)',html,flags=re.S)
-    return ''.join(x if i%2 else _unglue_part(x) for i,x in enumerate(parts))
 
 def page(name,title,desc,cur,body,extra=''):
     title,desc=short_title(title),short_desc(desc)
@@ -336,7 +322,6 @@ def page(name,title,desc,cur,body,extra=''):
     for a,b in (('../../assets/','assets/'),('../img/','img/'),('../pliki/','pliki/'),('../data/','data/'),('<body data-base="../">','<body>')):
         html=html.replace(a,b)
     html=live_form(html)
-    html=unglue(html)
     html=html.replace('href="c.css"',f'href="c.css?v={ASSET_V["c.css"]}"').replace('src="c.js"',f'src="c.js?v={ASSET_V["c.js"]}"')
     open(OUT+name,'w',encoding='utf-8').write(html)
 
@@ -881,7 +866,7 @@ firma=phead([('O firmie','o-firmie.html')],'O firmie','Armatex. Dystrybutor zł�
       <div class="team">
         <div class="in"><span class="team__av" aria-hidden="true">PS</span><div><span class="label">Sprzedaż</span><b>Piotr Stelmach</b><p><a href="tel:+48798807106">798 807 106</a> · <a href="mailto:piotr@armatex.pl">piotr@armatex.pl</a></p></div></div>
         <div class="in"><span class="team__av" aria-hidden="true">MZ</span><div><span class="label">Magazyn</span><b>Martyna Zielińska</b><p><a href="tel:+48515231693">515 231 693</a> · <a href="mailto:martyna@armatex.pl">martyna@armatex.pl</a></p></div></div>
-        <div class="in"><span class="team__av" aria-hidden="true">B</span><div><span class="label">Biuro</span> <b>P.H.U. ARMATEX Sp. J. A. J. Bunda</b> <p>ul. Składowa 3a, 10-421 Olsztyn<br>pn–pt 7:00–18:00</p><p><a href="tel:+48513191502">513 191 502</a> · <a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a></p></div></div>
+        <div class="in"><span class="team__av" aria-hidden="true">B</span><div><span class="label">Biuro</span><b>P.H.U. ARMATEX Sp. J. A. J. Bunda</b><p>ul. Składowa 3a, 10-421 Olsztyn<br>pn–pt 7:00–18:00</p><p><a href="tel:+48513191502">513 191 502</a> · <a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a></p></div></div>
       </div>
 {CTA_BOX}
     </div>
