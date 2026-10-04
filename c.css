@@ -813,3 +813,7 @@ a.chip:hover { border-color: var(--ink); }
 .ctip { position: fixed; z-index: 80; pointer-events: none; background: var(--ink); color: #fff; border-radius: 8px; padding: .5rem .7rem; font-size: .8rem; line-height: 1.3; box-shadow: 0 8px 24px -8px rgba(0,0,0,.4); }
 .ctip b { display: block; font-size: 1rem; }
 .ctip span { color: rgba(255,255,255,.7); }
+/* Wyszukiwarka: etykieta filtra linii (z linków ?seria=) */
+.fd__flt { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .6rem; margin-top: .9rem; font-size: .88rem; color: var(--ink); }
+.fd__flt .label { color: var(--ink-40); }
+.fd__flt button { font: 500 .75rem var(--mono); letter-spacing: .04em; color: var(--red-2); background: none; border: 0; padding: .2rem 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }

@@ -26,8 +26,8 @@
   <link rel="preload" href="assets/fonts/outfit-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/outfit-latin-ext-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Armatex", "item": "https://armatex.pl/"}, {"@type": "ListItem", "position": 2, "name": "Wyszukiwarka produktów", "item": "https://armatex.pl/wyszukiwarka.html"}]}</script>
-  <link rel="stylesheet" href="c.css?v=72d6663b">
-  <script src="c.js?v=9be6f204" defer></script>
+  <link rel="stylesheet" href="c.css?v=3495701c">
+  <script src="c.js?v=78cac3ad" defer></script>
 </head>
 <body>
 
@@ -86,24 +86,9 @@
             <input id="q" type="search" autocomplete="off" spellcheck="false" placeholder="np. GP5001-22, trójnik 28, K610, 1 1/2">
           </div>
           <p class="fd__hint">Przykłady: <code data-q="GP5001-22">GP5001-22</code> <code data-q="trójnik 28">trójnik 28</code> <code data-q="zawór kulowy">zawór kulowy</code> <code data-q="tectite kolano 15">Tectite kolano 15</code> <code data-q="K610">K610</code></p>
-          <div class="chips" role="group" aria-label="Filtr linii">
-            <button class="chip" type="button" data-s="" aria-pressed="true">Wszystkie</button>
-            <button class="chip" type="button" data-s="cu-press-water-v" aria-pressed="false">Miedź press V · woda</button>
-            <button class="chip" type="button" data-s="cu-press-water-m" aria-pressed="false">Miedź press M · woda</button>
-            <button class="chip" type="button" data-s="cu-press-gas-v" aria-pressed="false">Miedź press V · gaz</button>
-            <button class="chip" type="button" data-s="cu-press-gas-m" aria-pressed="false">Miedź press M · gaz</button>
-            <button class="chip" type="button" data-s="steel-press-m" aria-pressed="false">Stal węglowa press</button>
-            <button class="chip" type="button" data-s="inox-316l-press-m" aria-pressed="false">INOX 316L press</button>
-            <button class="chip" type="button" data-s="inox-304-press-m" aria-pressed="false">INOX 304 press</button>
-            <button class="chip" type="button" data-s="cu-solder-en1254" aria-pressed="false">Lutowane EN 1254</button>
-            <button class="chip" type="button" data-s="cu-ansi-k" aria-pressed="false">ANSI B16.22 · K</button>
-            <button class="chip" type="button" data-s="cu-g-size" aria-pressed="false">G-size do 80 bar</button>
-            <button class="chip" type="button" data-s="press-ball-valve" aria-pressed="false">Zawory kulowe press</button>
-            <button class="chip" type="button" data-s="tectite-classic,tectite-pro,tectite-316,tectite-zawory,tectite-akcesoria" aria-pressed="false">Tectite · na wcisk</button>
-            <button class="chip" type="button" data-s="kuterlite-k600,kuterlite-k900,kuterlite-k700,kuterlite-zawory,kuterlite-akcesoria" aria-pressed="false">Kuterlite · skręcane</button>
-          </div>
-          <div class="fd__meta"><span class="label" id="cnt" aria-live="polite">3 462 pozycji w katalogu</span> <span class="legend">ww · kielich–kielich, wz · kielich–bosy koniec, GW/GZ · gwint wewn./zewn.</span></div>
-          <ul class="res" id="res"><li class="fd__empty" style="display:block">Katalog doczyta się automatycznie. Wpisz numer albo wybierz linię.</li></ul>
+          <p class="fd__flt" id="flt" hidden></p>
+          <div class="fd__meta"><span class="label" id="cnt" aria-live="polite">3 462 pozycji w wyszukiwarce</span> <span class="legend">ww · kielich–kielich, wz · kielich–bosy koniec, GW/GZ · gwint wewn./zewn.</span></div>
+          <ul class="res" id="res"></ul>
           <div class="fd__more" id="more" hidden><button type="button">Pokaż kolejne</button></div>
         </div>
         <aside class="rfq" id="zapytanie" aria-labelledby="rfq-t">
