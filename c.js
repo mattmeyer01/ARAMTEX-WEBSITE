@@ -264,19 +264,136 @@
         w.classList.toggle('is-in', !!v); b.classList.toggle('is-in', !!v); b.textContent = v ? 'Dodano' : 'Dodaj';
         b.setAttribute('aria-pressed', !!v);
       });
-      var pill = $('#pill'); if (pill) { $('#pillN').textContent = list.size; pill.classList.toggle('on', list.size > 0); }
     }
     qas.forEach(function (w) {
       var a = w.dataset.add, inp = w.querySelector('input'), sel = w.querySelector('select');
       function cur() { return { q: Math.max(1, parseInt(inp.value, 10) || 1), l: w.dataset.l, u: +sel.value, p: packs(sel) }; }
       w.querySelector('.add').addEventListener('click', function () {
-        if (list.has(a)) list.delete(a); else list.set(a, cur());
-        save(); sync();
+        var added = !list.has(a);
+        if (added) list.set(a, cur()); else list.delete(a);
+        save(); sync(); changed(added);
       });
-      function upd() { if (list.has(a)) { list.set(a, cur()); save(); } }
+      function upd() { if (list.has(a)) { list.set(a, cur()); save(); changed(); } }
       inp.addEventListener('input', upd); sel.addEventListener('change', upd);
     });
+    function changed(added) { document.dispatchEvent(new CustomEvent('rfq:change', { detail: { src: 'grp', added: !!added } })); }
+    // zmiany z wysuwanego panelu listy (ilość, jednostka, usunięcie)
+    document.addEventListener('rfq:change', function (e) {
+      if (e.detail && e.detail.src === 'grp') return;
+      list = new Map(); try { JSON.parse(localStorage.getItem(KEY) || '[]').forEach(function (x) { list.set(x[0], x[1]); }); } catch (err) {}
+      sync();
+    });
     sync();
+  })();
+
+  // Lista do wyceny na pozostałych stronach: pasek na stronach grup, mały przycisk „Lista” gdzie indziej, wysuwany panel z listą.
+  // Wyszukiwarka ma własny panel listy, kontakt ma formularz: tam bez paska i panelu.
+  if (!$('#rfqList') && !/\/kontakt(\.html)?$/.test(location.pathname)) (function () {
+    var KEY = 'armatex-rfq', grp = !!qas.length, dr = null, opener = null;
+    var fmt = function (n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); };
+    var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
+    var poz = function (n) { return n === 1 ? 'pozycja' : (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 'pozycje' : 'pozycji'; };
+    function read() { var m = new Map(); try { JSON.parse(localStorage.getItem(KEY) || '[]').forEach(function (x) { m.set(x[0], x[1]); }); } catch (e) {} return m; }
+    function write(m) { try { localStorage.setItem(KEY, JSON.stringify(Array.from(m.entries()))); } catch (e) {} }
+    function changed() { document.dispatchEvent(new CustomEvent('rfq:change', { detail: { src: 'ldr' } })); }
+    function send() {
+      var lines = ['Lista pozycji do wyceny:'];
+      read().forEach(function (v, art) { lines.push(art + ' · ' + (v.l || '') + ' · ' + packTxt(packFix(v))); });
+      location.href = 'kontakt.html?temat=' + encodeURIComponent(lines.join('\n')) + '#formularz';
+    }
+
+    // przycisk / pasek
+    var bar = document.createElement('div');
+    if (grp) {
+      bar.className = 'lbar';
+      bar.innerHTML = '<p class="lbar__t" aria-live="polite"><span class="lbar__l">Lista</span> <span class="lbar__n">0</span> <span class="lbar__w">pozycji</span> <small>na liście do wyceny</small></p>' +
+        '<button class="lbar__show" type="button" aria-haspopup="dialog">Pokaż listę</button>' +
+        '<button class="mag lbar__send" type="button"><span>Wyślij zapytanie<span class="lbar__x"> o wycenę</span></span></button>';
+      $('.lbar__send', bar).addEventListener('click', send);
+    } else {
+      bar.innerHTML = '<button class="pill" type="button" aria-haspopup="dialog">Lista <span class="lbar__n">0</span></button>';
+    }
+    document.body.appendChild(bar);
+    $('button', bar).addEventListener('click', function (e) { open(e.currentTarget); });
+    $$('[data-ldr]').forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); open(a); }); });
+
+    function draw(bump, keep) {
+      var m = read(), n = m.size;
+      $('.lbar__n', bar).textContent = n;
+      if (grp) {
+        $('.lbar__w', bar).textContent = poz(n);
+        bar.classList.toggle('on', n > 0); document.body.classList.toggle('has-lbar', n > 0);
+        if (bump && !reduce) { bar.classList.remove('bump'); void bar.offsetWidth; bar.classList.add('bump'); }
+      } else bar.firstChild.classList.toggle('on', n > 0);
+      if (!dr) return;
+      $('.ldr__n', dr).textContent = n + ' poz.';
+      $('.ldr__send', dr).disabled = !n;
+      if (keep) return;   // edycja w panelu: nie przebudowuj listy, żeby nie zgubić kursora w polu ilości
+      var h = '';
+      m.forEach(function (v, art) {
+        packFix(v);
+        var opts = v.p.map(function (u, i) { return '<option value="' + i + '"' + (i === v.u ? ' selected' : '') + '>' + esc(u[0]) + (u[1] > 1 ? ' (' + fmt(u[1]) + ' szt.)' : '') + '</option>'; }).join('');
+        h += '<li><div><code>' + esc(art) + '</code><small>' + esc(v.l || '') + '</small></div>' +
+          '<button class="rm" type="button" data-art="' + esc(art) + '" aria-label="Usuń ' + esc(art) + '">×</button>' +
+          '<div class="rfq__q"><input type="number" min="1" step="1" value="' + v.q + '" aria-label="Ilość ' + esc(art) + '" data-art="' + esc(art) + '">' +
+          '<select aria-label="Jednostka ' + esc(art) + '" data-art="' + esc(art) + '">' + opts + '</select>' +
+          '<span class="tot">' + (v.p[v.u][1] > 1 ? '= ' + fmt(v.q * v.p[v.u][1]) + ' szt.' : '') + '</span></div></li>';
+      });
+      $('ul', dr).innerHTML = h;
+      $('.ldr__hint', dr).textContent = n ? 'Ustaw ilość i jednostkę (karton, worek, sztuki), potem wyślij zapytanie.' : 'Twoja lista jest pusta. Otwórz linię produktów i dodaj rozmiary na stronie grupy.';
+      $('.ldr__more', dr).hidden = grp && n > 0;
+    }
+    function build() {
+      dr = document.createElement('div');
+      dr.className = 'ldr';
+      dr.innerHTML = '<div class="ldr__bg" data-x></div>' +
+        '<aside class="rfq ldr__p" role="dialog" aria-modal="true" aria-labelledby="ldrT">' +
+        '<div class="ldr__h"><h2 id="ldrT">Lista do wyceny <span class="label ldr__n">0 poz.</span></h2><button class="ldr__x" type="button" data-x aria-label="Zamknij listę">×</button></div>' +
+        '<p class="ldr__hint"></p><ul></ul>' +
+        '<button class="mag ldr__send" type="button"><span>Wyślij zapytanie o wycenę</span></button>' +
+        '<p class="ldr__more"><a class="ulink" href="wyszukiwarka.html">Przejdź do wyszukiwarki produktów</a></p>' +
+        '<p class="rfq__help">Nie wiesz, co wybrać? <a href="tel:+48513191502">Zadzwoń: 513 191 502</a></p></aside>';
+      document.body.appendChild(dr);
+      $$('[data-x]', dr).forEach(function (x) { x.addEventListener('click', close); });
+      $('.ldr__send', dr).addEventListener('click', send);
+      var ul = $('ul', dr);
+      function upd(e) {
+        var i = e.target, m = read(), v = i.dataset.art && m.get(i.dataset.art); if (!v) return;
+        packFix(v);
+        if (i.tagName === 'SELECT') v.u = +i.value; else v.q = Math.max(1, parseInt(i.value, 10) || 1);
+        write(m); changed();
+        var t = i.parentNode.querySelector('.tot'), k = v.p[v.u][1];
+        t.textContent = k > 1 ? '= ' + fmt(v.q * k) + ' szt.' : '';
+      }
+      ul.addEventListener('input', upd); ul.addEventListener('change', upd);
+      ul.addEventListener('click', function (e) {
+        var b = e.target.closest('.rm'); if (!b) return;
+        var m = read(); m.delete(b.dataset.art); write(m); changed(); draw();
+        var f = $('.rm', ul) || $('.ldr__x', dr); f.focus();
+      });
+      dr.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') return close();
+        if (e.key !== 'Tab') return;
+        var f = $$('button:not([disabled]), a[href], input, select', $('.ldr__p', dr)), a = f[0], z = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === a) { e.preventDefault(); z.focus(); }
+        else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); }
+      });
+    }
+    function open(from) {
+      if (!dr) build();
+      opener = from; draw();
+      document.documentElement.classList.add('ldr-open');
+      dr.classList.add('on');
+      setTimeout(function () { $('.ldr__x', dr).focus(); }, 30);
+    }
+    function close() {
+      dr.classList.remove('on'); document.documentElement.classList.remove('ldr-open');
+      if (opener && opener.isConnected) opener.focus();
+    }
+    document.addEventListener('rfq:change', function (e) { var d = e.detail || {}; draw(d.added, d.src === 'ldr'); });
+    // zmiana listy w innej karcie przeglądarki
+    window.addEventListener('storage', function (e) { if (e.key === KEY) { draw(); document.dispatchEvent(new CustomEvent('rfq:change', { detail: { src: 'ldr' } })); } });
+    draw();
   })();
 
   // Do pobrania: filtr po rodzaju i marce

@@ -718,7 +718,7 @@ kat=f'''
       </div>
     </div>
   </section>
-<a class="pill" id="pill" href="#zapytanie">Lista <span id="pillN">0</span></a>
+<a class="pill pill--fd" id="pill" href="#zapytanie">Lista <span id="pillN">0</span></a>
 '''
 kat=kat.replace('<button class="mag" type="button" id="toForm" disabled><span>Przenieś do formularza</span></button>','<button class="mag" type="button" id="toForm" disabled><span>Wyślij zapytanie o wycenę</span></button>')
 assert '<p id="rfqHint">Dodaj pozycje z listy. Ilości zmienisz tutaj.</p>' in kat
@@ -903,13 +903,12 @@ for G in GROUPS:
     <div class="wrap">
       <div class="cta">
         <div><h2>Zapytaj o wycenę: {G["name"]} {G["code"]}.</h2><p>Dodaj rozmiary do listy przyciskiem „Dodaj” albo od razu napisz do nas. Ceny hurtowe, dostępność i terminy przygotujemy w ciągu jednego dnia roboczego.</p></div>
-        <div class="cta__b"><a class="mag" href="{ask(topic)}"><span>Zapytaj o wycenę</span></a><a class="ghost" href="wyszukiwarka.html#zapytanie">Moja lista</a></div>
+        <div class="cta__b"><a class="mag" href="{ask(topic)}"><span>Zapytaj o wycenę</span></a><a class="ghost" href="wyszukiwarka.html#zapytanie" data-ldr>Moja lista</a></div>
       </div>
       {f'<div class="shead" style="margin-top:clamp(3rem,6vw,4.5rem)"><h2 class="sy-h" style="margin:0">Inne produkty w linii</h2>{search}</div><div class="gl__l" style="margin-top:1.2rem">{rel}</div>' if rel else ''}
       <p style="margin-top:2rem"><a class="ulink" href="{sysp["slug"]}.html">Wszystkie {sysp["name"].lower()}</a></p>
     </div>
   </section>
-<a class="pill" id="pill" href="wyszukiwarka.html#zapytanie">Lista <span id="pillN">0</span></a>
 '''
     bname={'besco':'Besco','tectite':'Pegler Yorkshire','kuterlite':'Pegler Yorkshire'}[kind]
     lst=ld({"@context":"https://schema.org","@type":"ItemList","name":f'{G["full"]} {G["code"]}',
