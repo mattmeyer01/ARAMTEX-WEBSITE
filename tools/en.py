@@ -160,7 +160,9 @@ def _visit(el, tr):
         key = norm(_ph(el, tags))
         v = tr.get(key)
         if v is not None:
-            frag = BeautifulSoup(_rebuild(v, tags), 'html.parser')
+            raw = _ph(el, [])                               # spacje na brzegach zostają jak w oryginale
+            lead, trail = re.match(r'\s*', raw)[0], re.search(r'\s*$', raw)[0]
+            frag = BeautifulSoup(H.escape(lead) + _rebuild(v, tags) + H.escape(trail), 'html.parser')
             el.clear()
             for c in list(frag.contents):
                 el.append(c)
