@@ -87,6 +87,10 @@
     return v.q + ' × ' + u[0] + ' (' + n + ' szt.) = ' + String(v.q * n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' szt.';
   }
 
+  function thumb(src) {
+    return '<span class="rfq__im">' + (src ? '<img src="' + BASE + String(src).replace(/[&<>"]/g, '') + '" alt="" width="44" height="44" loading="lazy" decoding="async">' : '') + '</span>';
+  }
+
   if ($('#rfqList')) (function () {
   // ===== Wyszukiwarka (Besco, Tectite, Kuterlite) + zapytanie =====
   var DATA = null, INDEX = null, loading = null, page = 0, PER = 24, hits = [];
@@ -107,7 +111,7 @@
         var g = d.groups[r[0]], s = d.series[g[0]];
         return { r: r, g: g, s: s, sid: s.id, hay: norm([r[1], r[2], g[2], g[3], g[1], s.short, s.brand].join(' ')), art: squash(r[1]) };
       });
-      search();
+      search(); drawRfq(); save();
     }).catch(function () { if (res) res.innerHTML = '<li class="fd__empty" style="display:block">Nie udało się wczytać katalogu. Odśwież stronę.</li>'; });
     return loading;
   }
@@ -189,6 +193,10 @@
     for (var i = 0; i < INDEX.length; i++) if (INDEX[i].r[1] === art) return INDEX[i].g[2] + ' ' + INDEX[i].r[2];
     return '';
   }
+  function imgOf(art) {
+    if (INDEX) for (var i = 0; i < INDEX.length; i++) if (INDEX[i].r[1] === art) return INDEX[i].g[4];
+    return '';
+  }
   function packsOf(art) {
     if (INDEX) for (var i = 0; i < INDEX.length; i++) if (INDEX[i].r[1] === art) return INDEX[i].r[3].concat([['szt.', 1]]);
     return null;
@@ -198,7 +206,8 @@
     rfq.forEach(function (v, art) {
       packFix(v, packsOf(art));
       var opts = v.p.map(function (u, i) { return '<option value="' + i + '"' + (i === v.u ? ' selected' : '') + '>' + esc(u[0]) + (u[1] > 1 ? ' (' + fmt(u[1]) + ' szt.)' : '') + '</option>'; }).join('');
-      h += '<li><div><code>' + esc(art) + '</code><small>' + esc(v.l || label(art)) + '</small></div>' +
+      if (!v.i && INDEX) v.i = imgOf(art);
+      h += '<li>' + thumb(v.i) + '<div><code>' + esc(art) + '</code><small>' + esc(v.l || label(art)) + '</small></div>' +
         '<button class="rm" type="button" data-art="' + esc(art) + '" aria-label="Usuń ' + esc(art) + '">×</button>' +
         '<div class="rfq__q"><input type="number" min="1" step="1" value="' + v.q + '" aria-label="Ilość ' + esc(art) + '" data-art="' + esc(art) + '">' +
         '<select aria-label="Jednostka ' + esc(art) + '" data-art="' + esc(art) + '">' + opts + '</select>' +
@@ -213,7 +222,7 @@
   if (res) res.addEventListener('click', function (e) {
     var b = e.target.closest('.add'); if (!b) return;
     var art = b.dataset.art;
-    if (rfq.has(art)) rfq.delete(art); else { var nv = packFix({ q: 1, l: label(art) }, packsOf(art)); nv.u = 0; rfq.set(art, nv); }
+    if (rfq.has(art)) rfq.delete(art); else { var nv = packFix({ q: 1, l: label(art), i: imgOf(art) }, packsOf(art)); nv.u = 0; rfq.set(art, nv); }
     b.classList.toggle('is-in', rfq.has(art)); b.textContent = rfq.has(art) ? 'Dodano' : 'Dodaj';
     save(); drawRfq();
   });
@@ -253,7 +262,7 @@
   // Strony grup produktów: ilość + jednostka (karton / worek / opak. / szt.) i "Dodaj" do listy do wyceny (ta sama co w katalogu)
   var qas = $$('.qty[data-add]');
   if (qas.length) (function () {
-    var KEY = 'armatex-rfq', list = new Map();
+    var KEY = 'armatex-rfq', list = new Map(), gi = $('.gp__img img'), gimg = gi ? gi.getAttribute('src') : '';
     try { JSON.parse(localStorage.getItem(KEY) || '[]').forEach(function (x) { list.set(x[0], x[1]); }); } catch (e) {}
     function save() { try { localStorage.setItem(KEY, JSON.stringify(Array.from(list.entries()))); } catch (e) {} }
     function packs(sel) { return Array.prototype.map.call(sel.options, function (o) { return [o.dataset.u, +o.dataset.n]; }); }
@@ -267,7 +276,7 @@
     }
     qas.forEach(function (w) {
       var a = w.dataset.add, inp = w.querySelector('input'), sel = w.querySelector('select');
-      function cur() { return { q: Math.max(1, parseInt(inp.value, 10) || 1), l: w.dataset.l, u: +sel.value, p: packs(sel) }; }
+      function cur() { return { q: Math.max(1, parseInt(inp.value, 10) || 1), l: w.dataset.l, u: +sel.value, p: packs(sel), i: gimg }; }
       w.querySelector('.add').addEventListener('click', function () {
         var added = !list.has(a);
         if (added) list.set(a, cur()); else list.delete(a);
@@ -333,7 +342,7 @@
       m.forEach(function (v, art) {
         packFix(v);
         var opts = v.p.map(function (u, i) { return '<option value="' + i + '"' + (i === v.u ? ' selected' : '') + '>' + esc(u[0]) + (u[1] > 1 ? ' (' + fmt(u[1]) + ' szt.)' : '') + '</option>'; }).join('');
-        h += '<li><div><code>' + esc(art) + '</code><small>' + esc(v.l || '') + '</small></div>' +
+        h += '<li>' + thumb(v.i) + '<div><code>' + esc(art) + '</code><small>' + esc(v.l || '') + '</small></div>' +
           '<button class="rm" type="button" data-art="' + esc(art) + '" aria-label="Usuń ' + esc(art) + '">×</button>' +
           '<div class="rfq__q"><input type="number" min="1" step="1" value="' + v.q + '" aria-label="Ilość ' + esc(art) + '" data-art="' + esc(art) + '">' +
           '<select aria-label="Jednostka ' + esc(art) + '" data-art="' + esc(art) + '">' + opts + '</select>' +
@@ -379,9 +388,21 @@
         else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); }
       });
     }
+    // pozycje dodane przed wprowadzeniem miniatur: zdjęcie grupy z danych katalogu
+    var imgs = null;
+    function fillImgs() {
+      var m = read(), miss = []; m.forEach(function (v, art) { if (!v.i) miss.push(art); });
+      if (!miss.length || imgs) return;
+      imgs = fetch(BASE + 'data/katalog.json').then(function (r) { return r.json(); }).then(function (d) {
+        var by = {}; d.rows.forEach(function (r) { by[r[1]] = d.groups[r[0]][4]; });
+        var m2 = read(), ch = false;
+        m2.forEach(function (v, art) { if (!v.i && by[art]) { v.i = by[art]; ch = true; } });
+        if (ch) { write(m2); draw(); changed(); }
+      }).catch(function () { imgs = null; });
+    }
     function open(from) {
       if (!dr) build();
-      opener = from; draw();
+      opener = from; draw(); fillImgs();
       document.documentElement.classList.add('ldr-open');
       dr.classList.add('on');
       setTimeout(function () { $('.ldr__x', dr).focus(); }, 30);
