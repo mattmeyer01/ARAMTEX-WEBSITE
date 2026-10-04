@@ -7,7 +7,7 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
 ## Struktura
 
 - `index.html`: strona główna; strony systemów `zlaczki-zaciskane-press.html`, `zlaczki-na-wcisk-tectite.html`,
-  `zlaczki-skrecane-kuterlite.html`, `zlaczki-lutowane.html`; `katalog.html` (wyszukiwarka 1 936 indeksów Besco
+  `zlaczki-skrecane-kuterlite.html`, `zlaczki-lutowane.html`; `wyszukiwarka.html` (wyszukiwarka 1 936 indeksów Besco
   z listą do wyceny), `do-pobrania.html` (katalogi i dokumenty z filtrem), `o-firmie.html`, `wspolpraca.html`, `kontakt.html`.
 - Poradniki: `poradniki.html` i artykuły `poradnik-*.html` (dane Article w JSON-LD). Nowy poradnik dodaje się
   wywołaniem `art(...)` w `tools/strony.py`; lista, menu i sitemap aktualizują się same.
@@ -51,7 +51,7 @@ pozycji o nietypowym układzie tabel (kolektory TM80/TM81, węże TF90/TF92, cz�
 
 ## Wyszukiwarka
 
-Wyszukiwarka (`katalog.html`) czyta `data/katalog.json`, który generator (`tools/strony.py`) składa przy każdym
+Wyszukiwarka (`wyszukiwarka.html`) czyta `data/katalog.json`, który generator (`tools/strony.py`) składa przy każdym
 uruchomieniu z `data/besco-2026.json` i `data/pegler.json` (Besco, Tectite, Kuterlite).
 
 ## Złączki INOX
@@ -84,7 +84,7 @@ Na kopii w GitHub Pages formularz nie działa (pokazuje komunikat z telefonem i 
 
 `404.html` GitHub Pages podaje pod każdym nieistniejącym adresem, także zagnieżdżonym. Skrypt na początku `<head>`
 ustawia `<base>` na katalog strony (`/ARAMTEX-WEBSITE/` na github.io albo `/` na własnej domenie), żeby style,
-zdjęcia i linki działały. Wyszukiwarka na 404 przekazuje frazę do `katalog.html?q=…`.
+zdjęcia i linki działały. Wyszukiwarka na 404 przekazuje frazę do `wyszukiwarka.html?q=…`.
 
 ## Przekierowania ze starej strony
 
