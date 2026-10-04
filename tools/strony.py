@@ -672,7 +672,7 @@ kat=f'''
         <span class="label kicker">Wyszukiwarka indeksów</span>
         <h1>Wyszukiwarka produktów</h1>
         <p class="lead">Zbuduj listę indeksów do wyceny. Wpisz numer artykułu Besco, Tectite lub Kuterlite, średnicę albo nazwę. Dodaj indeksy, które chcesz prowadzić, podaj ilości i wyślij listę. Ofertę przygotujemy w jeden dzień roboczy.</p>
-        <div class="phead__ctas"><a class="ghost" href="{PDF}" target="_blank" rel="noopener">Pobierz katalog Besco 2026 (PDF · 2,7 MB)</a></div>
+        <div class="phead__ctas"><a class="ghost ghost--pdf" href="do-pobrania.html?rodzaj=katalog#dokumenty">Katalogi PDF</a></div>
       </div>
       <dl class="phead__facts">
         <div><dt class="label">Indeksy</dt><dd>{N_ALL_TXT}</dd></div>
@@ -1378,7 +1378,7 @@ dl=phead([('Do pobrania','do-pobrania.html')],'Do pobrania','Katalogi i dokument
   [('Katalogi i instrukcje','PDF'),('Dokumenty','po weryfikacji')])+f'''
   <section class="section section--tight">
     <div class="wrap">
-      <div class="dlf" role="group" aria-label="Filtr dokumentów">
+      <div class="dlf" id="dokumenty" role="group" aria-label="Filtr dokumentów">
         <div class="dlf__g"><span class="label">Rodzaj</span>{chips('t',TYPES)}</div>
         <div class="dlf__g"><span class="label">Marka</span>{chips('b',BRANDS)}</div>
       </div>

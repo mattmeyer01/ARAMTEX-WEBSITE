@@ -277,6 +277,9 @@
         apply();
       });
     });
+    // ?rodzaj=katalog (np. link „Katalogi PDF” z wyszukiwarki) ustawia filtr od razu
+    var t0 = new URLSearchParams(location.search).get('rodzaj'), c0 = t0 && $('.dlf .chip[data-t="' + CSS.escape(t0) + '"]');
+    if (c0) c0.click();
   })();
 
   var m = $('#m');

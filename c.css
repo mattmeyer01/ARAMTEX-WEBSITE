@@ -631,6 +631,7 @@ a.chip:hover { border-color: var(--ink); }
 .art { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: clamp(2rem, 5vw, 5rem); align-items: start; }
 .prose { max-width: 72ch; color: var(--ink); font-size: clamp(1rem, 1.1vw, 1.08rem); line-height: 1.7; }
 .prose h2 { font-size: clamp(1.45rem, 2.4vw, 1.95rem); line-height: 1.15; letter-spacing: -.025em; font-weight: 600; margin: 2.6rem 0 .9rem; scroll-margin-top: 110px; }
+.dlf { scroll-margin-top: 110px; }
 .prose h2:first-child { margin-top: 0; }
 .prose p, .prose ul, .prose .tw { margin: 0 0 1.1rem; }
 .prose p, .prose li { color: #3a4353; }
