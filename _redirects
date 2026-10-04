@@ -11,13 +11,13 @@
 /tectite-classic             /zlaczki-na-wcisk-tectite.html     301!
 /webpage_18                  /zlaczki-na-wcisk-tectite.html     301!
 
-# Press (zaciskane): Gutpress V/M, stal węglowa, zawory zaciskane, XPress
-/gutpress-v---copper         /zlaczki-zaciskane-press.html      301!
-/gutpress-m--copper          /zlaczki-zaciskane-press.html      301!
-/webpage_15                  /zlaczki-zaciskane-press.html      301!
-/webpage_16                  /zlaczki-zaciskane-press.html      301!
-/webpage_17                  /zlaczki-zaciskane-press.html      301!
-/xpress-copper               /zlaczki-zaciskane-press.html      301!
+# Press (zaprasowane): Gutpress V/M, stal węglowa, zawory zaprasowane, XPress
+/gutpress-v---copper         /zlaczki-zaprasowane-press.html      301!
+/gutpress-m--copper          /zlaczki-zaprasowane-press.html      301!
+/webpage_15                  /zlaczki-zaprasowane-press.html      301!
+/webpage_16                  /zlaczki-zaprasowane-press.html      301!
+/webpage_17                  /zlaczki-zaprasowane-press.html      301!
+/xpress-copper               /zlaczki-zaprasowane-press.html      301!
 
 # Lutowane
 /ksztaltki-lutowane-besco    /zlaczki-lutowane.html             301!
@@ -40,3 +40,11 @@
 
 # Pozostałe stare podstrony bez odpowiednika
 /webpage_*                   /                                  301!
+
+# Zmiana nazwy „zaciskane” → „zaprasowane” (X 2026)
+/zlaczki-zaciskane-press                    /zlaczki-zaprasowane-press.html                 301!
+/zlaczki-zaciskane-press.html               /zlaczki-zaprasowane-press.html                 301!
+/poradnik-zlaczki-zaciskane-do-gazu         /poradnik-zlaczki-zaprasowane-do-gazu.html      301!
+/poradnik-zlaczki-zaciskane-do-gazu.html    /poradnik-zlaczki-zaprasowane-do-gazu.html      301!
+/poradnik-kuterlite-a-zlaczki-zaciskane     /poradnik-kuterlite-a-zlaczki-zaprasowane.html  301!
+/poradnik-kuterlite-a-zlaczki-zaciskane.html /poradnik-kuterlite-a-zlaczki-zaprasowane.html 301!

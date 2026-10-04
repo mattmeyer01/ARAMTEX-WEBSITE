@@ -6,7 +6,7 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
 
 ## Struktura
 
-- `index.html`: strona główna; strony systemów `zlaczki-zaciskane-press.html`, `zlaczki-na-wcisk-tectite.html`,
+- `index.html`: strona główna; strony systemów `zlaczki-zaprasowane-press.html`, `zlaczki-na-wcisk-tectite.html`,
   `zlaczki-skrecane-kuterlite.html`, `zlaczki-lutowane.html`; `wyszukiwarka.html` (wyszukiwarka 1 936 indeksów Besco
   z listą do wyceny), `do-pobrania.html` (katalogi i dokumenty z filtrem), `o-firmie.html`, `wspolpraca.html`, `kontakt.html`.
 - Poradniki: `poradniki.html` i artykuły `poradnik-*.html` (dane Article w JSON-LD). Nowy poradnik dodaje się
@@ -89,5 +89,5 @@ zdjęcia i linki działały. Wyszukiwarka na 404 przekazuje frazę do `wyszukiwa
 ## Przekierowania ze starej strony
 
 `_redirects` (Netlify) przekierowuje 301 adresy starej strony armatex.pl na nowe podstrony, np. `/tectite` → Złączki na
-wcisk, `/gutpress-v---copper` → Złączki zaciskane, `/dokumenty` → Do pobrania. Nowy stary adres, który wyjdzie w Google
+wcisk, `/gutpress-v---copper` → Złączki zaprasowane, `/dokumenty` → Do pobrania. Nowy stary adres, który wyjdzie w Google
 Search Console jako 404, dopisz tam jako kolejną linię.

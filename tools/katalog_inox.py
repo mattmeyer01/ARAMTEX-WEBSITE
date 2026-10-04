@@ -1,4 +1,4 @@
-"""Dołącza złączki zaciskane Besco ze stali nierdzewnej (INOX 304 i INOX 316L) do danych strony.
+"""Dołącza złączki zaprasowane Besco ze stali nierdzewnej (INOX 304 i INOX 316L) do danych strony.
 
 Użycie (po tools/katalog_besco.py, bo dopisuje do jego wyniku):
     pip install pymupdf pillow rapidocr_onnxruntime
