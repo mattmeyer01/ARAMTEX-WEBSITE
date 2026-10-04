@@ -127,7 +127,9 @@
     if (qa) hits = hits.map(function (x, i) { return [rank(x), i, x]; }).sort(function (a, b) { return b[0] - a[0] || a[1] - b[1]; }).map(function (y) { return y[2]; });
     page = 0; res.innerHTML = '';
     // bez frazy i filtra lista wyników jest pusta: niżej są wszystkie grupy produktów
-    if (!toks.length && !active.size) { more.hidden = true; cnt.textContent = fmt(INDEX.length) + ' pozycji w wyszukiwarce'; return; }
+    // wiersz z licznikiem i legendą skrótów tylko przy wynikach
+    var idle = !toks.length && !active.size; cnt.parentNode.hidden = idle;
+    if (idle) { more.hidden = true; return; }
     render();
     cnt.textContent = fmt(hits.length) + ' z ' + fmt(INDEX.length) + ' pozycji';
   }
