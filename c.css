@@ -197,6 +197,8 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .res li { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto auto auto; gap: .9rem 1rem; align-items: center; padding: .75rem 0; border-bottom: 1px solid var(--line); }
 .res img { width: 56px; height: 56px; object-fit: contain; border-radius: 8px; }
 .res b { font-weight: 600; }
+.res b a { text-decoration: none; }
+.res b a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .res .sz { margin-left: .4rem; font-variant-numeric: tabular-nums; }
 .res small { display: block; color: var(--ink-40); font-size: .8rem; margin-top: .1rem; }
 .res code { font: 500 .82rem/1.2 var(--mono); letter-spacing: .02em; white-space: nowrap; }
