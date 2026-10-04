@@ -14,23 +14,26 @@ def ask(t): return 'kontakt.html?temat='+quote(t)+'#formularz'
 TEL='<a href="tel:+48513191502">513 191 502</a>'
 
 SYS=[
- dict(slug='zlaczki-zaciskane-press',name='Złączki zaciskane',h1='Złączki zaciskane press Besco',seotitle='Złączki zaciskane press Besco dla hurtowni | Armatex',metadesc='Złączki zaciskane (press) Besco: miedź V i M, linie do gazu, stal węglowa i zawory kulowe. 1 043 indeksy, 12–108 mm, dostawy do hurtowni w całej Polsce.',tab='Zaciskane',brand='Besco',cnt='1 043',cntw='1 043 indeksy',sizes='12–108 mm',
+ dict(slug='zlaczki-zaciskane-press',name='Złączki zaciskane',h1='Złączki zaciskane press Besco',seotitle='Złączki zaciskane press Besco dla hurtowni | Armatex',metadesc='Złączki zaciskane (press) Besco: miedź V i M, gaz, stal węglowa, stal nierdzewna INOX 304 i 316L, zawory kulowe. 1 583 indeksy, 12–168,3 mm.',tab='Zaciskane',brand='Besco',cnt='1 583',cntw='1 583 indeksy',sizes='12–168,3 mm',
   title='Złączki i zawory zaciskane',
-  short='Miedź press w profilach V i M, linie gazowe, stal węglowa i zawory kulowe press.',
-  desc='Miedziane systemy press (złączki zaprasowywane) w profilach V i M, serie do gazu, press ze stali węglowej oraz zawory kulowe. Miedź według EN 1254-7.',
+  short='Miedź press w profilach V i M, linie gazowe, stal węglowa, stal nierdzewna INOX i zawory kulowe press.',
+  desc='Miedziane systemy press (złączki zaprasowywane) w profilach V i M, serie do gazu, press ze stali węglowej i nierdzewnej (INOX 304 i 316L) oraz zawory kulowe. Miedź według EN 1254-7.',
   who='Firmy instalacyjne z zaciskarkami: kotłownie, piony i przyłącza w budownictwie wielorodzinnym i obiektach, instalacje gazowe.',
   arg='Profil M można zaciskać szczęką V w zakresie DN12–28, więc jeden stan magazynowy obsłuży klientów z oboma typami szczęk.',
   pics=[('besco-press-v','Miedziany trójnik press'),('besco-gaz','Trójnik press do gazu z żółtym oznaczeniem'),('besco-stal','Trójnik press ze stali węglowej')],
-  seria='cu-press-water-v,cu-press-water-m,cu-press-gas-v,cu-press-gas-m,steel-press-m,press-ball-valve',
-  src='katalog Besco 2026',
+  seria='cu-press-water-v,cu-press-water-m,cu-press-gas-v,cu-press-gas-m,steel-press-m,inox-304-press-m,inox-316l-press-m,press-ball-valve',
+  src='katalogi Besco 2026 i Besco INOX',
   lines=[('Miedź press, profil V','Besco','cu-press-water-v','12–54 mm','woda pitna, CO, przemysł','16 bar',['DVGW','KIWA','WRAS','RISE'],'257','linie/besco-press-v'),
    ('Miedź press, profil M','Besco','cu-press-water-m','12–108 mm','woda pitna, CO, przemysł','16 bar',['DVGW','WRAS','RISE'],'294','linie/besco-press-m'),
    ('Miedź press do gazu, V i M','Besco','cu-press-gas-v,cu-press-gas-m','15–35 mm','gaz ziemny, LPG','5 bar',['DVGW','INiG'],'211','linie/besco-gaz'),
    ('Stal węglowa press, profil M','Besco','steel-press-m','12–108 mm','CO w obiegu zamkniętym, sprężone powietrze','16 bar',[],'256','linie/besco-stal'),
+   ('Stal nierdzewna 316L press, profil M','Besco','inox-316l-press-m','15–168,3 mm','woda, CO, przemysł','16 bar',['DVGW','WRAS'],'253','linie/besco-inox-316l'),
+   ('Stal nierdzewna 304 press, profil M','Besco','inox-304-press-m','15–108 mm','ogrzewanie','16 bar',['CE'],'287','linie/besco-inox-304'),
    ('Zawory kulowe press, kontur V i M','Besco','press-ball-valve','15–54 mm','woda, CO','16 bar',['DVGW','WRAS'],'25','linie/besco-zawor')],
   faq=[('Czym różni się profil V od M?','To kształt końcówki press i szczęki zaciskarki. Miedź Besco jest w obu profilach (V 12–54 mm, M 12–108 mm), stal węglowa w profilu M. Złączki w profilu M można zaciskać także szczęką V w zakresie DN12–28.'),
    ('Które złączki nadają się do gazu?','Linie GP Gas w profilu V i M: średnice 15–35 mm, do 5 bar, od −20 do 70 °C, norma EN 1254-7, atesty DVGW i INiG. Do instalacji gazowych nie stosuje się złączek z linii wodnych.'),
    ('Do czego służy stal węglowa press?','Do zamkniętych instalacji grzewczych i sprężonego powietrza. Profil M, średnice 12–108 mm, do 16 bar, od −10 do 110 °C.'),
+   ('Czym różni się INOX 304 od INOX 316L?','Obie linie to złączki press ze stali nierdzewnej w profilu M, do 16 bar, od −10 do 110 °C. Według katalogów Besco INOX 316L jest przeznaczony do wody, ogrzewania i przemysłu, ma aprobaty DVGW i WRAS oraz średnice 15–168,3 mm. INOX 304 producent opisuje do ogrzewania, ze znakiem CE, w średnicach 15–108 mm.'),
    ('Jakie aprobaty mają złączki miedziane press?','Profil V: DVGW, KIWA, WRAS i RISE. Profil M: DVGW, WRAS i RISE. Linie gazowe: DVGW i INiG. Wszystkie według EN 1254-7.'),
    ('Jakie zawory kulowe są w systemie?','Zawory kulowe press × press i press × GW w konturach V i M, 15–54 mm, także z przedłużonym trzpieniem. Do 16 bar, od −10 do 110 °C, aprobaty DVGW i WRAS.')]),
  dict(slug='zlaczki-na-wcisk-tectite',name='Złączki na wcisk',h1='Złączki na wcisk Tectite',seotitle='Złączki na wcisk Tectite (push-fit) dla hurtowni | Armatex',metadesc='Złączki i zawory na wcisk (push-fit) Pegler Yorkshire Tectite: Classic, Pro, 316 i Carbon, 10–54 mm. Około 530 indeksów, dostawy do hurtowni w całej Polsce.',tab='Na wcisk',brand='Pegler Yorkshire',cnt='ok. 530',cntw='ok. 530 indeksów',sizes='10–54 mm',
@@ -98,6 +101,8 @@ SER_META={
  'cu-ansi-k':dict(short='lutowane ANSI',suf='ansi-k',qual='lutowany calowy ANSI B16.22',appr=[],sys='zlaczki-lutowane'),
  'cu-g-size':dict(short='lutowane G-size',suf='g-size',qual='lutowany G-size',appr=[],sys='zlaczki-lutowane'),
  'press-ball-valve':dict(short='zawory press',suf='zawor',qual='',appr=['DVGW','WRAS'],sys='zlaczki-zaciskane-press'),
+ 'inox-304-press-m':dict(short='INOX 304 press',suf='inox-304',qual='press ze stali nierdzewnej 304',appr=['CE'],sys='zlaczki-zaciskane-press'),
+ 'inox-316l-press-m':dict(short='INOX 316L press',suf='inox-316l',qual='press ze stali nierdzewnej 316L',appr=['DVGW','WRAS'],sys='zlaczki-zaciskane-press'),
 }
 def slugify(t):
     t=t.replace('ł','l').replace('Ł','L').replace('×','x').replace('°','')
@@ -207,6 +212,7 @@ def head(title,desc,extra='',path=''):
 '''
 PDF='../pliki/katalog-besco-2026.pdf'
 PDF_TECTITE='../pliki/katalog-tectite.pdf'
+PDF_INOX={'inox-304-press-m':'../pliki/katalog-besco-inox-304.pdf','inox-316l-press-m':'../pliki/katalog-besco-inox-316l.pdf'}
 PDF_KUTERLITE='../pliki/katalog-kuterlite.pdf'
 PDF_TECTITE_MONTAZ='../pliki/instrukcja-montazu-tectite.pdf'
 ICO_SEARCH='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>'
@@ -215,7 +221,7 @@ def nav(cur):
     cs=lambda k: ' aria-current="page"' if k==cur else ''
     ddlinks=''.join(f'<a href="{s["slug"]}.html"{cs(s["slug"])}>{img(s["pics"][0][0],"")}<b>{s["name"]}</b><span>{s["brand"]} · {s["cntw"]}</span></a>' for s in SYS)
     ddcur=' aria-current="page"' if cur in [s['slug'] for s in SYS]+[] else ''
-    kat=(f'<a href="katalog.html"{cs("katalog")}><span class="dd__ico">{ICO_SEARCH}</span><b>Wyszukiwarka indeksów Besco</b><span>1 936 indeksów · lista do wyceny</span></a>'
+    kat=(f'<a href="katalog.html"{cs("katalog")}><span class="dd__ico">{ICO_SEARCH}</span><b>Wyszukiwarka indeksów Besco</b><span>2 476 indeksów · lista do wyceny</span></a>'
          f'<a href="{PDF}" target="_blank" rel="noopener"><span class="dd__ico">{ICO_PDF}</span><b>Katalog Besco 2026</b><span>PDF · 2,7 MB · 65 stron</span></a>')
     mlinks=''.join(f'<a href="{s["slug"]}.html"{cs(s["slug"])}>{s["name"]}<small>{s["brand"]}</small></a>' for s in SYS)
     return f'''<header class="nav" id="nav">
@@ -240,7 +246,7 @@ def nav(cur):
 </header>
 <nav class="mnav" id="mnav" aria-label="Menu mobilne">
   <span class="label">Oferta</span>{mlinks}
-  <span class="label">Katalogi</span><a href="katalog.html"{cs("katalog")}>Wyszukiwarka indeksów Besco<small>1 936</small></a><a href="{PDF}" target="_blank" rel="noopener">Katalog Besco 2026<small>PDF · 2,7 MB</small></a>
+  <span class="label">Katalogi</span><a href="katalog.html"{cs("katalog")}>Wyszukiwarka indeksów Besco<small>2 476</small></a><a href="{PDF}" target="_blank" rel="noopener">Katalog Besco 2026<small>PDF · 2,7 MB</small></a>
   <span class="label">Armatex</span><a href="wspolpraca.html"{cs("wspolpraca")}>Współpraca</a><a href="do-pobrania.html"{cs("do-pobrania")}>Do pobrania<small>katalogi i dokumenty</small></a><a href="poradniki.html"{cs("poradniki")}>Poradniki</a><a href="o-firmie.html"{cs("o-firmie")}>O firmie</a><a href="kontakt.html"{cs("kontakt")}>Kontakt<small>513 191 502</small></a>
 </nav>
 '''
@@ -365,7 +371,7 @@ hero=frag('  <section class="hero"','  </section>')
 hero=hero.replace('<a class="mag" href="#kontakt" data-topic="Jesteśmy hurtownią i chcemy poznać warunki współpracy (Besco, Pegler Yorkshire)."><span>Warunki dla hurtowni <svg','<a class="mag" href="#kontakt"><span>Zapytaj o wycenę <svg')
 hero=hero.replace('<a class="ghost" href="#katalog">Szukaj po numerze artykułu</a>','<a class="ghost" href="#systemy">Zobacz systemy</a>')
 hb=hero[hero.index('<div class="hero__bar">'):hero.index('</div>\n    </div>\n  </section>')]
-newbar='<div class="hero__bar">\n'+''.join(f'        <a href="{s["slug"]}.html"><span class="label">{s["n"]}</span><b>{s["name"]}</b></a>\n' for s in SYS)+'        <a class="hb-end" href="katalog.html"><span class="label">Katalog Besco 2026</span><b>1 936 indeksów →</b></a>\n      '
+newbar='<div class="hero__bar">\n'+''.join(f'        <a href="{s["slug"]}.html"><span class="label">{s["n"]}</span><b>{s["name"]}</b></a>\n' for s in SYS)+'        <a class="hb-end" href="katalog.html"><span class="label">Katalog Besco</span><b>2 476 indeksów →</b></a>\n      '
 hero=hero.replace(hb,newbar)
 hero=hero.replace('src="img/besco/','src="../img/besco/').replace('<p class="label hero__eyebrow">Besco · Pegler Yorkshire · 30 lat na rynku</p>','<p class="label hero__eyebrow">Dystrybutor złączek Besco i Pegler Yorkshire · 30 lat na rynku</p>')
 NEW='https://d8j0ntlcm91z4.cloudfront.net/user_33T37u6buO6KWzmObkHx6hwX3AX/hf_20260927_185901_97950f69-3284-44cc-9e7f-6c2349f20305'
@@ -410,7 +416,7 @@ home=f'''
       <div class="rg__head">
         <div>
           <span class="label kicker">Oferta dla hurtowni · Besco i Pegler Yorkshire</span>
-          <h2 class="h2">Cztery systemy. Około 2 900 indeksów.</h2>
+          <h2 class="h2">Cztery systemy. Około 3 500 indeksów.</h2>
           <p class="lead" style="margin-top:1rem">Dystrybuujemy złączki i armaturę Besco oraz Pegler Yorkshire do hurtowni instalacyjnych w całej Polsce. Wybierz system, żeby zobaczyć linie, parametry i argumenty sprzedażowe.</p>
         </div>
         <a class="ulink" href="katalog.html">Szukaj po numerze artykułu</a>
@@ -466,9 +472,9 @@ home=f'''
 {faqlist([
  ('Jak szybko dostanę ofertę?','W ciągu jednego dnia roboczego. Oferta zawiera ceny hurtowe, dostępność i terminy dostaw dla systemów lub indeksów, które chcesz prowadzić.'),
  ('Czy współpracujecie tylko z hurtowniami?','Hurtownie instalacyjne to nasi główni partnerzy i pod nie ustawiamy stany, logistykę oraz warunki. Obsługujemy też firmy instalacyjne, generalnych wykonawców, zakłady przemysłowe i zarządców budynków, zwłaszcza przy większych inwestycjach i zamówieniach projektowych. <a href="kontakt.html#formularz">Napisz, czego potrzebujesz</a>, a dobierzemy formę współpracy.'),
- ('Jakie marki i systemy dystrybuujecie?','Besco Fittings &amp; Connectors: miedź press w profilach V i M, serie gazowe, stal węglowa press, złączki lutowane i zawory kulowe press. Pegler Yorkshire: złączki na wcisk Tectite, złączki skręcane Kuterlite i zawory na wcisk. Razem około 2 900 indeksów.'),
+ ('Jakie marki i systemy dystrybuujecie?','Besco Fittings &amp; Connectors: miedź press w profilach V i M, serie gazowe, stal węglowa press, stal nierdzewna INOX 304 i 316L press, złączki lutowane i zawory kulowe press. Pegler Yorkshire: złączki na wcisk Tectite, złączki skręcane Kuterlite i zawory na wcisk. Razem około 2 900 indeksów.'),
  ('Jaki jest czas dostawy?','Wysyłka z magazynu w Olsztynie w 24 godziny od potwierdzenia zamówienia. Duże zamówienia dowozimy własnym transportem.'),
- ('Czy mogę zamówić po numerze artykułu Besco?','Tak. <a href="katalog.html">Katalog z wyszukiwarką</a> obejmuje 1 936 pozycji Besco 2026. Dodaj indeksy do listy, podaj ilości i wyślij do wyceny.'),
+ ('Czy mogę zamówić po numerze artykułu Besco?','Tak. <a href="katalog.html">Katalog z wyszukiwarką</a> obejmuje 2 476 pozycji Besco. Dodaj indeksy do listy, podaj ilości i wyślij do wyceny.'),
  ('Jak uzyskać dostęp do dokumentów?','Poproś o dostęp przez formularz. Po weryfikacji firmy udostępniamy karty katalogowe, atesty i deklaracje w ciągu jednego dnia roboczego.')])}
       </div>
     </div>
@@ -651,8 +657,8 @@ kat=f'''
         <div class="phead__ctas"><a class="ghost" href="{PDF}" target="_blank" rel="noopener">Pobierz katalog Besco 2026 (PDF · 2,7 MB)</a></div>
       </div>
       <dl class="phead__facts">
-        <div><dt class="label">Indeksy</dt><dd>1 936</dd></div>
-        <div><dt class="label">Linie</dt><dd>9</dd></div>
+        <div><dt class="label">Indeksy</dt><dd>2 476</dd></div>
+        <div><dt class="label">Linie</dt><dd>11</dd></div>
         <div><dt class="label">Pakowanie</dt><dd>worek / karton</dd></div>
       </dl>
     </div>
@@ -672,7 +678,7 @@ kat=f'''
 <a class="pill" id="pill" href="#zapytanie">Lista <span id="pillN">0</span></a>
 '''
 kat=kat.replace('<button class="mag" type="button" id="toForm" disabled><span>Przenieś do formularza</span></button>','<button class="mag" type="button" id="toForm" disabled><span>Wyślij listę do wyceny</span></button>')
-page('katalog.html','Katalog złączek Besco 2026 – wyszukiwarka indeksów | Armatex','Katalog złączek Besco 2026: wyszukiwarka 1 936 indeksów z opakowaniami zbiorczymi. Zbuduj listę i wyślij ją do wyceny dla swojej hurtowni.','katalog',kat,ld_crumbs([('Katalog złączek Besco','katalog.html')]))
+page('katalog.html','Katalog złączek Besco 2026 – wyszukiwarka indeksów | Armatex','Katalog złączek Besco 2026: wyszukiwarka 2 476 indeksów z opakowaniami zbiorczymi. Zbuduj listę i wyślij ją do wyceny dla swojej hurtowni.','katalog',kat,ld_crumbs([('Katalog złączek Besco','katalog.html')]))
 
 # ---------------- współpraca
 frame='''      <figure class="frame">
@@ -774,7 +780,7 @@ for G in GROUPS:
         facts=[('Rozmiary',str(n)),('Ciśnienie',ser['bar']),('Temperatura',ser['temp'])]
         cols=['Worek','Karton']; extra=lambda r:[f'{r[3]} szt.',f'{fmt_int(r[4])} szt.']; code_of=lambda r:r[1]; size_of=lambda r:r[2]
         params=[('Linia',ser['name']),('Zastosowanie',ser['media'])]+([('Norma',ser['std'])] if ser['std'] else [])
-        src='katalog Besco 2026'; en_label='Nazwa w katalogu'
+        src={'inox-304-press-m':'katalog Besco INOX 304','inox-316l-press-m':'katalog Besco INOX 316L'}.get(G['sid'],'katalog Besco 2026'); en_label='Nazwa w katalogu'
     else:
         brand=G['brand']; h1=f'{G["name"]} {brand} {G["code"]}'
         title=f'{G["name"]} {G["code"]} {brand} – {ser["short"]} | Armatex'
@@ -805,7 +811,7 @@ for G in GROUPS:
         +f'<td class="sy-act">{qa(code_of(r),G["name"]+" "+size_of(r),packs(r))}</td></tr>' for r in rows)
     same=[x for x in groups_of(G['sid']) if x is not G]
     rel=''.join(gcard(x) for x in same)
-    pdfbtn=f'<a class="ghost ghost--pdf" href="{PDF}" target="_blank" rel="noopener">Katalog PDF</a>' if kind=='besco' else f'<a class="ghost" href="{sysp["slug"]}.html#produkty">Wszystkie {sysp["name"].lower()}</a>'
+    pdfbtn=f'<a class="ghost ghost--pdf" href="{PDF_INOX.get(G["sid"],PDF)}" target="_blank" rel="noopener">Katalog PDF</a>' if kind=='besco' else f'<a class="ghost" href="{sysp["slug"]}.html#produkty">Wszystkie {sysp["name"].lower()}</a>'
     search=(f'<a class="ulink" href="katalog.html?seria={ser["id"]}#katalog">Szukaj w linii {ser["short"]}</a>' if kind=='besco'
             else f'<a class="ulink" href="{sysp["slug"]}.html#produkty">Wszystkie linie systemu</a>')
     ptxt='\n'.join(f'          <div><dt class="label">{k}</dt><dd>{v}</dd></div>' for k,v in params)
@@ -899,7 +905,7 @@ CTA_BOX=f'''      <div class="cta" style="margin-top:clamp(3rem,6vw,4.5rem)">
 # ---- O firmie
 firma=phead([('O firmie','o-firmie.html')],'O firmie','Armatex. Dystrybutor złączek dla hurtowni.',
   'Działamy od 1991 roku i jesteśmy oficjalnym przedstawicielem Pegler Yorkshire w Polsce. Z magazynu w Olsztynie dostarczamy złączki i armaturę Besco oraz Pegler Yorkshire do hurtowni w całej Polsce.',
-  [('Na rynku','od 1991'),('Indeksy','ok. 2 900'),('Wysyłka','24 h')],
+  [('Na rynku','od 1991'),('Indeksy','ok. 3 500'),('Wysyłka','24 h')],
   f'<a class="mag" href="{ask("Jesteśmy hurtownią i chcemy poznać ofertę Armatex.")}"><span>Zapytaj o wycenę</span></a><a class="ghost" href="wspolpraca.html">Jak współpracujemy</a>')+f'''
   <section class="section section--tight">
     <div class="wrap">
@@ -911,7 +917,7 @@ firma=phead([('O firmie','o-firmie.html')],'O firmie','Armatex. Dystrybutor zł�
         <p class="lead">Nie sprzedajemy inwestorom i nie wykonujemy instalacji. Naszymi klientami są hurtownie, dlatego cała oferta, logistyka i obsługa są ustawione pod ich zatowarowanie: pełne opakowania producenta, stany na najczęściej rotujące pozycje i jedna faktura na cały program.</p>
       </div>
       <div class="gain gain--3">
-        <div class="in"><span class="label">01</span><b>Cztery metody łączenia</b><p>Złączki zaciskane, na wcisk, skręcane i lutowane od dwóch producentów. Około 2 900 indeksów w jednym miejscu.</p></div>
+        <div class="in"><span class="label">01</span><b>Cztery metody łączenia</b><p>Złączki zaciskane, na wcisk, skręcane i lutowane od dwóch producentów. Około 3 500 indeksów w jednym miejscu.</p></div>
         <div class="in"><span class="label">02</span><b>Magazyn w Olsztynie</b><p>ul. Składowa 3a. Typowe zamówienie hurtowni kompletujemy tego samego dnia, wysyłka w 24 godziny od potwierdzenia.</p></div>
         <div class="in"><span class="label">03</span><b>Oferta w jeden dzień</b><p>Na zapytanie odpowiadamy w ciągu jednego dnia roboczego: ceny, dostępność i terminy dostaw.</p></div>
       </div>
@@ -923,7 +929,7 @@ firma=phead([('O firmie','o-firmie.html')],'O firmie','Armatex. Dystrybutor zł�
       <span class="label kicker">Marki</span>
       <h2 class="h2">Dwóch producentów, pełne programy.</h2>
       <div class="aud aud--2">
-        <div class="in"><span class="label">Besco Fittings &amp; Connectors</span><h3>Press, gaz, stal i lutowane</h3><p>Miedź press w profilach V i M (12–108 mm), linie do gazu, stal węglowa press, kształtki lutowane EN 1254, calowe ANSI i G-size oraz zawory kulowe press. 1 936 pozycji z katalogu 2026 w naszej <a href="katalog.html">wyszukiwarce</a>. Aprobaty DVGW, KIWA, WRAS, RISE i INiG, zależnie od linii.</p></div>
+        <div class="in"><span class="label">Besco Fittings &amp; Connectors</span><h3>Press, gaz, stal i lutowane</h3><p>Miedź press w profilach V i M (12–108 mm), linie do gazu, stal węglowa press, stal nierdzewna INOX 304 i 316L press, kształtki lutowane EN 1254, calowe ANSI i G-size oraz zawory kulowe press. 2 476 pozycji Besco w naszej <a href="katalog.html">wyszukiwarce</a>. Aprobaty DVGW, KIWA, WRAS, RISE i INiG, zależnie od linii.</p></div>
         <div class="in"><span class="label">Pegler Yorkshire · oficjalny przedstawiciel w Polsce</span><h3>Tectite i Kuterlite</h3><p>Jako oficjalny przedstawiciel Pegler Yorkshire w Polsce prowadzimy złączki na wcisk <a href="zlaczki-na-wcisk-tectite.html">Tectite</a> (Classic, Pro, 316, Carbon) z gwarancją producenta 25 lat oraz złączki skręcane <a href="zlaczki-skrecane-kuterlite.html">Kuterlite</a> do miedzi i rur PE, razem z zaworami.</p></div>
       </div>
     </div>
@@ -986,6 +992,8 @@ art('poradnik-profil-v-czy-m','Profil V czy M? Jak dobrać złączki zaciskane d
             <tr><td>Miedź press · woda</td><td>M</td><td>12–108 mm</td><td>16 bar, −10…110 °C</td><td>DVGW, WRAS, RISE</td></tr>
             <tr><td>Miedź press · gaz</td><td>V i M</td><td>15–35 mm</td><td>5 bar, −20…70 °C</td><td>DVGW, INiG</td></tr>
             <tr><td>Stal węglowa press</td><td>M</td><td>12–108 mm</td><td>16 bar, −10…110 °C</td><td>–</td></tr>
+            <tr><td>Stal nierdzewna INOX 316L</td><td>M</td><td>15–168,3 mm</td><td>16 bar, −10…110 °C</td><td>DVGW, WRAS</td></tr>
+            <tr><td>Stal nierdzewna INOX 304</td><td>M</td><td>15–108 mm</td><td>16 bar, −10…110 °C</td><td>CE</td></tr>
             <tr><td>Zawory kulowe press</td><td>V i M</td><td>15–54 mm</td><td>16 bar, −10…110 °C</td><td>DVGW, WRAS</td></tr>
           </tbody>
         </table></div>
@@ -1019,6 +1027,8 @@ art('poradnik-numery-artykulow-besco','Jak czytać numery artykułów Besco',
             <tr><td>6…</td><td>Miedź press, profil M, woda</td><td>grupa <code>6001</code></td></tr>
             <tr><td>7…</td><td>Miedź press, profil M, gaz</td><td>grupa <code>7001</code></td></tr>
             <tr><td>2…</td><td>Stal węglowa press, profil M</td><td><code>2270-15</code></td></tr>
+            <tr><td>3…</td><td>Stal nierdzewna INOX 304 press, profil M</td><td><code>3270-15</code></td></tr>
+            <tr><td>12…</td><td>Stal nierdzewna INOX 316L press, profil M (numery bez myślnika)</td><td><code>120001515</code></td></tr>
             <tr><td>K</td><td>Miedź calowa ANSI B16.22, seria K</td><td><code>K5001-1/2</code></td></tr>
             <tr><td>G</td><td>Miedź G-size do wysokich ciśnień</td><td><code>G5001-22</code></td></tr>
             <tr><td>GPV, GP600</td><td>Zawory kulowe press</td><td><code>GPV60015PP</code></td></tr>
@@ -1138,7 +1148,7 @@ art('poradnik-zlaczki-do-stali-weglowej','Złączki do stali węglowej: gdzie wo
           <li><strong>Gaz.</strong> Besco nie opisuje stali press do gazu. Do instalacji gazowych mamy osobne linie z miedzi (GPG i seria 7000) z aprobatami DVGW i INiG. Więcej w poradniku <a href="poradnik-zlaczki-zaciskane-do-gazu.html">Złączki zaciskane do gazu</a>.</li>
         </ul>
         <h2 id="nierdzewna">Stal węglowa to nie stal nierdzewna</h2>
-        <p>Nazwy są podobne, ale to dwa różne materiały. Tectite 316 jest ze stali nierdzewnej i według producenta jest projektowany do instalacji wody pitnej oraz przemysłu spożywczego i farmaceutycznego. Złączki do stali węglowej łączą rury stalowe w ogrzewaniu i chłodzeniu. Nie zamienia się ich między sobą i nie łączy z rurami innego rodzaju niż przewiduje producent.</p>
+        <p>Nazwy są podobne, ale to dwa różne materiały. Tectite 316 jest ze stali nierdzewnej i według producenta jest projektowany do instalacji wody pitnej oraz przemysłu spożywczego i farmaceutycznego. W systemie press Besco stal nierdzewna to linie <a href="katalog.html?seria=inox-316l-press-m#katalog">INOX 316L</a> (woda, ogrzewanie, przemysł; aprobaty DVGW i WRAS) i <a href="katalog.html?seria=inox-304-press-m#katalog">INOX 304</a> (ogrzewanie). Złączki do stali węglowej łączą rury stalowe w ogrzewaniu i chłodzeniu. Nie zamienia się ich między sobą i nie łączy z rurami innego rodzaju niż przewiduje producent.</p>
         <h2 id="hurtownia">Co to oznacza dla hurtowni</h2>
         <ul>
           <li><strong>Pytaj o medium.</strong> Przy zamówieniu złączek do stali warto dopytać, czy chodzi o ogrzewanie, chłodzenie czy wodę użytkową. Jedno pytanie oszczędza reklamację.</li>
@@ -1323,6 +1333,8 @@ page('poradniki.html','Poradniki o złączkach dla hurtowni | Armatex','Poradnik
 # ---- Do pobrania
 DOCS=[
  ('besco','katalog','Katalog Besco – Złączki Zaciskane / Złączki Lutowane','Pełny katalog: press V i M, gaz, stal, lutowane, ANSI, G-size, zawory. Numery artykułów i opakowania.','PDF · 2,7 MB · 65 stron',f'<a class="ghost ghost--pdf" href="{PDF}" target="_blank" rel="noopener">Pobierz</a>'),
+ ('besco','katalog','Katalog Besco INOX 316L – Złączki Zaciskane','Złączki press ze stali nierdzewnej 316L, profil M, 15–168,3 mm: woda, ogrzewanie, przemysł. Aprobaty DVGW i WRAS.','PDF · 1,5 MB · 8 stron',f'<a class="ghost ghost--pdf" href="{PDF_INOX["inox-316l-press-m"]}" target="_blank" rel="noopener">Pobierz</a>'),
+ ('besco','katalog','Katalog Besco INOX 304 – Złączki Zaciskane','Złączki press ze stali nierdzewnej 304, profil M, 15–108 mm, do instalacji grzewczych. Znak CE.','PDF · 0,5 MB · 10 stron',f'<a class="ghost ghost--pdf" href="{PDF_INOX["inox-304-press-m"]}" target="_blank" rel="noopener">Pobierz</a>'),
  ('pegler','katalog','Katalog Tectite – Złączki Na Wcisk','Tectite Classic push-fit: złączki 16 i 20 mm do rur PEX, wymiary i kody, tabela temperatur i ciśnień, instrukcja montażu.','PDF · 2,3 MB · 7 stron',f'<a class="ghost ghost--pdf" href="{PDF_TECTITE}" target="_blank" rel="noopener">Pobierz</a>'),
  ('pegler','katalog','Katalog Kuterlite – Złączki Skręcane','Złączki skręcane Kuterlite: K900 Pro do miedzi, K700 do rur PE, zawory i akcesoria. Wymiary, kody i opakowania zbiorcze (wersja angielska).','PDF · 1,2 MB · 21 stron',f'<a class="ghost ghost--pdf" href="{PDF_KUTERLITE}" target="_blank" rel="noopener">Pobierz</a>'),
  ('pegler','instrukcja','Instrukcja montażu Tectite','Montaż złączek na wcisk krok po kroku: cięcie, gratowanie, głębokość wsunięcia, tulejki do PEX i PB, demontaż.','PDF · 0,7 MB · 4 strony',f'<a class="ghost ghost--pdf" href="{PDF_TECTITE_MONTAZ}" target="_blank" rel="noopener">Pobierz</a>'),
@@ -1349,7 +1361,7 @@ dl=phead([('Do pobrania','do-pobrania.html')],'Do pobrania','Katalogi i dokument
     </div>
   </section>
 '''
-page('do-pobrania.html','Do pobrania: katalogi i dokumenty złączek | Armatex','Katalogi Besco 2026, Tectite i Kuterlite do pobrania oraz atesty, deklaracje właściwości użytkowych i aprobaty dla hurtowni po weryfikacji.','do-pobrania',dl,ld_crumbs([('Do pobrania','do-pobrania.html')]))
+page('do-pobrania.html','Do pobrania: katalogi i dokumenty złączek | Armatex','Katalogi Besco (także INOX), Tectite i Kuterlite do pobrania oraz atesty, deklaracje właściwości użytkowych i aprobaty dla hurtowni po weryfikacji.','do-pobrania',dl,ld_crumbs([('Do pobrania','do-pobrania.html')]))
 
 
 # ---- Polityka prywatności
