@@ -30,10 +30,10 @@ SERIES = [(3, 11, 'cu-press-water-v'), (12, 16, 'cu-press-gas-v'), (17, 26, 'cu-
           (27, 30, 'cu-press-gas-m'), (31, 45, 'cu-solder-en1254'), (46, 54, 'cu-ansi-k'),
           (55, 56, 'cu-g-size'), (57, 64, 'steel-press-m'), (65, 65, 'press-ball-valve')]
 META = {
-    'cu-press-water-v': dict(name='Miedź press, profil V · woda', short='Miedź press V · woda', bar='16 bar', temp='−10…110 °C', media='woda, ogrzewanie, przemysł', std='EN 1254-7', appr=['DVGW', 'KIWA', 'WRAS', 'RISE']),
-    'cu-press-water-m': dict(name='Miedź press, profil M · woda', short='Miedź press M · woda', bar='16 bar', temp='−10…110 °C', media='woda, ogrzewanie, przemysł', std='EN 1254-7', appr=['DVGW', 'WRAS', 'RISE']),
-    'cu-press-gas-v': dict(name='Miedź press, profil V · gaz', short='Miedź press V · gaz', bar='5 bar', temp='−20…70 °C', media='gaz ziemny, LPG', std='EN 1254-7', appr=['DVGW', 'INiG']),
-    'cu-press-gas-m': dict(name='Miedź press, profil M · gaz', short='Miedź press M · gaz', bar='5 bar', temp='−20…70 °C', media='gaz ziemny, LPG', std='EN 1254-7', appr=['DVGW', 'INiG']),
+    'cu-press-water-v': dict(name='Copper Gutpress, profil V · woda', short='Copper Gutpress V · woda', bar='16 bar', temp='−10…110 °C', media='woda, ogrzewanie, przemysł', std='EN 1254-7', appr=['DVGW', 'KIWA', 'WRAS', 'RISE']),
+    'cu-press-water-m': dict(name='Copper Gutpress, profil M · woda', short='Copper Gutpress M · woda', bar='16 bar', temp='−10…110 °C', media='woda, ogrzewanie, przemysł', std='EN 1254-7', appr=['DVGW', 'WRAS', 'RISE']),
+    'cu-press-gas-v': dict(name='Copper Gutpress, profil V · gaz', short='Copper Gutpress V · gaz', bar='5 bar', temp='−20…70 °C', media='gaz ziemny, LPG', std='EN 1254-7', appr=['DVGW', 'INiG']),
+    'cu-press-gas-m': dict(name='Copper Gutpress, profil M · gaz', short='Copper Gutpress M · gaz', bar='5 bar', temp='−20…70 °C', media='gaz ziemny, LPG', std='EN 1254-7', appr=['DVGW', 'INiG']),
     'steel-press-m': dict(name='Stal węglowa press, profil M', short='Stal węglowa press', bar='16 bar', temp='−10…110 °C', media='ogrzewanie, sprężone powietrze', std='', appr=[]),
     'cu-solder-en1254': dict(name='Miedź lutowana EN 1254', short='Lutowane EN 1254', bar='25 bar', temp='−20…110 °C', media='woda, ogrzewanie, gaz, przemysł', std='EN 1254', appr=['DVGW', 'KIWA', 'WRAS']),
     'cu-ansi-k': dict(name='Miedź calowa ANSI B16.22 · seria K', short='ANSI B16.22 · K', bar='25 bar', temp='−20…110 °C', media='woda, ogrzewanie, gaz, przemysł', std='ANSI B16.22', appr=[]),
