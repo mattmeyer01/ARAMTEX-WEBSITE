@@ -21,6 +21,7 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
 - `pliki/katalog-besco-2026.pdf`: katalog Besco 2026 (link w menu „Oferta → Katalogi”).
 - `pliki/katalog-tectite.pdf`: katalog Tectite Classic (złączki 16 i 20 mm do rur PEX), link na stronie systemu Tectite i w „Do pobrania”.
 - `pliki/katalog-kuterlite.pdf`: katalog Kuterlite (K900 Pro, K700, zawory, akcesoria) bez cen: kolumny cen usunięte z cennika producenta.
+- `pliki/instrukcja-montazu-tectite.pdf`: instrukcja montażu złączek na wcisk Tectite (strona Tectite, Do pobrania, poradnik „Tectite czy press?”).
 - `assets/`: fonty (Outfit, IBM Plex Mono) i favicony.
 - `sitemap.xml`, `robots.txt`.
 - `tools/`: generator stron i skrypty danych (niżej).
