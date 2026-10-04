@@ -23,9 +23,9 @@ import katalog_besco as kb  # noqa: E402
 
 OUT = kb.OUT
 META = {
-    'inox-304-press-m': dict(name='Stal nierdzewna 304 press, profil M', short='INOX 304 press', bar='16 bar', temp='−10…110 °C',
+    'inox-304-press-m': dict(name='Stal nierdzewna INOX 304 press, profil M', short='INOX 304 press', bar='16 bar', temp='−10…110 °C',
                              media='ogrzewanie', std='', appr=['CE']),
-    'inox-316l-press-m': dict(name='Stal nierdzewna 316L press, profil M', short='INOX 316L press', bar='16 bar', temp='−10…110 °C',
+    'inox-316l-press-m': dict(name='Stal nierdzewna INOX 316L press, profil M', short='INOX 316L press', bar='16 bar', temp='−10…110 °C',
                               media='woda, ogrzewanie, przemysł', std='', appr=['DVGW', 'WRAS']),
 }
 PL_EXTRA = [('bend 90° a/a', 'Łuk 90° zz'), ('by-pass bend', 'Mijanka zz'), ('crossover bend', 'Mijanka zz'),
