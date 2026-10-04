@@ -130,6 +130,23 @@ for g in PD['groups']:
         brand=('Tectite' if ser['brand'] in ('Tectite','Pegler') else 'Kuterlite') if kind=='tectite' else 'Kuterlite',
         sid=g['series'],img_src=(f"../img/pegler/{g['img']}.webp" if g['img'] else '../img/oferta/tectite-classic.webp'),slug=g['slug']))
 _slugs=[G['slug'] for G in GROUPS]; assert len(_slugs)==len(set(_slugs)), 'duplikat slug'
+
+# Dane wyszukiwarki dla wszystkich marek: data/katalog.json
+# groups: [linia, kod, nazwa, nazwa w katalogu, zdjęcie, strona grupy]; rows: [grupa, nr art., rozmiar, opakowania [[jedn., szt.], ...]]
+def _katalog_json():
+    sers=[dict(id=x['id'],short=x['short'],brand='Besco') for x in BD['series']]+[dict(id=k,short=v['name'],brand=('Tectite' if k.startswith('tectite') else 'Kuterlite')+' Pegler Yorkshire') for k,v in PSER.items()]
+    si={x['id']:i for i,x in enumerate(sers)}
+    gs,rs=[],[]
+    for G in GROUPS:
+        gi=len(gs); gs.append([si[G['sid']],G['code'],G['name'],G['en'] or '',G['img_src'].replace('../',''),G['slug']+'.html'])
+        for r in G['rows']:
+            if G['kind']=='besco': rs.append([gi,r[1],r[2],[['karton',r[4]],['worek',r[3]]]])
+            elif G['kind']=='kuterlite': rs.append([gi,r[1],r[0],[['opak.',x] for x in sorted({r[3] if len(r)>3 else None,r[2] if len(r)>2 else None}-{0,None,''},reverse=True)]])
+            else: rs.append([gi,r[1],r[0],[]])
+    with open(R+'data/katalog.json','w',encoding='utf-8') as f: f.write(json.dumps(dict(series=sers,groups=gs,rows=rs),ensure_ascii=False,separators=(',',':')))
+    return len(rs)
+N_ALL=_katalog_json()
+N_ALL_TXT=f'{N_ALL:,}'.replace(',',' ')
 def qa(art,l,pk):
     """Wybór ilości: liczba + jednostka (karton/worek/opak./szt.) + Dodaj."""
     opts=''.join(f'<option value="{i}" data-u="{u}" data-n="{n}">{u} ({fmt_int(n)} szt.)</option>' for i,(u,n) in enumerate(pk))
@@ -221,7 +238,7 @@ def nav(cur):
     cs=lambda k: ' aria-current="page"' if k==cur else ''
     ddlinks=''.join(f'<a href="{s["slug"]}.html"{cs(s["slug"])}>{img(s["pics"][0][0],"")}<b>{s["name"]}</b><span>{s["brand"]} · {s["cntw"]}</span></a>' for s in SYS)
     ddcur=' aria-current="page"' if cur in [s['slug'] for s in SYS]+[] else ''
-    kat=(f'<a href="katalog.html"{cs("katalog")}><span class="dd__ico">{ICO_SEARCH}</span><b>Wyszukiwarka indeksów Besco</b><span>2 476 indeksów · lista do wyceny</span></a>'
+    kat=(f'<a href="katalog.html"{cs("katalog")}><span class="dd__ico">{ICO_SEARCH}</span><b>Wyszukiwarka indeksów</b><span>{N_ALL_TXT} indeksów · lista do wyceny</span></a>'
          f'<a href="{PDF}" target="_blank" rel="noopener"><span class="dd__ico">{ICO_PDF}</span><b>Katalog Besco 2026</b><span>PDF · 2,7 MB · 65 stron</span></a>')
     mlinks=''.join(f'<a href="{s["slug"]}.html"{cs(s["slug"])}>{s["name"]}<small>{s["brand"]}</small></a>' for s in SYS)
     return f'''<header class="nav" id="nav">
@@ -246,7 +263,7 @@ def nav(cur):
 </header>
 <nav class="mnav" id="mnav" aria-label="Menu mobilne">
   <span class="label">Oferta</span>{mlinks}
-  <span class="label">Katalogi</span><a href="katalog.html"{cs("katalog")}>Wyszukiwarka indeksów Besco<small>2 476</small></a><a href="{PDF}" target="_blank" rel="noopener">Katalog Besco 2026<small>PDF · 2,7 MB</small></a>
+  <span class="label">Katalogi</span><a href="katalog.html"{cs("katalog")}>Wyszukiwarka indeksów<small>{N_ALL_TXT}</small></a><a href="{PDF}" target="_blank" rel="noopener">Katalog Besco 2026<small>PDF · 2,7 MB</small></a>
   <span class="label">Armatex</span><a href="wspolpraca.html"{cs("wspolpraca")}>Współpraca</a><a href="do-pobrania.html"{cs("do-pobrania")}>Do pobrania<small>katalogi i dokumenty</small></a><a href="poradniki.html"{cs("poradniki")}>Poradniki</a><a href="o-firmie.html"{cs("o-firmie")}>O firmie</a><a href="kontakt.html"{cs("kontakt")}>Kontakt<small>513 191 502</small></a>
 </nav>
 '''
@@ -257,7 +274,7 @@ FOOT='''<footer class="foot">
       <p>Dystrybutor złączek i armatury Besco oraz Pegler Yorkshire dla hurtowni instalacyjnych w całej Polsce.</p>
     </div>
     <div><h2>Oferta</h2><ul>'''+''.join(f'<li><a href="{s["slug"]}.html">{s["name"]}</a></li>' for s in SYS)+'''</ul></div>
-    <div><h2>Armatex</h2><ul><li><a href="katalog.html">Wyszukiwarka indeksów Besco</a></li><li><a href="'''+PDF+'''" target="_blank" rel="noopener">Katalog Besco 2026 (PDF)</a></li><li><a href="do-pobrania.html">Do pobrania</a></li><li><a href="poradniki.html">Poradniki</a></li><li><a href="o-firmie.html">O firmie</a></li><li><a href="wspolpraca.html">Współpraca</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
+    <div><h2>Armatex</h2><ul><li><a href="katalog.html">Wyszukiwarka indeksów</a></li><li><a href="'''+PDF+'''" target="_blank" rel="noopener">Katalog Besco 2026 (PDF)</a></li><li><a href="do-pobrania.html">Do pobrania</a></li><li><a href="poradniki.html">Poradniki</a></li><li><a href="o-firmie.html">O firmie</a></li><li><a href="wspolpraca.html">Współpraca</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
     <div><h2>Kontakt</h2><ul><li><a href="tel:+48513191502">513 191 502</a></li><li><a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a></li><li class="foot__addr"><small>Biuro i magazyn</small>ul. Składowa 3a, 10-421 Olsztyn<br>pn–pt 7:00–18:00</li></ul></div>
   </div>
   <div class="wrap foot__bar">
@@ -474,7 +491,7 @@ home=f'''
  ('Czy współpracujecie tylko z hurtowniami?','Hurtownie instalacyjne to nasi główni partnerzy i pod nie ustawiamy stany, logistykę oraz warunki. Obsługujemy też firmy instalacyjne, generalnych wykonawców, zakłady przemysłowe i zarządców budynków, zwłaszcza przy większych inwestycjach i zamówieniach projektowych. <a href="kontakt.html#formularz">Napisz, czego potrzebujesz</a>, a dobierzemy formę współpracy.'),
  ('Jakie marki i systemy dystrybuujecie?','Besco Fittings &amp; Connectors: miedź press w profilach V i M, serie gazowe, stal węglowa press, stal nierdzewna INOX 304 i 316L press, złączki lutowane i zawory kulowe press. Pegler Yorkshire: złączki na wcisk Tectite, złączki skręcane Kuterlite i zawory na wcisk. Razem około 2 900 indeksów.'),
  ('Jaki jest czas dostawy?','Wysyłka z magazynu w Olsztynie w 24 godziny od potwierdzenia zamówienia. Duże zamówienia dowozimy własnym transportem.'),
- ('Czy mogę zamówić po numerze artykułu Besco?','Tak. <a href="katalog.html">Katalog z wyszukiwarką</a> obejmuje 2 476 pozycji Besco. Dodaj indeksy do listy, podaj ilości i wyślij do wyceny.'),
+ ('Czy mogę zamówić po numerze artykułu?','Tak. <a href="katalog.html">Wyszukiwarka</a> obejmuje '+N_ALL_TXT+' pozycji Besco, Tectite i Kuterlite. Dodaj indeksy do listy, podaj ilości i wyślij do wyceny.'),
  ('Jak uzyskać dostęp do dokumentów?','Poproś o dostęp przez formularz. Po weryfikacji firmy udostępniamy karty katalogowe, atesty i deklaracje w ciągu jednego dnia roboczego.')])}
       </div>
     </div>
@@ -646,25 +663,26 @@ for s in SYS:
 
 # ---------------- katalog
 fd=frag('      <div class="fd__g">','        </aside>\n      </div>')
+assert '3 462 pozycji w katalogu' in fd; fd=fd.replace('3 462 pozycji w katalogu',f'{N_ALL_TXT} pozycji w katalogu')
 kat=f'''
   <section class="phead">
     <div class="wrap">
-      <ol class="crumbs"><li><a href="index.html">Armatex</a></li><li aria-current="page">Katalog Besco</li></ol>
+      <ol class="crumbs"><li><a href="index.html">Armatex</a></li><li aria-current="page">Wyszukiwarka</li></ol>
       <div>
         <span class="label kicker">Wyszukiwarka indeksów</span>
-        <h1>Katalog złączek Besco 2026</h1>
-        <p class="lead">Zbuduj listę indeksów do wyceny. Wpisz numer artykułu Besco, średnicę albo nazwę. Dodaj indeksy, które chcesz prowadzić, podaj ilości i wyślij listę. Ofertę przygotujemy w jeden dzień roboczy.</p>
+        <h1>Wyszukiwarka złączek Besco i Pegler Yorkshire</h1>
+        <p class="lead">Zbuduj listę indeksów do wyceny. Wpisz numer artykułu Besco, Tectite lub Kuterlite, średnicę albo nazwę. Dodaj indeksy, które chcesz prowadzić, podaj ilości i wyślij listę. Ofertę przygotujemy w jeden dzień roboczy.</p>
         <div class="phead__ctas"><a class="ghost" href="{PDF}" target="_blank" rel="noopener">Pobierz katalog Besco 2026 (PDF · 2,7 MB)</a></div>
       </div>
       <dl class="phead__facts">
-        <div><dt class="label">Indeksy</dt><dd>2 476</dd></div>
-        <div><dt class="label">Linie</dt><dd>11</dd></div>
+        <div><dt class="label">Indeksy</dt><dd>{N_ALL_TXT}</dd></div>
+        <div><dt class="label">Linie</dt><dd>{len(BD["series"])+len(PSER)}</dd></div>
         <div><dt class="label">Pakowanie</dt><dd>worek / karton</dd></div>
       </dl>
     </div>
   </section>
 
-  <section class="section finder section--tight" id="katalog" aria-label="Wyszukiwarka katalogu Besco 2026">
+  <section class="section finder section--tight" id="katalog" aria-label="Wyszukiwarka złączek Besco, Tectite i Kuterlite">
     <div class="wrap">
 {fd}
       <div class="shead" style="margin-top:clamp(3rem,6vw,4.5rem)"><h2 class="sy-h" style="margin:0">Wszystkie grupy produktów</h2><span class="label" style="color:var(--ink-40)">{len(GROUPS)} grup · Besco, Tectite, Kuterlite</span></div>
@@ -672,13 +690,13 @@ kat=f'''
       <div class="gls">
 {grp_links([x['id'] for x in BD['series']]+list(PSER))}
       </div>
-      <p class="lead" style="margin-top:2.5rem;max-width:none">Indeksy Pegler Yorkshire (Tectite, Kuterlite) podaj w <a href="kontakt.html#formularz">formularzu zapytania</a>. Linie i parametry znajdziesz na stronach systemów <a href="zlaczki-na-wcisk-tectite.html">złączki na wcisk Tectite</a> i <a href="zlaczki-skrecane-kuterlite.html">złączki skręcane Kuterlite</a>.</p>
+      <p class="lead" style="margin-top:2.5rem;max-width:none">Linie i parametry Pegler Yorkshire znajdziesz na stronach systemów <a href="zlaczki-na-wcisk-tectite.html">złączki na wcisk Tectite</a> i <a href="zlaczki-skrecane-kuterlite.html">złączki skręcane Kuterlite</a>.</p>
     </div>
   </section>
 <a class="pill" id="pill" href="#zapytanie">Lista <span id="pillN">0</span></a>
 '''
 kat=kat.replace('<button class="mag" type="button" id="toForm" disabled><span>Przenieś do formularza</span></button>','<button class="mag" type="button" id="toForm" disabled><span>Wyślij listę do wyceny</span></button>')
-page('katalog.html','Katalog złączek Besco 2026 – wyszukiwarka indeksów | Armatex','Katalog złączek Besco 2026: wyszukiwarka 2 476 indeksów z opakowaniami zbiorczymi. Zbuduj listę i wyślij ją do wyceny dla swojej hurtowni.','katalog',kat,ld_crumbs([('Katalog złączek Besco','katalog.html')]))
+page('katalog.html','Wyszukiwarka złączek Besco, Tectite i Kuterlite | Armatex',f'Wyszukiwarka {N_ALL_TXT} indeksów Besco, Tectite i Kuterlite z opakowaniami zbiorczymi. Zbuduj listę i wyślij ją do wyceny dla swojej hurtowni.','katalog',kat,ld_crumbs([('Katalog złączek Besco','katalog.html')]))
 
 # ---------------- współpraca
 frame='''      <figure class="frame">
@@ -1063,7 +1081,7 @@ art('poradnik-numery-artykulow-besco','Jak czytać numery artykułów Besco',
         <p>Wyjątek: w liniach press M (woda i gaz) numery artykułów w tabelach katalogu to długie kody liczbowe, np. <code>682001212</code>. Wpisz je do wyszukiwarki w całości albo szukaj po numerze grupy, np. <code>6001</code>.</p>
         <h2 id="szukaj">Szukanie po numerze</h2>
         <p>Nasza <a href="katalog.html">wyszukiwarka</a> rozpoznaje numery grup i artykułów, także bez myślnika i kropek. Wpisz np. <code>GP5001</code>, żeby zobaczyć wszystkie średnice łuku, albo pełny numer, żeby od razu dodać pozycję do listy.</p>''',
- ['<a href="katalog.html">Wyszukiwarka indeksów Besco</a>','<a href="poradnik-profil-v-czy-m.html">Profil V czy M?</a>','<a href="zlaczki-lutowane.html">Złączki lutowane Besco</a>'])
+ ['<a href="katalog.html">Wyszukiwarka indeksów</a>','<a href="poradnik-profil-v-czy-m.html">Profil V czy M?</a>','<a href="zlaczki-lutowane.html">Złączki lutowane Besco</a>'])
 
 GAS_V=[G for G in groups_of('cu-press-gas-v')]
 gas_list=''.join(f'<li><a href="{G["slug"]}.html">{G["name"]}</a> <code>{G["code"]}</code></li>' for G in GAS_V)

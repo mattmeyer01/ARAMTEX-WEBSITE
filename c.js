@@ -88,7 +88,7 @@
   }
 
   if ($('#q')) (function () {
-  // ===== Katalog Besco: wyszukiwarka + zapytanie =====
+  // ===== Wyszukiwarka (Besco, Tectite, Kuterlite) + zapytanie =====
   var DATA = null, INDEX = null, loading = null, page = 0, PER = 24, hits = [];
   var active = new Set(), qEl = $('#q'), res = $('#res'), cnt = $('#cnt'), more = $('#more');
   var fmt = function (n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); };
@@ -100,11 +100,11 @@
   var squash = function (s) { return s.toLowerCase().replace(/[\s\-.]/g, ''); };
   function load() {
     if (loading) return loading;
-    loading = fetch(BASE + 'data/besco-2026.json').then(function (r) { return r.json(); }).then(function (d) {
+    loading = fetch(BASE + 'data/katalog.json').then(function (r) { return r.json(); }).then(function (d) {
       DATA = d;
       INDEX = d.rows.map(function (r) {
         var g = d.groups[r[0]], s = d.series[g[0]];
-        return { r: r, g: g, s: s, sid: s.id, hay: norm([r[1], r[2], g[2], g[3], g[1], s.short].join(' ')), art: squash(r[1]) };
+        return { r: r, g: g, s: s, sid: s.id, hay: norm([r[1], r[2], g[2], g[3], g[1], s.short, s.brand].join(' ')), art: squash(r[1]) };
       });
       search();
     }).catch(function () { res.innerHTML = '<li class="fd__empty" style="display:block">Nie udało się wczytać katalogu. Odśwież stronę.</li>'; });
@@ -122,7 +122,9 @@
       if (qa.length > 3 && x.art.indexOf(qa) === 0) return true;
       return toks.every(function (t) { return x.hay.indexOf(t) !== -1 || x.art.indexOf(squash(t)) !== -1; });
     });
-    if (qa) hits.sort(function (a, b) { return (b.art === qa) - (a.art === qa); });
+    // najpierw dokładny numer artykułu, potem kod grupy (np. T1, K610), potem numery zaczynające się od zapytania
+    var rank = function (x) { return x.art === qa ? 3 : squash(x.g[1]) === qa ? 2 : x.art.indexOf(qa) === 0 ? 1 : 0; };
+    if (qa) hits = hits.map(function (x, i) { return [rank(x), i, x]; }).sort(function (a, b) { return b[0] - a[0] || a[1] - b[1]; }).map(function (y) { return y[2]; });
     page = 0; res.innerHTML = ''; render();
     cnt.textContent = (toks.length || active.size) ? fmt(hits.length) + ' z ' + fmt(INDEX.length) + ' pozycji' : fmt(INDEX.length) + ' pozycji w katalogu';
   }
@@ -131,11 +133,11 @@
     var slice = hits.slice(page * PER, (page + 1) * PER), h = '';
     if (!hits.length) { res.innerHTML = '<li class="fd__empty" style="display:block">Brak pozycji dla tego zapytania. Sprawdź numer albo zadzwoń: 513 191 502.</li>'; more.hidden = true; return; }
     slice.forEach(function (x) {
-      var r = x.r, g = x.g, inq = rfq.has(r[1]);
-      h += '<li><img src="' + BASE + 'img/besco/' + g[4] + '.webp" alt="" width="56" height="56" loading="lazy" decoding="async">' +
-        '<div><b>' + esc(g[2]) + '</b><span class="sz">' + esc(r[2]) + '</span><small>' + esc(g[3]) + ' · ' + esc(x.s.short) + '</small></div>' +
+      var r = x.r, g = x.g, inq = rfq.has(r[1]), pk = r[3].slice().reverse();
+      h += '<li><img src="' + BASE + esc(g[4]) + '" alt="" width="56" height="56" loading="lazy" decoding="async">' +
+        '<div><b><a href="' + BASE + esc(g[5]) + '">' + esc(g[2]) + '</a></b><span class="sz">' + esc(r[2]) + '</span><small>' + esc(g[3] ? g[3] + ' · ' : '') + esc(x.s.short) + '</small></div>' +
         '<code>' + esc(r[1]) + '</code>' +
-        '<span class="pk"><i>worek / karton</i>' + r[3] + ' / ' + fmt(r[4]) + '</span>' +
+        '<span class="pk">' + (pk.length ? '<i>' + pk.map(function (u) { return esc(u[0]); }).join(' / ') + '</i>' + pk.map(function (u) { return fmt(u[1]); }).join(' / ') : '') + '</span>' +
         '<button class="add' + (inq ? ' is-in' : '') + '" type="button" data-art="' + esc(r[1]) + '" aria-label="Dodaj ' + esc(r[1]) + ' do zapytania">' + (inq ? 'Dodano' : 'Dodaj') + '</button></li>';
     });
     res.insertAdjacentHTML('beforeend', h);
@@ -147,13 +149,14 @@
   $$('.fd__hint code').forEach(function (c) { c.addEventListener('click', function () { qEl.value = c.dataset.q; load().then(search); }); });
   function setSeries(list) {
     active = new Set(list.filter(Boolean));
-    $$('.chip').forEach(function (c) { c.setAttribute('aria-pressed', c.dataset.s ? active.has(c.dataset.s) : !active.size); });
+    $$('.chip').forEach(function (c) { c.setAttribute('aria-pressed', c.dataset.s ? c.dataset.s.split(',').every(function (id) { return active.has(id); }) : !active.size); });
     load().then(search);
   }
   $$('.chip').forEach(function (c) {
     c.addEventListener('click', function () {
       if (!c.dataset.s) return setSeries([]);
-      var s = new Set(active); s.has(c.dataset.s) ? s.delete(c.dataset.s) : s.add(c.dataset.s); setSeries(Array.from(s));
+      var ids = c.dataset.s.split(','), s = new Set(active), on = ids.every(function (id) { return s.has(id); });
+      ids.forEach(function (id) { on ? s.delete(id) : s.add(id); }); setSeries(Array.from(s));
     });
   });
   $$('[data-series]').forEach(function (a) {
@@ -170,7 +173,7 @@
     return '';
   }
   function packsOf(art) {
-    if (INDEX) for (var i = 0; i < INDEX.length; i++) if (INDEX[i].r[1] === art) { var r = INDEX[i].r; return [['karton', r[4]], ['worek', r[3]], ['szt.', 1]]; }
+    if (INDEX) for (var i = 0; i < INDEX.length; i++) if (INDEX[i].r[1] === art) return INDEX[i].r[3].concat([['szt.', 1]]);
     return null;
   }
   function drawRfq() {
