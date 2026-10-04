@@ -767,3 +767,46 @@ a.chip:hover { border-color: var(--ink); }
 
 /* kontrast etykiet na jasnym, beżowym tle (WCAG AA) */
 .section--stone .kicker { color: var(--red-2); }
+
+/* Wykresy (strona Tectite) */
+.charts { margin-top: clamp(1.5rem, 3vw, 2.25rem); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 520px), 1fr)); gap: 1.5rem; }
+.chart { background: #fff; border: 1px solid var(--line); border-radius: var(--r); padding: clamp(1.25rem, 3vw, 2rem); position: relative; }
+.chart figcaption h3 { font-size: clamp(1.15rem, 1.8vw, 1.4rem); line-height: 1.2; letter-spacing: -.01em; margin: .5rem 0 .4rem; }
+.chart figcaption p { color: var(--ink-60); font-size: .92rem; max-width: 52ch; }
+.ck { display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; margin: 1.1rem 0 .4rem; font-size: .82rem; color: var(--ink-60); }
+.ck span { display: inline-flex; align-items: center; gap: .45rem; }
+.ck i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; }
+.ck-t { background: #dc291e; } .ck-p { background: #3b6fb6; }
+.ck .ck-s { width: 2px; height: 14px; border-radius: 0; background: var(--ink); }
+.cp { position: relative; margin: 1rem 0 2.2rem; --lw: 4.2rem; }
+.cp--2 { --lw: 9.5rem; }
+.cgrid { position: absolute; inset: 0 0 0 var(--lw); pointer-events: none; }
+.cg { position: absolute; top: 0; bottom: -.2rem; width: 1px; background: var(--stone-2); }
+.cg i { position: absolute; top: 100%; transform: translateX(-50%); margin-top: .35rem; font: 400 .7rem/1 var(--mono); color: var(--ink-40); font-style: normal; font-variant-numeric: tabular-nums; }
+.cstd { position: absolute; top: -.3rem; bottom: -.2rem; width: 2px; margin-left: -1px; background: var(--ink); }
+.cr { position: relative; display: grid; grid-template-columns: var(--lw) 1fr; align-items: center; min-height: 2rem; padding: .3rem 0; }
+.cl { font: 500 .78rem/1.2 var(--mono); color: var(--ink-60); padding-right: .6rem; }
+.cp--2 .cl { font-family: var(--sans); font-size: .86rem; color: var(--ink); }
+.ct { position: relative; display: flex; flex-direction: column; gap: 2px; }
+.cp--2 .ct { flex-direction: row; align-items: center; gap: .5rem; }
+.cb { position: relative; z-index: 1; display: block; height: 10px; border-radius: 0 4px 4px 0; outline-offset: 2px; cursor: default; }
+.cp--2 .cb { height: 18px; }
+.cb--t { background: #dc291e; } .cb--p { background: #3b6fb6; } .cb--m { background: #b8bfca; }
+.cb--none { height: 10px; }
+.cin { position: absolute; right: .4rem; top: 50%; transform: translateY(-50%); font: 600 .72rem/1 var(--sans); color: #fff; }
+.cp:not(.cp--2) .cb--t:has(.cin) { height: 14px; }
+.cb:hover, .cb:focus-visible { filter: brightness(1.12); }
+.cv { font: 600 .82rem/1 var(--sans); color: var(--ink); white-space: nowrap; }
+.ctab { margin-top: .2rem; font-size: .85rem; }
+.ctab summary { cursor: pointer; color: var(--ink-60); }
+.ctab table { margin-top: .6rem; border-collapse: collapse; font-size: .85rem; }
+.ctab th, .ctab td { padding: .3rem .9rem .3rem 0; text-align: left; border-bottom: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+@media (max-width: 560px) {
+  .cp.cp--2 { --lw: 0px; }
+  .cp--2 .cr { grid-template-columns: 1fr; gap: .3rem; padding: .35rem 0; }
+  .cp { --lw: 3.4rem; }
+}
+.csrc { margin-top: .9rem; font: 400 .7rem/1.4 var(--mono); color: var(--ink-40); letter-spacing: .02em; }
+.ctip { position: fixed; z-index: 80; pointer-events: none; background: var(--ink); color: #fff; border-radius: 8px; padding: .5rem .7rem; font-size: .8rem; line-height: 1.3; box-shadow: 0 8px 24px -8px rgba(0,0,0,.4); }
+.ctip b { display: block; font-size: 1rem; }
+.ctip span { color: rgba(255,255,255,.7); }
