@@ -191,6 +191,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .chip:hover { border-color: var(--ink-40); color: var(--ink); }
 .chip[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
 .fd__meta { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-top: 1.4rem; padding-bottom: .7rem; border-bottom: 1px solid var(--line); }
+.fd__meta[hidden] { display: none; }
 .fd__meta .label { color: var(--ink-60); }
 .legend { font-size: .8rem; color: var(--ink-40); }
 .res { list-style: none; margin: 0; padding: 0; }
