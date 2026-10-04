@@ -819,3 +819,12 @@ a.chip:hover { border-color: var(--ink); }
 .fd__flt .label { color: var(--ink-40); }
 .fd__flt button { font: 500 .75rem var(--mono); letter-spacing: .04em; color: var(--red-2); background: none; border: 0; padding: .2rem 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
 .gl { scroll-margin-top: 100px; }
+/* Wyszukiwarka: linie w blokach metod łączenia */
+.glm + .glm { margin-top: clamp(1.8rem, 3vw, 2.4rem); }
+.glm { margin-top: 1.6rem; }
+.glm__h { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding-bottom: .5rem; border-bottom: 1px solid var(--line); }
+.glm__h h3 { font-size: 1.15rem; font-weight: 600; letter-spacing: -.01em; }
+.glm__h h3 span { font: 500 .7rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-40); margin-left: .4rem; }
+.glm .gls { margin-top: .8rem; }
+.rfq__help { margin-top: 1rem; font-size: .85rem; color: var(--on-60); }
+.rfq__help a { color: #fff; }

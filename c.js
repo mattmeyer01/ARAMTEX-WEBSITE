@@ -208,7 +208,7 @@
     $('#rfqN').textContent = n + ' poz.'; $('#pillN').textContent = n;
     $('#pill').classList.toggle('on', n > 0);
     $('#toForm').disabled = !n;
-    $('#rfqHint').textContent = n ? 'Ustaw ilość i jednostkę (karton, worek, sztuki), potem przenieś listę do formularza.' : 'Dodaj pozycje z listy. Ilość i jednostkę ustawisz tutaj.';
+    $('#rfqHint').textContent = n ? 'Ustaw ilość i jednostkę (karton, worek, sztuki), potem wyślij zapytanie.' : 'Twoja lista jest pusta. Otwórz linię produktów i dodaj rozmiary na stronie grupy.';
   }
   if (res) res.addEventListener('click', function (e) {
     var b = e.target.closest('.add'); if (!b) return;
