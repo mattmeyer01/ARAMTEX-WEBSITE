@@ -49,6 +49,12 @@ python3 tools/katalog_pegler.py katalog_tectite_2026.pdf Kuterlite-price-list-Oc
 Przy nowym wydaniu katalogu sprawdź w skryptach zakresy stron i tłumaczenia nazw. Pegler: poza danymi zostało kilka
 pozycji o nietypowym układzie tabel (kolektory TM80/TM81, węże TF90/TF92, część akcesoriów Kuterlite).
 
+## Złączki INOX
+
+`tools/katalog_inox.py` dopisuje do `data/besco-2026.json` linie INOX 304 i INOX 316L (katalogi `pliki/katalog-besco-inox-*.pdf`).
+Uruchamiaj go **po** `tools/katalog_besco.py`, bo ten nadpisuje cały plik danych. Katalog 316L ma tekst zamieniony na krzywe,
+więc skrypt czyta go przez OCR (`pip install rapidocr_onnxruntime`) i sprawdza numery artykułów względem kodu grupy.
+
 ## Formularz
 
 Formularz (strona główna i `kontakt.html`) obsługuje **Netlify Forms** (formularz `zapytanie`,
