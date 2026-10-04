@@ -164,7 +164,7 @@ def grp_links(sids, open_first=False):
     for i,sid in enumerate(sids):
         gs=groups_of(sid); ser=gs[0]['ser']
         links=''.join(gcard(G) for G in gs)
-        out.append(f'<details class="gl"{" open" if (open_first and i==0) else ""}><summary><b>{ser["name"]}</b><span class="label">{len(gs)} grup · {ser["count"]} indeksów</span></summary><div class="gl__l">{links}</div></details>')
+        out.append(f'<details class="gl" data-s="{sid}"{" open" if (open_first and i==0) else ""}><summary><b>{ser["name"]}</b><span class="label">{len(gs)} grup · {ser["count"]} indeksów</span></summary><div class="gl__l">{links}</div></details>')
     return '\n'.join(out)
 
 
@@ -436,7 +436,7 @@ home=f'''
           <h2 class="h2">Cztery systemy. Około 3 500 indeksów.</h2>
           <p class="lead" style="margin-top:1rem">Dystrybuujemy złączki i armaturę Besco oraz Pegler Yorkshire do hurtowni instalacyjnych w całej Polsce. Wybierz system, żeby zobaczyć linie, parametry i argumenty sprzedażowe.</p>
         </div>
-        <a class="ulink" href="wyszukiwarka.html">Szukaj po numerze artykułu</a>
+        <a class="ulink" href="wyszukiwarka.html">Wszystkie produkty</a>
       </div>
       <div class="sys">
         {chr(10).join("        "+card(s) for s in SYS).lstrip()}
@@ -491,7 +491,7 @@ home=f'''
  ('Czy współpracujecie tylko z hurtowniami?','Hurtownie instalacyjne to nasi główni partnerzy i pod nie ustawiamy stany, logistykę oraz warunki. Obsługujemy też firmy instalacyjne, generalnych wykonawców, zakłady przemysłowe i zarządców budynków, zwłaszcza przy większych inwestycjach i zamówieniach projektowych. <a href="kontakt.html#formularz">Napisz, czego potrzebujesz</a>, a dobierzemy formę współpracy.'),
  ('Jakie marki i systemy dystrybuujecie?','Besco Fittings &amp; Connectors: miedź press w profilach V i M, serie gazowe, stal węglowa press, stal nierdzewna INOX 304 i 316L press, złączki lutowane i zawory kulowe press. Pegler Yorkshire: złączki na wcisk Tectite, złączki skręcane Kuterlite i zawory na wcisk. Razem około 2 900 indeksów.'),
  ('Jaki jest czas dostawy?','Wysyłka z magazynu w Olsztynie w 24 godziny od potwierdzenia zamówienia. Duże zamówienia dowozimy własnym transportem.'),
- ('Czy mogę zamówić po numerze artykułu?','Tak. <a href="wyszukiwarka.html">Wyszukiwarka</a> obejmuje '+N_ALL_TXT+' pozycji Besco, Tectite i Kuterlite. Dodaj indeksy do listy, podaj ilości i wyślij do wyceny.'),
+ ('Czy mogę zamówić po numerze artykułu?','Tak. Wpisz numery w <a href="kontakt.html#formularz">formularzu zapytania</a> albo zbuduj listę w <a href="wyszukiwarka.html">wyszukiwarce produktów</a>: '+N_ALL_TXT+' pozycji Besco, Tectite i Kuterlite pogrupowanych według linii. Dodaj indeksy, podaj ilości i wyślij do wyceny.'),
  ('Jak uzyskać dostęp do dokumentów?','Poproś o dostęp przez formularz. Po weryfikacji firmy udostępniamy karty katalogowe, atesty i deklaracje w ciągu jednego dnia roboczego.')])}
       </div>
     </div>
@@ -668,6 +668,7 @@ assert '3 462 pozycji w wyszukiwarce' in fd; fd=fd.replace('3 462 pozycji w wysz
 fd,_n=re.subn(r'\s*<div class="chips" role="group" aria-label="Filtr linii">.*?</div>','\n          <p class="fd__flt" id="flt" hidden></p>',fd,flags=re.S); assert _n==1
 fd=fd.replace('<li class="fd__empty" style="display:block">Katalog doczyta się automatycznie. Wpisz numer albo wybierz linię.</li>','')
 assert '<div class="fd__meta">' in fd; fd=fd.replace('<div class="fd__meta">','<div class="fd__meta" hidden>')
+rfq_aside='        '+re.search(r'<aside class="rfq".*?</aside>',fd,re.S).group(0)
 kat=f'''
   <section class="phead">
     <div class="wrap">
@@ -675,7 +676,7 @@ kat=f'''
       <div>
         <span class="label kicker">Wyszukiwarka indeksów</span>
         <h1>Wyszukiwarka produktów</h1>
-        <p class="lead">Zbuduj listę indeksów do wyceny. Wpisz numer artykułu Besco, Tectite lub Kuterlite, średnicę albo nazwę. Dodaj indeksy, które chcesz prowadzić, podaj ilości i wyślij listę. Ofertę przygotujemy w jeden dzień roboczy.</p>
+        <p class="lead">Zbuduj listę indeksów do wyceny. Wybierz linię i grupę produktów Besco, Tectite lub Kuterlite, dodaj indeksy, które chcesz prowadzić, podaj ilości i wyślij listę. Ofertę przygotujemy w jeden dzień roboczy.</p>
         <div class="phead__ctas"><a class="ghost ghost--pdf" href="do-pobrania.html?rodzaj=katalog#dokumenty">Katalogi PDF</a></div>
       </div>
       <dl class="phead__facts">
@@ -688,13 +689,16 @@ kat=f'''
 
   <section class="section finder section--tight" id="katalog" aria-label="Wyszukiwarka złączek Besco, Tectite i Kuterlite">
     <div class="wrap">
-{fd}
-      <div class="shead" style="margin-top:clamp(3rem,6vw,4.5rem)"><h2 class="sy-h" style="margin:0">Wszystkie grupy produktów</h2><span class="label" style="color:var(--ink-40)">{len(GROUPS)} grup · Besco, Tectite, Kuterlite</span></div>
-      <p class="lead" style="margin-top:.8rem;max-width:none">Każda grupa ma własną stronę z tabelą rozmiarów, numerami artykułów, opakowaniami zbiorczymi i parametrami linii.</p>
-      <div class="gls">
+      <div class="fd__g fd__g--groups">
+        <div>
+          <div class="shead"><h2 class="sy-h" style="margin:0">Wszystkie grupy produktów</h2><span class="label" style="color:var(--ink-40)">{len(GROUPS)} grup · Besco, Tectite, Kuterlite</span></div>
+          <p class="lead" style="margin-top:.8rem;max-width:none">Otwórz linię, wybierz grupę i dodaj indeksy do listy. Każda grupa ma własną stronę z tabelą rozmiarów, numerami artykułów, opakowaniami zbiorczymi i parametrami linii.</p>
+          <div class="gls">
 {grp_links([x['id'] for x in BD['series']]+list(PSER))}
+          </div>
+        </div>
+{rfq_aside}
       </div>
-      <p class="lead" style="margin-top:2.5rem;max-width:none">Linie i parametry Pegler Yorkshire znajdziesz na stronach systemów <a href="zlaczki-na-wcisk-tectite.html">złączki na wcisk Tectite</a> i <a href="zlaczki-skrecane-kuterlite.html">złączki skręcane Kuterlite</a>.</p>
     </div>
   </section>
 <a class="pill" id="pill" href="#zapytanie">Lista <span id="pillN">0</span></a>
@@ -1091,9 +1095,9 @@ art('poradnik-numery-artykulow-besco','Jak czytać numery artykułów Besco',
           <li><code>-28.12</code>: kilka średnic oddzielonych kropką, np. mufa redukcyjna 28 × 12 mm.</li>
           <li><code>-15.1/2</code>: średnica i gwint w calach, np. śrubunek {glink('4331','4331-15.1/2')} to 15 mm × 1/2″.</li>
         </ul>
-        <p>Wyjątek: w liniach press M (woda i gaz) numery artykułów w tabelach katalogu to długie kody liczbowe, np. <code>682001212</code>. Wpisz je do wyszukiwarki w całości albo szukaj po numerze grupy, np. <code>6001</code>.</p>
-        <h2 id="szukaj">Szukanie po numerze</h2>
-        <p>Nasza <a href="wyszukiwarka.html">wyszukiwarka</a> rozpoznaje numery grup i artykułów, także bez myślnika i kropek. Wpisz np. <code>GP5001</code>, żeby zobaczyć wszystkie średnice łuku, albo pełny numer, żeby od razu dodać pozycję do listy.</p>''',
+        <p>Wyjątek: w liniach press M (woda i gaz) numery artykułów w tabelach katalogu to długie kody liczbowe, np. <code>682001212</code>. Na stronach grup są w tabelach razem z rozmiarem, np. w grupie <code>6001</code>.</p>
+        <h2 id="szukaj">Zamawianie po numerze</h2>
+        <p>Numery artykułów wpisz w <a href="kontakt.html#formularz">formularzu zapytania</a> albo zbuduj listę w <a href="wyszukiwarka.html">wyszukiwarce produktów</a>: otwórz linię, np. press V, wybierz grupę <code>GP5001</code> i dodaj potrzebne średnice.</p>''',
  ['<a href="wyszukiwarka.html">Wyszukiwarka indeksów</a>','<a href="poradnik-profil-v-czy-m.html">Profil V czy M?</a>','<a href="zlaczki-lutowane.html">Złączki lutowane Besco</a>'])
 
 GAS_V=[G for G in groups_of('cu-press-gas-v')]
@@ -1500,13 +1504,8 @@ n404=f'''
       <div>
         <span class="label kicker">Błąd 404</span>
         <h1>Nie znaleźliśmy tej strony.</h1>
-        <p class="lead">Adres mógł się zmienić po przebudowie strony. Znajdź produkt po numerze artykułu albo zapytaj nas bezpośrednio.</p>
-        <form class="e404" action="wyszukiwarka.html" method="get" role="search">
-          <label class="sr" for="q404">Numer artykułu lub nazwa</label>
-          <input id="q404" name="q" type="search" placeholder="np. GP5001-22 albo trójnik 28" autocomplete="off">
-          <button class="mag" type="submit"><span>Szukaj w katalogu</span></button>
-        </form>
-        <div class="phead__ctas"><a class="ghost" href="kontakt.html#formularz">Zapytaj o wycenę</a><a class="ghost" href="tel:+48513191502">513 191 502</a></div>
+        <p class="lead">Adres mógł się zmienić po przebudowie strony. Znajdź produkt w wyszukiwarce albo zapytaj nas bezpośrednio.</p>
+        <div class="phead__ctas"><a class="mag" href="wyszukiwarka.html"><span>Wyszukiwarka produktów</span></a><a class="ghost" href="kontakt.html#formularz">Zapytaj o wycenę</a><a class="ghost" href="tel:+48513191502">513 191 502</a></div>
       </div>
     </div>
   </section>

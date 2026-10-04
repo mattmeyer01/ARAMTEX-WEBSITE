@@ -87,10 +87,11 @@
     return v.q + ' × ' + u[0] + ' (' + n + ' szt.) = ' + String(v.q * n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' szt.';
   }
 
-  if ($('#q')) (function () {
+  if ($('#rfqList')) (function () {
   // ===== Wyszukiwarka (Besco, Tectite, Kuterlite) + zapytanie =====
   var DATA = null, INDEX = null, loading = null, page = 0, PER = 24, hits = [];
-  var active = new Set(), qEl = $('#q'), res = $('#res'), cnt = $('#cnt'), more = $('#more');
+  // pole wyszukiwania jest opcjonalne (strona wyszukiwarki pokazuje listę grup i panel listy do wyceny)
+  var active = new Set(), qEl = $('#q') || { value: '', addEventListener: function () {}, focus: function () {} }, res = $('#res'), cnt = $('#cnt'), more = $('#more');
   var fmt = function (n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); };
   var norm = function (s) {
     return s.toLowerCase().replace(/[″"]/g, '').replace(/×/g, 'x').replace(/\s*x\s*/g, 'x').replace(/,/g, '.')
@@ -107,14 +108,14 @@
         return { r: r, g: g, s: s, sid: s.id, hay: norm([r[1], r[2], g[2], g[3], g[1], s.short, s.brand].join(' ')), art: squash(r[1]) };
       });
       search();
-    }).catch(function () { res.innerHTML = '<li class="fd__empty" style="display:block">Nie udało się wczytać katalogu. Odśwież stronę.</li>'; });
+    }).catch(function () { if (res) res.innerHTML = '<li class="fd__empty" style="display:block">Nie udało się wczytać katalogu. Odśwież stronę.</li>'; });
     return loading;
   }
   new IntersectionObserver(function (e, o) { if (e[0].isIntersecting) { load(); o.disconnect(); } }, { rootMargin: '600px 0px' }).observe($('#katalog'));
   qEl.addEventListener('focus', load);
 
   function search() {
-    if (!INDEX) return;
+    if (!INDEX || !res) return;
     var q = norm(qEl.value), toks = q ? q.split(' ') : [], qa = squash(qEl.value);
     hits = INDEX.filter(function (x) {
       if (active.size && !active.has(x.sid)) return false;
@@ -150,7 +151,7 @@
     more.firstElementChild.textContent = 'Pokaż kolejne (' + fmt(hits.length - page * PER) + ')';
   }
   var t0; qEl.addEventListener('input', function () { clearTimeout(t0); t0 = setTimeout(function () { load().then(search); }, 120); });
-  more.firstElementChild.addEventListener('click', render);
+  if (more) more.firstElementChild.addEventListener('click', render);
   $$('.fd__hint code').forEach(function (c) { c.addEventListener('click', function () { qEl.value = c.dataset.q; load().then(search); }); });
   var flt = $('#flt');
   function drawFilter() {
@@ -209,7 +210,7 @@
     $('#toForm').disabled = !n;
     $('#rfqHint').textContent = n ? 'Ustaw ilość i jednostkę (karton, worek, sztuki), potem przenieś listę do formularza.' : 'Dodaj pozycje z listy. Ilość i jednostkę ustawisz tutaj.';
   }
-  res.addEventListener('click', function (e) {
+  if (res) res.addEventListener('click', function (e) {
     var b = e.target.closest('.add'); if (!b) return;
     var art = b.dataset.art;
     if (rfq.has(art)) rfq.delete(art); else { var nv = packFix({ q: 1, l: label(art) }, packsOf(art)); nv.u = 0; rfq.set(art, nv); }
@@ -228,7 +229,7 @@
   $('#rfqList').addEventListener('click', function (e) {
     var b = e.target.closest('.rm'); if (!b) return;
     rfq.delete(b.dataset.art); save(); drawRfq();
-    var btn = res.querySelector('.add[data-art="' + CSS.escape(b.dataset.art) + '"]'); if (btn) { btn.classList.remove('is-in'); btn.textContent = 'Dodaj'; }
+    var btn = res && res.querySelector('.add[data-art="' + CSS.escape(b.dataset.art) + '"]'); if (btn) { btn.classList.remove('is-in'); btn.textContent = 'Dodaj'; }
   });
   $('#toForm').addEventListener('click', function () {
     var lines = ['Lista pozycji do wyceny:'];
@@ -239,7 +240,12 @@
   var q0 = new URLSearchParams(location.search).get('q');
   if (q0) { qEl.value = q0; load().then(search); }
   var seria = new URLSearchParams(location.search).get('seria');
-  if (seria) setSeries(seria.split(','));
+  if (seria && res) setSeries(seria.split(','));
+  else if (seria) {   // bez pola wyszukiwania: otwórz linie z listy grup i przewiń do pierwszej
+    var first = null;
+    seria.split(',').forEach(function (id) { var d = $('details.gl[data-s="' + CSS.escape(id) + '"]'); if (d) { d.open = true; first = first || d; } });
+    if (first) setTimeout(function () { first.scrollIntoView({ block: 'start' }); }, 50);
+  }
 
   })();
 
