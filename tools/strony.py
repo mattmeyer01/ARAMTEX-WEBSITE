@@ -661,6 +661,25 @@ for s in SYS:
 '''
     page(f'{s["slug"]}.html',s['seotitle'],s['metadesc'],s['slug'],body,ld_system(s))
 
+def grp_by_method():
+    """Linie w czterech blokach jak w menu Oferta: zaciskane, na wcisk, skręcane, lutowane."""
+    sids=[x['id'] for x in BD['series']]+list(PSER)
+    sys_of=lambda sid: SER_META[sid]['sys'] if sid in SER_META else PSER[sid]['sys']
+    order=['cu-press-water-v','cu-press-water-m','cu-press-gas-v','cu-press-gas-m','steel-press-m','inox-316l-press-m','inox-304-press-m','press-ball-valve']
+    out=[]
+    for sy in SYS:
+        ids=[x for x in sids if sys_of(x)==sy['slug']]
+        ids.sort(key=lambda x: order.index(x) if x in order else 99)
+        assert ids, sy['slug']
+        out.append(f'''          <div class="glm">
+            <div class="glm__h"><h3>{sy["name"]} <span>{sy["brand"]}</span></h3><a class="ulink" href="{sy["slug"]}.html">O systemie</a></div>
+            <div class="gls">
+{grp_links(ids)}
+            </div>
+          </div>''')
+    assert sum(len([x for x in sids if sys_of(x)==sy['slug']]) for sy in SYS)==len(sids)
+    return '\n'.join(out)
+
 # ---------------- katalog
 fd=frag('      <div class="fd__g">','        </aside>\n      </div>')
 assert '3 462 pozycji w wyszukiwarce' in fd; fd=fd.replace('3 462 pozycji w wyszukiwarce',f'{N_ALL_TXT} pozycji w wyszukiwarce')
@@ -674,15 +693,15 @@ kat=f'''
     <div class="wrap">
       <ol class="crumbs"><li><a href="index.html">Armatex</a></li><li aria-current="page">Wyszukiwarka produktów</li></ol>
       <div>
-        <span class="label kicker">Wyszukiwarka indeksów</span>
-        <h1>Wyszukiwarka produktów</h1>
-        <p class="lead">Zbuduj listę indeksów do wyceny. Wybierz linię i grupę produktów Besco, Tectite lub Kuterlite, dodaj indeksy, które chcesz prowadzić, podaj ilości i wyślij listę. Ofertę przygotujemy w jeden dzień roboczy.</p>
+        <span class="label kicker">Lista do wyceny</span>
+        <h1>Wybierz produkty do wyceny</h1>
+        <p class="lead">Wybierz linię, dodaj potrzebne rozmiary i wyślij listę. Wycenę przygotujemy w 1 dzień roboczy. W ofercie ponad {f"{N_ALL//100*100:,}".replace(",", " ")} indeksów Besco, Tectite i Kuterlite.</p>
         <div class="phead__ctas"><a class="ghost ghost--pdf" href="do-pobrania.html?rodzaj=katalog#dokumenty">Katalogi PDF</a></div>
       </div>
       <dl class="phead__facts">
-        <div><dt class="label">Indeksy</dt><dd>{N_ALL_TXT}</dd></div>
-        <div><dt class="label">Linie</dt><dd>{len(BD["series"])+len(PSER)}</dd></div>
-        <div><dt class="label">Wycena</dt><dd>1 dzień roboczy</dd></div>
+        <div><dt class="label">Krok 1</dt><dd>Wybierz linię</dd></div>
+        <div><dt class="label">Krok 2</dt><dd>Dodaj rozmiary do listy</dd></div>
+        <div><dt class="label">Krok 3</dt><dd>Wyślij · wycena w 1 dzień</dd></div>
       </dl>
     </div>
   </section>
@@ -691,11 +710,9 @@ kat=f'''
     <div class="wrap">
       <div class="fd__g fd__g--groups">
         <div>
-          <div class="shead"><h2 class="sy-h" style="margin:0">Wszystkie grupy produktów</h2><span class="label" style="color:var(--ink-40)">{len(GROUPS)} grup · Besco, Tectite, Kuterlite</span></div>
-          <p class="lead" style="margin-top:.8rem;max-width:none">Otwórz linię, wybierz grupę i dodaj indeksy do listy. Każda grupa ma własną stronę z tabelą rozmiarów, numerami artykułów, opakowaniami zbiorczymi i parametrami linii.</p>
-          <div class="gls">
-{grp_links([x['id'] for x in BD['series']]+list(PSER))}
-          </div>
+          <div class="shead"><h2 class="sy-h" style="margin:0">Wybierz linię produktów</h2><span class="label" style="color:var(--ink-40)">{len(GROUPS)} grup · Besco, Tectite, Kuterlite</span></div>
+          <p class="lead" style="margin-top:.8rem;max-width:none">Otwórz linię i wejdź w grupę, np. łuk lub trójnik. Na jej stronie dodasz rozmiary do listy.</p>
+{grp_by_method()}
         </div>
 {rfq_aside}
       </div>
@@ -703,7 +720,10 @@ kat=f'''
   </section>
 <a class="pill" id="pill" href="#zapytanie">Lista <span id="pillN">0</span></a>
 '''
-kat=kat.replace('<button class="mag" type="button" id="toForm" disabled><span>Przenieś do formularza</span></button>','<button class="mag" type="button" id="toForm" disabled><span>Wyślij listę do wyceny</span></button>')
+kat=kat.replace('<button class="mag" type="button" id="toForm" disabled><span>Przenieś do formularza</span></button>','<button class="mag" type="button" id="toForm" disabled><span>Wyślij zapytanie o wycenę</span></button>')
+assert '<p id="rfqHint">Dodaj pozycje z listy. Ilości zmienisz tutaj.</p>' in kat
+kat=kat.replace('<p id="rfqHint">Dodaj pozycje z listy. Ilości zmienisz tutaj.</p>','<p id="rfqHint">Twoja lista jest pusta. Otwórz linię produktów i dodaj rozmiary na stronie grupy.</p>')
+kat=kat.replace('<p class="rfq__src">','<p class="rfq__help">Nie wiesz, co wybrać? <a href="tel:+48513191502">Zadzwoń: 513 191 502</a></p>\n          <p class="rfq__src">',1)
 page('wyszukiwarka.html','Wyszukiwarka produktów: złączki Besco, Tectite, Kuterlite | Armatex',f'Wyszukiwarka {N_ALL_TXT} indeksów Besco, Tectite i Kuterlite z opakowaniami zbiorczymi. Zbuduj listę i wyślij ją do wyceny dla swojej hurtowni.','katalog',kat,ld_crumbs([('Wyszukiwarka produktów','wyszukiwarka.html')]))
 
 # ---------------- współpraca
