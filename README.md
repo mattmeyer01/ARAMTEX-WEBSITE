@@ -32,7 +32,7 @@ Strony HTML są generowane, więc zmiany w treści rób w `tools/strony.py` (sza
 `tools/szablon-c.html`), nie ręcznie w plikach HTML:
 
 ```bash
-pip install pillow
+pip install pillow beautifulsoup4
 python3 tools/strony.py
 ```
 
@@ -53,6 +53,21 @@ pozycji o nietypowym układzie tabel (kolektory TM80/TM81, węże TF90/TF92, cz�
 
 Wyszukiwarka (`wyszukiwarka.html`) czyta `data/katalog.json`, który generator (`tools/strony.py`) składa przy każdym
 uruchomieniu z `data/besco-2026.json` i `data/pegler.json` (Besco, Tectite, Kuterlite).
+
+## Wersja angielska (/en/)
+
+Generator zapisuje każdą stronę także jako `en/<ta sama nazwa>.html`. Tłumaczenie robi `tools/en.py` na gotowym HTML
+według słownika `tools/en.json`:
+
+- `t`: teksty stron (akapity, nagłówki, przyciski, atrybuty alt/aria-label, opisy meta). Znaczniki wewnątrz tekstu
+  są zapisane jako `<0>…</0>`, `<1/>` itd.;
+- `names`: nazwy produktów, linii i zastosowań (z nich składane są zdania na stronach grup i nazwy w wyszukiwarce);
+- `keep`: teksty, których się nie tłumaczy (nazwy własne, skróty aprobat).
+
+Po zmianie treści po polsku generator wypisuje liczbę tekstów bez tłumaczenia i zapisuje je do `tools/en-brak.json`
+(tekst → strona). Dopisz tłumaczenia do `tools/en.json` i uruchom generator ponownie. Teksty JS (lista do wyceny,
+formularz) są w `c.js` (funkcja `L('po polsku', 'in English')`). Strony mają `hreflang` pl/en, przełącznik PL / EN
+w menu i własną stronę 404 (`/en/*` w `_redirects`).
 
 ## Złączki INOX
 

@@ -48,3 +48,6 @@
 /poradnik-zlaczki-zaciskane-do-gazu.html    /poradnik-zlaczki-zaprasowane-do-gazu.html      301!
 /poradnik-kuterlite-a-zlaczki-zaciskane     /poradnik-kuterlite-a-zlaczki-zaprasowane.html  301!
 /poradnik-kuterlite-a-zlaczki-zaciskane.html /poradnik-kuterlite-a-zlaczki-zaprasowane.html 301!
+
+# Wersja angielska: nieistniejący adres pod /en/ pokazuje angielską stronę 404
+/en/*                        /en/404.html                       404

@@ -132,13 +132,14 @@ for g in PD['groups']:
 _slugs=[G['slug'] for G in GROUPS]; assert len(_slugs)==len(set(_slugs)), 'duplikat slug'
 
 # Dane wyszukiwarki dla wszystkich marek: data/katalog.json
-# groups: [linia, kod, nazwa, nazwa w katalogu, zdjęcie, strona grupy]; rows: [grupa, nr art., rozmiar, opakowania [[jedn., szt.], ...]]
+# groups: [linia, kod, nazwa, nazwa w katalogu, zdjęcie, strona grupy, nazwa po angielsku]; rows: [grupa, nr art., rozmiar, opakowania [[jedn., szt.], ...]]
 def _katalog_json():
-    sers=[dict(id=x['id'],short=x['short'],brand='Besco') for x in BD['series']]+[dict(id=k,short=v['name'],brand=('Tectite' if k.startswith('tectite') else 'Kuterlite')+' Pegler Yorkshire') for k,v in PSER.items()]
+    NE=json.load(open(R+'tools/en.json',encoding='utf-8'))['names']   # nazwy po angielsku dla /en/wyszukiwarka.html
+    sers=[dict(id=x['id'],short=x['short'],short_en=NE.get(x['short'],x['short']),brand='Besco') for x in BD['series']]+[dict(id=k,short=v['name'],short_en=NE.get(v['name'],v['name']),brand=('Tectite' if k.startswith('tectite') else 'Kuterlite')+' Pegler Yorkshire') for k,v in PSER.items()]
     si={x['id']:i for i,x in enumerate(sers)}
     gs,rs=[],[]
     for G in GROUPS:
-        gi=len(gs); gs.append([si[G['sid']],G['code'],G['name'],G['en'] or '',G['img_src'].replace('../',''),G['slug']+'.html'])
+        gi=len(gs); gs.append([si[G['sid']],G['code'],G['name'],G['en'] or '',G['img_src'].replace('../',''),G['slug']+'.html',NE.get(G['name'],G['name'])])
         for r in G['rows']:
             if G['kind']=='besco': rs.append([gi,r[1],r[2],[['karton',r[4]],['worek',r[3]]]])
             elif G['kind']=='kuterlite': rs.append([gi,r[1],r[0],[['opak.',x] for x in sorted({r[3] if len(r)>3 else None,r[2] if len(r)>2 else None}-{0,None,''},reverse=True)]])
@@ -196,20 +197,24 @@ def ld_system(s):
     return ld_crumbs([('Oferta','index.html#systemy'),(s['name'],s['slug']+'.html')])+lst
 
 def head(title,desc,extra='',path=''):
+    ta,da=title.replace('"','&quot;'),desc.replace('"','&quot;')   # cudzysłów cala (1/2") w atrybucie content
     return f'''<!doctype html>
 <html lang="pl">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{title}</title>
-  <meta name="description" content="{desc}">
+  <meta name="description" content="{da}">
   <meta name="theme-color" content="#0A1F44">
   <link rel="canonical" href="{SITE+path}">
+  <link rel="alternate" hreflang="pl" href="{SITE+path}">
+  <link rel="alternate" hreflang="en" href="{SITE}en/{path}">
+  <link rel="alternate" hreflang="x-default" href="{SITE}en/{path}">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pl_PL">
   <meta property="og:site_name" content="Armatex">
-  <meta property="og:title" content="{title}">
-  <meta property="og:description" content="{desc}">
+  <meta property="og:title" content="{ta}">
+  <meta property="og:description" content="{da}">
   <meta property="og:url" content="{SITE+path}">
   <meta property="og:image" content="{SITE}img/og/armatex-og.jpg">
   <meta property="og:image:width" content="1200">
@@ -257,6 +262,7 @@ def nav(cur):
       <a href="kontakt.html"{cs("kontakt")}>Kontakt</a>
     </nav>
     <a class="nav__tel" href="tel:+48513191502">513 191 502</a>
+    <!--LANG-->
     <a class="mag" href="{"#kontakt" if cur=="index" else "kontakt.html#formularz"}"><span>Zapytaj o wycenę</span></a>
     <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="mnav" aria-label="Otwórz menu"><i></i></button>
   </div>
@@ -264,7 +270,7 @@ def nav(cur):
 <nav class="mnav" id="mnav" aria-label="Menu mobilne">
   <span class="label">Oferta</span>{mlinks}
   <span class="label">Katalogi</span><a href="wyszukiwarka.html"{cs("katalog")}>Wyszukiwarka indeksów<small>{N_ALL_TXT}</small></a><a href="{PDF}" target="_blank" rel="noopener">Katalog Besco 2026<small>PDF · 2,7 MB</small></a>
-  <span class="label">Armatex</span><a href="wspolpraca.html"{cs("wspolpraca")}>Współpraca</a><a href="do-pobrania.html"{cs("do-pobrania")}>Do pobrania<small>katalogi i dokumenty</small></a><a href="poradniki.html"{cs("poradniki")}>Poradniki</a><a href="o-firmie.html"{cs("o-firmie")}>O firmie</a><a href="kontakt.html"{cs("kontakt")}>Kontakt<small>513 191 502</small></a>
+  <span class="label">Armatex</span><a href="wspolpraca.html"{cs("wspolpraca")}>Współpraca</a><a href="do-pobrania.html"{cs("do-pobrania")}>Do pobrania<small>katalogi i dokumenty</small></a><a href="poradniki.html"{cs("poradniki")}>Poradniki</a><a href="o-firmie.html"{cs("o-firmie")}>O firmie</a><a href="kontakt.html"{cs("kontakt")}>Kontakt<small>513 191 502</small></a><!--LANGM-->
 </nav>
 '''
 FOOT='''<footer class="foot">
@@ -363,9 +369,15 @@ def unglue(html):
     parts=re.split(r'(<script\b.*?</script>|<style\b.*?</style>|<svg\b.*?</svg>|<head>.*?</head>)',html,flags=re.S)
     return ''.join(x if i%2 else _unglue_part(x) for i,x in enumerate(parts))
 
-def page(name,title,desc,cur,body,extra=''):
+def page(name,title,desc,cur,body,extra='',pm=None):
+    pm=dict(pm or {})
+    for x,f in ((title,short_title),(desc,short_desc)):
+        if x in pm: pm[f(x)]=f(pm[x])
     title,desc=short_title(title),short_desc(desc)
     html=head(title,desc,extra,'' if name=='index.html' else name)+'<body data-base="../">\n\n'+nav(cur)+'\n<main id="top">\n'+body+'\n</main>\n\n'+FOOT+'</body>\n</html>\n'
+    page_en(name,html,pm)
+    html=html.replace('<!--LANG-->',f'<a class="nav__lang" href="en/{name}" hreflang="en" lang="en" translate="no" aria-label="English version">EN</a>')
+    html=html.replace('<!--LANGM-->',f'<span class="label">Język</span><a href="en/{name}" hreflang="en" lang="en" translate="no">English<small>EN</small></a>')
     # strona w katalogu głównym repo: ścieżki względne bez prefiksów szkicu
     for a,b in (('../../assets/','assets/'),('../img/','img/'),('../pliki/','pliki/'),('../data/','data/'),('<body data-base="../">','<body>')):
         html=html.replace(a,b)
@@ -373,6 +385,28 @@ def page(name,title,desc,cur,body,extra=''):
     html=unglue(html)
     html=html.replace('href="c.css"',f'href="c.css?v={ASSET_V["c.css"]}"').replace('src="c.js"',f'src="c.js?v={ASSET_V["c.js"]}"')
     open(OUT+name,'w',encoding='utf-8').write(html)
+
+# ---------------- wersja angielska: armatex.pl/en/<ta sama nazwa pliku>
+import sys as _sys; _sys.path.insert(0,os.path.dirname(os.path.abspath(__file__)))
+import en as EN
+os.makedirs(OUT+'en',exist_ok=True)
+def tn(x): return EN.N.get(x,x)                                  # nazwa produktu / linii po angielsku
+def page_en(name,html,pm):
+    path='' if name=='index.html' else name
+    html=html.replace('<!--LANG-->',f'<a class="nav__lang" href="../{name}" hreflang="pl" lang="pl" translate="no" aria-label="Wersja polska">PL</a>')
+    html=html.replace('<!--LANGM-->',f'<span class="label">Język</span><a href="../{name}" hreflang="pl" lang="pl" translate="no">Polski<small>PL</small></a>')
+    html=live_form(html)
+    html=EN.translate(html,name,pm)
+    html=html.replace('<html lang="pl">','<html lang="en">').replace('content="pl_PL"','content="en_GB"')
+    html=re.sub(r'(<link rel="canonical" href=")[^"]*"',lambda m:m[1]+SITE+'en/'+path+'"',html)
+    html=re.sub(r'(<meta property="og:url" content=")[^"]*"',lambda m:m[1]+SITE+'en/'+path+'"',html)
+    html=re.sub(r'(": ")'+re.escape(SITE)+r'(?!en/|img/|pliki/|assets/)',lambda m:m[1]+SITE+'en/',html)   # adresy w JSON-LD
+    html=html.replace('value="Zapytanie o wycenę ze strony armatex.pl"','value="Zapytanie o wycenę ze strony armatex.pl (wersja angielska)"')
+    for a,b in (('../../assets/','../assets/'),('href="site.webmanifest"','href="../site.webmanifest"')):
+        html=html.replace(a,b)
+    html=unglue(html)
+    html=html.replace('href="c.css"',f'href="../c.css?v={ASSET_V["c.css"]}"').replace('src="c.js"',f'src="../c.js?v={ASSET_V["c.js"]}"')
+    open(OUT+'en/'+name,'w',encoding='utf-8').write(html)
 
 def card(s,cls='syc in'):
     p0,a0=s['pics'][0]
@@ -810,6 +844,10 @@ page('kontakt.html','Kontakt – zapytanie ofertowe dla hurtowni | Armatex','Kon
 SYSD={x['slug']:x for x in SYS}
 def fmt_int(n): return f'{n:,}'.replace(',',' ')
 def rozm_w(n): return 'rozmiar' if n==1 else ('rozmiary' if 2<=n%10<=4 and not 12<=n%100<=14 else 'rozmiarów')
+QUAL_EN={'miedziany press, profil V':'copper press, V profile','miedziany press, profil M':'copper press, M profile',
+ 'press do gazu, profil V':'gas press, V profile','press do gazu, profil M':'gas press, M profile','press ze stali węglowej':'carbon steel press',
+ 'miedziany lutowany EN 1254':'copper solder EN 1254','lutowany calowy ANSI B16.22':'imperial solder ANSI B16.22','lutowany G-size':'G-size solder',
+ 'press ze stali nierdzewnej 304':'stainless steel 304 press','press ze stali nierdzewnej 316L':'stainless steel 316L press'}
 for G in GROUPS:
     ser=G['ser']; m=G['meta']; sysp=SYSD[m['sys']]; rows=G['rows']; kind=G['kind']; n=len(rows)
     sizes=[r[0] if kind!='besco' else r[2] for r in rows]
@@ -914,7 +952,28 @@ for G in GROUPS:
     lst=ld({"@context":"https://schema.org","@type":"ItemList","name":f'{G["full"]} {G["code"]}',
       "itemListElement":[{"@type":"ListItem","position":i,"name":f'{bname} {G["full"]} {size_of(r)}, nr art. {code_of(r)}'} for i,r in enumerate(rows,1)]})
     crumbs=ld_crumbs([(sysp['name'],sysp['slug']+'.html'),(f'{G["name"]} {G["code"]}',G['slug']+'.html')])
-    page(G['slug']+'.html',title,desc,sysp['slug'],body,crumbs+lst)
+    # wersja EN: zdania składane z nazw (reszta strony idzie przez słownik tools/en.json)
+    ne,sne,szw=tn(G['name']),tn(ser['name']),('size' if n==1 else 'sizes')
+    fe=f'{ne}, {QUAL_EN[m["qual"]]}' if kind=='besco' and m['qual'] else ne
+    pm={lead.strip():(f'{ne} from the {sne} line: {n} {szw} from {first} to {last}{unit}. Application: {tn(ser["media"])}.'+(f' Standard {ser["std"]}.' if ser['std'] else '') if kind=='besco'
+                      else f'{ne} from the {sne} line: {n} {szw} ({rng}). Application: {tn(ser["media"])}. {tn(note) if note else ""}'.strip()),
+        topic:f'Please quote: {ne} {G["brand"]} {G["code"]}.',
+        f'{G["name"]} {G["brand"]} {G["code"]}: rozmiary i numery artykułów':f'{ne} {G["brand"]} {G["code"]}: sizes and article numbers',
+        f'Zapytaj o wycenę: {G["name"]} {G["code"]}.':f'Request a quote: {ne} {G["code"]}.',
+        kicker:kicker.split(' · ')[0]+' · '+sne, f'{G["full"]} {G["code"]}':f'{fe} {G["code"]}'}
+    if kind=='besco':
+        pm[h1]=f'{fe[0].upper()+fe[1:]} {G["code"]}'
+        pm[title]=f'{ne} {G["code"]} Besco – {tn(m["short"])} | Armatex'
+        de=f'{fe[0].upper()+fe[1:]} Besco {G["code"]}: {n} {szw} ({rng}{unit}), {ser["bar"]}, {ser["temp"]}. Article numbers and bulk packaging for wholesalers.'
+        if len(de)>160: de=f'{ne} Besco {G["code"]} ({tn(m["short"])}): {n} {szw} ({rng}{unit}), {ser["bar"]}. Article numbers and bulk packaging for wholesalers.'
+        pm[desc]=de
+    else:
+        pm[title]=f'{ne} {G["code"]} {G["brand"]} – {tn(ser["short"])} | Armatex'
+        de=f'{ne} {G["brand"]} {G["code"]} ({sne}): {n} {szw} ({rng_mm}). Article numbers{" and bulk packaging" if kind=="kuterlite" else ""} for wholesalers.'
+        if len(de)<=128: de+=' Quote within 1 working day.'
+        pm[desc]=de
+    for r in rows: pm[f'{bname} {G["full"]} {size_of(r)}, nr art. {code_of(r)}']=f'{bname} {fe} {size_of(r)}, art. no. {code_of(r)}'
+    page(G['slug']+'.html',title,desc,sysp['slug'],body,crumbs+lst,pm)
 
 # Dawny adres wyszukiwarki: katalog.html → wyszukiwarka.html (z parametrami ?q= / ?seria= i kotwicą)
 open(OUT+'katalog.html','w',encoding='utf-8').write('''<!doctype html>
@@ -1554,17 +1613,25 @@ n404=f'''
 '''
 page('404.html','Nie znaleziono strony | Armatex','Strona nie istnieje. Znajdź produkt w katalogu Armatex lub zapytaj o wycenę.','404',n404)
 h=open(OUT+'404.html',encoding='utf-8').read()
-h=re.sub(r'\s*<link rel="canonical"[^>]*>','',h); h=h.replace('<meta charset="utf-8">','<meta charset="utf-8">\n  <meta name="robots" content="noindex">',1); h=re.sub(r'\s*<meta property="og:url"[^>]*>','',h)
+h=re.sub(r'\s*<link rel="(canonical|alternate)"[^>]*>','',h); h=h.replace('<meta charset="utf-8">','<meta charset="utf-8">\n  <meta name="robots" content="noindex">',1); h=re.sub(r'\s*<meta property="og:url"[^>]*>','',h)
 # GitHub Pages podaje 404.html pod dowolnym adresem: baza ścieżek ustawiana przed wczytaniem CSS
 h=h.replace('<head>\n','<head>\n  <script>document.write(\'<base href="\'+(/^\\/aramtex-website\\//i.test(location.pathname)?location.pathname.match(/^\\/[^/]+\\//)[0]:\'/\')+\'">\')</script>\n',1)
 open(OUT+'404.html','w',encoding='utf-8').write(h)
+# 404 po angielsku (Netlify: /en/* bez strony → en/404.html, reguła w _redirects)
+h=open(OUT+'en/404.html',encoding='utf-8').read()
+h=re.sub(r'\s*<link rel="(canonical|alternate)"[^>]*>','',h); h=h.replace('<meta charset="utf-8">','<meta charset="utf-8">\n<meta name="robots" content="noindex">',1); h=re.sub(r'\s*<meta property="og:url"[^>]*>','',h)
+h=h.replace('<head>\n','<head>\n<base href="/en/">\n',1)
+open(OUT+'en/404.html','w',encoding='utf-8').write(h)
 
 # ---------------- sitemap.xml i robots.txt (do wersji produkcyjnej)
 import datetime
 urls=['']+[x['slug']+'.html' for x in SYS]+['wyszukiwarka.html','do-pobrania.html','o-firmie.html','poradniki.html']+[a['slug']+'.html' for a in ART]+['wspolpraca.html','kontakt.html','polityka-prywatnosci.html']+[G['slug']+'.html' for G in GROUPS]
 today=datetime.date.today().isoformat()
-sm='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{SITE}{u}</loc><lastmod>{today}</lastmod></url>\n' for u in urls)+'</urlset>\n'
+sm='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{SITE}{u}</loc><lastmod>{today}</lastmod></url>\n' for u in urls+['en/'+x for x in urls])+'</urlset>\n'
 open(OUT+'sitemap.xml','w',encoding='utf-8').write(sm)
 open(OUT+'robots.txt','w',encoding='utf-8').write(f'User-agent: *\nAllow: /\n\nSitemap: {SITE}sitemap.xml\n')
 print('grupy',len(GROUPS),'url',len(urls))
+# teksty bez tłumaczenia (wersja EN): uzupełnij tools/en.json
+json.dump(EN.MISSING,open(os.path.join(R,'tools','en-brak.json'),'w',encoding='utf-8'),ensure_ascii=False,indent=0,sort_keys=True)
+print('EN: brak tłumaczenia dla',len(EN.MISSING),'tekstów (tools/en-brak.json)' if EN.MISSING else '')
 print('ok')
