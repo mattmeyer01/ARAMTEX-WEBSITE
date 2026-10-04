@@ -207,6 +207,7 @@ def head(title,desc,extra='',path=''):
 '''
 PDF='../pliki/katalog-besco-2026.pdf'
 PDF_TECTITE='../pliki/katalog-tectite.pdf'
+PDF_KUTERLITE='../pliki/katalog-kuterlite.pdf'
 ICO_SEARCH='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>'
 ICO_PDF='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/><path d="M12 11v6M9.5 14.5 12 17l2.5-2.5"/></svg>'
 def nav(cur):
@@ -514,6 +515,7 @@ for s in SYS:
     figs=''.join(f'<span>{img(p,a)}</span>' for p,a in s['pics'])
     find=(f'<a class="ghost" href="katalog.html?seria={s["seria"]}#katalog">Szukaj indeksów</a><a class="ghost ghost--pdf" href="{PDF}" target="_blank" rel="noopener">Katalog PDF</a>') if s['seria'] else ''
     if s['slug']=='zlaczki-na-wcisk-tectite': find=f'<a class="ghost ghost--pdf" href="{PDF_TECTITE}" target="_blank" rel="noopener">Katalog PDF</a>'
+    if s['slug']=='zlaczki-skrecane-kuterlite': find=f'<a class="ghost ghost--pdf" href="{PDF_KUTERLITE}" target="_blank" rel="noopener">Katalog PDF</a>'
     body=f'''
   <section class="phead">
     <div class="wrap">
@@ -1280,6 +1282,7 @@ DOCS=[
  ('besco','katalog','Katalog Besco Fittings &amp; Connectors 2026','Pełny katalog: press V i M, gaz, stal, lutowane, ANSI, G-size, zawory. Numery artykułów i opakowania.','PDF · 2,7 MB · 65 stron',f'<a class="ghost ghost--pdf" href="{PDF}" target="_blank" rel="noopener">Pobierz</a>'),
  ('besco','katalog','Wyszukiwarka indeksów Besco','1 936 pozycji z katalogu 2026 z listą do wyceny. Szybsza niż przeglądanie PDF.','online','<a class="ghost" href="katalog.html">Otwórz</a>'),
  ('pegler','katalog','Katalog Tectite','Tectite Classic push-fit: złączki 16 i 20 mm do rur PEX, wymiary i kody, tabela temperatur i ciśnień, instrukcja montażu.','PDF · 2,3 MB · 7 stron',f'<a class="ghost ghost--pdf" href="{PDF_TECTITE}" target="_blank" rel="noopener">Pobierz</a>'),
+ ('pegler','katalog','Katalog Kuterlite','Złączki skręcane Kuterlite: K900 Pro do miedzi, K700 do rur PE, zawory i akcesoria. Wymiary, kody i opakowania zbiorcze (wersja angielska).','PDF · 1,2 MB · 21 stron',f'<a class="ghost ghost--pdf" href="{PDF_KUTERLITE}" target="_blank" rel="noopener">Pobierz</a>'),
  ('besco pegler','atest','Atesty higieniczne','Atesty PZH do złączek stosowanych w instalacjach wody pitnej.','dla hurtowni po weryfikacji',f'<a class="ghost" href="{ask("Jesteśmy hurtownią i prosimy o dostęp do atestów higienicznych.")}">Poproś o dostęp</a>'),
  ('besco pegler','dop','Deklaracje właściwości użytkowych','Deklaracje DoP do wyrobów budowlanych, do przekazania klientom i inwestorom.','dla hurtowni po weryfikacji',f'<a class="ghost" href="{ask("Jesteśmy hurtownią i prosimy o dostęp do deklaracji właściwości użytkowych.")}">Poproś o dostęp</a>'),
  ('besco pegler','aprobata','Certyfikaty i aprobaty producentów','DVGW, KIWA, WRAS, RISE, INiG, zależnie od linii produktów.','dla hurtowni po weryfikacji',f'<a class="ghost" href="{ask("Jesteśmy hurtownią i prosimy o dostęp do certyfikatów i aprobat.")}">Poproś o dostęp</a>'),
@@ -1303,7 +1306,7 @@ dl=phead([('Do pobrania','do-pobrania.html')],'Do pobrania','Katalogi i dokument
     </div>
   </section>
 '''
-page('do-pobrania.html','Do pobrania: katalogi i dokumenty złączek | Armatex','Katalog Besco 2026 do pobrania, katalog Tectite oraz atesty, deklaracje właściwości użytkowych i aprobaty dla hurtowni po weryfikacji.','do-pobrania',dl,ld_crumbs([('Do pobrania','do-pobrania.html')]))
+page('do-pobrania.html','Do pobrania: katalogi i dokumenty złączek | Armatex','Katalogi Besco 2026, Tectite i Kuterlite do pobrania oraz atesty, deklaracje właściwości użytkowych i aprobaty dla hurtowni po weryfikacji.','do-pobrania',dl,ld_crumbs([('Do pobrania','do-pobrania.html')]))
 
 
 # ---- Polityka prywatności
