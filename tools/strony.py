@@ -677,7 +677,7 @@ kat=f'''
       <dl class="phead__facts">
         <div><dt class="label">Indeksy</dt><dd>{N_ALL_TXT}</dd></div>
         <div><dt class="label">Linie</dt><dd>{len(BD["series"])+len(PSER)}</dd></div>
-        <div><dt class="label">Pakowanie</dt><dd>worek / karton</dd></div>
+        <div><dt class="label">Wycena</dt><dd>1 dzień roboczy</dd></div>
       </dl>
     </div>
   </section>
