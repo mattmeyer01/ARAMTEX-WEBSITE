@@ -125,8 +125,11 @@
     // najpierw dokładny numer artykułu, potem kod grupy (np. T1, K610), potem numery zaczynające się od zapytania
     var rank = function (x) { return x.art === qa ? 3 : squash(x.g[1]) === qa ? 2 : x.art.indexOf(qa) === 0 ? 1 : 0; };
     if (qa) hits = hits.map(function (x, i) { return [rank(x), i, x]; }).sort(function (a, b) { return b[0] - a[0] || a[1] - b[1]; }).map(function (y) { return y[2]; });
-    page = 0; res.innerHTML = ''; render();
-    cnt.textContent = (toks.length || active.size) ? fmt(hits.length) + ' z ' + fmt(INDEX.length) + ' pozycji' : fmt(INDEX.length) + ' pozycji w katalogu';
+    page = 0; res.innerHTML = '';
+    // bez frazy i filtra lista wyników jest pusta: niżej są wszystkie grupy produktów
+    if (!toks.length && !active.size) { more.hidden = true; cnt.textContent = fmt(INDEX.length) + ' pozycji w wyszukiwarce'; return; }
+    render();
+    cnt.textContent = fmt(hits.length) + ' z ' + fmt(INDEX.length) + ' pozycji';
   }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function render() {
@@ -147,8 +150,19 @@
   var t0; qEl.addEventListener('input', function () { clearTimeout(t0); t0 = setTimeout(function () { load().then(search); }, 120); });
   more.firstElementChild.addEventListener('click', render);
   $$('.fd__hint code').forEach(function (c) { c.addEventListener('click', function () { qEl.value = c.dataset.q; load().then(search); }); });
+  var flt = $('#flt');
+  function drawFilter() {
+    if (!flt) return;
+    if (!active.size || !DATA) { flt.hidden = true; return; }
+    var names = DATA.series.filter(function (x) { return active.has(x.id); }).map(function (x) { return x.short; });
+    flt.innerHTML = '<span class="label">Filtr</span> <span></span> <button type="button">Wyczyść filtr ×</button>';
+    flt.children[1].textContent = names.join(', ');
+    flt.querySelector('button').addEventListener('click', function () { setSeries([]); qEl.focus(); });
+    flt.hidden = false;
+  }
   function setSeries(list) {
     active = new Set(list.filter(Boolean));
+    load().then(drawFilter);
     $$('.chip').forEach(function (c) { c.setAttribute('aria-pressed', c.dataset.s ? c.dataset.s.split(',').every(function (id) { return active.has(id); }) : !active.size); });
     load().then(search);
   }

@@ -663,7 +663,10 @@ for s in SYS:
 
 # ---------------- katalog
 fd=frag('      <div class="fd__g">','        </aside>\n      </div>')
-assert '3 462 pozycji w katalogu' in fd; fd=fd.replace('3 462 pozycji w katalogu',f'{N_ALL_TXT} pozycji w katalogu')
+assert '3 462 pozycji w wyszukiwarce' in fd; fd=fd.replace('3 462 pozycji w wyszukiwarce',f'{N_ALL_TXT} pozycji w wyszukiwarce')
+# bez rzędu filtrów: wyniki pojawiają się po wpisaniu frazy; filtr linii z linków ?seria= pokazuje etykieta #flt
+fd,_n=re.subn(r'\s*<div class="chips" role="group" aria-label="Filtr linii">.*?</div>','\n          <p class="fd__flt" id="flt" hidden></p>',fd,flags=re.S); assert _n==1
+fd=fd.replace('<li class="fd__empty" style="display:block">Katalog doczyta się automatycznie. Wpisz numer albo wybierz linię.</li>','')
 kat=f'''
   <section class="phead">
     <div class="wrap">
