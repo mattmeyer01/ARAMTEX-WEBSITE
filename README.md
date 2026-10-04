@@ -16,7 +16,7 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
   Lista jest zapisywana w przeglądarce (`localStorage`, klucz `armatex-rfq`) i trafia do formularza.
 - `c.css`, `c.js`: wspólne style i skrypty.
 - `site.webmanifest`: nazwa i ikony strony dla telefonów (ikony w `assets/img/`).
-- `data/`: `besco-2026.json` (dane wyszukiwarki), `pegler.json` (Tectite, Kuterlite).
+- `data/`: `besco-2026.json` (Besco), `pegler.json` (Tectite, Kuterlite) i `katalog.json` (dane wyszukiwarki, składane przez generator).
 - `img/`: logo, hero, zdjęcia produktów (`besco/`, `pegler/`, `oferta/`, `linie/`), obrazek udostępniania (`og/`).
 - `pliki/katalog-besco-2026.pdf`: katalog Besco 2026 (link w menu „Oferta → Katalogi”).
 - `pliki/katalog-tectite.pdf`: katalog Tectite Classic (złączki 16 i 20 mm do rur PEX), link na stronie systemu Tectite i w „Do pobrania”.
