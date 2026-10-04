@@ -34,5 +34,9 @@
 /o-firmie                    /o-firmie.html                     301!
 /index.php                   /                                  301!
 
+# Wyszukiwarka: dawny adres katalog.html (parametry ?q= i ?seria= przechodzą dalej)
+/katalog                     /wyszukiwarka                      301!
+/katalog.html                /wyszukiwarka                      301!
+
 # Pozostałe stare podstrony bez odpowiednika
 /webpage_*                   /                                  301!
