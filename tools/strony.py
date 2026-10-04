@@ -1322,7 +1322,7 @@ page('poradniki.html','Poradniki o złączkach dla hurtowni | Armatex','Poradnik
 
 # ---- Do pobrania
 DOCS=[
- ('besco','katalog','Katalog Besco Fittings &amp; Connectors 2026','Pełny katalog: press V i M, gaz, stal, lutowane, ANSI, G-size, zawory. Numery artykułów i opakowania.','PDF · 2,7 MB · 65 stron',f'<a class="ghost ghost--pdf" href="{PDF}" target="_blank" rel="noopener">Pobierz</a>'),
+ ('besco','katalog','Katalog Besco','Pełny katalog: press V i M, gaz, stal, lutowane, ANSI, G-size, zawory. Numery artykułów i opakowania.','PDF · 2,7 MB · 65 stron',f'<a class="ghost ghost--pdf" href="{PDF}" target="_blank" rel="noopener">Pobierz</a>'),
  ('pegler','katalog','Katalog Tectite','Tectite Classic push-fit: złączki 16 i 20 mm do rur PEX, wymiary i kody, tabela temperatur i ciśnień, instrukcja montażu.','PDF · 2,3 MB · 7 stron',f'<a class="ghost ghost--pdf" href="{PDF_TECTITE}" target="_blank" rel="noopener">Pobierz</a>'),
  ('pegler','katalog','Katalog Kuterlite','Złączki skręcane Kuterlite: K900 Pro do miedzi, K700 do rur PE, zawory i akcesoria. Wymiary, kody i opakowania zbiorcze (wersja angielska).','PDF · 1,2 MB · 21 stron',f'<a class="ghost ghost--pdf" href="{PDF_KUTERLITE}" target="_blank" rel="noopener">Pobierz</a>'),
  ('pegler','instrukcja','Instrukcja montażu Tectite','Montaż złączek na wcisk krok po kroku: cięcie, gratowanie, głębokość wsunięcia, tulejki do PEX i PB, demontaż.','PDF · 0,7 MB · 4 strony',f'<a class="ghost ghost--pdf" href="{PDF_TECTITE_MONTAZ}" target="_blank" rel="noopener">Pobierz</a>'),
