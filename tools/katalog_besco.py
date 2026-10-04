@@ -38,7 +38,7 @@ META = {
     'cu-solder-en1254': dict(name='Miedź lutowana EN 1254', short='Lutowane EN 1254', bar='25 bar', temp='−20…110 °C', media='woda, ogrzewanie, gaz, przemysł', std='EN 1254', appr=['DVGW', 'KIWA', 'WRAS']),
     'cu-ansi-k': dict(name='Miedź calowa ANSI B16.22 · seria K', short='ANSI B16.22 · K', bar='25 bar', temp='−20…110 °C', media='woda, ogrzewanie, gaz, przemysł', std='ANSI B16.22', appr=[]),
     'cu-g-size': dict(name='Miedź G-size · chłodnictwo i przemysł', short='G-size do 80 bar', bar='20–80 bar', temp='−20…150 °C', media='przemysł, chłodnictwo', std='EN 1254', appr=[]),
-    'press-ball-valve': dict(name='Zawory kulowe press', short='Zawory kulowe press', bar='16 bar', temp='−10…110 °C', media='woda, ogrzewanie, przemysł', std='', appr=['DVGW', 'WRAS']),
+    'press-ball-valve': dict(name='Gutpress Zawory Kulowe V i M', short='Gutpress Zawory Kulowe V i M', bar='16 bar', temp='−10…110 °C', media='woda, ogrzewanie, przemysł', std='', appr=['DVGW', 'WRAS']),
 }
 ORDER = list(META)
 
