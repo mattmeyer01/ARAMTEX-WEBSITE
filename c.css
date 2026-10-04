@@ -873,3 +873,11 @@ body.has-lbar .foot__bar { padding-bottom: calc(5.5rem + env(safe-area-inset-bot
 .ldr__more[hidden] { display: none; }
 .ldr-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) { .ldr__bg, .ldr .ldr__p { transition: none; } }
+
+/* przełącznik języka PL / EN */
+.nav__lang { flex: none; display: inline-grid; place-items: center; min-width: 40px; height: 32px; padding: 0 .5rem; border: 1px solid currentColor; border-radius: 99px; font: 500 .72rem var(--mono); letter-spacing: .08em; text-decoration: none; opacity: .8; transition: opacity .2s; }
+.nav__lang:hover { opacity: 1; }
+@media (max-width: 720px) { .nav__lang { display: none; } }   /* telefon: język w menu mobilnym */
+.nav .mag { white-space: nowrap; }
+@media (max-width: 1260px) { .nav .wrap { gap: 1.25rem; } }
+@media (max-width: 1200px) { .nav__links { gap: 1rem; } }

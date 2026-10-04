@@ -3,6 +3,10 @@
   var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var BASE = document.body.getAttribute('data-base') || '';
+  // wersja angielska (/en/): ten sam skrypt, teksty wybierane po <html lang>
+  var EN = document.documentElement.lang === 'en';
+  var L = function (pl, en) { return EN ? en : pl; };
+  var UN = function (u) { return EN ? ({ karton: 'box', worek: 'bag', 'opak.': 'pack', 'szt.': 'pcs' }[u] || u) : u; };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
   // Zdjęcie bez wersji _min.webp: wróć do oryginału
@@ -30,7 +34,7 @@
   var burger = $('#burger');
   if (burger) burger.addEventListener('click', function () {
     var o = document.body.classList.toggle('menu-open'); burger.setAttribute('aria-expanded', o);
-    burger.setAttribute('aria-label', o ? 'Zamknij menu' : 'Otwórz menu');
+    burger.setAttribute('aria-label', o ? L('Zamknij menu', 'Close menu') : L('Otwórz menu', 'Open menu'));
   });
 
   // Wejścia + odometr (BYQ Odometer: 2 obroty, 0.85 s + 0.1 s na cyfrę)
@@ -83,8 +87,8 @@
   }
   function packTxt(v) {
     var u = v.p[v.u], n = u[1];
-    if (n === 1) return v.q + ' szt.';
-    return v.q + ' × ' + u[0] + ' (' + n + ' szt.) = ' + String(v.q * n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' szt.';
+    if (n === 1) return v.q + ' ' + UN('szt.');
+    return v.q + ' × ' + UN(u[0]) + ' (' + n + ' ' + UN('szt.') + ') = ' + String(v.q * n).replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' ' + UN('szt.');
   }
 
   function thumb(src) {
@@ -112,7 +116,7 @@
         return { r: r, g: g, s: s, sid: s.id, hay: norm([r[1], r[2], g[2], g[3], g[1], s.short, s.brand].join(' ')), art: squash(r[1]) };
       });
       search(); drawRfq(); save();
-    }).catch(function () { if (res) res.innerHTML = '<li class="fd__empty" style="display:block">Nie udało się wczytać katalogu. Odśwież stronę.</li>'; });
+    }).catch(function () { if (res) res.innerHTML = '<li class="fd__empty" style="display:block">' + L('Nie udało się wczytać katalogu. Odśwież stronę.', 'Could not load the catalogue. Please refresh the page.') + '</li>'; });
     return loading;
   }
   new IntersectionObserver(function (e, o) { if (e[0].isIntersecting) { load(); o.disconnect(); } }, { rootMargin: '600px 0px' }).observe($('#katalog'));
@@ -136,23 +140,23 @@
     var idle = !toks.length && !active.size; cnt.parentNode.hidden = idle;
     if (idle) { more.hidden = true; return; }
     render();
-    cnt.textContent = fmt(hits.length) + ' z ' + fmt(INDEX.length) + ' pozycji';
+    cnt.textContent = fmt(hits.length) + L(' z ', ' of ') + fmt(INDEX.length) + L(' pozycji', ' items');
   }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function render() {
     var slice = hits.slice(page * PER, (page + 1) * PER), h = '';
-    if (!hits.length) { res.innerHTML = '<li class="fd__empty" style="display:block">Brak pozycji dla tego zapytania. Sprawdź numer albo zadzwoń: 513 191 502.</li>'; more.hidden = true; return; }
+    if (!hits.length) { res.innerHTML = '<li class="fd__empty" style="display:block">' + L('Brak pozycji dla tego zapytania. Sprawdź numer albo zadzwoń: 513 191 502.', 'No items match this search. Check the number or call +48 513 191 502.') + '</li>'; more.hidden = true; return; }
     slice.forEach(function (x) {
       var r = x.r, g = x.g, inq = rfq.has(r[1]), pk = r[3].slice().reverse();
       h += '<li><img src="' + BASE + esc(g[4]) + '" alt="" width="56" height="56" loading="lazy" decoding="async">' +
-        '<div><b><a href="' + BASE + esc(g[5]) + '">' + esc(g[2]) + '</a></b><span class="sz">' + esc(r[2]) + '</span><small>' + esc(g[3] ? g[3] + ' · ' : '') + esc(x.s.short) + '</small></div>' +
+        '<div><b><a href="' + esc(g[5]) + '">' + esc(EN && g[6] ? g[6] : g[2]) + '</a></b><span class="sz">' + esc(r[2]) + '</span><small>' + esc(g[3] ? g[3] + ' · ' : '') + esc(EN && x.s.short_en ? x.s.short_en : x.s.short) + '</small></div>' +
         '<code>' + esc(r[1]) + '</code>' +
         '<span class="pk">' + (pk.length ? '<i>' + pk.map(function (u) { return esc(u[0]); }).join(' / ') + '</i>' + pk.map(function (u) { return fmt(u[1]); }).join(' / ') : '') + '</span>' +
-        '<button class="add' + (inq ? ' is-in' : '') + '" type="button" data-art="' + esc(r[1]) + '" aria-label="Dodaj ' + esc(r[1]) + ' do zapytania">' + (inq ? 'Dodano' : 'Dodaj') + '</button></li>';
+        '<button class="add' + (inq ? ' is-in' : '') + '" type="button" data-art="' + esc(r[1]) + '" aria-label="' + L('Dodaj ', 'Add ') + esc(r[1]) + L(' do zapytania', ' to the quote list') + '">' + (inq ? L('Dodano', 'Added') : L('Dodaj', 'Add')) + '</button></li>';
     });
     res.insertAdjacentHTML('beforeend', h);
     page++; more.hidden = page * PER >= hits.length;
-    more.firstElementChild.textContent = 'Pokaż kolejne (' + fmt(hits.length - page * PER) + ')';
+    more.firstElementChild.textContent = L('Pokaż kolejne (', 'Show more (') + fmt(hits.length - page * PER) + ')';
   }
   var t0; qEl.addEventListener('input', function () { clearTimeout(t0); t0 = setTimeout(function () { load().then(search); }, 120); });
   if (more) more.firstElementChild.addEventListener('click', render);
@@ -161,8 +165,8 @@
   function drawFilter() {
     if (!flt) return;
     if (!active.size || !DATA) { flt.hidden = true; return; }
-    var names = DATA.series.filter(function (x) { return active.has(x.id); }).map(function (x) { return x.short; });
-    flt.innerHTML = '<span class="label">Filtr</span> <span></span> <button type="button">Wyczyść filtr ×</button>';
+    var names = DATA.series.filter(function (x) { return active.has(x.id); }).map(function (x) { return EN && x.short_en ? x.short_en : x.short; });
+    flt.innerHTML = '<span class="label">' + L('Filtr', 'Filter') + '</span> <span></span> <button type="button">' + L('Wyczyść filtr ×', 'Clear filter ×') + '</button>';
     flt.children[1].textContent = names.join(', ');
     flt.querySelector('button').addEventListener('click', function () { setSeries([]); qEl.focus(); });
     flt.hidden = false;
@@ -190,7 +194,7 @@
   function save() { try { localStorage.setItem(KEY, JSON.stringify(Array.from(rfq.entries()))); } catch (e) {} }
   function label(art) {
     if (!INDEX) return '';
-    for (var i = 0; i < INDEX.length; i++) if (INDEX[i].r[1] === art) return INDEX[i].g[2] + ' ' + INDEX[i].r[2];
+    for (var i = 0; i < INDEX.length; i++) if (INDEX[i].r[1] === art) return (EN && INDEX[i].g[6] ? INDEX[i].g[6] : INDEX[i].g[2]) + ' ' + INDEX[i].r[2];
     return '';
   }
   function imgOf(art) {
@@ -205,25 +209,25 @@
     var ul = $('#rfqList'), h = '', n = rfq.size;
     rfq.forEach(function (v, art) {
       packFix(v, packsOf(art));
-      var opts = v.p.map(function (u, i) { return '<option value="' + i + '"' + (i === v.u ? ' selected' : '') + '>' + esc(u[0]) + (u[1] > 1 ? ' (' + fmt(u[1]) + ' szt.)' : '') + '</option>'; }).join('');
+      var opts = v.p.map(function (u, i) { return '<option value="' + i + '"' + (i === v.u ? ' selected' : '') + '>' + esc(UN(u[0])) + (u[1] > 1 ? ' (' + fmt(u[1]) + ' ' + UN('szt.') + ')' : '') + '</option>'; }).join('');
       if (!v.i && INDEX) v.i = imgOf(art);
       h += '<li>' + thumb(v.i) + '<div><code>' + esc(art) + '</code><small>' + esc(v.l || label(art)) + '</small></div>' +
-        '<button class="rm" type="button" data-art="' + esc(art) + '" aria-label="Usuń ' + esc(art) + '">×</button>' +
-        '<div class="rfq__q"><input type="number" min="1" step="1" value="' + v.q + '" aria-label="Ilość ' + esc(art) + '" data-art="' + esc(art) + '">' +
-        '<select aria-label="Jednostka ' + esc(art) + '" data-art="' + esc(art) + '">' + opts + '</select>' +
-        '<span class="tot">' + (v.p[v.u][1] > 1 ? '= ' + fmt(v.q * v.p[v.u][1]) + ' szt.' : '') + '</span></div></li>';
+        '<button class="rm" type="button" data-art="' + esc(art) + '" aria-label="' + L('Usuń ', 'Remove ') + esc(art) + '">×</button>' +
+        '<div class="rfq__q"><input type="number" min="1" step="1" value="' + v.q + '" aria-label="' + L('Ilość ', 'Quantity ') + esc(art) + '" data-art="' + esc(art) + '">' +
+        '<select aria-label="' + L('Jednostka ', 'Unit ') + esc(art) + '" data-art="' + esc(art) + '">' + opts + '</select>' +
+        '<span class="tot">' + (v.p[v.u][1] > 1 ? '= ' + fmt(v.q * v.p[v.u][1]) + ' ' + UN('szt.') : '') + '</span></div></li>';
     });
     ul.innerHTML = h;
-    $('#rfqN').textContent = n + ' poz.'; $('#pillN').textContent = n;
+    $('#rfqN').textContent = n + L(' poz.', ' items'); $('#pillN').textContent = n;
     $('#pill').classList.toggle('on', n > 0);
     $('#toForm').disabled = !n;
-    $('#rfqHint').textContent = n ? 'Ustaw ilość i jednostkę (karton, worek, sztuki), potem wyślij zapytanie.' : 'Twoja lista jest pusta. Otwórz linię produktów i dodaj rozmiary na stronie grupy.';
+    $('#rfqHint').textContent = n ? L('Ustaw ilość i jednostkę (karton, worek, sztuki), potem wyślij zapytanie.', 'Set the quantity and unit (box, bag, pieces), then send the enquiry.') : L('Twoja lista jest pusta. Otwórz linię produktów i dodaj rozmiary na stronie grupy.', 'Your list is empty. Open a product line and add sizes on the product group page.');
   }
   if (res) res.addEventListener('click', function (e) {
     var b = e.target.closest('.add'); if (!b) return;
     var art = b.dataset.art;
     if (rfq.has(art)) rfq.delete(art); else { var nv = packFix({ q: 1, l: label(art), i: imgOf(art) }, packsOf(art)); nv.u = 0; rfq.set(art, nv); }
-    b.classList.toggle('is-in', rfq.has(art)); b.textContent = rfq.has(art) ? 'Dodano' : 'Dodaj';
+    b.classList.toggle('is-in', rfq.has(art)); b.textContent = rfq.has(art) ? L('Dodano', 'Added') : L('Dodaj', 'Add');
     save(); drawRfq();
   });
   function upd(e) {
@@ -231,17 +235,17 @@
     if (i.tagName === 'SELECT') v.u = +i.value; else v.q = Math.max(1, parseInt(i.value, 10) || 1);
     save();
     var t = i.parentNode.querySelector('.tot'), n = v.p[v.u][1];
-    t.textContent = n > 1 ? '= ' + fmt(v.q * n) + ' szt.' : '';
+    t.textContent = n > 1 ? '= ' + fmt(v.q * n) + ' ' + UN('szt.') : '';
   }
   $('#rfqList').addEventListener('input', upd);
   $('#rfqList').addEventListener('change', upd);
   $('#rfqList').addEventListener('click', function (e) {
     var b = e.target.closest('.rm'); if (!b) return;
     rfq.delete(b.dataset.art); save(); drawRfq();
-    var btn = res && res.querySelector('.add[data-art="' + CSS.escape(b.dataset.art) + '"]'); if (btn) { btn.classList.remove('is-in'); btn.textContent = 'Dodaj'; }
+    var btn = res && res.querySelector('.add[data-art="' + CSS.escape(b.dataset.art) + '"]'); if (btn) { btn.classList.remove('is-in'); btn.textContent = L('Dodaj', 'Add'); }
   });
   $('#toForm').addEventListener('click', function () {
-    var lines = ['Lista pozycji do wyceny:'];
+    var lines = [L('Lista pozycji do wyceny:', 'Items for quotation:')];
     rfq.forEach(function (v, art) { lines.push(art + ' · ' + (v.l || label(art)) + ' · ' + packTxt(packFix(v, packsOf(art)))); });
     location.href = 'kontakt.html?temat=' + encodeURIComponent(lines.join('\n')) + '#formularz';
   });
@@ -262,7 +266,7 @@
   // Strony grup produktów: ilość + jednostka (karton / worek / opak. / szt.) i "Dodaj" do listy do wyceny (ta sama co w katalogu)
   var qas = $$('.qty[data-add]');
   if (qas.length) (function () {
-    var KEY = 'armatex-rfq', list = new Map(), gi = $('.gp__img img'), gimg = gi ? gi.getAttribute('src') : '';
+    var KEY = 'armatex-rfq', list = new Map(), gi = $('.gp__img img'), gimg = gi ? gi.getAttribute('src').replace(/^(\.\.\/)+/, '') : '';
     try { JSON.parse(localStorage.getItem(KEY) || '[]').forEach(function (x) { list.set(x[0], x[1]); }); } catch (e) {}
     function save() { try { localStorage.setItem(KEY, JSON.stringify(Array.from(list.entries()))); } catch (e) {} }
     function packs(sel) { return Array.prototype.map.call(sel.options, function (o) { return [o.dataset.u, +o.dataset.n]; }); }
@@ -270,7 +274,7 @@
       qas.forEach(function (w) {
         var v = list.get(w.dataset.add), b = w.querySelector('.add'), sel = w.querySelector('select');
         if (v) { packFix(v, packs(sel)); w.querySelector('input').value = v.q; sel.value = v.u; }
-        w.classList.toggle('is-in', !!v); b.classList.toggle('is-in', !!v); b.textContent = v ? 'Dodano' : 'Dodaj';
+        w.classList.toggle('is-in', !!v); b.classList.toggle('is-in', !!v); b.textContent = v ? L('Dodano', 'Added') : L('Dodaj', 'Add');
         b.setAttribute('aria-pressed', !!v);
       });
     }
@@ -301,12 +305,12 @@
     var KEY = 'armatex-rfq', grp = !!qas.length, dr = null, opener = null;
     var fmt = function (n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); };
     var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); };
-    var poz = function (n) { return n === 1 ? 'pozycja' : (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 'pozycje' : 'pozycji'; };
+    var poz = function (n) { return EN ? (n === 1 ? 'item' : 'items') : n === 1 ? 'pozycja' : (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14)) ? 'pozycje' : 'pozycji'; };
     function read() { var m = new Map(); try { JSON.parse(localStorage.getItem(KEY) || '[]').forEach(function (x) { m.set(x[0], x[1]); }); } catch (e) {} return m; }
     function write(m) { try { localStorage.setItem(KEY, JSON.stringify(Array.from(m.entries()))); } catch (e) {} }
     function changed() { document.dispatchEvent(new CustomEvent('rfq:change', { detail: { src: 'ldr' } })); }
     function send() {
-      var lines = ['Lista pozycji do wyceny:'];
+      var lines = [L('Lista pozycji do wyceny:', 'Items for quotation:')];
       read().forEach(function (v, art) { lines.push(art + ' · ' + (v.l || '') + ' · ' + packTxt(packFix(v))); });
       location.href = 'kontakt.html?temat=' + encodeURIComponent(lines.join('\n')) + '#formularz';
     }
@@ -315,12 +319,12 @@
     var bar = document.createElement('div');
     if (grp) {
       bar.className = 'lbar';
-      bar.innerHTML = '<p class="lbar__t" aria-live="polite"><span class="lbar__l">Lista</span> <span class="lbar__n">0</span> <span class="lbar__w">pozycji</span> <small>na liście do wyceny</small></p>' +
-        '<button class="lbar__show" type="button" aria-haspopup="dialog">Pokaż listę</button>' +
-        '<button class="mag lbar__send" type="button"><span>Wyślij zapytanie<span class="lbar__x"> o wycenę</span></span></button>';
+      bar.innerHTML = '<p class="lbar__t" aria-live="polite"><span class="lbar__l">' + L('Lista', 'List') + '</span> <span class="lbar__n">0</span> <span class="lbar__w">' + L('pozycji', 'items') + '</span> <small>' + L('na liście do wyceny', 'on your quote list') + '</small></p>' +
+        '<button class="lbar__show" type="button" aria-haspopup="dialog">' + L('Pokaż listę', 'Show list') + '</button>' +
+        '<button class="mag lbar__send" type="button"><span>' + L('Wyślij zapytanie<span class="lbar__x"> o wycenę</span>', 'Send<span class="lbar__x"> quote</span> request') + '</span></button>';
       $('.lbar__send', bar).addEventListener('click', send);
     } else {
-      bar.innerHTML = '<button class="pill" type="button" aria-haspopup="dialog">Lista <span class="lbar__n">0</span></button>';
+      bar.innerHTML = '<button class="pill" type="button" aria-haspopup="dialog">' + L('Lista', 'List') + ' <span class="lbar__n">0</span></button>';
     }
     document.body.appendChild(bar);
     $('button', bar).addEventListener('click', function (e) { open(e.currentTarget); });
@@ -335,21 +339,21 @@
         if (bump && !reduce) { bar.classList.remove('bump'); void bar.offsetWidth; bar.classList.add('bump'); }
       } else bar.firstChild.classList.toggle('on', n > 0);
       if (!dr) return;
-      $('.ldr__n', dr).textContent = n + ' poz.';
+      $('.ldr__n', dr).textContent = n + L(' poz.', ' items');
       $('.ldr__send', dr).disabled = !n;
       if (keep) return;   // edycja w panelu: nie przebudowuj listy, żeby nie zgubić kursora w polu ilości
       var h = '';
       m.forEach(function (v, art) {
         packFix(v);
-        var opts = v.p.map(function (u, i) { return '<option value="' + i + '"' + (i === v.u ? ' selected' : '') + '>' + esc(u[0]) + (u[1] > 1 ? ' (' + fmt(u[1]) + ' szt.)' : '') + '</option>'; }).join('');
+        var opts = v.p.map(function (u, i) { return '<option value="' + i + '"' + (i === v.u ? ' selected' : '') + '>' + esc(UN(u[0])) + (u[1] > 1 ? ' (' + fmt(u[1]) + ' ' + UN('szt.') + ')' : '') + '</option>'; }).join('');
         h += '<li>' + thumb(v.i) + '<div><code>' + esc(art) + '</code><small>' + esc(v.l || '') + '</small></div>' +
-          '<button class="rm" type="button" data-art="' + esc(art) + '" aria-label="Usuń ' + esc(art) + '">×</button>' +
-          '<div class="rfq__q"><input type="number" min="1" step="1" value="' + v.q + '" aria-label="Ilość ' + esc(art) + '" data-art="' + esc(art) + '">' +
-          '<select aria-label="Jednostka ' + esc(art) + '" data-art="' + esc(art) + '">' + opts + '</select>' +
-          '<span class="tot">' + (v.p[v.u][1] > 1 ? '= ' + fmt(v.q * v.p[v.u][1]) + ' szt.' : '') + '</span></div></li>';
+          '<button class="rm" type="button" data-art="' + esc(art) + '" aria-label="' + L('Usuń ', 'Remove ') + esc(art) + '">×</button>' +
+          '<div class="rfq__q"><input type="number" min="1" step="1" value="' + v.q + '" aria-label="' + L('Ilość ', 'Quantity ') + esc(art) + '" data-art="' + esc(art) + '">' +
+          '<select aria-label="' + L('Jednostka ', 'Unit ') + esc(art) + '" data-art="' + esc(art) + '">' + opts + '</select>' +
+          '<span class="tot">' + (v.p[v.u][1] > 1 ? '= ' + fmt(v.q * v.p[v.u][1]) + ' ' + UN('szt.') : '') + '</span></div></li>';
       });
       $('ul', dr).innerHTML = h;
-      $('.ldr__hint', dr).textContent = n ? 'Ustaw ilość i jednostkę (karton, worek, sztuki), potem wyślij zapytanie.' : 'Twoja lista jest pusta. Otwórz linię produktów i dodaj rozmiary na stronie grupy.';
+      $('.ldr__hint', dr).textContent = n ? L('Ustaw ilość i jednostkę (karton, worek, sztuki), potem wyślij zapytanie.', 'Set the quantity and unit (box, bag, pieces), then send the enquiry.') : L('Twoja lista jest pusta. Otwórz linię produktów i dodaj rozmiary na stronie grupy.', 'Your list is empty. Open a product line and add sizes on the product group page.');
       $('.ldr__more', dr).hidden = grp && n > 0;
     }
     function build() {
@@ -357,11 +361,11 @@
       dr.className = 'ldr';
       dr.innerHTML = '<div class="ldr__bg" data-x></div>' +
         '<aside class="rfq ldr__p" role="dialog" aria-modal="true" aria-labelledby="ldrT">' +
-        '<div class="ldr__h"><h2 id="ldrT">Lista do wyceny <span class="label ldr__n">0 poz.</span></h2><button class="ldr__x" type="button" data-x aria-label="Zamknij listę">×</button></div>' +
+        '<div class="ldr__h"><h2 id="ldrT">' + L('Lista do wyceny', 'Quote list') + ' <span class="label ldr__n">0</span></h2><button class="ldr__x" type="button" data-x aria-label="' + L('Zamknij listę', 'Close list') + '">×</button></div>' +
         '<p class="ldr__hint"></p><ul></ul>' +
-        '<button class="mag ldr__send" type="button"><span>Wyślij zapytanie o wycenę</span></button>' +
-        '<p class="ldr__more"><a class="ulink" href="wyszukiwarka.html">Przejdź do wyszukiwarki produktów</a></p>' +
-        '<p class="rfq__help">Nie wiesz, co wybrać? <a href="tel:+48513191502">Zadzwoń: 513 191 502</a></p></aside>';
+        '<button class="mag ldr__send" type="button"><span>' + L('Wyślij zapytanie o wycenę', 'Send quote request') + '</span></button>' +
+        '<p class="ldr__more"><a class="ulink" href="wyszukiwarka.html">' + L('Przejdź do wyszukiwarki produktów', 'Go to the product finder') + '</a></p>' +
+        '<p class="rfq__help">' + L('Nie wiesz, co wybrać? <a href="tel:+48513191502">Zadzwoń: 513 191 502</a>', 'Not sure what to choose? <a href="tel:+48513191502">Call +48 513 191 502</a>') + '</p></aside>';
       document.body.appendChild(dr);
       $$('[data-x]', dr).forEach(function (x) { x.addEventListener('click', close); });
       $('.ldr__send', dr).addEventListener('click', send);
@@ -372,7 +376,7 @@
         if (i.tagName === 'SELECT') v.u = +i.value; else v.q = Math.max(1, parseInt(i.value, 10) || 1);
         write(m); changed();
         var t = i.parentNode.querySelector('.tot'), k = v.p[v.u][1];
-        t.textContent = k > 1 ? '= ' + fmt(v.q * k) + ' szt.' : '';
+        t.textContent = k > 1 ? '= ' + fmt(v.q * k) + ' ' + UN('szt.') : '';
       }
       ul.addEventListener('input', upd); ul.addEventListener('change', upd);
       ul.addEventListener('click', function (e) {
@@ -457,29 +461,29 @@
     var msg = [];
     $$('[required]', form).forEach(function (i) {
       var val = i.value.trim(), v = i.type === 'checkbox' ? i.checked : val !== '', why = '';
-      if (v && i.type === 'email' && !/^[^\s@]+@[^\s@.]+(\.[^\s@.]+)*\.[a-z]{2,}$/i.test(val)) { v = false; why = 'Podaj poprawny adres e-mail, np. jan@firma.pl.'; }
-      if (v && i.type === 'tel' && val.replace(/\D/g, '').length < 9) { v = false; why = 'Podaj numer telefonu (co najmniej 9 cyfr).'; }
-      if (!v && !why) why = i.type === 'checkbox' ? 'Zaznacz zgodę na przetwarzanie danych.' : '';
+      if (v && i.type === 'email' && !/^[^\s@]+@[^\s@.]+(\.[^\s@.]+)*\.[a-z]{2,}$/i.test(val)) { v = false; why = L('Podaj poprawny adres e-mail, np. jan@firma.pl.', 'Enter a valid e-mail address, e.g. john@company.com.'); }
+      if (v && i.type === 'tel' && val.replace(/\D/g, '').length < 9) { v = false; why = L('Podaj numer telefonu (co najmniej 9 cyfr).', 'Enter a phone number (at least 9 digits).'); }
+      if (!v && !why) why = i.type === 'checkbox' ? L('Zaznacz zgodę na przetwarzanie danych.', 'Please tick the consent to data processing.') : '';
       var f = i.closest('.f'); if (f) f.classList.toggle('is-bad', !v);
       i.setAttribute('aria-invalid', !v);
       if (!v) { if (!bad) bad = i; if (why) msg.push(why); }
     });
     if (bad) {
       var empty = $$('[required]', form).some(function (i) { return i.type !== 'checkbox' && !i.value.trim(); });
-      if (empty) msg.unshift('Uzupełnij pola oznaczone gwiazdką.');
+      if (empty) msg.unshift(L('Uzupełnij pola oznaczone gwiazdką.', 'Please fill in the fields marked with an asterisk.'));
       st.classList.add('is-err'); st.textContent = msg.join(' '); bad.focus(); return;
     }
     var btn = form.querySelector('button[type=submit]');
-    btn.disabled = true; st.textContent = 'Wysyłanie…';
+    btn.disabled = true; st.textContent = L('Wysyłanie…', 'Sending…');
     fetch('/', {
       method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString()
     }).then(function (r) { if (!r.ok) throw new Error('http ' + r.status); })
       .then(function () {
         form.reset(); st.classList.add('is-ok');
-        st.textContent = 'Dziękujemy. Zapytanie dotarło, odpowiemy w ciągu jednego dnia roboczego.';
+        st.textContent = L('Dziękujemy. Zapytanie dotarło, odpowiemy w ciągu jednego dnia roboczego.', 'Thank you. Your enquiry has been received; we will reply within one working day.');
         try { localStorage.removeItem('armatex-rfq'); } catch (err) {}
       })
-      .catch(function () { st.classList.add('is-err'); st.textContent = 'Nie udało się wysłać formularza. Napisz na biuro@armatex.pl lub zadzwoń: 513 191 502.'; })
+      .catch(function () { st.classList.add('is-err'); st.textContent = L('Nie udało się wysłać formularza. Napisz na biuro@armatex.pl lub zadzwoń: 513 191 502.', 'The form could not be sent. Please e-mail biuro@armatex.pl or call +48 513 191 502.'); })
       .then(function () { btn.disabled = false; });
   });
 })();
