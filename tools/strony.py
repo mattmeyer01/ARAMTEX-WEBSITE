@@ -51,7 +51,7 @@ SYS=[
    ('Jakie są parametry pracy?','Tectite Classic z rurą miedzianą: do 16 bar, od −24 do 95 °C. Limity dla innych rur i linii podaje tabela temperatur i ciśnień w katalogu producenta.'),
    ('Jaką gwarancję daje producent?','25 lat na Tectite Sprint, Classic, Pro i 316 z rurami innych producentów oraz 30 lat z rurami Yorkshire i rurami rekomendowanymi, jeśli montaż jest zgodny z instrukcją.'),
    ('Jakie zawory są w systemie?','Zawór kulowy PT550 (15–54 mm), filtr skośny PT913 (15–54 mm), zawór TX300 (15 i 22 mm), zawór mieszający TX405 (15 i 22 mm) i zawór odcinający TX480 (15 mm).')]),
- dict(slug='zlaczki-skrecane-kuterlite',name='Złączki skręcane',h1='Złączki skręcane Kuterlite',seotitle='Złączki skręcane Kuterlite dla hurtowni | Armatex',metadesc='Złączki skręcane (zaciskowe) Kuterlite: K600 i K900 Pro do miedzi 6–54 mm, K700 do rur PE 20–32 mm oraz zawory. Około 470 indeksów dla hurtowni.',tab='Skręcane',brand='Pegler Yorkshire',cnt='ok. 470',cntw='ok. 470 indeksów',sizes='6–63 mm',
+ dict(slug='zlaczki-skrecane-kuterlite',name='Złączki skręcane',h1='Złączki skręcane Kuterlite',seotitle='Złączki skręcane Kuterlite dla hurtowni | Armatex',metadesc='Złączki skręcane (zaciskowe) Kuterlite: K600 i K900 Pro do miedzi 6–54 mm, K700 do rur PE 20–32 mm oraz zawory. Około 470 indeksów dla hurtowni.',tab='Skręcane',brand='Pegler Yorkshire',cnt='ok. 470',cntw='ok. 470 indeksów',sizes='6–54 mm',
   title='Złączki skręcane Kuterlite',
   short='Kuterlite K600 i K900 Pro do miedzi, K700 do rur PE oraz zawory z końcówkami zaciskowymi.',
   desc='Mosiężne złączki zaciskowe z pierścieniem do rur miedzianych i PE. Montaż kluczem, bez lutowania i zaciskarki. Armatex jest oficjalnym przedstawicielem Pegler Yorkshire w Polsce.',
@@ -206,6 +206,7 @@ def head(title,desc,extra='',path=''):
 </head>
 '''
 PDF='../pliki/katalog-besco-2026.pdf'
+PDF_TECTITE='../pliki/katalog-tectite.pdf'
 ICO_SEARCH='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>'
 ICO_PDF='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/><path d="M12 11v6M9.5 14.5 12 17l2.5-2.5"/></svg>'
 def nav(cur):
@@ -512,6 +513,7 @@ for s in SYS:
     others=[o for o in SYS if o is not s]
     figs=''.join(f'<span>{img(p,a)}</span>' for p,a in s['pics'])
     find=(f'<a class="ghost" href="katalog.html?seria={s["seria"]}#katalog">Szukaj indeksów</a><a class="ghost ghost--pdf" href="{PDF}" target="_blank" rel="noopener">Katalog PDF</a>') if s['seria'] else ''
+    if s['slug']=='zlaczki-na-wcisk-tectite': find=f'<a class="ghost ghost--pdf" href="{PDF_TECTITE}" target="_blank" rel="noopener">Katalog PDF</a>'
     body=f'''
   <section class="phead">
     <div class="wrap">
@@ -1277,7 +1279,7 @@ page('poradniki.html','Poradniki o złączkach dla hurtowni | Armatex','Poradnik
 DOCS=[
  ('besco','katalog','Katalog Besco Fittings &amp; Connectors 2026','Pełny katalog: press V i M, gaz, stal, lutowane, ANSI, G-size, zawory. Numery artykułów i opakowania.','PDF · 2,7 MB · 65 stron',f'<a class="ghost ghost--pdf" href="{PDF}" target="_blank" rel="noopener">Pobierz</a>'),
  ('besco','katalog','Wyszukiwarka indeksów Besco','1 936 pozycji z katalogu 2026 z listą do wyceny. Szybsza niż przeglądanie PDF.','online','<a class="ghost" href="katalog.html">Otwórz</a>'),
- ('pegler','katalog','Katalog Tectite 2026','Złączki i zawory na wcisk Pegler Yorkshire: Classic, Pro, 316, Carbon, akcesoria Tec-Tools.','PDF · wyślemy e-mailem',f'<a class="ghost" href="{ask("Prosimy o przesłanie katalogu Tectite 2026.")}">Poproś</a>'),
+ ('pegler','katalog','Katalog Tectite','Tectite Classic push-fit: złączki 16 i 20 mm do rur PEX, wymiary i kody, tabela temperatur i ciśnień, instrukcja montażu.','PDF · 2,3 MB · 7 stron',f'<a class="ghost ghost--pdf" href="{PDF_TECTITE}" target="_blank" rel="noopener">Pobierz</a>'),
  ('besco pegler','atest','Atesty higieniczne','Atesty PZH do złączek stosowanych w instalacjach wody pitnej.','dla hurtowni po weryfikacji',f'<a class="ghost" href="{ask("Jesteśmy hurtownią i prosimy o dostęp do atestów higienicznych.")}">Poproś o dostęp</a>'),
  ('besco pegler','dop','Deklaracje właściwości użytkowych','Deklaracje DoP do wyrobów budowlanych, do przekazania klientom i inwestorom.','dla hurtowni po weryfikacji',f'<a class="ghost" href="{ask("Jesteśmy hurtownią i prosimy o dostęp do deklaracji właściwości użytkowych.")}">Poproś o dostęp</a>'),
  ('besco pegler','aprobata','Certyfikaty i aprobaty producentów','DVGW, KIWA, WRAS, RISE, INiG, zależnie od linii produktów.','dla hurtowni po weryfikacji',f'<a class="ghost" href="{ask("Jesteśmy hurtownią i prosimy o dostęp do certyfikatów i aprobat.")}">Poproś o dostęp</a>'),

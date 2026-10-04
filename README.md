@@ -19,6 +19,7 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
 - `data/`: `besco-2026.json` (dane wyszukiwarki), `pegler.json` (Tectite, Kuterlite).
 - `img/`: logo, hero, zdjęcia produktów (`besco/`, `pegler/`, `oferta/`, `linie/`), obrazek udostępniania (`og/`).
 - `pliki/katalog-besco-2026.pdf`: katalog Besco 2026 (link w menu „Oferta → Katalogi”).
+- `pliki/katalog-tectite.pdf`: katalog Tectite Classic (złączki 16 i 20 mm do rur PEX), link na stronie systemu Tectite i w „Do pobrania”.
 - `assets/`: fonty (Outfit, IBM Plex Mono) i favicony.
 - `sitemap.xml`, `robots.txt`.
 - `tools/`: generator stron i skrypty danych (niżej).
