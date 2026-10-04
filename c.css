@@ -818,3 +818,4 @@ a.chip:hover { border-color: var(--ink); }
 .fd__flt { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .6rem; margin-top: .9rem; font-size: .88rem; color: var(--ink); }
 .fd__flt .label { color: var(--ink-40); }
 .fd__flt button { font: 500 .75rem var(--mono); letter-spacing: .04em; color: var(--red-2); background: none; border: 0; padding: .2rem 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.gl { scroll-margin-top: 100px; }
