@@ -317,3 +317,7 @@
       .then(function () { btn.disabled = false; });
   });
 })();
+// Wykresy: dymek z wartością przy słupku (hover i fokus klawiatury)
+(function(){var tip=document.querySelector('.ctip');if(!tip)return;var b=tip.querySelector('b'),s=tip.querySelector('span');
+function show(e,el){var p=el.dataset.tip.split('|');b.textContent=p[2];s.textContent=[p[0],p[1]].filter(Boolean).join(' · ');tip.hidden=false;var r=el.getBoundingClientRect();var x=e&&e.clientX?e.clientX:r.right,y=e&&e.clientY?e.clientY:r.top;tip.style.left=Math.min(x+12,innerWidth-tip.offsetWidth-8)+'px';tip.style.top=(y-tip.offsetHeight-10)+'px';}
+document.querySelectorAll('.cb[data-tip]').forEach(function(el){el.addEventListener('pointermove',function(e){show(e,el)});el.addEventListener('focus',function(){show(null,el)});el.addEventListener('pointerleave',function(){tip.hidden=true});el.addEventListener('blur',function(){tip.hidden=true});});})();

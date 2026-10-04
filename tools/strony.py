@@ -511,6 +511,48 @@ def lines_table(s):
         bc='pegler' if b.startswith('Pegler') else 'besco'
         rows.append(f'              <tr><th scope="row"><span class="sy-row"><span class="sy-thumb">{thumb(ph,nm)}</span><span><b>{nm}</b><span class="label sy-br sy-br--{bc}">{b}</span></span></span></th><td class="num" data-l="Średnice">{d}</td><td data-l="Zastosowanie">{z}</td><td data-l="Parametry"><span><span class="sy-par">{par}</span>{appr}</span></td><td class="num sy-cnt" data-l="Indeksy">{c}</td><td class="sy-act">{act}</td></tr>')
     return '\n'.join(rows)
+# ---- Wykresy Tectite (strona złączek na wcisk): wartości odczytane z wykresów Pegler Yorkshire (skan)
+TT_P=[(10,110,None),(12,59,None),(15,90,90),(18,65,65),(22,85,85),(28,92,54),(35,155,39),(42,88,45),(54,85,47)]
+TT_T=[('Na wcisk (Tectite)',32,1),('Press',55,0),('Zaciskowe (skręcane)',65,0),('Lutowane',96,0),('Gwintowane',150,0)]
+MAX1=170; MAX2=180
+def pct(v,m): return f'{v/m*100:.2f}%'
+rows1=[]
+for d,t,p in TT_P:
+    bars=f'<span class="cb cb--t" style="width:{pct(t,MAX1)}" tabindex="0" data-tip="{d} mm|Tectite Classic, miedź|{t} bar"></span>'
+    bars+=(f'<span class="cb cb--p" style="width:{pct(p,MAX1)}" tabindex="0" data-tip="{d} mm|Złączki press|{p} bar"></span>' if p else '<span class="cb cb--none"></span>')
+    if d==35: bars=bars.replace('data-tip="35 mm|Tectite Classic, miedź|155 bar"></span>','data-tip="35 mm|Tectite Classic, miedź|155 bar"><b class="cin">155 bar</b></span>')
+    rows1.append(f'<div class="cr"><span class="cl">{d} mm</span><span class="ct">{bars}</span></div>')
+ticks1=''.join(f'<span class="cg" style="left:{pct(v,MAX1)}"><i>{v}</i></span>' for v in (0,40,80,120,160))
+tab1=''.join(f'<tr><th scope="row">{d} mm</th><td>{t}</td><td>{p if p else "–"}</td></tr>' for d,t,p in TT_P)
+rows2=''.join(f'<div class="cr"><span class="cl">{n}</span><span class="ct"><span class="cb {"cb--t" if h else "cb--m"}" style="width:{pct(v,MAX2)}" tabindex="0" data-tip="{n}||{v} s"></span><b class="cv">{v} s</b></span></div>' for n,v,h in TT_T)
+ticks2=''.join(f'<span class="cg" style="left:{pct(v,MAX2)}"><i>{v}</i></span>' for v in (0,30,60,90,120,150,180))
+tab2=''.join(f'<tr><th scope="row">{n}</th><td>{v}</td></tr>' for n,v,h in TT_T)
+CHARTS_TECTITE=f'''<div class="charts">
+  <figure class="chart">
+    <figcaption><span class="label">Wytrzymałość ciśnieniowa</span><h3>Tectite wytrzymuje kilkakrotnie więcej niż standardowe 20 bar.</h3><p>Wytrzymałość ciśnieniowa połączeń w barach, według średnicy rury, w badaniach Pegler Yorkshire.</p></figcaption>
+    <div class="ck"><span><i class="ck-t"></i>Tectite Classic, rura miedziana</span><span><i class="ck-p"></i>Złączki press</span><span><i class="ck-s"></i>Standard: 20 bar</span></div>
+    <div class="cp"><div class="cgrid">{ticks1}<span class="cstd" style="left:{pct(20,MAX1)}"></span></div>{''.join(rows1)}</div>
+    <details class="ctab"><summary>Pokaż dane w tabeli</summary><table><thead><tr><th scope="col">Średnica</th><th scope="col">Tectite, bar</th><th scope="col">Press, bar</th></tr></thead><tbody>{tab1}</tbody></table></details>
+    <p class="csrc">Źródło: Pegler Yorkshire. Wartości odczytane z wykresu producenta, z dokładnością do kilku barów. Dla 10 i 12 mm producent nie podaje danych press.</p>
+  </figure>
+  <figure class="chart">
+    <figcaption><span class="label">Czas montażu</span><h3>Jedno połączenie na wcisk to ok. 30 sekund.</h3><p>Średni czas wykonania jednego połączenia w sekundach. Tectite jest prawie 5 razy szybszy niż połączenie gwintowane.</p></figcaption>
+    <div class="cp cp--2"><div class="cgrid">{ticks2}</div>{rows2}</div>
+    <details class="ctab"><summary>Pokaż dane w tabeli</summary><table><thead><tr><th scope="col">Metoda</th><th scope="col">Sekundy</th></tr></thead><tbody>{tab2}</tbody></table></details>
+    <p class="csrc">Źródło: Pegler Yorkshire. Wartości odczytane z wykresu producenta.</p>
+  </figure>
+  <div class="ctip" role="status" hidden><b></b><span></span></div>
+</div>'''
+
+TT_SECTION=f'''
+  <section class="section section--tight section--stone" id="dlaczego-tectite">
+    <div class="wrap">
+      <div class="shead"><div><span class="label kicker">Dane producenta</span><h2 class="sy-h" style="margin:0">Dlaczego Tectite.</h2></div></div>
+      {CHARTS_TECTITE}
+    </div>
+  </section>
+'''
+
 for s in SYS:
     others=[o for o in SYS if o is not s]
     figs=''.join(f'<span>{img(p,a)}</span>' for p,a in s['pics'])
@@ -566,7 +608,7 @@ for s in SYS:
     </div>
   </section>
 
-{prod_section(s)}
+{TT_SECTION if s['slug']=='zlaczki-na-wcisk-tectite' else ''}{prod_section(s)}
   <section class="section section--tight section--stone" id="faq">
     <div class="wrap faq">
       <div class="faq__intro">
