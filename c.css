@@ -12,6 +12,9 @@
 @font-face { font-family: "Outfit"; src: url("assets/fonts/outfit-latin-ext-wght-normal.woff2") format("woff2-variations"); font-weight: 100 900; font-display: swap; unicode-range: U+0100-024F, U+1E00-1EFF; }
 @font-face { font-family: "Plex Mono"; src: url("assets/fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; unicode-range: U+0000-00FF, U+2013-2014, U+2026, U+2032-2033, U+2212; }
 @font-face { font-family: "Plex Mono"; src: url("assets/fonts/ibm-plex-mono-latin-ext-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; unicode-range: U+0100-024F, U+1E00-1EFF; }
+/* cyrylica (wersja /uk/): Outfit nie ma cyrylicy, więc te znaki biorą Onest (OFL); Plex Mono ma własny zestaw cyrylicy */
+@font-face { font-family: "Outfit"; src: url("assets/fonts/onest-cyrillic-wght-normal.woff2") format("woff2-variations"); font-weight: 100 900; font-display: swap; unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
+@font-face { font-family: "Plex Mono"; src: url("assets/fonts/ibm-plex-mono-cyrillic-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116; }
 
 :root {
   --white: #fff; --stone: #f3f1ec; --stone-2: #e9e6df; --line: #e0ddd5;
@@ -875,9 +878,19 @@ body.has-lbar .foot__bar { padding-bottom: calc(5.5rem + env(safe-area-inset-bot
 @media (prefers-reduced-motion: reduce) { .ldr__bg, .ldr .ldr__p { transition: none; } }
 
 /* przełącznik języka PL / EN */
-.nav__lang { flex: none; display: inline-grid; place-items: center; min-width: 40px; height: 32px; padding: 0 .5rem; border: 1px solid currentColor; border-radius: 99px; font: 500 .72rem var(--mono); letter-spacing: .08em; text-decoration: none; opacity: .8; transition: opacity .2s; }
-.nav__lang:hover { opacity: 1; }
-@media (max-width: 720px) { .nav__lang { display: none; } }   /* telefon: język w menu mobilnym */
+.nav__langs { flex: none; display: inline-flex; align-items: center; height: 32px; border: 1px solid currentColor; border-radius: 99px; }
+.nav__langs a { display: grid; place-items: center; height: 100%; padding: 0 .55rem; font: 500 .72rem var(--mono); letter-spacing: .08em; text-decoration: none; opacity: .75; transition: opacity .2s; }
+.nav__langs a:hover { opacity: 1; }
+.nav__langs a + a { border-left: 1px solid currentColor; }
+@media (max-width: 720px) { .nav__langs { display: none; } }   /* telefon: język w menu mobilnym */
 .nav .mag { white-space: nowrap; }
 @media (max-width: 1260px) { .nav .wrap { gap: 1.25rem; } }
 @media (max-width: 1200px) { .nav__links { gap: 1rem; } }
+.nav__tel { white-space: nowrap; }
+/* menu z przełącznikiem języków: ciaśniej na średnich ekranach, telefon w menu od 1367 px (UA od 1601 px) */
+@media (max-width: 1536px) { .nav .wrap { gap: 1.25rem; } .nav__links { gap: 1.3rem; } }
+@media (max-width: 1366px) { .nav__tel { display: none; } }
+@media (max-width: 1600px) { html[lang="uk"] .nav__tel { display: none; } }
+@media (max-width: 1240px) { html[lang="uk"] .nav__links a, html[lang="uk"] .nav .dd button { font-size: .88rem; } html[lang="uk"] .nav__links { gap: .9rem; } }
+@media (max-width: 1200px) { .nav .wrap { gap: 1rem; } .nav__links { gap: .9rem; } .nav__links a, .nav .dd button { font-size: .88rem; } }
+@media (max-width: 1140px) { html[lang="uk"] .nav__links { gap: .7rem; } html[lang="uk"] .nav__links a, html[lang="uk"] .nav .dd button { font-size: .8rem; } html[lang="uk"] .nav .wrap { gap: .8rem; } }

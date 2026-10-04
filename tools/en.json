@@ -301,6 +301,18 @@
 "Śrubunek z GZ (uszczelnienie płaskie)": "Male union (flat seal)",
 "−24…95 °C z miedzią": "−24…95 °C with copper"
 },
+"quals": {
+"lutowany G-size": "G-size solder",
+"lutowany calowy ANSI B16.22": "imperial solder ANSI B16.22",
+"miedziany lutowany EN 1254": "copper solder EN 1254",
+"miedziany press, profil M": "copper press, M profile",
+"miedziany press, profil V": "copper press, V profile",
+"press do gazu, profil M": "gas press, M profile",
+"press do gazu, profil V": "gas press, V profile",
+"press ze stali nierdzewnej 304": "stainless steel 304 press",
+"press ze stali nierdzewnej 316L": "stainless steel 316L press",
+"press ze stali węglowej": "carbon steel press"
+},
 "t": {
 "1 583 indeksy · 12–168,3 mm": "1 583 items · 12–168.3 mm",
 "1. Administrator danych": "1. Data controller",

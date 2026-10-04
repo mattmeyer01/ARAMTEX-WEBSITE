@@ -132,14 +132,14 @@ for g in PD['groups']:
 _slugs=[G['slug'] for G in GROUPS]; assert len(_slugs)==len(set(_slugs)), 'duplikat slug'
 
 # Dane wyszukiwarki dla wszystkich marek: data/katalog.json
-# groups: [linia, kod, nazwa, nazwa w katalogu, zdjęcie, strona grupy, nazwa po angielsku]; rows: [grupa, nr art., rozmiar, opakowania [[jedn., szt.], ...]]
+# groups: [linia, kod, nazwa, nazwa w katalogu, zdjęcie, strona grupy, nazwa EN, nazwa UK]; rows: [grupa, nr art., rozmiar, opakowania [[jedn., szt.], ...]]
 def _katalog_json():
-    NE=json.load(open(R+'tools/en.json',encoding='utf-8'))['names']   # nazwy po angielsku dla /en/wyszukiwarka.html
-    sers=[dict(id=x['id'],short=x['short'],short_en=NE.get(x['short'],x['short']),brand='Besco') for x in BD['series']]+[dict(id=k,short=v['name'],short_en=NE.get(v['name'],v['name']),brand=('Tectite' if k.startswith('tectite') else 'Kuterlite')+' Pegler Yorkshire') for k,v in PSER.items()]
+    NE,NU=(json.load(open(R+f'tools/{c}.json',encoding='utf-8'))['names'] for c in ('en','uk'))   # nazwy dla /en/ i /uk/wyszukiwarka.html
+    sers=[dict(id=x['id'],short=x['short'],short_en=NE.get(x['short'],x['short']),short_uk=NU.get(x['short'],x['short']),brand='Besco') for x in BD['series']]+[dict(id=k,short=v['name'],short_en=NE.get(v['name'],v['name']),short_uk=NU.get(v['name'],v['name']),brand=('Tectite' if k.startswith('tectite') else 'Kuterlite')+' Pegler Yorkshire') for k,v in PSER.items()]
     si={x['id']:i for i,x in enumerate(sers)}
     gs,rs=[],[]
     for G in GROUPS:
-        gi=len(gs); gs.append([si[G['sid']],G['code'],G['name'],G['en'] or '',G['img_src'].replace('../',''),G['slug']+'.html',NE.get(G['name'],G['name'])])
+        gi=len(gs); gs.append([si[G['sid']],G['code'],G['name'],G['en'] or '',G['img_src'].replace('../',''),G['slug']+'.html',NE.get(G['name'],G['name']),NU.get(G['name'],G['name'])])
         for r in G['rows']:
             if G['kind']=='besco': rs.append([gi,r[1],r[2],[['karton',r[4]],['worek',r[3]]]])
             elif G['kind']=='kuterlite': rs.append([gi,r[1],r[0],[['opak.',x] for x in sorted({r[3] if len(r)>3 else None,r[2] if len(r)>2 else None}-{0,None,''},reverse=True)]])
@@ -209,6 +209,7 @@ def head(title,desc,extra='',path=''):
   <link rel="canonical" href="{SITE+path}">
   <link rel="alternate" hreflang="pl" href="{SITE+path}">
   <link rel="alternate" hreflang="en" href="{SITE}en/{path}">
+  <link rel="alternate" hreflang="uk" href="{SITE}uk/{path}">
   <link rel="alternate" hreflang="x-default" href="{SITE}en/{path}">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pl_PL">
@@ -370,14 +371,14 @@ def unglue(html):
     return ''.join(x if i%2 else _unglue_part(x) for i,x in enumerate(parts))
 
 def page(name,title,desc,cur,body,extra='',pm=None):
-    pm=dict(pm or {})
-    for x,f in ((title,short_title),(desc,short_desc)):
-        if x in pm: pm[f(x)]=f(pm[x])
+    pm={c:dict(v) for c,v in (pm or {}).items()}            # mapa zdań per język: {'en': {pl: en}, 'uk': {...}}
+    for v in pm.values():
+        for x,f in ((title,short_title),(desc,short_desc)):
+            if x in v: v[f(x)]=f(v[x])
     title,desc=short_title(title),short_desc(desc)
     html=head(title,desc,extra,'' if name=='index.html' else name)+'<body data-base="../">\n\n'+nav(cur)+'\n<main id="top">\n'+body+'\n</main>\n\n'+FOOT+'</body>\n</html>\n'
-    page_en(name,html,pm)
-    html=html.replace('<!--LANG-->',f'<a class="nav__lang" href="en/{name}" hreflang="en" lang="en" translate="no" aria-label="English version">EN</a>')
-    html=html.replace('<!--LANGM-->',f'<span class="label">Język</span><a href="en/{name}" hreflang="en" lang="en" translate="no">English<small>EN</small></a>')
+    for c in LANGS_ON: page_lang(name,html,(pm or {}).get(c,{}),c)
+    html=lang_links(html,name,'pl')
     # strona w katalogu głównym repo: ścieżki względne bez prefiksów szkicu
     for a,b in (('../../assets/','assets/'),('../img/','img/'),('../pliki/','pliki/'),('../data/','data/'),('<body data-base="../">','<body>')):
         html=html.replace(a,b)
@@ -386,27 +387,37 @@ def page(name,title,desc,cur,body,extra='',pm=None):
     html=html.replace('href="c.css"',f'href="c.css?v={ASSET_V["c.css"]}"').replace('src="c.js"',f'src="c.js?v={ASSET_V["c.js"]}"')
     open(OUT+name,'w',encoding='utf-8').write(html)
 
-# ---------------- wersja angielska: armatex.pl/en/<ta sama nazwa pliku>
+# ---------------- wersje językowe: armatex.pl/en/, armatex.pl/uk/ (te same nazwy plików)
 import sys as _sys; _sys.path.insert(0,os.path.dirname(os.path.abspath(__file__)))
-import en as EN
-os.makedirs(OUT+'en',exist_ok=True)
-def tn(x): return EN.N.get(x,x)                                  # nazwa produktu / linii po angielsku
-def page_en(name,html,pm):
+import i18n as I18N
+LANGS_ON=['en','uk']
+LANG_META={'pl':('PL','Polski','pl_PL'),'en':('EN','English','en_GB'),'uk':('UA','Українська','uk_UA')}   # skrót w menu, nazwa, og:locale
+for _c in LANGS_ON: os.makedirs(OUT+_c,exist_ok=True)
+def tn(x,c='en'): return I18N.lang(c).N.get(x,x)                 # nazwa produktu / linii w języku c
+def lang_links(html,name,cur):
+    """Przełącznik języków w menu: odnośniki do tej samej strony w pozostałych językach."""
+    pre=lambda c: ('' if cur=='pl' else '../')+('' if c=='pl' else c+'/')
+    oth=[c for c in ['pl']+LANGS_ON if c!=cur]
+    nav=''.join(f'<a href="{pre(c)}{name}" hreflang="{c}" lang="{c}">{LANG_META[c][0]}</a>' for c in oth)
+    mob=''.join(f'<a href="{pre(c)}{name}" hreflang="{c}" lang="{c}" translate="no">{LANG_META[c][1]}<small>{LANG_META[c][0]}</small></a>' for c in oth)
+    html=html.replace('<!--LANG-->',f'<span class="nav__langs" translate="no">{nav}</span>')
+    return html.replace('<!--LANGM-->','<span class="label">Język</span>'+mob)
+def page_lang(name,html,pm,code):
     path='' if name=='index.html' else name
-    html=html.replace('<!--LANG-->',f'<a class="nav__lang" href="../{name}" hreflang="pl" lang="pl" translate="no" aria-label="Wersja polska">PL</a>')
-    html=html.replace('<!--LANGM-->',f'<span class="label">Język</span><a href="../{name}" hreflang="pl" lang="pl" translate="no">Polski<small>PL</small></a>')
+    html=lang_links(html,name,code)
     html=live_form(html)
-    html=EN.translate(html,name,pm)
-    html=html.replace('<html lang="pl">','<html lang="en">').replace('content="pl_PL"','content="en_GB"')
-    html=re.sub(r'(<link rel="canonical" href=")[^"]*"',lambda m:m[1]+SITE+'en/'+path+'"',html)
-    html=re.sub(r'(<meta property="og:url" content=")[^"]*"',lambda m:m[1]+SITE+'en/'+path+'"',html)
-    html=re.sub(r'(": ")'+re.escape(SITE)+r'(?!en/|img/|pliki/|assets/)',lambda m:m[1]+SITE+'en/',html)   # adresy w JSON-LD
-    html=html.replace('value="Zapytanie o wycenę ze strony armatex.pl"','value="Zapytanie o wycenę ze strony armatex.pl (wersja angielska)"')
+    html=I18N.translate(html,name,pm,code)
+    html=html.replace('<html lang="pl">',f'<html lang="{code}">').replace('content="pl_PL"',f'content="{LANG_META[code][2]}"')
+    html=re.sub(r'(<link rel="canonical" href=")[^"]*"',lambda m:m[1]+SITE+code+'/'+path+'"',html)
+    html=re.sub(r'(<meta property="og:url" content=")[^"]*"',lambda m:m[1]+SITE+code+'/'+path+'"',html)
+    html=re.sub(r'(": ")'+re.escape(SITE)+r'(?!en/|uk/|img/|pliki/|assets/)',lambda m:m[1]+SITE+code+'/',html)   # adresy w JSON-LD
+    html=html.replace('value="Zapytanie o wycenę ze strony armatex.pl"',f'value="Zapytanie o wycenę ze strony armatex.pl (wersja {dict(en="angielska",uk="ukraińska")[code]})"')
     for a,b in (('../../assets/','../assets/'),('href="site.webmanifest"','href="../site.webmanifest"')):
         html=html.replace(a,b)
+    if code=='uk': html=html.replace('outfit-latin-ext-wght-normal.woff2','onest-cyrillic-wght-normal.woff2')   # preload: cyrylica zamiast latin-ext
     html=unglue(html)
     html=html.replace('href="c.css"',f'href="../c.css?v={ASSET_V["c.css"]}"').replace('src="c.js"',f'src="../c.js?v={ASSET_V["c.js"]}"')
-    open(OUT+'en/'+name,'w',encoding='utf-8').write(html)
+    open(OUT+code+'/'+name,'w',encoding='utf-8').write(html)
 
 def card(s,cls='syc in'):
     p0,a0=s['pics'][0]
@@ -844,10 +855,21 @@ page('kontakt.html','Kontakt – zapytanie ofertowe dla hurtowni | Armatex','Kon
 SYSD={x['slug']:x for x in SYS}
 def fmt_int(n): return f'{n:,}'.replace(',',' ')
 def rozm_w(n): return 'rozmiar' if n==1 else ('rozmiary' if 2<=n%10<=4 and not 12<=n%100<=14 else 'rozmiarów')
-QUAL_EN={'miedziany press, profil V':'copper press, V profile','miedziany press, profil M':'copper press, M profile',
- 'press do gazu, profil V':'gas press, V profile','press do gazu, profil M':'gas press, M profile','press ze stali węglowej':'carbon steel press',
- 'miedziany lutowany EN 1254':'copper solder EN 1254','lutowany calowy ANSI B16.22':'imperial solder ANSI B16.22','lutowany G-size':'G-size solder',
- 'press ze stali nierdzewnej 304':'stainless steel 304 press','press ze stali nierdzewnej 316L':'stainless steel 316L press'}
+# zdania stron grup w innych językach (reszta strony idzie przez słowniki tools/<język>.json)
+GT={'en':dict(lead_b='{ne} from the {sne} line: {n} {szw} from {first} to {last}{unit}. Application: {media}.',std=' Standard {std}.',
+              lead_p='{ne} from the {sne} line: {n} {szw} ({rng}). Application: {media}. {note}',topic='Please quote: {ne} {brand} {code}.',
+              cap='{ne} {brand} {code}: sizes and article numbers',cta='Request a quote: {ne} {code}.',
+              desc_b='{Fe} Besco {code}: {n} {szw} ({rng}{unit}), {bar}, {temp}. Article numbers and bulk packaging for wholesalers.',
+              desc_b2='{ne} Besco {code} ({short}): {n} {szw} ({rng}{unit}), {bar}. Article numbers and bulk packaging for wholesalers.',
+              desc_p='{ne} {brand} {code} ({sne}): {n} {szw} ({rng}). Article numbers{bulk} for wholesalers.',bulk=' and bulk packaging',
+              quick=' Quote within 1 working day.',item='{bname} {fe} {size}, art. no. {code}',mm=' mm',szw=lambda n:'size' if n==1 else 'sizes'),
+    'uk':dict(lead_b='{ne} з лінії {sne}: {n} {szw} від {first} до {last}{unit}. Застосування: {media}.',std=' Стандарт {std}.',
+              lead_p='{ne} з лінії {sne}: {n} {szw} ({rng}). Застосування: {media}. {note}',topic='Прошу підготувати пропозицію: {ne} {brand} {code}.',
+              cap='{ne} {brand} {code}: розміри та номери артикулів',cta='Запит ціни: {ne} {code}.',
+              desc_b='{Fe} Besco {code}: {n} {szw} ({rng}{unit}), {bar}, {temp}. Номери артикулів і групова упаковка для гуртівень.',
+              desc_b2='{ne} Besco {code} ({short}): {n} {szw} ({rng}{unit}), {bar}. Номери артикулів і групова упаковка для гуртівень.',
+              desc_p='{ne} {brand} {code} ({sne}): {n} {szw} ({rng}). Номери артикулів{bulk} для гуртівень.',bulk=' і групова упаковка',
+              quick=' Ціна протягом 1 робочого дня.',item='{bname} {fe} {size}, арт. {code}',mm=' мм',szw=lambda n:I18N.pl_plural(n,'розмір','розміри','розмірів'))}
 for G in GROUPS:
     ser=G['ser']; m=G['meta']; sysp=SYSD[m['sys']]; rows=G['rows']; kind=G['kind']; n=len(rows)
     sizes=[r[0] if kind!='besco' else r[2] for r in rows]
@@ -952,28 +974,33 @@ for G in GROUPS:
     lst=ld({"@context":"https://schema.org","@type":"ItemList","name":f'{G["full"]} {G["code"]}',
       "itemListElement":[{"@type":"ListItem","position":i,"name":f'{bname} {G["full"]} {size_of(r)}, nr art. {code_of(r)}'} for i,r in enumerate(rows,1)]})
     crumbs=ld_crumbs([(sysp['name'],sysp['slug']+'.html'),(f'{G["name"]} {G["code"]}',G['slug']+'.html')])
-    # wersja EN: zdania składane z nazw (reszta strony idzie przez słownik tools/en.json)
-    ne,sne,szw=tn(G['name']),tn(ser['name']),('size' if n==1 else 'sizes')
-    fe=f'{ne}, {QUAL_EN[m["qual"]]}' if kind=='besco' and m['qual'] else ne
-    pm={lead.strip():(f'{ne} from the {sne} line: {n} {szw} from {first} to {last}{unit}. Application: {tn(ser["media"])}.'+(f' Standard {ser["std"]}.' if ser['std'] else '') if kind=='besco'
-                      else f'{ne} from the {sne} line: {n} {szw} ({rng}). Application: {tn(ser["media"])}. {tn(note) if note else ""}'.strip()),
-        topic:f'Please quote: {ne} {G["brand"]} {G["code"]}.',
-        f'{G["name"]} {G["brand"]} {G["code"]}: rozmiary i numery artykułów':f'{ne} {G["brand"]} {G["code"]}: sizes and article numbers',
-        f'Zapytaj o wycenę: {G["name"]} {G["code"]}.':f'Request a quote: {ne} {G["code"]}.',
-        kicker:kicker.split(' · ')[0]+' · '+sne, f'{G["full"]} {G["code"]}':f'{fe} {G["code"]}'}
-    if kind=='besco':
-        pm[h1]=f'{fe[0].upper()+fe[1:]} {G["code"]}'
-        pm[title]=f'{ne} {G["code"]} Besco – {tn(m["short"])} | Armatex'
-        de=f'{fe[0].upper()+fe[1:]} Besco {G["code"]}: {n} {szw} ({rng}{unit}), {ser["bar"]}, {ser["temp"]}. Article numbers and bulk packaging for wholesalers.'
-        if len(de)>160: de=f'{ne} Besco {G["code"]} ({tn(m["short"])}): {n} {szw} ({rng}{unit}), {ser["bar"]}. Article numbers and bulk packaging for wholesalers.'
+    # wersje EN / UK: zdania składane z nazw (reszta strony idzie przez słowniki tools/<język>.json)
+    pms={}
+    for c in LANGS_ON:
+        t=GT[c]; Q=I18N.lang(c).T.get('quals',{})
+        ne,sne,szw=tn(G['name'],c),tn(ser['name'],c),t['szw'](n)
+        fe=f'{ne}, {Q.get(m["qual"],m["qual"])}' if kind=='besco' and m['qual'] else ne
+        un=t['mm'] if unit else ''
+        f=dict(ne=ne,sne=sne,n=n,szw=szw,first=first,last=last,unit=un,media=tn(ser['media'],c),std=ser.get('std',''),brand=G['brand'],code=G['code'],
+               rng=rng,bar=ser.get('bar','').replace(' bar',' бар' if c=='uk' else ' bar'),temp=ser.get('temp',''),Fe=fe[0].upper()+fe[1:],short=tn(m['short'],c),note=tn(note,c) if kind!='besco' and note else '',bulk='')
+        pm={lead.strip():(t['lead_b'].format(**f)+(t['std'].format(**f) if ser.get('std') else '') if kind=='besco' else t['lead_p'].format(**f).strip()),
+            topic:t['topic'].format(**f),
+            f'{G["name"]} {G["brand"]} {G["code"]}: rozmiary i numery artykułów':t['cap'].format(**f),
+            f'Zapytaj o wycenę: {G["name"]} {G["code"]}.':t['cta'].format(**f),
+            kicker:kicker.split(' · ')[0]+' · '+sne, f'{G["full"]} {G["code"]}':f'{fe} {G["code"]}'}
+        if kind=='besco':
+            pm[h1]=f'{f["Fe"]} {G["code"]}'
+            pm[title]=f'{ne} {G["code"]} Besco – {f["short"]} | Armatex'
+            de=t['desc_b'].format(**f)
+            if len(de)>160: de=t['desc_b2'].format(**f)
+        else:
+            pm[title]=f'{ne} {G["code"]} {G["brand"]} – {tn(ser["short"],c)} | Armatex'
+            de=t['desc_p'].format(**dict(f,rng=rng_mm,bulk=t['bulk'] if kind=='kuterlite' else ''))
+            if len(de)<=128: de+=t['quick']
         pm[desc]=de
-    else:
-        pm[title]=f'{ne} {G["code"]} {G["brand"]} – {tn(ser["short"])} | Armatex'
-        de=f'{ne} {G["brand"]} {G["code"]} ({sne}): {n} {szw} ({rng_mm}). Article numbers{" and bulk packaging" if kind=="kuterlite" else ""} for wholesalers.'
-        if len(de)<=128: de+=' Quote within 1 working day.'
-        pm[desc]=de
-    for r in rows: pm[f'{bname} {G["full"]} {size_of(r)}, nr art. {code_of(r)}']=f'{bname} {fe} {size_of(r)}, art. no. {code_of(r)}'
-    page(G['slug']+'.html',title,desc,sysp['slug'],body,crumbs+lst,pm)
+        for r in rows: pm[f'{bname} {G["full"]} {size_of(r)}, nr art. {code_of(r)}']=t['item'].format(bname=bname,fe=fe,size=size_of(r),code=code_of(r))
+        pms[c]=pm
+    page(G['slug']+'.html',title,desc,sysp['slug'],body,crumbs+lst,pms)
 
 # Dawny adres wyszukiwarki: katalog.html → wyszukiwarka.html (z parametrami ?q= / ?seria= i kotwicą)
 open(OUT+'katalog.html','w',encoding='utf-8').write('''<!doctype html>
@@ -1617,21 +1644,24 @@ h=re.sub(r'\s*<link rel="(canonical|alternate)"[^>]*>','',h); h=h.replace('<meta
 # GitHub Pages podaje 404.html pod dowolnym adresem: baza ścieżek ustawiana przed wczytaniem CSS
 h=h.replace('<head>\n','<head>\n  <script>document.write(\'<base href="\'+(/^\\/aramtex-website\\//i.test(location.pathname)?location.pathname.match(/^\\/[^/]+\\//)[0]:\'/\')+\'">\')</script>\n',1)
 open(OUT+'404.html','w',encoding='utf-8').write(h)
-# 404 po angielsku (Netlify: /en/* bez strony → en/404.html, reguła w _redirects)
-h=open(OUT+'en/404.html',encoding='utf-8').read()
-h=re.sub(r'\s*<link rel="(canonical|alternate)"[^>]*>','',h); h=h.replace('<meta charset="utf-8">','<meta charset="utf-8">\n<meta name="robots" content="noindex">',1); h=re.sub(r'\s*<meta property="og:url"[^>]*>','',h)
-h=h.replace('<head>\n','<head>\n<base href="/en/">\n',1)
-open(OUT+'en/404.html','w',encoding='utf-8').write(h)
+# 404 w wersjach językowych (Netlify: /en/*, /uk/* bez strony → <język>/404.html, reguły w _redirects)
+for c in LANGS_ON:
+    h=open(OUT+c+'/404.html',encoding='utf-8').read()
+    h=re.sub(r'\s*<link rel="(canonical|alternate)"[^>]*>','',h); h=h.replace('<meta charset="utf-8">','<meta charset="utf-8">\n<meta name="robots" content="noindex">',1); h=re.sub(r'\s*<meta property="og:url"[^>]*>','',h)
+    h=h.replace('<head>\n',f'<head>\n<base href="/{c}/">\n',1)
+    open(OUT+c+'/404.html','w',encoding='utf-8').write(h)
 
 # ---------------- sitemap.xml i robots.txt (do wersji produkcyjnej)
 import datetime
 urls=['']+[x['slug']+'.html' for x in SYS]+['wyszukiwarka.html','do-pobrania.html','o-firmie.html','poradniki.html']+[a['slug']+'.html' for a in ART]+['wspolpraca.html','kontakt.html','polityka-prywatnosci.html']+[G['slug']+'.html' for G in GROUPS]
 today=datetime.date.today().isoformat()
-sm='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{SITE}{u}</loc><lastmod>{today}</lastmod></url>\n' for u in urls+['en/'+x for x in urls])+'</urlset>\n'
+sm='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{SITE}{u}</loc><lastmod>{today}</lastmod></url>\n' for u in urls+[c+'/'+x for c in LANGS_ON for x in urls])+'</urlset>\n'
 open(OUT+'sitemap.xml','w',encoding='utf-8').write(sm)
 open(OUT+'robots.txt','w',encoding='utf-8').write(f'User-agent: *\nAllow: /\n\nSitemap: {SITE}sitemap.xml\n')
 print('grupy',len(GROUPS),'url',len(urls))
 # teksty bez tłumaczenia (wersja EN): uzupełnij tools/en.json
-json.dump(EN.MISSING,open(os.path.join(R,'tools','en-brak.json'),'w',encoding='utf-8'),ensure_ascii=False,indent=0,sort_keys=True)
-print('EN: brak tłumaczenia dla',len(EN.MISSING),'tekstów (tools/en-brak.json)' if EN.MISSING else '')
+for c in LANGS_ON:
+    M=I18N.lang(c).MISSING
+    json.dump(M,open(os.path.join(R,'tools',c+'-brak.json'),'w',encoding='utf-8'),ensure_ascii=False,indent=0,sort_keys=True)
+    print(c.upper()+': brak tłumaczenia dla',len(M),f'tekstów (tools/{c}-brak.json)' if M else '')
 print('ok')

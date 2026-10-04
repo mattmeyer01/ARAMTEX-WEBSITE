@@ -49,5 +49,6 @@
 /poradnik-kuterlite-a-zlaczki-zaciskane     /poradnik-kuterlite-a-zlaczki-zaprasowane.html  301!
 /poradnik-kuterlite-a-zlaczki-zaciskane.html /poradnik-kuterlite-a-zlaczki-zaprasowane.html 301!
 
-# Wersja angielska: nieistniejący adres pod /en/ pokazuje angielską stronę 404
+# Wersje językowe: nieistniejący adres pod /en/ lub /uk/ pokazuje stronę 404 w tym języku
 /en/*                        /en/404.html                       404
+/uk/*                        /uk/404.html                       404

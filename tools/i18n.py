@@ -1,4 +1,4 @@
-"""Angielska wersja strony (armatex.pl/en/): tłumaczenie gotowego HTML według słownika tools/en.json.
+"""Wersje językowe strony (armatex.pl/en/, /uk/): tłumaczenie gotowego HTML według słownika tools/<język>.json.
 
 Tekst strony dzielony jest na odcinki: element z własnym tekstem (zdanie z ewentualnymi <a>, <b> w środku)
 albo pojedynczy atrybut (alt, title, aria-label, placeholder, data-l, meta description, ...).
@@ -7,7 +7,7 @@ bez atrybutów, a tłumaczenie może zmienić szyk zdania.
 
 Kolejność szukania: mapa strony (zdania składane w generatorze, np. opis grupy produktów) → słownik
 → reguły (liczby sztuk, rozmiarów, etykiety z numerem artykułu) → nazwa produktu na początku tekstu.
-Brakujące odcinki trafiają do MISSING; `python3 tools/strony.py` wypisuje je do tools/en-brak.json.
+Brakujące odcinki trafiają do Lang.MISSING; `python3 tools/strony.py` wypisuje je do tools/<język>-brak.json.
 """
 import html as H
 import json
@@ -28,80 +28,109 @@ class _Fmt(HTMLFormatter):
 FMT = _Fmt(entity_substitution=EntitySubstitution.substitute_xml, void_element_close_prefix='', empty_attributes_are_booleans=True)
 
 D = os.path.dirname(os.path.abspath(__file__))
-T = json.load(open(os.path.join(D, 'en.json'), encoding='utf-8'))
-MISSING = {}
-
 INLINE = {'a', 'b', 'strong', 'em', 'i', 'span', 'small', 'code', 'br', 'sup', 'sub', 'abbr', 'mark', 'img', 'svg', 'time',
           'kbd', 's', 'u', 'wbr', 'input', 'select', 'button', 'label', 'q', 'cite', 'picture', 'source', 'textarea'}
 ATOMIC = {'svg', 'img', 'br', 'input', 'wbr', 'select', 'picture', 'code', 'textarea'}
 SKIP = {'script', 'style', 'svg', 'noscript', 'template', 'code', 'select', 'textarea'}
 TATTR = ('alt', 'title', 'aria-label', 'placeholder', 'data-l', 'label')
 LETTER = re.compile(r'[A-Za-zĄĆĘŁŃÓŚŹŻąćęłńóśźż]')
-PL_CH = re.compile(r'[ĄĆĘŁŃÓŚŹŻąćęłńóśźż]')
 WS = re.compile(r'\s+')
-
-N = T.get('names', {})                                     # nazwy produktów i linii
-NAMES = sorted(N, key=len, reverse=True)
-KEEP = set(T.get('keep', []))                               # teksty bez tłumaczenia (nazwy własne, angielskie nazwy z katalogów)
+KEEP_DATA = set()                                           # angielskie nazwy z katalogów (zostają bez tłumaczenia)
 for _f in ('besco-2026.json', 'pegler.json'):
     try:
         _d = json.load(open(os.path.join(D, '..', 'data', _f), encoding='utf-8'))
-        KEEP.update(g[3] if isinstance(g, list) else (g.get('en') or '') for g in _d['groups'])
+        KEEP_DATA.update(g[3] if isinstance(g, list) else (g.get('en') or '') for g in _d['groups'])
     except Exception:
         pass
-UNIT = {'karton': 'box', 'worek': 'bag', 'opak.': 'pack', 'szt.': 'pcs'}
 
 
 def norm(s):
     return WS.sub(' ', s).strip()
 
 
-def plural(n, one, many):
-    return one if int(n) == 1 else many
+def pl_plural(n, one, few, many):                           # polska / ukraińska odmiana: 1, 2–4, 5+
+    n = int(str(n).replace(' ', '').replace('\u00a0', ''))
+    return one if n == 1 else few if 2 <= n % 10 <= 4 and not 12 <= n % 100 <= 14 else many
 
 
-RULES = [
-    (re.compile(r'([\d  ]+) szt\.'), lambda m: f'{m[1]} pcs'),
-    (re.compile(r'(karton|worek|opak\.|szt\.) \(([\d  ]+) szt\.\)'), lambda m: f'{UNIT[m[1]]} ({m[2]} pcs)'),
-    (re.compile(r'(karton|worek|opak\.|szt\.)'), lambda m: UNIT[m[1]]),
-    (re.compile(r'(\S+) · (\d+) rozm\.'), lambda m: f'{m[1]} · {m[2]} {plural(m[2], "size", "sizes")}'),
-    (re.compile(r'ok\. ([\d  ]+)'), lambda m: f'approx. {m[1]}'),
-    (re.compile(r'Ilość (?!do )(\S.*)'), lambda m: f'Quantity {m[1]}'),
-    (re.compile(r'Szukaj w linii (.+)'), lambda m: f'Search the {N.get(m[1], m[1])} line'),
-    (re.compile(r'Jednostka (\S.*)'), lambda m: f'Unit {m[1]}'),
-    (re.compile(r'Dodaj (\S+) do zapytania'), lambda m: f'Add {m[1]} to the quote list'),
-    (re.compile(r'Usuń (\S+)'), lambda m: f'Remove {m[1]}'),
-    (re.compile(r'([\d  ]+) (indeksów|indeksy|indeks)'), lambda m: f'{m[1]} {plural(m[1], "item", "items")}'),
-    (re.compile(r'([\d  ]+) (grup|grupy|grupa)'), lambda m: f'{m[1]} {plural(m[1], "group", "groups")}'),
-    (re.compile(r'(\d+) (grup|grupy|grupa) · (\d+) poz\.'), lambda m: f'{m[1]} {plural(m[1], "group", "groups")} · {m[3]} items'),
-]
+# reguły dla tekstów z liczbami i numerami artykułów (wspólny wzorzec, słowa per język)
+WORDS = {
+    'en': dict(pcs='pcs', bar='bar', unit={'karton': 'box', 'worek': 'bag', 'opak.': 'pack', 'szt.': 'pcs'}, approx='approx.', qty='Quantity',
+               search='Search the {} line', unitw='Unit', add='Add {} to the quote list', rm='Remove {}',
+               size=lambda n: 'size' if int(n) == 1 else 'sizes', item=lambda n: 'item' if int(n.replace(' ', '').replace('\u00a0', '')) == 1 else 'items',
+               group=lambda n: 'group' if int(n.replace(' ', '').replace('\u00a0', '')) == 1 else 'groups', poz='items'),
+    'uk': dict(pcs='шт.', bar='бар', unit={'karton': 'коробка', 'worek': 'мішок', 'opak.': 'уп.', 'szt.': 'шт.'}, approx='бл.', qty='Кількість',
+               search='Шукати в лінії {}', unitw='Одиниця', add='Додати {} до запиту', rm='Видалити {}',
+               size=lambda n: 'розм.', item=lambda n: pl_plural(n, 'позиція', 'позиції', 'позицій'),
+               group=lambda n: pl_plural(n, 'група', 'групи', 'груп'), poz='поз.'),
+}
+
+
+class Lang:
+    def __init__(self, code):
+        self.code = code
+        self.T = json.load(open(os.path.join(D, code + '.json'), encoding='utf-8'))
+        self.t = self.T['t']
+        self.N = self.T.get('names', {})                   # nazwy produktów i linii
+        self.NAMES = sorted(self.N, key=len, reverse=True)
+        self.KEEP = set(self.T.get('keep', [])) | KEEP_DATA
+        self.MISSING = {}
+        w = WORDS[code]
+        U = w['unit']
+        self.RULES = [
+            (re.compile(r'([\d  ]+) szt\.'), lambda m: f"{m[1]} {w['pcs']}"),
+            (re.compile(r'(karton|worek|opak\.|szt\.) \(([\d  ]+) szt\.\)'), lambda m: f"{U[m[1]]} ({m[2]} {w['pcs']})"),
+            (re.compile(r'(karton|worek|opak\.|szt\.)'), lambda m: U[m[1]]),
+            (re.compile(r'(\S+) · (\d+) rozm\.'), lambda m: f"{m[1]} · {m[2]} {w['size'](m[2])}"),
+            (re.compile(r'ok\. ([\d  ]+)'), lambda m: f"{w['approx']} {m[1]}"),
+            (re.compile(r'([\d  ,.–−…]+) bar'), lambda m: f"{m[1]} {w['bar']}"),
+            (re.compile(r'Ilość (?!do )(\S.*)'), lambda m: f"{w['qty']} {m[1]}"),
+            (re.compile(r'Szukaj w linii (.+)'), lambda m: w['search'].format(self.N.get(m[1], m[1]))),
+            (re.compile(r'Jednostka (\S.*)'), lambda m: f"{w['unitw']} {m[1]}"),
+            (re.compile(r'Dodaj (\S+) do zapytania'), lambda m: w['add'].format(m[1])),
+            (re.compile(r'Usuń (\S+)'), lambda m: w['rm'].format(m[1])),
+            (re.compile(r'([\d  ]+) (indeksów|indeksy|indeks)'), lambda m: f"{m[1]} {w['item'](m[1])}"),
+            (re.compile(r'([\d  ]+) (grup|grupy|grupa)'), lambda m: f"{m[1]} {w['group'](m[1])}"),
+            (re.compile(r'(\d+) (grup|grupy|grupa) · (\d+) poz\.'), lambda m: f"{m[1]} {w['group'](m[1])} · {m[3]} {w['poz']}"),
+        ]
+
+
+LANGS = {}
+
+
+def lang(code):
+    if code not in LANGS:
+        LANGS[code] = Lang(code)
+    return LANGS[code]
 
 
 class Tr:
-    def __init__(self, page_map=None, page=''):
+    def __init__(self, L, page_map=None, page=''):
+        self.L = L
         self.pm = page_map or {}
         self.page = page
 
     def get(self, s, note=True):
+        L = self.L
         k = norm(s)
         if not k or not LETTER.search(k):
             return None
         if k in self.pm:
             return self.pm[k]
-        if k in T['t']:
-            return T['t'][k]
-        if k in N:
-            return N[k]
-        for rx, fn in RULES:
+        if k in L.t:
+            return L.t[k]
+        if k in L.N:
+            return L.N[k]
+        for rx, fn in L.RULES:
             m = rx.fullmatch(k)
             if m:
                 return fn(m)
-        for n in NAMES:                                     # „Łuk 90° wz 1/2″”, „Łuk 90° wz GP5001”
+        for n in L.NAMES:                                   # „Łuk 90° wz 1/2″”, „Łuk 90° wz GP5001”
             rest = k[len(n):]
             if k.startswith(n + ' ') and not re.search(r'[a-ząćęłńóśźż]{2,}', re.sub(r'Besco|Tectite|Kuterlite|Pegler Yorkshire|Meters|mm\b', '', rest)):
-                return N[n] + rest
-        if note and k not in KEEP and re.search(r'[A-Za-zĄĆĘŁŃÓŚŹŻąćęłńóśźż]{3,}', re.sub(r'\b(mm|bar|TPI|Meters|FI|MI|Besco|Tectite|Kuterlite|Pegler|Yorkshire|Armatex|PN|DN|PEX|INOX)\b', '', k)):
-            MISSING.setdefault(k, self.page)
+                return L.N[n] + rest
+        if note and k not in L.KEEP and re.search(r'[A-Za-zĄĆĘŁŃÓŚŹŻąćęłńóśźż]{3,}', re.sub(r'\b(mm|bar|TPI|Meters|FI|MI|Besco|Tectite|Kuterlite|Pegler|Yorkshire|Armatex|PN|DN|PEX|INOX)\b', '', k)):
+            L.MISSING.setdefault(k, self.page)
         return None
 
 
@@ -194,8 +223,8 @@ def _json(o, tr):
     return o
 
 
-def translate(html, page='', page_map=None):
-    tr = Tr(page_map, page)
+def translate(html, page='', page_map=None, code='en'):
+    tr = Tr(lang(code), page_map, page)
     soup = BeautifulSoup(html, 'html.parser')
     for t in soup.find_all(True):
         if t.get('translate') == 'no':

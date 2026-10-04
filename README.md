@@ -54,20 +54,23 @@ pozycji o nietypowym układzie tabel (kolektory TM80/TM81, węże TF90/TF92, cz�
 Wyszukiwarka (`wyszukiwarka.html`) czyta `data/katalog.json`, który generator (`tools/strony.py`) składa przy każdym
 uruchomieniu z `data/besco-2026.json` i `data/pegler.json` (Besco, Tectite, Kuterlite).
 
-## Wersja angielska (/en/)
+## Wersje językowe (/en/, /uk/)
 
-Generator zapisuje każdą stronę także jako `en/<ta sama nazwa>.html`. Tłumaczenie robi `tools/en.py` na gotowym HTML
-według słownika `tools/en.json`:
+Generator zapisuje każdą stronę także jako `en/<ta sama nazwa>.html` i `uk/<ta sama nazwa>.html`. Tłumaczenie robi
+`tools/i18n.py` na gotowym HTML według słowników `tools/en.json` i `tools/uk.json`:
 
 - `t`: teksty stron (akapity, nagłówki, przyciski, atrybuty alt/aria-label, opisy meta). Znaczniki wewnątrz tekstu
   są zapisane jako `<0>…</0>`, `<1/>` itd.;
 - `names`: nazwy produktów, linii i zastosowań (z nich składane są zdania na stronach grup i nazwy w wyszukiwarce);
+- `quals`: dopiski linii w pełnych nazwach grup (np. „miedziany press, profil V”);
 - `keep`: teksty, których się nie tłumaczy (nazwy własne, skróty aprobat).
 
-Po zmianie treści po polsku generator wypisuje liczbę tekstów bez tłumaczenia i zapisuje je do `tools/en-brak.json`
-(tekst → strona). Dopisz tłumaczenia do `tools/en.json` i uruchom generator ponownie. Teksty JS (lista do wyceny,
-formularz) są w `c.js` (funkcja `L('po polsku', 'in English')`). Strony mają `hreflang` pl/en, przełącznik PL / EN
-w menu i własną stronę 404 (`/en/*` w `_redirects`).
+Zdania stron grup (opis, tytuł, meta) składa szablon `GT` w `tools/strony.py`. Po zmianie treści po polsku generator
+wypisuje liczbę tekstów bez tłumaczenia i zapisuje je do `tools/en-brak.json` i `tools/uk-brak.json` (tekst → strona).
+Dopisz tłumaczenia do słowników i uruchom generator ponownie. Teksty JS (lista do wyceny, formularz) są w `c.js`
+(funkcja `L('po polsku', 'in English', 'українською')`). Strony mają `hreflang` pl/en/uk, przełącznik języków w menu
+i własne strony 404 (`/en/*`, `/uk/*` w `_redirects`). Outfit nie ma cyrylicy: znaki cyrylicy biorą krój Onest
+(`assets/fonts/onest-cyrillic-wght-normal.woff2`, licencja OFL), etykiety IBM Plex Mono w wersji z cyrylicą.
 
 ## Złączki INOX
 
