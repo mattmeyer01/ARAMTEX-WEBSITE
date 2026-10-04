@@ -14,12 +14,12 @@ def ask(t): return 'kontakt.html?temat='+quote(t)+'#formularz'
 TEL='<a href="tel:+48513191502">513 191 502</a>'
 
 SYS=[
- dict(slug='zlaczki-zaciskane-press',name='Złączki zaciskane',h1='Złączki zaciskane press Besco',seotitle='Złączki zaciskane press Besco dla hurtowni | Armatex',metadesc='Złączki zaciskane (press) Besco: miedź V i M, gaz, stal węglowa, stal nierdzewna INOX 304 i 316L, zawory kulowe. 1 583 indeksy, 12–168,3 mm.',tab='Zaciskane',brand='Besco',cnt='1 583',cntw='1 583 indeksy',sizes='12–168,3 mm',
-  title='Złączki i zawory zaciskane',
+ dict(slug='zlaczki-zaprasowane-press',name='Złączki zaprasowane',h1='Złączki zaprasowane press Besco',seotitle='Złączki zaprasowane press Besco dla hurtowni | Armatex',metadesc='Złączki zaprasowane (press) Besco: miedź V i M, gaz, stal węglowa, stal nierdzewna INOX 304 i 316L, zawory kulowe. 1 583 indeksy, 12–168,3 mm.',tab='Zaprasowane',brand='Besco',cnt='1 583',cntw='1 583 indeksy',sizes='12–168,3 mm',
+  title='Złączki i zawory zaprasowane',
   short='Miedź press w profilach V i M, linie gazowe, stal węglowa, stal nierdzewna INOX i zawory kulowe press.',
   desc='Miedziane systemy press (złączki zaprasowywane) w profilach V i M, serie do gazu, press ze stali węglowej i nierdzewnej (INOX 304 i 316L) oraz zawory kulowe. Miedź według EN 1254-7.',
   who='Firmy instalacyjne z zaciskarkami: kotłownie, piony i przyłącza w budownictwie wielorodzinnym i obiektach, instalacje gazowe.',
-  arg='Profil M można zaciskać szczęką V w zakresie DN12–28, więc jeden stan magazynowy obsłuży klientów z oboma typami szczęk.',
+  arg='Profil M można zaprasowywać szczęką V w zakresie DN12–28, więc jeden stan magazynowy obsłuży klientów z oboma typami szczęk.',
   pics=[('besco-press-v','Miedziany trójnik press'),('besco-gaz','Trójnik press do gazu z żółtym oznaczeniem'),('besco-stal','Trójnik press ze stali węglowej')],
   seria='cu-press-water-v,cu-press-water-m,cu-press-gas-v,cu-press-gas-m,steel-press-m,inox-304-press-m,inox-316l-press-m,press-ball-valve',
   src='katalogi Besco 2026 i Besco INOX',
@@ -30,7 +30,7 @@ SYS=[
    ('Stal nierdzewna INOX 316L press, profil M','Besco','inox-316l-press-m','15–168,3 mm','woda, CO, przemysł','16 bar',['DVGW','WRAS'],'253','linie/besco-inox-316l'),
    ('Stal nierdzewna INOX 304 press, profil M','Besco','inox-304-press-m','15–108 mm','ogrzewanie','16 bar',['CE'],'287','linie/besco-inox-304'),
    ('Zawory kulowe press, kontur V i M','Besco','press-ball-valve','15–54 mm','woda, CO','16 bar',['DVGW','WRAS'],'25','linie/besco-zawor')],
-  faq=[('Czym różni się profil V od M?','To kształt końcówki press i szczęki zaciskarki. Miedź Besco jest w obu profilach (V 12–54 mm, M 12–108 mm), stal węglowa w profilu M. Złączki w profilu M można zaciskać także szczęką V w zakresie DN12–28.'),
+  faq=[('Czym różni się profil V od M?','To kształt końcówki press i szczęki zaciskarki. Miedź Besco jest w obu profilach (V 12–54 mm, M 12–108 mm), stal węglowa w profilu M. Złączki w profilu M można zaprasowywać także szczęką V w zakresie DN12–28.'),
    ('Które złączki nadają się do gazu?','Linie GP Gas w profilu V i M: średnice 15–35 mm, do 5 bar, od −20 do 70 °C, norma EN 1254-7, atesty DVGW i INiG. Do instalacji gazowych nie stosuje się złączek z linii wodnych.'),
    ('Do czego służy stal węglowa press?','Do zamkniętych instalacji grzewczych i sprężonego powietrza. Profil M, średnice 12–108 mm, do 16 bar, od −10 do 110 °C.'),
    ('Czym różni się INOX 304 od INOX 316L?','Obie linie to złączki press ze stali nierdzewnej w profilu M, do 16 bar, od −10 do 110 °C. Według katalogów Besco INOX 316L jest przeznaczony do wody, ogrzewania i przemysłu, ma aprobaty DVGW i WRAS oraz średnice 15–168,3 mm. INOX 304 producent opisuje do ogrzewania, ze znakiem CE, w średnicach 15–108 mm.'),
@@ -92,17 +92,17 @@ for i,s in enumerate(SYS,1): s['n']=f'{i:02d}'; s['topic']=f'Proszę o ofertę: 
 import json, unicodedata
 BD=json.load(open(R+'data/besco-2026.json',encoding='utf-8'))
 SER_META={
- 'cu-press-water-v':dict(short='press V',suf='press-v',qual='miedziany press, profil V',appr=['DVGW','KIWA','WRAS','RISE'],sys='zlaczki-zaciskane-press'),
- 'cu-press-water-m':dict(short='press M',suf='press-m',qual='miedziany press, profil M',appr=['DVGW','WRAS','RISE'],sys='zlaczki-zaciskane-press'),
- 'cu-press-gas-v':dict(short='press gaz V',suf='gaz-v',qual='press do gazu, profil V',appr=['DVGW','INiG'],sys='zlaczki-zaciskane-press'),
- 'cu-press-gas-m':dict(short='press gaz M',suf='gaz-m',qual='press do gazu, profil M',appr=['DVGW','INiG'],sys='zlaczki-zaciskane-press'),
- 'steel-press-m':dict(short='stal press',suf='stal',qual='press ze stali węglowej',appr=[],sys='zlaczki-zaciskane-press'),
+ 'cu-press-water-v':dict(short='press V',suf='press-v',qual='miedziany press, profil V',appr=['DVGW','KIWA','WRAS','RISE'],sys='zlaczki-zaprasowane-press'),
+ 'cu-press-water-m':dict(short='press M',suf='press-m',qual='miedziany press, profil M',appr=['DVGW','WRAS','RISE'],sys='zlaczki-zaprasowane-press'),
+ 'cu-press-gas-v':dict(short='press gaz V',suf='gaz-v',qual='press do gazu, profil V',appr=['DVGW','INiG'],sys='zlaczki-zaprasowane-press'),
+ 'cu-press-gas-m':dict(short='press gaz M',suf='gaz-m',qual='press do gazu, profil M',appr=['DVGW','INiG'],sys='zlaczki-zaprasowane-press'),
+ 'steel-press-m':dict(short='stal press',suf='stal',qual='press ze stali węglowej',appr=[],sys='zlaczki-zaprasowane-press'),
  'cu-solder-en1254':dict(short='lutowane',suf='lut',qual='miedziany lutowany EN 1254',appr=['DVGW','KIWA','WRAS'],sys='zlaczki-lutowane'),
  'cu-ansi-k':dict(short='lutowane ANSI',suf='ansi-k',qual='lutowany calowy ANSI B16.22',appr=[],sys='zlaczki-lutowane'),
  'cu-g-size':dict(short='lutowane G-size',suf='g-size',qual='lutowany G-size',appr=[],sys='zlaczki-lutowane'),
- 'press-ball-valve':dict(short='zawory press',suf='zawor',qual='',appr=['DVGW','WRAS'],sys='zlaczki-zaciskane-press'),
- 'inox-304-press-m':dict(short='INOX 304 press',suf='inox-304',qual='press ze stali nierdzewnej 304',appr=['CE'],sys='zlaczki-zaciskane-press'),
- 'inox-316l-press-m':dict(short='INOX 316L press',suf='inox-316l',qual='press ze stali nierdzewnej 316L',appr=['DVGW','WRAS'],sys='zlaczki-zaciskane-press'),
+ 'press-ball-valve':dict(short='zawory press',suf='zawor',qual='',appr=['DVGW','WRAS'],sys='zlaczki-zaprasowane-press'),
+ 'inox-304-press-m':dict(short='INOX 304 press',suf='inox-304',qual='press ze stali nierdzewnej 304',appr=['CE'],sys='zlaczki-zaprasowane-press'),
+ 'inox-316l-press-m':dict(short='INOX 316L press',suf='inox-316l',qual='press ze stali nierdzewnej 316L',appr=['DVGW','WRAS'],sys='zlaczki-zaprasowane-press'),
 }
 def slugify(t):
     t=t.replace('ł','l').replace('Ł','L').replace('×','x').replace('°','')
@@ -174,7 +174,7 @@ def ld(obj): return '  <script type="application/ld+json">'+json.dumps(obj,ensur
 LD_ORG=ld({"@context":"https://schema.org","@graph":[
   {"@type":"WholesaleStore","@id":SITE+"#firma","name":"Armatex","url":SITE,
    "logo":SITE+"img/logo-dark.webp","image":SITE+"img/og/armatex-og.jpg",
-   "description":"Dystrybutor złączek i armatury Besco oraz Pegler Yorkshire dla hurtowni instalacyjnych w całej Polsce: złączki zaciskane (press), na wcisk, skręcane i lutowane.",
+   "description":"Dystrybutor złączek i armatury Besco oraz Pegler Yorkshire dla hurtowni instalacyjnych w całej Polsce: złączki zaprasowane (press), na wcisk, skręcane i lutowane.",
    "telephone":"+48 513 191 502","email":"biuro@armatex.pl","foundingDate":"1991",
    "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"18:00"}],
    "legalName":"P.H.U. ARMATEX Sp. J. A. J. Bunda","taxID":"7393814110",
@@ -662,7 +662,7 @@ for s in SYS:
     page(f'{s["slug"]}.html',s['seotitle'],s['metadesc'],s['slug'],body,ld_system(s))
 
 def grp_by_method():
-    """Linie w czterech blokach jak w menu Oferta: zaciskane, na wcisk, skręcane, lutowane."""
+    """Linie w czterech blokach jak w menu Oferta: zaprasowane, na wcisk, skręcane, lutowane."""
     sids=[x['id'] for x in BD['series']]+list(PSER)
     sys_of=lambda sid: SER_META[sid]['sys'] if sid in SER_META else PSER[sid]['sys']
     order=['cu-press-water-v','cu-press-water-m','cu-press-gas-v','cu-press-gas-m','steel-press-m','inox-316l-press-m','inox-304-press-m','press-ball-valve']
@@ -925,6 +925,20 @@ open(OUT+'katalog.html','w',encoding='utf-8').write('''<!doctype html>
 <body><p><a href="wyszukiwarka.html">Wyszukiwarka produktów</a></p></body></html>
 ''')
 
+# Dawne adresy z „zaciskane” (zmiana nazwy na „zaprasowane”): strony przekierowujące, Netlify ma też 301 w _redirects
+def stub(old,new,title):
+    open(OUT+old+'.html','w',encoding='utf-8').write(f'''<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><title>{title} | Armatex</title>
+<meta name="robots" content="noindex"><link rel="canonical" href="{SITE}{new}.html">
+<meta http-equiv="refresh" content="0; url={new}.html">
+<script>location.replace('{new}.html'+location.search+location.hash)</script></head>
+<body><p><a href="{new}.html">{title}</a></p></body></html>
+''')
+for _o,_n,_t in (('zlaczki-zaciskane-press','zlaczki-zaprasowane-press','Złączki zaprasowane press Besco'),
+                 ('poradnik-zlaczki-zaciskane-do-gazu','poradnik-zlaczki-zaprasowane-do-gazu','Złączki zaprasowane do gazu'),
+                 ('poradnik-kuterlite-a-zlaczki-zaciskane','poradnik-kuterlite-a-zlaczki-zaprasowane','Kuterlite a złączki zaprasowane')):
+    stub(_o,_n,_t)
+
 # ---------------- O firmie, Poradniki, Do pobrania
 import datetime as _dt
 DZIS=_dt.date.today().isoformat()
@@ -971,7 +985,7 @@ firma=phead([('O firmie','o-firmie.html')],'O firmie','Armatex. Dystrybutor zł�
         <p class="lead">Nie sprzedajemy inwestorom i nie wykonujemy instalacji. Naszymi klientami są hurtownie, dlatego cała oferta, logistyka i obsługa są ustawione pod ich zatowarowanie: pełne opakowania producenta, stany na najczęściej rotujące pozycje i jedna faktura na cały program.</p>
       </div>
       <div class="gain gain--3">
-        <div class="in"><span class="label">01</span><b>Cztery metody łączenia</b><p>Złączki zaciskane, na wcisk, skręcane i lutowane od dwóch producentów. Około 3 500 indeksów w jednym miejscu.</p></div>
+        <div class="in"><span class="label">01</span><b>Cztery metody łączenia</b><p>Złączki zaprasowane, na wcisk, skręcane i lutowane od dwóch producentów. Około 3 500 indeksów w jednym miejscu.</p></div>
         <div class="in"><span class="label">02</span><b>Magazyn w Olsztynie</b><p>ul. Składowa 3a. Typowe zamówienie hurtowni kompletujemy tego samego dnia, wysyłka w 24 godziny od potwierdzenia.</p></div>
         <div class="in"><span class="label">03</span><b>Oferta w jeden dzień</b><p>Na zapytanie odpowiadamy w ciągu jednego dnia roboczego: ceny, dostępność i terminy dostaw.</p></div>
       </div>
@@ -1031,12 +1045,12 @@ def art(slug,title,seo,desc,lead,mins,body,rel,src=PSRC):
       "author":{"@type":"Organization","name":"Armatex","url":SITE},"publisher":{"@id":SITE+"#firma"}})
     page(slug+'.html',seo,desc,'poradniki',html,ld_crumbs([('Poradniki','poradniki.html'),(title,slug+'.html')])+ldart)
 
-art('poradnik-profil-v-czy-m','Profil V czy M? Jak dobrać złączki zaciskane do zaciskarki',
- 'Profil V czy M – złączki zaciskane Besco | Armatex',
- 'Czym różni się profil V od M w złączkach zaciskanych, które linie Besco są w którym profilu i jak dobrać zatowarowanie hurtowni do szczęk klientów.',
- 'Złączki zaciskane różnią się kształtem końcówki, a ten musi pasować do szczęk zaciskarki. Wyjaśniamy, czym są profile V i M i jak ustawić pod nie stany hurtowni.',5,f'''
+art('poradnik-profil-v-czy-m','Profil V czy M? Jak dobrać złączki zaprasowane do zaciskarki',
+ 'Profil V czy M – złączki zaprasowane Besco | Armatex',
+ 'Czym różni się profil V od M w złączkach zaprasowanych, które linie Besco są w którym profilu i jak dobrać zatowarowanie hurtowni do szczęk klientów.',
+ 'Złączki zaprasowane różnią się kształtem końcówki, a ten musi pasować do szczęk zaciskarki. Wyjaśniamy, czym są profile V i M i jak ustawić pod nie stany hurtowni.',5,f'''
         <h2 id="co-to">Co oznacza profil złączki</h2>
-        <p>W systemach press złączkę zaciska się szczęką zaciskarki. Szczęka ma określony kontur, a złączka musi mieć końcówkę o tym samym konturze, żeby zaprasowanie było szczelne. Najczęściej spotykane kontury w instalacjach miedzianych to <strong>V</strong> i <strong>M</strong>. Oznaczenie konturu jest na szczęce, więc instalator zwykle wie, w jakim profilu pracuje.</p>
+        <p>W systemach press złączkę zaprasowuje się szczęką zaciskarki. Szczęka ma określony kontur, a złączka musi mieć końcówkę o tym samym konturze, żeby zaprasowanie było szczelne. Najczęściej spotykane kontury w instalacjach miedzianych to <strong>V</strong> i <strong>M</strong>. Oznaczenie konturu jest na szczęce, więc instalator zwykle wie, w jakim profilu pracuje.</p>
         <p>Dla hurtowni oznacza to prostą rzecz: klient z szczękami V kupi złączki V, a klient z szczękami M kupi złączki M. Dwa profile to dwa osobne stany magazynowe tej samej kształtki.</p>
         <h2 id="besco">Które linie Besco są w którym profilu</h2>
         <div class="tw"><table>
@@ -1053,7 +1067,7 @@ art('poradnik-profil-v-czy-m','Profil V czy M? Jak dobrać złączki zaciskane d
         </table></div>
         <p>Miedź według EN 1254-7. Średnice powyżej 54 mm (do 108 mm) są w profilu M, zarówno w miedzi, jak i w stali węglowej.</p>
         <h2 id="zgodnosc">Czy M można zacisnąć szczęką V?</h2>
-        <p>Według katalogu Besco 2026 złączki w profilu M można zaciskać także szczęką V w zakresie <strong>DN12–28</strong>. W tych średnicach jeden stan złączek M obsłuży klientów z oboma typami szczęk. Powyżej 28 mm trzymaj się profilu zgodnego ze szczęką.</p>
+        <p>Według katalogu Besco 2026 złączki w profilu M można zaprasowywać także szczęką V w zakresie <strong>DN12–28</strong>. W tych średnicach jeden stan złączek M obsłuży klientów z oboma typami szczęk. Powyżej 28 mm trzymaj się profilu zgodnego ze szczęką.</p>
         <h2 id="stany">Jak ustawić stany w hurtowni</h2>
         <ul>
           <li><strong>Małe średnice (12–28 mm):</strong> tu jest największa rotacja. Zapytaj stałych klientów, jakimi szczękami pracują, i ustaw proporcje V do M według tej odpowiedzi.</li>
@@ -1063,7 +1077,7 @@ art('poradnik-profil-v-czy-m','Profil V czy M? Jak dobrać złączki zaciskane d
         </ul>
         <h2 id="zamowienie">Jak zamówić</h2>
         <p>Wszystkie indeksy znajdziesz w <a href="wyszukiwarka.html?seria=cu-press-water-v#katalog">wyszukiwarce profilu V</a> i <a href="wyszukiwarka.html?seria=cu-press-water-m#katalog">profilu M</a>. Dodaj pozycje do listy, ustaw ilości w kartonach lub workach i wyślij do wyceny.</p>''',
- ['<a href="zlaczki-zaciskane-press.html">Złączki zaciskane press Besco</a>',glink('GP5001','Łuk 90° wz, profil V (GP5001)','Łuk 90'),glink('6001','Łuk 90° wz, profil M (6001)','Łuk 90'),'<a href="poradnik-numery-artykulow-besco.html">Jak czytać numery artykułów Besco</a>'])
+ ['<a href="zlaczki-zaprasowane-press.html">Złączki zaprasowane press Besco</a>',glink('GP5001','Łuk 90° wz, profil V (GP5001)','Łuk 90'),glink('6001','Łuk 90° wz, profil M (6001)','Łuk 90'),'<a href="poradnik-numery-artykulow-besco.html">Jak czytać numery artykułów Besco</a>'])
 
 art('poradnik-numery-artykulow-besco','Jak czytać numery artykułów Besco',
  'Numery artykułów Besco – jak je czytać | Armatex',
@@ -1121,8 +1135,8 @@ art('poradnik-numery-artykulow-besco','Jak czytać numery artykułów Besco',
 
 GAS_V=[G for G in groups_of('cu-press-gas-v')]
 gas_list=''.join(f'<li><a href="{G["slug"]}.html">{G["name"]}</a> <code>{G["code"]}</code></li>' for G in GAS_V)
-art('poradnik-zlaczki-zaciskane-do-gazu','Złączki zaciskane do gazu: parametry, aprobaty i oznaczenia',
- 'Złączki zaciskane do gazu Besco – parametry i aprobaty | Armatex',
+art('poradnik-zlaczki-zaprasowane-do-gazu','Złączki zaprasowane do gazu: parametry, aprobaty i oznaczenia',
+ 'Złączki zaprasowane do gazu Besco – parametry i aprobaty | Armatex',
  'Złączki press do gazu Besco w profilu V i M: średnice 15–35 mm, 5 bar, −20…70 °C, EN 1254-7, aprobaty DVGW i INiG. Numery, kształty i różnice względem linii wodnych.',
  'Linie gazowe to osobne indeksy z innymi parametrami niż złączki do wody. Zebraliśmy, co trzeba wiedzieć, zanim wprowadzisz je na półkę.',4,f'''
         <h2 id="parametry">Parametry linii gazowych Besco</h2>
@@ -1146,15 +1160,15 @@ art('poradnik-zlaczki-zaciskane-do-gazu','Złączki zaciskane do gazu: parametry
         <ul class="cols">{gas_list}</ul>
         <h2 id="dokumenty">Dokumenty dla klientów</h2>
         <p>Przy instalacjach gazowych instalatorzy i inwestorzy częściej pytają o dokumenty. Aprobaty i deklaracje do linii gazowych udostępniamy hurtowniom w <a href="do-pobrania.html">bazie dokumentów</a> po weryfikacji. Samą instalację gazową wykonuje instalator z uprawnieniami, zgodnie z przepisami.</p>''',
- ['<a href="wyszukiwarka.html?seria=cu-press-gas-v,cu-press-gas-m#katalog">Wszystkie indeksy gazowe w wyszukiwarce</a>','<a href="zlaczki-zaciskane-press.html">Złączki zaciskane press Besco</a>','<a href="do-pobrania.html">Do pobrania: katalogi i dokumenty</a>'])
+ ['<a href="wyszukiwarka.html?seria=cu-press-gas-v,cu-press-gas-m#katalog">Wszystkie indeksy gazowe w wyszukiwarce</a>','<a href="zlaczki-zaprasowane-press.html">Złączki zaprasowane press Besco</a>','<a href="do-pobrania.html">Do pobrania: katalogi i dokumenty</a>'])
 
-art('poradnik-metody-laczenia-rur','Zaciskane, na wcisk, skręcane czy lutowane? Porównanie metod łączenia',
- 'Złączki zaciskane, na wcisk, skręcane, lutowane – porównanie | Armatex',
- 'Porównanie czterech metod łączenia rur: złączki zaciskane (press), na wcisk (push-fit), skręcane i lutowane. Narzędzia, średnice, rury i typowi klienci.',
+art('poradnik-metody-laczenia-rur','Zaprasowane, na wcisk, skręcane czy lutowane? Porównanie metod łączenia',
+ 'Złączki zaprasowane, na wcisk, skręcane, lutowane – porównanie | Armatex',
+ 'Porównanie czterech metod łączenia rur: złączki zaprasowane (press), na wcisk (push-fit), skręcane i lutowane. Narzędzia, średnice, rury i typowi klienci.',
  'Każda metoda łączenia ma swoich klientów. Porównujemy narzędzia, zakresy średnic i zastosowania, żeby łatwiej było ułożyć ofertę hurtowni.',5,f'''
         <h2 id="tabela">Porównanie w jednej tabeli</h2>
         <div class="tw"><table>
-          <thead><tr><th></th><th>Zaciskane (press)</th><th>Na wcisk</th><th>Skręcane</th><th>Lutowane</th></tr></thead>
+          <thead><tr><th></th><th>Zaprasowane (press)</th><th>Na wcisk</th><th>Skręcane</th><th>Lutowane</th></tr></thead>
           <tbody>
             <tr><td>Marka w ofercie</td><td>Besco</td><td>Tectite</td><td>Kuterlite</td><td>Besco</td></tr>
             <tr><td>Narzędzia</td><td>zaciskarka ze szczękami V lub M</td><td>obcinak, gratownik, miernik głębokości</td><td>klucze</td><td>palnik, lut, topnik</td></tr>
@@ -1164,8 +1178,8 @@ art('poradnik-metody-laczenia-rur','Zaciskane, na wcisk, skręcane czy lutowane?
             <tr><td>Demontaż</td><td>nie</td><td>Classic, Pro i 316 tak</td><td>tak, pierścień zostaje na rurze</td><td>tylko przez rozlutowanie</td></tr>
           </tbody>
         </table></div>
-        <h2 id="press">Zaciskane (press)</h2>
-        <p>Szybki montaż bez ognia, ale wymaga zaciskarki ze szczękami w odpowiednim profilu. Typowi klienci to firmy instalacyjne przy kotłowniach, pionach i większych inwestycjach. Besco ma także linie do gazu i stal węglową do ogrzewania i sprężonego powietrza. <a href="zlaczki-zaciskane-press.html">Złączki zaciskane Besco</a></p>
+        <h2 id="press">Zaprasowane (press)</h2>
+        <p>Szybki montaż bez ognia, ale wymaga zaciskarki ze szczękami w odpowiednim profilu. Typowi klienci to firmy instalacyjne przy kotłowniach, pionach i większych inwestycjach. Besco ma także linie do gazu i stal węglową do ogrzewania i sprężonego powietrza. <a href="zlaczki-zaprasowane-press.html">Złączki zaprasowane Besco</a></p>
         <h2 id="wcisk">Na wcisk (push-fit)</h2>
         <p>Montaż bez zaciskarki, prądu i ognia: rurę trzeba uciąć, zgratować i wsunąć na wymaganą głębokość. Dobre do serwisu, remontów i prac w miejscach, gdzie nie można użyć palnika. Producent daje 25 lat gwarancji na Tectite Sprint, Classic, Pro i 316. <a href="zlaczki-na-wcisk-tectite.html">Złączki na wcisk Tectite</a></p>
         <h2 id="skrecane">Skręcane</h2>
@@ -1174,7 +1188,7 @@ art('poradnik-metody-laczenia-rur','Zaciskane, na wcisk, skręcane czy lutowane?
         <p>Kształtki kapilarne do lutowania miękkiego i twardego. Najszerszy zakres średnic i rozmiarów, w tym calowe ANSI B16.22 i G-size do 80 bar dla chłodnictwa i przemysłu. <a href="zlaczki-lutowane.html">Złączki lutowane Besco</a></p>
         <h2 id="oferta">Co to oznacza dla hurtowni</h2>
         <p>Te metody nie konkurują ze sobą, tylko obsługują różnych klientów: instalatora z zaciskarką, serwisanta bez narzędzi, klienta przy ladzie i chłodnika. Pełna oferta czterech metod od jednego dostawcy pozwala obsłużyć ich wszystkich z jednej faktury.</p>''',
- ['<a href="index.html#systemy">Wszystkie systemy złączek</a>','<a href="poradnik-profil-v-czy-m.html">Profil V czy M?</a>','<a href="poradnik-zlaczki-zaciskane-do-gazu.html">Złączki zaciskane do gazu</a>'],
+ ['<a href="index.html#systemy">Wszystkie systemy złączek</a>','<a href="poradnik-profil-v-czy-m.html">Profil V czy M?</a>','<a href="poradnik-zlaczki-zaprasowane-do-gazu.html">Złączki zaprasowane do gazu</a>'],
  src='Źródło danych: katalogi Besco 2026 i Tectite 2026, cennik Kuterlite (październik 2024)')
 
 # ---- Poradniki: stal, Tectite czy press, Kuterlite a press, PE, aprobaty
@@ -1187,7 +1201,7 @@ art('poradnik-zlaczki-do-stali-weglowej','Złączki do stali węglowej: gdzie wo
         <div class="tw"><table>
           <thead><tr><th></th><th>Besco stal węglowa press</th><th>Tectite Carbon</th><th>Tectite Pro z rurą stalową</th></tr></thead>
           <tbody>
-            <tr><td>Połączenie</td><td>zaciskane, profil M</td><td>na wcisk, niedemontowalne</td><td>na wcisk, demontowalne</td></tr>
+            <tr><td>Połączenie</td><td>zaprasowane, profil M</td><td>na wcisk, niedemontowalne</td><td>na wcisk, demontowalne</td></tr>
             <tr><td>Średnice</td><td>12–108 mm</td><td>15–54 mm</td><td>15–54 mm</td></tr>
             <tr><td>Zastosowanie wg katalogu</td><td>ogrzewanie, sprężone powietrze</td><td>niewentylowane, zamknięte obiegi grzewcze i chłodzące</td><td>tylko obiegi zamknięte</td></tr>
             <tr><td>Parametry</td><td>16 bar, −10…110 °C</td><td>20 bar do 30 °C, 16 bar przy 65 °C, 10 bar przy 114 °C</td><td>jak Tectite Pro z miedzią, w obiegu zamkniętym</td></tr>
@@ -1199,7 +1213,7 @@ art('poradnik-zlaczki-do-stali-weglowej','Złączki do stali węglowej: gdzie wo
         <ul>
           <li><strong>Woda pitna, ciepła i zimna woda użytkowa.</strong> Żaden z tych katalogów nie przewiduje stali węglowej do wody pitnej. Tu sprawdzą się miedź press Besco, <a href="zlaczki-na-wcisk-tectite.html">Tectite Classic i Sprint</a> z atestem PZH albo Tectite 316 ze stali nierdzewnej.</li>
           <li><strong>Układy otwarte.</strong> Tectite Carbon jest opisany wyłącznie do niewentylowanych obiegów zamkniętych, a Tectite Pro z rurą stalową tylko do obiegów zamkniętych. W układzie otwartym do wody stale dopływa świeży tlen, a stal węglowa w natlenionej wodzie koroduje.</li>
-          <li><strong>Gaz.</strong> Besco nie opisuje stali press do gazu. Do instalacji gazowych mamy osobne linie z miedzi (GPG i seria 7000) z aprobatami DVGW i INiG. Więcej w poradniku <a href="poradnik-zlaczki-zaciskane-do-gazu.html">Złączki zaciskane do gazu</a>.</li>
+          <li><strong>Gaz.</strong> Besco nie opisuje stali press do gazu. Do instalacji gazowych mamy osobne linie z miedzi (GPG i seria 7000) z aprobatami DVGW i INiG. Więcej w poradniku <a href="poradnik-zlaczki-zaprasowane-do-gazu.html">Złączki zaprasowane do gazu</a>.</li>
         </ul>
         <h2 id="nierdzewna">Stal węglowa to nie stal nierdzewna</h2>
         <p>Nazwy są podobne, ale to dwa różne materiały. Tectite 316 jest ze stali nierdzewnej i według producenta jest projektowany do instalacji wody pitnej oraz przemysłu spożywczego i farmaceutycznego. W systemie press Besco stal nierdzewna to linie <a href="wyszukiwarka.html?seria=inox-316l-press-m#katalog">INOX 316L</a> (woda, ogrzewanie, przemysł; aprobaty DVGW i WRAS) i <a href="wyszukiwarka.html?seria=inox-304-press-m#katalog">INOX 304</a> (ogrzewanie). Złączki do stali węglowej łączą rury stalowe w ogrzewaniu i chłodzeniu. Nie zamienia się ich między sobą i nie łączy z rurami innego rodzaju niż przewiduje producent.</p>
@@ -1211,16 +1225,16 @@ art('poradnik-zlaczki-do-stali-weglowej','Złączki do stali węglowej: gdzie wo
         </ul>
         <h2 id="zamowienie">Jak zamówić</h2>
         <p>Wszystkie kształtki stalowe Besco znajdziesz w <a href="wyszukiwarka.html?seria=steel-press-m#katalog">wyszukiwarce</a>, np. {glink('2270','mufa 2270','Mufa')}, {glink('2001','łuk 90° wz 2001','Łuk 90')} czy {glink('2510','kołnierz PN 16 2510','Kołnierz')}. Tectite Carbon i Pro wycenimy na zapytanie.</p>''',
- ['<a href="zlaczki-zaciskane-press.html">Złączki zaciskane press Besco</a>','<a href="zlaczki-na-wcisk-tectite.html">Złączki na wcisk Tectite</a>','<a href="poradnik-tectite-czy-press.html">Tectite czy press?</a>','<a href="poradnik-profil-v-czy-m.html">Profil V czy M?</a>'],
+ ['<a href="zlaczki-zaprasowane-press.html">Złączki zaprasowane press Besco</a>','<a href="zlaczki-na-wcisk-tectite.html">Złączki na wcisk Tectite</a>','<a href="poradnik-tectite-czy-press.html">Tectite czy press?</a>','<a href="poradnik-profil-v-czy-m.html">Profil V czy M?</a>'],
  src='Źródło danych: katalogi Besco 2026 i Tectite 2026')
 
-art('poradnik-tectite-czy-press','Tectite czy press? Kiedy złączki na wcisk, a kiedy zaciskane',
- 'Tectite czy press – złączki na wcisk czy zaciskane | Armatex',
- 'Złączki na wcisk Tectite czy zaciskane press Besco? Porównanie narzędzi, średnic, rur, ciśnień i temperatur. Kiedy które wybrać i jak ułożyć ofertę hurtowni.',
+art('poradnik-tectite-czy-press','Tectite czy press? Kiedy złączki na wcisk, a kiedy zaprasowane',
+ 'Tectite czy press – złączki na wcisk czy zaprasowane | Armatex',
+ 'Złączki na wcisk Tectite czy zaprasowane press Besco? Porównanie narzędzi, średnic, rur, ciśnień i temperatur. Kiedy które wybrać i jak ułożyć ofertę hurtowni.',
  'Obie metody łączą rury bez ognia, ale sprawdzają się w innych sytuacjach. Porównujemy Tectite i press Besco na danych z katalogów producentów.',5,f'''
         <h2 id="porownanie">Porównanie w jednej tabeli</h2>
         <div class="tw"><table>
-          <thead><tr><th></th><th>Na wcisk Tectite</th><th>Zaciskane press Besco</th></tr></thead>
+          <thead><tr><th></th><th>Na wcisk Tectite</th><th>Zaprasowane press Besco</th></tr></thead>
           <tbody>
             <tr><td>Narzędzia</td><td>obcinak, gratownik, znacznik głębokości</td><td>zaciskarka ze szczękami V lub M</td></tr>
             <tr><td>Średnice</td><td>10–54 mm (zależnie od linii)</td><td>12–108 mm</td></tr>
@@ -1257,20 +1271,20 @@ art('poradnik-tectite-czy-press','Tectite czy press? Kiedy złączki na wcisk, a
         </ul>
         <h2 id="hurtownia">Co to oznacza dla hurtowni</h2>
         <p>Tectite i press nie konkurują, tylko obsługują różnych klientów: serwisanta i instalatora bez zaciskarki oraz firmę wykonawczą przy większych instalacjach. Oba systemy są w naszej ofercie, więc hurtownia zamówi je na jednej fakturze.</p>''',
- ['<a href="zlaczki-na-wcisk-tectite.html">Złączki na wcisk Tectite</a>','<a href="zlaczki-zaciskane-press.html">Złączki zaciskane press Besco</a>','<a href="poradnik-metody-laczenia-rur.html">Porównanie czterech metod łączenia</a>','<a href="poradnik-zlaczki-do-stali-weglowej.html">Złączki do stali węglowej</a>'],
+ ['<a href="zlaczki-na-wcisk-tectite.html">Złączki na wcisk Tectite</a>','<a href="zlaczki-zaprasowane-press.html">Złączki zaprasowane press Besco</a>','<a href="poradnik-metody-laczenia-rur.html">Porównanie czterech metod łączenia</a>','<a href="poradnik-zlaczki-do-stali-weglowej.html">Złączki do stali węglowej</a>'],
  src='Źródło danych: katalogi Besco 2026 i Tectite 2026')
 
-art('poradnik-kuterlite-a-zlaczki-zaciskane','Kuterlite a złączki zaciskane: czym się różnią złączki skręcane od press',
- 'Złączki skręcane Kuterlite a zaciskane press | Armatex',
- 'Złączki zaciskowe (skręcane) Kuterlite i zaciskane press to dwa różne systemy. Różnice: narzędzia, pierścień, średnice, rury, demontaż, zastosowania.',
- '„Zaciskowe” i „zaciskane” brzmią prawie tak samo, ale to dwie różne metody łączenia. Wyjaśniamy, czym Kuterlite różni się od złączek press i kiedy które wybrać.',4,f'''
-        <h2 id="nazwy">Zaciskowe czy zaciskane: skąd pomyłka</h2>
-        <p><strong>Złączki zaciskowe</strong> to potoczna nazwa złączek skręcanych: na rurę zakłada się nakrętkę i pierścień zaciskowy, a przy dokręcaniu nakrętki pierścień zaciska się na rurze. Tak działa <a href="zlaczki-skrecane-kuterlite.html">Kuterlite</a>. <strong>Złączki zaciskane (press)</strong> zaciska się zaciskarką ze szczęką o określonym profilu, tak działa <a href="zlaczki-zaciskane-press.html">press Besco</a>. Klient, który prosi o „zaciskowe”, zwykle ma na myśli skręcane, ale warto dopytać.</p>
+art('poradnik-kuterlite-a-zlaczki-zaprasowane','Kuterlite a złączki zaprasowane: czym się różnią złączki skręcane od press',
+ 'Złączki skręcane Kuterlite a zaprasowane press | Armatex',
+ 'Złączki zaciskowe (skręcane) Kuterlite i zaprasowane press to dwa różne systemy. Różnice: narzędzia, pierścień, średnice, rury, demontaż, zastosowania.',
+ '„Zaciskowe” i „zaprasowane” to dwie różne metody łączenia, choć bywają mylone. Wyjaśniamy, czym Kuterlite różni się od złączek press i kiedy które wybrać.',4,f'''
+        <h2 id="nazwy">Zaciskowe czy zaprasowane: skąd pomyłka</h2>
+        <p><strong>Złączki zaciskowe</strong> to potoczna nazwa złączek skręcanych: na rurę zakłada się nakrętkę i pierścień zaciskowy, a przy dokręcaniu nakrętki pierścień zaciska się na rurze. Tak działa <a href="zlaczki-skrecane-kuterlite.html">Kuterlite</a>. <strong>Złączki zaprasowane (press)</strong> zaprasowuje się zaciskarką ze szczęką o określonym profilu, tak działa <a href="zlaczki-zaprasowane-press.html">press Besco</a>. Klient, który prosi o „zaciskowe”, zwykle ma na myśli skręcane, ale warto dopytać.</p>
         <h2 id="porownanie">Porównanie</h2>
         <div class="tw"><table>
-          <thead><tr><th></th><th>Skręcane (zaciskowe) Kuterlite</th><th>Zaciskane press Besco</th></tr></thead>
+          <thead><tr><th></th><th>Skręcane (zaciskowe) Kuterlite</th><th>Zaprasowane press Besco</th></tr></thead>
           <tbody>
-            <tr><td>Jak powstaje połączenie</td><td>nakrętka i pierścień zaciskowy, dokręcane kluczem</td><td>szczęka zaciskarki zaciska końcówkę złączki</td></tr>
+            <tr><td>Jak powstaje połączenie</td><td>nakrętka i pierścień zaciskowy, dokręcane kluczem</td><td>szczęka zaciskarki zaprasowuje końcówkę złączki</td></tr>
             <tr><td>Narzędzia</td><td>klucze</td><td>zaciskarka ze szczękami V lub M</td></tr>
             <tr><td>Średnice</td><td>miedź 6–54 mm, PE 20–32 mm</td><td>12–108 mm</td></tr>
             <tr><td>Rury</td><td>miedź, PE (seria K700), rury calowe z pierścieniem K978C</td><td>miedź; stal węglowa w osobnej linii</td></tr>
@@ -1287,11 +1301,11 @@ art('poradnik-kuterlite-a-zlaczki-zaciskane','Kuterlite a złączki zaciskane: c
         <h2 id="kiedy">Kiedy które</h2>
         <ul>
           <li><strong>Skręcane:</strong> podłączenia kotłów, podgrzewaczy i armatury, naprawy, miejsca, gdzie połączenie może trzeba będzie rozebrać. To towar ladowy: wystarczą klucze.</li>
-          <li><strong>Zaciskane press:</strong> całe instalacje, piony, kotłownie, duże średnice i gaz (osobne linie z aprobatami DVGW i INiG).</li>
+          <li><strong>Zaprasowane press:</strong> całe instalacje, piony, kotłownie, duże średnice i gaz (osobne linie z aprobatami DVGW i INiG).</li>
         </ul>
         <h2 id="hurtownia">Co to oznacza dla hurtowni</h2>
         <p>Skręcane i press to dwie osobne grupy klientów i dwa osobne stany. Przy skręcanych opłaca się trzymać też nakrętki i pierścienie na sztuki, bo klienci dokupują je przy naprawach.</p>''',
- ['<a href="zlaczki-skrecane-kuterlite.html">Złączki skręcane Kuterlite</a>','<a href="zlaczki-zaciskane-press.html">Złączki zaciskane press Besco</a>','<a href="poradnik-zlaczki-do-rur-pe.html">Dobór złączki do rury PE</a>','<a href="poradnik-metody-laczenia-rur.html">Porównanie metod łączenia</a>'],
+ ['<a href="zlaczki-skrecane-kuterlite.html">Złączki skręcane Kuterlite</a>','<a href="zlaczki-zaprasowane-press.html">Złączki zaprasowane press Besco</a>','<a href="poradnik-zlaczki-do-rur-pe.html">Dobór złączki do rury PE</a>','<a href="poradnik-metody-laczenia-rur.html">Porównanie metod łączenia</a>'],
  src='Źródło danych: katalog Besco 2026, cennik Kuterlite (październik 2024)')
 
 art('poradnik-zlaczki-do-rur-pe','Dobór złączki do rury PE: rozmiary, tulejki i przejścia',
@@ -1325,7 +1339,7 @@ art('poradnik-zlaczki-do-rur-pe','Dobór złączki do rury PE: rozmiary, tulejki
           <li>Do każdej złączki PE doliczaj tulejkę wzmacniającą w rozmiarze rury.</li>
           <li>Ciśnienie i zastosowanie instalacji zależą także od samej rury PE. Przy nietypowym zastosowaniu potwierdzimy dobór z dokumentacją producenta.</li>
         </ul>''',
- ['<a href="zlaczki-skrecane-kuterlite.html">Złączki skręcane Kuterlite</a>','<a href="poradnik-kuterlite-a-zlaczki-zaciskane.html">Kuterlite a złączki zaciskane</a>','<a href="poradnik-metody-laczenia-rur.html">Porównanie metod łączenia</a>'],
+ ['<a href="zlaczki-skrecane-kuterlite.html">Złączki skręcane Kuterlite</a>','<a href="poradnik-kuterlite-a-zlaczki-zaprasowane.html">Kuterlite a złączki zaprasowane</a>','<a href="poradnik-metody-laczenia-rur.html">Porównanie metod łączenia</a>'],
  src='Źródło danych: cennik Kuterlite (październik 2024)')
 
 art('poradnik-aprobaty-dvgw-kiwa-wras','Aprobaty DVGW, KIWA, WRAS, RISE i INiG: co oznaczają',
@@ -1344,7 +1358,7 @@ art('poradnik-aprobaty-dvgw-kiwa-wras','Aprobaty DVGW, KIWA, WRAS, RISE i INiG: 
             <tr><td><strong>PZH</strong></td><td>Narodowy Instytut Zdrowia Publicznego PZH – Państwowy Instytut Badawczy, Polska</td><td>atest higieniczny: wyrób może mieć kontakt z wodą przeznaczoną do spożycia</td></tr>
           </tbody>
         </table></div>
-        <p>Obok aprobat w katalogach pojawia się norma. <strong>EN 1254-7</strong> to europejska norma dla złączek z końcówkami zaciskanymi (press) do rur metalowych, a <strong>EN 1254</strong> w ogóle obejmuje złączki z miedzi i jej stopów.</p>
+        <p>Obok aprobat w katalogach pojawia się norma. <strong>EN 1254-7</strong> to europejska norma dla złączek z końcówkami zaprasowanymi (press) do rur metalowych, a <strong>EN 1254</strong> w ogóle obejmuje złączki z miedzi i jej stopów.</p>
         <h2 id="linie">Które linie mają które aprobaty</h2>
         <div class="tw"><table>
           <thead><tr><th>Linia</th><th>Aprobaty wg katalogu</th></tr></thead>
@@ -1368,7 +1382,7 @@ art('poradnik-aprobaty-dvgw-kiwa-wras','Aprobaty DVGW, KIWA, WRAS, RISE i INiG: 
         <p>Przy instalacjach gazowych częściej pojawia się pytanie o certyfikat INiG. Co dokładnie jest wymagane w danej inwestycji, określa projekt i inspektor nadzoru.</p>
         <h2 id="dokumenty">Jak zdobyć dokumenty</h2>
         <p>Atesty, deklaracje i certyfikaty do linii Besco i Pegler Yorkshire udostępniamy hurtowniom w <a href="do-pobrania.html">bazie dokumentów</a> po weryfikacji. Jeśli klient pyta o konkretny indeks, podaj jego numer w <a href="kontakt.html#formularz">zapytaniu</a>, a dobierzemy właściwy dokument.</p>''',
- ['<a href="do-pobrania.html">Do pobrania: katalogi i dokumenty</a>','<a href="poradnik-zlaczki-zaciskane-do-gazu.html">Złączki zaciskane do gazu</a>','<a href="zlaczki-zaciskane-press.html">Złączki zaciskane press Besco</a>','<a href="zlaczki-na-wcisk-tectite.html">Złączki na wcisk Tectite</a>'],
+ ['<a href="do-pobrania.html">Do pobrania: katalogi i dokumenty</a>','<a href="poradnik-zlaczki-zaprasowane-do-gazu.html">Złączki zaprasowane do gazu</a>','<a href="zlaczki-zaprasowane-press.html">Złączki zaprasowane press Besco</a>','<a href="zlaczki-na-wcisk-tectite.html">Złączki na wcisk Tectite</a>'],
  src='Źródło danych: katalogi Besco 2026 i Tectite 2026')
 
 cards=''.join(f'<a class="pcard2" href="{a["slug"]}.html"><span class="label">Poradnik · {a["mins"]} min</span><b>{a["title"]}</b><p>{a["lead"]}</p><span class="pcard2__go" aria-hidden="true">Czytaj →</span></a>' for a in ART)
@@ -1386,9 +1400,9 @@ page('poradniki.html','Poradniki o złączkach dla hurtowni | Armatex','Poradnik
 
 # ---- Do pobrania
 DOCS=[
- ('besco','katalog','Katalog Besco – Złączki Zaciskane / Złączki Lutowane','Pełny katalog: press V i M, gaz, stal, lutowane, ANSI, G-size, zawory. Numery artykułów i opakowania.','PDF · 2,7 MB · 65 stron',f'<a class="ghost ghost--pdf" href="{PDF}" target="_blank" rel="noopener">Pobierz</a>'),
- ('besco','katalog','Katalog Besco INOX 316L – Złączki Zaciskane','Złączki press ze stali nierdzewnej 316L, profil M, 15–168,3 mm: woda, ogrzewanie, przemysł. Aprobaty DVGW i WRAS.','PDF · 1,5 MB · 8 stron',f'<a class="ghost ghost--pdf" href="{PDF_INOX["inox-316l-press-m"]}" target="_blank" rel="noopener">Pobierz</a>'),
- ('besco','katalog','Katalog Besco INOX 304 – Złączki Zaciskane','Złączki press ze stali nierdzewnej 304, profil M, 15–108 mm, do instalacji grzewczych. Znak CE.','PDF · 0,5 MB · 10 stron',f'<a class="ghost ghost--pdf" href="{PDF_INOX["inox-304-press-m"]}" target="_blank" rel="noopener">Pobierz</a>'),
+ ('besco','katalog','Katalog Besco – Złączki Zaprasowane / Złączki Lutowane','Pełny katalog: press V i M, gaz, stal, lutowane, ANSI, G-size, zawory. Numery artykułów i opakowania.','PDF · 2,7 MB · 65 stron',f'<a class="ghost ghost--pdf" href="{PDF}" target="_blank" rel="noopener">Pobierz</a>'),
+ ('besco','katalog','Katalog Besco INOX 316L – Złączki Zaprasowane','Złączki press ze stali nierdzewnej 316L, profil M, 15–168,3 mm: woda, ogrzewanie, przemysł. Aprobaty DVGW i WRAS.','PDF · 1,5 MB · 8 stron',f'<a class="ghost ghost--pdf" href="{PDF_INOX["inox-316l-press-m"]}" target="_blank" rel="noopener">Pobierz</a>'),
+ ('besco','katalog','Katalog Besco INOX 304 – Złączki Zaprasowane','Złączki press ze stali nierdzewnej 304, profil M, 15–108 mm, do instalacji grzewczych. Znak CE.','PDF · 0,5 MB · 10 stron',f'<a class="ghost ghost--pdf" href="{PDF_INOX["inox-304-press-m"]}" target="_blank" rel="noopener">Pobierz</a>'),
  ('pegler','katalog','Katalog Tectite – Złączki Na Wcisk','Tectite Classic push-fit: złączki 16 i 20 mm do rur PEX, wymiary i kody, tabela temperatur i ciśnień, instrukcja montażu.','PDF · 2,3 MB · 7 stron',f'<a class="ghost ghost--pdf" href="{PDF_TECTITE}" target="_blank" rel="noopener">Pobierz</a>'),
  ('pegler','katalog','Katalog Kuterlite – Złączki Skręcane','Złączki skręcane Kuterlite: K900 Pro do miedzi, K700 do rur PE, zawory i akcesoria. Wymiary, kody i opakowania zbiorcze (wersja angielska).','PDF · 1,2 MB · 21 stron',f'<a class="ghost ghost--pdf" href="{PDF_KUTERLITE}" target="_blank" rel="noopener">Pobierz</a>'),
  ('pegler','instrukcja','Instrukcja montażu Tectite','Montaż złączek na wcisk krok po kroku: cięcie, gratowanie, głębokość wsunięcia, tulejki do PEX i PB, demontaż.','PDF · 0,7 MB · 4 strony',f'<a class="ghost ghost--pdf" href="{PDF_TECTITE_MONTAZ}" target="_blank" rel="noopener">Pobierz</a>'),
