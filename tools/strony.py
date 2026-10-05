@@ -54,22 +54,20 @@ SYS=[
    ('Jakie są parametry pracy?','Tectite Classic z rurą miedzianą: do 16 bar, od −24 do 95 °C. Limity dla innych rur i linii podaje tabela temperatur i ciśnień w katalogu producenta.'),
    ('Jaką gwarancję daje producent?','25 lat na Tectite Sprint, Classic, Pro i 316 z rurami innych producentów oraz 30 lat z rurami Yorkshire i rurami rekomendowanymi, jeśli montaż jest zgodny z instrukcją.'),
    ('Jakie zawory są w systemie?','Zawór kulowy PT550 (15–54 mm), filtr skośny PT913 (15–54 mm), zawór TX300 (15 i 22 mm), zawór mieszający TX405 (15 i 22 mm) i zawór odcinający TX480 (15 mm).')]),
- dict(slug='zlaczki-skrecane-kuterlite',name='Złączki skręcane',h1='Złączki skręcane Kuterlite',seotitle='Złączki skręcane Kuterlite dla hurtowni | Armatex',metadesc='Złączki skręcane (zaciskowe) Kuterlite: K600 i K900 Pro do miedzi 6–54 mm, K700 do rur PE 20–32 mm oraz zawory. Około 470 indeksów dla hurtowni.',tab='Skręcane',brand='Pegler Yorkshire',cnt='ok. 470',cntw='ok. 470 indeksów',sizes='6–54 mm',
+ dict(slug='zlaczki-skrecane-kuterlite',name='Złączki skręcane',h1='Złączki skręcane Kuterlite',seotitle='Złączki skręcane Kuterlite dla hurtowni | Armatex',metadesc='Złączki skręcane (zaciskowe) Kuterlite K900 Pro do rur miedzianych 8–54 mm, zawory z końcówkami zaciskowymi i akcesoria. 246 indeksów dla hurtowni.',tab='Skręcane',brand='Pegler Yorkshire',cnt='246',cntw='246 indeksów',sizes='8–54 mm',
   title='Złączki skręcane Kuterlite',
-  short='Kuterlite K600 i K900 Pro do miedzi, K700 do rur PE oraz zawory z końcówkami zaciskowymi.',
-  desc='Mosiężne złączki zaciskowe z pierścieniem do rur miedzianych i PE. Montaż kluczem, bez lutowania i zaciskarki. Armatex jest oficjalnym przedstawicielem Pegler Yorkshire w Polsce.',
+  short='Kuterlite K900 Pro do miedzi 8–54 mm oraz zawory z końcówkami zaciskowymi.',
+  desc='Mosiężne złączki zaciskowe z pierścieniem do rur miedzianych. Montaż kluczem, bez lutowania i zaciskarki. Armatex jest oficjalnym przedstawicielem Pegler Yorkshire w Polsce.',
   who='Serwis i podłączenia urządzeń: kotłów, podgrzewaczy i armatury. Klasyczny towar ladowy z rotacją przez cały rok.',
-  arg='Jedna marka na miedź 6–54 mm i rury PE 20–32 mm, razem z zaworami w tym samym systemie.',
+  arg='Jedna marka na miedź 8–54 mm, razem z zaworami i częściami zamiennymi w tym samym systemie.',
   pics=[('kuterlite','Trójnik skręcany Kuterlite'),('kuterlite-kolano','Kolano skręcane Kuterlite'),('kuterlite-zawor','Zawór z końcówkami zaciskowymi Kuterlite')],
   seria='',src='cennik Kuterlite, październik 2024',
-  lines=[('Kuterlite K600','Pegler Yorkshire','','6–28 mm','rury miedziane','seria podstawowa',[],'ok. 150','oferta/kuterlite'),
-   ('Kuterlite K900 Pro (KN 900)','Pegler Yorkshire','','8–54 mm','rury miedziane','złączki, kolana, przejścia GW/GZ',[],'ok. 185','oferta/kuterlite-kolano'),
-   ('Kuterlite K700','Pegler Yorkshire','','20–32 mm','rury PE','złączki PE × PE i PE × miedź',[],'ok. 65','linie/kuterlite-k700'),
+  lines=[('Kuterlite K900 Pro (KN 900)','Pegler Yorkshire','','8–54 mm','rury miedziane','złączki, kolana, przejścia GW/GZ',[],'ok. 185','oferta/kuterlite-kolano'),
    ('Zawory z końcówkami zaciskowymi','Pegler Yorkshire','','15–28 mm','woda, podłączenia urządzeń','kurki, zawory odcinające',[],'ok. 30','oferta/kuterlite-zawor')],
-  faq=[('Czym różnią się serie K600, K900 Pro i K700?','K600 to seria podstawowa do rur miedzianych 6–28 mm. K900 Pro obejmuje złączki, kolana i przejścia GW/GZ do miedzi 8–54 mm (na armatex.pl jako KN 900). K700 łączy rury PE 20–32 mm, także z miedzią i gwintem (tulejki, nakrętki i pierścienie do 63 mm).'),
+  faq=[('Co obejmuje seria K900 Pro?','Złączki, kolana, trójniki i przejścia GW/GZ do rur miedzianych 8–54 mm (na armatex.pl jako KN 900). Do tego zawory z końcówkami zaciskowymi oraz osobno nakrętki i pierścienie.'),
    ('Czy montaż wymaga narzędzi?','Tylko kluczy. Pierścień zaciska się na rurze przy dokręcaniu nakrętki, bez lutowania i zaciskarki.'),
    ('Czy w systemie są zawory?','Tak: kurki i zawory z końcówkami zaciskowymi w średnicach 15–28 mm.'),
-   ('Jak pakowane są złączki?','Każda pozycja ma w cenniku producenta dwa opakowania zbiorcze, na przykład złączka prosta K610 15 mm: 5 i 150 sztuk.')]),
+   ('Jak pakowane są złączki?','Każda pozycja ma w cenniku producenta dwa opakowania zbiorcze, na przykład złączka prosta K910X 15 mm: 5 i 150 sztuk.')]),
  dict(slug='zlaczki-lutowane',name='Złączki lutowane',h1='Złączki lutowane Besco',seotitle='Złączki lutowane Besco: EN 1254, ANSI, G-size | Armatex',metadesc='Złączki lutowane Besco: kształtki EN 1254 serii 4000 i 5000 (6–108 mm), calowe ANSI B16.22 i G-size do 80 bar. 893 indeksy, dostawy do hurtowni w całej Polsce.',tab='Lutowane',brand='Besco',cnt='893',cntw='893 indeksy',sizes='6–108 mm',
   title='Złączki lutowane',
   short='Kształtki EN 1254 serii 4000 i 5000, calowe ANSI B16.22 i G-size do 80 bar.',
@@ -119,6 +117,11 @@ for gi,g in enumerate(BD['groups']):
            img_src=f'../img/besco/{g[4]}.webp',slug=f"besco-{slugify(nm)}-{m['suf']}-{slugify(g[1])}")
     _key[k]=G; GROUPS.append(G)
 PD=json.load(open(R+'data/pegler.json',encoding='utf-8'))
+# serie, których Armatex nie sprzedaje: zostają w danych z cennika, ale nie trafiają na stronę (stare adresy → 301 w _redirects)
+SER_OFF={'kuterlite-k600','kuterlite-k700'}
+OFF_SLUGS=[g['slug'] for g in PD['groups'] if g['series'] in SER_OFF]
+PD['groups']=[g for g in PD['groups'] if g['series'] not in SER_OFF]
+PD['series']={k:v for k,v in PD['series'].items() if k not in SER_OFF}
 PSER={}
 for sid,x in PD['series'].items():
     gs=[g for g in PD['groups'] if g['series']==sid]
@@ -481,7 +484,7 @@ home=f'''
       <div class="rg__head">
         <div>
           <span class="label kicker">Oferta dla hurtowni · Besco i Pegler Yorkshire</span>
-          <h2 class="h2">Cztery systemy. Około 3 500 indeksów.</h2>
+          <h2 class="h2">Cztery systemy. Ponad 3 200 indeksów.</h2>
           <p class="lead" style="margin-top:1rem">Dystrybuujemy złączki i armaturę Besco oraz Pegler Yorkshire do hurtowni instalacyjnych w całej Polsce. Wybierz system, żeby zobaczyć linie, parametry i argumenty sprzedażowe.</p>
         </div>
         <a class="ulink" href="wyszukiwarka.html">Wszystkie produkty</a>
@@ -562,8 +565,7 @@ def thumb(ph,alt):
 
 # linie Pegler w tabeli systemu → serie z data/pegler.json (Besco ma id serii w samej tabeli)
 LINE_SER={'Tectite Classic':'tectite-classic','Tectite Pro i Carbon':'tectite-pro','Tectite 316':'tectite-316','Zawory i filtry na wcisk':'tectite-zawory',
-          'Akcesoria i narzędzia Tec-Tools':'tectite-akcesoria','Kuterlite K600':'kuterlite-k600','Kuterlite K900 Pro (KN 900)':'kuterlite-k900',
-          'Kuterlite K700':'kuterlite-k700','Zawory z końcówkami zaciskowymi':'kuterlite-zawory'}
+          'Akcesoria i narzędzia Tec-Tools':'tectite-akcesoria','Kuterlite K900 Pro (KN 900)':'kuterlite-k900','Zawory z końcówkami zaciskowymi':'kuterlite-zawory'}
 def line_sids(nm,ser): return [x for x in (ser.split(',') if ser else [LINE_SER.get(nm,'')]) if x and groups_of(x)]
 def sys_sids(s): return (s['seria'].split(',') if s['seria'] else [])+[k for k,v in PSER.items() if v['sys']==s['slug']]
 def preview(gs,k=5):
@@ -1078,7 +1080,7 @@ CTA_BOX=f'''      <div class="cta" style="margin-top:clamp(3rem,6vw,4.5rem)">
 # ---- O firmie
 firma=phead([('O firmie','o-firmie.html')],'O firmie','Armatex. Dystrybutor złączek dla hurtowni.',
   'Działamy od 1991 roku i jesteśmy oficjalnym przedstawicielem Pegler Yorkshire w Polsce. Z magazynu w Olsztynie dostarczamy złączki i armaturę Besco oraz Pegler Yorkshire do hurtowni w całej Polsce.',
-  [('Na rynku','od 1991'),('Indeksy','ok. 3 500'),('Wysyłka','24 h')],
+  [('Na rynku','od 1991'),('Indeksy','ponad 3 200'),('Wysyłka','24 h')],
   f'<a class="mag" href="{ask("Jesteśmy hurtownią i chcemy poznać ofertę Armatex.")}"><span>Zapytaj o wycenę</span></a><a class="ghost" href="wspolpraca.html">Jak współpracujemy</a>')+f'''
   <section class="section section--tight">
     <div class="wrap">
@@ -1090,7 +1092,7 @@ firma=phead([('O firmie','o-firmie.html')],'O firmie','Armatex. Dystrybutor zł�
         <p class="lead">Nie sprzedajemy inwestorom i nie wykonujemy instalacji. Naszymi klientami są hurtownie, dlatego cała oferta, logistyka i obsługa są ustawione pod ich zatowarowanie: pełne opakowania producenta, stany na najczęściej rotujące pozycje i jedna faktura na cały program.</p>
       </div>
       <div class="gain gain--3">
-        <div class="in"><span class="label">01</span><b>Cztery metody łączenia</b><p>Złączki zaprasowane, na wcisk, skręcane i lutowane od dwóch producentów. Około 3 500 indeksów w jednym miejscu.</p></div>
+        <div class="in"><span class="label">01</span><b>Cztery metody łączenia</b><p>Złączki zaprasowane, na wcisk, skręcane i lutowane od dwóch producentów. Ponad 3 200 indeksów w jednym miejscu.</p></div>
         <div class="in"><span class="label">02</span><b>Magazyn w Olsztynie</b><p>ul. Składowa 3a. Typowe zamówienie hurtowni kompletujemy tego samego dnia, wysyłka w 24 godziny od potwierdzenia.</p></div>
         <div class="in"><span class="label">03</span><b>Oferta w jeden dzień</b><p>Na zapytanie odpowiadamy w ciągu jednego dnia roboczego: ceny, dostępność i terminy dostaw.</p></div>
       </div>
@@ -1103,7 +1105,7 @@ firma=phead([('O firmie','o-firmie.html')],'O firmie','Armatex. Dystrybutor zł�
       <h2 class="h2">Dwóch producentów, pełne programy.</h2>
       <div class="aud aud--2">
         <div class="in"><span class="label">Besco Fittings &amp; Connectors</span><h3>Press, gaz, stal i lutowane</h3><p>Gutpress Copper w profilach V i M (12–108 mm), linie do gazu, Gutpress Carbon Steel, stal nierdzewna INOX 304 i 316L press, kształtki lutowane EN 1254, calowe ANSI i G-size oraz Gutpress Zawory Kulowe V i M. 2 476 pozycji Besco w naszej <a href="wyszukiwarka.html">wyszukiwarce</a>. Aprobaty DVGW, KIWA, WRAS, RISE i INiG, zależnie od linii.</p></div>
-        <div class="in"><span class="label">Pegler Yorkshire · oficjalny przedstawiciel w Polsce</span><h3>Tectite i Kuterlite</h3><p>Jako oficjalny przedstawiciel Pegler Yorkshire w Polsce prowadzimy złączki na wcisk <a href="zlaczki-na-wcisk-tectite.html">Tectite</a> (Classic, Pro, 316, Carbon) z gwarancją producenta 25 lat oraz złączki skręcane <a href="zlaczki-skrecane-kuterlite.html">Kuterlite</a> do miedzi i rur PE, razem z zaworami.</p></div>
+        <div class="in"><span class="label">Pegler Yorkshire · oficjalny przedstawiciel w Polsce</span><h3>Tectite i Kuterlite</h3><p>Jako oficjalny przedstawiciel Pegler Yorkshire w Polsce prowadzimy złączki na wcisk <a href="zlaczki-na-wcisk-tectite.html">Tectite</a> (Classic, Pro, 316, Carbon) z gwarancją producenta 25 lat oraz złączki skręcane <a href="zlaczki-skrecane-kuterlite.html">Kuterlite</a> do miedzi, razem z zaworami.</p></div>
       </div>
     </div>
   </section>
@@ -1277,7 +1279,7 @@ art('poradnik-metody-laczenia-rur','Zaprasowane, na wcisk, skręcane czy lutowan
           <tbody>
             <tr><td>Marka w ofercie</td><td>Besco</td><td>Tectite</td><td>Kuterlite</td><td>Besco</td></tr>
             <tr><td>Narzędzia</td><td>zaciskarka ze szczękami V lub M</td><td>obcinak, gratownik, miernik głębokości</td><td>klucze</td><td>palnik, lut, topnik</td></tr>
-            <tr><td>Średnice</td><td>12–108 mm</td><td>10–54 mm</td><td>6–54 mm (miedź), 20–32 mm (PE)</td><td>6–108 mm, calowe 1/4″–4 1/8″</td></tr>
+            <tr><td>Średnice</td><td>12–108 mm</td><td>10–54 mm</td><td>8–54 mm</td><td>6–108 mm, calowe 1/4″–4 1/8″</td></tr>
             <tr><td>Rury</td><td>miedź, stal węglowa</td><td>miedź, PEX i PB z tulejką, stal zależnie od linii</td><td>miedź, PE</td><td>miedź</td></tr>
             <tr><td>Ogień przy montażu</td><td>nie</td><td>nie</td><td>nie</td><td>tak</td></tr>
             <tr><td>Demontaż</td><td>nie</td><td>Classic, Pro i 316 tak</td><td>tak, pierścień zostaje na rurze</td><td>tylko przez rozlutowanie</td></tr>
@@ -1288,7 +1290,7 @@ art('poradnik-metody-laczenia-rur','Zaprasowane, na wcisk, skręcane czy lutowan
         <h2 id="wcisk">Na wcisk (push-fit)</h2>
         <p>Montaż bez zaciskarki, prądu i ognia: rurę trzeba uciąć, zgratować i wsunąć na wymaganą głębokość. Dobre do serwisu, remontów i prac w miejscach, gdzie nie można użyć palnika. Producent daje 25 lat gwarancji na Tectite Sprint, Classic, Pro i 316. <a href="zlaczki-na-wcisk-tectite.html">Złączki na wcisk Tectite</a></p>
         <h2 id="skrecane">Skręcane</h2>
-        <p>Pierścień zaciska się na rurze przy dokręcaniu nakrętki. Wystarczą klucze. To klasyczny towar ladowy do podłączeń kotłów, podgrzewaczy i armatury, a seria K700 łączy też rury PE. <a href="zlaczki-skrecane-kuterlite.html">Złączki skręcane Kuterlite</a></p>
+        <p>Pierścień zaciska się na rurze przy dokręcaniu nakrętki. Wystarczą klucze. To klasyczny towar ladowy do podłączeń kotłów, podgrzewaczy i armatury. <a href="zlaczki-skrecane-kuterlite.html">Złączki skręcane Kuterlite</a></p>
         <h2 id="lutowane">Lutowane</h2>
         <p>Kształtki kapilarne do lutowania miękkiego i twardego. Najszerszy zakres średnic i rozmiarów, w tym calowe ANSI B16.22 i G-size do 80 bar dla chłodnictwa i przemysłu. <a href="zlaczki-lutowane.html">Złączki lutowane Besco</a></p>
         <h2 id="oferta">Co to oznacza dla hurtowni</h2>
@@ -1391,17 +1393,15 @@ art('poradnik-kuterlite-a-zlaczki-zaprasowane','Kuterlite a złączki zaprasowan
           <tbody>
             <tr><td>Jak powstaje połączenie</td><td>nakrętka i pierścień zaciskowy, dokręcane kluczem</td><td>szczęka zaciskarki zaprasowuje końcówkę złączki</td></tr>
             <tr><td>Narzędzia</td><td>klucze</td><td>zaciskarka ze szczękami V lub M</td></tr>
-            <tr><td>Średnice</td><td>miedź 6–54 mm, PE 20–32 mm</td><td>12–108 mm</td></tr>
-            <tr><td>Rury</td><td>miedź, PE (seria K700), rury calowe z pierścieniem K978C</td><td>miedź; stal węglowa w osobnej linii</td></tr>
+            <tr><td>Średnice</td><td>miedź 8–54 mm</td><td>12–108 mm</td></tr>
+            <tr><td>Rury</td><td>miedź, rury calowe z pierścieniem K978C</td><td>miedź; stal węglowa w osobnej linii</td></tr>
             <tr><td>Demontaż</td><td>tak, pierścień zostaje na rurze</td><td>nie</td></tr>
             <tr><td>Części zamienne</td><td>osobno nakrętki i pierścienie, np. {"<a href='kuterlite-pierscien-zaciskowy-k978b.html'>K978B</a>"}</td><td>–</td></tr>
           </tbody>
         </table></div>
         <h2 id="serie">Serie Kuterlite</h2>
         <ul>
-          <li><strong>K600:</strong> seria podstawowa do rur miedzianych 6–28 mm, np. <a href="kuterlite-zlaczka-prosta-k610.html">złączka prosta K610</a>.</li>
           <li><strong>K900 Pro:</strong> złączki, kolana i przejścia GW/GZ do miedzi 8–54 mm. Końcówki typu A są do miedzi półtwardej (EN 1057 R250), a adapter <a href="kuterlite-adapter-typ-a-x-typ-b-do-miedzi-miekkiej-k900.html">K1870X</a> zmienia je na typ B do miedzi miękkiej (R220).</li>
-          <li><strong>K700:</strong> złączki do rur PE oraz przejścia PE × miedź i PE × gwint. Więcej w poradniku <a href="poradnik-zlaczki-do-rur-pe.html">Dobór złączki do rury PE</a>.</li>
         </ul>
         <h2 id="kiedy">Kiedy które</h2>
         <ul>
@@ -1410,42 +1410,8 @@ art('poradnik-kuterlite-a-zlaczki-zaprasowane','Kuterlite a złączki zaprasowan
         </ul>
         <h2 id="hurtownia">Co to oznacza dla hurtowni</h2>
         <p>Skręcane i press to dwie osobne grupy klientów i dwa osobne stany. Przy skręcanych opłaca się trzymać też nakrętki i pierścienie na sztuki, bo klienci dokupują je przy naprawach.</p>''',
- ['<a href="zlaczki-skrecane-kuterlite.html">Złączki skręcane Kuterlite</a>','<a href="zlaczki-zaprasowane-press.html">Złączki zaprasowane press Besco</a>','<a href="poradnik-zlaczki-do-rur-pe.html">Dobór złączki do rury PE</a>','<a href="poradnik-metody-laczenia-rur.html">Porównanie metod łączenia</a>'],
+ ['<a href="zlaczki-skrecane-kuterlite.html">Złączki skręcane Kuterlite</a>','<a href="zlaczki-zaprasowane-press.html">Złączki zaprasowane press Besco</a>','<a href="poradnik-metody-laczenia-rur.html">Porównanie metod łączenia</a>'],
  src='Źródło danych: katalog Besco 2026, cennik Kuterlite (październik 2024)')
-
-art('poradnik-zlaczki-do-rur-pe','Dobór złączki do rury PE: rozmiary, tulejki i przejścia',
- 'Złączki do rur PE – jak dobrać | Armatex',
- 'Jak dobrać złączkę skręcaną do rury PE: średnice 20, 25 i 32 mm, tulejka wzmacniająca, przejścia PE × miedź i PE × gwint, rury calowe. Seria Kuterlite K700.',
- 'Rura PE, np. na przyłączu wody, często trzeba połączyć z miedzią albo gwintem. Pokazujemy, jak w pięciu krokach dobrać złączkę z serii Kuterlite K700.',4,f'''
-        <h2 id="kroki">Dobór w pięciu krokach</h2>
-        <ol>
-          <li><strong>Średnica zewnętrzna rury.</strong> Kształtki K700 są w rozmiarach <strong>20, 25 i 32 mm</strong>. Rozmiar złączki to średnica zewnętrzna rury PE.</li>
-          <li><strong>Metryczna czy calowa?</strong> Stare rury calowe (normy BS 1972 i BS 3284) łączy się przez adapter <a href="kuterlite-adapter-pe-metryczny-x-calowy-k710im.html">K710IM</a>: 20 mm × 1/2″, 25 mm × 3/4″, 32 mm × 1″.</li>
-          <li><strong>Na co przechodzimy?</strong> PE × PE, PE × miedź albo PE × gwint (tabela niżej).</li>
-          <li><strong>Tulejka wzmacniająca.</strong> <a href="kuterlite-tulejka-wzmacniajaca-k766m.html">K766M</a> w rozmiarze rury (20–63 mm). Do rur calowych BS 1972 klasy C jest <a href="kuterlite-tulejka-wzmacniajaca-k1766c.html">K1766C</a> (3/8″, 1/2″, 3/4″).</li>
-          <li><strong>Części zamienne.</strong> Nakrętki <a href="kuterlite-nakretka-zaciskowa-k778a.html">K778A</a> i pierścienie <a href="kuterlite-pierscien-zaciskowy-k778b.html">K778B</a> są też na sztuki, w rozmiarach 20, 25, 32 i 63 mm.</li>
-        </ol>
-        <h2 id="przejscia">Przejścia z rury PE</h2>
-        <div class="tw"><table>
-          <thead><tr><th>Potrzeba</th><th>Złączka</th><th>Rozmiary</th></tr></thead>
-          <tbody>
-            <tr><td>PE × PE, prosto</td><td><a href="kuterlite-zlaczka-prosta-pe-x-pe-k710.html">K710</a></td><td>20, 25, 32 mm; redukcje 25 × 20 i 32 × 25 mm</td></tr>
-            <tr><td>PE × miedź, skręcane</td><td><a href="kuterlite-zlaczka-prosta-pe-x-miedz-k710kp.html">K710KP</a></td><td>20 × 15, 25 × 22, 32 × 28 mm</td></tr>
-            <tr><td>PE × miedź, do lutowania</td><td><a href="kuterlite-adapter-pe-x-miedz-do-lutowania-k701.html">K701</a> (z pierścieniem lutu bezołowiowego)</td><td>25 × 22, 32 × 28 mm</td></tr>
-            <tr><td>PE × gwint zewnętrzny</td><td><a href="kuterlite-zlaczka-z-gz-gwint-stozkowy-pe-k711.html">K711</a>, kolano <a href="kuterlite-kolano-z-gz-gwint-stozkowy-pe-k716.html">K716</a></td><td>20 × 1/2″, 25 × 3/4″, 32 × 1″</td></tr>
-            <tr><td>PE × gwint wewnętrzny</td><td><a href="kuterlite-zlaczka-z-gw-pe-k712.html">K712</a>, kolano <a href="kuterlite-kolano-z-gw-pe-k717.html">K717</a>, ścienne <a href="kuterlite-kolano-scienne-z-gw-pe-k717w.html">K717W</a></td><td>20 × 1/2″, 25 × 3/4″, 32 × 1″</td></tr>
-            <tr><td>Rozgałęzienie</td><td>trójniki <a href="kuterlite-trojnik-rownoprzelotowy-pe-k718.html">K718</a>, <a href="kuterlite-trojnik-z-redukcja-odejscia-pe-k718b.html">K718B</a>, <a href="kuterlite-trojnik-z-odejsciem-gw-pe-k730.html">K730</a></td><td>20, 25, 32 mm</td></tr>
-          </tbody>
-        </table></div>
-        <p>Redukcję rozmiaru PE da się też zrobić zestawem <a href="kuterlite-zestaw-redukcyjny-k748r.html">K748R</a> (25 × 20, 32 × 20, 32 × 25 mm).</p>
-        <h2 id="uwagi">Zanim wydasz towar</h2>
-        <ul>
-          <li>Zapytaj klienta o średnicę zewnętrzną rury, a nie o „cal”. Rura PE 25 mm to nie rura 3/4″.</li>
-          <li>Do każdej złączki PE doliczaj tulejkę wzmacniającą w rozmiarze rury.</li>
-          <li>Ciśnienie i zastosowanie instalacji zależą także od samej rury PE. Przy nietypowym zastosowaniu potwierdzimy dobór z dokumentacją producenta.</li>
-        </ul>''',
- ['<a href="zlaczki-skrecane-kuterlite.html">Złączki skręcane Kuterlite</a>','<a href="poradnik-kuterlite-a-zlaczki-zaprasowane.html">Kuterlite a złączki zaprasowane</a>','<a href="poradnik-metody-laczenia-rur.html">Porównanie metod łączenia</a>'],
- src='Źródło danych: cennik Kuterlite (październik 2024)')
 
 art('poradnik-aprobaty-dvgw-kiwa-wras','Aprobaty DVGW, KIWA, WRAS, RISE i INiG: co oznaczają',
  'Aprobaty DVGW, KIWA, WRAS, RISE, INiG – co oznaczają | Armatex',
@@ -1492,7 +1458,7 @@ art('poradnik-aprobaty-dvgw-kiwa-wras','Aprobaty DVGW, KIWA, WRAS, RISE i INiG: 
 
 cards=''.join(f'<a class="pcard2" href="{a["slug"]}.html"><span class="label">Poradnik · {a["mins"]} min</span><b>{a["title"]}</b><p>{a["lead"]}</p><span class="pcard2__go" aria-hidden="true">Czytaj →</span></a>' for a in ART)
 porad=phead([('Poradniki','poradniki.html')],'Poradniki','Poradniki dla hurtowni instalacyjnych.',
-  'Praktyczna wiedza o złączkach Besco i Pegler Yorkshire: dobór profilu, numery artykułów, gaz, stal węglowa, rury PE, porównania metod łączenia i aprobaty.')+f'''
+  'Praktyczna wiedza o złączkach Besco i Pegler Yorkshire: dobór profilu, numery artykułów, gaz, stal węglowa, porównania metod łączenia i aprobaty.')+f'''
   <section class="section section--tight">
     <div class="wrap">
       <div class="pgrid">{cards}</div>
@@ -1500,7 +1466,7 @@ porad=phead([('Poradniki','poradniki.html')],'Poradniki','Poradniki dla hurtowni
     </div>
   </section>
 '''
-page('poradniki.html','Poradniki o złączkach dla hurtowni | Armatex','Poradniki o złączkach Besco i Pegler Yorkshire: profil V czy M, gaz, stal węglowa, rury PE, Tectite czy press, Kuterlite, aprobaty DVGW, KIWA i WRAS.','poradniki',porad,
+page('poradniki.html','Poradniki o złączkach dla hurtowni | Armatex','Poradniki o złączkach Besco i Pegler Yorkshire: profil V czy M, gaz, stal węglowa, Tectite czy press, Kuterlite, aprobaty DVGW, KIWA i WRAS.','poradniki',porad,
   ld_crumbs([('Poradniki','poradniki.html')])+ld({"@context":"https://schema.org","@type":"ItemList","name":"Poradniki Armatex","itemListElement":[{"@type":"ListItem","position":i,"url":SITE+a['slug']+'.html',"name":a['title']} for i,a in enumerate(ART,1)]}))
 
 # ---- Do pobrania
@@ -1509,7 +1475,7 @@ DOCS=[
  ('besco','katalog','Katalog Besco INOX 316L – Złączki Zaprasowane','Złączki press ze stali nierdzewnej 316L, profil M, 15–168,3 mm: woda, ogrzewanie, przemysł. Aprobaty DVGW i WRAS.','PDF · 1,5 MB · 8 stron',f'<a class="ghost ghost--pdf" href="{PDF_INOX["inox-316l-press-m"]}" target="_blank" rel="noopener">Pobierz</a>'),
  ('besco','katalog','Katalog Besco INOX 304 – Złączki Zaprasowane','Złączki press ze stali nierdzewnej 304, profil M, 15–108 mm, do instalacji grzewczych. Znak CE.','PDF · 0,5 MB · 10 stron',f'<a class="ghost ghost--pdf" href="{PDF_INOX["inox-304-press-m"]}" target="_blank" rel="noopener">Pobierz</a>'),
  ('pegler','katalog','Katalog Tectite – Złączki Na Wcisk','Tectite Classic push-fit: złączki 16 i 20 mm do rur PEX, wymiary i kody, tabela temperatur i ciśnień, instrukcja montażu.','PDF · 2,3 MB · 7 stron',f'<a class="ghost ghost--pdf" href="{PDF_TECTITE}" target="_blank" rel="noopener">Pobierz</a>'),
- ('pegler','katalog','Katalog Kuterlite – Złączki Skręcane','Złączki skręcane Kuterlite: K900 Pro do miedzi, K700 do rur PE, zawory i akcesoria. Wymiary, kody i opakowania zbiorcze (wersja angielska).','PDF · 1,2 MB · 21 stron',f'<a class="ghost ghost--pdf" href="{PDF_KUTERLITE}" target="_blank" rel="noopener">Pobierz</a>'),
+ ('pegler','katalog','Katalog Kuterlite – Złączki Skręcane','Złączki skręcane Kuterlite: K900 Pro do miedzi, zawory i akcesoria. Wymiary, kody i opakowania zbiorcze (wersja angielska).','PDF · 1,2 MB · 21 stron',f'<a class="ghost ghost--pdf" href="{PDF_KUTERLITE}" target="_blank" rel="noopener">Pobierz</a>'),
  ('pegler','instrukcja','Instrukcja montażu Tectite','Montaż złączek na wcisk krok po kroku: cięcie, gratowanie, głębokość wsunięcia, tulejki do PEX i PB, demontaż.','PDF · 0,7 MB · 4 strony',f'<a class="ghost ghost--pdf" href="{PDF_TECTITE_MONTAZ}" target="_blank" rel="noopener">Pobierz</a>'),
  ('besco pegler','atest','Atesty higieniczne','Atesty PZH do złączek stosowanych w instalacjach wody pitnej.','dla hurtowni po weryfikacji',f'<a class="ghost" href="{ask("Jesteśmy hurtownią i prosimy o dostęp do atestów higienicznych.")}">Poproś o dostęp</a>'),
  ('besco pegler','dop','Deklaracje właściwości użytkowych','Deklaracje DoP do wyrobów budowlanych, do przekazania klientom i inwestorom.','dla hurtowni po weryfikacji',f'<a class="ghost" href="{ask("Jesteśmy hurtownią i prosimy o dostęp do deklaracji właściwości użytkowych.")}">Poproś o dostęp</a>'),
@@ -1669,6 +1635,21 @@ for c in LANGS_ON:
     h=re.sub(r'\s*<link rel="(canonical|alternate)"[^>]*>','',h); h=h.replace('<meta charset="utf-8">','<meta charset="utf-8">\n<meta name="robots" content="noindex">',1); h=re.sub(r'\s*<meta property="og:url"[^>]*>','',h)
     h=h.replace('<head>\n',f'<head>\n<base href="/{c}/">\n',1)
     open(OUT+c+'/404.html','w',encoding='utf-8').write(h)
+
+# ---------------- strony wycofane z oferty: przekierowanie 301 na stronę systemu (blok generowany w _redirects) i usunięcie starych plików
+GONE=[(x,'zlaczki-skrecane-kuterlite') for x in OFF_SLUGS]+[('poradnik-zlaczki-do-rur-pe','zlaczki-skrecane-kuterlite')]
+blk=['# Wycofane z oferty (Kuterlite K600 i K700, poradnik o rurach PE): blok generuje tools/strony.py']
+for old,new in GONE:
+    for pre in ['']+[c+'/' for c in LANGS_ON]:
+        blk+=[f'/{pre}{old}  /{pre}{new}.html  301!',f'/{pre}{old}.html  /{pre}{new}.html  301!']
+        f=OUT+pre+old+'.html'
+        if os.path.exists(f): os.remove(f)
+rd=open(OUT+'_redirects',encoding='utf-8').read()
+rd=re.sub(r'\n# Wycofane z oferty.*?(?=\n\n|\Z)','',rd,flags=re.S).rstrip('\n')
+# przed regułami 404 dla /en/* i /uk/* (pierwsza pasująca reguła wygrywa)
+k=rd.find('# Wersje językowe')
+rd=(rd[:k].rstrip('\n')+'\n\n'+'\n'.join(blk)+'\n\n'+rd[k:]) if k>=0 else rd+'\n\n'+'\n'.join(blk)
+open(OUT+'_redirects','w',encoding='utf-8').write(rd.rstrip('\n')+'\n')
 
 # ---------------- sitemap.xml i robots.txt (do wersji produkcyjnej)
 import datetime
