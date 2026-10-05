@@ -227,7 +227,7 @@ def translate(html, page='', page_map=None, code='en'):
     tr = Tr(lang(code), page_map, page)
     soup = BeautifulSoup(html, 'html.parser')
     for t in soup.find_all(True):
-        if t.get('translate') == 'no':
+        if t.get('translate') == 'no' or t.find_parent(attrs={'translate': 'no'}):
             continue
         for a in TATTR:
             if t.has_attr(a) and isinstance(t[a], str):

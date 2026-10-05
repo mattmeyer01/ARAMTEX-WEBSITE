@@ -239,6 +239,7 @@ PDF_INOX={'inox-304-press-m':'../pliki/katalog-besco-inox-304.pdf','inox-316l-pr
 PDF_KUTERLITE='../pliki/katalog-kuterlite.pdf'
 PDF_TECTITE_MONTAZ='../pliki/instrukcja-montazu-tectite.pdf'
 ICO_SEARCH='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>'
+ICO_BOOK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5z"/><path d="M4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5"/><path d="M8 7h8M8 11h6"/></svg>'
 ICO_PDF='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2z"/><path d="M12 11v6M9.5 14.5 12 17l2.5-2.5"/></svg>'
 def nav(cur):
     cs=lambda k: ' aria-current="page"' if k==cur else ''
@@ -257,8 +258,7 @@ def nav(cur):
       <div class="dd"><button type="button" aria-expanded="false" aria-controls="dd-m"{ddcur}>Oferta</button><div class="dd__m" id="dd-m"><span class="dd__h">Systemy złączek</span>{ddlinks}<span class="dd__h">Katalogi</span>{kat}</div></div>
       <a href="wyszukiwarka.html"{cs("katalog")}>Wyszukiwarka</a>
       <a href="wspolpraca.html"{cs("wspolpraca")}>Współpraca</a>
-      <a href="do-pobrania.html"{cs("do-pobrania")}>Do pobrania</a>
-      <a href="poradniki.html"{cs("poradniki")}>Poradniki</a>
+      <div class="dd"><button type="button" aria-expanded="false" aria-controls="dd-mat"{' aria-current="page"' if cur in ('do-pobrania','poradniki') else ''}>Materiały</button><div class="dd__m dd__m--sm" id="dd-mat"><a href="do-pobrania.html"{cs("do-pobrania")}><span class="dd__ico">{ICO_PDF}</span><b>Do pobrania</b><span>katalogi, atesty, instrukcje</span></a><a href="poradniki.html"{cs("poradniki")}><span class="dd__ico">{ICO_BOOK}</span><b>Poradniki</b><span>dobór i montaż złączek</span></a></div></div>
       <a href="o-firmie.html"{cs("o-firmie")}>O firmie</a>
       <a href="kontakt.html"{cs("kontakt")}>Kontakt</a>
     </nav>
@@ -395,12 +395,15 @@ LANG_META={'pl':('PL','Polski','pl_PL'),'en':('EN','English','en_GB'),'uk':('UA'
 for _c in LANGS_ON: os.makedirs(OUT+_c,exist_ok=True)
 def tn(x,c='en'): return I18N.lang(c).N.get(x,x)                 # nazwa produktu / linii w języku c
 def lang_links(html,name,cur):
-    """Przełącznik języków w menu: odnośniki do tej samej strony w pozostałych językach."""
+    """Wybór języka: w menu rozwijane „PL ▾” (wszystkie języki, bieżący zaznaczony), w menu mobilnym odnośniki do pozostałych."""
     pre=lambda c: ('' if cur=='pl' else '../')+('' if c=='pl' else c+'/')
-    oth=[c for c in ['pl']+LANGS_ON if c!=cur]
-    nav=''.join(f'<a href="{pre(c)}{name}" hreflang="{c}" lang="{c}">{LANG_META[c][0]}</a>' for c in oth)
+    alls=['pl']+LANGS_ON; oth=[c for c in alls if c!=cur]
+    lab={'pl':'Język','en':'Language','uk':'Мова'}[cur]
+    items=''.join(f'<a href="{pre(c)}{name}" hreflang="{c}" lang="{c}"'+(' aria-current="true"' if c==cur else '')+f'><b>{LANG_META[c][1]}</b><span>{LANG_META[c][0]}</span></a>' for c in alls)
+    nav=(f'<div class="dd dd--lang" translate="no"><button type="button" aria-expanded="false" aria-controls="dd-lang" aria-label="{lab}: {LANG_META[cur][1]}">{LANG_META[cur][0]}</button>'
+         f'<div class="dd__m dd__m--lang" id="dd-lang">{items}</div></div>')
     mob=''.join(f'<a href="{pre(c)}{name}" hreflang="{c}" lang="{c}" translate="no">{LANG_META[c][1]}<small>{LANG_META[c][0]}</small></a>' for c in oth)
-    html=html.replace('<!--LANG-->',f'<span class="nav__langs" translate="no">{nav}</span>')
+    html=html.replace('<!--LANG-->',nav)
     return html.replace('<!--LANGM-->','<span class="label">Język</span>'+mob)
 def page_lang(name,html,pm,code):
     path='' if name=='index.html' else name
