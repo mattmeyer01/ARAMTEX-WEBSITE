@@ -560,27 +560,42 @@ def thumb(ph,alt):
     w,h=Image.open(f'{R}img/{ph}.webp').size
     return f'<img src="../img/{ph}.webp" alt="{alt}" width="{w}" height="{h}" loading="lazy" decoding="async">'
 
-def prod_section(s):
-    sids=(s['seria'].split(',') if s['seria'] else [])+[k for k,v in PSER.items() if v['sys']==s['slug']]
-    if not sids: return ''
-    n=sum(len(groups_of(x)) for x in sids)
-    return f"""  <section class="section section--tight" id="produkty" style="padding-top:0">
-    <div class="wrap">
-      <div class="shead"><h2 class="sy-h" style="margin:0">Produkty w systemie</h2><span class="label" style="color:var(--ink-40)">{n} grup produktów · rozmiary, numery i opakowania</span></div>
-      <div class="gls">
-{grp_links(sids, True)}
-      </div>
-    </div>
-  </section>
-"""
+# linie Pegler w tabeli systemu → serie z data/pegler.json (Besco ma id serii w samej tabeli)
+LINE_SER={'Tectite Classic':'tectite-classic','Tectite Pro i Carbon':'tectite-pro','Tectite 316':'tectite-316','Zawory i filtry na wcisk':'tectite-zawory',
+          'Akcesoria i narzędzia Tec-Tools':'tectite-akcesoria','Kuterlite K600':'kuterlite-k600','Kuterlite K900 Pro (KN 900)':'kuterlite-k900',
+          'Kuterlite K700':'kuterlite-k700','Zawory z końcówkami zaciskowymi':'kuterlite-zawory'}
+def line_sids(nm,ser): return [x for x in (ser.split(',') if ser else [LINE_SER.get(nm,'')]) if x and groups_of(x)]
+def sys_sids(s): return (s['seria'].split(',') if s['seria'] else [])+[k for k,v in PSER.items() if v['sys']==s['slug']]
+def preview(gs,k=5):
+    """Podgląd linii: po jednej grupie z każdego rodzaju (łuk, trójnik, mufa…), najwyżej k."""
+    out,seen=[],set()
+    for G in gs:
+        w=G['name'].split()[0]
+        if w not in seen: seen.add(w); out.append(G)
+        if len(out)==k: break
+    return out+[G for G in gs if G not in out][:k-len(out)]
+def prod_row(nm,sids):
+    gs=[G for x in sids for G in groups_of(x)]
+    pv=''.join(gcard(G) for G in preview(gs))
+    if len(sids)>1: full=''.join(f'<h3 class="sy-sub">{groups_of(x)[0]["ser"]["name"]}</h3><div class="gl__l">{"".join(gcard(G) for G in groups_of(x))}</div>' for x in sids)
+    else: full=f'<div class="gl__l">{"".join(gcard(G) for G in gs)}</div>'
+    return (f'              <tr class="sy-prod"><td colspan="6"><div class="gl__l sy-pv">{pv}</div>'
+            f'<details class="sy-more" data-s="{",".join(sids)}"><summary><span class="sy-more__o">Wszystkie produkty</span><span class="sy-more__c">Zwiń</span> <span class="label">{len(gs)}</span></summary>{full}</details></td></tr>')
+def prod_rest(s):
+    """Serie bez własnego wiersza w tabeli linii (np. akcesoria Kuterlite): rozwijane pod tabelą."""
+    used={x for l in s['lines'] for x in line_sids(l[0],l[2])}
+    rest=[x for x in sys_sids(s) if x not in used and groups_of(x)]
+    return f'<div class="gls">{grp_links(rest)}</div>' if rest else ''
 
 def lines_table(s):
     rows=[]
     for nm,b,ser,d,z,par,ap,c,ph in s['lines']:
         appr=''.join(f'<span class="appr">{a}</span>' for a in ap)
-        act=f'<a class="sy-find" href="wyszukiwarka.html?seria={ser}#katalog">Indeksy</a>' if ser else '<a class="sy-find" href="#produkty">Produkty</a>'
+        sids=line_sids(nm,ser)
+        act='<button class="sy-find" type="button" aria-expanded="false">Produkty</button>' if sids else (f'<a class="sy-find" href="wyszukiwarka.html?seria={ser}#katalog">Indeksy</a>' if ser else '')
         bc='pegler' if b.startswith('Pegler') else 'besco'
-        rows.append(f'              <tr><th scope="row"><span class="sy-row"><span class="sy-thumb">{thumb(ph,nm)}</span><span><b>{nm}</b><span class="label sy-br sy-br--{bc}">{b}</span></span></span></th><td class="num" data-l="Średnice">{d}</td><td data-l="Zastosowanie">{z}</td><td data-l="Parametry"><span><span class="sy-par">{par}</span>{appr}</span></td><td class="num sy-cnt" data-l="Indeksy">{c}</td><td class="sy-act">{act}</td></tr>')
+        rows.append(f'              <tr class="sy-line{" has-prod" if sids else ""}"><th scope="row"><span class="sy-row"><span class="sy-thumb">{thumb(ph,nm)}</span><span><b>{nm}</b><span class="label sy-br sy-br--{bc}">{b}</span></span></span></th><td class="num" data-l="Średnice">{d}</td><td data-l="Zastosowanie">{z}</td><td data-l="Parametry"><span><span class="sy-par">{par}</span>{appr}</span></td><td class="num sy-cnt" data-l="Indeksy">{c}</td><td class="sy-act">{act}</td></tr>')
+        if sids: rows.append(prod_row(nm,sids))
     return '\n'.join(rows)
 # ---- Wykresy Tectite (strona złączek na wcisk): wartości odczytane z wykresów Pegler Yorkshire (skan)
 TT_P=[(10,110,None),(12,59,None),(15,90,90),(18,65,65),(22,85,85),(28,92,54),(35,155,39),(42,88,45),(54,85,47)]
@@ -665,8 +680,8 @@ for s in SYS:
   </section>
 
   <section class="section section--tight" id="linie" style="padding-top:0">
-    <div class="wrap">
-      <div class="shead"><h2 class="sy-h" style="margin:0">Linie w systemie</h2><span class="label" style="color:var(--ink-40)">Źródło: {s["src"]}</span></div>
+    <div class="wrap" id="produkty">
+      <div class="shead"><h2 class="sy-h" style="margin:0">Linie i produkty w systemie</h2><span class="label" style="color:var(--ink-40)">Źródło: {s["src"]}</span></div>
       <div class="sy-tw">
         <table class="sy-lines">
           <caption class="sr">{s["title"]}: linie produktów</caption>
@@ -676,10 +691,11 @@ for s in SYS:
           </tbody>
         </table>
       </div>
+      {prod_rest(s)}
     </div>
   </section>
 
-{TT_SECTION if s['slug']=='zlaczki-na-wcisk-tectite' else ''}{prod_section(s)}
+{TT_SECTION if s['slug']=='zlaczki-na-wcisk-tectite' else ''}
   <section class="section section--tight section--stone" id="faq">
     <div class="wrap faq">
       <div class="faq__intro">
