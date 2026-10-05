@@ -441,6 +441,15 @@
   // strony grup i panel listy: po powrocie przyciskiem „Wstecz” (bfcache) odśwież stan listy z pamięci przeglądarki
   window.addEventListener('pageshow', function (e) { if (e.persisted) document.dispatchEvent(new CustomEvent('rfq:change', { detail: { src: 'bf' } })); });
 
+  // Strony systemów: klik w wiersz linii (lub „Produkty ▾”) rozwija pełną listę produktów pod nim
+  $$('tr.sy-line.has-prod').forEach(function (tr) {
+    var more = tr.nextElementSibling && $('.sy-more', tr.nextElementSibling), btn = $('button.sy-find', tr);
+    if (!more) return;
+    function sync() { if (btn) btn.setAttribute('aria-expanded', more.open); }
+    tr.addEventListener('click', function (e) { if (e.target.closest('a')) return; more.open = !more.open; });
+    more.addEventListener('toggle', sync);
+  });
+
   // Do pobrania: filtr po rodzaju i marce
   var dll = $('#dll');
   if (dll) (function () {
