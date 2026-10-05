@@ -255,6 +255,14 @@
     location.href = 'kontakt.html?temat=' + encodeURIComponent(lines.join('\n')) + '#formularz';
   });
   drawRfq();
+  // powrót przyciskiem „Wstecz” (strona z pamięci przeglądarki, bfcache) lub zmiana w innej karcie: wczytaj listę od nowa
+  function reloadRfq() {
+    rfq = new Map(); try { JSON.parse(localStorage.getItem(KEY) || '[]').forEach(function (x) { rfq.set(x[0], x[1]); }); } catch (e) {}
+    drawRfq();
+    if (res) $$('.add[data-art]', res).forEach(function (b) { var on = rfq.has(b.dataset.art); b.classList.toggle('is-in', on); b.textContent = on ? L('Dodano', 'Added', 'Додано') : L('Dodaj', 'Add', 'Додати'); });
+  }
+  window.addEventListener('pageshow', function (e) { if (e.persisted) reloadRfq(); });
+  window.addEventListener('storage', function (e) { if (e.key === KEY) reloadRfq(); });
   var q0 = new URLSearchParams(location.search).get('q');
   if (q0) { qEl.value = q0; load().then(search); }
   var seria = new URLSearchParams(location.search).get('seria');
@@ -425,6 +433,9 @@
     window.addEventListener('storage', function (e) { if (e.key === KEY) { draw(); document.dispatchEvent(new CustomEvent('rfq:change', { detail: { src: 'ldr' } })); } });
     draw();
   })();
+
+  // strony grup i panel listy: po powrocie przyciskiem „Wstecz” (bfcache) odśwież stan listy z pamięci przeglądarki
+  window.addEventListener('pageshow', function (e) { if (e.persisted) document.dispatchEvent(new CustomEvent('rfq:change', { detail: { src: 'bf' } })); });
 
   // Do pobrania: filtr po rodzaju i marce
   var dll = $('#dll');
