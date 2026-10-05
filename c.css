@@ -928,3 +928,16 @@ button.sy-find[aria-expanded="true"]::after { content: " ▴"; }
   .sy-pv .gcard { scroll-snap-align: start; }
   .sy-pv .gcard:nth-child(n+4) { display: grid; }
 }
+
+/* ---------- znaki certyfikatów (PZH, INiG, ITB) */
+.certs { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.5rem; }
+.cert { display: flex; align-items: center; gap: .9rem; margin: 0; padding: .6rem 1rem .6rem .6rem; background: #fff; border: 1px solid var(--line); border-radius: 12px; color: var(--ink); min-width: 0; }
+.cert img { width: auto; height: 64px; flex: none; }
+.cert b { display: block; font-weight: 600; font-size: .92rem; line-height: 1.25; }
+.cert span { display: block; margin-top: .2rem; font: 500 .62rem/1.45 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-40); }
+.certs--dark .cert { border-color: transparent; }
+.certs--sm { margin-top: 1rem; }
+.certs--sm .cert img { height: 48px; }
+.certb { margin-top: 1.8rem; padding-top: 1.4rem; border-top: 1px solid var(--line); }
+.certb > .label { color: var(--ink-40); }
+@media (max-width: 720px) { .cert { flex: 1 1 100%; } }

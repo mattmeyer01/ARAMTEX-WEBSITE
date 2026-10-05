@@ -159,6 +159,25 @@ def qa(art,l,pk):
     return (f'<div class="qty" data-add="{art}" data-l="{l}"><input type="number" min="1" step="1" value="1" inputmode="numeric" aria-label="Ilość {art}">'
             f'<select aria-label="Jednostka {art}">{opts}</select><button class="add" type="button">Dodaj</button></div>')
 
+# znaki certyfikatów posiadanych przez Armatex (img/cert): skrót aprobaty → plik, podpis, krótki opis, alt
+CERT={'PZH':('pzh','Atest higieniczny PZH','kontakt z wodą pitną','Znak „Produkt z atestem” Narodowego Instytutu Zdrowia Publicznego PZH – PIB'),
+      'INiG':('inig','Certyfikat INiG','instalacje gazowe','Znak Systemu Certyfikacji KZR INiG'),
+      'ITB':('itb','Certyfikat ITB','zakładowa kontrola produkcji','Znak ITB – Zakładowa Kontrola Produkcji')}
+def cert_tiles(keys,notes=None,cls=''):
+    out=''
+    for k in keys:
+        f,t,d,alt=CERT[k]
+        note=(notes or {}).get(k,d)
+        out+=f'<figure class="cert"><img src="../img/cert/{f}.webp" alt="{alt}" {img_wh("../img/cert/"+f+".webp")} loading="lazy" decoding="async"><figcaption><b>{t}</b><span>{note}</span></figcaption></figure>'
+    return f'<div class="certs{(" "+cls) if cls else ""}">{out}</div>'
+CERT_NOTES={'zlaczki-zaprasowane-press':{'PZH':'Gutpress Copper woda V i M · INOX 316L','INiG':'Gutpress Copper gaz V i M','ITB':'Gutpress Carbon Steel'},
+            'zlaczki-lutowane':{'PZH':'złączki lutowane EN 1254'}}
+def cert_band(s):
+    """Strona systemu: które linie mają polskie certyfikaty (z list aprobat w tabeli linii)."""
+    keys=[k for k in CERT if any(k in l[6] for l in s['lines'])]
+    if not keys: return ''
+    notes=dict({k:' · '.join(l[0] for l in s['lines'] if k in l[6]) for k in keys},**CERT_NOTES.get(s['slug'],{}))
+    return f'<div class="certb"><span class="label">Certyfikaty dla rynku polskiego</span>{cert_tiles(keys,notes)}</div>'
 def gcard(G):
     return f'<a class="gcard" href="{G["slug"]}.html"><img src="{G["img_src"]}" alt="" width="56" height="56" loading="lazy" decoding="async"><span><b>{G["name"]}</b><small>{G["code"]} · {len(G["rows"])} rozm.</small></span></a>'
 def groups_of(sid): return [G for G in GROUPS if G['sid']==sid]
@@ -473,7 +492,7 @@ stats='''      <div class="stats">
         <div class="stat"><b><span class="odo" data-odo="1" aria-label="1">1</span><i> dzień</i></b><span>na przygotowanie oferty</span></div>
         <div class="stat"><b><span class="odo" data-odo="4" aria-label="4">4</span><i> systemy</i></b><span>łączenia od jednego dystrybutora</span></div>
       </div>'''
-docs=frag('  <section class="docs" id="dokumenty">','  </section>').replace('<a class="ghost" href="#kontakt" data-topic="Jesteśmy hurtownią i prosimy o dostęp do bazy dokumentów technicznych.">','<a class="ghost" href="'+ask('Jesteśmy hurtownią i prosimy o dostęp do bazy dokumentów technicznych.')+'">').replace('src="img/besco/','src="../img/besco/')
+docs=frag('  <section class="docs" id="dokumenty">','  </section>').replace('</ul>\n        <a class="ghost"','</ul>\n        '+cert_tiles(['PZH','INiG','ITB'],cls='certs--dark')+'\n        <a class="ghost"',1).replace('<a class="ghost" href="#kontakt" data-topic="Jesteśmy hurtownią i prosimy o dostęp do bazy dokumentów technicznych.">','<a class="ghost" href="'+ask('Jesteśmy hurtownią i prosimy o dostęp do bazy dokumentów technicznych.')+'">').replace('src="img/besco/','src="../img/besco/')
 assert 'kontakt.html?temat=' in docs
 home=f'''
 {hero}
@@ -694,6 +713,7 @@ for s in SYS:
         </table>
       </div>
       {prod_rest(s)}
+      {cert_band(s)}
     </div>
   </section>
 
@@ -976,6 +996,7 @@ for G in GROUPS:
         <dl class="gp__p">
 {ptxt}
         </dl>
+        {cert_tiles([k for k in CERT if k in m['appr']],cls='certs--sm') if any(k in m['appr'] for k in CERT) else ''}
       </div>
     </div>
   </section>
@@ -1430,6 +1451,7 @@ art('poradnik-aprobaty-dvgw-kiwa-wras','Aprobaty DVGW, KIWA, WRAS, RISE i INiG: 
             <tr><td><strong>ITB</strong></td><td>Instytut Techniki Budowlanej – Państwowy Instytut Badawczy, Polska</td><td>ocena i certyfikacja wyrobów budowlanych</td></tr>
           </tbody>
         </table></div>
+        {cert_tiles(['PZH','INiG','ITB'])}
         <p>Obok aprobat w katalogach pojawia się norma. <strong>EN 1254-7</strong> to europejska norma dla złączek z końcówkami zaprasowanymi (press) do rur metalowych, a <strong>EN 1254</strong> w ogóle obejmuje złączki z miedzi i jej stopów.</p>
         <h2 id="linie">Które linie mają które aprobaty</h2>
         <div class="tw"><table>
