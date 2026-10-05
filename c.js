@@ -28,14 +28,18 @@
   if (top) new IntersectionObserver(function (e) { nav.classList.toggle('is-solid', !e[0].isIntersecting); }, { rootMargin: '-80px 0px 0px 0px' }).observe(top);
   else nav.classList.add('is-solid');
 
-  // Menu: rozwijana oferta i menu mobilne
-  var dd = $('.dd');
-  if (dd) {
+  // Menu: rozwijane pozycje (Oferta, Materiały, język) i menu mobilne
+  var dds = $$('.dd');
+  function ddClose(d) { d.classList.remove('open'); $('button', d).setAttribute('aria-expanded', false); }
+  dds.forEach(function (dd) {
     var ddb = $('button', dd);
-    ddb.addEventListener('click', function () { var o = dd.classList.toggle('open'); ddb.setAttribute('aria-expanded', o); });
-    document.addEventListener('click', function (e) { if (!dd.contains(e.target)) { dd.classList.remove('open'); ddb.setAttribute('aria-expanded', false); } });
-    dd.addEventListener('keydown', function (e) { if (e.key === 'Escape') { dd.classList.remove('open'); ddb.setAttribute('aria-expanded', false); ddb.focus(); } });
-  }
+    ddb.addEventListener('click', function () {
+      dds.forEach(function (x) { if (x !== dd) ddClose(x); });
+      var o = dd.classList.toggle('open'); ddb.setAttribute('aria-expanded', o);
+    });
+    dd.addEventListener('keydown', function (e) { if (e.key === 'Escape') { ddClose(dd); ddb.focus(); } });
+  });
+  if (dds.length) document.addEventListener('click', function (e) { dds.forEach(function (dd) { if (!dd.contains(e.target)) ddClose(dd); }); });
   var burger = $('#burger');
   if (burger) burger.addEventListener('click', function () {
     var o = document.body.classList.toggle('menu-open'); burger.setAttribute('aria-expanded', o);

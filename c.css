@@ -712,7 +712,7 @@ a.chip:hover { border-color: var(--ink); }
 }
 
 /* menu z 6 pozycjami: ciaśniej na węższych ekranach, telefon jest też w CTA */
-@media (max-width: 1260px) { .nav__links { gap: 1.25rem; } .nav__tel { display: none; } }
+@media (max-width: 1260px) { .nav__links { gap: 1.25rem; } }
 .f .req { color: var(--red); }
 .f.is-bad select { border-color: var(--red); }
 .consent .req { color: var(--red); }
@@ -878,19 +878,22 @@ body.has-lbar .foot__bar { padding-bottom: calc(5.5rem + env(safe-area-inset-bot
 @media (prefers-reduced-motion: reduce) { .ldr__bg, .ldr .ldr__p { transition: none; } }
 
 /* przełącznik języka PL / EN */
-.nav__langs { flex: none; display: inline-flex; align-items: center; height: 32px; border: 1px solid currentColor; border-radius: 99px; }
-.nav__langs a { display: grid; place-items: center; height: 100%; padding: 0 .55rem; font: 500 .72rem var(--mono); letter-spacing: .08em; text-decoration: none; opacity: .75; transition: opacity .2s; }
-.nav__langs a:hover { opacity: 1; }
-.nav__langs a + a { border-left: 1px solid currentColor; }
-@media (max-width: 720px) { .nav__langs { display: none; } }   /* telefon: język w menu mobilnym */
+/* wybór języka: rozwijane „PL ▾” */
+.dd--lang { flex: none; }
+.dd--lang > button { height: 32px; padding: 0 .65rem; border: 1px solid currentColor; border-radius: 99px; font: 500 .72rem var(--mono); letter-spacing: .08em; }
+.dd__m--lang { left: auto; right: 0; width: 200px; }
+.dd__m--lang a { grid-template-columns: 1fr auto; padding: .55rem .7rem; }
+.dd__m--lang a[aria-current] b::after { content: " ✓"; color: var(--red-2); }
+.dd__m--sm { width: 300px; }
+@media (max-width: 720px) { .dd--lang { display: none; } }   /* telefon: język w menu mobilnym */
 .nav .mag { white-space: nowrap; }
 @media (max-width: 1260px) { .nav .wrap { gap: 1.25rem; } }
 @media (max-width: 1200px) { .nav__links { gap: 1rem; } }
 .nav__tel { white-space: nowrap; }
-/* menu z przełącznikiem języków: ciaśniej na średnich ekranach, telefon w menu od 1367 px (UA od 1601 px) */
+/* menu: ciaśniej na średnich ekranach, telefon w menu od 1200 px */
 @media (max-width: 1536px) { .nav .wrap { gap: 1.25rem; } .nav__links { gap: 1.3rem; } }
-@media (max-width: 1366px) { .nav__tel { display: none; } }
-@media (max-width: 1600px) { html[lang="uk"] .nav__tel { display: none; } }
+@media (max-width: 1199px) { .nav__tel { display: none; } }
 @media (max-width: 1240px) { html[lang="uk"] .nav__links a, html[lang="uk"] .nav .dd button { font-size: .88rem; } html[lang="uk"] .nav__links { gap: .9rem; } }
 @media (max-width: 1200px) { .nav .wrap { gap: 1rem; } .nav__links { gap: .9rem; } .nav__links a, .nav .dd button { font-size: .88rem; } }
 @media (max-width: 1140px) { html[lang="uk"] .nav__links { gap: .7rem; } html[lang="uk"] .nav__links a, html[lang="uk"] .nav .dd button { font-size: .8rem; } html[lang="uk"] .nav .wrap { gap: .8rem; } }
+html .nav .dd.dd--lang > button { font: 500 .72rem var(--mono); }   /* przycisk języka: zawsze mały, mimo reguł dla menu */
