@@ -409,11 +409,11 @@
         else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); }
       });
     }
-    // pozycje bez miniatury albo z adresem sprzed wersjonowania zdjęć (?v=): aktualne zdjęcie grupy z danych katalogu
+    // miniatury w liście: po podmianie zdjęcia zmienia się jego ?v=, więc przy pierwszym otwarciu listy na stronie
+    // porównaj zapisane adresy z danymi katalogu (jedno zapytanie na wczytanie strony, zwykle 304)
     var imgs = null;
     function fillImgs() {
-      var m = read(), miss = []; m.forEach(function (v, art) { if (!v.i || v.i.indexOf('?v=') < 0) miss.push(art); });
-      if (!miss.length || imgs) return;
+      if (imgs || !read().size) return;
       imgs = fetch(BASE + 'data/katalog.json').then(function (r) { return r.json(); }).then(function (d) {
         var by = {}; d.rows.forEach(function (r) { by[r[1]] = d.groups[r[0]][4]; });
         var m2 = read(), ch = false;

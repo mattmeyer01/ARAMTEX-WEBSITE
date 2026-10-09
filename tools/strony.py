@@ -13,12 +13,16 @@ def img(n, alt, cls=''):
 _VH={}
 def vimg(src):
     # adres zdjęcia z ?v=<skrót treści>: po podmianie pliku przeglądarki pobierają nową wersję mimo 7-dniowego cache /img/*
-    f=os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),'..',src.replace('../','')))
+    f=os.path.normpath(R+re.sub(r'^(?:\.\./)*(?:https?://[^/]+/)?','',src))
     if f not in _VH:
         try:
             import hashlib; _VH[f]='?v='+hashlib.md5(open(f,'rb').read()).hexdigest()[:8]
         except OSError: _VH[f]=''
     return src+_VH[f]
+_IMG_URL=re.compile(r'(?<=["\'(\s,])((?:\.\./)*(?:https?://[^/"\'\s]+/)?(?:assets/)?img/[A-Za-z0-9_./-]+\.(?:webp|jpe?g|png|svg|gif|avif|ico))(?![?\w])')
+def vhtml(html):
+    # każdy adres zdjęcia na stronie dostaje ten sam ?v=: jeden plik = jeden adres (src, srcset, preload, data-th, JSON-LD)
+    return _IMG_URL.sub(lambda m:vimg(m[1]),html)
 def ask(t): return 'kontakt.html?temat='+quote(t)+'#formularz'
 TEL='<a href="tel:+48513191502">513 191 502</a>'
 
@@ -188,7 +192,7 @@ def cert_band(s):
     notes=dict({k:' · '.join(l[0] for l in s['lines'] if k in l[6]) for k in keys},**CERT_NOTES.get(s['slug'],{}))
     return f'<div class="certb"><span class="label">Certyfikaty dla rynku polskiego</span>{cert_tiles(keys,notes)}</div>'
 def gcard(G):
-    return f'<a class="gcard" href="{G["slug"]}.html"><img src="{vimg(G["img_src"])}" alt="" width="56" height="56" loading="lazy" decoding="async"><span><b>{G["name"]}</b><small>{G["code"]} · {len(G["rows"])} rozm.</small></span></a>'
+    return f'<a class="gcard" href="{G["slug"]}.html"><img src="{G["img_src"]}" alt="" width="56" height="56" loading="lazy" decoding="async"><span><b>{G["name"]}</b><small>{G["code"]} · {len(G["rows"])} rozm.</small></span></a>'
 def groups_of(sid): return [G for G in GROUPS if G['sid']==sid]
 SYS_BY_SLUG={}
 def grp_links(sids, open_first=False):
@@ -421,7 +425,7 @@ def page(name,title,desc,cur,body,extra='',pm=None):
     html=live_form(html)
     html=unglue(html)
     html=html.replace('href="c.css"',f'href="c.css?v={ASSET_V["c.css"]}"').replace('src="c.js"',f'src="c.js?v={ASSET_V["c.js"]}"')
-    open(OUT+name,'w',encoding='utf-8').write(html)
+    open(OUT+name,'w',encoding='utf-8').write(vhtml(html))
 
 # ---------------- wersje językowe: armatex.pl/en/, armatex.pl/ua/ (te same nazwy plików)
 import sys as _sys; _sys.path.insert(0,os.path.dirname(os.path.abspath(__file__)))
@@ -457,7 +461,7 @@ def page_lang(name,html,pm,code):
     if code=='uk': html=html.replace('outfit-latin-ext-wght-normal.woff2','onest-cyrillic-wght-normal.woff2')   # preload: cyrylica zamiast latin-ext
     html=unglue(html)
     html=html.replace('href="c.css"',f'href="../c.css?v={ASSET_V["c.css"]}"').replace('src="c.js"',f'src="../c.js?v={ASSET_V["c.js"]}"')
-    open(OUT+d+'/'+name,'w',encoding='utf-8').write(html)
+    open(OUT+d+'/'+name,'w',encoding='utf-8').write(vhtml(html))
 
 def card(s,cls='syc in'):
     p0,a0=s['pics'][0]
@@ -595,8 +599,7 @@ page('index.html','Armatex – Dystrybutor złączek Besco i Pegler Yorkshire','
 # ---------------- strony systemów
 def thumb(ph,alt):
     w,h=Image.open(f'{R}img/{ph}.webp').size
-    src=vimg(f'../img/{ph}.webp')
-    return f'<img src="{src}" alt="{alt}" width="{w}" height="{h}" loading="lazy" decoding="async">'
+    return f'<img src="../img/{ph}.webp" alt="{alt}" width="{w}" height="{h}" loading="lazy" decoding="async">'
 
 # linie Pegler w tabeli systemu → serie z data/pegler.json (Besco ma id serii w samej tabeli)
 LINE_SER={'Tectite Classic':'tectite-classic','Tectite Pro i Carbon':'tectite-pro','Tectite 316':'tectite-316','Zawory i filtry na wcisk':'tectite-zawory',
@@ -997,7 +1000,7 @@ for G in GROUPS:
 
   <section class="section section--tight">
     <div class="wrap gp">
-      <figure class="gp__img{' gp__img--w' if kind!='besco' else ''}"><img src="{vimg(img_big(G["img_src"]))}" alt="{G["name"]} {G["brand"]} {G["code"]}" {img_wh(img_big(G["img_src"]))} data-th="{vimg(G["img_src"])}" decoding="async"></figure>
+      <figure class="gp__img{' gp__img--w' if kind!='besco' else ''}"><img src="{img_big(G["img_src"])}" alt="{G["name"]} {G["brand"]} {G["code"]}" {img_wh(img_big(G["img_src"]))} data-th="{G["img_src"]}" decoding="async"></figure>
       <div>
         <div class="shead"><h2 class="sy-h" style="margin:0">Rozmiary i numery artykułów</h2><span class="label" style="color:var(--ink-40)">Źródło: {src}</span></div>
         <div class="sy-tw">
