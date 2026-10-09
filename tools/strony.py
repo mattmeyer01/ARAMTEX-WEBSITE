@@ -1711,4 +1711,11 @@ for c in LANGS_ON:
     M=I18N.lang(c).MISSING
     json.dump(M,open(os.path.join(R,'tools',c+'-brak.json'),'w',encoding='utf-8'),ensure_ascii=False,indent=0,sort_keys=True)
     print(c.upper()+': brak tłumaczenia dla',len(M),f'tekstów (tools/{c}-brak.json)' if M else '')
+# zdjęcie na stronie produktu leży na beżowej ramce (multiply): jego tło musi być białe, inaczej widać drugą ramkę
+def _bg(src):
+    im=Image.open(R+src.replace('../','')).convert('RGB'); w,h=im.size
+    px=[im.getpixel((x,y)) for x in range(w) for y in (0,h-1)]+[im.getpixel((x,y)) for y in range(h) for x in (0,w-1)]
+    return min(sorted(c[i] for c in px)[len(px)//2] for i in range(3))
+_fr=sorted(b for b in {img_big(G['img_src']) for G in GROUPS} if 215<=_bg(b)<248)
+if _fr: print('Podwójna ramka na stronie produktu (tło zdjęcia nie jest białe), uruchom tools/tlo_produktu.py:',len(_fr),', '.join(x.split('/')[-1] for x in _fr[:8]))
 print('ok')
