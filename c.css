@@ -164,6 +164,7 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .sy-br { display: inline-flex; align-items: center; gap: .4rem; margin-top: .3rem; color: var(--ink-40); font-size: .62rem; }
 .sy-br::before { content: ""; width: 6px; height: 6px; background: #b0185c; }
 .sy-br--pegler::before { background: #1c6fb8; }
+.label.sy-new { display: inline-flex; align-items: center; margin: .3rem 0 0 .6rem; padding: .22rem .5rem .2rem; border-radius: 999px; background: var(--red); color: #fff; font-size: .58rem; letter-spacing: .1em; line-height: 1; vertical-align: middle; }
 .sy-act { text-align: right; white-space: nowrap; }
 .sy-find { font: 500 .66rem/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--red-2); text-decoration: none; }
 .sy-find::after { content: " →"; }
