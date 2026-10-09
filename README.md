@@ -54,9 +54,9 @@ pozycji o nietypowym układzie tabel (kolektory TM80/TM81, węże TF90/TF92, cz�
 Wyszukiwarka (`wyszukiwarka.html`) czyta `data/katalog.json`, który generator (`tools/strony.py`) składa przy każdym
 uruchomieniu z `data/besco-2026.json` i `data/pegler.json` (Besco, Tectite, Kuterlite).
 
-## Wersje językowe (/en/, /uk/)
+## Wersje językowe (/en/, /ua/)
 
-Generator zapisuje każdą stronę także jako `en/<ta sama nazwa>.html` i `uk/<ta sama nazwa>.html`. Tłumaczenie robi
+Generator zapisuje każdą stronę także jako `en/<ta sama nazwa>.html` i `ua/<ta sama nazwa>.html` (ukraiński: katalog `ua/`, kod języka `uk`). Tłumaczenie robi
 `tools/i18n.py` na gotowym HTML według słowników `tools/en.json` i `tools/uk.json`:
 
 - `t`: teksty stron (akapity, nagłówki, przyciski, atrybuty alt/aria-label, opisy meta). Znaczniki wewnątrz tekstu
@@ -69,7 +69,7 @@ Zdania stron grup (opis, tytuł, meta) składa szablon `GT` w `tools/strony.py`.
 wypisuje liczbę tekstów bez tłumaczenia i zapisuje je do `tools/en-brak.json` i `tools/uk-brak.json` (tekst → strona).
 Dopisz tłumaczenia do słowników i uruchom generator ponownie. Teksty JS (lista do wyceny, formularz) są w `c.js`
 (funkcja `L('po polsku', 'in English', 'українською')`). Strony mają `hreflang` pl/en/uk, przełącznik języków w menu
-i własne strony 404 (`/en/*`, `/uk/*` w `_redirects`). Outfit nie ma cyrylicy: znaki cyrylicy biorą krój Onest
+i własne strony 404 (`/en/*`, `/ua/*` w `_redirects`; stare adresy `/uk/*` → 301 na `/ua/`). Outfit nie ma cyrylicy: znaki cyrylicy biorą krój Onest
 (`assets/fonts/onest-cyrillic-wght-normal.woff2`, licencja OFL), etykiety IBM Plex Mono w wersji z cyrylicą.
 
 ## Złączki INOX

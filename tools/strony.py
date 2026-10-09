@@ -137,7 +137,7 @@ _slugs=[G['slug'] for G in GROUPS]; assert len(_slugs)==len(set(_slugs)), 'dupli
 # Dane wyszukiwarki dla wszystkich marek: data/katalog.json
 # groups: [linia, kod, nazwa, nazwa w katalogu, zdjęcie, strona grupy, nazwa EN, nazwa UK]; rows: [grupa, nr art., rozmiar, opakowania [[jedn., szt.], ...]]
 def _katalog_json():
-    NE,NU=(json.load(open(R+f'tools/{c}.json',encoding='utf-8'))['names'] for c in ('en','uk'))   # nazwy dla /en/ i /uk/wyszukiwarka.html
+    NE,NU=(json.load(open(R+f'tools/{c}.json',encoding='utf-8'))['names'] for c in ('en','uk'))   # nazwy dla /en/ i /ua/wyszukiwarka.html
     sers=[dict(id=x['id'],short=x['short'],short_en=NE.get(x['short'],x['short']),short_uk=NU.get(x['short'],x['short']),brand='Besco') for x in BD['series']]+[dict(id=k,short=v['name'],short_en=NE.get(v['name'],v['name']),short_uk=NU.get(v['name'],v['name']),brand=('Tectite' if k.startswith('tectite') else 'Kuterlite')+' Pegler Yorkshire') for k,v in PSER.items()]
     si={x['id']:i for i,x in enumerate(sers)}
     gs,rs=[],[]
@@ -231,7 +231,7 @@ def head(title,desc,extra='',path=''):
   <link rel="canonical" href="{SITE+path}">
   <link rel="alternate" hreflang="pl" href="{SITE+path}">
   <link rel="alternate" hreflang="en" href="{SITE}en/{path}">
-  <link rel="alternate" hreflang="uk" href="{SITE}uk/{path}">
+  <link rel="alternate" hreflang="uk" href="{SITE}ua/{path}">
   <link rel="alternate" hreflang="x-default" href="{SITE}en/{path}">
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pl_PL">
@@ -409,16 +409,17 @@ def page(name,title,desc,cur,body,extra='',pm=None):
     html=html.replace('href="c.css"',f'href="c.css?v={ASSET_V["c.css"]}"').replace('src="c.js"',f'src="c.js?v={ASSET_V["c.js"]}"')
     open(OUT+name,'w',encoding='utf-8').write(html)
 
-# ---------------- wersje językowe: armatex.pl/en/, armatex.pl/uk/ (te same nazwy plików)
+# ---------------- wersje językowe: armatex.pl/en/, armatex.pl/ua/ (te same nazwy plików)
 import sys as _sys; _sys.path.insert(0,os.path.dirname(os.path.abspath(__file__)))
 import i18n as I18N
-LANGS_ON=['en','uk']
+LANGS_ON=['en','uk']                          # kody języków (html lang, hreflang, słowniki tools/<kod>.json)
+LANG_DIR={'en':'en','uk':'ua'}                # katalog w adresie: ukraiński pod /ua/ (kod języka zostaje „uk”, „UA” to kod kraju)
 LANG_META={'pl':('PL','Polski','pl_PL'),'en':('EN','English','en_GB'),'uk':('UA','Українська','uk_UA')}   # skrót w menu, nazwa, og:locale
-for _c in LANGS_ON: os.makedirs(OUT+_c,exist_ok=True)
+for _c in LANGS_ON: os.makedirs(OUT+LANG_DIR[_c],exist_ok=True)
 def tn(x,c='en'): return I18N.lang(c).N.get(x,x)                 # nazwa produktu / linii w języku c
 def lang_links(html,name,cur):
     """Wybór języka: w menu rozwijane „PL ▾” (wszystkie języki, bieżący zaznaczony), w menu mobilnym odnośniki do pozostałych."""
-    pre=lambda c: ('' if cur=='pl' else '../')+('' if c=='pl' else c+'/')
+    pre=lambda c: ('' if cur=='pl' else '../')+('' if c=='pl' else LANG_DIR[c]+'/')
     alls=['pl']+LANGS_ON; oth=[c for c in alls if c!=cur]
     lab={'pl':'Język','en':'Language','uk':'Мова'}[cur]
     items=''.join(f'<a href="{pre(c)}{name}" hreflang="{c}" lang="{c}"'+(' aria-current="true"' if c==cur else '')+f'><b>{LANG_META[c][1]}</b><span>{LANG_META[c][0]}</span></a>' for c in alls)
@@ -428,21 +429,21 @@ def lang_links(html,name,cur):
     html=html.replace('<!--LANG-->',nav)
     return html.replace('<!--LANGM-->','<span class="label">Język</span>'+mob)
 def page_lang(name,html,pm,code):
-    path='' if name=='index.html' else name
+    path='' if name=='index.html' else name; d=LANG_DIR[code]
     html=lang_links(html,name,code)
     html=live_form(html)
     html=I18N.translate(html,name,pm,code)
     html=html.replace('<html lang="pl">',f'<html lang="{code}">').replace('content="pl_PL"',f'content="{LANG_META[code][2]}"')
-    html=re.sub(r'(<link rel="canonical" href=")[^"]*"',lambda m:m[1]+SITE+code+'/'+path+'"',html)
-    html=re.sub(r'(<meta property="og:url" content=")[^"]*"',lambda m:m[1]+SITE+code+'/'+path+'"',html)
-    html=re.sub(r'(": ")'+re.escape(SITE)+r'(?!en/|uk/|img/|pliki/|assets/)',lambda m:m[1]+SITE+code+'/',html)   # adresy w JSON-LD
+    html=re.sub(r'(<link rel="canonical" href=")[^"]*"',lambda m:m[1]+SITE+d+'/'+path+'"',html)
+    html=re.sub(r'(<meta property="og:url" content=")[^"]*"',lambda m:m[1]+SITE+d+'/'+path+'"',html)
+    html=re.sub(r'(": ")'+re.escape(SITE)+r'(?!en/|ua/|img/|pliki/|assets/)',lambda m:m[1]+SITE+d+'/',html)   # adresy w JSON-LD
     html=html.replace('value="Zapytanie o wycenę ze strony armatex.pl"',f'value="Zapytanie o wycenę ze strony armatex.pl (wersja {dict(en="angielska",uk="ukraińska")[code]})"')
     for a,b in (('../../assets/','../assets/'),('href="site.webmanifest"','href="../site.webmanifest"')):
         html=html.replace(a,b)
     if code=='uk': html=html.replace('outfit-latin-ext-wght-normal.woff2','onest-cyrillic-wght-normal.woff2')   # preload: cyrylica zamiast latin-ext
     html=unglue(html)
     html=html.replace('href="c.css"',f'href="../c.css?v={ASSET_V["c.css"]}"').replace('src="c.js"',f'src="../c.js?v={ASSET_V["c.js"]}"')
-    open(OUT+code+'/'+name,'w',encoding='utf-8').write(html)
+    open(OUT+d+'/'+name,'w',encoding='utf-8').write(html)
 
 def card(s,cls='syc in'):
     p0,a0=s['pics'][0]
@@ -1654,8 +1655,9 @@ h=re.sub(r'\s*<link rel="(canonical|alternate)"[^>]*>','',h); h=h.replace('<meta
 # GitHub Pages podaje 404.html pod dowolnym adresem: baza ścieżek ustawiana przed wczytaniem CSS
 h=h.replace('<head>\n','<head>\n  <script>document.write(\'<base href="\'+(/^\\/aramtex-website\\//i.test(location.pathname)?location.pathname.match(/^\\/[^/]+\\//)[0]:\'/\')+\'">\')</script>\n',1)
 open(OUT+'404.html','w',encoding='utf-8').write(h)
-# 404 w wersjach językowych (Netlify: /en/*, /uk/* bez strony → <język>/404.html, reguły w _redirects)
+# 404 w wersjach językowych (Netlify: /en/*, /ua/* bez strony → <katalog>/404.html, reguły w _redirects)
 for c in LANGS_ON:
+    c=LANG_DIR[c]
     h=open(OUT+c+'/404.html',encoding='utf-8').read()
     h=re.sub(r'\s*<link rel="(canonical|alternate)"[^>]*>','',h); h=h.replace('<meta charset="utf-8">','<meta charset="utf-8">\n<meta name="robots" content="noindex">',1); h=re.sub(r'\s*<meta property="og:url"[^>]*>','',h)
     h=h.replace('<head>\n',f'<head>\n<base href="/{c}/">\n',1)
@@ -1665,13 +1667,13 @@ for c in LANGS_ON:
 GONE=[(x,'zlaczki-skrecane-kuterlite') for x in OFF_SLUGS]+[('poradnik-zlaczki-do-rur-pe','zlaczki-skrecane-kuterlite')]
 blk=['# Wycofane z oferty (Kuterlite K600 i K700, poradnik o rurach PE): blok generuje tools/strony.py']
 for old,new in GONE:
-    for pre in ['']+[c+'/' for c in LANGS_ON]:
+    for pre in ['']+[LANG_DIR[c]+'/' for c in LANGS_ON]:
         blk+=[f'/{pre}{old}  /{pre}{new}.html  301!',f'/{pre}{old}.html  /{pre}{new}.html  301!']
         f=OUT+pre+old+'.html'
         if os.path.exists(f): os.remove(f)
 rd=open(OUT+'_redirects',encoding='utf-8').read()
 rd=re.sub(r'\n# Wycofane z oferty.*?(?=\n\n|\Z)','',rd,flags=re.S).rstrip('\n')
-# przed regułami 404 dla /en/* i /uk/* (pierwsza pasująca reguła wygrywa)
+# przed regułami 404 dla /en/* i /ua/* (pierwsza pasująca reguła wygrywa)
 k=rd.find('# Wersje językowe')
 rd=(rd[:k].rstrip('\n')+'\n\n'+'\n'.join(blk)+'\n\n'+rd[k:]) if k>=0 else rd+'\n\n'+'\n'.join(blk)
 open(OUT+'_redirects','w',encoding='utf-8').write(rd.rstrip('\n')+'\n')
@@ -1680,7 +1682,7 @@ open(OUT+'_redirects','w',encoding='utf-8').write(rd.rstrip('\n')+'\n')
 import datetime
 urls=['']+[x['slug']+'.html' for x in SYS]+['wyszukiwarka.html','do-pobrania.html','o-firmie.html','poradniki.html']+[a['slug']+'.html' for a in ART]+['wspolpraca.html','kontakt.html','polityka-prywatnosci.html']+[G['slug']+'.html' for G in GROUPS]
 today=datetime.date.today().isoformat()
-sm='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{SITE}{u}</loc><lastmod>{today}</lastmod></url>\n' for u in urls+[c+'/'+x for c in LANGS_ON for x in urls])+'</urlset>\n'
+sm='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{SITE}{u}</loc><lastmod>{today}</lastmod></url>\n' for u in urls+[LANG_DIR[c]+'/'+x for c in LANGS_ON for x in urls])+'</urlset>\n'
 open(OUT+'sitemap.xml','w',encoding='utf-8').write(sm)
 open(OUT+'robots.txt','w',encoding='utf-8').write(f'User-agent: *\nAllow: /\n\nSitemap: {SITE}sitemap.xml\n')
 print('grupy',len(GROUPS),'url',len(urls))
