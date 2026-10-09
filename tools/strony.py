@@ -36,12 +36,12 @@ SYS=[
   pics=[('besco-press-v','Miedziany trójnik press'),('besco-gaz','Trójnik press do gazu z żółtym oznaczeniem'),('besco-stal','Trójnik press ze stali węglowej')],
   seria='cu-press-water-v,cu-press-water-m,cu-press-gas-v,cu-press-gas-m,steel-press-m,inox-304-press-m,inox-316l-press-m,press-ball-valve',
   src='katalogi Besco 2026 i Besco INOX',
-  lines=[('Gutpress Copper, profil V','Besco','cu-press-water-v','12–54 mm','woda pitna, CO, przemysł','16 bar',['DVGW','KIWA','WRAS','RISE','PZH'],'257','linie/besco-press-v'),
+  lines=[('INOX 304, Stainless Steel, press, profil M','Besco','inox-304-press-m','15–108 mm','ogrzewanie','16 bar',['CE'],'287','linie/besco-inox-304'),
+   ('INOX 316L, Stainless Steel, press, profil M','Besco','inox-316l-press-m','15–168,3 mm','woda, CO, przemysł','16 bar',['DVGW','WRAS','PZH'],'253','linie/besco-inox-316l'),
+   ('Gutpress Copper, profil V','Besco','cu-press-water-v','12–54 mm','woda pitna, CO, przemysł','16 bar',['DVGW','KIWA','WRAS','RISE','PZH'],'257','linie/besco-press-v'),
    ('Gutpress Copper, profil M','Besco','cu-press-water-m','12–108 mm','woda pitna, CO, przemysł','16 bar',['DVGW','WRAS','RISE','PZH'],'294','linie/besco-press-m'),
    ('Gutpress Copper do gazu, V i M','Besco','cu-press-gas-v,cu-press-gas-m','15–35 mm','gaz ziemny, LPG','5 bar',['DVGW','INiG'],'211','linie/besco-gaz'),
    ('Gutpress Carbon Steel, profil M','Besco','steel-press-m','12–108 mm','CO w obiegu zamkniętym, sprężone powietrze','16 bar',['ITB'],'256','linie/besco-stal'),
-   ('INOX 316L, Stainless Steel, press, profil M','Besco','inox-316l-press-m','15–168,3 mm','woda, CO, przemysł','16 bar',['DVGW','WRAS','PZH'],'253','linie/besco-inox-316l'),
-   ('INOX 304, Stainless Steel, press, profil M','Besco','inox-304-press-m','15–108 mm','ogrzewanie','16 bar',['CE'],'287','linie/besco-inox-304'),
    ('Gutpress Zawory Kulowe V i M','Besco','press-ball-valve','15–54 mm','woda, CO','16 bar',['DVGW','WRAS'],'25','linie/besco-zawor')],
   faq=[('Czym różni się profil V od M?','To kształt końcówki press i szczęki zaciskarki. Miedź Besco jest w obu profilach (V 12–54 mm, M 12–108 mm), stal węglowa w profilu M. Złączki w profilu M można zaprasowywać także szczęką V w zakresie DN12–28.'),
    ('Które złączki nadają się do gazu?','Linie GP Gas w profilu V i M: średnice 15–35 mm, do 5 bar, od −20 do 70 °C, norma EN 1254-7, atesty DVGW i INiG. Do instalacji gazowych nie stosuje się złączek z linii wodnych.'),
@@ -627,6 +627,7 @@ def prod_rest(s):
     rest=[x for x in sys_sids(s) if x not in used and groups_of(x)]
     return f'<div class="gls">{grp_links(rest)}</div>' if rest else ''
 
+NEW_LINES={'inox-304-press-m','inox-316l-press-m'}   # linie z plakietką „Nowość” w tabeli linii
 def lines_table(s):
     rows=[]
     for nm,b,ser,d,z,par,ap,c,ph in s['lines']:
@@ -634,7 +635,8 @@ def lines_table(s):
         sids=line_sids(nm,ser)
         act='<button class="sy-find" type="button" aria-expanded="false">Produkty</button>' if sids else (f'<a class="sy-find" href="wyszukiwarka.html?seria={ser}#katalog">Indeksy</a>' if ser else '')
         bc='pegler' if b.startswith('Pegler') else 'besco'
-        rows.append(f'              <tr class="sy-line{" has-prod" if sids else ""}"><th scope="row"><span class="sy-row"><span class="sy-thumb">{thumb(ph,nm)}</span><span><b>{nm}</b><span class="label sy-br sy-br--{bc}">{b}</span></span></span></th><td class="num" data-l="Średnice">{d}</td><td data-l="Zastosowanie">{z}</td><td data-l="Parametry"><span><span class="sy-par">{par}</span>{appr}</span></td><td class="num sy-cnt" data-l="Indeksy">{c}</td><td class="sy-act">{act}</td></tr>')
+        new='<span class="label sy-new">Nowość</span>' if ser in NEW_LINES else ''
+        rows.append(f'              <tr class="sy-line{" has-prod" if sids else ""}"><th scope="row"><span class="sy-row"><span class="sy-thumb">{thumb(ph,nm)}</span><span><b>{nm}</b><span class="label sy-br sy-br--{bc}">{b}</span>{new}</span></span></th><td class="num" data-l="Średnice">{d}</td><td data-l="Zastosowanie">{z}</td><td data-l="Parametry"><span><span class="sy-par">{par}</span>{appr}</span></td><td class="num sy-cnt" data-l="Indeksy">{c}</td><td class="sy-act">{act}</td></tr>')
         if sids: rows.append(prod_row(nm,sids))
     return '\n'.join(rows)
 # ---- Wykresy Tectite (strona złączek na wcisk): wartości odczytane z wykresów Pegler Yorkshire (skan)
