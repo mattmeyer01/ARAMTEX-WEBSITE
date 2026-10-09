@@ -20,6 +20,9 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
 - `img/`: logo, hero, zdjęcia produktów (`besco/`, `pegler/`, `oferta/`, `linie/`), obrazek udostępniania (`og/`).
   Zdjęcia grup produktów mają beż `#F3F1EC` wpisany w plik (miniatury w kafelkach, liście do wyceny i wyszukiwarce).
   Jeśli obok leży plik `<nazwa>-l.webp` (to samo zdjęcie na białym tle, czasem większe), strona produktu pokazuje go zamiast miniatury.
+  Strona produktu kładzie zdjęcie na beżowej ramce (`mix-blend-mode: multiply`), więc jego tło musi być białe, inaczej
+  w ramce widać drugą, ciemniejszą. Brakujące pliki `-l` tworzy `python3 tools/tlo_produktu.py` (dzieli piksele przez kolor
+  tła miniatury), a generator ostrzega, gdy któreś zdjęcie dałoby podwójną ramkę.
   Generator dopisuje do każdego adresu zdjęcia `?v=<skrót treści>`, więc podmiana pliku pod tą samą nazwą
   od razu trafia do przeglądarek mimo 7-dniowego cache `/img/*`.
 - `pliki/katalog-besco-2026.pdf`: katalog Besco 2026 (link w menu „Oferta → Katalogi”).
