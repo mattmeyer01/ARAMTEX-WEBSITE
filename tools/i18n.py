@@ -1,4 +1,4 @@
-"""Wersje językowe strony (armatex.pl/en/, /uk/): tłumaczenie gotowego HTML według słownika tools/<język>.json.
+"""Wersje językowe strony (armatex.pl/en/, /ua/): tłumaczenie gotowego HTML według słownika tools/<język>.json.
 
 Tekst strony dzielony jest na odcinki: element z własnym tekstem (zdanie z ewentualnymi <a>, <b> w środku)
 albo pojedynczy atrybut (alt, title, aria-label, placeholder, data-l, meta description, ...).

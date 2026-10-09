@@ -4,7 +4,7 @@
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var BASE = document.body.getAttribute('data-base') || '';
   // wersja angielska (/en/): ten sam skrypt, teksty wybierane po <html lang>
-  // wersje językowe (/en/, /uk/): ten sam skrypt, teksty wybierane po <html lang>
+  // wersje językowe (/en/, /ua/): ten sam skrypt, teksty wybierane po <html lang>
   var LANG = document.documentElement.lang, EN = LANG === 'en', UK = LANG === 'uk';
   var L = function (pl, en, uk) { return UK ? uk : EN ? en : pl; };
   var UNITS = { en: { karton: 'box', worek: 'bag', 'opak.': 'pack', 'szt.': 'pcs' }, uk: { karton: 'коробка', worek: 'мішок', 'opak.': 'уп.', 'szt.': 'шт.' } };
