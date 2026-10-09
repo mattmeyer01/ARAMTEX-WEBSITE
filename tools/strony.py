@@ -238,7 +238,7 @@ def head(title,desc,extra='',path=''):
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{title}</title>
+{bar_head()}  <title>{title}</title>
   <meta name="description" content="{da}">
   <meta name="theme-color" content="#0A1F44">
   <link rel="canonical" href="{SITE+path}">
@@ -410,13 +410,47 @@ def unglue(html):
     parts=re.split(r'(<script\b.*?</script>|<style\b.*?</style>|<svg\b.*?</svg>|<head>.*?</head>)',html,flags=re.S)
     return ''.join(x if i%2 else _unglue_part(x) for i,x in enumerate(parts))
 
+# ---------------- pasek nowości nad menu + okno z opisem (c.js: .abar, #inoxDlg)
+NEW_LINES={'inox-304-press-m','inox-316l-press-m'}   # linie z plakietką „Nowość” (tabela linii, pasek nowości)
+BAR_ID='inox-2026'   # nowy identyfikator pokaże pasek ponownie także tym, którzy zamknęli poprzedni; None = bez paska
+def bar_head():
+    # klasa has-bar przed pierwszym malowaniem: miejsce na pasek bez skoku układu, zamknięty pasek nie miga
+    if not BAR_ID: return ''
+    return f"  <script>try{{if(localStorage.getItem('armatex-bar')!=='{BAR_ID}')document.documentElement.classList.add('has-bar')}}catch(e){{document.documentElement.classList.add('has-bar')}}</script>\n"
+_BAR=[]
+def bar_html():
+    if not BAR_ID: return ''
+    if _BAR: return _BAR[0]
+    press=next(x for x in SYS if x['slug']=='zlaczki-zaprasowane-press')
+    L=[(nm.split(',')[0],d,z,''.join(f'<span class="appr">{a}</span>' for a in ap),c) for nm,b,ser,d,z,par,ap,c,ph in press['lines'] if ser in NEW_LINES]
+    rows=[(h,[x[i] for x in L]) for i,h in ((1,'Średnice'),(2,'Zastosowanie'),(3,'Aprobaty'),(4,'Indeksy'))]
+    table=('<table class="adlg__t"><thead><tr><td></td>'+''.join(f'<th scope="col">{x[0]}</th>' for x in L)+'</tr></thead><tbody>'
+           +''.join(f'<tr><th scope="row">{h}</th>'+''.join(f'<td>{v}</td>' for v in vals)+'</tr>' for h,vals in rows)+'</tbody></table>')
+    big='../img/nowosci/inox-system-1360.webp'
+    _BAR.append(f'''<div class="abar" data-id="{BAR_ID}" role="region" aria-label="Komunikat">
+  <p class="abar__t"><span class="abar__new">Nowość</span><span class="abar__txt"><span class="abar__l">Wprowadzamy nowy system INOX: złączki zaprasowane ze stali nierdzewnej 304 i 316L</span><span class="abar__s">INOX 304 i 316L</span></span><a class="abar__more" href="zlaczki-zaprasowane-press.html#linie" aria-haspopup="dialog" aria-controls="inoxDlg">Dowiedz się więcej</a></p>
+  <button class="abar__x" type="button" aria-label="Zamknij komunikat">×</button>
+</div>
+<dialog class="adlg" id="inoxDlg" aria-labelledby="inoxDlgT">
+  <button class="adlg__x" type="button" aria-label="Zamknij">×</button>
+  <img class="adlg__img" src="../img/nowosci/inox-system-720.webp" srcset="../img/nowosci/inox-system-720.webp 720w, {big} 1360w" sizes="(max-width: 720px) calc(100vw - 2rem), 680px" alt="Złączki zaprasowane Besco ze stali nierdzewnej INOX: kolana, trójniki, mufy i złączki gwintowane" {img_wh(big)} loading="lazy" decoding="async">
+  <div class="adlg__b">
+    <span class="label sy-new">Nowość</span>
+    <h2 id="inoxDlgT">Złączki zaprasowane ze stali nierdzewnej INOX</h2>
+    <p>Wprowadzamy do oferty dwie linie złączek press Besco ze stali nierdzewnej w profilu M: do 16 bar, od −10 do 110 °C.</p>
+    {table}
+    <div class="adlg__f"><a class="mag" href="zlaczki-zaprasowane-press.html#linie"><span>Zobacz linie INOX</span></a></div>
+  </div>
+</dialog>
+''')
+    return _BAR[0]
 def page(name,title,desc,cur,body,extra='',pm=None):
     pm={c:dict(v) for c,v in (pm or {}).items()}            # mapa zdań per język: {'en': {pl: en}, 'uk': {...}}
     for v in pm.values():
         for x,f in ((title,short_title),(desc,short_desc)):
             if x in v: v[f(x)]=f(v[x])
     title,desc=short_title(title),short_desc(desc)
-    html=head(title,desc,extra,'' if name=='index.html' else name)+'<body data-base="../">\n\n'+nav(cur)+'\n<main id="top">\n'+body+'\n</main>\n\n'+FOOT+'</body>\n</html>\n'
+    html=head(title,desc,extra,'' if name=='index.html' else name)+'<body data-base="../">\n\n'+bar_html()+nav(cur)+'\n<main id="top">\n'+body+'\n</main>\n\n'+FOOT+'</body>\n</html>\n'
     for c in LANGS_ON: page_lang(name,html,(pm or {}).get(c,{}),c)
     html=lang_links(html,name,'pl')
     # strona w katalogu głównym repo: ścieżki względne bez prefiksów szkicu
@@ -627,7 +661,6 @@ def prod_rest(s):
     rest=[x for x in sys_sids(s) if x not in used and groups_of(x)]
     return f'<div class="gls">{grp_links(rest)}</div>' if rest else ''
 
-NEW_LINES={'inox-304-press-m','inox-316l-press-m'}   # linie z plakietką „Nowość” w tabeli linii
 def lines_table(s):
     rows=[]
     for nm,b,ser,d,z,par,ap,c,ph in s['lines']:

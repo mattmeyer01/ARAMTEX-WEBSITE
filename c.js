@@ -46,6 +46,25 @@
     burger.setAttribute('aria-label', o ? L('Zamknij menu', 'Close menu', 'Закрити меню') : L('Otwórz menu', 'Open menu', 'Відкрити меню'));
   });
 
+  // Pasek nowości nad menu: przewija się ze stroną, menu zjeżdża za nim; × chowa go na stałe (pamięć przeglądarki).
+  // „Dowiedz się więcej” otwiera okno z opisem; bez obsługi <dialog> link prowadzi wprost na stronę złączek press.
+  var abar = $('.abar'), root = document.documentElement;
+  if (abar) (function () {
+    var dlg = $('#' + $('.abar__more', abar).getAttribute('aria-controls'));
+    var tick = false;
+    function pos() { tick = false; root.style.setProperty('--abar-y', Math.max(0, abar.offsetHeight - window.scrollY) + 'px'); }
+    if (root.classList.contains('has-bar')) { pos(); window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(pos); } }, { passive: true }); }
+    $('.abar__x', abar).addEventListener('click', function () {
+      root.classList.remove('has-bar'); root.style.removeProperty('--abar-y');
+      try { localStorage.setItem('armatex-bar', abar.dataset.id); } catch (e) {}
+    });
+    if (!dlg || typeof dlg.showModal !== 'function') return;
+    $('.abar__more', abar).addEventListener('click', function (e) { e.preventDefault(); dlg.showModal(); root.classList.add('dlg-open'); });
+    dlg.addEventListener('close', function () { root.classList.remove('dlg-open'); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg || e.target.closest('.adlg__x')) dlg.close(); });
+    $$('a', dlg).forEach(function (a) { a.addEventListener('click', function () { dlg.close(); }); });
+  })();
+
   // Wejścia + odometr (BYQ Odometer: 2 obroty, 0.85 s + 0.1 s na cyfrę)
   var SP = 2;
   function buildOdo(o) {

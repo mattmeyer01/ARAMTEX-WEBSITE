@@ -17,6 +17,9 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
 - `c.css`, `c.js`: wspólne style i skrypty.
 - `site.webmanifest`: nazwa i ikony strony dla telefonów (ikony w `assets/img/`).
 - `data/`: `besco-2026.json` (Besco), `pegler.json` (Tectite, Kuterlite) i `katalog.json` (dane wyszukiwarki, składane przez generator).
+- Pasek nowości nad menu (INOX 304 i 316L) i okno z opisem: `bar_html()` w `tools/strony.py`, style `.abar` i `.adlg`
+  w `c.css`, obsługa w `c.js`. Zamknięcie paska zapamiętuje przeglądarka (klucz `armatex-bar`). Nowa wartość `BAR_ID`
+  pokaże pasek ponownie wszystkim, `BAR_ID=None` wyłącza go na wszystkich stronach.
 - `img/`: logo, hero, zdjęcia produktów (`besco/`, `pegler/`, `oferta/`, `linie/`), obrazek udostępniania (`og/`).
   Zdjęcia grup produktów mają beż `#F3F1EC` wpisany w plik (miniatury w kafelkach, liście do wyceny i wyszukiwarce).
   Jeśli obok leży plik `<nazwa>-l.webp` (to samo zdjęcie na białym tle, czasem większe), strona produktu pokazuje go zamiast miniatury.
