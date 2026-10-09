@@ -10,6 +10,15 @@ def frag(start,end):
 def img(n, alt, cls=''):
     w,h=Image.open(f'{R}img/oferta/{n}.webp').size
     return f'<img src="../img/oferta/{n}.webp" alt="{alt}" width="{w}" height="{h}" loading="lazy" decoding="async"{cls}>'
+_VH={}
+def vimg(src):
+    # adres zdjęcia z ?v=<skrót treści>: po podmianie pliku przeglądarki pobierają nową wersję mimo 7-dniowego cache /img/*
+    f=os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)),'..',src.replace('../','')))
+    if f not in _VH:
+        try:
+            import hashlib; _VH[f]='?v='+hashlib.md5(open(f,'rb').read()).hexdigest()[:8]
+        except OSError: _VH[f]=''
+    return src+_VH[f]
 def ask(t): return 'kontakt.html?temat='+quote(t)+'#formularz'
 TEL='<a href="tel:+48513191502">513 191 502</a>'
 
@@ -142,7 +151,7 @@ def _katalog_json():
     si={x['id']:i for i,x in enumerate(sers)}
     gs,rs=[],[]
     for G in GROUPS:
-        gi=len(gs); gs.append([si[G['sid']],G['code'],G['name'],G['en'] or '',G['img_src'].replace('../',''),G['slug']+'.html',NE.get(G['name'],G['name']),NU.get(G['name'],G['name'])])
+        gi=len(gs); gs.append([si[G['sid']],G['code'],G['name'],G['en'] or '',vimg(G['img_src']).replace('../',''),G['slug']+'.html',NE.get(G['name'],G['name']),NU.get(G['name'],G['name'])])
         for r in G['rows']:
             if G['kind']=='besco': rs.append([gi,r[1],r[2],[['karton',r[4]],['worek',r[3]]]])
             elif G['kind']=='kuterlite': rs.append([gi,r[1],r[0],[['opak.',x] for x in sorted({r[3] if len(r)>3 else None,r[2] if len(r)>2 else None}-{0,None,''},reverse=True)]])
@@ -179,7 +188,7 @@ def cert_band(s):
     notes=dict({k:' · '.join(l[0] for l in s['lines'] if k in l[6]) for k in keys},**CERT_NOTES.get(s['slug'],{}))
     return f'<div class="certb"><span class="label">Certyfikaty dla rynku polskiego</span>{cert_tiles(keys,notes)}</div>'
 def gcard(G):
-    return f'<a class="gcard" href="{G["slug"]}.html"><img src="{G["img_src"]}" alt="" width="56" height="56" loading="lazy" decoding="async"><span><b>{G["name"]}</b><small>{G["code"]} · {len(G["rows"])} rozm.</small></span></a>'
+    return f'<a class="gcard" href="{G["slug"]}.html"><img src="{vimg(G["img_src"])}" alt="" width="56" height="56" loading="lazy" decoding="async"><span><b>{G["name"]}</b><small>{G["code"]} · {len(G["rows"])} rozm.</small></span></a>'
 def groups_of(sid): return [G for G in GROUPS if G['sid']==sid]
 SYS_BY_SLUG={}
 def grp_links(sids, open_first=False):
@@ -586,7 +595,8 @@ page('index.html','Armatex – Dystrybutor złączek Besco i Pegler Yorkshire','
 # ---------------- strony systemów
 def thumb(ph,alt):
     w,h=Image.open(f'{R}img/{ph}.webp').size
-    return f'<img src="../img/{ph}.webp" alt="{alt}" width="{w}" height="{h}" loading="lazy" decoding="async">'
+    src=vimg(f'../img/{ph}.webp')
+    return f'<img src="{src}" alt="{alt}" width="{w}" height="{h}" loading="lazy" decoding="async">'
 
 # linie Pegler w tabeli systemu → serie z data/pegler.json (Besco ma id serii w samej tabeli)
 LINE_SER={'Tectite Classic':'tectite-classic','Tectite Pro i Carbon':'tectite-pro','Tectite 316':'tectite-316','Zawory i filtry na wcisk':'tectite-zawory',
@@ -987,7 +997,7 @@ for G in GROUPS:
 
   <section class="section section--tight">
     <div class="wrap gp">
-      <figure class="gp__img{' gp__img--w' if kind!='besco' else ''}"><img src="{img_big(G["img_src"])}" alt="{G["name"]} {G["brand"]} {G["code"]}" {img_wh(img_big(G["img_src"]))} decoding="async"></figure>
+      <figure class="gp__img{' gp__img--w' if kind!='besco' else ''}"><img src="{vimg(img_big(G["img_src"]))}" alt="{G["name"]} {G["brand"]} {G["code"]}" {img_wh(img_big(G["img_src"]))} data-th="{vimg(G["img_src"])}" decoding="async"></figure>
       <div>
         <div class="shead"><h2 class="sy-h" style="margin:0">Rozmiary i numery artykułów</h2><span class="label" style="color:var(--ink-40)">Źródło: {src}</span></div>
         <div class="sy-tw">
