@@ -422,10 +422,13 @@ def bar_html():
     if not BAR_ID: return ''
     if _BAR: return _BAR[0]
     press=next(x for x in SYS if x['slug']=='zlaczki-zaprasowane-press')
-    L=[(nm.split(',')[0],d,z,''.join(f'<span class="appr">{a}</span>' for a in ap),c) for nm,b,ser,d,z,par,ap,c,ph in press['lines'] if ser in NEW_LINES]
-    rows=[(h,[x[i] for x in L]) for i,h in ((1,'Średnice'),(2,'Zastosowanie'),(3,'Aprobaty'),(4,'Indeksy'))]
-    table=('<table class="adlg__t"><thead><tr><td></td>'+''.join(f'<th scope="col">{x[0]}</th>' for x in L)+'</tr></thead><tbody>'
-           +''.join(f'<tr><th scope="row">{h}</th>'+''.join(f'<td>{v}</td>' for v in vals)+'</tr>' for h,vals in rows)+'</tbody></table>')
+    D={ser:d for nm,b,ser,d,z,par,ap,c,ph in press['lines']}   # średnice z tabeli linii
+    # tylko to, co potwierdzają katalogi Besco i certyfikaty (bez liczb i porównań, których nie ma w źródłach)
+    pts=[('Szybki montaż bez ognia','złącze zaprasowuje się na zimno, bez spawania, lutowania i klejenia.'),
+         ('INOX 316L także do wody pitnej',f'stal odporna na korozję, z aprobatami DVGW i WRAS oraz certyfikatem PZH, w średnicach {D["inox-316l-press-m"]}.'),
+         ('INOX 304 do ogrzewania',f'średnice {D["inox-304-press-m"]}, znak CE.'),
+         ('Popularny profil M','złączki zaprasowuje się szczękami M, które ma w zaciskarce wielu instalatorów.')]
+    pts='<ul class="adlg__p">'+''.join(f'<li><b>{h}:</b> {t}</li>' for h,t in pts)+'</ul>'
     big='../img/nowosci/inox-system-1360.webp'
     _BAR.append(f'''<div class="abar" data-id="{BAR_ID}" role="region" aria-label="Komunikat">
   <p class="abar__t"><span class="abar__new">Nowość</span><span class="abar__txt"><span class="abar__l">Wprowadzamy nowy system INOX: złączki zaprasowane ze stali nierdzewnej 304 i 316L</span><span class="abar__s">INOX 304 i 316L</span></span><a class="abar__more" href="zlaczki-zaprasowane-press.html#linie" aria-haspopup="dialog" aria-controls="inoxDlg">Dowiedz się więcej</a></p>
@@ -438,7 +441,7 @@ def bar_html():
     <span class="label sy-new">Nowość</span>
     <h2 id="inoxDlgT">Złączki zaprasowane ze stali nierdzewnej INOX</h2>
     <p>Wprowadzamy do oferty dwie linie złączek press Besco ze stali nierdzewnej w profilu M: do 16 bar, od −10 do 110 °C.</p>
-    {table}
+    {pts}
     <div class="adlg__f"><a class="mag" href="zlaczki-zaprasowane-press.html#linie"><span>Zobacz linie INOX</span></a></div>
   </div>
 </dialog>
