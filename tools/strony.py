@@ -10,6 +10,19 @@ def frag(start,end):
 def img(n, alt, cls=''):
     w,h=Image.open(f'{R}img/oferta/{n}.webp').size
     return f'<img src="../img/oferta/{n}.webp" alt="{alt}" width="{w}" height="{h}" loading="lazy" decoding="async"{cls}>'
+_VH={}
+def vimg(src):
+    # adres zdjęcia z ?v=<skrót treści>: po podmianie pliku przeglądarki pobierają nową wersję mimo 7-dniowego cache /img/*
+    f=os.path.normpath(R+re.sub(r'^(?:\.\./)*(?:https?://[^/]+/)?','',src))
+    if f not in _VH:
+        try:
+            import hashlib; _VH[f]='?v='+hashlib.md5(open(f,'rb').read()).hexdigest()[:8]
+        except OSError: _VH[f]=''
+    return src+_VH[f]
+_IMG_URL=re.compile(r'(?<=["\'(\s,])((?:\.\./)*(?:https?://[^/"\'\s]+/)?(?:assets/)?img/[A-Za-z0-9_./-]+\.(?:webp|jpe?g|png|svg|gif|avif|ico))(?![?\w])')
+def vhtml(html):
+    # każdy adres zdjęcia na stronie dostaje ten sam ?v=: jeden plik = jeden adres (src, srcset, preload, data-th, JSON-LD)
+    return _IMG_URL.sub(lambda m:vimg(m[1]),html)
 def ask(t): return 'kontakt.html?temat='+quote(t)+'#formularz'
 TEL='<a href="tel:+48513191502">513 191 502</a>'
 
@@ -142,7 +155,7 @@ def _katalog_json():
     si={x['id']:i for i,x in enumerate(sers)}
     gs,rs=[],[]
     for G in GROUPS:
-        gi=len(gs); gs.append([si[G['sid']],G['code'],G['name'],G['en'] or '',G['img_src'].replace('../',''),G['slug']+'.html',NE.get(G['name'],G['name']),NU.get(G['name'],G['name'])])
+        gi=len(gs); gs.append([si[G['sid']],G['code'],G['name'],G['en'] or '',vimg(G['img_src']).replace('../',''),G['slug']+'.html',NE.get(G['name'],G['name']),NU.get(G['name'],G['name'])])
         for r in G['rows']:
             if G['kind']=='besco': rs.append([gi,r[1],r[2],[['karton',r[4]],['worek',r[3]]]])
             elif G['kind']=='kuterlite': rs.append([gi,r[1],r[0],[['opak.',x] for x in sorted({r[3] if len(r)>3 else None,r[2] if len(r)>2 else None}-{0,None,''},reverse=True)]])
@@ -412,7 +425,7 @@ def page(name,title,desc,cur,body,extra='',pm=None):
     html=live_form(html)
     html=unglue(html)
     html=html.replace('href="c.css"',f'href="c.css?v={ASSET_V["c.css"]}"').replace('src="c.js"',f'src="c.js?v={ASSET_V["c.js"]}"')
-    open(OUT+name,'w',encoding='utf-8').write(html)
+    open(OUT+name,'w',encoding='utf-8').write(vhtml(html))
 
 # ---------------- wersje językowe: armatex.pl/en/, armatex.pl/ua/ (te same nazwy plików)
 import sys as _sys; _sys.path.insert(0,os.path.dirname(os.path.abspath(__file__)))
@@ -448,7 +461,7 @@ def page_lang(name,html,pm,code):
     if code=='uk': html=html.replace('outfit-latin-ext-wght-normal.woff2','onest-cyrillic-wght-normal.woff2')   # preload: cyrylica zamiast latin-ext
     html=unglue(html)
     html=html.replace('href="c.css"',f'href="../c.css?v={ASSET_V["c.css"]}"').replace('src="c.js"',f'src="../c.js?v={ASSET_V["c.js"]}"')
-    open(OUT+d+'/'+name,'w',encoding='utf-8').write(html)
+    open(OUT+d+'/'+name,'w',encoding='utf-8').write(vhtml(html))
 
 def card(s,cls='syc in'):
     p0,a0=s['pics'][0]
@@ -987,7 +1000,7 @@ for G in GROUPS:
 
   <section class="section section--tight">
     <div class="wrap gp">
-      <figure class="gp__img{' gp__img--w' if kind!='besco' else ''}"><img src="{img_big(G["img_src"])}" alt="{G["name"]} {G["brand"]} {G["code"]}" {img_wh(img_big(G["img_src"]))} decoding="async"></figure>
+      <figure class="gp__img{' gp__img--w' if kind!='besco' else ''}"><img src="{img_big(G["img_src"])}" alt="{G["name"]} {G["brand"]} {G["code"]}" {img_wh(img_big(G["img_src"]))} data-th="{G["img_src"]}" decoding="async"></figure>
       <div>
         <div class="shead"><h2 class="sy-h" style="margin:0">Rozmiary i numery artykułów</h2><span class="label" style="color:var(--ink-40)">Źródło: {src}</span></div>
         <div class="sy-tw">

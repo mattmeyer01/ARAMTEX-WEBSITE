@@ -219,7 +219,7 @@
     rfq.forEach(function (v, art) {
       packFix(v, packsOf(art));
       var opts = v.p.map(function (u, i) { return '<option value="' + i + '"' + (i === v.u ? ' selected' : '') + '>' + esc(UN(u[0])) + (u[1] > 1 ? ' (' + fmt(u[1]) + ' ' + UN('szt.') + ')' : '') + '</option>'; }).join('');
-      if (!v.i && INDEX) v.i = imgOf(art);
+      if (INDEX) v.i = imgOf(art) || v.i;
       h += '<li>' + thumb(v.i) + '<div><code>' + esc(art) + '</code><small>' + esc(v.l || label(art)) + '</small></div>' +
         '<button class="rm" type="button" data-art="' + esc(art) + '" aria-label="' + L('Usuń ', 'Remove ', 'Видалити ') + esc(art) + '">×</button>' +
         '<div class="rfq__q"><input type="number" min="1" step="1" value="' + v.q + '" aria-label="' + L('Ilość ', 'Quantity ', 'Кількість ') + esc(art) + '" data-art="' + esc(art) + '">' +
@@ -283,7 +283,7 @@
   // Strony grup produktów: ilość + jednostka (karton / worek / opak. / szt.) i "Dodaj" do listy do wyceny (ta sama co w katalogu)
   var qas = $$('.qty[data-add]');
   if (qas.length) (function () {
-    var KEY = 'armatex-rfq', list = new Map(), gi = $('.gp__img img'), gimg = gi ? gi.getAttribute('src').replace(/^(\.\.\/)+/, '') : '';
+    var KEY = 'armatex-rfq', list = new Map(), gi = $('.gp__img img'), gimg = gi ? (gi.getAttribute('data-th') || gi.getAttribute('src')).replace(/^(\.\.\/)+/, '') : '';
     try { JSON.parse(localStorage.getItem(KEY) || '[]').forEach(function (x) { list.set(x[0], x[1]); }); } catch (e) {}
     function save() { try { localStorage.setItem(KEY, JSON.stringify(Array.from(list.entries()))); } catch (e) {} }
     function packs(sel) { return Array.prototype.map.call(sel.options, function (o) { return [o.dataset.u, +o.dataset.n]; }); }
@@ -409,15 +409,15 @@
         else if (!e.shiftKey && document.activeElement === z) { e.preventDefault(); a.focus(); }
       });
     }
-    // pozycje dodane przed wprowadzeniem miniatur: zdjęcie grupy z danych katalogu
+    // miniatury w liście: po podmianie zdjęcia zmienia się jego ?v=, więc przy pierwszym otwarciu listy na stronie
+    // porównaj zapisane adresy z danymi katalogu (jedno zapytanie na wczytanie strony, zwykle 304)
     var imgs = null;
     function fillImgs() {
-      var m = read(), miss = []; m.forEach(function (v, art) { if (!v.i) miss.push(art); });
-      if (!miss.length || imgs) return;
+      if (imgs || !read().size) return;
       imgs = fetch(BASE + 'data/katalog.json').then(function (r) { return r.json(); }).then(function (d) {
         var by = {}; d.rows.forEach(function (r) { by[r[1]] = d.groups[r[0]][4]; });
         var m2 = read(), ch = false;
-        m2.forEach(function (v, art) { if (!v.i && by[art]) { v.i = by[art]; ch = true; } });
+        m2.forEach(function (v, art) { if (by[art] && v.i !== by[art]) { v.i = by[art]; ch = true; } });
         if (ch) { write(m2); draw(); changed(); }
       }).catch(function () { imgs = null; });
     }
