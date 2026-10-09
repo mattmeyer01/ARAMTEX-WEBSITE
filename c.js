@@ -40,22 +40,23 @@
     dd.addEventListener('keydown', function (e) { if (e.key === 'Escape') { ddClose(dd); ddb.focus(); } });
   });
   if (dds.length) document.addEventListener('click', function (e) { dds.forEach(function (dd) { if (!dd.contains(e.target)) ddClose(dd); }); });
-  var burger = $('#burger');
+  var burger = $('#burger'), mnav = $('#mnav');
+  // menu mobilne zaczyna się pod paskiem menu, który stoi niżej, gdy nad nim jest pasek nowości
+  function mnavTop() { if (mnav) mnav.style.top = Math.max(0, Math.round(nav.getBoundingClientRect().bottom)) + 'px'; }
+  window.addEventListener('scroll', function () { if (document.body.classList.contains('menu-open')) mnavTop(); }, { passive: true });
   if (burger) burger.addEventListener('click', function () {
     var o = document.body.classList.toggle('menu-open'); burger.setAttribute('aria-expanded', o);
+    if (o) mnavTop();
     burger.setAttribute('aria-label', o ? L('Zamknij menu', 'Close menu', 'Закрити меню') : L('Otwórz menu', 'Open menu', 'Відкрити меню'));
   });
 
-  // Pasek nowości nad menu: przewija się ze stroną, menu zjeżdża za nim; × chowa go na stałe (pamięć przeglądarki).
+  // Pasek nowości nad menu (CSS: zwykły element nad menu sticky); × chowa go na stałe (pamięć przeglądarki).
   // „Dowiedz się więcej” otwiera okno z opisem; bez obsługi <dialog> link prowadzi wprost na stronę złączek press.
   var abar = $('.abar'), root = document.documentElement;
   if (abar) (function () {
     var dlg = $('#' + $('.abar__more', abar).getAttribute('aria-controls'));
-    var tick = false;
-    function pos() { tick = false; root.style.setProperty('--abar-y', Math.max(0, abar.offsetHeight - window.scrollY) + 'px'); }
-    if (root.classList.contains('has-bar')) { pos(); window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(pos); } }, { passive: true }); }
     $('.abar__x', abar).addEventListener('click', function () {
-      root.classList.remove('has-bar'); root.style.removeProperty('--abar-y');
+      root.classList.remove('has-bar'); mnavTop();
       try { localStorage.setItem('armatex-bar', abar.dataset.id); } catch (e) {}
     });
     if (!dlg || typeof dlg.showModal !== 'function') return;
