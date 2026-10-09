@@ -824,7 +824,7 @@ a.chip:hover { border-color: var(--ink); }
 .fd__flt { display: flex; flex-wrap: wrap; align-items: center; gap: .3rem .6rem; margin-top: .9rem; font-size: .88rem; color: var(--ink); }
 .fd__flt .label { color: var(--ink-40); }
 .fd__flt button { font: 500 .75rem var(--mono); letter-spacing: .04em; color: var(--red-2); background: none; border: 0; padding: .2rem 0; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
-.gl { scroll-margin-top: 100px; }
+.gl, #linie { scroll-margin-top: 100px; }
 /* Wyszukiwarka: linie w blokach metod łączenia */
 .glm + .glm { margin-top: clamp(1.8rem, 3vw, 2.4rem); }
 .glm { margin-top: 1.6rem; }
@@ -942,3 +942,49 @@ button.sy-find[aria-expanded="true"]::after { content: " ▴"; }
 .certb { margin-top: 1.8rem; padding-top: 1.4rem; border-top: 1px solid var(--line); }
 .certb > .label { color: var(--ink-40); }
 @media (max-width: 720px) { .cert { flex: 1 1 100%; } }
+
+/* Pasek nowości nad menu: przewija się razem ze stroną, a menu zjeżdża za nim (c.js ustawia --abar-y).
+   Klasę has-bar ustawia skrypt w <head> przed pierwszym malowaniem, więc nic nie skacze ani nie miga. */
+:root { --abar-h: 40px; }
+.abar { display: none; }
+.has-bar body { padding-top: var(--abar-h); }
+.has-bar .abar { position: absolute; inset: 0 0 auto; z-index: 61; display: flex; align-items: center; justify-content: center; height: var(--abar-h); padding: 0 3.2rem; background: var(--red); color: #fff; font-size: .88rem; line-height: 1; }
+.has-bar .nav { top: var(--abar-y, var(--abar-h)); }
+.abar__t { display: flex; align-items: center; gap: .75rem; min-width: 0; margin: 0; white-space: nowrap; }
+.abar__new { flex: none; padding: .32rem .55rem .3rem; border-radius: 99px; background: #fff; color: var(--red); font: 600 .6rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+.abar__txt { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.abar__s { display: none; }
+.abar__more { flex: none; color: #fff; font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
+.abar__more:hover { text-decoration-thickness: 2px; }
+.abar__x { position: absolute; top: 50%; right: .5rem; display: grid; place-items: center; width: 32px; height: 32px; margin-top: -16px; border: 0; border-radius: 50%; background: transparent; color: #fff; font-size: 1.25rem; line-height: 1; cursor: pointer; }
+.abar__x:hover { background: rgba(255,255,255,.18); }
+.abar a:focus-visible, .abar button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+@media (max-width: 1080px) { .has-bar .mnav { top: calc(76px + var(--abar-y, var(--abar-h))); } }
+@media (max-width: 900px) {
+  .has-bar .abar { justify-content: flex-start; padding: 0 2.8rem 0 var(--g); font-size: .82rem; }
+  .abar__l { display: none; }
+  .abar__s { display: inline; }
+}
+
+/* Okno z opisem nowości (<dialog>; zdjęcie ładuje się dopiero po otwarciu) */
+.adlg { width: min(680px, calc(100% - 2rem)); max-height: calc(100vh - 2rem); max-height: calc(100dvh - 2rem); padding: 0; border: 0; border-radius: var(--r); background: #fff; color: var(--ink); box-shadow: 0 40px 90px -30px rgba(10,31,68,.55); overflow: auto; overscroll-behavior: contain; }
+.adlg::backdrop { background: rgba(10,31,68,.55); }
+.adlg[open] { animation: adlg-in .35s var(--ease-out); }
+@keyframes adlg-in { from { opacity: 0; transform: translateY(12px); } }
+.adlg__img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; max-height: 38vh; object-fit: cover; background: #fff; }
+.adlg__b { --px: clamp(1.2rem, 4vw, 2rem); padding: 1.4rem var(--px) 0; }
+.adlg__f { position: sticky; bottom: 0; margin: 0 calc(-1 * var(--px)); padding: .9rem var(--px) clamp(1.2rem, 3vw, 1.6rem); background: #fff; }
+.adlg .label.sy-new { margin: 0; }
+.adlg h2 { margin: .75rem 0 .6rem; font-size: clamp(1.45rem, 3.2vw, 1.95rem); line-height: 1.12; letter-spacing: -.025em; font-weight: 600; }
+.adlg p { margin: 0; color: var(--ink-60); line-height: 1.55; }
+.adlg__t { width: 100%; margin: 1.1rem 0 .6rem; border-collapse: collapse; font-size: .92rem; line-height: 1.35; }
+.adlg__t th, .adlg__t td { padding: .6rem .75rem .6rem 0; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.adlg__t thead th { padding-top: 0; font-size: 1.05rem; font-weight: 600; color: var(--ink); white-space: nowrap; }
+.adlg__t tbody th { width: 30%; font: 500 .66rem/1.9 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-40); }
+.adlg__t td { color: var(--ink-60); }
+.adlg__t .appr { margin: 0 .3rem .3rem 0; }
+.adlg__t tr:last-child th, .adlg__t tr:last-child td { border-bottom: 0; }
+.adlg__x { position: absolute; top: .75rem; right: .75rem; z-index: 1; display: grid; place-items: center; width: 40px; height: 40px; border: 0; border-radius: 50%; background: rgba(255,255,255,.92); color: var(--ink); font-size: 1.35rem; line-height: 1; cursor: pointer; box-shadow: 0 4px 14px -6px rgba(0,0,0,.35); }
+.adlg__x:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+.dlg-open { overflow: hidden; }
+@media (prefers-reduced-motion: reduce) { .adlg[open] { animation: none; } }
