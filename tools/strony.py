@@ -368,6 +368,11 @@ def img_wh(src):
         except Exception: _WH[f]=''
     return _WH[f]
 
+def img_big(src):
+    # duża wersja zdjęcia na stronę produktu (plik z końcówką -l), gdy istnieje
+    b=src[:-5]+'-l.webp'
+    return b if src.endswith('.webp') and img_wh(b) else src
+
 
 
 
@@ -982,7 +987,7 @@ for G in GROUPS:
 
   <section class="section section--tight">
     <div class="wrap gp">
-      <figure class="gp__img{' gp__img--w' if kind!='besco' else ''}"><img src="{G["img_src"]}" alt="{G["name"]} {G["brand"]} {G["code"]}" {img_wh(G["img_src"])} decoding="async"></figure>
+      <figure class="gp__img{' gp__img--w' if kind!='besco' else ''}"><img src="{img_big(G["img_src"])}" alt="{G["name"]} {G["brand"]} {G["code"]}" {img_wh(img_big(G["img_src"]))} decoding="async"></figure>
       <div>
         <div class="shead"><h2 class="sy-h" style="margin:0">Rozmiary i numery artykułów</h2><span class="label" style="color:var(--ink-40)">Źródło: {src}</span></div>
         <div class="sy-tw">
