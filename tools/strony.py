@@ -239,7 +239,7 @@ def ld_system(s):
 # Statystyki odwiedzin: Plausible Analytics (bez cookies i bez zapisu w przeglądarce; opis w polityce prywatności, pkt 2, 8 i 9).
 # Pusty napis wyłącza skrypt na wszystkich stronach.
 PLAUSIBLE='''  <!-- Privacy-friendly analytics by Plausible -->
-  <script async src="https://plausible.io/js/pa-a8UL2v_W8zLUlUQMz3X4i.js"></script>
+  <script async src="https://plausible.io/js/pa-CNyUZto2tv84oI9tbRSnx.js"></script>
   <script>
     window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
     plausible.init()
