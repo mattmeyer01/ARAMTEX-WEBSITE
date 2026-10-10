@@ -36,7 +36,7 @@ SYS=[
   pics=[('besco-press-v','Miedziany trójnik press'),('besco-gaz','Trójnik press do gazu z żółtym oznaczeniem'),('besco-stal','Trójnik press ze stali węglowej')],
   seria='cu-press-water-v,cu-press-water-m,cu-press-gas-v,cu-press-gas-m,steel-press-m,inox-304-press-m,inox-316l-press-m,press-ball-valve',
   src='katalogi Besco 2026 i Besco INOX',
-  lines=[('INOX 304, Stainless Steel, press, profil M','Besco','inox-304-press-m','15–108 mm','ogrzewanie','16 bar',['CE'],'287','linie/besco-inox-304'),
+  lines=[('INOX 304, Stainless Steel, press, profil M','Besco','inox-304-press-m','15–108 mm','woda pitna, CO','16 bar',['CE','PZH'],'287','linie/besco-inox-304'),
    ('Gutpress Copper, profil V','Besco','cu-press-water-v','12–54 mm','woda pitna, CO, przemysł','16 bar',['DVGW','KIWA','WRAS','RISE','PZH'],'257','linie/besco-press-v'),
    ('Gutpress Copper, profil M','Besco','cu-press-water-m','12–108 mm','woda pitna, CO, przemysł','16 bar',['DVGW','WRAS','RISE','PZH'],'294','linie/besco-press-m'),
    ('Gutpress Copper do gazu, V i M','Besco','cu-press-gas-v,cu-press-gas-m','15–35 mm','gaz ziemny, LPG','5 bar',['DVGW','INiG'],'211','linie/besco-gaz'),
@@ -46,7 +46,7 @@ SYS=[
   faq=[('Czym różni się profil V od M?','To kształt końcówki press i szczęki zaciskarki. Miedź Besco jest w obu profilach (V 12–54 mm, M 12–108 mm), stal węglowa w profilu M. Złączki w profilu M można zaprasowywać także szczęką V w zakresie DN12–28.'),
    ('Które złączki nadają się do gazu?','Linie GP Gas w profilu V i M: średnice 15–35 mm, do 5 bar, od −20 do 70 °C, norma EN 1254-7, atesty DVGW i INiG. Do instalacji gazowych nie stosuje się złączek z linii wodnych.'),
    ('Do czego służy Gutpress Carbon Steel?','Do zamkniętych instalacji grzewczych i sprężonego powietrza. Profil M, średnice 12–108 mm, do 16 bar, od −10 do 110 °C.'),
-   ('Czym różni się INOX 304 od INOX 316L?','Obie linie to złączki press ze stali nierdzewnej w profilu M, do 16 bar, od −10 do 110 °C. Według katalogów Besco INOX 316L jest przeznaczony do wody, ogrzewania i przemysłu, ma aprobaty DVGW i WRAS, certyfikat PZH oraz średnice 15–168,3 mm. INOX 304 producent opisuje do ogrzewania, ze znakiem CE, w średnicach 15–108 mm.'),
+   ('Czym różni się INOX 304 od INOX 316L?','Obie linie to złączki press ze stali nierdzewnej w profilu M, do 16 bar, od −10 do 110 °C. Według katalogów Besco INOX 316L jest przeznaczony do wody, ogrzewania i przemysłu, ma aprobaty DVGW i WRAS oraz średnice 15–168,3 mm. INOX 304 producent opisuje do ogrzewania, ze znakiem CE, w średnicach 15–108 mm. Obie linie mają atest higieniczny PZH do instalacji wody pitnej i ciepłej wody użytkowej (INOX 316L w średnicach 15–108 mm).'),
    ('Jakie aprobaty mają złączki miedziane press?','Profil V: DVGW, KIWA, WRAS, RISE i certyfikat PZH. Profil M: DVGW, WRAS, RISE i certyfikat PZH. Linie gazowe: DVGW i certyfikat INiG. Wszystkie według EN 1254-7.'),
    ('Jakie zawory kulowe są w systemie?','Gutpress Zawory Kulowe V i M: press × press i press × GW, 15–54 mm, także z przedłużonym trzpieniem. Do 16 bar, od −10 do 110 °C, aprobaty DVGW i WRAS.')]),
  dict(slug='zlaczki-na-wcisk-tectite',name='Złączki na wcisk',h1='Złączki na wcisk Tectite',seotitle='Złączki na wcisk Tectite (push-fit) dla hurtowni | Armatex',metadesc='Złączki i zawory na wcisk (push-fit) Pegler Yorkshire Tectite: Classic, Pro, 316 i Carbon, 10–54 mm. Około 530 indeksów, dostawy do hurtowni w całej Polsce.',tab='Na wcisk',brand='Pegler Yorkshire',cnt='ok. 530',cntw='ok. 530 indeksów',sizes='10–54 mm',
@@ -112,9 +112,14 @@ SER_META={
  'cu-ansi-k':dict(short='lutowane ANSI',suf='ansi-k',qual='lutowany calowy ANSI B16.22',appr=[],sys='zlaczki-lutowane'),
  'cu-g-size':dict(short='lutowane G-size',suf='g-size',qual='lutowany G-size',appr=[],sys='zlaczki-lutowane'),
  'press-ball-valve':dict(short='zawory press',suf='zawor',qual='',appr=['DVGW','WRAS'],sys='zlaczki-zaprasowane-press'),
- 'inox-304-press-m':dict(short='INOX 304 press',suf='inox-304',qual='press ze stali nierdzewnej 304',appr=['CE'],sys='zlaczki-zaprasowane-press'),
+ 'inox-304-press-m':dict(short='INOX 304 press',suf='inox-304',qual='press ze stali nierdzewnej 304',appr=['CE','PZH'],sys='zlaczki-zaprasowane-press'),
  'inox-316l-press-m':dict(short='INOX 316L press',suf='inox-316l',qual='press ze stali nierdzewnej 316L',appr=['DVGW','WRAS','PZH'],sys='zlaczki-zaprasowane-press'),
 }
+# atesty higieniczne PZH (dokumenty od Armatex): INOX 304 B.BK.60110.1654.2026, ważny do 14.08.2029, do wody pitnej
+# i ciepłej wody użytkowej; INOX 316L B.BK.60110.1480.2025, ważny do 25.08.2028, dn 15–108. Katalog Besco podaje dla INOX 304
+# tylko ogrzewanie, więc zastosowanie z atestu dopisujemy tutaj, a dane z katalogu (data/besco-2026.json) zostają bez zmian.
+for _s in BD['series']:
+    if _s['id']=='inox-304-press-m': _s['media']='woda pitna, ogrzewanie'
 def slugify(t):
     t=t.replace('ł','l').replace('Ł','L').replace('×','x').replace('°','')
     t=unicodedata.normalize('NFKD',t).encode('ascii','ignore').decode().lower()
@@ -183,7 +188,7 @@ def cert_tiles(keys,notes=None,cls=''):
         note=(notes or {}).get(k,d)
         out+=f'<figure class="cert"><img src="../img/cert/{f}.webp" alt="{alt}" {img_wh("../img/cert/"+f+".webp")} loading="lazy" decoding="async"><figcaption><b>{t}</b><span>{note}</span></figcaption></figure>'
     return f'<div class="certs{(" "+cls) if cls else ""}">{out}</div>'
-CERT_NOTES={'zlaczki-zaprasowane-press':{'PZH':'Gutpress Copper woda V i M · INOX 316L','INiG':'Gutpress Copper gaz V i M','ITB':'Gutpress Carbon Steel'},
+CERT_NOTES={'zlaczki-zaprasowane-press':{'PZH':'Gutpress Copper woda V i M · INOX 304 i 316L','INiG':'Gutpress Copper gaz V i M','ITB':'Gutpress Carbon Steel'},
             'zlaczki-lutowane':{'PZH':'złączki lutowane EN 1254'}}
 def cert_band(s):
     """Strona systemu: które linie mają polskie certyfikaty (z list aprobat w tabeli linii)."""
@@ -426,10 +431,10 @@ def bar_html():
     g304=groups_of('inox-304-press-m')
     # nowość: INOX 304; tylko to, co potwierdzają katalogi Besco i certyfikaty (bez liczb i porównań spoza źródeł)
     pts=[('Szybki montaż bez ognia','złącze zaprasowuje się na zimno, bez spawania, lutowania i klejenia.'),
-         ('Do instalacji grzewczych','stal nierdzewna odporna na korozję, znak CE, aprobata PZH.'),
+         ('Woda pitna i ogrzewanie','stal nierdzewna odporna na korozję, znak CE, atest higieniczny PZH.'),
          ('Pełny zakres',f'średnice {D["inox-304-press-m"]}, {len(g304)} grup produktów i {g304[0]["ser"]["count"]} indeksów.'),
          ('Popularny profil M','złączki zaprasowuje się szczękami M, które ma w zaciskarce wielu instalatorów.'),
-         ('Do wody pitnej','w ofercie jest też INOX 316L z aprobatami DVGW i WRAS oraz certyfikatem PZH.')]
+         ('Większe średnice','w ofercie jest też INOX 316L do 168,3 mm, z aprobatami DVGW i WRAS.')]
     pts='<ul class="adlg__p">'+''.join(f'<li><b>{h}:</b> {t}</li>' for h,t in pts)+'</ul>'
     big='../img/nowosci/inox-system-1360.webp'
     _BAR.append(f'''<div class="abar" data-id="{BAR_ID}" role="region" aria-label="Komunikat">
@@ -1248,7 +1253,7 @@ art('poradnik-profil-v-czy-m','Profil V czy M? Jak dobrać złączki zaprasowane
             <tr><td>Gutpress Copper · gaz</td><td>V i M</td><td>15–35 mm</td><td>5 bar, −20…70 °C</td><td>DVGW, INiG</td></tr>
             <tr><td>Gutpress Carbon Steel</td><td>M</td><td>12–108 mm</td><td>16 bar, −10…110 °C</td><td>ITB</td></tr>
             <tr><td>INOX 316L, Stainless Steel</td><td>M</td><td>15–168,3 mm</td><td>16 bar, −10…110 °C</td><td>DVGW, WRAS, PZH</td></tr>
-            <tr><td>INOX 304, Stainless Steel</td><td>M</td><td>15–108 mm</td><td>16 bar, −10…110 °C</td><td>CE</td></tr>
+            <tr><td>INOX 304, Stainless Steel</td><td>M</td><td>15–108 mm</td><td>16 bar, −10…110 °C</td><td>CE, PZH</td></tr>
             <tr><td>Gutpress Zawory Kulowe V i M</td><td>V i M</td><td>15–54 mm</td><td>16 bar, −10…110 °C</td><td>DVGW, WRAS</td></tr>
           </tbody>
         </table></div>
@@ -1398,7 +1403,7 @@ art('poradnik-zlaczki-do-stali-weglowej','Złączki do stali węglowej: gdzie wo
         <p>Wspólny mianownik: <strong>układy zamknięte</strong>, czyli instalacje grzewcze i chłodzące, w których krąży ta sama woda, oraz sprężone powietrze w linii Besco.</p>
         <h2 id="gdzie-nie">Gdzie stali węglowej nie stosować</h2>
         <ul>
-          <li><strong>Woda pitna, ciepła i zimna woda użytkowa.</strong> Żaden z tych katalogów nie przewiduje stali węglowej do wody pitnej. Tu sprawdzą się Gutpress Copper Besco, <a href="zlaczki-na-wcisk-tectite.html">Tectite Classic i Sprint</a> z atestem PZH albo Tectite 316 ze stali nierdzewnej.</li>
+          <li><strong>Woda pitna, ciepła i zimna woda użytkowa.</strong> Żaden z tych katalogów nie przewiduje stali węglowej do wody pitnej. Tu sprawdzą się Gutpress Copper Besco, Besco INOX 304 i 316L, <a href="zlaczki-na-wcisk-tectite.html">Tectite Classic i Sprint</a> z atestem PZH albo Tectite 316 ze stali nierdzewnej.</li>
           <li><strong>Układy otwarte.</strong> Tectite Carbon jest opisany wyłącznie do niewentylowanych obiegów zamkniętych, a Tectite Pro z rurą stalową tylko do obiegów zamkniętych. W układzie otwartym do wody stale dopływa świeży tlen, a stal węglowa w natlenionej wodzie koroduje.</li>
           <li><strong>Gaz.</strong> Besco nie opisuje stali press do gazu. Do instalacji gazowych mamy osobne linie z miedzi (GPG i seria 7000) z aprobatami DVGW i INiG. Więcej w poradniku <a href="poradnik-zlaczki-zaprasowane-do-gazu.html">Złączki zaprasowane do gazu</a>.</li>
         </ul>
@@ -1522,6 +1527,7 @@ art('poradnik-aprobaty-dvgw-kiwa-wras','Aprobaty DVGW, KIWA, WRAS, RISE i INiG: 
             <tr><td>Besco lutowane EN 1254</td><td>DVGW, KIWA, WRAS, PZH</td></tr>
             <tr><td>Besco Gutpress Carbon Steel</td><td>ITB</td></tr>
             <tr><td>Besco INOX 316L, Stainless Steel</td><td>DVGW, WRAS, PZH</td></tr>
+            <tr><td>Besco INOX 304, Stainless Steel</td><td>CE, PZH</td></tr>
             <tr><td>Besco Gutpress Zawory Kulowe V i M</td><td>DVGW, WRAS</td></tr>
             <tr><td>Tectite Sprint i Classic</td><td>WRAS, PZH</td></tr>
             <tr><td>Tectite Pro i 316</td><td>WRAS</td></tr>
