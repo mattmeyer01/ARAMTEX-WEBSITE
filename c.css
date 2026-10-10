@@ -81,6 +81,8 @@ button, input, textarea, select { font: inherit; color: inherit; }
 @keyframes settle { from { transform: scale(1.08); } to { transform: none; } }
 .hero__media::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(7,22,49,.7) 0%, rgba(7,22,49,0) 16%), linear-gradient(90deg, rgba(7,22,49,.92) 0%, rgba(7,22,49,.55) 42%, rgba(7,22,49,0) 70%), linear-gradient(0deg, rgba(7,22,49,.85) 0%, rgba(7,22,49,0) 38%); }
 .hero__body { position: relative; z-index: 2; min-height: max(100svh, 660px); display: flex; flex-direction: column; padding-block: 76px 0; }
+/* Z paskiem nowości nad menu okładka jest niższa o wysokość paska, więc razem z nim nadal mieści się na jednym ekranie. */
+.has-bar .hero, .has-bar .hero__body { min-height: calc(max(100svh, 660px) - var(--abar-h)); }
 .hero .hero__body > h1 { margin-top: auto; padding-top: 2rem; }
 .hero h1 .hero__eyebrow { display: block; margin-bottom: 1.2rem; font-weight: 500; }
 .hero__body > .hero__ctas { margin-bottom: auto; padding-bottom: 2rem; }
@@ -947,7 +949,8 @@ button.sy-find[aria-expanded="true"]::after { content: " ▴"; }
    u góry bez liczenia przewinięcia w JS (iOS Safari podaje ujemne scrollY przy „odbiciu” strony).
    Klasę has-bar ustawia skrypt w <head> przed pierwszym malowaniem, więc nic nie skacze ani nie miga. */
 .abar { display: none; }
-.has-bar .abar { position: relative; z-index: 61; display: flex; align-items: center; justify-content: center; height: 40px; padding: 0 3.2rem; background: var(--red); color: #fff; font-size: .88rem; line-height: 1; }
+.has-bar { --abar-h: 40px; }
+.has-bar .abar { position: relative; z-index: 61; display: flex; align-items: center; justify-content: center; height: var(--abar-h); padding: 0 3.2rem; background: var(--red); color: #fff; font-size: .88rem; line-height: 1; }
 .abar__t { display: flex; align-items: center; gap: .75rem; min-width: 0; margin: 0; white-space: nowrap; }
 .abar__new { flex: none; padding: .32rem .55rem .3rem; border-radius: 99px; background: #fff; color: var(--red); font: 600 .6rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
 .abar__txt { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
