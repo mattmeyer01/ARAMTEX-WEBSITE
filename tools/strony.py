@@ -245,11 +245,13 @@ PLAUSIBLE='''  <!-- Privacy-friendly analytics by Plausible -->
     plausible.init()
   </script>
 '''
-# Menedżer tagów Google (kod podany przez właściciela). Przed nim tryb zgody Google z domyślnym „brak zgody”: tagi Google
-# w kontenerze (np. GA4, Google Ads) nie zapisują plików cookies, dopóki strona nie zapyta o zgodę (polityka prywatności,
-# pkt 2, 8 i 11). Pusty GTM_ID wyłącza GTM na wszystkich stronach.
+# Menedżer tagów Google (kod podany przez właściciela). Przed nim tryb zgody Google: domyślnie „brak zgody”, a jeśli
+# odwiedzający wybrał już coś w oknie zgody (c.js, klucz armatex-zgoda, wersja 1, 12 miesięcy), jego wybór i zdarzenie
+# dataLayer „zgoda_cookies” trafiają tu przed kodem GTM. Polityka prywatności: pkt 2, 3, 8 i 11.
+# Pusty GTM_ID wyłącza GTM, okno zgody i przycisk „Ustawienia cookies” na wszystkich stronach.
 GTM_ID='GTM-5MW9C8GG'
-GTM_HEAD='''  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied'});</script>
+GTM_HEAD='''  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied'});
+  (function(){try{var z=JSON.parse(localStorage.getItem('armatex-zgoda')||'null');if(z&&z.v===1&&Date.now()-z.t<31536e6){var a=z.a?'granted':'denied',m=z.m?'granted':'denied';gtag('consent','update',{analytics_storage:a,ad_storage:m,ad_user_data:m,ad_personalization:m});dataLayer.push({event:'zgoda_cookies',zgoda_statystyki:a,zgoda_marketing:m});}}catch(e){}})();</script>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -356,7 +358,7 @@ FOOT='''<footer class="foot">
       <span class="foot__name">© 2026 P.H.U. ARMATEX Sp. J. A. J. Bunda</span>
       <dl><div><dt>Siedziba</dt><dd>ul. Siewna 24, 10-831 Olsztyn</dd></div><div><dt>NIP</dt><dd>7393814110</dd></div><div><dt>KRS</dt><dd>0000371628</dd></div><div><dt>REGON</dt><dd>280563743</dd></div></dl>
     </div>
-    <a href="polityka-prywatnosci.html">Polityka prywatności</a>
+    '''+('<div class="foot__lk"><a href="polityka-prywatnosci.html">Polityka prywatności</a><button type="button" class="foot__ck" data-zgoda hidden>Ustawienia cookies</button></div>' if GTM_ID else '<a href="polityka-prywatnosci.html">Polityka prywatności</a>')+'''
   </div>
 </footer>
 <a class="callfab" href="tel:+48513191502" aria-label="Zadzwoń: 513 191 502"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span>Zadzwoń</span></a>
@@ -1643,8 +1645,8 @@ pol_body='''
         <p><strong>Formularz zapytania.</strong> Gdy wysyłasz formularz, otrzymujemy dane, które w nim podasz: adres e-mail i numer telefonu (wymagane) oraz opcjonalnie imię i nazwisko, nazwę firmy, profil firmy, miejscowość lub województwo i treść zapytania, w tym listę pozycji do wyceny.</p>
         <p><strong>Kontakt e-mailowy i telefoniczny.</strong> Gdy piszesz lub dzwonisz do nas bezpośrednio, przetwarzamy dane podane w tej korespondencji lub rozmowie.</p>
         <p><strong>Dane techniczne.</strong> Przy każdym wyświetleniu strony serwer hostingu automatycznie rejestruje dane techniczne, takie jak adres IP, data i godzina, adres odwiedzanej podstrony oraz typ przeglądarki. Nie używamy ich do identyfikowania osób.</p>
-        <p><strong>Statystyki odwiedzin.</strong> Ruch na stronie mierzymy narzędziem Plausible Analytics. Zbiera ono zbiorcze dane o odwiedzinach: adres odwiedzanej podstrony, adres strony, z której do nas trafiasz, typ przeglądarki, systemu i urządzenia oraz przybliżoną lokalizację (kraj, region i miasto ustalone na podstawie adresu IP). Liczy też wybrane działania na stronie: kliknięcie numeru telefonu lub adresu e-mail, pobranie pliku (np. katalogu PDF), kliknięcie linku do innej strony, otwarcie okna z nowością, dodanie produktu do listy do wyceny, przejście z listy do formularza, wysłanie formularza (tylko profil firmy, liczba pozycji z listy i przycisk, z którego przyszło zapytanie, bez danych kontaktowych i treści wpisanej w formularz) oraz wejście na nieistniejącą stronę (błąd 404). Plausible nie używa plików cookies, niczego nie zapisuje w Twojej przeglądarce i nie przechowuje adresu IP. Odwiedziny z jednego dnia rozpoznaje po skrócie (hash) adresu IP i danych przeglądarki, liczonym z kluczem, który co 24 godziny jest usuwany i zastępowany nowym. Dlatego ze statystyk nie da się ustalić, kim jesteś, ani rozpoznać Cię przy wizycie następnego dnia.</p>
-        <p><strong>Menedżer tagów Google.</strong> Na stronie działa Menedżer tagów Google (Google Tag Manager): narzędzie, którym wczytujemy na stronie dodatkowe skrypty (tagi). Przeglądarka pobiera je z serwerów Google, które otrzymują przy tym adres IP i dane przeglądarki. Według Google sam Menedżer tagów nie przechowuje danych o odwiedzających poza standardowymi logami serwera, usuwanymi w ciągu 14 dni. Tagi Google, które mogą zapisywać pliki cookies (np. Google Analytics lub Google Ads), są domyślnie ustawione w trybie zgody Google (Consent Mode) na „brak zgody” i w tym trybie nie zapisują plików cookies.</p>
+        <p><strong>Statystyki odwiedzin.</strong> Ruch na stronie mierzymy narzędziem Plausible Analytics. Zbiera ono zbiorcze dane o odwiedzinach: adres odwiedzanej podstrony, adres strony, z której do nas trafiasz, typ przeglądarki, systemu i urządzenia oraz przybliżoną lokalizację (kraj, region i miasto ustalone na podstawie adresu IP). Liczy też wybrane działania na stronie: kliknięcie numeru telefonu lub adresu e-mail, pobranie pliku (np. katalogu PDF), kliknięcie linku do innej strony, otwarcie okna z nowością, dodanie produktu do listy do wyceny, przejście z listy do formularza, wybór w oknie zgody na pliki cookies, wysłanie formularza (tylko profil firmy, liczba pozycji z listy i przycisk, z którego przyszło zapytanie, bez danych kontaktowych i treści wpisanej w formularz) oraz wejście na nieistniejącą stronę (błąd 404). Plausible nie używa plików cookies, niczego nie zapisuje w Twojej przeglądarce i nie przechowuje adresu IP. Odwiedziny z jednego dnia rozpoznaje po skrócie (hash) adresu IP i danych przeglądarki, liczonym z kluczem, który co 24 godziny jest usuwany i zastępowany nowym. Dlatego ze statystyk nie da się ustalić, kim jesteś, ani rozpoznać Cię przy wizycie następnego dnia.</p>
+        <p><strong>Menedżer tagów Google.</strong> Na stronie działa Menedżer tagów Google (Google Tag Manager): narzędzie, którym wczytujemy na stronie dodatkowe skrypty (tagi). Przeglądarka pobiera je z serwerów Google, które otrzymują przy tym adres IP i dane przeglądarki. Według Google sam Menedżer tagów nie przechowuje danych o odwiedzających poza standardowymi logami serwera, usuwanymi w ciągu 14 dni. Tagi Google, które mogą zapisywać pliki cookies (np. Google Analytics lub Google Ads), są domyślnie ustawione w trybie zgody Google (Consent Mode) na „brak zgody” i w tym trybie nie zapisują plików cookies. Zapisują je dopiero po Twojej zgodzie w oknie zgody na pliki cookies (punkt 8).</p>
         <p>Podanie danych jest dobrowolne, ale bez adresu e-mail i numeru telefonu nie będziemy mogli odpowiedzieć na zapytanie wysłane przez formularz.</p>
 
         <h2 id="cele">3. Cele i podstawy prawne przetwarzania</h2>
@@ -1656,6 +1658,7 @@ pol_body='''
             <tr><td>Realizacja zamówień i umów, rozliczenia, obowiązki księgowe i podatkowe</td><td>art. 6 ust. 1 lit. b i c</td></tr>
             <tr><td>Ustalenie, dochodzenie lub obrona roszczeń</td><td>art. 6 ust. 1 lit. f</td></tr>
             <tr><td>Statystyki odwiedzin (Plausible Analytics), żeby wiedzieć, które treści są przydatne, i ulepszać stronę</td><td>art. 6 ust. 1 lit. f (prawnie uzasadniony interes: pomiar ruchu na stronie)</td></tr>
+            <tr><td>Statystyki i pomiar skuteczności reklam z użyciem plików cookies (np. Google Analytics, Google Ads)</td><td>art. 6 ust. 1 lit. a (zgoda wyrażona w oknie zgody na pliki cookies)</td></tr>
             <tr><td>Wczytywanie narzędzi strony przez Menedżer tagów Google</td><td>art. 6 ust. 1 lit. f (prawnie uzasadniony interes: obsługa i rozwój strony)</td></tr>
             <tr><td>Zapewnienie działania i bezpieczeństwa strony (dane techniczne)</td><td>art. 6 ust. 1 lit. f</td></tr>
           </tbody>
@@ -1701,11 +1704,14 @@ pol_body='''
         <p>Aby skorzystać z tych praw, napisz na <a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a>. Masz też prawo wnieść skargę do Prezesa Urzędu Ochrony Danych Osobowych (ul. Stawki 2, 00-193 Warszawa, <a href="https://uodo.gov.pl" rel="noopener" target="_blank">uodo.gov.pl</a>).</p>
 
         <h2 id="cookies">8. Pliki cookies i pamięć przeglądarki</h2>
-        <p><strong>Strona nie zapisuje plików cookies.</strong> Statystyki odwiedzin zbiera Plausible Analytics, które działa bez plików cookies i niczego nie zapisuje w Twojej przeglądarce. Menedżer tagów Google sam nie używa plików cookies, a tagi Google działają w trybie „brak zgody”, w którym ich nie zapisują (punkt 2).</p>
-        <p>Strona korzysta z pamięci przeglądarki (localStorage) w dwóch celach:</p>
+        <p><strong>Pliki cookies zapisujemy tylko za Twoją zgodą.</strong> Przy pierwszej wizycie pytamy o nią w oknie na dole strony. Możesz zaakceptować wszystkie pliki cookies, odrzucić je albo wybrać kategorie: statystyki (np. Google Analytics) i marketing (np. Google Ads: pomiar skuteczności reklam i reklamy dopasowane do Ciebie). Bez zgody tagi Google działają w trybie „brak zgody” i nie zapisują plików cookies, a strona działa tak samo.</p>
+        <p>Zgodę możesz w każdej chwili zmienić lub wycofać przyciskiem „Ustawienia cookies” w stopce strony. Po wycofaniu zgody usuwamy z przeglądarki zapisane wcześniej pliki cookies statystyk i reklam. Statystyki odwiedzin Plausible działają bez plików cookies i nie wymagają zgody (punkt 2).</p>
+        <p><button type="button" class="ghost" data-zgoda hidden>Zmień ustawienia cookies</button></p>
+        <p>Strona korzysta z pamięci przeglądarki (localStorage) w trzech celach:</p>
         <ul>
           <li><strong>lista pozycji do wyceny</strong>, którą tworzysz przyciskiem „Dodaj” w katalogu i na stronach produktów: numery artykułów, nazwy produktów, ilości i jednostki. Lista zostaje wyłącznie na Twoim urządzeniu i nie jest do nas wysyłana, dopóki nie przeniesiesz jej do formularza i nie wyślesz go,</li>
-          <li><strong>zamknięty pasek z nowością</strong> u góry strony: zapisujemy tylko identyfikator komunikatu, żeby po zamknięciu nie pokazywał się ponownie.</li>
+          <li><strong>zamknięty pasek z nowością</strong> u góry strony: zapisujemy tylko identyfikator komunikatu, żeby po zamknięciu nie pokazywał się ponownie,</li>
+          <li><strong>Twój wybór w oknie zgody na pliki cookies</strong>: przez 12 miesięcy, żeby nie pytać przy każdej wizycie; potem zapytamy ponownie.</li>
         </ul>
         <p>To funkcje, o które prosisz, dlatego nie wymagają odrębnej zgody (art. 399 ustawy – Prawo komunikacji elektronicznej).</p>
         <p>Listę usuwamy automatycznie po wysłaniu formularza. Możesz ją też usunąć w każdej chwili: przyciskiem „×” przy pozycjach na liście albo czyszcząc dane witryny w ustawieniach przeglądarki.</p>
@@ -1717,7 +1723,7 @@ pol_body='''
         <p>Strona jest udostępniana przez szyfrowane połączenie (HTTPS). Dostęp do danych z zapytań mają tylko osoby, które ich potrzebują do obsługi klientów.</p>
 
         <h2 id="zmiany">11. Zmiany polityki</h2>
-        <p>Możemy aktualizować tę politykę, np. gdy dodamy nowe funkcje strony. Aktualna wersja jest zawsze dostępna na tej stronie. Jeśli zaczniemy używać plików cookies lub innych narzędzi, które wymagają Twojej zgody, poprosimy o nią przed ich uruchomieniem.</p>
+        <p>Możemy aktualizować tę politykę, np. gdy dodamy nowe funkcje strony. Aktualna wersja jest zawsze dostępna na tej stronie. Jeśli dodamy nowe narzędzia, które wymagają Twojej zgody, opiszemy je tutaj i poprosimy o zgodę przed ich uruchomieniem.</p>
 '''
 pol_toc=''.join(f'<li><a href="#{a}">{t}</a></li>' for a,t in re.findall(r'<h2 id="([^"]+)">([^<]+)</h2>',pol_body))
 pol=phead([('Polityka prywatności','polityka-prywatnosci.html')],'Dokumenty','Polityka prywatności.',

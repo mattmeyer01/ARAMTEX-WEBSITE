@@ -32,8 +32,16 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
 - Menedżer tagów Google (GTM): `GTM_ID` w `tools/strony.py` (pusty wyłącza GTM). `head()` wstawia przed kodem GTM
   tryb zgody Google z domyślnym „brak zgody” (`ad_storage`, `ad_user_data`, `ad_personalization`, `analytics_storage`),
   więc tagi Google z kontenera (GA4, Google Ads) nie zapisują cookies. Fragment `noscript` stoi zaraz po `<body>`.
-  Tagi, które zapisują cookies lub śledzą (też spoza Google, np. Meta Pixel), wymagają najpierw okna zgody (CMP)
-  i zmiany polityki prywatności (pkt 2, 4, 5, 8, 9).
+- Okno zgody na pliki cookies (`c.js`, style `.ck` w `c.css`): „Akceptuję wszystkie”, „Odrzucam” i „Ustawienia”
+  (kategorie Statystyki → `analytics_storage`, Marketing → `ad_storage`, `ad_user_data`, `ad_personalization`).
+  Wybór zostaje w przeglądarce (klucz `armatex-zgoda`, wersja `ZV`, 12 miesięcy) i w `<head>` (`GTM_HEAD`) trafia do
+  trybu zgody Google przed kodem GTM; wersja i okres muszą być takie same w obu miejscach. Każdy wybór wysyła do
+  dataLayer zdarzenie `zgoda_cookies` (`zgoda_statystyki`, `zgoda_marketing`: `granted`/`denied`) i do Plausible
+  `Zgoda cookies`. Wycofanie zgody usuwa cookies `_ga*`, `_gid`, `_gat*`, `_gcl*`, `_fbp`, `_fbc`.
+  Przycisk „Ustawienia cookies” jest w stopce i w polityce prywatności (`data-zgoda`).
+  W GTM tagi Google (GA4, Google Ads) korzystają z trybu zgody same. Tagi spoza Google (np. Meta Pixel) uruchamiaj
+  wyzwalaczem „Zdarzenie niestandardowe” `zgoda_cookies` z warunkiem `zgoda_marketing` równa się `granted`
+  (zmienna warstwy danych). Każde nowe narzędzie trzeba też opisać w polityce prywatności.
 - `img/`: logo, hero, zdjęcia produktów (`besco/`, `pegler/`, `oferta/`, `linie/`), obrazek udostępniania (`og/`).
   Zdjęcia grup produktów mają beż `#F3F1EC` wpisany w plik (miniatury w kafelkach, liście do wyceny i wyszukiwarce).
   Jeśli obok leży plik `<nazwa>-l.webp` (to samo zdjęcie na białym tle, czasem większe), strona produktu pokazuje go zamiast miniatury.

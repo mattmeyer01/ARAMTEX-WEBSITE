@@ -993,3 +993,34 @@ button.sy-find[aria-expanded="true"]::after { content: " ▴"; }
 @media (max-height: 880px) { .adlg__img { max-height: 26vh; } }
 @media (max-height: 800px) { .adlg__img { max-height: 22vh; } .adlg__p { gap: .5rem; } }
 @media (prefers-reduced-motion: reduce) { .adlg[open] { animation: none; } }
+
+/* Okno zgody na pliki cookies (c.js; tryb zgody Google). Nie blokuje strony i zostaje do wyboru; nad przyciskami
+   „Zadzwoń” i paskiem listy, pod oknami modalnymi (lista do wyceny, okno nowości). „Akceptuję” i „Odrzucam” wyglądają
+   tak samo (wytyczne EROD: odrzucenie nie może być trudniejsze niż zgoda). */
+.ck { position: fixed; z-index: 85; left: var(--g); bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); width: min(560px, calc(100% - 2 * var(--g))); max-height: calc(100vh - 2rem); max-height: calc(100dvh - 2rem); overflow: auto; overscroll-behavior: contain; padding: 1.4rem 1.5rem 1.5rem; border-radius: var(--r); background: #fff; color: var(--ink); box-shadow: 0 30px 80px -24px rgba(10,31,68,.5), 0 0 0 1px var(--line); animation: fade .4s both; }
+.ck[hidden] { display: none; }
+.ck h2 { margin: 0; font-size: 1.15rem; font-weight: 600; letter-spacing: -.01em; }
+.ck p { margin: .55rem 0 0; color: var(--ink-60); font-size: .92rem; line-height: 1.5; }
+.ck p a { color: var(--ink); text-underline-offset: 2px; }
+.ck__opts { margin-top: .4rem; }
+.ck__o { display: grid; grid-template-columns: auto 1fr; gap: .1rem .7rem; margin-top: .8rem; font-size: .92rem; cursor: pointer; }
+.ck__o input { grid-row: span 2; width: 1.15rem; height: 1.15rem; margin: .15rem 0 0; accent-color: var(--navy); cursor: inherit; }
+.ck__o input:disabled { cursor: default; }
+.ck__o b { font-weight: 600; }
+.ck__o span { color: var(--ink-60); font-size: .85rem; line-height: 1.45; }
+.ck__b { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.2rem; }
+.ck__b button { flex: 1 1 auto; min-height: 46px; padding: 0 1.2rem; border: 0; border-radius: 99px; background: var(--navy); color: #fff; font: inherit; font-size: .92rem; font-weight: 600; cursor: pointer; transition: background .2s; }
+.ck__b button:hover { background: var(--navy-2); }
+.ck__b [data-ck="set"], .ck__b [data-ck="save"] { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px currentColor; }
+.ck__b [data-ck="set"]:hover, .ck__b [data-ck="save"]:hover { background: var(--stone); }
+.ck button:focus-visible, .ck a:focus-visible, .ck input:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+@media (max-width: 600px) {
+  .ck { left: 0; right: 0; bottom: 0; width: auto; max-height: 85vh; max-height: 85dvh; border-radius: var(--r) var(--r) 0 0; padding: 1.2rem var(--g) calc(1.2rem + env(safe-area-inset-bottom, 0px)); }
+  .ck__b button { flex: 1 1 40%; padding: 0 .75rem; white-space: nowrap; }
+  .ck__b [data-ck="set"], .ck__b [data-ck="save"] { flex-basis: 100%; }
+}
+@media (max-width: 370px) { .ck__b button { flex-basis: 100%; } }
+/* przycisk „Ustawienia cookies” w stopce (pokazuje go c.js) i w polityce prywatności */
+.foot__lk { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1.4rem; }
+.foot__ck { padding: 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; }
+.foot__ck:hover { color: #fff; }
