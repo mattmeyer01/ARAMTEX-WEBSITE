@@ -26,7 +26,8 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
   Zdarzenia dla celów w panelu Plausible wysyła `track()` w `c.js` (nazwy muszą być identyczne jak cele):
   `Zapytanie wysłane` (po udanym wysłaniu formularza; props `profil`, `pozycje`, `skad`), `Telefon` i `E-mail`
   (props `kontakt`, `miejsce`), `Dodaj do wyceny` (`kod`, `miejsce`), `Lista do formularza` (`pozycje`),
-  `Pasek nowości: okno` i `Pasek nowości: przejście` (`komunikat` = `BAR_ID`). Strony 404 wysyłają `404`
+  `Pasek nowości: okno` i `Pasek nowości: przejście` (`komunikat` = `BAR_ID`), `Zgoda cookies` (wybór w oknie zgody;
+  `wybor`: `wszystkie`, `statystyki`, `marketing` albo `odrzucone`). Strony 404 wysyłają `404`
   (`JS404` w `tools/strony.py`). Pobrania plików, linki wychodzące i wysłania formularzy (`Form: Submission`)
   liczy sam Plausible. Nowe zdarzenie trzeba też dopisać do polityki prywatności (pkt 2).
 - Menedżer tagów Google (GTM): `GTM_ID` w `tools/strony.py` (pusty wyłącza GTM). `head()` wstawia przed kodem GTM
