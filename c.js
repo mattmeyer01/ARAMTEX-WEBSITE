@@ -16,9 +16,19 @@
 
   // Statystyki (Plausible, skrypt w <head>): zdarzenia dla celów w panelu Plausible, bez danych osobowych w props.
   // Na localhost Plausible zdarzeń nie wysyła. trackGo przechodzi pod adres po zapisaniu zdarzenia (czeka najwyżej 350 ms).
-  function track(name, props) { try { if (window.plausible) window.plausible(name, props ? { props: props } : {}); } catch (e) {} }
+  // Te same działania trafiają do dataLayer pod nazwami z DL (reguły w Menedżerze tagów, np. zdarzenia GA4); tagi Google
+  // uruchamiają się tylko po zgodzie z okna zgody. „Zgoda cookies” wysyła własne zdarzenie zgoda_cookies, „404” nie ma.
+  var DL = { 'Zapytanie wysłane': 'zapytanie_wyslane', 'Telefon': 'telefon', 'E-mail': 'email', 'Dodaj do wyceny': 'dodaj_do_wyceny',
+    'Lista do formularza': 'lista_do_formularza', 'Pasek nowości: okno': 'pasek_nowosci_okno', 'Pasek nowości: przejście': 'pasek_nowosci_przejscie' };
+  function dl(name, props) {
+    if (!DL[name]) return;
+    var o = { event: DL[name] }; for (var k in props) o[k] = props[k];
+    (window.dataLayer = window.dataLayer || []).push(o);
+  }
+  function track(name, props) { dl(name, props); try { if (window.plausible) window.plausible(name, props ? { props: props } : {}); } catch (e) {} }
   function trackGo(name, props, href) {
     var done = false, go = function () { if (!done) { done = true; location.href = href; } };
+    dl(name, props);
     try { if (window.plausible) { window.plausible(name, { props: props, callback: go }); setTimeout(go, 350); return; } } catch (e) {}
     go();
   }

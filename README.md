@@ -43,6 +43,11 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
   W GTM tagi Google (GA4, Google Ads) korzystają z trybu zgody same. Tagi spoza Google (np. Meta Pixel) uruchamiaj
   wyzwalaczem „Zdarzenie niestandardowe” `zgoda_cookies` z warunkiem `zgoda_marketing` równa się `granted`
   (zmienna warstwy danych). Każde nowe narzędzie trzeba też opisać w polityce prywatności.
+- Zdarzenia dla GTM: `track()` w `c.js` wysyła działania także do dataLayer (`DL` w `c.js`): `zapytanie_wyslane`,
+  `telefon`, `email`, `dodaj_do_wyceny`, `lista_do_formularza`, `pasek_nowosci_okno`, `pasek_nowosci_przejscie`
+  (te same props co w Plausible). Konfiguracja GA4 w kontenerze: tag Google uruchamiany zdarzeniem `zgoda_cookies`
+  przy `zgoda_statystyki` = `granted` (raz na stronę), zdarzenia GA4 na regułach z tymi nazwami (`zapytanie_wyslane`
+  jako `generate_lead`); wszystkie tagi wymagają zgody `analytics_storage`.
 - `img/`: logo, hero, zdjęcia produktów (`besco/`, `pegler/`, `oferta/`, `linie/`), obrazek udostępniania (`og/`).
   Zdjęcia grup produktów mają beż `#F3F1EC` wpisany w plik (miniatury w kafelkach, liście do wyceny i wyszukiwarce).
   Jeśli obok leży plik `<nazwa>-l.webp` (to samo zdjęcie na białym tle, czasem większe), strona produktu pokazuje go zamiast miniatury.
