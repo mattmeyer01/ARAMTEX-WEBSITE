@@ -20,6 +20,9 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
 - Pasek nowości nad menu (INOX 304) i okno z opisem: `bar_html()` w `tools/strony.py`, style `.abar` i `.adlg`
   w `c.css`, obsługa w `c.js`. Zamknięcie paska zapamiętuje przeglądarka (klucz `armatex-bar`). Nowa wartość `BAR_ID`
   pokaże pasek ponownie wszystkim, `BAR_ID=None` wyłącza go na wszystkich stronach.
+- Statystyki odwiedzin: Plausible Analytics (bez cookies i bez zapisu w przeglądarce). Skrypt wstawia `head()`
+  z napisu `PLAUSIBLE` w `tools/strony.py` na wszystkie strony poza przekierowaniami; pusty napis go wyłącza.
+  Narzędzie opisuje polityka prywatności (pkt 2, 3, 4, 6, 8 i 9), więc przy jego zmianie trzeba ją też poprawić.
 - `img/`: logo, hero, zdjęcia produktów (`besco/`, `pegler/`, `oferta/`, `linie/`), obrazek udostępniania (`og/`).
   Zdjęcia grup produktów mają beż `#F3F1EC` wpisany w plik (miniatury w kafelkach, liście do wyceny i wyszukiwarce).
   Jeśli obok leży plik `<nazwa>-l.webp` (to samo zdjęcie na białym tle, czasem większe), strona produktu pokazuje go zamiast miniatury.

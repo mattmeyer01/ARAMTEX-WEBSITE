@@ -236,6 +236,15 @@ def ld_system(s):
       "itemListElement":[{"@type":"ListItem","position":i,"name":f"{l[0]} ({l[1]}), {l[3]}"} for i,l in enumerate(s['lines'],1)]})
     return ld_crumbs([('Oferta','index.html#systemy'),(s['name'],s['slug']+'.html')])+lst
 
+# Statystyki odwiedzin: Plausible Analytics (bez cookies i bez zapisu w przeglądarce; opis w polityce prywatności, pkt 2, 8 i 9).
+# Pusty napis wyłącza skrypt na wszystkich stronach.
+PLAUSIBLE='''  <!-- Privacy-friendly analytics by Plausible -->
+  <script async src="https://plausible.io/js/pa-a8UL2v_W8zLUlUQMz3X4i.js"></script>
+  <script>
+    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+    plausible.init()
+  </script>
+'''
 def head(title,desc,extra='',path=''):
     ta,da=title.replace('"','&quot;'),desc.replace('"','&quot;')   # cudzysłów cala (1/2") w atrybucie content
     return f'''<!doctype html>
@@ -271,7 +280,7 @@ def head(title,desc,extra='',path=''):
   <link rel="preload" href="../../assets/fonts/outfit-latin-ext-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 {extra}  <link rel="stylesheet" href="c.css">
   <script src="c.js" defer></script>
-</head>
+{PLAUSIBLE}</head>
 '''
 PDF='../pliki/katalog-besco-2026.pdf'
 PDF_TECTITE='../pliki/katalog-tectite.pdf'
@@ -1599,7 +1608,7 @@ page('do-pobrania.html','Do pobrania: katalogi i dokumenty złączek | Armatex',
 
 
 # ---- Polityka prywatności
-POL_OD='27 września 2026 r.'
+POL_OD='10 października 2026 r.'
 pol_body='''
         <p>Ta polityka opisuje, jakie dane osobowe zbieramy przez stronę armatex.pl, w jakim celu, jak długo je przechowujemy i jakie prawa Ci przysługują. Opisuje też, jakie informacje strona zapisuje w Twojej przeglądarce.</p>
 
@@ -1616,6 +1625,7 @@ pol_body='''
         <p><strong>Formularz zapytania.</strong> Gdy wysyłasz formularz, otrzymujemy dane, które w nim podasz: adres e-mail i numer telefonu (wymagane) oraz opcjonalnie imię i nazwisko, nazwę firmy, profil firmy, miejscowość lub województwo i treść zapytania, w tym listę pozycji do wyceny.</p>
         <p><strong>Kontakt e-mailowy i telefoniczny.</strong> Gdy piszesz lub dzwonisz do nas bezpośrednio, przetwarzamy dane podane w tej korespondencji lub rozmowie.</p>
         <p><strong>Dane techniczne.</strong> Przy każdym wyświetleniu strony serwer hostingu automatycznie rejestruje dane techniczne, takie jak adres IP, data i godzina, adres odwiedzanej podstrony oraz typ przeglądarki. Nie używamy ich do identyfikowania osób.</p>
+        <p><strong>Statystyki odwiedzin.</strong> Ruch na stronie mierzymy narzędziem Plausible Analytics. Zbiera ono zbiorcze dane o odwiedzinach: adres odwiedzanej podstrony, adres strony, z której do nas trafiasz, typ przeglądarki, systemu i urządzenia oraz przybliżoną lokalizację (kraj, region i miasto ustalone na podstawie adresu IP). Plausible nie używa plików cookies, niczego nie zapisuje w Twojej przeglądarce i nie przechowuje adresu IP. Odwiedziny z jednego dnia rozpoznaje po skrócie (hash) adresu IP i danych przeglądarki, liczonym z kluczem, który co 24 godziny jest usuwany i zastępowany nowym. Dlatego ze statystyk nie da się ustalić, kim jesteś, ani rozpoznać Cię przy wizycie następnego dnia.</p>
         <p>Podanie danych jest dobrowolne, ale bez adresu e-mail i numeru telefonu nie będziemy mogli odpowiedzieć na zapytanie wysłane przez formularz.</p>
 
         <h2 id="cele">3. Cele i podstawy prawne przetwarzania</h2>
@@ -1626,6 +1636,7 @@ pol_body='''
             <tr><td>Dalszy kontakt handlowy i obsługa współpracy z firmą, którą reprezentujesz</td><td>art. 6 ust. 1 lit. f (prawnie uzasadniony interes: kontakt z kontrahentami)</td></tr>
             <tr><td>Realizacja zamówień i umów, rozliczenia, obowiązki księgowe i podatkowe</td><td>art. 6 ust. 1 lit. b i c</td></tr>
             <tr><td>Ustalenie, dochodzenie lub obrona roszczeń</td><td>art. 6 ust. 1 lit. f</td></tr>
+            <tr><td>Statystyki odwiedzin (Plausible Analytics), żeby wiedzieć, które treści są przydatne, i ulepszać stronę</td><td>art. 6 ust. 1 lit. f (prawnie uzasadniony interes: pomiar ruchu na stronie)</td></tr>
             <tr><td>Zapewnienie działania i bezpieczeństwa strony (dane techniczne)</td><td>art. 6 ust. 1 lit. f</td></tr>
           </tbody>
         </table></div>
@@ -1635,6 +1646,7 @@ pol_body='''
         <p>Nie sprzedajemy danych. Dostęp do nich mają upoważnieni pracownicy Armatex oraz podmioty, które świadczą dla nas usługi i przetwarzają dane w naszym imieniu:</p>
         <ul>
           <li><strong>Netlify, Inc.</strong>: hosting strony (w tym rejestrowanie danych technicznych) oraz obsługa formularza: przechowuje wysłane zgłoszenia i przesyła powiadomienia na naszą skrzynkę e-mail,</li>
+          <li><strong>Plausible Insights OÜ</strong> (Estonia): statystyki odwiedzin strony; dane są przetwarzane i przechowywane w Unii Europejskiej,</li>
           <li><strong>dostawcy poczty e-mail</strong>, na których działa nasza skrzynka,</li>
           <li><strong>GitHub, Inc.</strong>: przechowywanie kodu strony i jej kopia w serwisie GitHub Pages (dane techniczne przy wyświetleniu tej kopii),</li>
           <li>biuro rachunkowe, firmy kurierskie i transportowe, dostawcy IT: w zakresie potrzebnym do realizacji zamówień i obsługi firmy.</li>
@@ -1649,6 +1661,7 @@ pol_body='''
           <li><strong>Zapytania, na które nie doszło do współpracy:</strong> do 12 miesięcy od ostatniego kontaktu albo do wycofania zgody lub skutecznego sprzeciwu, jeśli nastąpi wcześniej.</li>
           <li><strong>Dane związane z zamówieniami i umowami:</strong> przez czas współpracy, a potem do upływu terminów przedawnienia roszczeń i przez okres wymagany przepisami podatkowymi i rachunkowymi (co do zasady 5 lat od końca roku podatkowego).</li>
           <li><strong>Zgłoszenia z formularza w panelu Netlify:</strong> usuwamy je okresowo, najpóźniej w terminach podanych wyżej dla zapytań.</li>
+          <li><strong>Statystyki odwiedzin (Plausible):</strong> zbiorcze liczby odwiedzin, bez adresów IP; klucz do liczenia skrótu adresu IP jest usuwany co 24 godziny.</li>
           <li><strong>Dane techniczne w logach hostingu:</strong> przez okres ustalony przez dostawcę hostingu, zwykle nie dłużej niż kilka tygodni.</li>
         </ul>
 
@@ -1666,18 +1679,23 @@ pol_body='''
         <p>Aby skorzystać z tych praw, napisz na <a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a>. Masz też prawo wnieść skargę do Prezesa Urzędu Ochrony Danych Osobowych (ul. Stawki 2, 00-193 Warszawa, <a href="https://uodo.gov.pl" rel="noopener" target="_blank">uodo.gov.pl</a>).</p>
 
         <h2 id="cookies">8. Pliki cookies i pamięć przeglądarki</h2>
-        <p><strong>Strona nie używa plików cookies</strong> ani narzędzi analitycznych, reklamowych czy śledzących.</p>
-        <p>Strona korzysta z pamięci przeglądarki (localStorage) tylko w jednym celu: zapamiętuje <strong>listę pozycji do wyceny</strong>, którą sam tworzysz przyciskiem „Dodaj” w katalogu i na stronach produktów. Lista zawiera numery artykułów, nazwy produktów, ilości i jednostki. Zostaje wyłącznie na Twoim urządzeniu i nie jest do nas wysyłana, dopóki sam nie przeniesiesz jej do formularza i go nie wyślesz. To funkcja, o którą prosisz, dlatego nie wymaga odrębnej zgody (art. 399 ustawy – Prawo komunikacji elektronicznej).</p>
+        <p><strong>Strona nie używa plików cookies</strong> ani narzędzi reklamowych czy śledzących. Statystyki odwiedzin zbiera Plausible Analytics, które działa bez plików cookies i niczego nie zapisuje w Twojej przeglądarce (punkt 2).</p>
+        <p>Strona korzysta z pamięci przeglądarki (localStorage) w dwóch celach:</p>
+        <ul>
+          <li><strong>lista pozycji do wyceny</strong>, którą tworzysz przyciskiem „Dodaj” w katalogu i na stronach produktów: numery artykułów, nazwy produktów, ilości i jednostki. Lista zostaje wyłącznie na Twoim urządzeniu i nie jest do nas wysyłana, dopóki nie przeniesiesz jej do formularza i nie wyślesz go,</li>
+          <li><strong>zamknięty pasek z nowością</strong> u góry strony: zapisujemy tylko identyfikator komunikatu, żeby po zamknięciu nie pokazywał się ponownie.</li>
+        </ul>
+        <p>To funkcje, o które prosisz, dlatego nie wymagają odrębnej zgody (art. 399 ustawy – Prawo komunikacji elektronicznej).</p>
         <p>Listę usuwamy automatycznie po wysłaniu formularza. Możesz ją też usunąć w każdej chwili: przyciskiem „×” przy pozycjach na liście albo czyszcząc dane witryny w ustawieniach przeglądarki.</p>
 
         <h2 id="zewnetrzne">9. Treści i usługi zewnętrzne</h2>
-        <p>Wszystkie pliki strony (teksty, zdjęcia, czcionki, skrypty) są wczytywane z naszego hostingu, bez zewnętrznych serwerów. Strona zawiera linki do innych serwisów, np. <a href="https://uodo.gov.pl" rel="noopener" target="_blank">uodo.gov.pl</a>. Za zasady prywatności tych serwisów odpowiadają ich właściciele.</p>
+        <p>Pliki strony (teksty, zdjęcia, czcionki, skrypty) są wczytywane z naszego hostingu. Jedyny wyjątek to skrypt statystyk Plausible, wczytywany z serwera plausible.io (punkt 2). Strona zawiera linki do innych serwisów, np. <a href="https://uodo.gov.pl" rel="noopener" target="_blank">uodo.gov.pl</a>. Za zasady prywatności tych serwisów odpowiadają ich właściciele.</p>
 
         <h2 id="bezpieczenstwo">10. Bezpieczeństwo</h2>
         <p>Strona jest udostępniana przez szyfrowane połączenie (HTTPS). Dostęp do danych z zapytań mają tylko osoby, które ich potrzebują do obsługi klientów.</p>
 
         <h2 id="zmiany">11. Zmiany polityki</h2>
-        <p>Możemy aktualizować tę politykę, np. gdy dodamy nowe funkcje strony. Aktualna wersja jest zawsze dostępna na tej stronie. Jeśli zaczniemy używać plików cookies lub narzędzi analitycznych, poprosimy o zgodę przed ich uruchomieniem.</p>
+        <p>Możemy aktualizować tę politykę, np. gdy dodamy nowe funkcje strony. Aktualna wersja jest zawsze dostępna na tej stronie. Jeśli zaczniemy używać plików cookies lub innych narzędzi, które wymagają Twojej zgody, poprosimy o nią przed ich uruchomieniem.</p>
 '''
 pol_toc=''.join(f'<li><a href="#{a}">{t}</a></li>' for a,t in re.findall(r'<h2 id="([^"]+)">([^<]+)</h2>',pol_body))
 pol=phead([('Polityka prywatności','polityka-prywatnosci.html')],'Dokumenty','Polityka prywatności.',
