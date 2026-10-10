@@ -29,6 +29,11 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
   `Pasek nowości: okno` i `Pasek nowości: przejście` (`komunikat` = `BAR_ID`). Strony 404 wysyłają `404`
   (`JS404` w `tools/strony.py`). Pobrania plików, linki wychodzące i wysłania formularzy (`Form: Submission`)
   liczy sam Plausible. Nowe zdarzenie trzeba też dopisać do polityki prywatności (pkt 2).
+- Menedżer tagów Google (GTM): `GTM_ID` w `tools/strony.py` (pusty wyłącza GTM). `head()` wstawia przed kodem GTM
+  tryb zgody Google z domyślnym „brak zgody” (`ad_storage`, `ad_user_data`, `ad_personalization`, `analytics_storage`),
+  więc tagi Google z kontenera (GA4, Google Ads) nie zapisują cookies. Fragment `noscript` stoi zaraz po `<body>`.
+  Tagi, które zapisują cookies lub śledzą (też spoza Google, np. Meta Pixel), wymagają najpierw okna zgody (CMP)
+  i zmiany polityki prywatności (pkt 2, 4, 5, 8, 9).
 - `img/`: logo, hero, zdjęcia produktów (`besco/`, `pegler/`, `oferta/`, `linie/`), obrazek udostępniania (`og/`).
   Zdjęcia grup produktów mają beż `#F3F1EC` wpisany w plik (miniatury w kafelkach, liście do wyceny i wyszukiwarce).
   Jeśli obok leży plik `<nazwa>-l.webp` (to samo zdjęcie na białym tle, czasem większe), strona produktu pokazuje go zamiast miniatury.
