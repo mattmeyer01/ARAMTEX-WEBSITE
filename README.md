@@ -23,6 +23,12 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
 - Statystyki odwiedzin: Plausible Analytics (bez cookies i bez zapisu w przeglądarce). Skrypt wstawia `head()`
   z napisu `PLAUSIBLE` w `tools/strony.py` na wszystkie strony poza przekierowaniami; pusty napis go wyłącza.
   Narzędzie opisuje polityka prywatności (pkt 2, 3, 4, 6, 8 i 9), więc przy jego zmianie trzeba ją też poprawić.
+  Zdarzenia dla celów w panelu Plausible wysyła `track()` w `c.js` (nazwy muszą być identyczne jak cele):
+  `Zapytanie wysłane` (po udanym wysłaniu formularza; props `profil`, `pozycje`, `skad`), `Telefon` i `E-mail`
+  (props `kontakt`, `miejsce`), `Dodaj do wyceny` (`kod`, `miejsce`), `Lista do formularza` (`pozycje`),
+  `Pasek nowości: okno` i `Pasek nowości: przejście` (`komunikat` = `BAR_ID`). Strony 404 wysyłają `404`
+  (`JS404` w `tools/strony.py`). Pobrania plików, linki wychodzące i wysłania formularzy (`Form: Submission`)
+  liczy sam Plausible. Nowe zdarzenie trzeba też dopisać do polityki prywatności (pkt 2).
 - `img/`: logo, hero, zdjęcia produktów (`besco/`, `pegler/`, `oferta/`, `linie/`), obrazek udostępniania (`og/`).
   Zdjęcia grup produktów mają beż `#F3F1EC` wpisany w plik (miniatury w kafelkach, liście do wyceny i wyszukiwarce).
   Jeśli obok leży plik `<nazwa>-l.webp` (to samo zdjęcie na białym tle, czasem większe), strona produktu pokazuje go zamiast miniatury.

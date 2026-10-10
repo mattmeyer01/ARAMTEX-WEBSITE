@@ -14,6 +14,26 @@
   var SN = function (x) { return (EN && x.short_en) || (UK && x.short_uk) || x.short; };
   var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
 
+  // Statystyki (Plausible, skrypt w <head>): zdarzenia dla celów w panelu Plausible, bez danych osobowych w props.
+  // Na localhost Plausible zdarzeń nie wysyła. trackGo przechodzi pod adres po zapisaniu zdarzenia (czeka najwyżej 350 ms).
+  function track(name, props) { try { if (window.plausible) window.plausible(name, props ? { props: props } : {}); } catch (e) {} }
+  function trackGo(name, props, href) {
+    var done = false, go = function () { if (!done) { done = true; location.href = href; } };
+    try { if (window.plausible) { window.plausible(name, { props: props, callback: go }); setTimeout(go, 350); return; } } catch (e) {}
+    go();
+  }
+  // telefon i e-mail: kto (biuro, sprzedaż, magazyn) i skąd kliknięto
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="tel:"], a[href^="mailto:"]'); if (!a) return;
+    var h = a.getAttribute('href').toLowerCase(), tel = h.indexOf('tel:') === 0, d = h.replace(/\D/g, '');
+    var kto = tel ? (/513191502$/.test(d) ? 'biuro' : /798807106$/.test(d) ? 'sprzedaż' : /512945936$/.test(d) ? 'magazyn' : 'inny')
+      : (/^mailto:biuro@/.test(h) ? 'biuro' : /^mailto:piotr@/.test(h) ? 'sprzedaż' : /^mailto:martyna@/.test(h) ? 'magazyn' : 'inny');
+    var gdzie = a.closest('.callfab') ? 'przycisk Zadzwoń' : a.closest('.nav, #mnav') ? 'menu' : a.closest('.foot') ? 'stopka'
+      : a.closest('.person, .team') ? 'zespół' : a.closest('.ldr, .rfq') ? 'lista do wyceny' : a.closest('.cta') ? 'ramka CTA'
+      : a.closest('.close') ? 'sekcja kontaktu' : a.closest('.faq') ? 'pytania' : a.closest('.phead, .hero') ? 'nagłówek strony' : 'treść';
+    track(tel ? 'Telefon' : 'E-mail', { kontakt: kto, miejsce: gdzie });
+  });
+
   // Zdjęcie bez wersji _min.webp: wróć do oryginału
   $$('img[data-fb]').forEach(function (img) {
     img.addEventListener('error', function () {
@@ -60,10 +80,21 @@
       try { localStorage.setItem('armatex-bar', abar.dataset.id); } catch (e) {}
     });
     if (!dlg || typeof dlg.showModal !== 'function') return;
-    $('.abar__more', abar).addEventListener('click', function (e) { e.preventDefault(); dlg.showModal(); root.classList.add('dlg-open'); });
+    $('.abar__more', abar).addEventListener('click', function (e) {
+      e.preventDefault(); dlg.showModal(); root.classList.add('dlg-open');
+      track('Pasek nowości: okno', { komunikat: abar.dataset.id });
+    });
     dlg.addEventListener('close', function () { root.classList.remove('dlg-open'); });
     dlg.addEventListener('click', function (e) { if (e.target === dlg || e.target.closest('.adlg__x')) dlg.close(); });
-    $$('a', dlg).forEach(function (a) { a.addEventListener('click', function () { dlg.close(); }); });
+    $$('a', dlg).forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        dlg.close();
+        if (!a.closest('.adlg__f')) return;
+        var p = { komunikat: abar.dataset.id };
+        if (e.ctrlKey || e.metaKey || e.shiftKey || e.button) return track('Pasek nowości: przejście', p);
+        e.preventDefault(); trackGo('Pasek nowości: przejście', p, a.href);
+      });
+    });
   })();
 
   // Wejścia + odometr (BYQ Odometer: 2 obroty, 0.85 s + 0.1 s na cyfrę)
@@ -255,7 +286,7 @@
   if (res) res.addEventListener('click', function (e) {
     var b = e.target.closest('.add'); if (!b) return;
     var art = b.dataset.art;
-    if (rfq.has(art)) rfq.delete(art); else { var nv = packFix({ q: 1, l: label(art), i: imgOf(art) }, packsOf(art)); nv.u = 0; rfq.set(art, nv); }
+    if (rfq.has(art)) rfq.delete(art); else { var nv = packFix({ q: 1, l: label(art), i: imgOf(art) }, packsOf(art)); nv.u = 0; rfq.set(art, nv); track('Dodaj do wyceny', { kod: art, miejsce: 'wyszukiwarka' }); }
     b.classList.toggle('is-in', rfq.has(art)); b.textContent = rfq.has(art) ? L('Dodano', 'Added', 'Додано') : L('Dodaj', 'Add', 'Додати');
     save(); drawRfq();
   });
@@ -276,7 +307,7 @@
   $('#toForm').addEventListener('click', function () {
     var lines = [L('Lista pozycji do wyceny:', 'Items for quotation:', 'Позиції для розрахунку ціни:')];
     rfq.forEach(function (v, art) { lines.push(art + ' · ' + (v.l || label(art)) + ' · ' + packTxt(packFix(v, packsOf(art)))); });
-    location.href = 'kontakt.html?temat=' + encodeURIComponent(lines.join('\n')) + '#formularz';
+    trackGo('Lista do formularza', { pozycje: rfq.size }, 'kontakt.html?temat=' + encodeURIComponent(lines.join('\n')) + '#formularz');
   });
   drawRfq();
   // powrót przyciskiem „Wstecz” (strona z pamięci przeglądarki, bfcache) lub zmiana w innej karcie: wczytaj listę od nowa
@@ -322,6 +353,7 @@
         var added = !list.has(a);
         if (added) list.set(a, cur()); else list.delete(a);
         save(); sync(); changed(added);
+        if (added) track('Dodaj do wyceny', { kod: a, miejsce: 'strona produktu' });
       });
       function upd() { if (list.has(a)) { list.set(a, cur()); save(); changed(); } }
       inp.addEventListener('input', upd); sel.addEventListener('change', upd);
@@ -348,8 +380,8 @@
     function changed() { document.dispatchEvent(new CustomEvent('rfq:change', { detail: { src: 'ldr' } })); }
     function send() {
       var lines = [L('Lista pozycji do wyceny:', 'Items for quotation:', 'Позиції для розрахунку ціни:')];
-      read().forEach(function (v, art) { lines.push(art + ' · ' + (v.l || '') + ' · ' + packTxt(packFix(v))); });
-      location.href = 'kontakt.html?temat=' + encodeURIComponent(lines.join('\n')) + '#formularz';
+      var m = read(); m.forEach(function (v, art) { lines.push(art + ' · ' + (v.l || '') + ' · ' + packTxt(packFix(v))); });
+      trackGo('Lista do formularza', { pozycje: m.size }, 'kontakt.html?temat=' + encodeURIComponent(lines.join('\n')) + '#formularz');
     }
 
     // przycisk / pasek
@@ -495,12 +527,16 @@
     if (c0) c0.click();
   })();
 
-  var m = $('#m');
+  var m = $('#m'), LHEAD = L('Lista pozycji do wyceny:', 'Items for quotation:', 'Позиції для розрахунку ціни:'), skad = '';
   if (m) {
     var temat = new URLSearchParams(location.search).get('temat');
     if (temat) m.value = temat;
-    $$('[data-topic]').forEach(function (a) { a.addEventListener('click', function () { m.value = a.dataset.topic; }); });
+    // skąd przyszło zapytanie (do statystyk): lista do wyceny albo przycisk z gotowym tematem
+    skad = !temat ? '' : temat.indexOf(LHEAD) === 0 ? 'lista do wyceny' : temat.slice(0, 80);
+    $$('[data-topic]').forEach(function (a) { a.addEventListener('click', function () { m.value = a.dataset.topic; skad = a.dataset.topic.slice(0, 80); }); });
   }
+  // profil firmy w statystykach po polsku, niezależnie od wersji językowej strony (ta sama kolejność opcji)
+  var PROFIL = ['Hurtownia / sklep instalacyjny', 'Firma instalacyjna / HVAC', 'Generalny wykonawca / deweloper', 'Przemysł / utrzymanie ruchu', 'Zarządca budynków / instytucja publiczna', 'Inny'];
   // Formularz: walidacja i wysyłka do Netlify Forms (AJAX), bez przeładowania strony
   var form = $('#form');
   if (form) form.addEventListener('submit', function (e) {
@@ -522,12 +558,15 @@
       if (empty) msg.unshift(L('Uzupełnij pola oznaczone gwiazdką.', 'Please fill in the fields marked with an asterisk.', 'Заповніть поля, позначені зірочкою.'));
       st.classList.add('is-err'); st.textContent = msg.join(' '); bad.focus(); return;
     }
-    var btn = form.querySelector('button[type=submit]');
+    var btn = form.querySelector('button[type=submit]'), pf = $('#pf', form), mv = m ? m.value : '';
+    // do statystyk: profil firmy, liczba pozycji z listy do wyceny w treści i skąd przyszło zapytanie (bez danych z formularza)
+    var stat = { profil: pf ? PROFIL[pf.selectedIndex] || pf.value : '', pozycje: mv.indexOf(LHEAD) === -1 ? 0 : mv.split('\n').filter(function (l) { return l.indexOf(' · ') > 0; }).length, skad: skad || 'bez tematu' };
     btn.disabled = true; st.textContent = L('Wysyłanie…', 'Sending…', 'Надсилання…');
     fetch('/', {
       method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(new FormData(form)).toString()
     }).then(function (r) { if (!r.ok) throw new Error('http ' + r.status); })
       .then(function () {
+        track('Zapytanie wysłane', stat);
         form.reset(); st.classList.add('is-ok');
         st.textContent = L('Dziękujemy. Zapytanie dotarło, odpowiemy w ciągu jednego dnia roboczego.', 'Thank you. Your enquiry has been received; we will reply within one working day.', 'Дякуємо. Запит отримано, відповімо протягом одного робочого дня.');
         try { localStorage.removeItem('armatex-rfq'); } catch (err) {}

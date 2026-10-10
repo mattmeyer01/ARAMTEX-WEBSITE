@@ -1625,7 +1625,7 @@ pol_body='''
         <p><strong>Formularz zapytania.</strong> Gdy wysyłasz formularz, otrzymujemy dane, które w nim podasz: adres e-mail i numer telefonu (wymagane) oraz opcjonalnie imię i nazwisko, nazwę firmy, profil firmy, miejscowość lub województwo i treść zapytania, w tym listę pozycji do wyceny.</p>
         <p><strong>Kontakt e-mailowy i telefoniczny.</strong> Gdy piszesz lub dzwonisz do nas bezpośrednio, przetwarzamy dane podane w tej korespondencji lub rozmowie.</p>
         <p><strong>Dane techniczne.</strong> Przy każdym wyświetleniu strony serwer hostingu automatycznie rejestruje dane techniczne, takie jak adres IP, data i godzina, adres odwiedzanej podstrony oraz typ przeglądarki. Nie używamy ich do identyfikowania osób.</p>
-        <p><strong>Statystyki odwiedzin.</strong> Ruch na stronie mierzymy narzędziem Plausible Analytics. Zbiera ono zbiorcze dane o odwiedzinach: adres odwiedzanej podstrony, adres strony, z której do nas trafiasz, typ przeglądarki, systemu i urządzenia oraz przybliżoną lokalizację (kraj, region i miasto ustalone na podstawie adresu IP). Plausible nie używa plików cookies, niczego nie zapisuje w Twojej przeglądarce i nie przechowuje adresu IP. Odwiedziny z jednego dnia rozpoznaje po skrócie (hash) adresu IP i danych przeglądarki, liczonym z kluczem, który co 24 godziny jest usuwany i zastępowany nowym. Dlatego ze statystyk nie da się ustalić, kim jesteś, ani rozpoznać Cię przy wizycie następnego dnia.</p>
+        <p><strong>Statystyki odwiedzin.</strong> Ruch na stronie mierzymy narzędziem Plausible Analytics. Zbiera ono zbiorcze dane o odwiedzinach: adres odwiedzanej podstrony, adres strony, z której do nas trafiasz, typ przeglądarki, systemu i urządzenia oraz przybliżoną lokalizację (kraj, region i miasto ustalone na podstawie adresu IP). Liczy też wybrane działania na stronie: kliknięcie numeru telefonu lub adresu e-mail, pobranie pliku (np. katalogu PDF), kliknięcie linku do innej strony, otwarcie okna z nowością, dodanie produktu do listy do wyceny, przejście z listy do formularza, wysłanie formularza (tylko profil firmy, liczba pozycji z listy i przycisk, z którego przyszło zapytanie, bez danych kontaktowych i treści wpisanej w formularz) oraz wejście na nieistniejącą stronę (błąd 404). Plausible nie używa plików cookies, niczego nie zapisuje w Twojej przeglądarce i nie przechowuje adresu IP. Odwiedziny z jednego dnia rozpoznaje po skrócie (hash) adresu IP i danych przeglądarki, liczonym z kluczem, który co 24 godziny jest usuwany i zastępowany nowym. Dlatego ze statystyk nie da się ustalić, kim jesteś, ani rozpoznać Cię przy wizycie następnego dnia.</p>
         <p>Podanie danych jest dobrowolne, ale bez adresu e-mail i numeru telefonu nie będziemy mogli odpowiedzieć na zapytanie wysłane przez formularz.</p>
 
         <h2 id="cele">3. Cele i podstawy prawne przetwarzania</h2>
@@ -1737,17 +1737,20 @@ n404=f'''
   </section>
 '''
 page('404.html','Nie znaleziono strony | Armatex','Strona nie istnieje. Znajdź produkt w katalogu Armatex lub zapytaj o wycenę.','404',n404)
+# Plausible: zdarzenie „404” na stronie błędu (cel „404” w panelu Plausible, kod z dokumentacji Plausible)
+JS404='  <script>document.addEventListener(\'DOMContentLoaded\', function () { if (window.plausible) plausible(\'404\'); });</script>\n' if PLAUSIBLE else ''
 h=open(OUT+'404.html',encoding='utf-8').read()
 h=re.sub(r'\s*<link rel="(canonical|alternate)"[^>]*>','',h); h=h.replace('<meta charset="utf-8">','<meta charset="utf-8">\n  <meta name="robots" content="noindex">',1); h=re.sub(r'\s*<meta property="og:url"[^>]*>','',h)
 # GitHub Pages podaje 404.html pod dowolnym adresem: baza ścieżek ustawiana przed wczytaniem CSS
 h=h.replace('<head>\n','<head>\n  <script>document.write(\'<base href="\'+(/^\\/aramtex-website\\//i.test(location.pathname)?location.pathname.match(/^\\/[^/]+\\//)[0]:\'/\')+\'">\')</script>\n',1)
+h=h.replace('</head>',JS404+'</head>',1)
 open(OUT+'404.html','w',encoding='utf-8').write(h)
 # 404 w wersjach językowych (Netlify: /en/*, /ua/* bez strony → <katalog>/404.html, reguły w _redirects)
 for c in LANGS_ON:
     c=LANG_DIR[c]
     h=open(OUT+c+'/404.html',encoding='utf-8').read()
     h=re.sub(r'\s*<link rel="(canonical|alternate)"[^>]*>','',h); h=h.replace('<meta charset="utf-8">','<meta charset="utf-8">\n<meta name="robots" content="noindex">',1); h=re.sub(r'\s*<meta property="og:url"[^>]*>','',h)
-    h=h.replace('<head>\n',f'<head>\n<base href="/{c}/">\n',1)
+    h=h.replace('<head>\n',f'<head>\n<base href="/{c}/">\n',1).replace('</head>',JS404+'</head>',1)
     open(OUT+c+'/404.html','w',encoding='utf-8').write(h)
 
 # ---------------- strony wycofane z oferty: przekierowanie 301 na stronę systemu (blok generowany w _redirects) i usunięcie starych plików
