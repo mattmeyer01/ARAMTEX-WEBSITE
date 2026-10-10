@@ -30,7 +30,7 @@ SYS=[
  dict(slug='zlaczki-zaprasowane-press',name='Złączki zaprasowane',h1='Złączki zaprasowane press Besco',seotitle='Złączki zaprasowane press Besco dla hurtowni | Armatex',metadesc='Złączki zaprasowane (press) Besco: miedź V i M, gaz, stal węglowa, stal nierdzewna INOX 304 i 316L, zawory kulowe. 1 583 indeksy, 12–168,3 mm.',tab='Zaprasowane',brand='Besco',cnt='1 583',cntw='1 583 indeksy',sizes='12–168,3 mm',
   title='Złączki i zawory zaprasowane',
   short='Gutpress Copper w profilach V i M, linie gazowe, Gutpress Carbon Steel, stal nierdzewna INOX i Gutpress Zawory Kulowe V i M.',
-  desc='Miedziane systemy press (złączki zaprasowywane) w profilach V i M, serie do gazu, press ze stali węglowej i nierdzewnej (INOX 304 i 316L) oraz zawory kulowe. Miedź według EN 1254-7.',
+  desc='Miedziane systemy press (złączki zaprasowywane) w profilach V i M, serie do gazu, press ze stali węglowej i nierdzewnej (INOX 304 i 316L) oraz zawory kulowe. Miedź według EN 1254-7. Armatex jest dystrybutorem Besco od 2016 roku.',
   who='Firmy instalacyjne z zaciskarkami: kotłownie, piony i przyłącza w budownictwie wielorodzinnym i obiektach, instalacje gazowe.',
   arg='Profil M można zaprasowywać szczęką V w zakresie DN12–28, więc jeden stan magazynowy obsłuży klientów z oboma typami szczęk.',
   pics=[('besco-press-v','Miedziany trójnik press'),('besco-gaz','Trójnik press do gazu z żółtym oznaczeniem'),('besco-stal','Trójnik press ze stali węglowej')],
@@ -84,7 +84,7 @@ SYS=[
  dict(slug='zlaczki-lutowane',name='Złączki lutowane',h1='Złączki lutowane Besco',seotitle='Złączki lutowane Besco: EN 1254, ANSI, G-size | Armatex',metadesc='Złączki lutowane Besco: kształtki EN 1254 serii 4000 i 5000 (6–108 mm), calowe ANSI B16.22 i G-size do 80 bar. 893 indeksy, dostawy do hurtowni w całej Polsce.',tab='Lutowane',brand='Besco',cnt='893',cntw='893 indeksy',sizes='6–108 mm',
   title='Złączki lutowane',
   short='Kształtki EN 1254 serii 4000 i 5000, calowe ANSI B16.22 i G-size do 80 bar.',
-  desc='Miedziane złączki kapilarne do lutu miękkiego i twardego: metryczne serie 4000 i 5000 według EN 1254, calowe ANSI B16.22 oraz G-size do wysokich ciśnień.',
+  desc='Miedziane złączki kapilarne do lutu miękkiego i twardego: metryczne serie 4000 i 5000 według EN 1254, calowe ANSI B16.22 oraz G-size do wysokich ciśnień. Armatex jest dystrybutorem Besco od 2016 roku.',
   who='Instalatorzy pracujący w klasycznej technologii, chłodnictwo i klimatyzacja oraz utrzymanie ruchu w przemyśle.',
   arg='Jeden dostawca na kształtki metryczne, calowe i G-size do 80 bar, bez dokładania kolejnej marki.',
   pics=[('besco-lut','Miedziany trójnik lutowany'),('besco-k','Miedziane kolano lutowane')],
@@ -1164,8 +1164,8 @@ CTA_BOX=f'''      <div class="cta" style="margin-top:clamp(3rem,6vw,4.5rem)">
 
 # ---- O firmie
 firma=phead([('O firmie','o-firmie.html')],'O firmie','Armatex. Dystrybutor złączek dla hurtowni.',
-  'Działamy od 1991 roku i jesteśmy oficjalnym przedstawicielem Pegler Yorkshire w Polsce. Z magazynu w Olsztynie dostarczamy złączki i armaturę Besco oraz Pegler Yorkshire do hurtowni w całej Polsce.',
-  [('Na rynku','od 1991'),('Indeksy','ponad 3 200'),('Wysyłka','24 h')],
+  'Działamy od 1991 roku. Jesteśmy oficjalnym przedstawicielem Pegler Yorkshire w Polsce, a od 2016 roku dystrybutorem firmy Besco. Z magazynu w Olsztynie dostarczamy złączki i armaturę obu producentów do hurtowni w całej Polsce.',
+  [('Na rynku','od 1991'),('Dystrybutor Besco','od 2016'),('Indeksy','ponad 3 200'),('Wysyłka','24 h')],
   f'<a class="mag" href="{ask("Jesteśmy hurtownią i chcemy poznać ofertę Armatex.")}"><span>Zapytaj o wycenę</span></a><a class="ghost" href="wspolpraca.html">Jak współpracujemy</a>')+f'''
   <section class="section section--tight">
     <div class="wrap">
@@ -1189,7 +1189,7 @@ firma=phead([('O firmie','o-firmie.html')],'O firmie','Armatex. Dystrybutor zł�
       <span class="label kicker">Marki</span>
       <h2 class="h2">Dwóch producentów, pełne programy.</h2>
       <div class="aud aud--2">
-        <div class="in"><span class="label">Besco Fittings &amp; Connectors</span><h3>Press, gaz, stal i lutowane</h3><p>Gutpress Copper w profilach V i M (12–108 mm), linie do gazu, Gutpress Carbon Steel, stal nierdzewna INOX 304 i 316L press, kształtki lutowane EN 1254, calowe ANSI i G-size oraz Gutpress Zawory Kulowe V i M. 2 476 pozycji Besco w naszej <a href="wyszukiwarka.html">wyszukiwarce</a>. Aprobaty DVGW, KIWA, WRAS, RISE i INiG oraz certyfikaty PZH i ITB, zależnie od linii.</p></div>
+        <div class="in"><span class="label">Besco Fittings &amp; Connectors · dystrybutor od 2016</span><h3>Press, gaz, stal i lutowane</h3><p>Gutpress Copper w profilach V i M (12–108 mm), linie do gazu, Gutpress Carbon Steel, stal nierdzewna INOX 304 i 316L press, kształtki lutowane EN 1254, calowe ANSI i G-size oraz Gutpress Zawory Kulowe V i M. 2 476 pozycji Besco w naszej <a href="wyszukiwarka.html">wyszukiwarce</a>. Aprobaty DVGW, KIWA, WRAS, RISE i INiG oraz certyfikaty PZH i ITB, zależnie od linii.</p></div>
         <div class="in"><span class="label">Pegler Yorkshire · oficjalny przedstawiciel w Polsce</span><h3>Tectite i Kuterlite</h3><p>Jako oficjalny przedstawiciel Pegler Yorkshire w Polsce prowadzimy złączki na wcisk <a href="zlaczki-na-wcisk-tectite.html">Tectite</a> (Classic, Pro, 316, Carbon) z gwarancją producenta 25 lat oraz złączki skręcane <a href="zlaczki-skrecane-kuterlite.html">Kuterlite</a> do miedzi, razem z zaworami.</p></div>
       </div>
     </div>
@@ -1208,7 +1208,7 @@ firma=phead([('O firmie','o-firmie.html')],'O firmie','Armatex. Dystrybutor zł�
     </div>
   </section>
 '''
-page('o-firmie.html','O firmie – Armatex, dystrybutor złączek dla hurtowni','P.H.U. ARMATEX Sp. J. A. J. Bunda z Olsztyna: od 1991 r. na rynku instalacyjnym, oficjalny przedstawiciel Pegler Yorkshire w Polsce, dystrybutor Besco.','o-firmie',firma,ld_crumbs([('O firmie','o-firmie.html')]))
+page('o-firmie.html','O firmie – Armatex, dystrybutor złączek dla hurtowni','P.H.U. ARMATEX Sp. J. A. J. Bunda, Olsztyn: od 1991 r. na rynku instalacyjnym, oficjalny przedstawiciel Pegler Yorkshire w Polsce, dystrybutor Besco od 2016 r.','o-firmie',firma,ld_crumbs([('O firmie','o-firmie.html')]))
 
 # ---- Poradniki
 PSRC='Źródło danych: katalog Besco Fittings &amp; Connectors 2026'
