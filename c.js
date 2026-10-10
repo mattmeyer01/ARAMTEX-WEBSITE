@@ -34,6 +34,87 @@
     track(tel ? 'Telefon' : 'E-mail', { kontakt: kto, miejsce: gdzie });
   });
 
+  // Okno zgody na pliki cookies (tryb zgody Google). Domyślne „brak zgody” i odczyt zapisanego wyboru są w <head>
+  // (GTM_HEAD w tools/strony.py), przed Menedżerem tagów. Wybór zostaje w przeglądarce na 12 miesięcy; ZV i YEAR
+  // muszą być takie same jak tam (nowa wersja = pytanie od nowa). Po wyborze: zgody Google i zdarzenie dataLayer
+  // „zgoda_cookies” (wyzwalacz dla tagów spoza Google w GTM, np. Meta Pixel). Bez GTM (brak gtag) okna nie ma.
+  if (typeof window.gtag === 'function') (function () {
+    var KEY = 'armatex-zgoda', ZV = 1, YEAR = 31536e6, box = null, opener = null;
+    function read() {
+      try { var z = JSON.parse(localStorage.getItem(KEY) || 'null'); return z && z.v === ZV && Date.now() - z.t < YEAR ? z : null; } catch (e) { return null; }
+    }
+    // po wycofaniu zgody usuń zapisane wcześniej pliki cookies statystyk i reklam (tryb zgody ich nie kasuje)
+    function wipe(a, m) {
+      var host = location.hostname, dom = host.split('.').slice(-2).join('.');
+      document.cookie.split(';').forEach(function (c) {
+        var n = c.split('=')[0].trim();
+        if ((!a && /^(_ga|_gid|_gat)/.test(n)) || (!m && /^(_gcl|_fbp|_fbc)/.test(n)))
+          ['', '; domain=' + host, '; domain=.' + dom].forEach(function (d) { document.cookie = n + '=; Max-Age=0; path=/' + d; });
+      });
+    }
+    function save(a, m, wybor) {
+      a = !!a; m = !!m;
+      try { localStorage.setItem(KEY, JSON.stringify({ v: ZV, a: a, m: m, t: Date.now() })); } catch (e) {}
+      var A = a ? 'granted' : 'denied', M = m ? 'granted' : 'denied';
+      window.gtag('consent', 'update', { analytics_storage: A, ad_storage: M, ad_user_data: M, ad_personalization: M });
+      (window.dataLayer = window.dataLayer || []).push({ event: 'zgoda_cookies', zgoda_statystyki: A, zgoda_marketing: M });
+      if (!a || !m) wipe(a, m);
+      track('Zgoda cookies', { wybor: wybor });
+      box.hidden = true;
+      if (opener) { opener.focus(); opener = null; }
+    }
+    function settings(on) {
+      $('.ck__opts', box).hidden = !on;
+      var b = $('[data-ck="set"], [data-ck="save"]', box);
+      b.dataset.ck = on ? 'save' : 'set';
+      b.textContent = on ? L('Zapisz wybór', 'Save choice', 'Зберегти вибір') : L('Ustawienia', 'Settings', 'Налаштування');
+      if (on) { var z = read(); $('[data-c="a"]', box).checked = !!(z && z.a); $('[data-c="m"]', box).checked = !!(z && z.m); }
+    }
+    function build() {
+      box = document.createElement('div');
+      box.className = 'ck'; box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'false');
+      box.setAttribute('aria-labelledby', 'ckT'); box.setAttribute('aria-describedby', 'ckD');
+      var opt = function (c, name, txt) { return '<label class="ck__o"><input type="checkbox"' + (c ? ' data-c="' + c + '"' : ' checked disabled') + '><b>' + name + '</b><span>' + txt + '</span></label>'; };
+      box.innerHTML = '<h2 id="ckT">' + L('Pliki cookies', 'Cookies', 'Файли cookie') + '</h2>' +
+        '<p id="ckD">' + L('Za Twoją zgodą używamy plików cookies do statystyk (np. Google Analytics) i do mierzenia skuteczności reklam (np. Google Ads). Bez zgody strona działa tak samo. Wybór możesz zmienić w każdej chwili w stopce strony („Ustawienia cookies”).',
+          'With your consent, we use cookies for statistics (e.g. Google Analytics) and to measure the effectiveness of our ads (e.g. Google Ads). The website works the same without consent. You can change your choice at any time in the page footer (“Cookie settings”).',
+          'За вашою згодою ми використовуємо файли cookie для статистики (наприклад, Google Analytics) і для вимірювання ефективності реклами (наприклад, Google Ads). Без згоди сайт працює так само. Свій вибір ви можете змінити будь-коли внизу сторінки («Налаштування cookie»).') +
+        ' <a href="polityka-prywatnosci.html#cookies">' + L('Polityka prywatności', 'Privacy policy', 'Політика конфіденційності') + '</a></p>' +
+        '<div class="ck__opts" hidden>' +
+        opt('', L('Niezbędne', 'Necessary', 'Необхідні'), L('Lista do wyceny, zamknięcie paska z nowością i ten wybór. Zapisywane w przeglądarce bez plików cookies, zawsze włączone.', 'The quote list, the closed news bar and this choice. Stored in your browser without cookies, always on.', 'Список для розрахунку ціни, закрита панель з новинкою та цей вибір. Зберігаються в браузері без файлів cookie, завжди увімкнені.')) +
+        opt('a', L('Statystyki', 'Statistics', 'Статистика'), L('Np. Google Analytics: jak korzystasz ze strony.', 'E.g. Google Analytics: how you use the website.', 'Наприклад, Google Analytics: як ви користуєтеся сайтом.')) +
+        opt('m', L('Marketing', 'Marketing', 'Маркетинг'), L('Np. Google Ads: skuteczność naszych reklam i reklamy dopasowane do Ciebie.', 'E.g. Google Ads: the effectiveness of our ads and ads tailored to you.', 'Наприклад, Google Ads: ефективність нашої реклами та реклама, адаптована до вас.')) +
+        '</div>' +
+        '<div class="ck__b"><button type="button" data-ck="all">' + L('Akceptuję wszystkie', 'Accept all', 'Прийняти всі') + '</button>' +
+        '<button type="button" data-ck="none">' + L('Odrzucam', 'Reject', 'Відхилити') + '</button>' +
+        '<button type="button" data-ck="set"></button></div>';
+      // na początku <body>: przy nawigacji klawiaturą okno jest pierwsze
+      document.body.insertBefore(box, document.body.firstChild);
+      box.addEventListener('click', function (e) {
+        var b = e.target.closest('[data-ck]'); if (!b) return;
+        var k = b.dataset.ck;
+        if (k === 'all') save(1, 1, 'wszystkie');
+        else if (k === 'none') save(0, 0, 'odrzucone');
+        else if (k === 'set') { settings(true); $('[data-c="a"]', box).focus(); }
+        else {
+          var a = $('[data-c="a"]', box).checked, m = $('[data-c="m"]', box).checked;
+          save(a, m, a && m ? 'wszystkie' : a ? 'statystyki' : m ? 'marketing' : 'odrzucone');
+        }
+      });
+    }
+    function show(withSettings) {
+      if (!box) build();
+      box.hidden = false; settings(!!withSettings);
+      if (withSettings) $('[data-c="a"]', box).focus();
+    }
+    if (!read()) show(false);
+    // „Ustawienia cookies” w stopce i w polityce prywatności: zmiana lub wycofanie zgody
+    $$('[data-zgoda]').forEach(function (b) {
+      b.hidden = false;
+      b.addEventListener('click', function () { opener = b; show(true); });
+    });
+  })();
+
   // Zdjęcie bez wersji _min.webp: wróć do oryginału
   $$('img[data-fb]').forEach(function (img) {
     img.addEventListener('error', function () {
