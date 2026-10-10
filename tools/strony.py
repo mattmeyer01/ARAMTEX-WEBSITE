@@ -37,11 +37,11 @@ SYS=[
   seria='cu-press-water-v,cu-press-water-m,cu-press-gas-v,cu-press-gas-m,steel-press-m,inox-304-press-m,inox-316l-press-m,press-ball-valve',
   src='katalogi Besco 2026 i Besco INOX',
   lines=[('INOX 304, Stainless Steel, press, profil M','Besco','inox-304-press-m','15–108 mm','ogrzewanie','16 bar',['CE'],'287','linie/besco-inox-304'),
-   ('INOX 316L, Stainless Steel, press, profil M','Besco','inox-316l-press-m','15–168,3 mm','woda, CO, przemysł','16 bar',['DVGW','WRAS','PZH'],'253','linie/besco-inox-316l'),
    ('Gutpress Copper, profil V','Besco','cu-press-water-v','12–54 mm','woda pitna, CO, przemysł','16 bar',['DVGW','KIWA','WRAS','RISE','PZH'],'257','linie/besco-press-v'),
    ('Gutpress Copper, profil M','Besco','cu-press-water-m','12–108 mm','woda pitna, CO, przemysł','16 bar',['DVGW','WRAS','RISE','PZH'],'294','linie/besco-press-m'),
    ('Gutpress Copper do gazu, V i M','Besco','cu-press-gas-v,cu-press-gas-m','15–35 mm','gaz ziemny, LPG','5 bar',['DVGW','INiG'],'211','linie/besco-gaz'),
    ('Gutpress Carbon Steel, profil M','Besco','steel-press-m','12–108 mm','CO w obiegu zamkniętym, sprężone powietrze','16 bar',['ITB'],'256','linie/besco-stal'),
+   ('INOX 316L, Stainless Steel, press, profil M','Besco','inox-316l-press-m','15–168,3 mm','woda, CO, przemysł','16 bar',['DVGW','WRAS','PZH'],'253','linie/besco-inox-316l'),
    ('Gutpress Zawory Kulowe V i M','Besco','press-ball-valve','15–54 mm','woda, CO','16 bar',['DVGW','WRAS'],'25','linie/besco-zawor')],
   faq=[('Czym różni się profil V od M?','To kształt końcówki press i szczęki zaciskarki. Miedź Besco jest w obu profilach (V 12–54 mm, M 12–108 mm), stal węglowa w profilu M. Złączki w profilu M można zaprasowywać także szczęką V w zakresie DN12–28.'),
    ('Które złączki nadają się do gazu?','Linie GP Gas w profilu V i M: średnice 15–35 mm, do 5 bar, od −20 do 70 °C, norma EN 1254-7, atesty DVGW i INiG. Do instalacji gazowych nie stosuje się złączek z linii wodnych.'),
@@ -411,7 +411,7 @@ def unglue(html):
     return ''.join(x if i%2 else _unglue_part(x) for i,x in enumerate(parts))
 
 # ---------------- pasek nowości nad menu + okno z opisem (c.js: .abar, #inoxDlg)
-NEW_LINES={'inox-304-press-m','inox-316l-press-m'}   # linie z plakietką „Nowość” (tabela linii, pasek nowości)
+NEW_LINES={'inox-304-press-m'}   # linie z plakietką „Nowość” w tabeli linii (nowość w ofercie: INOX 304)
 BAR_ID='inox-2026'   # nowy identyfikator pokaże pasek ponownie także tym, którzy zamknęli poprzedni; None = bez paska
 def bar_head():
     # klasa has-bar przed pierwszym malowaniem: miejsce na pasek bez skoku układu, zamknięty pasek nie miga
@@ -423,15 +423,17 @@ def bar_html():
     if _BAR: return _BAR[0]
     press=next(x for x in SYS if x['slug']=='zlaczki-zaprasowane-press')
     D={ser:d for nm,b,ser,d,z,par,ap,c,ph in press['lines']}   # średnice z tabeli linii
-    # tylko to, co potwierdzają katalogi Besco i certyfikaty (bez liczb i porównań, których nie ma w źródłach)
+    g304=groups_of('inox-304-press-m')
+    # nowość: INOX 304; tylko to, co potwierdzają katalogi Besco i certyfikaty (bez liczb i porównań spoza źródeł)
     pts=[('Szybki montaż bez ognia','złącze zaprasowuje się na zimno, bez spawania, lutowania i klejenia.'),
-         ('INOX 316L także do wody pitnej',f'stal odporna na korozję, z aprobatami DVGW i WRAS oraz certyfikatem PZH, w średnicach {D["inox-316l-press-m"]}.'),
-         ('INOX 304 do ogrzewania',f'średnice {D["inox-304-press-m"]}, znak CE.'),
-         ('Popularny profil M','złączki zaprasowuje się szczękami M, które ma w zaciskarce wielu instalatorów.')]
+         ('Do instalacji grzewczych','stal nierdzewna odporna na korozję, znak CE.'),
+         ('Pełny zakres',f'średnice {D["inox-304-press-m"]}, {len(g304)} grup produktów i {g304[0]["ser"]["count"]} indeksów.'),
+         ('Popularny profil M','złączki zaprasowuje się szczękami M, które ma w zaciskarce wielu instalatorów.'),
+         ('Do wody pitnej','w ofercie jest też INOX 316L z aprobatami DVGW i WRAS oraz certyfikatem PZH.')]
     pts='<ul class="adlg__p">'+''.join(f'<li><b>{h}:</b> {t}</li>' for h,t in pts)+'</ul>'
     big='../img/nowosci/inox-system-1360.webp'
     _BAR.append(f'''<div class="abar" data-id="{BAR_ID}" role="region" aria-label="Komunikat">
-  <p class="abar__t"><span class="abar__new">Nowość</span><span class="abar__txt"><span class="abar__l">Wprowadzamy nowy system INOX: złączki zaprasowane ze stali nierdzewnej 304 i 316L</span><span class="abar__s">INOX 304 i 316L</span></span><a class="abar__more" href="zlaczki-zaprasowane-press.html#linie" aria-haspopup="dialog" aria-controls="inoxDlg">Dowiedz się więcej</a></p>
+  <p class="abar__t"><span class="abar__new">Nowość</span><span class="abar__txt"><span class="abar__l">Wprowadzamy nowy system INOX 304: złączki zaprasowane ze stali nierdzewnej</span><span class="abar__s">Złączki INOX 304</span></span><a class="abar__more" href="zlaczki-zaprasowane-press.html#linie" aria-haspopup="dialog" aria-controls="inoxDlg">Dowiedz się więcej</a></p>
   <button class="abar__x" type="button" aria-label="Zamknij komunikat">×</button>
 </div>
 <dialog class="adlg" id="inoxDlg" aria-labelledby="inoxDlgT">
@@ -439,10 +441,10 @@ def bar_html():
   <img class="adlg__img" src="../img/nowosci/inox-system-720.webp" srcset="../img/nowosci/inox-system-720.webp 720w, {big} 1360w" sizes="(max-width: 720px) calc(100vw - 2rem), 680px" alt="Złączki zaprasowane Besco ze stali nierdzewnej INOX: kolana, trójniki, mufy i złączki gwintowane" {img_wh(big)} loading="lazy" decoding="async">
   <div class="adlg__b">
     <span class="label sy-new">Nowość</span>
-    <h2 id="inoxDlgT">Złączki zaprasowane ze stali nierdzewnej INOX</h2>
-    <p>Wprowadzamy do oferty dwie linie złączek press Besco ze stali nierdzewnej w profilu M: do 16 bar, od −10 do 110 °C.</p>
+    <h2 id="inoxDlgT">Złączki zaprasowane ze stali nierdzewnej INOX 304</h2>
+    <p>Wprowadzamy do oferty linię złączek press Besco INOX 304 w profilu M: do 16 bar, od −10 do 110 °C.</p>
     {pts}
-    <div class="adlg__f"><a class="mag" href="zlaczki-zaprasowane-press.html#linie"><span>Zobacz linie INOX</span></a></div>
+    <div class="adlg__f"><a class="mag" href="zlaczki-zaprasowane-press.html#linie"><span>Zobacz INOX 304</span></a></div>
   </div>
 </dialog>
 ''')

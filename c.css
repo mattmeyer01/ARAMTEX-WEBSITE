@@ -968,7 +968,7 @@ button.sy-find[aria-expanded="true"]::after { content: " ▴"; }
 .adlg::backdrop { background: rgba(10,31,68,.55); }
 .adlg[open] { animation: adlg-in .35s var(--ease-out); }
 @keyframes adlg-in { from { opacity: 0; transform: translateY(12px); } }
-.adlg__img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; max-height: 38vh; object-fit: cover; background: #fff; }
+.adlg__img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; max-height: 34vh; object-fit: cover; background: #fff; }
 .adlg__b { --px: clamp(1.2rem, 4vw, 2rem); padding: 1.4rem var(--px) 0; }
 .adlg__f { position: sticky; bottom: 0; margin: 0 calc(-1 * var(--px)); padding: .9rem var(--px) clamp(1.2rem, 3vw, 1.6rem); background: #fff; }
 .adlg .label.sy-new { margin: 0; }
@@ -981,4 +981,7 @@ button.sy-find[aria-expanded="true"]::after { content: " ▴"; }
 .adlg__x { position: absolute; top: .75rem; right: .75rem; z-index: 1; display: grid; place-items: center; width: 40px; height: 40px; border: 0; border-radius: 50%; background: rgba(255,255,255,.92); color: var(--ink); font-size: 1.35rem; line-height: 1; cursor: pointer; box-shadow: 0 4px 14px -6px rgba(0,0,0,.35); }
 .adlg__x:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
 .dlg-open { overflow: hidden; }
+/* niskie ekrany laptopów (np. 1536×864, 1366×768): mniejsze zdjęcie, żeby całe okno mieściło się bez przewijania */
+@media (max-height: 880px) { .adlg__img { max-height: 28vh; } }
+@media (max-height: 800px) { .adlg__img { max-height: 24vh; } .adlg__p { gap: .5rem; } }
 @media (prefers-reduced-motion: reduce) { .adlg[open] { animation: none; } }
