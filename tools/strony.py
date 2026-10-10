@@ -546,7 +546,7 @@ kontakt_home=frag('  <section class="section close" id="kontakt">','  </section>
 kontakt_home=re.sub(r'<div class="close__bg" aria-hidden="true" data-hf><img [^>]*></div>',
     '<div class="close__bg" aria-hidden="true"><img src="../img/hero/hero-paleta-1200.webp" srcset="../img/hero/hero-paleta-1200.webp 1200w, ../img/hero/hero-paleta-2000.webp 2000w" sizes="100vw" alt="" width="2000" height="1116" loading="lazy" decoding="async"></div>',kontakt_home)
 assert 'cloudfront' not in kontakt_home
-kontakt_home=kontakt_home.replace('<h2 class="h2">Porozmawiajmy o warunkach dla Twojej hurtowni.</h2>','<h2 class="h2">Porozmawiajmy o ofercie dla Twojej hurtowni.</h2>')
+kontakt_home=kontakt_home.replace('<h2 class="h2">Porozmawiajmy o warunkach dla Twojej hurtowni.</h2>','<h2 class="h2">Porozmawiajmy o ofercie dla Twojej firmy.</h2>')
 kontakt_home=kontakt_home.replace('<h3>Zapytanie o warunki współpracy</h3>','<h2 class="form__t">Zapytanie o wycenę</h2>')
 steps=frag('      <div class="steps">','      </div>\n      <div class="aud">').replace('      <div class="aud">','').rstrip()
 stats='''      <div class="stats">
@@ -621,7 +621,7 @@ home=f'''
       <div>
 {faqlist([
  ('Jak szybko dostanę ofertę?','W ciągu jednego dnia roboczego. Oferta zawiera ceny hurtowe, dostępność i terminy dostaw dla systemów lub indeksów, które chcesz prowadzić.'),
- ('Czy współpracujecie tylko z hurtowniami?','Hurtownie instalacyjne to nasi główni partnerzy i pod nie ustawiamy stany, logistykę oraz warunki. Obsługujemy też firmy instalacyjne, generalnych wykonawców, zakłady przemysłowe i zarządców budynków, zwłaszcza przy większych inwestycjach i zamówieniach projektowych. <a href="kontakt.html#formularz">Napisz, czego potrzebujesz</a>, a dobierzemy formę współpracy.'),
+ ('Czy współpracujecie tylko z hurtowniami?','Nie. Sprzedajemy każdemu, ale najwięcej i najczęściej kupują od nas hurtownie instalacyjne, dlatego pod nie ustawiamy stany, logistykę i warunki. Kupują u nas także firmy instalacyjne, generalni wykonawcy, zakłady przemysłowe i zarządcy budynków. <a href="kontakt.html#formularz">Napisz, czego potrzebujesz</a>, a dobierzemy formę współpracy.'),
  ('Jakie marki i systemy dystrybuujecie?','Besco Fittings &amp; Connectors: Gutpress Copper w profilach V i M, serie gazowe, Gutpress Carbon Steel, stal nierdzewna INOX 304 i 316L press, złączki lutowane i Gutpress Zawory Kulowe V i M. Pegler Yorkshire: złączki na wcisk Tectite, złączki skręcane Kuterlite i zawory na wcisk. Razem około 2 900 indeksów.'),
  ('Jaki jest czas dostawy?','Wysyłka z magazynu w Olsztynie w 24 godziny od potwierdzenia zamówienia. Duże zamówienia dowozimy własnym transportem.'),
  ('Czy mogę zamówić po numerze artykułu?','Tak. Wpisz numery w <a href="kontakt.html#formularz">formularzu zapytania</a> albo zbuduj listę w <a href="wyszukiwarka.html">wyszukiwarce produktów</a>: '+N_ALL_TXT+' pozycji Besco, Tectite i Kuterlite pogrupowanych według linii. Dodaj indeksy, podaj ilości i wyślij do wyceny.'),
@@ -874,7 +874,7 @@ kat=kat.replace('<button class="mag" type="button" id="toForm" disabled><span>Pr
 assert '<p id="rfqHint">Dodaj pozycje z listy. Ilości zmienisz tutaj.</p>' in kat
 kat=kat.replace('<p id="rfqHint">Dodaj pozycje z listy. Ilości zmienisz tutaj.</p>','<p id="rfqHint">Twoja lista jest pusta. Otwórz linię produktów i dodaj rozmiary na stronie grupy.</p>')
 kat=kat.replace('<p class="rfq__src">','<p class="rfq__help">Nie wiesz, co wybrać? <a href="tel:+48513191502">Zadzwoń: 513 191 502</a></p>\n          <p class="rfq__src">',1)
-page('wyszukiwarka.html','Wyszukiwarka produktów: złączki Besco, Tectite, Kuterlite | Armatex',f'Wyszukiwarka {N_ALL_TXT} indeksów Besco, Tectite i Kuterlite z opakowaniami zbiorczymi. Zbuduj listę i wyślij ją do wyceny dla swojej hurtowni.','katalog',kat,ld_crumbs([('Wyszukiwarka produktów','wyszukiwarka.html')]))
+page('wyszukiwarka.html','Wyszukiwarka produktów: złączki Besco, Tectite, Kuterlite | Armatex',f'Wyszukiwarka {N_ALL_TXT} indeksów Besco, Tectite i Kuterlite z opakowaniami zbiorczymi. Zbuduj listę i wyślij ją do wyceny.','katalog',kat,ld_crumbs([('Wyszukiwarka produktów','wyszukiwarka.html')]))
 
 # ---------------- współpraca
 frame='''      <figure class="frame">
@@ -920,14 +920,19 @@ wsp=f'''
 
   <section class="section section--tight" id="projekty">
     <div class="wrap">
-      <span class="label kicker">Poza hurtowniami</span>
-      <h2 class="h2">Obsługujemy też projekty i przemysł.</h2>
+      <div class="yard__grid">
+        <div>
+          <span class="label kicker">Poza hurtowniami</span>
+          <h2 class="h2">Sprzedajemy każdemu.</h2>
+        </div>
+        <p class="lead">Najwięcej i najczęściej kupują od nas hurtownie instalacyjne. Kupują u nas także firmy instalacyjne, generalni wykonawcy, zakłady przemysłowe i zarządcy budynków.</p>
+      </div>
       <div class="aud aud--2">
         <div class="in"><span class="label">Projekty</span><h3>Kompletacja pod większe inwestycje</h3><p>Wyceniamy całe specyfikacje, kompletujemy dostawy etapami i doradzamy zamienniki, kiedy pozycja ma długi termin.</p></div>
         <div class="in"><span class="label">Przemysł</span><h3>Utrzymanie ruchu bez przestojów</h3><p>Kształtki G-size do 80 bar, Gutpress Carbon Steel do sprężonego powietrza i dokumentacja wymagana przez działy UR.</p></div>
       </div>
       <div class="cta" style="margin-top:clamp(3rem,6vw,4.5rem)">
-        <div><h2>Porozmawiajmy o współpracy.</h2><p>Napisz, które systemy chcesz prowadzić. Ofertę przygotujemy w ciągu jednego dnia roboczego.</p></div>
+        <div><h2>Porozmawiajmy o współpracy.</h2><p>Napisz, czego potrzebujesz. Ofertę przygotujemy w ciągu jednego dnia roboczego.</p></div>
         <div class="cta__b"><a class="mag" href="kontakt.html#formularz"><span>Zapytaj o wycenę</span></a><a class="ghost" href="tel:+48513191502">513 191 502</a></div>
       </div>
     </div>
@@ -937,7 +942,7 @@ page('wspolpraca.html','Współpraca z hurtowniami – dystrybutor złączek | A
 
 # ---------------- kontakt
 kon=kontakt_home.replace('<section class="section close" id="kontakt">','<section class="section close close--top" id="formularz" data-top>')
-kon=kon.replace('<span class="label kicker">Kontakt</span>\n        <h2 class="h2">Porozmawiajmy o ofercie dla Twojej hurtowni.</h2>','<ol class="crumbs"><li><a href="index.html">Armatex</a></li><li aria-current="page">Kontakt</li></ol>\n        <span class="label kicker" style="margin-top:1.5rem">Kontakt</span>\n        <h1 class="h2">Porozmawiajmy o ofercie dla Twojej hurtowni.</h1>')
+kon=kon.replace('<span class="label kicker">Kontakt</span>\n        <h2 class="h2">Porozmawiajmy o ofercie dla Twojej firmy.</h2>','<ol class="crumbs"><li><a href="index.html">Armatex</a></li><li aria-current="page">Kontakt</li></ol>\n        <span class="label kicker" style="margin-top:1.5rem">Kontakt</span>\n        <h1 class="h2">Porozmawiajmy o ofercie dla Twojej firmy.</h1>')
 assert '<h1 class="h2">' in kon
 kontakt=f'''
 {kon}
@@ -947,9 +952,9 @@ kontakt=f'''
       <span class="label kicker">Zanim napiszesz</span>
       <h2 class="h2">Co warto podać w zapytaniu.</h2>
       <div class="gain gain--3">
-        <div class="in"><span class="label">01</span><b>Systemy lub indeksy</b><p>Które systemy chcesz prowadzić. Numery Besco zbierzesz w <a href="wyszukiwarka.html">katalogu z wyszukiwarką</a>.</p></div>
+        <div class="in"><span class="label">01</span><b>Systemy lub indeksy</b><p>Jakich systemów potrzebujesz. Numery Besco zbierzesz w <a href="wyszukiwarka.html">katalogu z wyszukiwarką</a>.</p></div>
         <div class="in"><span class="label">02</span><b>Szacowane ilości</b><p>Miesięcznie albo na sezon, żeby oferta od razu obejmowała dostępność.</p></div>
-        <div class="in"><span class="label">03</span><b>Lokalizację hurtowni</b><p>Miasto lub województwo i preferowany sposób dostawy.</p></div>
+        <div class="in"><span class="label">03</span><b>Miejsce dostawy</b><p>Miasto lub województwo i preferowany sposób dostawy.</p></div>
       </div>
     </div>
   </section>
@@ -1158,7 +1163,7 @@ def phead(crumbs, kicker, h1, lead, facts=(), ctas=''):
   </section>
 '''
 CTA_BOX=f'''      <div class="cta" style="margin-top:clamp(3rem,6vw,4.5rem)">
-        <div><h2>Porozmawiajmy o ofercie dla Twojej hurtowni.</h2><p>Napisz, które systemy chcesz prowadzić. Ofertę przygotujemy w ciągu jednego dnia roboczego.</p></div>
+        <div><h2>Porozmawiajmy o ofercie dla Twojej firmy.</h2><p>Napisz, czego potrzebujesz. Ofertę przygotujemy w ciągu jednego dnia roboczego.</p></div>
         <div class="cta__b"><a class="mag" href="kontakt.html#formularz"><span>Zapytaj o wycenę</span></a><a class="ghost" href="tel:+48513191502">513 191 502</a></div>
       </div>'''
 
@@ -1166,15 +1171,15 @@ CTA_BOX=f'''      <div class="cta" style="margin-top:clamp(3rem,6vw,4.5rem)">
 firma=phead([('O firmie','o-firmie.html')],'O firmie','Armatex. Dystrybutor złączek dla hurtowni.',
   'Działamy od 1991 roku. Jesteśmy oficjalnym przedstawicielem Pegler Yorkshire w Polsce, a od 2016 roku dystrybutorem firmy Besco. Z magazynu w Olsztynie dostarczamy złączki i armaturę obu producentów do hurtowni w całej Polsce.',
   [('Na rynku','od 1991'),('Dystrybutor Besco','od 2016'),('Indeksy','ponad 3 200'),('Wysyłka','24 h')],
-  f'<a class="mag" href="{ask("Jesteśmy hurtownią i chcemy poznać ofertę Armatex.")}"><span>Zapytaj o wycenę</span></a><a class="ghost" href="wspolpraca.html">Jak współpracujemy</a>')+f'''
+  f'<a class="mag" href="{ask("Chcemy poznać ofertę Armatex.")}"><span>Zapytaj o wycenę</span></a><a class="ghost" href="wspolpraca.html">Jak współpracujemy</a>')+f'''
   <section class="section section--tight">
     <div class="wrap">
       <div class="yard__grid">
         <div>
           <span class="label kicker">Czym się zajmujemy</span>
-          <h2 class="h2">Hurtownia hurtowni instalacyjnych.</h2>
+          <h2 class="h2">Sprzedajemy każdemu, najczęściej hurtowniom.</h2>
         </div>
-        <p class="lead">Nie sprzedajemy inwestorom i nie wykonujemy instalacji. Naszymi klientami są hurtownie, dlatego cała oferta, logistyka i obsługa są ustawione pod ich zatowarowanie: pełne opakowania producenta, stany na najczęściej rotujące pozycje i jedna faktura na cały program.</p>
+        <p class="lead">Najwięcej i najczęściej kupują od nas hurtownie instalacyjne, dlatego oferta, logistyka i obsługa są ustawione przede wszystkim pod ich zatowarowanie: pełne opakowania producenta, stany na najczęściej rotujące pozycje i jedna faktura na cały program. Kupują u nas także firmy instalacyjne, generalni wykonawcy, zakłady przemysłowe i zarządcy budynków. Sami nie wykonujemy instalacji.</p>
       </div>
       <div class="gain gain--3">
         <div class="in"><span class="label">01</span><b>Cztery metody łączenia</b><p>Złączki zaprasowane, na wcisk, skręcane i lutowane od dwóch producentów. Ponad 3 200 indeksów w jednym miejscu.</p></div>
