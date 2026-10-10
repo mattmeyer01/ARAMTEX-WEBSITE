@@ -426,7 +426,7 @@ def bar_html():
     g304=groups_of('inox-304-press-m')
     # nowość: INOX 304; tylko to, co potwierdzają katalogi Besco i certyfikaty (bez liczb i porównań spoza źródeł)
     pts=[('Szybki montaż bez ognia','złącze zaprasowuje się na zimno, bez spawania, lutowania i klejenia.'),
-         ('Do instalacji grzewczych','stal nierdzewna odporna na korozję, znak CE.'),
+         ('Do instalacji grzewczych','stal nierdzewna odporna na korozję, znak CE, aprobata PZH.'),
          ('Pełny zakres',f'średnice {D["inox-304-press-m"]}, {len(g304)} grup produktów i {g304[0]["ser"]["count"]} indeksów.'),
          ('Popularny profil M','złączki zaprasowuje się szczękami M, które ma w zaciskarce wielu instalatorów.'),
          ('Do wody pitnej','w ofercie jest też INOX 316L z aprobatami DVGW i WRAS oraz certyfikatem PZH.')]
