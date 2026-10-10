@@ -957,8 +957,13 @@ button.sy-find[aria-expanded="true"]::after { content: " ▴"; }
 .abar__x { position: absolute; top: 50%; right: .5rem; display: grid; place-items: center; width: 32px; height: 32px; margin-top: -16px; border: 0; border-radius: 50%; background: transparent; color: #fff; font-size: 1.25rem; line-height: 1; cursor: pointer; }
 .abar__x:hover { background: rgba(255,255,255,.18); }
 .abar a:focus-visible, .abar button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+/* Na wąskich ekranach treść stoi pośrodku między dwoma elastycznymi odstępami. Prawy nie schodzi poniżej miejsca na ×,
+   więc gdy tekst się nie mieści, przesuwa się w lewo (do marginesu), a dopiero potem skraca. */
 @media (max-width: 900px) {
-  .has-bar .abar { justify-content: flex-start; padding: 0 2.8rem 0 var(--g); font-size: .82rem; }
+  .has-bar .abar { padding: 0; font-size: .82rem; }
+  .has-bar .abar::before, .has-bar .abar::after { content: ''; flex: 1 1 0; }
+  .has-bar .abar::before { min-width: var(--g); }
+  .has-bar .abar::after { min-width: 2.8rem; }
   .abar__l { display: none; }
   .abar__s { display: inline; }
 }
