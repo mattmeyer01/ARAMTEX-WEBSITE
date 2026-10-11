@@ -115,6 +115,13 @@ i własne strony 404 (`/en/*`, `/ua/*` w `_redirects`; stare adresy `/uk/*` → 
 `tools/katalog_inox.py` dopisuje do `data/besco-2026.json` linie INOX 304 i INOX 316L (katalogi `pliki/katalog-besco-inox-*.pdf`).
 Uruchamiaj go **po** `tools/katalog_besco.py`, bo ten nadpisuje cały plik danych. Katalog 316L ma tekst zamieniony na krzywe,
 więc skrypt czyta go przez OCR (`pip install rapidocr_onnxruntime`) i sprawdza numery artykułów względem kodu grupy.
+Skrypt czyta oryginalne katalogi Besco, a nie `pliki/katalog-besco-inox-304.pdf`, który jest już katalogiem Armatex (niżej).
+
+Katalog PDF INOX 304 w identyfikacji Armatex (`pliki/katalog-besco-inox-304.pdf`) składa `tools/katalog_inox304.py`
+(`pip install playwright==1.56.0 pymupdf`): okładka, strona o systemie ze spisem treści, strony produktów w dwóch kolumnach
+i tylna okładka z kontaktami. Tabele są w `tools/katalog-inox-304/dane.json` (296 indeksów z katalogu Besco), wygląd w
+`tools/katalog-inox-304/katalog.css` (kolory i fonty jak w `c.css`), zdjęcia w `img/besco/i304-*-l.webp`. Podział na strony
+i spis treści liczy skrypt; jeśli któraś kolumna się przelewa, przerywa pracę. Podgląd do innego pliku: `--out x.pdf`.
 
 ## Formularz
 

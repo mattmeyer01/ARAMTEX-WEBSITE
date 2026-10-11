@@ -1,0 +1,156 @@
+/* Katalog INOX 304 · identyfikacja Armatex (kolory i fonty jak w c.css) */
+@font-face { font-family: "Outfit"; src: url("file://{ROOT}/assets/fonts/outfit-latin-wght-normal.woff2") format("woff2-variations"); font-weight: 100 900; unicode-range: U+0000-00FF, U+2013-2014, U+2018-201F, U+2026, U+2032-2033, U+2212; }
+@font-face { font-family: "Outfit"; src: url("file://{ROOT}/assets/fonts/outfit-latin-ext-wght-normal.woff2") format("woff2-variations"); font-weight: 100 900; unicode-range: U+0100-024F, U+1E00-1EFF; }
+@font-face { font-family: "Plex Mono"; src: url("file://{ROOT}/assets/fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2"); font-weight: 500; unicode-range: U+0000-00FF, U+2013-2014, U+2026, U+2032-2033, U+2212; }
+@font-face { font-family: "Plex Mono"; src: url("file://{ROOT}/assets/fonts/ibm-plex-mono-latin-ext-500-normal.woff2") format("woff2"); font-weight: 500; unicode-range: U+0100-024F, U+1E00-1EFF; }
+
+:root {
+  --stone: #f3f1ec; --zebra: #f7f6f2; --line: #e0ddd5; --ink: #0f1829; --ink-60: rgba(15,24,41,.68);
+  --red: #dc291e; --red-2: #b91f15; --red-soft: #ff7a70; --navy: #0a1f44; --navy-2: #0e2856;
+  --on-60: rgba(255,255,255,.66); --on-line: rgba(255,255,255,.16);
+  --sans: "Outfit", sans-serif; --mono: "Plex Mono", monospace;
+}
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #fff; }
+body { font-family: var(--sans); color: var(--ink); font-size: 9pt; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+.page { width: 595.28pt; height: 841.89pt; position: relative; overflow: hidden; break-after: page; background: #fff; }
+.eyebrow { font-family: var(--mono); font-size: 7.2pt; letter-spacing: .14em; text-transform: uppercase; color: var(--red); }
+
+/* nagłówek i stopka stron wewnętrznych */
+.ph { position: absolute; top: 0; left: 32pt; right: 32pt; height: 50pt; display: flex; align-items: center; justify-content: space-between; border-bottom: .75pt solid var(--line); }
+.ph::before { content: ""; position: absolute; left: 0; bottom: -1.5pt; width: 40pt; height: 2.25pt; background: var(--red); }
+.ph img { height: 15pt; }
+.ph span, .pf span { font-family: var(--mono); font-size: 6.8pt; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-60); }
+.pf { position: absolute; left: 32pt; right: 32pt; bottom: 0; height: 40pt; display: flex; align-items: center; justify-content: space-between; border-top: .75pt solid var(--line); }
+.pf b { color: var(--navy); font-weight: 500; }
+.pf .pn { font-size: 8pt; color: #fff; background: var(--navy); padding: 4pt 7pt; border-radius: 3pt; letter-spacing: .04em; }
+
+/* strony produktów */
+.prod .body { position: absolute; top: 64pt; left: 32pt; right: 32pt; height: 716pt; display: flex; flex-direction: column; }
+.sh { flex: 0 0 58pt; display: flex; align-items: center; gap: 11pt; border-bottom: 1.5pt solid var(--navy); }
+.sh .sn { flex: 0 0 auto; font-family: var(--mono); font-size: 15pt; color: #fff; background: var(--red); width: 34pt; height: 34pt; border-radius: 5pt; display: flex; align-items: center; justify-content: center; }
+.sh h2 { font-size: 15pt; font-weight: 600; color: var(--navy); letter-spacing: -.01em; line-height: 1.1; margin-top: 2pt; }
+.sh .eyebrow { font-size: 6.6pt; }
+.cols { flex: 1; min-height: 0; display: flex; gap: 18pt; }
+.col { flex: 1; min-width: 0; height: 100%; overflow: hidden; display: flex; flex-direction: column; gap: 12pt; }
+.card { flex: 0 0 auto; border: .75pt solid var(--line); border-radius: 7pt; overflow: hidden; padding-bottom: 6pt; position: relative; }
+.card .head { height: 84pt; display: flex; border-bottom: .75pt solid var(--line); }
+.card .foto { flex: 0 0 100pt; padding: 7pt; display: flex; align-items: center; justify-content: center; border-right: .75pt solid var(--line); }
+.card .foto img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.card .tt { flex: 1; min-width: 0; padding: 8pt 11pt; display: flex; flex-direction: column; justify-content: center; background: var(--stone); }
+.card .kod { font-family: var(--mono); font-size: 7.4pt; letter-spacing: .08em; color: var(--red); }
+.card h3 { font-size: 12.5pt; font-weight: 600; line-height: 1.12; color: var(--navy); margin: 2pt 0 3pt; }
+.card .opis { font-size: 7.6pt; color: var(--ink-60); margin-bottom: 2pt; }
+.card .meta { font-family: var(--mono); font-size: 6.6pt; letter-spacing: .04em; color: var(--ink-60); }
+.card.cont .ch { height: 30pt; display: flex; align-items: center; justify-content: space-between; padding: 0 11pt; background: var(--stone); border-bottom: .75pt solid var(--line); }
+.card.cont .ch b { font-size: 10pt; font-weight: 600; color: var(--navy); }
+.card.cont .ch span { font-family: var(--mono); font-size: 6.8pt; color: var(--ink-60); letter-spacing: .06em; }
+
+table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+thead tr { height: 20pt; }
+tbody tr { height: 14.5pt; }
+th, td { padding: 0 6pt; white-space: nowrap; overflow: hidden; vertical-align: middle; }
+th { font-family: var(--mono); font-size: 6pt; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-60); text-align: left; border-bottom: .75pt solid var(--line); }
+th i { font-style: normal; text-transform: none; letter-spacing: 0; color: var(--ink-60); opacity: .8; }
+th:nth-child(1) { width: 33%; padding-left: 11pt; } th:nth-child(2) { width: 36%; } th:nth-child(3), th:nth-child(4) { width: 15.5%; }
+th.n { padding: 0 4pt; letter-spacing: .04em; }
+td { font-size: 8pt; line-height: 1; }
+td:first-child { padding-left: 11pt; font-weight: 500; }
+td.art { font-family: var(--mono); font-size: 7.3pt; color: var(--navy); }
+.n { text-align: right; } th.n:last-child, td.n:last-child { padding-right: 11pt; }
+tbody tr:nth-child(even) { background: var(--zebra); }
+
+/* koniec części produktowej: wycena i notatki */
+.cta { flex: 1 0 330pt; position: relative; overflow: hidden; background: var(--navy); color: #fff; border-radius: 7pt; padding: 22pt 20pt; display: flex; flex-direction: column; }
+.cta > :not(.stripes) { position: relative; z-index: 1; }
+.cta .stripes i { width: 42pt; height: 330pt; }
+.cta .stripes i:nth-child(1) { right: 40pt; bottom: -210pt; }
+.cta .stripes i:nth-child(2) { right: -24pt; bottom: -170pt; background: var(--red-2); }
+.cta .lg { width: 112pt; margin-top: 18pt; }
+.cta .eyebrow { color: var(--red-soft); }
+.cta h3 { font-size: 17pt; font-weight: 600; line-height: 1.15; margin: 8pt 0 8pt; max-width: 190pt; }
+.cta p { font-size: 8.4pt; line-height: 1.5; color: var(--on-60); }
+.cta dl { margin-top: 14pt; display: grid; gap: 9pt; }
+.cta dl div { border-top: .75pt solid var(--on-line); padding-top: 7pt; display: grid; grid-template-columns: 52pt 1fr; }
+.cta dt { font-family: var(--mono); font-size: 6.4pt; letter-spacing: .12em; text-transform: uppercase; color: var(--red-soft); padding-top: 3pt; }
+.cta dd { font-size: 8.4pt; color: var(--on-60); display: flex; flex-direction: column; gap: 1pt; }
+.cta dd b { font-size: 13pt; font-weight: 600; color: #fff; }
+.cta .ws { margin-top: auto; max-width: 205pt; background: rgba(255,255,255,.07); border-radius: 5pt; padding: 9pt 11pt; display: flex; flex-direction: column; gap: 2pt; }
+.cta .ws b { font-size: 10.5pt; font-weight: 600; }
+.cta .ws span { font-family: var(--mono); font-size: 6.4pt; letter-spacing: .06em; color: var(--on-60); }
+.notes { flex: 1 1 0; min-height: 0; display: flex; flex-direction: column; gap: 6pt; padding-top: 4pt; }
+.notes .lines { flex: 1; background: repeating-linear-gradient(to bottom, transparent 0, transparent 21.25pt, var(--line) 21.25pt, var(--line) 22pt); }
+
+/* okładka */
+.cover .top { position: absolute; top: 0; left: 0; right: 0; height: 478pt; background: var(--navy); overflow: hidden; }
+.stripes i { position: absolute; width: 64pt; height: 560pt; background: var(--red); transform: rotate(38deg); transform-origin: center; }
+.cover .stripes i:nth-child(1) { right: 6pt; top: -205pt; }
+.cover .stripes i:nth-child(2) { right: -88pt; top: -151pt; background: var(--red-2); }
+.cover .logo { position: absolute; top: 42pt; left: 42pt; width: 148pt; }
+.cover .tag { position: absolute; top: 102pt; left: 42pt; font-family: var(--mono); font-size: 7.2pt; letter-spacing: .14em; text-transform: uppercase; color: var(--on-60); }
+.cover .title { position: absolute; left: 42pt; right: 42pt; bottom: 44pt; color: #fff; }
+.cover .title .eyebrow { color: var(--red-soft); }
+.cover h1 { font-size: 33pt; font-weight: 400; line-height: 1.05; margin-top: 10pt; letter-spacing: -.01em; }
+.cover h1 b { display: block; font-size: 84pt; font-weight: 700; letter-spacing: -.035em; line-height: .95; margin-top: 4pt; }
+.cover .title p { margin-top: 16pt; font-family: var(--mono); font-size: 8pt; letter-spacing: .08em; text-transform: uppercase; color: var(--on-60); }
+.cover .hero { position: absolute; top: 494pt; left: 30pt; right: 30pt; height: 196pt; display: flex; align-items: center; justify-content: space-between; gap: 10pt; }
+.cover .hero img { flex: 1; min-width: 0; height: 100%; object-fit: contain; }
+.cover .facts { position: absolute; left: 42pt; right: 42pt; bottom: 66pt; display: grid; grid-template-columns: 1fr 1.15fr 1.3fr 1.25fr; border-top: 1.5pt solid var(--navy); }
+.cover .facts > div { padding: 11pt 10pt 0 0; display: flex; flex-direction: column; gap: 4pt; }
+.cover .facts > div + div { padding-left: 12pt; border-left: .75pt solid var(--line); }
+.cover .facts b { font-size: 13pt; font-weight: 600; color: var(--navy); line-height: 1.12; }
+.cover .facts span { font-family: var(--mono); font-size: 6.4pt; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-60); }
+.cover .facts .pzh { flex-direction: row; align-items: center; gap: 8pt; }
+.cover .facts .pzh img { width: 46pt; height: 46pt; }
+.cover .facts .pzh span { font-size: 6.4pt; line-height: 1.5; }
+.cover footer { position: absolute; left: 42pt; right: 42pt; bottom: 26pt; display: flex; justify-content: space-between; align-items: baseline; font-family: var(--mono); font-size: 6.8pt; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-60); }
+.cover footer b { font-family: var(--sans); font-size: 12pt; letter-spacing: 0; text-transform: none; color: var(--navy); font-weight: 600; }
+
+/* strona 2 */
+.intro .body { position: absolute; top: 74pt; left: 40pt; right: 40pt; bottom: 46pt; }
+.intro h2.big { font-size: 21pt; font-weight: 600; line-height: 1.14; letter-spacing: -.01em; color: var(--navy); max-width: 455pt; margin: 8pt 0 10pt; }
+.intro .lead { font-size: 9.4pt; line-height: 1.55; color: var(--ink-60); max-width: 470pt; }
+.specs { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 18pt; border-top: .75pt solid var(--line); border-left: .75pt solid var(--line); }
+.specs div { padding: 9pt 11pt 10pt; border-right: .75pt solid var(--line); border-bottom: .75pt solid var(--line); display: flex; flex-direction: column; gap: 4pt; }
+.specs span { font-family: var(--mono); font-size: 6.2pt; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-60); }
+.specs b { font-size: 12.5pt; font-weight: 600; color: var(--navy); }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 26pt; margin-top: 20pt; }
+.box.pzhbox { display: flex; gap: 11pt; align-items: center; background: var(--stone); border-radius: 7pt; padding: 11pt 12pt; }
+.pzhbox img { width: 56pt; height: 56pt; flex: 0 0 auto; }
+.pzhbox b { font-size: 10pt; font-weight: 600; color: var(--navy); }
+.pzhbox p { font-size: 7.8pt; line-height: 1.45; color: var(--ink-60); margin-top: 3pt; }
+.h4 { font-family: var(--mono); font-size: 7pt; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--red); margin: 16pt 0 5pt; }
+.toc .h4 { margin-top: 0; }
+.legend div { display: grid; grid-template-columns: 44pt 1fr; padding: 4.2pt 0; border-bottom: .75pt solid var(--line); align-items: baseline; }
+.legend dt { font-family: var(--mono); font-size: 7.6pt; color: var(--navy); }
+.legend dd { font-size: 8.4pt; }
+.tsec { margin-bottom: 7pt; }
+.tsec h4 { display: flex; align-items: baseline; gap: 7pt; font-size: 9.6pt; font-weight: 600; color: var(--navy); padding: 4pt 0; border-bottom: 1.25pt solid var(--navy); }
+.tsec h4 span { font-family: var(--mono); font-size: 7.4pt; color: var(--red); font-weight: 500; }
+.tsec h4 em { margin-left: auto; font-style: normal; font-family: var(--mono); font-size: 7.4pt; font-weight: 500; }
+.tsec ol { list-style: none; }
+.tsec li { display: flex; align-items: baseline; gap: 6pt; padding: 1.6pt 0; font-size: 8.1pt; }
+.tsec .k { flex: 0 0 34pt; font-family: var(--mono); font-size: 6.8pt; color: var(--ink-60); }
+.tsec .d { flex: 1; border-bottom: .75pt dotted #b9b5ab; transform: translateY(-2pt); }
+.tsec .p { font-family: var(--mono); font-size: 7pt; color: var(--navy); }
+
+/* tył */
+.back { background: var(--navy); color: #fff; }
+.back .stripes i:nth-child(1) { right: 80pt; bottom: -230pt; }
+.back .stripes i:nth-child(2) { right: -14pt; bottom: -176pt; background: var(--red-2); }
+.back .logo { position: absolute; top: 42pt; left: 42pt; width: 148pt; }
+.back .cta { position: absolute; top: 196pt; left: 42pt; right: 42pt; }
+.back .cta .eyebrow { color: var(--red-soft); }
+.back h2 { font-size: 34pt; font-weight: 600; line-height: 1.06; letter-spacing: -.02em; margin: 10pt 0 14pt; }
+.back .cta p { font-size: 10pt; line-height: 1.55; color: var(--on-60); max-width: 380pt; }
+.back .people { position: absolute; top: 420pt; left: 42pt; right: 42pt; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18pt; }
+.back .people > div { border-top: 1.5pt solid var(--red); padding-top: 11pt; display: flex; flex-direction: column; gap: 4pt; }
+.back .label { font-family: var(--mono); font-size: 6.8pt; letter-spacing: .14em; text-transform: uppercase; color: var(--red-soft); }
+.back .people b { font-size: 16pt; font-weight: 600; letter-spacing: .01em; }
+.back .people a { font-size: 9pt; color: #fff; }
+.back .people p { font-size: 8.4pt; line-height: 1.5; color: var(--on-60); }
+.back .web { position: absolute; top: 580pt; left: 42pt; right: 42pt; display: flex; flex-direction: column; gap: 4pt; }
+.back .web b { font-size: 28pt; font-weight: 600; letter-spacing: -.01em; }
+.back .web span { font-family: var(--mono); font-size: 7pt; letter-spacing: .1em; text-transform: uppercase; color: var(--on-60); }
+.back footer { position: absolute; left: 42pt; right: 42pt; bottom: 30pt; display: flex; flex-direction: column; gap: 4pt; padding-top: 10pt; border-top: .75pt solid var(--on-line); font-size: 6.8pt; line-height: 1.4; color: var(--on-60); }
