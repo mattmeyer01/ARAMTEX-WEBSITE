@@ -267,12 +267,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 '''.replace('%ID%',GTM_ID) if GTM_ID else ''
 def head(title,desc,extra='',path=''):
     ta,da=title.replace('"','&quot;'),desc.replace('"','&quot;')   # cudzysłów cala (1/2") w atrybucie content
+    cls=' class="has-bar"' if BAR_ID else ''   # miejsce na pasek nowości od pierwszego malowania (c.css: .has-bar)
     return f'''<!doctype html>
-<html lang="pl">
+<html lang="pl"{cls}>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-{GTM_HEAD}{bar_head()}  <title>{title}</title>
+{GTM_HEAD}  <title>{title}</title>
   <meta name="description" content="{da}">
   <meta name="theme-color" content="#0A1F44">
   <link rel="canonical" href="{SITE+path}">
@@ -446,11 +447,7 @@ def unglue(html):
 
 # ---------------- pasek nowości nad menu + okno z opisem (c.js: .abar, #inoxDlg)
 NEW_LINES={'inox-304-press-m'}   # linie z plakietką „Nowość” w tabeli linii (nowość w ofercie: INOX 304)
-BAR_ID='inox-2026'   # nowy identyfikator pokaże pasek ponownie także tym, którzy zamknęli poprzedni; None = bez paska
-def bar_head():
-    # klasa has-bar przed pierwszym malowaniem: miejsce na pasek bez skoku układu, zamknięty pasek nie miga
-    if not BAR_ID: return ''
-    return f"  <script>try{{if(localStorage.getItem('armatex-bar')!=='{BAR_ID}')document.documentElement.classList.add('has-bar')}}catch(e){{document.documentElement.classList.add('has-bar')}}</script>\n"
+BAR_ID='inox-2026'   # identyfikator komunikatu (w statystykach: komunikat); pasek jest na każdej stronie, bez zamykania; None = bez paska
 _BAR=[]
 def bar_html():
     if not BAR_ID: return ''
@@ -468,7 +465,6 @@ def bar_html():
     big='../img/nowosci/inox-system-1360.webp'
     _BAR.append(f'''<div class="abar" data-id="{BAR_ID}" role="region" aria-label="Komunikat">
   <p class="abar__t"><span class="abar__new">Nowość</span><span class="abar__txt"><span class="abar__l">Wprowadzamy nowy system INOX 304: złączki zaprasowane ze stali nierdzewnej</span><span class="abar__s">Złączki INOX 304</span></span><a class="abar__more" href="zlaczki-zaprasowane-press.html#linie" aria-haspopup="dialog" aria-controls="inoxDlg">Dowiedz się więcej</a></p>
-  <button class="abar__x" type="button" aria-label="Zamknij komunikat">×</button>
 </div>
 <dialog class="adlg" id="inoxDlg" aria-labelledby="inoxDlgT">
   <button class="adlg__x" type="button" aria-label="Zamknij">×</button>
@@ -524,7 +520,7 @@ def page_lang(name,html,pm,code):
     html=lang_links(html,name,code)
     html=live_form(html)
     html=I18N.translate(html,name,pm,code)
-    html=html.replace('<html lang="pl">',f'<html lang="{code}">').replace('content="pl_PL"',f'content="{LANG_META[code][2]}"')
+    html=html.replace('<html lang="pl"',f'<html lang="{code}"',1).replace('content="pl_PL"',f'content="{LANG_META[code][2]}"')
     html=re.sub(r'(<link rel="canonical" href=")[^"]*"',lambda m:m[1]+SITE+d+'/'+path+'"',html)
     html=re.sub(r'(<meta property="og:url" content=")[^"]*"',lambda m:m[1]+SITE+d+'/'+path+'"',html)
     html=re.sub(r'(": ")'+re.escape(SITE)+r'(?!en/|ua/|img/|pliki/|assets/)',lambda m:m[1]+SITE+d+'/',html)   # adresy w JSON-LD
@@ -1628,7 +1624,7 @@ page('do-pobrania.html','Do pobrania: katalogi i dokumenty złączek | Armatex',
 
 
 # ---- Polityka prywatności
-POL_OD='10 października 2026 r.'
+POL_OD='11 października 2026 r.'
 pol_body='''
         <p>Ta polityka opisuje, jakie dane osobowe zbieramy przez stronę armatex.pl, w jakim celu, jak długo je przechowujemy i jakie prawa Ci przysługują. Opisuje też, jakie informacje strona zapisuje w Twojej przeglądarce.</p>
 
@@ -1709,10 +1705,9 @@ pol_body='''
         <p><strong>Pliki cookies zapisujemy tylko za Twoją zgodą.</strong> Przy pierwszej wizycie pytamy o nią w oknie na dole strony. Możesz zaakceptować wszystkie pliki cookies, odrzucić je albo wybrać kategorie: statystyki (np. Google Analytics) i marketing (np. Google Ads: pomiar skuteczności reklam i reklamy dopasowane do Ciebie). Bez zgody tagi Google działają w trybie „brak zgody” i nie zapisują plików cookies, a strona działa tak samo.</p>
         <p>Zgodę możesz w każdej chwili zmienić lub wycofać przyciskiem „Ustawienia cookies” w stopce strony. Po wycofaniu zgody usuwamy z przeglądarki zapisane wcześniej pliki cookies statystyk i reklam. Statystyki odwiedzin Plausible działają bez plików cookies i nie wymagają zgody (punkt 2).</p>
         <p><button type="button" class="ghost" data-zgoda hidden>Zmień ustawienia cookies</button></p>
-        <p>Strona korzysta z pamięci przeglądarki (localStorage) w trzech celach:</p>
+        <p>Strona korzysta z pamięci przeglądarki (localStorage) w dwóch celach:</p>
         <ul>
           <li><strong>lista pozycji do wyceny</strong>, którą tworzysz przyciskiem „Dodaj” w katalogu i na stronach produktów: numery artykułów, nazwy produktów, ilości i jednostki. Lista zostaje wyłącznie na Twoim urządzeniu i nie jest do nas wysyłana, dopóki nie przeniesiesz jej do formularza i nie wyślesz go,</li>
-          <li><strong>zamknięty pasek z nowością</strong> u góry strony: zapisujemy tylko identyfikator komunikatu, żeby po zamknięciu nie pokazywał się ponownie,</li>
           <li><strong>Twój wybór w oknie zgody na pliki cookies</strong>: przez 12 miesięcy, żeby nie pytać przy każdej wizycie; potem zapytamy ponownie.</li>
         </ul>
         <p>To funkcje, o które prosisz, dlatego nie wymagają odrębnej zgody (art. 399 ustawy – Prawo komunikacji elektronicznej).</p>

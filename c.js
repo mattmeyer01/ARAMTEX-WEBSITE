@@ -91,7 +91,7 @@
           'За вашою згодою ми використовуємо файли cookie для статистики (наприклад, Google Analytics) і для вимірювання ефективності реклами (наприклад, Google Ads). Без згоди сайт працює так само. Свій вибір ви можете змінити будь-коли внизу сторінки («Налаштування cookie»).') +
         ' <a href="polityka-prywatnosci.html#cookies">' + L('Polityka prywatności', 'Privacy policy', 'Політика конфіденційності') + '</a></p>' +
         '<div class="ck__opts" hidden>' +
-        opt('', L('Niezbędne', 'Necessary', 'Необхідні'), L('Lista do wyceny, zamknięcie paska z nowością i ten wybór. Zapisywane w przeglądarce bez plików cookies, zawsze włączone.', 'The quote list, the closed news bar and this choice. Stored in your browser without cookies, always on.', 'Список для розрахунку ціни, закрита панель з новинкою та цей вибір. Зберігаються в браузері без файлів cookie, завжди увімкнені.')) +
+        opt('', L('Niezbędne', 'Necessary', 'Необхідні'), L('Lista do wyceny i ten wybór. Zapisywane w przeglądarce bez plików cookies, zawsze włączone.', 'The quote list and this choice. Stored in your browser without cookies, always on.', 'Список для розрахунку ціни та цей вибір. Зберігаються в браузері без файлів cookie, завжди увімкнені.')) +
         opt('a', L('Statystyki', 'Statistics', 'Статистика'), L('Np. Google Analytics: jak korzystasz ze strony.', 'E.g. Google Analytics: how you use the website.', 'Наприклад, Google Analytics: як ви користуєтеся сайтом.')) +
         opt('m', L('Marketing', 'Marketing', 'Маркетинг'), L('Np. Google Ads: skuteczność naszych reklam i reklamy dopasowane do Ciebie.', 'E.g. Google Ads: the effectiveness of our ads and ads tailored to you.', 'Наприклад, Google Ads: ефективність нашої реклами та реклама, адаптована до вас.')) +
         '</div>' +
@@ -161,15 +161,12 @@
     burger.setAttribute('aria-label', o ? L('Zamknij menu', 'Close menu', 'Закрити меню') : L('Otwórz menu', 'Open menu', 'Відкрити меню'));
   });
 
-  // Pasek nowości nad menu (CSS: zwykły element nad menu sticky); × chowa go na stałe (pamięć przeglądarki).
+  // Pasek nowości nad menu (CSS: zwykły element nad menu sticky), widoczny zawsze: nie ma przycisku zamykania.
   // „Dowiedz się więcej” otwiera okno z opisem; bez obsługi <dialog> link prowadzi wprost na stronę złączek press.
   var abar = $('.abar'), root = document.documentElement;
+  try { localStorage.removeItem('armatex-bar'); } catch (e) {}   // dawny zapis zamkniętego paska, już nieużywany
   if (abar) (function () {
     var dlg = $('#' + $('.abar__more', abar).getAttribute('aria-controls'));
-    $('.abar__x', abar).addEventListener('click', function () {
-      root.classList.remove('has-bar'); mnavTop();
-      try { localStorage.setItem('armatex-bar', abar.dataset.id); } catch (e) {}
-    });
     if (!dlg || typeof dlg.showModal !== 'function') return;
     $('.abar__more', abar).addEventListener('click', function (e) {
       e.preventDefault(); dlg.showModal(); root.classList.add('dlg-open');

@@ -947,26 +947,21 @@ button.sy-find[aria-expanded="true"]::after { content: " ▴"; }
 
 /* Pasek nowości nad menu: zwykły element nad przypiętym (sticky) menu, więc przewija się ze stroną, a menu zostaje
    u góry bez liczenia przewinięcia w JS (iOS Safari podaje ujemne scrollY przy „odbiciu” strony).
-   Klasę has-bar ustawia skrypt w <head> przed pierwszym malowaniem, więc nic nie skacze ani nie miga. */
+   Klasę has-bar ma znacznik <html> (generator, gdy jest BAR_ID), więc miejsce na pasek jest od pierwszego malowania.
+   Pasek nie ma przycisku zamykania. */
 .abar { display: none; }
 .has-bar { --abar-h: 40px; }
-.has-bar .abar { position: relative; z-index: 61; display: flex; align-items: center; justify-content: center; height: var(--abar-h); padding: 0 3.2rem; background: var(--red); color: #fff; font-size: .88rem; line-height: 1; }
+.has-bar .abar { position: relative; z-index: 61; display: flex; align-items: center; justify-content: center; height: var(--abar-h); padding: 0 var(--g); background: var(--red); color: #fff; font-size: .88rem; line-height: 1; }
 .abar__t { display: flex; align-items: center; gap: .75rem; min-width: 0; margin: 0; white-space: nowrap; }
 .abar__new { flex: none; padding: .32rem .55rem .3rem; border-radius: 99px; background: #fff; color: var(--red); font: 600 .6rem/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; }
 .abar__txt { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
 .abar__s { display: none; }
 .abar__more { flex: none; color: #fff; font-weight: 600; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 3px; }
 .abar__more:hover { text-decoration-thickness: 2px; }
-.abar__x { position: absolute; top: 50%; right: .5rem; display: grid; place-items: center; width: 32px; height: 32px; margin-top: -16px; border: 0; border-radius: 50%; background: transparent; color: #fff; font-size: 1.25rem; line-height: 1; cursor: pointer; }
-.abar__x:hover { background: rgba(255,255,255,.18); }
-.abar a:focus-visible, .abar button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
-/* Na wąskich ekranach treść stoi pośrodku między dwoma elastycznymi odstępami. Prawy nie schodzi poniżej miejsca na ×,
-   więc gdy tekst się nie mieści, przesuwa się w lewo (do marginesu), a dopiero potem skraca. */
+.abar a:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+/* Na wąskich ekranach krótszy tekst, nadal pośrodku; gdy się nie mieści, skraca się wielokropkiem. */
 @media (max-width: 900px) {
-  .has-bar .abar { padding: 0; font-size: .82rem; }
-  .has-bar .abar::before, .has-bar .abar::after { content: ''; flex: 1 1 0; }
-  .has-bar .abar::before { min-width: var(--g); }
-  .has-bar .abar::after { min-width: 2.8rem; }
+  .has-bar .abar { font-size: .82rem; }
   .abar__l { display: none; }
   .abar__s { display: inline; }
 }
