@@ -249,7 +249,7 @@ PLAUSIBLE='''  <!-- Privacy-friendly analytics by Plausible -->
 # odwiedzający wybrał już coś w oknie zgody (c.js, klucz armatex-zgoda, wersja 1, 12 miesięcy), jego wybór i zdarzenie
 # dataLayer „zgoda_cookies” trafiają tu przed kodem GTM. Polityka prywatności: pkt 2, 3, 8 i 11.
 # Pusty GTM_ID wyłącza GTM, okno zgody i przycisk „Ustawienia cookies” na wszystkich stronach.
-GTM_ID='GTM-5MW9C8GG'
+GTM_ID='GTM-W55J48T5'
 GTM_HEAD='''  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied'});
   (function(){try{var z=JSON.parse(localStorage.getItem('armatex-zgoda')||'null');if(z&&z.v===1&&Date.now()-z.t<31536e6){var a=z.a?'granted':'denied',m=z.m?'granted':'denied';gtag('consent','update',{analytics_storage:a,ad_storage:m,ad_user_data:m,ad_personalization:m});dataLayer.push({event:'zgoda_cookies',zgoda_statystyki:a,zgoda_marketing:m});}}catch(e){}})();</script>
   <!-- Google Tag Manager -->
