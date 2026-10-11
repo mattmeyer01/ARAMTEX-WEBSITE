@@ -58,7 +58,7 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
   od razu trafia do przeglądarek mimo 7-dniowego cache `/img/*`.
 - `pliki/katalog-*.pdf`: katalogi Armatex (Besco 2026, Besco INOX 304 i 316L, Tectite, Kuterlite) składane z danych przez
   `tools/katalog_pdf.py` (niżej, „Katalogi PDF”). Katalog Besco 2026 jest w menu „Oferta → Katalogi”.
-- `pliki/instrukcja-montazu-tectite.pdf`: instrukcja montażu złączek na wcisk Tectite (strona Tectite, Do pobrania, poradnik „Tectite czy press?”).
+- `pliki/instrukcja-montazu-tectite.pdf`: instrukcja montażu Tectite w identyfikacji Armatex (`tools/instrukcja_tectite.py`); link na stronie Tectite, w „Do pobrania” i w poradniku „Tectite czy press?”.
 - `assets/`: fonty (Outfit, IBM Plex Mono) i favicony.
 - `sitemap.xml`, `robots.txt`.
 - `tools/`: generator stron i skrypty danych (niżej).
@@ -120,7 +120,7 @@ Skrypt czyta oryginalne katalogi Besco, a nie `pliki/katalog-besco-inox-*.pdf`, 
 
 ## Katalogi PDF
 
-Wszystkie katalogi w `pliki/` (oprócz instrukcji montażu Tectite) są katalogami Armatex składanymi z danych:
+Wszystkie katalogi w `pliki/` są katalogami Armatex składanymi z danych:
 `python3 tools/katalog_pdf.py <katalog>` albo `wszystkie` (`pip install playwright==1.56.0 pymupdf fonttools brotli`).
 Katalogi: `besco-2026`, `inox-304`, `inox-316l`, `tectite`, `kuterlite`. Każdy ma okładkę, stronę o katalogu ze spisem
 treści (INOX: parametry i grupy; wieloseryjne: tabela serii), strony produktów w dwóch kolumnach (działy, karty ze
@@ -129,6 +129,11 @@ marka) jest w `KATALOGI` w skrypcie, wygląd w `tools/katalog-pdf/katalog.css` (
 marek w `tools/katalog-pdf/`. Podział na strony i spis treści liczy skrypt; jeśli coś się przelewa, przerywa pracę.
 Podgląd do innego pliku: `--out x.pdf`. Po zmianie liczby stron lub rozmiaru pliku popraw opisy w `DOCS` i w menu
 w `tools/strony.py` (oraz w `tools/en.json`, `tools/uk.json`).
+
+Instrukcję montażu Tectite (`pliki/instrukcja-montazu-tectite.pdf`, 7 stron) składa `python3 tools/instrukcja_tectite.py`
+tym samym stylem i drukiem (`drukuj()` w `tools/katalog_pdf.py`, dodatki w `tools/katalog-pdf/instrukcja.css`). Treść
+pochodzi z instrukcji Pegler Yorkshire, zdjęcia i rysunki z `tools/katalog-pdf/instrukcja/` (wyjęte z oryginału, małe
+zdjęcia powiększone ESRGAN).
 
 Dane: `tools/katalog-pdf/<katalog>.json`. INOX 304 z warstwy tekstowej katalogu Besco (296 indeksów), INOX 316L
 z `data/besco-2026.json` sprawdzony z katalogiem (253). Besco 2026, Tectite i Kuterlite składa

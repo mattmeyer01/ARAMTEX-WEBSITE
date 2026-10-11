@@ -602,38 +602,47 @@ def build(name, out):
     groups = {g['id']: g for g in data}
     sections = sections_of(groups)
     pages = paginate(groups, sections)
+    total = sum(len(g['wiersze']) for g in data)
+    n = drukuj(lambda faces: build_html(groups, sections, pages, 3, faces), out, name,
+               dict(title=title(), subject=f'{K["title"]}: {grupy(len(groups))}, {indeksy(total)}',
+                    keywords=f'{K["title"]}, {K["brand"]["name"]}, katalog, Armatex'))
+    print(f'{out}: {n} stron, {grupy(len(groups))}, {indeksy(total)}')
+
+
+CHECK = '''() => [
+    ...[...document.querySelectorAll('.col, .body')].filter(el => el.scrollHeight > el.clientHeight + 1),
+    ...[...document.querySelectorAll('td, th, h3, .tsec li, .sh h2, .sm')].filter(el => el.scrollWidth > el.clientWidth + 1)
+  ].map(el => ((el.closest('.page').querySelector('.pn') || {}).textContent || 'okł.') + ' ' + el.tagName + '.'
+              + el.className + ' ' + el.textContent.slice(0, 30))'''
+
+
+def drukuj(make_html, out, label, meta):
+    """HTML → PDF w Chromium: statyczne kroje Outfit, kontrola przelania (CHECK), metadane, zdjęcia jako JPEG.
+    make_html(faces) zwraca dokument; zwraca liczbę stron."""
     with tempfile.TemporaryDirectory() as tmp:
-        doc_html = build_html(groups, sections, pages, 3, outfit_faces(tmp))
-        src = os.path.join(tmp, 'katalog.html')
-        open(src, 'w', encoding='utf-8').write(doc_html)
-        pdf = os.path.join(tmp, 'k.pdf')
+        src = os.path.join(tmp, 'dok.html')
+        open(src, 'w', encoding='utf-8').write(make_html(outfit_faces(tmp)))
+        pdf = os.path.join(tmp, 'dok.pdf')
         with sync_playwright() as p:
             b = p.chromium.launch()
             pg = b.new_page()
             pg.goto('file://' + src)
             pg.wait_for_load_state('networkidle')
             pg.evaluate('document.fonts.ready')
-            bad = pg.evaluate('''() => [
-                ...[...document.querySelectorAll('.col, .body')].filter(el => el.scrollHeight > el.clientHeight + 1),
-                ...[...document.querySelectorAll('td, th, h3, .tsec li, .sh h2, .sm')].filter(el => el.scrollWidth > el.clientWidth + 1)
-              ].map(el => ((el.closest('.page').querySelector('.pn') || {}).textContent || 'okł.') + ' ' + el.tagName + '.'
-                          + el.className + ' ' + el.textContent.slice(0, 30))''')
+            bad = pg.evaluate(CHECK)
             if bad:
-                msg = f'{name}: przelewa się: ' + '; '.join(' '.join(x.split()) for x in bad)
+                msg = f'{label}: przelewa się: ' + '; '.join(' '.join(x.split()) for x in bad)
                 if '--out' not in sys.argv:
                     sys.exit(msg)
                 print(msg)
             pg.pdf(path=pdf, prefer_css_page_size=True, print_background=True)
             b.close()
         d = pymupdf.open(pdf)
-        d.set_metadata({'title': title(), 'author': 'P.H.U. ARMATEX Sp. J. A. J. Bunda',
-                        'subject': f'{K["title"]}: {grupy(len(groups))}, {indeksy(sum(len(g["wiersze"]) for g in data))}',
-                        'keywords': f'{K["title"]}, {K["brand"]["name"]}, katalog, Armatex',
-                        'creator': 'Armatex', 'producer': 'Armatex'})
+        d.set_metadata(dict(meta, author='P.H.U. ARMATEX Sp. J. A. J. Bunda', creator='Armatex', producer='Armatex'))
         d.xref_set_key(d.pdf_catalog(), 'Lang', '(pl-PL)')
         d.rewrite_images(dpi_threshold=330, dpi_target=300, quality=82)   # zdjęcia jako JPEG (bez tego kilka MB)
         d.save(out, garbage=4, deflate=True)
-        print(f'{out}: {d.page_count} stron, {grupy(len(groups))}, {indeksy(sum(len(g["wiersze"]) for g in data))}')
+        return d.page_count
 
 
 def main():
