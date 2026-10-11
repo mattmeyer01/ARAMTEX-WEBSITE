@@ -112,7 +112,9 @@ i własne strony 404 (`/en/*`, `/ua/*` w `_redirects`; stare adresy `/uk/*` → 
 
 ## Złączki INOX
 
-`tools/katalog_inox.py` dopisuje do `data/besco-2026.json` linie INOX 304 i INOX 316L (katalogi `pliki/katalog-besco-inox-*.pdf`).
+`tools/katalog_inox.py` dopisuje do `data/besco-2026.json` linie INOX 304 i INOX 316L z oryginalnych katalogów Besco
+(INOX 304: `Katalog_INOX_304.pdf`, INOX 316L: `pliki/katalog-besco-inox-316l.pdf`). `pliki/katalog-besco-inox-304.pdf` to już
+katalog Armatex (10 stron, 25 grup, 296 indeksów, te same numery i opakowania co u Besco) i skrypt go nie czyta.
 Uruchamiaj go **po** `tools/katalog_besco.py`, bo ten nadpisuje cały plik danych. Katalog 316L ma tekst zamieniony na krzywe,
 więc skrypt czyta go przez OCR (`pip install rapidocr_onnxruntime`) i sprawdza numery artykułów względem kodu grupy.
 

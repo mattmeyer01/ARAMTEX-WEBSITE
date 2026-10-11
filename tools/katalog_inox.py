@@ -63,6 +63,7 @@ def size_clean(s):
 
 def parse_304(doc):
     groups, cur = [], None
+    cx = lambda w: (w[0] + w[2]) / 2   # środek słowa: kolumny są wyśrodkowane, długie numery (3130R-108.22.108) zaczynają się przed x=270
     for n, p in enumerate(doc):
         lines = kb.lines_of(p)
         rects = [(r, x[0]) for x in p.get_images(full=True) for r in p.get_image_rects(x[0])]
@@ -77,10 +78,10 @@ def parse_304(doc):
                 groups.append(cur)
                 i += 1
                 continue
-            art = [w for w in ws if 270 <= w[0] < 380]
-            nums = [w for w in ws if w[0] >= 380]
+            art = [w for w in ws if 270 <= cx(w) < 380]
+            nums = [w for w in ws if cx(w) >= 380]
             if cur and art and len(nums) >= 2 and re.match(r'^\d{4}', art[0][4]):
-                size = ' '.join(w[4] for w in ws if 100 <= w[0] < 270)
+                size = ' '.join(w[4] for w in ws if 100 <= cx(w) < 270)
                 cur['rows'].append([' '.join(w[4] for w in art), size, int(nums[-2][4]), int(nums[-1][4])])
             i += 1
         on = [g for g in groups if g['page'] == n]
