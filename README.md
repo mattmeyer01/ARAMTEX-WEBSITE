@@ -18,8 +18,8 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
 - `site.webmanifest`: nazwa i ikony strony dla telefonów (ikony w `assets/img/`).
 - `data/`: `besco-2026.json` (Besco), `pegler.json` (Tectite, Kuterlite) i `katalog.json` (dane wyszukiwarki, składane przez generator).
 - Pasek nowości nad menu (INOX 304) i okno z opisem: `bar_html()` w `tools/strony.py`, style `.abar` i `.adlg`
-  w `c.css`, obsługa w `c.js`. Zamknięcie paska zapamiętuje przeglądarka (klucz `armatex-bar`). Nowa wartość `BAR_ID`
-  pokaże pasek ponownie wszystkim, `BAR_ID=None` wyłącza go na wszystkich stronach.
+  w `c.css`, obsługa w `c.js`. Pasek nie ma przycisku zamykania i jest na każdej stronie (klasa `has-bar`
+  w znaczniku `<html>`). `BAR_ID` to identyfikator komunikatu w statystykach, `BAR_ID=None` wyłącza pasek na wszystkich stronach.
 - Statystyki odwiedzin: Plausible Analytics (bez cookies i bez zapisu w przeglądarce). Skrypt wstawia `head()`
   z napisu `PLAUSIBLE` w `tools/strony.py` na wszystkie strony poza przekierowaniami; pusty napis go wyłącza.
   Narzędzie opisuje polityka prywatności (pkt 2, 3, 4, 6, 8 i 9), więc przy jego zmianie trzeba ją też poprawić.
