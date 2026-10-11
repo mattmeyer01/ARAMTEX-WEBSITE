@@ -1,15 +1,21 @@
-"""Składa katalog PDF „Złączki zaprasowane INOX 304” w identyfikacji Armatex.
+"""Składa katalogi PDF złączek Besco INOX w identyfikacji Armatex.
 
 Użycie:
     pip install playwright==1.56.0 pymupdf fonttools brotli
-    python3 tools/katalog_inox304.py               # → pliki/katalog-besco-inox-304.pdf
-    python3 tools/katalog_inox304.py --out x.pdf   # podgląd do innego pliku
+    python3 tools/katalog_pdf.py inox-304                # → pliki/katalog-besco-inox-304.pdf
+    python3 tools/katalog_pdf.py inox-316l               # → pliki/katalog-besco-inox-316l.pdf
+    python3 tools/katalog_pdf.py inox-316l --out x.pdf   # podgląd do innego pliku
 
-Dane:
-    tools/katalog-inox-304/dane.json   grupy i wiersze (wymiar, nr artykułu, woreczek, karton) z katalogu Besco INOX 304
-    tools/katalog-inox-304/pzh.webp    znak „Produkt z atestem” NIZP PZH-PIB
-    tools/katalog-inox-304/besco.png   logo Besco (z katalogu producenta, przezroczyste tło; tylko na jasnym tle)
-    img/besco/<zdjecie>-l.webp         zdjęcia grup (te same co na stronie)
+Dane (tools/katalog-pdf/):
+    <linia>.json    grupy i wiersze (wymiar, nr artykułu, woreczek, karton) z katalogu Besco; „zdjecie” to ścieżka od
+                    katalogu głównego. INOX 304 z warstwy tekstowej katalogu Besco, INOX 316L z data/besco-2026.json
+                    (OCR), sprawdzone wiersz po wierszu z katalogiem.
+    pzh.webp        znak „Produkt z atestem” NIZP PZH-PIB
+    besco.png       logo Besco (z katalogu producenta, przezroczyste tło; tylko na jasnym tle)
+    foto/           zdjęcia powiększone do druku (ESRGAN), gdy zdjęcia ze strony są za małe
+    katalog.css     wygląd (kolory i fonty jak w c.css)
+
+Różnice między liniami (teksty, parametry, działy, atest) są w LINES.
 
 Outfit jest fontem zmiennym; Chromium osadza go w PDF jako Type 3, więc przed drukiem robimy z niego
 statyczne odmiany 400–700 (fontTools) i podajemy je jako osobne kroje.
@@ -30,19 +36,46 @@ from fontTools.varLib.instancer import instantiateVariableFont
 from playwright.sync_api import sync_playwright
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DIR = os.path.join(ROOT, 'tools', 'katalog-inox-304')
-OUT = os.path.join(ROOT, 'pliki', 'katalog-besco-inox-304.pdf')
-TITLE = 'Złączki zaprasowane Besco INOX 304 – katalog Armatex 2026'
+DIR = os.path.join(ROOT, 'tools', 'katalog-pdf')
 BESCO = f'file://{DIR}/besco.png'
 
-SECTIONS = [
-    ('Mufy, redukcje i zaślepki', ['3270', '3271', '3240', '3243', '3301']),
-    ('Łuki i mijanki', ['3002', '3001', '3041', '3040', '3030', '3085', '3086']),
-    ('Trójniki', ['3130', '3130R', '3130G']),
-    ('Przejścia gwintowane i kołnierzowe', ['3270G', '3281', '3243G', '3280', '3002G', '3001G', '3472G', '3358G', '3331G', '3510']),
-]
-OPIS = {'3270G': 'kielich press × gwint wewnętrzny', '3281': 'bosy koniec × gwint wewnętrzny',
-        '3243G': 'kielich press × gwint zewnętrzny', '3280': 'bosy koniec × gwint zewnętrzny'}
+GW_PRESS, GW_BOSY = 'kielich press × gwint wewnętrzny', 'bosy koniec × gwint wewnętrzny'
+GZ_PRESS, GZ_BOSY = 'kielich press × gwint zewnętrzny', 'bosy koniec × gwint zewnętrzny'
+LINES = {
+    'inox-304': dict(
+        name='INOX 304', material='Stal nierdzewna 304', sizes='15–108 mm', sizes_od='od 15 do 108 mm',
+        app='Ogrzewanie i woda pitna', app_cover='Ogrzewanie<br>i woda pitna',
+        h2='Złączki press ze stali nierdzewnej do instalacji wody pitnej i ogrzewania',
+        extra_specs=[], cover_tag='',
+        pzh='Złączki INOX 304 mają atest higieniczny Narodowego Instytutu Zdrowia Publicznego PZH – PIB '
+            '(B.BK.60110.1654.2026) do instalacji wody pitnej i ciepłej wody użytkowej.',
+        pzh_cover='atest higieniczny<br>PZH',
+        hero=('3002', '3130', '3270G'),
+        sections=[
+            ('Mufy, redukcje i zaślepki', ['3270', '3271', '3240', '3243', '3301']),
+            ('Łuki i mijanki', ['3002', '3001', '3041', '3040', '3030', '3085', '3086']),
+            ('Trójniki', ['3130', '3130R', '3130G']),
+            ('Przejścia gwintowane i kołnierzowe', ['3270G', '3281', '3243G', '3280', '3002G', '3001G', '3472G', '3358G', '3331G', '3510']),
+        ],
+        opis={'3270G': GW_PRESS, '3281': GW_BOSY, '3243G': GZ_PRESS, '3280': GZ_BOSY}),
+    'inox-316l': dict(
+        name='INOX 316L', material='Stal nierdzewna 316L', sizes='15–168,3 mm', sizes_od='od 15 do 168,3 mm',
+        app='Woda, ogrzewanie i przemysł', app_cover='Woda, ogrzewanie<br>i przemysł',
+        h2='Złączki press ze stali nierdzewnej 316L do wody, ogrzewania i przemysłu',
+        extra_specs=[('Aprobaty', 'DVGW · WRAS'), ('Atest PZH', 'Ø 15–108 mm')], cover_tag=' · DVGW · WRAS',
+        pzh='Złączki INOX 316L mają atest higieniczny Narodowego Instytutu Zdrowia Publicznego PZH – PIB '
+            '(B.BK.60110.1480.2025) do instalacji wody pitnej i ciepłej wody użytkowej, dla średnic 15–108 mm.',
+        pzh_cover='atest PZH<br>Ø 15–108 mm',
+        hero=('12200', '12100', '12020'),
+        sections=[
+            ('Mufy, redukcje i zaślepki', ['12000', '12040', '12430', '12410']),
+            ('Łuki i mijanki', ['12200', '12210', '12230', '12240', '12350', '12360']),
+            ('Trójniki', ['12100', '12110', '12120']),
+            ('Przejścia gwintowane i kołnierzowe', ['12020', '12460', '12010', '12450', '12320', '12310', '12340', '12070', '12080', '12400']),
+        ],
+        opis={'12020': GW_PRESS, '12460': GW_BOSY, '12010': GZ_PRESS, '12450': GZ_BOSY}),
+}
+L = None   # bieżąca linia (main)
 
 # Wymiary układu (pt). Wysokości w CSS są te same, więc obliczony podział zgadza się z wydrukiem.
 COL_H = 716          # wysokość kolumny na stronie produktów
@@ -83,16 +116,24 @@ def stripes(w, h, bands, cls, rx=0):
 RED, RED2 = '#dc291e', '#b91f15'
 
 
-def plural(n):
+def plural(n, one='indeks', few='indeksy', many='indeksów'):
     if n == 1:
-        return 'indeks'
+        return one
     if n % 10 in (2, 3, 4) and n % 100 not in (12, 13, 14):
-        return 'indeksy'
-    return 'indeksów'
+        return few
+    return many
+
+
+def grupy(n):
+    return f'{n} {plural(n, "grupa", "grupy", "grup")}'
+
+
+def indeksy(n):
+    return f'{n} {plural(n)}'
 
 
 def size_range(rows):
-    first = sorted({int(r[0].split(' × ')[0]) for r in rows})
+    first = sorted({r[0].split(' × ')[0] for r in rows}, key=lambda x: float(x.replace(',', '.')))
     return f'Ø {first[0]}–{first[-1]} mm' if len(first) > 1 else f'Ø {first[0]} mm'
 
 
@@ -118,7 +159,7 @@ def paginate(groups):
     def gap():
         return GAP if pages[-1][state['col']] else 0
 
-    for si, (name, codes) in enumerate(SECTIONS):
+    for si, (name, codes) in enumerate(L['sections']):
         first = groups[codes[0]]['wiersze']
         if SEC_H + GAP + card_h(len(first) if len(first) <= 12 else MIN_SPLIT) + gap() > state['rem']:
             next_col()
@@ -178,16 +219,16 @@ def card(part):
         return (f'<article class="card cont"><div class="ch"><b>{e(g["nazwa"])}</b><span>{e(g["kod"])} · cd.</span></div>'
                 f'{table(part)}</article>')
     n = len(g['wiersze'])
-    opis = f'<p class="opis">{e(OPIS[g["kod"]])}</p>' if g['kod'] in OPIS else ''
-    img = f'file://{ROOT}/img/besco/{g["zdjecie"]}-l.webp'
+    opis = f'<p class="opis">{e(L["opis"][g["kod"]])}</p>' if g['kod'] in L['opis'] else ''
+    img = foto(g)
     return (f'<article class="card" id="g{e(g["kod"])}"><div class="head"><div class="foto"><img src="{img}" alt=""></div>'
             f'<div class="tt"><span class="kod"><em>Besco</em> {e(g["kod"])}</span><h3>{e(g["nazwa"])}</h3>{opis}'
-            f'<p class="meta">{n} {plural(n)} · {size_range(g["wiersze"])}</p></div></div>'
+            f'<p class="meta">{indeksy(n)} · {size_range(g["wiersze"])}</p></div></div>'
             f'{table(part)}</article>')
 
 
 def sec_head(sec):
-    return (f'<div class="sh"><span class="sn">{sec[0]:02d}</span><div><span class="eyebrow">Dział {sec[0]} z {len(SECTIONS)}</span>'
+    return (f'<div class="sh"><span class="sn">{sec[0]:02d}</span><div><span class="eyebrow">Dział {sec[0]} z {len(L['sections'])}</span>'
             f'<h2>{e(sec[1])}</h2></div></div>')
 
 
@@ -211,10 +252,16 @@ def block(x):
     return card(x)
 
 
+def foto(g):
+    """Zdjęcie grupy: powiększone do druku (tools/katalog-pdf/foto), a jeśli go nie ma, to ze strony."""
+    big = os.path.join(DIR, 'foto', os.path.basename(g['zdjecie']).replace('-l.webp', '.webp'))
+    return 'file://' + (big if os.path.exists(big) else os.path.join(ROOT, g['zdjecie']))
+
+
 def frame(no, cols):
     inner = ''.join('<div class="col">' + ''.join(block(x) for x in col) + '</div>' for col in cols)
     return (f'<section class="page prod"><header class="ph"><img src="file://{ROOT}/assets/img/logo-dark.png" alt="Armatex">'
-            f'<span class="r">Złączki zaprasowane INOX 304 · profil M<img src="{BESCO}" alt="Besco"></span></header>'
+            f'<span class="r">Złączki zaprasowane {L["name"]} · profil M<img src="{BESCO}" alt="Besco"></span></header>'
             f'<div class="body"><div class="cols">{inner}</div></div>'
             f'<footer class="pf"><span><b>armatex.pl</b> · biuro@armatex.pl · 513 191 502</span><span class="pn">{no:02d}</span></footer></section>')
 
@@ -248,7 +295,7 @@ def build_html(groups, pages, first_page, faces):
                 elif 'g' in x:
                     where.setdefault(x['g']['kod'], first_page + i)
     toc = ''
-    for si, (name, codes) in enumerate(SECTIONS):
+    for si, (name, codes) in enumerate(L['sections']):
         items = ''.join(f'<li><span class="k">{e(c)}</span><span class="t">{e(groups[c]["nazwa"])}</span>'
                         f'<span class="d"></span><span class="p">{where[c]:02d}</span></li>' for c in codes)
         toc += (f'<div class="tsec"><h4><span>{si + 1:02d}</span>{e(name)}<em>{sec_page[si + 1]:02d}</em></h4>'
@@ -258,7 +305,11 @@ def build_html(groups, pages, first_page, faces):
     logo_l = f'file://{ROOT}/assets/img/logo-light.png'
     logo_d = f'file://{ROOT}/assets/img/logo-dark.png'
     pzh = f'file://{DIR}/pzh.webp'
-    hero = ''.join(f'<img src="file://{ROOT}/img/besco/{groups[c]["zdjecie"]}-l.webp" alt="">' for c in ('3002', '3130', '3270G'))
+    hero = ''.join(f'<img src="{foto(groups[c])}" alt="">' for c in L['hero'])
+    specs = [('Materiał', L['material']), ('Profil zaprasowania', 'M'), ('Średnice', L['sizes']), ('Ciśnienie', '16 bar'),
+             ('Temperatura', '−10…110 °C'), ('Zastosowanie', L['app'])] + L['extra_specs']
+    specs_html = ''.join(f'<div><span>{e(k)}</span><b>{e(v)}</b></div>' for k, v in specs)
+    name_cls = ' long' if len(L['name']) > 8 else ''
 
     cover = f'''<section class="page cover">
   <div class="top">
@@ -267,44 +318,36 @@ def build_html(groups, pages, first_page, faces):
     <span class="tag">Katalog produktów · 2026</span>
     <div class="title">
       <span class="eyebrow">Produkty marki Besco · stal nierdzewna · system press</span>
-      <h1>Złączki zaprasowane<b>INOX 304</b></h1>
-      <p>Profil M · Ø 15–108 mm · {len(groups)} grup · {total} indeksów</p>
+      <h1>Złączki zaprasowane<b class="{name_cls}">{L["name"]}</b></h1>
+      <p>Profil M · Ø {L["sizes"]} · {grupy(len(groups))} · {indeksy(total)}{L["cover_tag"]}</p>
     </div>
   </div>
   <div class="hero">{hero}</div>
   <div class="facts">
     <div><b>16 bar</b><span>ciśnienie</span></div>
     <div><b>−10…110 °C</b><span>temperatura</span></div>
-    <div><b>Ogrzewanie<br>i woda pitna</b><span>zastosowanie</span></div>
-    <div class="pzh"><img src="{pzh}" alt="PZH – produkt z atestem"><span>atest higieniczny<br>PZH</span></div>
+    <div><b>{L["app_cover"]}</b><span>zastosowanie</span></div>
+    <div class="pzh"><img src="{pzh}" alt="PZH – produkt z atestem"><span>{L["pzh_cover"]}</span></div>
   </div>
   <footer><b>armatex.pl</b><span class="brand">Produkty marki<img src="{BESCO}" alt="Besco"></span></footer>
 </section>'''
 
     intro = f'''<section class="page intro">
-  <header class="ph"><img src="{logo_d}" alt="Armatex"><span class="r">Złączki zaprasowane INOX 304 · profil M<img src="{BESCO}" alt="Besco"></span></header>
+  <header class="ph"><img src="{logo_d}" alt="Armatex"><span class="r">Złączki zaprasowane {L["name"]} · profil M<img src="{BESCO}" alt="Besco"></span></header>
   <div class="body">
     <span class="eyebrow">O systemie</span>
-    <h2 class="big">Złączki press ze stali nierdzewnej do instalacji wody pitnej i ogrzewania</h2>
-    <p class="lead">Złączki zaprasowane Besco INOX 304 w profilu M łączą rury ze stali nierdzewnej przez zaprasowanie –
-    bez gwintowania i spawania. W katalogu jest {len(groups)} grup produktów i {total} indeksów w średnicach od 15 do 108 mm.
+    <h2 class="big">{L["h2"]}</h2>
+    <p class="lead">Złączki zaprasowane Besco {L["name"]} w profilu M łączą rury ze stali nierdzewnej przez zaprasowanie –
+    bez gwintowania i spawania. W katalogu jest {grupy(len(groups))} produktów i {indeksy(total)} w średnicach {L["sizes_od"]}.
     Armatex jest dystrybutorem Besco od 2016 roku – zapytaj nas o dostępność i ceny dla hurtowni.</p>
-    <div class="specs">
-      <div><span>Materiał</span><b>Stal nierdzewna 304</b></div>
-      <div><span>Profil zaprasowania</span><b>M</b></div>
-      <div><span>Średnice</span><b>15–108 mm</b></div>
-      <div><span>Ciśnienie</span><b>16 bar</b></div>
-      <div><span>Temperatura</span><b>−10…110 °C</b></div>
-      <div><span>Zastosowanie</span><b>Ogrzewanie i woda pitna</b></div>
-    </div>
+    <div class="specs n{len(specs)}">{specs_html}</div>
     <div class="two">
       <div>
         <div class="box brandbox"><img src="{BESCO}" alt="Besco"><div><b>Produkty marki Besco</b>
           <p>Wszystkie produkty w katalogu to złączki Besco Fittings &amp; Connectors.
           Armatex jest dystrybutorem marki Besco od 2016 roku.</p></div></div>
         <div class="box pzhbox"><img src="{pzh}" alt=""><div><b>Atest higieniczny PZH</b>
-          <p>Złączki INOX 304 mają atest higieniczny Narodowego Instytutu Zdrowia Publicznego PZH – PIB
-          do instalacji wody pitnej i ciepłej wody użytkowej.</p></div></div>
+          <p>{L["pzh"]}</p></div></div>
         <h4 class="h4">Skróty w nazwach</h4>
         <dl class="legend">
           <div><dt>ww</dt><dd>kielich × kielich</dd></div>
@@ -349,15 +392,22 @@ def build_html(groups, pages, first_page, faces):
 </section>'''
 
     css = faces + open(os.path.join(DIR, 'katalog.css'), encoding='utf-8').read().replace('{ROOT}', ROOT)
-    return (f'<!doctype html><html lang="pl"><head><meta charset="utf-8"><title>{e(TITLE)}</title>'
-            f'<style>{css}</style></head><body>{cover}{intro}{prod}{back}</body></html>')
+    return (f'<!doctype html><html lang="pl"><head><meta charset="utf-8"><title>{e(title())}</title>'
+            f'<style>{css}</style></head><body class="{L["id"]}">{cover}{intro}{prod}{back}</body></html>')
+
+
+def title():
+    return f'Złączki zaprasowane Besco {L["name"]} – katalog Armatex 2026'
 
 
 def main():
-    out = sys.argv[sys.argv.index('--out') + 1] if '--out' in sys.argv else OUT
-    data = json.load(open(os.path.join(DIR, 'dane.json'), encoding='utf-8'))
+    global L
+    line = sys.argv[1] if len(sys.argv) > 1 and sys.argv[1] in LINES else sys.exit('Podaj linię: ' + ', '.join(LINES))
+    L = dict(LINES[line], id=line)
+    out = sys.argv[sys.argv.index('--out') + 1] if '--out' in sys.argv else os.path.join(ROOT, 'pliki', f'katalog-besco-{line}.pdf')
+    data = json.load(open(os.path.join(DIR, f'{line}.json'), encoding='utf-8'))
     groups = {g['kod']: g for g in data}
-    assert sorted(groups) == sorted(c for _, cs in SECTIONS for c in cs)
+    assert sorted(groups) == sorted(c for _, cs in L['sections'] for c in cs)
     pages = paginate(groups)
     with tempfile.TemporaryDirectory() as tmp:
         doc_html = build_html(groups, pages, 3, outfit_faces(tmp))
@@ -383,9 +433,9 @@ def main():
             pg.pdf(path=pdf, prefer_css_page_size=True, print_background=True)
             b.close()
         d = pymupdf.open(pdf)
-        d.set_metadata({'title': TITLE, 'author': 'P.H.U. ARMATEX Sp. J. A. J. Bunda',
-                        'subject': 'Złączki zaprasowane Besco INOX 304, profil M, 15–108 mm',
-                        'keywords': 'INOX 304, złączki zaprasowane, press, stal nierdzewna, Besco, Armatex',
+        d.set_metadata({'title': title(), 'author': 'P.H.U. ARMATEX Sp. J. A. J. Bunda',
+                        'subject': f'Złączki zaprasowane Besco {L["name"]}, profil M, {L["sizes"]}',
+                        'keywords': f'{L["name"]}, złączki zaprasowane, press, stal nierdzewna, Besco, Armatex',
                         'creator': 'Armatex', 'producer': 'Armatex'})
         d.xref_set_key(d.pdf_catalog(), 'Lang', '(pl-PL)')
         d.rewrite_images(dpi_threshold=330, dpi_target=300, quality=82)   # zdjęcia jako JPEG (bez tego ~6 MB)

@@ -112,16 +112,20 @@ i własne strony 404 (`/en/*`, `/ua/*` w `_redirects`; stare adresy `/uk/*` → 
 
 ## Złączki INOX
 
-`tools/katalog_inox.py` dopisuje do `data/besco-2026.json` linie INOX 304 i INOX 316L (katalogi `pliki/katalog-besco-inox-*.pdf`).
+`tools/katalog_inox.py` dopisuje do `data/besco-2026.json` linie INOX 304 i INOX 316L (z oryginalnych katalogów Besco INOX 304 i 316L).
 Uruchamiaj go **po** `tools/katalog_besco.py`, bo ten nadpisuje cały plik danych. Katalog 316L ma tekst zamieniony na krzywe,
 więc skrypt czyta go przez OCR (`pip install rapidocr_onnxruntime`) i sprawdza numery artykułów względem kodu grupy.
-Skrypt czyta oryginalne katalogi Besco, a nie `pliki/katalog-besco-inox-304.pdf`, który jest już katalogiem Armatex (niżej).
+Skrypt czyta oryginalne katalogi Besco, a nie `pliki/katalog-besco-inox-*.pdf`, które są już katalogami Armatex (niżej).
 
-Katalog PDF INOX 304 w identyfikacji Armatex (`pliki/katalog-besco-inox-304.pdf`) składa `tools/katalog_inox304.py`
-(`pip install playwright==1.56.0 pymupdf`): okładka, strona o systemie ze spisem treści, strony produktów w dwóch kolumnach
-i tylna okładka z kontaktami. Tabele są w `tools/katalog-inox-304/dane.json` (296 indeksów z katalogu Besco), wygląd w
-`tools/katalog-inox-304/katalog.css` (kolory i fonty jak w `c.css`), zdjęcia w `img/besco/i304-*-l.webp`. Podział na strony
-i spis treści liczy skrypt; jeśli któraś kolumna się przelewa, przerywa pracę. Podgląd do innego pliku: `--out x.pdf`.
+Katalogi PDF INOX 304 i INOX 316L w identyfikacji Armatex (`pliki/katalog-besco-inox-304.pdf`,
+`pliki/katalog-besco-inox-316l.pdf`) składa `python3 tools/katalog_pdf.py inox-304` / `inox-316l`
+(`pip install playwright==1.56.0 pymupdf fonttools brotli`): okładka, strona o systemie ze spisem treści, strony produktów
+w dwóch kolumnach i tylna okładka z kontaktami. Tabele są w `tools/katalog-pdf/<linia>.json` (INOX 304: 296 indeksów,
+INOX 316L: 253, sprawdzone z katalogami Besco), teksty i parametry linii w `LINES` w skrypcie, wygląd w
+`tools/katalog-pdf/katalog.css` (kolory i fonty jak w `c.css`). Zdjęcia biorą się z `img/besco/*-l.webp`, chyba że w
+`tools/katalog-pdf/foto/` leży wersja powiększona do druku (INOX 316L: zdjęcia ze strony mają ok. 100 px, więc są
+powiększone 4× modelem ESRGAN z pakietu npm `@upscalerjs/esrgan-thick`, skrypt `tools/powieksz_zdjecia.py`). Podział na strony i spis treści liczy skrypt;
+jeśli któraś kolumna się przelewa, przerywa pracę. Podgląd do innego pliku: `--out x.pdf`.
 
 ## Formularz
 

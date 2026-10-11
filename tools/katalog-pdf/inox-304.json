@@ -2,7 +2,7 @@
  {
   "kod": "3270",
   "nazwa": "Mufa",
-  "zdjecie": "i304-x293",
+  "zdjecie": "img/besco/i304-x293-l.webp",
   "gwint": false,
   "wiersze": [
    [
@@ -76,7 +76,7 @@
  {
   "kod": "3271",
   "nazwa": "Mufa przesuwna",
-  "zdjecie": "i304-x295",
+  "zdjecie": "img/besco/i304-x295-l.webp",
   "gwint": false,
   "wiersze": [
    [
@@ -150,7 +150,7 @@
  {
   "kod": "3002",
   "nazwa": "Łuk 90° ww",
-  "zdjecie": "i304-x690",
+  "zdjecie": "img/besco/i304-x690-l.webp",
   "gwint": false,
   "wiersze": [
    [
@@ -224,7 +224,7 @@
  {
   "kod": "3001",
   "nazwa": "Łuk 90° wz",
-  "zdjecie": "i304-x692",
+  "zdjecie": "img/besco/i304-x692-l.webp",
   "gwint": false,
   "wiersze": [
    [
@@ -298,7 +298,7 @@
  {
   "kod": "3041",
   "nazwa": "Łuk 45° ww",
-  "zdjecie": "i304-x694",
+  "zdjecie": "img/besco/i304-x694-l.webp",
   "gwint": false,
   "wiersze": [
    [
@@ -372,7 +372,7 @@
  {
   "kod": "3040",
   "nazwa": "Łuk 45° wz",
-  "zdjecie": "i304-x911",
+  "zdjecie": "img/besco/i304-x911-l.webp",
   "gwint": false,
   "wiersze": [
    [
@@ -446,7 +446,7 @@
  {
   "kod": "3240",
   "nazwa": "Mufa redukcyjna ww",
-  "zdjecie": "i304-x913",
+  "zdjecie": "img/besco/i304-x913-l.webp",
   "gwint": false,
   "wiersze": [
    [
@@ -490,7 +490,7 @@
  {
   "kod": "3243",
   "nazwa": "Redukcja wz",
-  "zdjecie": "i304-x1346",
+  "zdjecie": "img/besco/i304-x1346-l.webp",
   "gwint": false,
   "wiersze": [
    [
@@ -678,7 +678,7 @@
  {
   "kod": "3130",
   "nazwa": "Trójnik równoprzelotowy",
-  "zdjecie": "i304-x1348",
+  "zdjecie": "img/besco/i304-x1348-l.webp",
   "gwint": false,
   "wiersze": [
    [
@@ -752,7 +752,7 @@
  {
   "kod": "3130R",
   "nazwa": "Trójnik redukcyjny",
-  "zdjecie": "i304-x1788",
+  "zdjecie": "img/besco/i304-x1788-l.webp",
   "gwint": false,
   "wiersze": [
    [
@@ -1030,7 +1030,7 @@
  {
   "kod": "3301",
   "nazwa": "Zaślepka",
-  "zdjecie": "i304-x2144",
+  "zdjecie": "img/besco/i304-x2144-l.webp",
   "gwint": false,
   "wiersze": [
    [
@@ -1104,7 +1104,7 @@
  {
   "kod": "3030",
   "nazwa": "Łuk 90° zz",
-  "zdjecie": "i304-x2146",
+  "zdjecie": "img/besco/i304-x2146-l.webp",
   "gwint": false,
   "wiersze": [
    [
@@ -1154,7 +1154,7 @@
  {
   "kod": "3085",
   "nazwa": "Mijanka zz",
-  "zdjecie": "i304-x2148",
+  "zdjecie": "img/besco/i304-x2148-l.webp",
   "gwint": false,
   "wiersze": [
    [
@@ -1186,7 +1186,7 @@
  {
   "kod": "3086",
   "nazwa": "Mijanka wz",
-  "zdjecie": "i304-x2150",
+  "zdjecie": "img/besco/i304-x2150-l.webp",
   "gwint": false,
   "wiersze": [
    [
@@ -1218,7 +1218,7 @@
  {
   "kod": "3002G",
   "nazwa": "Kolano 90° z GW",
-  "zdjecie": "i304-x2584",
+  "zdjecie": "img/besco/i304-x2584-l.webp",
   "gwint": true,
   "wiersze": [
    [
@@ -1262,7 +1262,7 @@
  {
   "kod": "3001G",
   "nazwa": "Kolano 90° z GZ",
-  "zdjecie": "i304-x2582",
+  "zdjecie": "img/besco/i304-x2582-l.webp",
   "gwint": true,
   "wiersze": [
    [
@@ -1312,7 +1312,7 @@
  {
   "kod": "3472G",
   "nazwa": "Kolano ścienne z GW",
-  "zdjecie": "i304-x2578",
+  "zdjecie": "img/besco/i304-x2578-l.webp",
   "gwint": true,
   "wiersze": [
    [
@@ -1344,7 +1344,7 @@
  {
   "kod": "3270G",
   "nazwa": "Złączka z GW",
-  "zdjecie": "i304-x2580",
+  "zdjecie": "img/besco/i304-x2580-l.webp",
   "gwint": true,
   "wiersze": [
    [
@@ -1454,7 +1454,7 @@
  {
   "kod": "3243G",
   "nazwa": "Złączka z GZ",
-  "zdjecie": "i304-x3017",
+  "zdjecie": "img/besco/i304-x3017-l.webp",
   "gwint": true,
   "wiersze": [
    [
@@ -1594,7 +1594,7 @@
  {
   "kod": "3130G",
   "nazwa": "Trójnik z GW",
-  "zdjecie": "i304-x3019",
+  "zdjecie": "img/besco/i304-x3019-l.webp",
   "gwint": true,
   "wiersze": [
    [
@@ -1704,7 +1704,7 @@
  {
   "kod": "3358G",
   "nazwa": "Półśrubunek z GW",
-  "zdjecie": "i304-x3332",
+  "zdjecie": "img/besco/i304-x3332-l.webp",
   "gwint": true,
   "wiersze": [
    [
@@ -1778,7 +1778,7 @@
  {
   "kod": "3331G",
   "nazwa": "Śrubunek z GZ",
-  "zdjecie": "i304-x3328",
+  "zdjecie": "img/besco/i304-x3328-l.webp",
   "gwint": true,
   "wiersze": [
    [
@@ -1828,7 +1828,7 @@
  {
   "kod": "3280",
   "nazwa": "Złączka z GZ",
-  "zdjecie": "i304-x3330",
+  "zdjecie": "img/besco/i304-x3330-l.webp",
   "gwint": true,
   "wiersze": [
    [
@@ -1872,7 +1872,7 @@
  {
   "kod": "3281",
   "nazwa": "Złączka z GW",
-  "zdjecie": "i304-x3531",
+  "zdjecie": "img/besco/i304-x3531-l.webp",
   "gwint": true,
   "wiersze": [
    [
@@ -1922,7 +1922,7 @@
  {
   "kod": "3510",
   "nazwa": "Kołnierz z końcówką press PN 16",
-  "zdjecie": "i304-x3533",
+  "zdjecie": "img/besco/i304-x3533-l.webp",
   "gwint": false,
   "wiersze": [
    [
