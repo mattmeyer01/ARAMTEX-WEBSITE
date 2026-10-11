@@ -8,6 +8,7 @@ Użycie:
 Dane:
     tools/katalog-inox-304/dane.json   grupy i wiersze (wymiar, nr artykułu, woreczek, karton) z katalogu Besco INOX 304
     tools/katalog-inox-304/pzh.webp    znak „Produkt z atestem” NIZP PZH-PIB
+    tools/katalog-inox-304/besco.png   logo Besco (z katalogu producenta, przezroczyste tło; tylko na jasnym tle)
     img/besco/<zdjecie>-l.webp         zdjęcia grup (te same co na stronie)
 
 Outfit jest fontem zmiennym; Chromium osadza go w PDF jako Type 3, więc przed drukiem robimy z niego
@@ -31,7 +32,8 @@ from playwright.sync_api import sync_playwright
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIR = os.path.join(ROOT, 'tools', 'katalog-inox-304')
 OUT = os.path.join(ROOT, 'pliki', 'katalog-besco-inox-304.pdf')
-TITLE = 'Złączki zaprasowane INOX 304 – katalog Armatex 2026'
+TITLE = 'Złączki zaprasowane Besco INOX 304 – katalog Armatex 2026'
+BESCO = f'file://{DIR}/besco.png'
 
 SECTIONS = [
     ('Mufy, redukcje i zaślepki', ['3270', '3271', '3240', '3243', '3301']),
@@ -179,7 +181,7 @@ def card(part):
     opis = f'<p class="opis">{e(OPIS[g["kod"]])}</p>' if g['kod'] in OPIS else ''
     img = f'file://{ROOT}/img/besco/{g["zdjecie"]}-l.webp'
     return (f'<article class="card" id="g{e(g["kod"])}"><div class="head"><div class="foto"><img src="{img}" alt=""></div>'
-            f'<div class="tt"><span class="kod">{e(g["kod"])}</span><h3>{e(g["nazwa"])}</h3>{opis}'
+            f'<div class="tt"><span class="kod"><em>Besco</em> {e(g["kod"])}</span><h3>{e(g["nazwa"])}</h3>{opis}'
             f'<p class="meta">{n} {plural(n)} · {size_range(g["wiersze"])}</p></div></div>'
             f'{table(part)}</article>')
 
@@ -212,7 +214,7 @@ def block(x):
 def frame(no, cols):
     inner = ''.join('<div class="col">' + ''.join(block(x) for x in col) + '</div>' for col in cols)
     return (f'<section class="page prod"><header class="ph"><img src="file://{ROOT}/assets/img/logo-dark.png" alt="Armatex">'
-            f'<span>Złączki zaprasowane INOX 304 · profil M</span></header>'
+            f'<span class="r">Złączki zaprasowane INOX 304 · profil M<img src="{BESCO}" alt="Besco"></span></header>'
             f'<div class="body"><div class="cols">{inner}</div></div>'
             f'<footer class="pf"><span><b>armatex.pl</b> · biuro@armatex.pl · 513 191 502</span><span class="pn">{no:02d}</span></footer></section>')
 
@@ -264,7 +266,7 @@ def build_html(groups, pages, first_page, faces):
     <img class="logo" src="{logo_l}" alt="Armatex">
     <span class="tag">Katalog produktów · 2026</span>
     <div class="title">
-      <span class="eyebrow">Stal nierdzewna · system press</span>
+      <span class="eyebrow">Produkty marki Besco · stal nierdzewna · system press</span>
       <h1>Złączki zaprasowane<b>INOX 304</b></h1>
       <p>Profil M · Ø 15–108 mm · {len(groups)} grup · {total} indeksów</p>
     </div>
@@ -276,11 +278,11 @@ def build_html(groups, pages, first_page, faces):
     <div><b>Ogrzewanie<br>i woda pitna</b><span>zastosowanie</span></div>
     <div class="pzh"><img src="{pzh}" alt="PZH – produkt z atestem"><span>atest higieniczny<br>PZH</span></div>
   </div>
-  <footer><b>armatex.pl</b><span>P.H.U. ARMATEX · Olsztyn · dystrybutor złączek Besco</span></footer>
+  <footer><b>armatex.pl</b><span class="brand">Produkty marki<img src="{BESCO}" alt="Besco"></span></footer>
 </section>'''
 
     intro = f'''<section class="page intro">
-  <header class="ph"><img src="{logo_d}" alt="Armatex"><span>Złączki zaprasowane INOX 304 · profil M</span></header>
+  <header class="ph"><img src="{logo_d}" alt="Armatex"><span class="r">Złączki zaprasowane INOX 304 · profil M<img src="{BESCO}" alt="Besco"></span></header>
   <div class="body">
     <span class="eyebrow">O systemie</span>
     <h2 class="big">Złączki press ze stali nierdzewnej do instalacji wody pitnej i ogrzewania</h2>
@@ -297,6 +299,9 @@ def build_html(groups, pages, first_page, faces):
     </div>
     <div class="two">
       <div>
+        <div class="box brandbox"><img src="{BESCO}" alt="Besco"><div><b>Produkty marki Besco</b>
+          <p>Wszystkie produkty w katalogu to złączki Besco Fittings &amp; Connectors.
+          Armatex jest dystrybutorem marki Besco od 2016 roku.</p></div></div>
         <div class="box pzhbox"><img src="{pzh}" alt=""><div><b>Atest higieniczny PZH</b>
           <p>Złączki INOX 304 mają atest higieniczny Narodowego Instytutu Zdrowia Publicznego PZH – PIB
           do instalacji wody pitnej i ciepłej wody użytkowej.</p></div></div>
@@ -335,7 +340,8 @@ def build_html(groups, pages, first_page, faces):
     <div><span class="label">Sprzedaż</span><b>798 807 106</b><a>piotr@armatex.pl</a><p>Piotr Stelmach</p></div>
     <div><span class="label">Magazyn</span><b>512 945 936</b><a>martyna@armatex.pl</a><p>Martyna Zielińska</p></div>
   </div>
-  <div class="web"><b>armatex.pl</b><span>Od 1991 roku na rynku instalacyjnym · dystrybutor Besco od 2016 roku</span></div>
+  <div class="web"><b>armatex.pl</b><span>Od 1991 roku na rynku instalacyjnym</span></div>
+  <div class="dist"><span>Dystrybutor marki<br>od 2016 roku</span><img src="{BESCO}" alt="Besco"></div>
   <footer>
     <span>P.H.U. ARMATEX Sp. J. A. J. Bunda · siedziba: ul. Siewna 24, 10-831 Olsztyn · NIP 7393814110 · KRS 0000371628 · REGON 280563743</span>
     <span>Dane techniczne i numery artykułów według producenta (Besco). Zastrzegamy prawo do zmian. Stan na 2026 r.</span>

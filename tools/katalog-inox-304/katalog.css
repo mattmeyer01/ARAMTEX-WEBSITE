@@ -18,7 +18,9 @@ body { font-family: var(--sans); color: var(--ink); font-size: 9pt; -webkit-prin
 /* nagłówek i stopka stron wewnętrznych */
 .ph { position: absolute; top: 0; left: 32pt; right: 32pt; height: 50pt; display: flex; align-items: center; justify-content: space-between; border-bottom: .75pt solid var(--line); }
 .ph::before { content: ""; position: absolute; left: 0; bottom: -1.5pt; width: 40pt; height: 2.25pt; background: var(--red); }
-.ph img { height: 15pt; }
+.ph > img { height: 15pt; }
+.ph .r { display: flex; align-items: center; gap: 10pt; }
+.ph .r img { height: 15pt; padding-left: 10pt; border-left: .75pt solid var(--line); box-sizing: content-box; }
 .ph span, .pf span { font-family: var(--mono); font-size: 6.8pt; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-60); }
 .pf { position: absolute; left: 32pt; right: 32pt; bottom: 0; height: 40pt; display: flex; align-items: center; justify-content: space-between; border-top: .75pt solid var(--line); }
 .pf b { color: var(--navy); font-weight: 500; }
@@ -38,6 +40,7 @@ body { font-family: var(--sans); color: var(--ink); font-size: 9pt; -webkit-prin
 .card .foto img { max-width: 100%; max-height: 100%; object-fit: contain; }
 .card .tt { flex: 1; min-width: 0; padding: 8pt 11pt; display: flex; flex-direction: column; justify-content: center; background: var(--stone); }
 .card .kod { font-family: var(--mono); font-size: 7.4pt; letter-spacing: .08em; color: var(--red); }
+.card .kod em { font-style: normal; color: var(--ink-60); text-transform: uppercase; margin-right: 3pt; }
 .card h3 { font-size: 12.5pt; font-weight: 600; line-height: 1.12; color: var(--navy); margin: 2pt 0 3pt; }
 .card .opis { font-size: 7.6pt; color: var(--ink-60); margin-bottom: 2pt; }
 .card .meta { font-family: var(--mono); font-size: 6.6pt; letter-spacing: .04em; color: var(--ink-60); }
@@ -98,7 +101,9 @@ tbody tr:nth-child(even) { background: var(--zebra); }
 .cover .facts .pzh { flex-direction: row; align-items: center; gap: 8pt; }
 .cover .facts .pzh img { width: 46pt; height: 46pt; }
 .cover .facts .pzh span { font-size: 6.4pt; line-height: 1.5; }
-.cover footer { position: absolute; left: 42pt; right: 42pt; bottom: 26pt; display: flex; justify-content: space-between; align-items: baseline; font-family: var(--mono); font-size: 6.8pt; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-60); }
+.cover footer { position: absolute; left: 42pt; right: 42pt; bottom: 22pt; display: flex; justify-content: space-between; align-items: center; font-family: var(--mono); font-size: 6.8pt; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-60); }
+.cover footer .brand { display: flex; align-items: center; gap: 10pt; }
+.cover footer .brand img { height: 30pt; }
 .cover footer b { font-family: var(--sans); font-size: 12pt; letter-spacing: 0; text-transform: none; color: var(--navy); font-weight: 600; }
 
 /* strona 2 */
@@ -110,6 +115,10 @@ tbody tr:nth-child(even) { background: var(--zebra); }
 .specs span { font-family: var(--mono); font-size: 6.2pt; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-60); }
 .specs b { font-size: 12.5pt; font-weight: 600; color: var(--navy); }
 .two { display: grid; grid-template-columns: 1fr 1fr; gap: 26pt; margin-top: 20pt; }
+.box.brandbox { display: flex; gap: 12pt; align-items: center; border: .75pt solid var(--line); border-radius: 7pt; padding: 11pt 12pt; margin-bottom: 10pt; }
+.brandbox img { width: 96pt; flex: 0 0 auto; }
+.brandbox b { font-size: 10pt; font-weight: 600; color: var(--navy); }
+.brandbox p { font-size: 7.8pt; line-height: 1.45; color: var(--ink-60); margin-top: 3pt; }
 .box.pzhbox { display: flex; gap: 11pt; align-items: center; background: var(--stone); border-radius: 7pt; padding: 11pt 12pt; }
 .pzhbox img { width: 56pt; height: 56pt; flex: 0 0 auto; }
 .pzhbox b { font-size: 10pt; font-weight: 600; color: var(--navy); }
@@ -145,4 +154,7 @@ tbody tr:nth-child(even) { background: var(--zebra); }
 .back .web { position: absolute; top: 580pt; left: 42pt; right: 42pt; display: flex; flex-direction: column; gap: 4pt; }
 .back .web b { font-size: 28pt; font-weight: 600; letter-spacing: -.01em; }
 .back .web span { font-family: var(--mono); font-size: 7pt; letter-spacing: .1em; text-transform: uppercase; color: var(--on-60); }
+.back .dist { position: absolute; top: 580pt; right: 42pt; background: #fff; border-radius: 7pt; padding: 10pt 14pt; display: flex; align-items: center; gap: 12pt; }
+.back .dist span { font-family: var(--mono); font-size: 6.4pt; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-60); line-height: 1.5; }
+.back .dist img { height: 34pt; }
 .back footer { position: absolute; left: 42pt; right: 150pt; bottom: 30pt; display: flex; flex-direction: column; gap: 4pt; padding-top: 10pt; border-top: .75pt solid var(--on-line); font-size: 6.8pt; line-height: 1.4; color: var(--on-60); }
