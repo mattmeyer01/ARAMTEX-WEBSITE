@@ -1,0 +1,4092 @@
+[
+ {
+  "id": "tectite-zlaczka-prosta-t1",
+  "kod": "T1",
+  "nazwa": "Złączka prosta",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t1-zlaczka-prosta-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "10",
+    "45108",
+    null,
+    null
+   ],
+   [
+    "12",
+    "45110",
+    null,
+    null
+   ],
+   [
+    "15",
+    "45114",
+    null,
+    null
+   ],
+   [
+    "16",
+    "45116",
+    null,
+    null
+   ],
+   [
+    "18",
+    "45118",
+    null,
+    null
+   ],
+   [
+    "20",
+    "45120",
+    null,
+    null
+   ],
+   [
+    "22",
+    "45121",
+    null,
+    null
+   ],
+   [
+    "28",
+    "45123",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-zlaczka-redukcyjna-t1r",
+  "kod": "T1R",
+  "nazwa": "Złączka redukcyjna",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t1r-zlaczka-redukcyjna-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "12 × 10",
+    "45155",
+    null,
+    null
+   ],
+   [
+    "15 × 10",
+    "45159",
+    null,
+    null
+   ],
+   [
+    "15 × 12",
+    "45161",
+    null,
+    null
+   ],
+   [
+    "16 × 12",
+    "45163",
+    null,
+    null
+   ],
+   [
+    "18 × 15",
+    "45167",
+    null,
+    null
+   ],
+   [
+    "20 × 18",
+    "45168",
+    null,
+    null
+   ],
+   [
+    "22 × 10",
+    "45170",
+    null,
+    null
+   ],
+   [
+    "22 × 15",
+    "45172",
+    null,
+    null
+   ],
+   [
+    "22 × 18",
+    "45174",
+    null,
+    null
+   ],
+   [
+    "28 × 22",
+    "45178",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-zlaczka-slizgowa-t1s",
+  "kod": "T1S",
+  "nazwa": "Złączka ślizgowa",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t1s-zlaczka-slizgowa-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "12",
+    "45140",
+    null,
+    null
+   ],
+   [
+    "15",
+    "45141",
+    null,
+    null
+   ],
+   [
+    "18",
+    "45142",
+    null,
+    null
+   ],
+   [
+    "22",
+    "45143",
+    null,
+    null
+   ],
+   [
+    "28",
+    "45144",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-redukcja-gw-t2",
+  "kod": "T2",
+  "nazwa": "Redukcja GW",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t2-redukcja-gw-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "10 × 3/8″",
+    "45190",
+    null,
+    null
+   ],
+   [
+    "10 × 1/2″",
+    "45192",
+    null,
+    null
+   ],
+   [
+    "12 × 3/8″",
+    "45194",
+    null,
+    null
+   ],
+   [
+    "12 × 1/2″",
+    "45196",
+    null,
+    null
+   ],
+   [
+    "15 × 3/8″",
+    "45204",
+    null,
+    null
+   ],
+   [
+    "15 × 1/2″",
+    "45206",
+    null,
+    null
+   ],
+   [
+    "15 × 3/4″",
+    "45208",
+    null,
+    null
+   ],
+   [
+    "16 × 1/2″",
+    "45209",
+    null,
+    null
+   ],
+   [
+    "18 × 1/2″",
+    "45210",
+    null,
+    null
+   ],
+   [
+    "18 × 3/4″",
+    "45212",
+    null,
+    null
+   ],
+   [
+    "22 × 1/2″",
+    "45220",
+    null,
+    null
+   ],
+   [
+    "22 × 3/4″",
+    "45222",
+    null,
+    null
+   ],
+   [
+    "22 × 1″",
+    "45223",
+    null,
+    null
+   ],
+   [
+    "28 × 3/4″",
+    "45224",
+    null,
+    null
+   ],
+   [
+    "28 × 1″",
+    "45225",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-zlaczka-gz-t3t",
+  "kod": "T3T",
+  "nazwa": "Złączka GZ",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t3t-zlaczka-gz-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "10 × 3/8″",
+    "45250",
+    null,
+    null
+   ],
+   [
+    "10 × 1/2″",
+    "45252",
+    null,
+    null
+   ],
+   [
+    "12 × 3/8″",
+    "45254",
+    null,
+    null
+   ],
+   [
+    "12 × 1/2″",
+    "45256",
+    null,
+    null
+   ],
+   [
+    "15 × 3/8″",
+    "45265",
+    null,
+    null
+   ],
+   [
+    "15 × 1/2″",
+    "45267",
+    null,
+    null
+   ],
+   [
+    "16 × 1/2″",
+    "45269",
+    null,
+    null
+   ],
+   [
+    "18 × 1/2″",
+    "45286",
+    null,
+    null
+   ],
+   [
+    "18 × 3/4″",
+    "45288",
+    null,
+    null
+   ],
+   [
+    "22 × 1/2″",
+    "45290",
+    null,
+    null
+   ],
+   [
+    "22 × 3/4″",
+    "45292",
+    null,
+    null
+   ],
+   [
+    "22 × 1″",
+    "45294",
+    null,
+    null
+   ],
+   [
+    "28 × 1″",
+    "45296",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-redukcja-gz-t3p",
+  "kod": "T3P",
+  "nazwa": "Redukcja GZ",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t3p-redukcja-gz-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "10 × 3/8″",
+    "45348",
+    null,
+    null
+   ],
+   [
+    "10 × 1/2″",
+    "45349",
+    null,
+    null
+   ],
+   [
+    "12 × 3/8″",
+    "45350",
+    null,
+    null
+   ],
+   [
+    "15 × 1/2″",
+    "45358",
+    null,
+    null
+   ],
+   [
+    "16 × 1/2″",
+    "45362",
+    null,
+    null
+   ],
+   [
+    "18 × 1/2″",
+    "45367",
+    null,
+    null
+   ],
+   [
+    "18 × 3/4″",
+    "45369",
+    null,
+    null
+   ],
+   [
+    "22 × 1/2″",
+    "45364",
+    null,
+    null
+   ],
+   [
+    "22 × 3/4″",
+    "45366",
+    null,
+    null
+   ],
+   [
+    "22 × 1″",
+    "45368",
+    null,
+    null
+   ],
+   [
+    "28 × 1″",
+    "45370",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-redukcja-gz-t5",
+  "kod": "T5",
+  "nazwa": "Redukcja GZ",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t5-redukcja-gz-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 1/2″",
+    "45390",
+    null,
+    null
+   ],
+   [
+    "22 × 3/4″",
+    "45394",
+    null,
+    null
+   ],
+   [
+    "28 × 1″",
+    "45396",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-redukcja-t6",
+  "kod": "T6",
+  "nazwa": "Redukcja",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t6-redukcja-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "12 × 10",
+    "45410",
+    null,
+    null
+   ],
+   [
+    "15 × 10",
+    "45416",
+    null,
+    null
+   ],
+   [
+    "15 × 12",
+    "45418",
+    null,
+    null
+   ],
+   [
+    "18 × 15",
+    "45424",
+    null,
+    null
+   ],
+   [
+    "22 × 12",
+    "45425",
+    null,
+    null
+   ],
+   [
+    "22 × 15",
+    "45426",
+    null,
+    null
+   ],
+   [
+    "22 × 18",
+    "45430",
+    null,
+    null
+   ],
+   [
+    "28 × 15",
+    "45435",
+    null,
+    null
+   ],
+   [
+    "28 × 18",
+    "45437",
+    null,
+    null
+   ],
+   [
+    "28 × 22",
+    "45438",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kolano-t12",
+  "kod": "T12",
+  "nazwa": "Kolano",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t12-kolano-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "10",
+    "45510",
+    null,
+    null
+   ],
+   [
+    "12",
+    "45512",
+    null,
+    null
+   ],
+   [
+    "15",
+    "45516",
+    null,
+    null
+   ],
+   [
+    "16",
+    "45518",
+    null,
+    null
+   ],
+   [
+    "18",
+    "45520",
+    null,
+    null
+   ],
+   [
+    "20",
+    "45522",
+    null,
+    null
+   ],
+   [
+    "22",
+    "45524",
+    null,
+    null
+   ],
+   [
+    "28",
+    "45526",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kolano-t12s",
+  "kod": "T12S",
+  "nazwa": "Kolano",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t12s-kolano-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "10",
+    "45490",
+    null,
+    null
+   ],
+   [
+    "12",
+    "45492",
+    null,
+    null
+   ],
+   [
+    "10 × 15",
+    "45494",
+    null,
+    null
+   ],
+   [
+    "15",
+    "45496",
+    null,
+    null
+   ],
+   [
+    "18",
+    "45498",
+    null,
+    null
+   ],
+   [
+    "22",
+    "45500",
+    null,
+    null
+   ],
+   [
+    "28",
+    "45502",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kolano-t12snp",
+  "kod": "T12SNP",
+  "nazwa": "Kolano",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t12snp-kolano-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "10",
+    "45491",
+    null,
+    null
+   ],
+   [
+    "10 × 15",
+    "45495",
+    null,
+    null
+   ],
+   [
+    "15",
+    "45497",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kolano-gz-t13",
+  "kod": "T13",
+  "nazwa": "Kolano GZ",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t13-kolano-gz-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "10 × 3/8″",
+    "45550",
+    null,
+    null
+   ],
+   [
+    "10 × 1/2″",
+    "45552",
+    null,
+    null
+   ],
+   [
+    "12 × 3/8″",
+    "45554",
+    null,
+    null
+   ],
+   [
+    "12 × 1/2″",
+    "45556",
+    null,
+    null
+   ],
+   [
+    "15 × 1/2″",
+    "45561",
+    null,
+    null
+   ],
+   [
+    "16 × 1/2″",
+    "45563",
+    null,
+    null
+   ],
+   [
+    "16 × 3/4″",
+    "45564",
+    null,
+    null
+   ],
+   [
+    "18 × 1/2″",
+    "45569",
+    null,
+    null
+   ],
+   [
+    "18 × 3/4″",
+    "45570",
+    null,
+    null
+   ],
+   [
+    "22 × 3/4″",
+    "45576",
+    null,
+    null
+   ],
+   [
+    "28 × 1″",
+    "45578",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kolano-gw-t14",
+  "kod": "T14",
+  "nazwa": "Kolano GW",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t14-kolano-gw-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "10 × 3/8″",
+    "45590",
+    null,
+    null
+   ],
+   [
+    "10 × 1/2″",
+    "45592",
+    null,
+    null
+   ],
+   [
+    "12 × 3/8″",
+    "45594",
+    null,
+    null
+   ],
+   [
+    "12 × 1/2″",
+    "45596",
+    null,
+    null
+   ],
+   [
+    "15 × 1/2″",
+    "45606",
+    null,
+    null
+   ],
+   [
+    "16 × 1/2″",
+    "45608",
+    null,
+    null
+   ],
+   [
+    "16 × 3/4″",
+    "45609",
+    null,
+    null
+   ],
+   [
+    "18 × 1/2″",
+    "45614",
+    null,
+    null
+   ],
+   [
+    "18 × 3/4″",
+    "45615",
+    null,
+    null
+   ],
+   [
+    "22 × 3/4″",
+    "45620",
+    null,
+    null
+   ],
+   [
+    "28 × 1″",
+    "45622",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kolano-gw-z-lapami-tt15",
+  "kod": "TT15",
+  "nazwa": "Kolano GW z łapami",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-tt15-kolano-gw-z-lapami-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "10 × 1/2″",
+    "45630",
+    null,
+    null
+   ],
+   [
+    "12 × 1/2″",
+    "45638",
+    null,
+    null
+   ],
+   [
+    "15 × 1/2″",
+    "45646",
+    null,
+    null
+   ],
+   [
+    "16 × 1/2″",
+    "45648",
+    null,
+    null
+   ],
+   [
+    "18 × 1/2″",
+    "45650",
+    null,
+    null
+   ],
+   [
+    "18 × 3/4″",
+    "45652",
+    null,
+    null
+   ],
+   [
+    "22 × 3/4″",
+    "45654",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kolano-45-st-t21",
+  "kod": "T21",
+  "nazwa": "Kolano 45 st.",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t21-kolano-45-st-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "12",
+    "45531",
+    null,
+    null
+   ],
+   [
+    "15",
+    "45535",
+    null,
+    null
+   ],
+   [
+    "16",
+    "45536",
+    null,
+    null
+   ],
+   [
+    "18",
+    "45537",
+    null,
+    null
+   ],
+   [
+    "22",
+    "45538",
+    null,
+    null
+   ],
+   [
+    "28",
+    "45539",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kolano-45-st-t21s",
+  "kod": "T21S",
+  "nazwa": "Kolano 45 st.",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t21s-kolano-45-st-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "12",
+    "45528",
+    null,
+    null
+   ],
+   [
+    "15",
+    "45542",
+    null,
+    null
+   ],
+   [
+    "16",
+    "45543",
+    null,
+    null
+   ],
+   [
+    "18",
+    "45544",
+    null,
+    null
+   ],
+   [
+    "22",
+    "45545",
+    null,
+    null
+   ],
+   [
+    "28",
+    "45546",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-trojnik-t24",
+  "kod": "T24",
+  "nazwa": "Trójnik",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t24-trojnik-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "10",
+    "45660",
+    null,
+    null
+   ],
+   [
+    "12",
+    "45662",
+    null,
+    null
+   ],
+   [
+    "15",
+    "45666",
+    null,
+    null
+   ],
+   [
+    "16",
+    "45668",
+    null,
+    null
+   ],
+   [
+    "18",
+    "45670",
+    null,
+    null
+   ],
+   [
+    "20",
+    "45674",
+    null,
+    null
+   ],
+   [
+    "22",
+    "45676",
+    null,
+    null
+   ],
+   [
+    "28",
+    "45678",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-trojnik-redukcyjny-t25",
+  "kod": "T25",
+  "nazwa": "Trójnik redukcyjny",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t25-trojnik-redukcyjny-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "12 × 10 × 12",
+    "45700",
+    null,
+    null
+   ],
+   [
+    "15 × 10 × 15",
+    "45715",
+    null,
+    null
+   ],
+   [
+    "15 × 12 × 15",
+    "45717",
+    null,
+    null
+   ],
+   [
+    "16 × 12 × 16",
+    "45719",
+    null,
+    null
+   ],
+   [
+    "20 × 16 × 20",
+    "45726",
+    null,
+    null
+   ],
+   [
+    "22 × 10 × 22",
+    "45730",
+    null,
+    null
+   ],
+   [
+    "22 × 15 × 22",
+    "45737",
+    null,
+    null
+   ],
+   [
+    "22 × 16 × 22",
+    "45739",
+    null,
+    null
+   ],
+   [
+    "22 × 18 × 22",
+    "45742",
+    null,
+    null
+   ],
+   [
+    "28 × 15 × 28",
+    "45744",
+    null,
+    null
+   ],
+   [
+    "28 × 18 × 28",
+    "45745",
+    null,
+    null
+   ],
+   [
+    "28 × 22 × 28",
+    "45746",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-trojnik-redukcyjny-t26",
+  "kod": "T26",
+  "nazwa": "Trójnik redukcyjny",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t26-trojnik-redukcyjny-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15 × 15 × 10",
+    "45780",
+    null,
+    null
+   ],
+   [
+    "22 × 22 × 15",
+    "45786",
+    null,
+    null
+   ],
+   [
+    "22 × 22 × 18",
+    "45788",
+    null,
+    null
+   ],
+   [
+    "28 × 28 × 15",
+    "45790",
+    null,
+    null
+   ],
+   [
+    "28 × 28 × 18",
+    "45792",
+    null,
+    null
+   ],
+   [
+    "28 × 28 × 22",
+    "45793",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-trojnik-redukcyjny-t27",
+  "kod": "T27",
+  "nazwa": "Trójnik redukcyjny",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t27-trojnik-redukcyjny-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15 × 10 × 10",
+    "45810",
+    null,
+    null
+   ],
+   [
+    "15 × 12 × 12",
+    "45812",
+    null,
+    null
+   ],
+   [
+    "22 × 15 × 15",
+    "45820",
+    null,
+    null
+   ],
+   [
+    "22 × 18 × 18",
+    "45819",
+    null,
+    null
+   ],
+   [
+    "28 × 18 × 18",
+    "45821",
+    null,
+    null
+   ],
+   [
+    "28 × 22 × 22",
+    "45822",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-trojnik-redukcyjny-gw-t30",
+  "kod": "T30",
+  "nazwa": "Trójnik redukcyjny GW",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t30-trojnik-redukcyjny-gw-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "12 × 12 × 1/2″",
+    "45823",
+    null,
+    null
+   ],
+   [
+    "15 × 15 × 1/2″",
+    "45840",
+    null,
+    null
+   ],
+   [
+    "16 × 16 × 1/2″",
+    "45825",
+    null,
+    null
+   ],
+   [
+    "22 × 22 × 1/2″",
+    "45845",
+    null,
+    null
+   ],
+   [
+    "22 × 22 × 3/4″",
+    "45846",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kapa-t61",
+  "kod": "T61",
+  "nazwa": "Kapa",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t61-kapa-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "10",
+    "45860",
+    null,
+    null
+   ],
+   [
+    "12",
+    "45862",
+    null,
+    null
+   ],
+   [
+    "15",
+    "45866",
+    null,
+    null
+   ],
+   [
+    "16",
+    "45868",
+    null,
+    null
+   ],
+   [
+    "18",
+    "45870",
+    null,
+    null
+   ],
+   [
+    "20",
+    "45872",
+    null,
+    null
+   ],
+   [
+    "22",
+    "45874",
+    null,
+    null
+   ],
+   [
+    "28",
+    "45876",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kapa-t61rv",
+  "kod": "T61RV",
+  "nazwa": "Kapa",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t61rv-kapa-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "10",
+    "45890",
+    null,
+    null
+   ],
+   [
+    "12",
+    "45891",
+    null,
+    null
+   ],
+   [
+    "15",
+    "45892",
+    null,
+    null
+   ],
+   [
+    "18",
+    "45893",
+    null,
+    null
+   ],
+   [
+    "22",
+    "45894",
+    null,
+    null
+   ],
+   [
+    "28",
+    "45895",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-redukcja-gw-ruchoma-t62",
+  "kod": "T62",
+  "nazwa": "Redukcja GW ruchoma",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t62-redukcja-gw-ruchoma-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "10 × 1/2″",
+    "45900",
+    null,
+    null
+   ],
+   [
+    "15 × 1/2″",
+    "45902",
+    null,
+    null
+   ],
+   [
+    "15 × 3/4″",
+    "45171",
+    null,
+    null
+   ],
+   [
+    "22 × 3/4″",
+    "45903",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-zlaczka-gw-ruchoma-t62s",
+  "kod": "T62S",
+  "nazwa": "Złączka GW ruchoma",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t62s-zlaczka-gw-ruchoma-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 1/2″",
+    "45910",
+    null,
+    null
+   ],
+   [
+    "15 × 3/4″",
+    "45912",
+    null,
+    null
+   ],
+   [
+    "22 × 3/4″",
+    "45914",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kolano-gw-ruchome-t63",
+  "kod": "T63",
+  "nazwa": "Kolano GW ruchome",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t63-kolano-gw-ruchome-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "10 × 1/2″",
+    "45920",
+    null,
+    null
+   ],
+   [
+    "15 × 1/2″",
+    "45922",
+    null,
+    null
+   ],
+   [
+    "15 × 3/4″",
+    "45923",
+    null,
+    null
+   ],
+   [
+    "22 × 3/4″",
+    "45924",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-zlaczka-gw-tx68s",
+  "kod": "TX68S",
+  "nazwa": "Złączka GW",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-tx68s-zlaczka-gw-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "22 × 1″",
+    "65930",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-adapter-srubunkowy-t68ff",
+  "kod": "T68FF",
+  "nazwa": "Adapter śrubunkowy",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t68ff-adapter-srubunkowy-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15",
+    "45983",
+    null,
+    null
+   ],
+   [
+    "22",
+    "45984",
+    null,
+    null
+   ],
+   [
+    "15 × 1/2″",
+    "45985",
+    null,
+    null
+   ],
+   [
+    "22 × 3/4″",
+    "45986",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-zlaczka-prosta-chrom-t1cp",
+  "kod": "T1CP",
+  "nazwa": "Złączka prosta (chrom)",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t1cp-zlaczka-prosta-chrom-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "10",
+    "45109",
+    null,
+    null
+   ],
+   [
+    "12",
+    "45111",
+    null,
+    null
+   ],
+   [
+    "15",
+    "45115",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-zlaczka-prosta-chrom-t1rcp",
+  "kod": "T1RCP",
+  "nazwa": "Złączka prosta (chrom)",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t1rcp-zlaczka-prosta-chrom-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "12 × 10",
+    "45156",
+    null,
+    null
+   ],
+   [
+    "15 × 10",
+    "45160",
+    null,
+    null
+   ],
+   [
+    "15 × 12",
+    "45162",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-zlaczka-gw-chrom-t2cp",
+  "kod": "T2CP",
+  "nazwa": "Złączka GW (chrom)",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t2cp-zlaczka-gw-chrom-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "10 × 3/8″",
+    "45191",
+    null,
+    null
+   ],
+   [
+    "10 × 1/2″",
+    "45193",
+    null,
+    null
+   ],
+   [
+    "12 × 3/8″",
+    "45195",
+    null,
+    null
+   ],
+   [
+    "12 × 1/2″",
+    "45197",
+    null,
+    null
+   ],
+   [
+    "15 × 3/8″",
+    "45205",
+    null,
+    null
+   ],
+   [
+    "15 × 1/2″",
+    "45207",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-zlaczka-gw-chrom-t3tcp",
+  "kod": "T3TCP",
+  "nazwa": "Złączka GW (chrom)",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t3tcp-zlaczka-gw-chrom-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "10 × 3/8″",
+    "45251",
+    null,
+    null
+   ],
+   [
+    "10 × 1/2″",
+    "45253",
+    null,
+    null
+   ],
+   [
+    "12 × 3/8″",
+    "45255",
+    null,
+    null
+   ],
+   [
+    "12 × 1/2″",
+    "45257",
+    null,
+    null
+   ],
+   [
+    "15 × 3/8″",
+    "45266",
+    null,
+    null
+   ],
+   [
+    "15 × 1/2″",
+    "45268",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-redukcja-chrom-t6cp",
+  "kod": "T6CP",
+  "nazwa": "Redukcja (chrom)",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t6cp-redukcja-chrom-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "12 × 10",
+    "45411",
+    null,
+    null
+   ],
+   [
+    "15 × 10",
+    "45417",
+    null,
+    null
+   ],
+   [
+    "15 × 12",
+    "45419",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kolano-chrom-t12",
+  "kod": "T12",
+  "nazwa": "Kolano (chrom)",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t12-kolano-chrom-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "10",
+    "45511",
+    null,
+    null
+   ],
+   [
+    "12",
+    "45513",
+    null,
+    null
+   ],
+   [
+    "15",
+    "45517",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kolano-gz-chrom-t13cp",
+  "kod": "T13CP",
+  "nazwa": "Kolano GZ (chrom)",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t13cp-kolano-gz-chrom-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "10 × 3/8″",
+    "45551",
+    null,
+    null
+   ],
+   [
+    "10 × 1/2″",
+    "45553",
+    null,
+    null
+   ],
+   [
+    "12 × 3/8″",
+    "45555",
+    null,
+    null
+   ],
+   [
+    "12 × 1/2″",
+    "45557",
+    null,
+    null
+   ],
+   [
+    "15 × 1/2″",
+    "45562",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kolano-gw-chrom-t14cp",
+  "kod": "T14CP",
+  "nazwa": "Kolano GW (chrom)",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t14cp-kolano-gw-chrom-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "10 × 3/8″",
+    "45591",
+    null,
+    null
+   ],
+   [
+    "10 × 1/2″",
+    "45593",
+    null,
+    null
+   ],
+   [
+    "12 × 3/8″",
+    "45595",
+    null,
+    null
+   ],
+   [
+    "12 × 1/2″",
+    "45597",
+    null,
+    null
+   ],
+   [
+    "15 × 1/2″",
+    "45607",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kolano-gw-z-lapami-chrom-t15cp",
+  "kod": "T15CP",
+  "nazwa": "Kolano GW z łapami (chrom)",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t15cp-kolano-gw-z-lapami-chrom-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "10 × 1/2″",
+    "45631",
+    null,
+    null
+   ],
+   [
+    "12 × 1/2″",
+    "45639",
+    null,
+    null
+   ],
+   [
+    "15 × 1/2″",
+    "45647",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-trojnik-chrom-t24cp",
+  "kod": "T24CP",
+  "nazwa": "Trójnik (chrom)",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t24cp-trojnik-chrom-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "10",
+    "45661",
+    null,
+    null
+   ],
+   [
+    "12",
+    "45663",
+    null,
+    null
+   ],
+   [
+    "15",
+    "45667",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-trojnik-redukcyjny-chrom-t25cp",
+  "kod": "T25CP",
+  "nazwa": "Trójnik redukcyjny (chrom)",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t25cp-trojnik-redukcyjny-chrom-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "12 × 10 × 12",
+    "45701",
+    null,
+    null
+   ],
+   [
+    "15 × 10 × 15",
+    "45716",
+    null,
+    null
+   ],
+   [
+    "15 × 12 × 15",
+    "45718",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-trojnik-redukcyjny-chrom-t27cp",
+  "kod": "T27CP",
+  "nazwa": "Trójnik redukcyjny (chrom)",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t27cp-trojnik-redukcyjny-chrom-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15 × 12 × 12",
+    "45813",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-trojnik-redukcyjny-chrom-t30cp",
+  "kod": "T30CP",
+  "nazwa": "Trójnik redukcyjny (chrom)",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t30cp-trojnik-redukcyjny-chrom-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 15 × 1/2″",
+    "45841",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kapa-chrom-t61cp",
+  "kod": "T61CP",
+  "nazwa": "Kapa (chrom)",
+  "seria": "tectite-classic",
+  "zdjecie": "img/pegler/t-t61cp-kapa-chrom-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "10",
+    "45861",
+    null,
+    null
+   ],
+   [
+    "15",
+    "45867",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-dwuzlaczka-tx1",
+  "kod": "TX1",
+  "nazwa": "Dwuzłączka",
+  "seria": "tectite-pro",
+  "zdjecie": "img/pegler/t-tx1-dwuzlaczka-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "65114",
+    null,
+    null
+   ],
+   [
+    "22",
+    "65121",
+    null,
+    null
+   ],
+   [
+    "28",
+    "65123",
+    null,
+    null
+   ],
+   [
+    "35",
+    "45126",
+    null,
+    null
+   ],
+   [
+    "42",
+    "45128",
+    null,
+    null
+   ],
+   [
+    "54",
+    "45130",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-dwuzlaczka-slizgowa-tx1",
+  "kod": "TX1",
+  "nazwa": "Dwuzłączka ślizgowa",
+  "seria": "tectite-pro",
+  "zdjecie": "img/pegler/t-tx1-dwuzlaczka-slizgowa-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "65141",
+    null,
+    null
+   ],
+   [
+    "22",
+    "65143",
+    null,
+    null
+   ],
+   [
+    "28",
+    "65144",
+    null,
+    null
+   ],
+   [
+    "35",
+    "45145",
+    null,
+    null
+   ],
+   [
+    "42",
+    "45146",
+    null,
+    null
+   ],
+   [
+    "54",
+    "45147",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-zlaczka-gw-tx2",
+  "kod": "TX2",
+  "nazwa": "Złączka GW",
+  "seria": "tectite-pro",
+  "zdjecie": "img/pegler/t-tx2-zlaczka-gw-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 1/2″",
+    "65206",
+    null,
+    null
+   ],
+   [
+    "22 × 3/4″",
+    "65222",
+    null,
+    null
+   ],
+   [
+    "22 × 1″",
+    "65223",
+    null,
+    null
+   ],
+   [
+    "28 × 1″",
+    "65225",
+    null,
+    null
+   ],
+   [
+    "35 × 1 1/4″",
+    "45230",
+    null,
+    null
+   ],
+   [
+    "42 × 1 1/2″",
+    "45232",
+    null,
+    null
+   ],
+   [
+    "54 × 2″",
+    "45234",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-zlaczka-gz-tx3",
+  "kod": "TX3",
+  "nazwa": "Złączka GZ",
+  "seria": "tectite-pro",
+  "zdjecie": "img/pegler/t-tx3-zlaczka-gz-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 1/2″",
+    "65267",
+    null,
+    null
+   ],
+   [
+    "22 × 3/4″",
+    "65292",
+    null,
+    null
+   ],
+   [
+    "22 × 1″",
+    "65294",
+    null,
+    null
+   ],
+   [
+    "28 × 1″",
+    "65296",
+    null,
+    null
+   ],
+   [
+    "35 × 1 1/4″",
+    "45310",
+    null,
+    null
+   ],
+   [
+    "42 × 1 1/2″",
+    "45312",
+    null,
+    null
+   ],
+   [
+    "54 × 2″",
+    "45314",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-zlaczka-gz-tx3p",
+  "kod": "TX3P",
+  "nazwa": "Złączka GZ",
+  "seria": "tectite-pro",
+  "zdjecie": "img/pegler/t-tx3p-zlaczka-gz-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 1/2″",
+    "65358",
+    null,
+    null
+   ],
+   [
+    "22 × 1/2″",
+    "65364",
+    null,
+    null
+   ],
+   [
+    "22 × 3/4″",
+    "65366",
+    null,
+    null
+   ],
+   [
+    "22 × 1″",
+    "65368",
+    null,
+    null
+   ],
+   [
+    "28 × 1″",
+    "65370",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-zlaczka-redukcyjna-nypel-tx6",
+  "kod": "TX6",
+  "nazwa": "Złączka redukcyjna nypel",
+  "seria": "tectite-pro",
+  "zdjecie": "img/pegler/t-tx6-zlaczka-redukcyjna-nypel-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "22 × 15",
+    "65426",
+    null,
+    null
+   ],
+   [
+    "28 × 15",
+    "65435",
+    null,
+    null
+   ],
+   [
+    "28 × 22",
+    "65438",
+    null,
+    null
+   ],
+   [
+    "35 × 15",
+    "45450",
+    null,
+    null
+   ],
+   [
+    "35 × 22",
+    "45452",
+    null,
+    null
+   ],
+   [
+    "35 × 28",
+    "45454",
+    null,
+    null
+   ],
+   [
+    "42 × 15",
+    "45456",
+    null,
+    null
+   ],
+   [
+    "42 × 22",
+    "45458",
+    null,
+    null
+   ],
+   [
+    "42 × 28",
+    "45460",
+    null,
+    null
+   ],
+   [
+    "42 × 35",
+    "45462",
+    null,
+    null
+   ],
+   [
+    "54 × 15",
+    "45464",
+    null,
+    null
+   ],
+   [
+    "54 × 22",
+    "45466",
+    null,
+    null
+   ],
+   [
+    "54 × 28",
+    "45468",
+    null,
+    null
+   ],
+   [
+    "54 × 35",
+    "45470",
+    null,
+    null
+   ],
+   [
+    "54 × 42",
+    "45472",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kolano-90-st-tx12",
+  "kod": "TX12",
+  "nazwa": "Kolano 90 st.",
+  "seria": "tectite-pro",
+  "zdjecie": "img/pegler/t-tx12-kolano-90-st-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "65516",
+    null,
+    null
+   ],
+   [
+    "22",
+    "65524",
+    null,
+    null
+   ],
+   [
+    "28",
+    "65526",
+    null,
+    null
+   ],
+   [
+    "35",
+    "45530",
+    null,
+    null
+   ],
+   [
+    "42",
+    "45532",
+    null,
+    null
+   ],
+   [
+    "54",
+    "45534",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kolano-90-st-nypel-tx12s",
+  "kod": "TX12S",
+  "nazwa": "Kolano 90 st. nypel",
+  "seria": "tectite-pro",
+  "zdjecie": "img/pegler/t-tx12s-kolano-90-st-nypel-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "65496",
+    null,
+    null
+   ],
+   [
+    "22",
+    "65500",
+    null,
+    null
+   ],
+   [
+    "28",
+    "65502",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kolano-90-st-gz-tx13",
+  "kod": "TX13",
+  "nazwa": "Kolano 90 st. GZ",
+  "seria": "tectite-pro",
+  "zdjecie": "img/pegler/t-tx13-kolano-90-st-gz-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 1/2″",
+    "65561",
+    null,
+    null
+   ],
+   [
+    "22 × 3/4″",
+    "65576",
+    null,
+    null
+   ],
+   [
+    "8 × 1″",
+    "65578",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kolano-90-st-gw-tx14",
+  "kod": "TX14",
+  "nazwa": "Kolano 90 st. GW",
+  "seria": "tectite-pro",
+  "zdjecie": "img/pegler/t-tx14-kolano-90-st-gw-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 1/2″",
+    "65606",
+    null,
+    null
+   ],
+   [
+    "22 × 3/4″",
+    "65620",
+    null,
+    null
+   ],
+   [
+    "28 × 1″",
+    "65622",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kolano-90-st-gw-z-lapami-tx15",
+  "kod": "TX15",
+  "nazwa": "Kolano 90 st. GW z łapami",
+  "seria": "tectite-pro",
+  "zdjecie": "img/pegler/t-tx15-kolano-90-st-gw-z-lapami-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 1/2″",
+    "65646",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kolano-45-st-tx21",
+  "kod": "TX21",
+  "nazwa": "Kolano 45 st.",
+  "seria": "tectite-pro",
+  "zdjecie": "img/pegler/t-tx21-kolano-45-st-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "65535",
+    null,
+    null
+   ],
+   [
+    "22",
+    "65538",
+    null,
+    null
+   ],
+   [
+    "28",
+    "65539",
+    null,
+    null
+   ],
+   [
+    "35",
+    "45540",
+    null,
+    null
+   ],
+   [
+    "42",
+    "45541",
+    null,
+    null
+   ],
+   [
+    "54",
+    "45558",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kolano-45-st-nypel-tx21s",
+  "kod": "TX21S",
+  "nazwa": "Kolano 45 st. nypel",
+  "seria": "tectite-pro",
+  "zdjecie": "img/pegler/t-tx21s-kolano-45-st-nypel-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "65542",
+    null,
+    null
+   ],
+   [
+    "22",
+    "65545",
+    null,
+    null
+   ],
+   [
+    "28",
+    "65546",
+    null,
+    null
+   ],
+   [
+    "35",
+    "45547",
+    null,
+    null
+   ],
+   [
+    "42",
+    "45548",
+    null,
+    null
+   ],
+   [
+    "54",
+    "45549",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-trojnik-rownoprzelotowy-tx24",
+  "kod": "TX24",
+  "nazwa": "Trójnik równoprzelotowy",
+  "seria": "tectite-pro",
+  "zdjecie": "img/pegler/t-tx24-trojnik-rownoprzelotowy-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "65666",
+    null,
+    null
+   ],
+   [
+    "22",
+    "65676",
+    null,
+    null
+   ],
+   [
+    "28",
+    "65678",
+    null,
+    null
+   ],
+   [
+    "35",
+    "45680",
+    null,
+    null
+   ],
+   [
+    "42",
+    "45682",
+    null,
+    null
+   ],
+   [
+    "54",
+    "45684",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-trojnik-redukcyjny-tx25",
+  "kod": "TX25",
+  "nazwa": "Trójnik redukcyjny",
+  "seria": "tectite-pro",
+  "zdjecie": "img/pegler/t-tx25-trojnik-redukcyjny-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "22 × 15 × 22",
+    "65737",
+    null,
+    null
+   ],
+   [
+    "28 × 15 × 28",
+    "65744",
+    null,
+    null
+   ],
+   [
+    "28 × 22 × 28",
+    "65746",
+    null,
+    null
+   ],
+   [
+    "35 × 15 × 35",
+    "45750",
+    null,
+    null
+   ],
+   [
+    "35 × 22 × 35",
+    "45752",
+    null,
+    null
+   ],
+   [
+    "35 × 28 × 35",
+    "45753",
+    null,
+    null
+   ],
+   [
+    "42 × 15 × 42",
+    "45754",
+    null,
+    null
+   ],
+   [
+    "42 × 22 × 42",
+    "45756",
+    null,
+    null
+   ],
+   [
+    "42 × 28 × 42",
+    "45758",
+    null,
+    null
+   ],
+   [
+    "54 × 15 × 54",
+    "45760",
+    null,
+    null
+   ],
+   [
+    "54 × 22 × 54",
+    "45762",
+    null,
+    null
+   ],
+   [
+    "54 × 28 × 54",
+    "45764",
+    null,
+    null
+   ],
+   [
+    "54 × 35 × 54",
+    "45765",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-trojnik-redukcyjny-tx26",
+  "kod": "TX26",
+  "nazwa": "Trójnik redukcyjny",
+  "seria": "tectite-pro",
+  "zdjecie": "img/pegler/t-tx26-trojnik-redukcyjny-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "22 × 22 × 15",
+    "65786",
+    null,
+    null
+   ],
+   [
+    "28 × 28 × 15",
+    "65790",
+    null,
+    null
+   ],
+   [
+    "28 × 28 × 22",
+    "65793",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-trojnik-redukcyjny-tx27",
+  "kod": "TX27",
+  "nazwa": "Trójnik redukcyjny",
+  "seria": "tectite-pro",
+  "zdjecie": "img/pegler/t-tx27-trojnik-redukcyjny-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "22 × 15 × 15",
+    "65820",
+    null,
+    null
+   ],
+   [
+    "28 × 22 × 22",
+    "65822",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-trojnik-redukcyjny-gw-tx30",
+  "kod": "TX30",
+  "nazwa": "Trójnik redukcyjny GW",
+  "seria": "tectite-pro",
+  "zdjecie": "img/pegler/t-tx30-trojnik-redukcyjny-gw-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 15 × 1/2″",
+    "65840",
+    null,
+    null
+   ],
+   [
+    "22 × 22 × 1/2″",
+    "65845",
+    null,
+    null
+   ],
+   [
+    "35 × 35 × 1/2″",
+    "45848",
+    null,
+    null
+   ],
+   [
+    "42 × 42 × 1/2″",
+    "45850",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kapa-tx61",
+  "kod": "TX61",
+  "nazwa": "Kapa",
+  "seria": "tectite-pro",
+  "zdjecie": "img/pegler/t-tx61-kapa-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "65866",
+    null,
+    null
+   ],
+   [
+    "22",
+    "65874",
+    null,
+    null
+   ],
+   [
+    "28",
+    "65876",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kapa-z-odpowietrznikiem-tx61rv",
+  "kod": "TX61RV",
+  "nazwa": "Kapa z odpowietrznikiem",
+  "seria": "tectite-pro",
+  "zdjecie": "img/pegler/t-tx61rv-kapa-z-odpowietrznikiem-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "65892",
+    null,
+    null
+   ],
+   [
+    "22",
+    "65894",
+    null,
+    null
+   ],
+   [
+    "28",
+    "65895",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-zlaczka-gw-tx62",
+  "kod": "TX62",
+  "nazwa": "Złączka GW",
+  "seria": "tectite-pro",
+  "zdjecie": "img/pegler/t-tx62-zlaczka-gw-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 1/2″",
+    "65902",
+    null,
+    null
+   ],
+   [
+    "15 × 3/4″",
+    "65171",
+    null,
+    null
+   ],
+   [
+    "22 × 3/4″",
+    "65903",
+    null,
+    null
+   ],
+   [
+    "15 × 3/4″",
+    "65759",
+    null,
+    null
+   ],
+   [
+    "22 × 3/4″",
+    "65760",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kolano-gw-ruchome-tx63",
+  "kod": "TX63",
+  "nazwa": "Kolano GW ruchome",
+  "seria": "tectite-pro",
+  "zdjecie": "img/pegler/t-tx63-kolano-gw-ruchome-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 1/2″",
+    "65922",
+    null,
+    null
+   ],
+   [
+    "22 × 3/4″",
+    "65924",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-dwuzlaczka-ts1",
+  "kod": "TS1",
+  "nazwa": "Dwuzłączka",
+  "seria": "tectite-316",
+  "zdjecie": "img/pegler/t-ts1-dwuzlaczka-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "25114",
+    null,
+    null
+   ],
+   [
+    "18",
+    "25118",
+    null,
+    null
+   ],
+   [
+    "22",
+    "25121",
+    null,
+    null
+   ],
+   [
+    "28",
+    "25123",
+    null,
+    null
+   ],
+   [
+    "35",
+    "25126",
+    null,
+    null
+   ],
+   [
+    "42",
+    "25128",
+    null,
+    null
+   ],
+   [
+    "54",
+    "25130",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-zlaczka-slizgowa-ts1s",
+  "kod": "TS1S",
+  "nazwa": "Złączka ślizgowa",
+  "seria": "tectite-316",
+  "zdjecie": "img/pegler/t-ts1s-zlaczka-slizgowa-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "25141",
+    null,
+    null
+   ],
+   [
+    "18",
+    "25142",
+    null,
+    null
+   ],
+   [
+    "22",
+    "25143",
+    null,
+    null
+   ],
+   [
+    "28",
+    "25144",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-zlaczka-gw-ts2",
+  "kod": "TS2",
+  "nazwa": "Złączka GW",
+  "seria": "tectite-316",
+  "zdjecie": "img/pegler/t-ts2-zlaczka-gw-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 1/2″",
+    "25206",
+    null,
+    null
+   ],
+   [
+    "18 × 1/2″",
+    "25210",
+    null,
+    null
+   ],
+   [
+    "18 × 3/4″",
+    "25212",
+    null,
+    null
+   ],
+   [
+    "22 × 1/2″",
+    "25220",
+    null,
+    null
+   ],
+   [
+    "22 × 3/4″",
+    "25222",
+    null,
+    null
+   ],
+   [
+    "22 × 1″",
+    "25223",
+    null,
+    null
+   ],
+   [
+    "28 × 3/4″",
+    "25224",
+    null,
+    null
+   ],
+   [
+    "28 × 1″",
+    "25225",
+    null,
+    null
+   ],
+   [
+    "35 × 1 1/4″",
+    "25230",
+    null,
+    null
+   ],
+   [
+    "42 × 1 1/2″",
+    "25232",
+    null,
+    null
+   ],
+   [
+    "54 × 2″",
+    "25234",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-zlaczka-gw-ts3",
+  "kod": "TS3",
+  "nazwa": "Złączka GW",
+  "seria": "tectite-316",
+  "zdjecie": "img/pegler/t-ts3-zlaczka-gw-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 1/2″",
+    "25267",
+    null,
+    null
+   ],
+   [
+    "18 × 1/2″",
+    "25286",
+    null,
+    null
+   ],
+   [
+    "18 × 3/4″",
+    "25288",
+    null,
+    null
+   ],
+   [
+    "22 × 1/2″",
+    "25290",
+    null,
+    null
+   ],
+   [
+    "22 × 3/4″",
+    "25292",
+    null,
+    null
+   ],
+   [
+    "28 × 3/4″",
+    "25295",
+    null,
+    null
+   ],
+   [
+    "28 × 1″",
+    "25296",
+    null,
+    null
+   ],
+   [
+    "35 × 1 1/4″",
+    "25310",
+    null,
+    null
+   ],
+   [
+    "42 × 1 1/2″",
+    "25312",
+    null,
+    null
+   ],
+   [
+    "54 × 2″",
+    "25314",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-redukcja-nypel-ts6",
+  "kod": "TS6",
+  "nazwa": "Redukcja nypel",
+  "seria": "tectite-316",
+  "zdjecie": "img/pegler/t-ts6-redukcja-nypel-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "18 × 15",
+    "25424",
+    null,
+    null
+   ],
+   [
+    "22 × 15",
+    "25426",
+    null,
+    null
+   ],
+   [
+    "22 × 18",
+    "25430",
+    null,
+    null
+   ],
+   [
+    "28 × 15",
+    "25435",
+    null,
+    null
+   ],
+   [
+    "28 × 18",
+    "25437",
+    null,
+    null
+   ],
+   [
+    "28 × 22",
+    "25438",
+    null,
+    null
+   ],
+   [
+    "35 × 22",
+    "25452",
+    null,
+    null
+   ],
+   [
+    "35 × 28",
+    "25454",
+    null,
+    null
+   ],
+   [
+    "42 × 22",
+    "25458",
+    null,
+    null
+   ],
+   [
+    "42 × 28",
+    "25460",
+    null,
+    null
+   ],
+   [
+    "42 × 35",
+    "25462",
+    null,
+    null
+   ],
+   [
+    "54 × 35",
+    "25470",
+    null,
+    null
+   ],
+   [
+    "54 × 42",
+    "25472",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kolano-90-st-ts12",
+  "kod": "TS12",
+  "nazwa": "Kolano 90 st.",
+  "seria": "tectite-316",
+  "zdjecie": "img/pegler/t-ts12-kolano-90-st-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "25516",
+    null,
+    null
+   ],
+   [
+    "18",
+    "25520",
+    null,
+    null
+   ],
+   [
+    "22",
+    "25524",
+    null,
+    null
+   ],
+   [
+    "28",
+    "25528",
+    null,
+    null
+   ],
+   [
+    "35",
+    "25530",
+    null,
+    null
+   ],
+   [
+    "42",
+    "25532",
+    null,
+    null
+   ],
+   [
+    "54",
+    "25534",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kolano-90-st-nypel-ts12s",
+  "kod": "TS12S",
+  "nazwa": "Kolano 90 st. nypel",
+  "seria": "tectite-316",
+  "zdjecie": "img/pegler/t-ts12s-kolano-90-st-nypel-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "25496",
+    null,
+    null
+   ],
+   [
+    "18",
+    "25498",
+    null,
+    null
+   ],
+   [
+    "22",
+    "25500",
+    null,
+    null
+   ],
+   [
+    "28",
+    "25502",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kolanko-90-st-gz-ts13",
+  "kod": "TS13",
+  "nazwa": "Kolanko 90 st. GZ",
+  "seria": "tectite-316",
+  "zdjecie": "img/pegler/t-ts13-kolanko-90-st-gz-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 1/2″",
+    "25561",
+    null,
+    null
+   ],
+   [
+    "18 × 1/2″",
+    "25569",
+    null,
+    null
+   ],
+   [
+    "22 × 3/4″",
+    "25576",
+    null,
+    null
+   ],
+   [
+    "28 × 1″",
+    "25578",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kolanko-90-st-gw-ts14",
+  "kod": "TS14",
+  "nazwa": "Kolanko 90 st. GW",
+  "seria": "tectite-316",
+  "zdjecie": "img/pegler/t-ts14-kolanko-90-st-gw-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 1/2″",
+    "25606",
+    null,
+    null
+   ],
+   [
+    "18 × 1/2″",
+    "25614",
+    null,
+    null
+   ],
+   [
+    "18 × 3/4″",
+    "25615",
+    null,
+    null
+   ],
+   [
+    "22 × 3/4″",
+    "25620",
+    null,
+    null
+   ],
+   [
+    "28 × 1″",
+    "25622",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kolano-90-st-gz-z-lapami-ts15",
+  "kod": "TS15",
+  "nazwa": "Kolano 90 st. GZ z łapami",
+  "seria": "tectite-316",
+  "zdjecie": "img/pegler/t-ts15-kolano-90-st-gz-z-lapami-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 1/2″",
+    "25646",
+    null,
+    null
+   ],
+   [
+    "18 × 1/2″",
+    "25650",
+    null,
+    null
+   ],
+   [
+    "22 × 3/4″",
+    "25654",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kolano-45-st-ts21",
+  "kod": "TS21",
+  "nazwa": "Kolano 45 st.",
+  "seria": "tectite-316",
+  "zdjecie": "img/pegler/t-ts21-kolano-45-st-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "26043",
+    null,
+    null
+   ],
+   [
+    "18",
+    "26045",
+    null,
+    null
+   ],
+   [
+    "22",
+    "26047",
+    null,
+    null
+   ],
+   [
+    "28",
+    "26048",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kolano-45-st-nypel-ts21s",
+  "kod": "TS21S",
+  "nazwa": "Kolano 45 st. nypel",
+  "seria": "tectite-316",
+  "zdjecie": "img/pegler/t-ts21s-kolano-45-st-nypel-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "26063",
+    null,
+    null
+   ],
+   [
+    "18",
+    "26065",
+    null,
+    null
+   ],
+   [
+    "22",
+    "26067",
+    null,
+    null
+   ],
+   [
+    "28",
+    "26068",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-trojnik-rownoprzelotowy-ts24",
+  "kod": "TS24",
+  "nazwa": "Trójnik równoprzelotowy",
+  "seria": "tectite-316",
+  "zdjecie": "img/pegler/t-ts24-trojnik-rownoprzelotowy-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "25666",
+    null,
+    null
+   ],
+   [
+    "18",
+    "25670",
+    null,
+    null
+   ],
+   [
+    "22",
+    "25676",
+    null,
+    null
+   ],
+   [
+    "28",
+    "25678",
+    null,
+    null
+   ],
+   [
+    "35",
+    "25680",
+    null,
+    null
+   ],
+   [
+    "42",
+    "25682",
+    null,
+    null
+   ],
+   [
+    "54",
+    "25684",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-trojnik-redukcyjny-ts25",
+  "kod": "TS25",
+  "nazwa": "Trójnik redukcyjny",
+  "seria": "tectite-316",
+  "zdjecie": "img/pegler/t-ts25-trojnik-redukcyjny-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "18 × 15 × 18",
+    "25725",
+    null,
+    null
+   ],
+   [
+    "22 × 15 × 22",
+    "25737",
+    null,
+    null
+   ],
+   [
+    "22 × 18 × 22",
+    "25742",
+    null,
+    null
+   ],
+   [
+    "28 × 15 × 28",
+    "25744",
+    null,
+    null
+   ],
+   [
+    "28 × 18 × 28",
+    "25745",
+    null,
+    null
+   ],
+   [
+    "28 × 22 × 28",
+    "25746",
+    null,
+    null
+   ],
+   [
+    "35 × 15 × 35",
+    "25750",
+    null,
+    null
+   ],
+   [
+    "35 × 22 × 35",
+    "25752",
+    null,
+    null
+   ],
+   [
+    "35 × 28 × 35",
+    "25753",
+    null,
+    null
+   ],
+   [
+    "42 × 22 × 42",
+    "25756",
+    null,
+    null
+   ],
+   [
+    "42 × 28 × 42",
+    "25758",
+    null,
+    null
+   ],
+   [
+    "54 × 22 × 54",
+    "25762",
+    null,
+    null
+   ],
+   [
+    "54 × 28 × 54",
+    "25764",
+    null,
+    null
+   ],
+   [
+    "54 × 35 × 54",
+    "25765",
+    null,
+    null
+   ],
+   [
+    "54 × 42 × 54",
+    "25766",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-trojnik-redukcyjny-gw-ts30",
+  "kod": "TS30",
+  "nazwa": "Trójnik redukcyjny GW",
+  "seria": "tectite-316",
+  "zdjecie": "img/pegler/t-ts30-trojnik-redukcyjny-gw-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 15 × 1/2″",
+    "25840",
+    null,
+    null
+   ],
+   [
+    "18 × 18 × 1/2″",
+    "25843",
+    null,
+    null
+   ],
+   [
+    "22 × 22 × 1/2″",
+    "25845",
+    null,
+    null
+   ],
+   [
+    "22 × 22 × 3/4″",
+    "25846",
+    null,
+    null
+   ],
+   [
+    "28 × 28 × 1/2″",
+    "25847",
+    null,
+    null
+   ],
+   [
+    "35 × 35 × 1/2″",
+    "25848",
+    null,
+    null
+   ],
+   [
+    "42 × 42 × 1/2″",
+    "25850",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-kapa-ts61",
+  "kod": "TS61",
+  "nazwa": "Kapa",
+  "seria": "tectite-316",
+  "zdjecie": "img/pegler/t-ts61-kapa-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "25866",
+    null,
+    null
+   ],
+   [
+    "18",
+    "25870",
+    null,
+    null
+   ],
+   [
+    "22",
+    "25874",
+    null,
+    null
+   ],
+   [
+    "28",
+    "25876",
+    null,
+    null
+   ],
+   [
+    "35",
+    "25878",
+    null,
+    null
+   ],
+   [
+    "42",
+    "25880",
+    null,
+    null
+   ],
+   [
+    "54",
+    "25882",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-zlaczka-gw-ruchoma-ts62",
+  "kod": "TS62",
+  "nazwa": "Złączka GW ruchoma",
+  "seria": "tectite-316",
+  "zdjecie": "img/pegler/t-ts62-zlaczka-gw-ruchoma-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 1/2″",
+    "25902",
+    null,
+    null
+   ],
+   [
+    "22 × 3/4″",
+    "25903",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-zawor-kulowy-na-wcisk-pt550",
+  "kod": "PT550",
+  "nazwa": "Zawór kulowy „na wcisk”",
+  "seria": "tectite-zawory",
+  "zdjecie": "img/pegler/t-pt550-zawor-kulowy-na-wcisk-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "245240",
+    null,
+    null
+   ],
+   [
+    "18",
+    "245241",
+    null,
+    null
+   ],
+   [
+    "22",
+    "245242",
+    null,
+    null
+   ],
+   [
+    "28",
+    "245243",
+    null,
+    null
+   ],
+   [
+    "35",
+    "245244",
+    null,
+    null
+   ],
+   [
+    "42",
+    "245245",
+    null,
+    null
+   ],
+   [
+    "54",
+    "245246",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-zawor-na-wcisk-tx300",
+  "kod": "TX300",
+  "nazwa": "Zawór „na wcisk”",
+  "seria": "tectite-zawory",
+  "zdjecie": "img/pegler/t-tx300-zawor-na-wcisk-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "66001",
+    null,
+    null
+   ],
+   [
+    "22",
+    "66004",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-filtr-skosny-na-wcisk-pt913",
+  "kod": "PT913",
+  "nazwa": "Filtr skośny „na wcisk”",
+  "seria": "tectite-zawory",
+  "zdjecie": "img/pegler/t-pt913-filtr-skosny-na-wcisk-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "15480",
+    null,
+    null
+   ],
+   [
+    "18",
+    "15481",
+    null,
+    null
+   ],
+   [
+    "22",
+    "15482",
+    null,
+    null
+   ],
+   [
+    "28",
+    "15483",
+    null,
+    null
+   ],
+   [
+    "35",
+    "15484",
+    null,
+    null
+   ],
+   [
+    "42",
+    "15485",
+    null,
+    null
+   ],
+   [
+    "54",
+    "15486",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-zawor-odcinajacy-na-wcisk-tx480",
+  "kod": "TX480",
+  "nazwa": "Zawór odcinający „na wcisk”",
+  "seria": "tectite-zawory",
+  "zdjecie": "img/pegler/t-tx480-zawor-odcinajacy-na-wcis-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "65950",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-zawor-mieszajacy-na-wcisk-tx405",
+  "kod": "TX405",
+  "nazwa": "Zawór mieszający „na wcisk”",
+  "seria": "tectite-zawory",
+  "zdjecie": "img/pegler/t-tx405-zawor-mieszajacy-na-wcis-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "5A1150",
+    null,
+    null
+   ],
+   [
+    "22",
+    "5A1151",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-tulejka-do-qualpex-t66",
+  "kod": "T66",
+  "nazwa": "Tulejka do QUALPEX",
+  "seria": "tectite-akcesoria",
+  "zdjecie": "img/pegler/t-t66-tulejka-do-qualpex-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "10",
+    "60100",
+    null,
+    null
+   ],
+   [
+    "15",
+    "60103",
+    null,
+    null
+   ],
+   [
+    "22",
+    "60105",
+    null,
+    null
+   ],
+   [
+    "28",
+    "60106",
+    null,
+    null
+   ],
+   [
+    "15",
+    "44917",
+    null,
+    null
+   ],
+   [
+    "22",
+    "44918",
+    null,
+    null
+   ],
+   [
+    "10",
+    "46100",
+    null,
+    null
+   ],
+   [
+    "12",
+    "46101",
+    null,
+    null
+   ],
+   [
+    "15",
+    "46103",
+    null,
+    null
+   ],
+   [
+    "16",
+    "46104",
+    null,
+    null
+   ],
+   [
+    "18",
+    "46105",
+    null,
+    null
+   ],
+   [
+    "22",
+    "46107",
+    null,
+    null
+   ],
+   [
+    "28",
+    "46108",
+    null,
+    null
+   ],
+   [
+    "10",
+    "45970",
+    null,
+    null
+   ],
+   [
+    "12",
+    "45971",
+    null,
+    null
+   ],
+   [
+    "15",
+    "45973",
+    null,
+    null
+   ],
+   [
+    "16",
+    "45974",
+    null,
+    null
+   ],
+   [
+    "18",
+    "45975",
+    null,
+    null
+   ],
+   [
+    "22",
+    "45977",
+    null,
+    null
+   ],
+   [
+    "28",
+    "45978",
+    null,
+    null
+   ],
+   [
+    "34–35",
+    "46145",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-zestaw-do-kalibracji-pex-t150",
+  "kod": "T150",
+  "nazwa": "Zestaw do kalibracji PEX",
+  "seria": "tectite-akcesoria",
+  "zdjecie": "img/pegler/t-t150-zestaw-do-kalibracji-pex-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15–22",
+    "44904",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-koncowka-kalibr-pex-t151",
+  "kod": "T151",
+  "nazwa": "Końcówka kalibr. PEX",
+  "seria": "tectite-akcesoria",
+  "zdjecie": "img/pegler/t-t151-koncowka-kalibr-pex-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "44902",
+    null,
+    null
+   ],
+   [
+    "22",
+    "44903",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-uchwyt-konc-kalibratora-pex-t152",
+  "kod": "T152",
+  "nazwa": "Uchwyt końc. Kalibratora PEX",
+  "seria": "tectite-akcesoria",
+  "zdjecie": "img/pegler/t-t152-uchwyt-konc-kalibratora--l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "–",
+    "44901",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-gratownik-cu-s120",
+  "kod": "S120",
+  "nazwa": "Gratownik CU",
+  "seria": "tectite-akcesoria",
+  "zdjecie": "img/pegler/t-s120-gratownik-cu-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "–",
+    "39168",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-gratownik-i-miernik-cr-t110",
+  "kod": "T110",
+  "nazwa": "Gratownik i miernik(Cr)",
+  "seria": "tectite-akcesoria",
+  "zdjecie": "img/pegler/t-t110-gratownik-i-miernik-cr-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "10–28",
+    "46132",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-miernik-tc117",
+  "kod": "TC117",
+  "nazwa": "Miernik",
+  "seria": "tectite-akcesoria",
+  "zdjecie": "img/pegler/t-tc117-miernik-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15–54",
+    "76121",
+    null,
+    null
+   ]
+  ]
+ },
+ {
+  "id": "tectite-nozyce-t141",
+  "kod": "T141",
+  "nazwa": "Nożyce",
+  "seria": "tectite-akcesoria",
+  "zdjecie": "img/pegler/t-t141-nozyce-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "–",
+    "44908",
+    null,
+    null
+   ]
+  ]
+ }
+]
