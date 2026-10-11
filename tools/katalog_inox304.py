@@ -1,7 +1,7 @@
 """Składa katalog PDF „Złączki zaprasowane INOX 304” w identyfikacji Armatex.
 
 Użycie:
-    pip install playwright==1.56.0 pymupdf
+    pip install playwright==1.56.0 pymupdf fonttools brotli
     python3 tools/katalog_inox304.py               # → pliki/katalog-besco-inox-304.pdf
     python3 tools/katalog_inox304.py --out x.pdf   # podgląd do innego pliku
 
@@ -9,6 +9,9 @@ Dane:
     tools/katalog-inox-304/dane.json   grupy i wiersze (wymiar, nr artykułu, woreczek, karton) z katalogu Besco INOX 304
     tools/katalog-inox-304/pzh.webp    znak „Produkt z atestem” NIZP PZH-PIB
     img/besco/<zdjecie>-l.webp         zdjęcia grup (te same co na stronie)
+
+Outfit jest fontem zmiennym; Chromium osadza go w PDF jako Type 3, więc przed drukiem robimy z niego
+statyczne odmiany 400–700 (fontTools) i podajemy je jako osobne kroje.
 
 Strony produktów mają stały układ (dwie kolumny, stałe wysokości wierszy), więc podział na strony
 i spis treści liczymy tutaj. Po złożeniu sprawdzamy w przeglądarce, czy żadna kolumna się nie przelewa.
@@ -21,6 +24,8 @@ import sys
 import tempfile
 
 import pymupdf
+from fontTools.ttLib import TTFont
+from fontTools.varLib.instancer import instantiateVariableFont
 from playwright.sync_api import sync_playwright
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -54,6 +59,26 @@ e = html.escape
 
 def card_h(rows, cont=False):
     return (CONT_H if cont else HEAD_H) + TH_H + ROW_H * rows + PAD_H + 1.5  # 1.5 = ramka
+
+
+def stripes(w, h, bands, cls, rx=0):
+    """Pasy jak w logo Armatex: równoległoboki z poziomymi końcami, nachylone pod 50°, przycięte do pola w × h (pt).
+    bands: (x lewego dolnego rogu, y góry, y dołu, szerokość, kolor)."""
+    t = 1.19  # tg 50°
+    polys = ''
+    for x0, y0, y1, bw, col in bands:
+        dx = (y1 - y0) / t
+        pts = f'{x0},{y1} {x0 + bw},{y1} {x0 + bw + dx},{y0} {x0 + dx},{y0}'
+        polys += f'<polygon points="{pts}" fill="{col}"/>'
+    clip = ''
+    if rx:  # zaokrąglony prawy dolny róg (panel z zaokrągleniem)
+        clip = (f'<clipPath id="c{cls}"><rect x="-20" y="-20" width="{w + 20}" height="{h + 20}" rx="{rx}"/></clipPath>')
+        polys = f'<g clip-path="url(#c{cls})">{polys}</g>'
+    return (f'<svg class="stripes {cls}" width="{w}pt" height="{h}pt" viewBox="0 0 {w} {h}" '
+            f'xmlns="http://www.w3.org/2000/svg">{clip}{polys}</svg>')
+
+
+RED, RED2 = '#dc291e', '#b91f15'
 
 
 def plural(n):
@@ -129,7 +154,8 @@ FRAC = {'1/2': '½', '1/4': '¼', '3/4': '¾'}
 
 
 def size_txt(s):
-    """Wymiar do druku: „1 1/4″” → „1¼″”, „1/2″” → „½″” (numery artykułów zostają bez zmian)."""
+    """Wymiar do druku: „1 1/4″” → „1¼"”, „1/2″” → „½"” (Outfit nie ma znaku ″; numery artykułów bez zmian)."""
+    s = s.replace('″', '"')
     s = re.sub(r'(\d) (1/2|1/4|3/4)', lambda m: m.group(1) + FRAC[m.group(2)], s)
     return re.sub(r'(?<![\d/])(1/2|1/4|3/4)', lambda m: FRAC[m.group(1)], s)
 
@@ -163,14 +189,13 @@ def sec_head(sec):
             f'<h2>{e(sec[1])}</h2></div></div>')
 
 
-CTA = f'''<div class="cta"><div class="stripes"><i></i><i></i></div>
+CTA = f'''<div class="cta">{stripes(150, 190, [(40, 40, 210, 26, RED), (95, 10, 210, 26, RED2)], 's-cta', rx=7)}
   <span class="eyebrow">Zamówienia i wyceny</span>
   <h3>Wyślij listę indeksów – przygotujemy wycenę</h3>
   <p>Podaj numery artykułów i ilości (w opakowaniach lub kartonach). Odpowiemy z ceną i terminem.</p>
   <dl><div><dt>Biuro</dt><dd><b>513 191 502</b>biuro@armatex.pl</dd></div>
       <div><dt>Sprzedaż</dt><dd><b>798 807 106</b>piotr@armatex.pl</dd></div></dl>
   <div class="ws"><b>armatex.pl/wyszukiwarka</b><span>1 936 indeksów Besco z listą do wyceny</span></div>
-  <img class="lg" src="file://{ROOT}/assets/img/logo-light.png" alt="Armatex">
 </div>'''
 
 
@@ -180,7 +205,7 @@ def block(x):
     if 'cta' in x:
         return CTA
     if 'notes' in x:
-        return '<div class="notes"><span class="eyebrow">Notatki</span><div class="lines"></div></div>'
+        return '<div class="notes"><span class="eyebrow">Notatki</span><div class="lines">' + '<i></i>' * 40 + '</div></div>'
     return card(x)
 
 
@@ -192,7 +217,24 @@ def frame(no, cols):
             f'<footer class="pf"><span><b>armatex.pl</b> · biuro@armatex.pl · 513 191 502</span><span class="pn">{no:02d}</span></footer></section>')
 
 
-def build_html(groups, pages, first_page):
+OUTFIT = {'latin': 'U+0000-00FF, U+2013-2014, U+2018-201F, U+2026, U+2032-2033, U+2212', 'latin-ext': 'U+0100-024F, U+1E00-1EFF'}
+
+
+def outfit_faces(tmp):
+    """Statyczne odmiany Outfit (zmienny font Chromium zamienia w PDF na Type 3)."""
+    css = ''
+    for sub, rng in OUTFIT.items():
+        for w in (400, 500, 600, 700):
+            path = os.path.join(tmp, f'outfit-{sub}-{w}.ttf')
+            f = TTFont(os.path.join(ROOT, 'assets', 'fonts', f'outfit-{sub}-wght-normal.woff2'))
+            f.flavor = None
+            instantiateVariableFont(f, {'wght': w}, inplace=True)
+            f.save(path)
+            css += f'@font-face {{ font-family: "Outfit"; src: url("file://{path}") format("truetype"); font-weight: {w}; unicode-range: {rng}; }}\n'
+    return css
+
+
+def build_html(groups, pages, first_page, faces):
     total = sum(len(g['wiersze']) for g in groups.values())
     # spis treści
     where, sec_page = {}, {}
@@ -218,7 +260,7 @@ def build_html(groups, pages, first_page):
 
     cover = f'''<section class="page cover">
   <div class="top">
-    <div class="stripes"><i></i><i></i></div>
+    {stripes(595.28, 478, [(330, -10, 280, 70, RED), (430, 60, 488, 70, RED2)], 's-cover')}
     <img class="logo" src="{logo_l}" alt="Armatex">
     <span class="tag">Katalog produktów · 2026</span>
     <div class="title">
@@ -269,7 +311,7 @@ def build_html(groups, pages, first_page):
         </dl>
         <h4 class="h4">Jak czytać tabele</h4>
         <dl class="legend">
-          <div><dt>Wymiar</dt><dd>średnica rury w mm; gwint w calach (″)</dd></div>
+          <div><dt>Wymiar</dt><dd>średnica rury w mm; gwint w calach (")</dd></div>
           <div><dt>Opak.</dt><dd>liczba sztuk w woreczku</dd></div>
           <div><dt>Karton</dt><dd>liczba sztuk w kartonie</dd></div>
         </dl>
@@ -281,7 +323,7 @@ def build_html(groups, pages, first_page):
 </section>'''
 
     back = f'''<section class="page back">
-  <div class="stripes"><i></i><i></i></div>
+  {stripes(595.28, 841.89, [(485, 600, 860, 70, RED), (400, 600, 860, 70, RED2)], 's-back')}
   <img class="logo" src="{logo_l}" alt="Armatex">
   <div class="cta">
     <span class="eyebrow">Zamówienia i wyceny</span>
@@ -300,7 +342,7 @@ def build_html(groups, pages, first_page):
   </footer>
 </section>'''
 
-    css = open(os.path.join(DIR, 'katalog.css'), encoding='utf-8').read().replace('{ROOT}', ROOT)
+    css = faces + open(os.path.join(DIR, 'katalog.css'), encoding='utf-8').read().replace('{ROOT}', ROOT)
     return (f'<!doctype html><html lang="pl"><head><meta charset="utf-8"><title>{e(TITLE)}</title>'
             f'<style>{css}</style></head><body>{cover}{intro}{prod}{back}</body></html>')
 
@@ -311,8 +353,8 @@ def main():
     groups = {g['kod']: g for g in data}
     assert sorted(groups) == sorted(c for _, cs in SECTIONS for c in cs)
     pages = paginate(groups)
-    doc_html = build_html(groups, pages, first_page=3)
     with tempfile.TemporaryDirectory() as tmp:
+        doc_html = build_html(groups, pages, 3, outfit_faces(tmp))
         src = os.path.join(tmp, 'katalog.html')
         open(src, 'w', encoding='utf-8').write(doc_html)
         pdf = os.path.join(tmp, 'k.pdf')
@@ -340,6 +382,7 @@ def main():
                         'keywords': 'INOX 304, złączki zaprasowane, press, stal nierdzewna, Besco, Armatex',
                         'creator': 'Armatex', 'producer': 'Armatex'})
         d.xref_set_key(d.pdf_catalog(), 'Lang', '(pl-PL)')
+        d.rewrite_images(dpi_threshold=330, dpi_target=300, quality=82)   # zdjęcia jako JPEG (bez tego ~6 MB)
         d.save(out, garbage=4, deflate=True)
         print(f'{out}: {d.page_count} stron, {len(groups)} grup, {sum(len(g["wiersze"]) for g in data)} indeksów')
 

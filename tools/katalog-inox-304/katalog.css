@@ -1,6 +1,4 @@
-/* Katalog INOX 304 · identyfikacja Armatex (kolory i fonty jak w c.css) */
-@font-face { font-family: "Outfit"; src: url("file://{ROOT}/assets/fonts/outfit-latin-wght-normal.woff2") format("woff2-variations"); font-weight: 100 900; unicode-range: U+0000-00FF, U+2013-2014, U+2018-201F, U+2026, U+2032-2033, U+2212; }
-@font-face { font-family: "Outfit"; src: url("file://{ROOT}/assets/fonts/outfit-latin-ext-wght-normal.woff2") format("woff2-variations"); font-weight: 100 900; unicode-range: U+0100-024F, U+1E00-1EFF; }
+/* Katalog INOX 304 · identyfikacja Armatex (kolory i fonty jak w c.css; kroje Outfit dopisuje tools/katalog_inox304.py) */
 @font-face { font-family: "Plex Mono"; src: url("file://{ROOT}/assets/fonts/ibm-plex-mono-latin-500-normal.woff2") format("woff2"); font-weight: 500; unicode-range: U+0000-00FF, U+2013-2014, U+2026, U+2032-2033, U+2212; }
 @font-face { font-family: "Plex Mono"; src: url("file://{ROOT}/assets/fonts/ibm-plex-mono-latin-ext-500-normal.woff2") format("woff2"); font-weight: 500; unicode-range: U+0100-024F, U+1E00-1EFF; }
 
@@ -64,11 +62,7 @@ tbody tr:nth-child(even) { background: var(--zebra); }
 /* koniec części produktowej: wycena i notatki */
 .cta { flex: 1 0 330pt; position: relative; overflow: hidden; background: var(--navy); color: #fff; border-radius: 7pt; padding: 22pt 20pt; display: flex; flex-direction: column; }
 .cta > :not(.stripes) { position: relative; z-index: 1; }
-.cta .stripes i { width: 42pt; height: 330pt; }
-.cta .stripes i:nth-child(1) { right: 40pt; bottom: -210pt; }
-.cta .stripes i:nth-child(2) { right: -24pt; bottom: -170pt; background: var(--red-2); }
-.cta .lg { width: 112pt; margin-top: 18pt; }
-.cta .eyebrow { color: var(--red-soft); }
+.cta .cta .eyebrow { color: var(--red-soft); }
 .cta h3 { font-size: 17pt; font-weight: 600; line-height: 1.15; margin: 8pt 0 8pt; max-width: 190pt; }
 .cta p { font-size: 8.4pt; line-height: 1.5; color: var(--on-60); }
 .cta dl { margin-top: 14pt; display: grid; gap: 9pt; }
@@ -80,13 +74,13 @@ tbody tr:nth-child(even) { background: var(--zebra); }
 .cta .ws b { font-size: 10.5pt; font-weight: 600; }
 .cta .ws span { font-family: var(--mono); font-size: 6.4pt; letter-spacing: .06em; color: var(--on-60); }
 .notes { flex: 1 1 0; min-height: 0; display: flex; flex-direction: column; gap: 6pt; padding-top: 4pt; }
-.notes .lines { flex: 1; background: repeating-linear-gradient(to bottom, transparent 0, transparent 21.25pt, var(--line) 21.25pt, var(--line) 22pt); }
+.notes .lines { flex: 1; min-height: 0; overflow: hidden; }
+.notes .lines i { display: block; height: 22pt; border-bottom: .75pt solid var(--line); }
 
 /* okładka */
 .cover .top { position: absolute; top: 0; left: 0; right: 0; height: 478pt; background: var(--navy); overflow: hidden; }
-.stripes i { position: absolute; width: 64pt; height: 560pt; background: var(--red); transform: rotate(38deg); transform-origin: center; }
-.cover .stripes i:nth-child(1) { right: 6pt; top: -205pt; }
-.cover .stripes i:nth-child(2) { right: -88pt; top: -151pt; background: var(--red-2); }
+.stripes { position: absolute; display: block; }
+.s-cover { top: 0; left: 0; } .s-back { top: 0; left: 0; } .s-cta { right: 0; bottom: 0; }
 .cover .logo { position: absolute; top: 42pt; left: 42pt; width: 148pt; }
 .cover .tag { position: absolute; top: 102pt; left: 42pt; font-family: var(--mono); font-size: 7.2pt; letter-spacing: .14em; text-transform: uppercase; color: var(--on-60); }
 .cover .title { position: absolute; left: 42pt; right: 42pt; bottom: 44pt; color: #fff; }
@@ -137,8 +131,6 @@ tbody tr:nth-child(even) { background: var(--zebra); }
 
 /* tył */
 .back { background: var(--navy); color: #fff; }
-.back .stripes i:nth-child(1) { right: 80pt; bottom: -230pt; }
-.back .stripes i:nth-child(2) { right: -14pt; bottom: -176pt; background: var(--red-2); }
 .back .logo { position: absolute; top: 42pt; left: 42pt; width: 148pt; }
 .back .cta { position: absolute; top: 196pt; left: 42pt; right: 42pt; }
 .back .cta .eyebrow { color: var(--red-soft); }
@@ -153,4 +145,4 @@ tbody tr:nth-child(even) { background: var(--zebra); }
 .back .web { position: absolute; top: 580pt; left: 42pt; right: 42pt; display: flex; flex-direction: column; gap: 4pt; }
 .back .web b { font-size: 28pt; font-weight: 600; letter-spacing: -.01em; }
 .back .web span { font-family: var(--mono); font-size: 7pt; letter-spacing: .1em; text-transform: uppercase; color: var(--on-60); }
-.back footer { position: absolute; left: 42pt; right: 42pt; bottom: 30pt; display: flex; flex-direction: column; gap: 4pt; padding-top: 10pt; border-top: .75pt solid var(--on-line); font-size: 6.8pt; line-height: 1.4; color: var(--on-60); }
+.back footer { position: absolute; left: 42pt; right: 150pt; bottom: 30pt; display: flex; flex-direction: column; gap: 4pt; padding-top: 10pt; border-top: .75pt solid var(--on-line); font-size: 6.8pt; line-height: 1.4; color: var(--on-60); }
