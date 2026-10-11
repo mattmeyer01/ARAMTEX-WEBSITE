@@ -56,9 +56,8 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
   tła miniatury), a generator ostrzega, gdy któreś zdjęcie dałoby podwójną ramkę.
   Generator dopisuje do każdego adresu zdjęcia `?v=<skrót treści>`, więc podmiana pliku pod tą samą nazwą
   od razu trafia do przeglądarek mimo 7-dniowego cache `/img/*`.
-- `pliki/katalog-besco-2026.pdf`: katalog Besco 2026 (link w menu „Oferta → Katalogi”).
-- `pliki/katalog-tectite.pdf`: katalog Tectite Classic (złączki 16 i 20 mm do rur PEX), link na stronie systemu Tectite i w „Do pobrania”.
-- `pliki/katalog-kuterlite.pdf`: katalog Kuterlite (K900 Pro, K700, zawory, akcesoria) bez cen: kolumny cen usunięte z cennika producenta.
+- `pliki/katalog-*.pdf`: katalogi Armatex (Besco 2026, Besco INOX 304 i 316L, Tectite, Kuterlite) składane z danych przez
+  `tools/katalog_pdf.py` (niżej, „Katalogi PDF”). Katalog Besco 2026 jest w menu „Oferta → Katalogi”.
 - `pliki/instrukcja-montazu-tectite.pdf`: instrukcja montażu złączek na wcisk Tectite (strona Tectite, Do pobrania, poradnik „Tectite czy press?”).
 - `assets/`: fonty (Outfit, IBM Plex Mono) i favicony.
 - `sitemap.xml`, `robots.txt`.
@@ -76,7 +75,8 @@ python3 tools/strony.py
 
 `c.css` i `c.js` edytuje się bezpośrednio, a potem uruchamia generator: dopisuje on do linków `?v=<hash treści>`, dzięki czemu Netlify może trzymać te pliki w cache przez rok, a po zmianie przeglądarki pobiorą nową wersję. Generator skraca też tytuły do ok. 60 znaków i opisy do 160.
 
-Dane produktów z katalogów PDF (PDF-y nie są trzymane w repo):
+Dane produktów z oryginalnych katalogów producentów (PDF-y nie są trzymane w repo; pliki w `pliki/` to już katalogi
+Armatex składane z tych danych, nie źródła):
 
 ```bash
 pip install pymupdf pillow
@@ -117,15 +117,26 @@ Uruchamiaj go **po** `tools/katalog_besco.py`, bo ten nadpisuje cały plik danyc
 więc skrypt czyta go przez OCR (`pip install rapidocr_onnxruntime`) i sprawdza numery artykułów względem kodu grupy.
 Skrypt czyta oryginalne katalogi Besco, a nie `pliki/katalog-besco-inox-*.pdf`, które są już katalogami Armatex (niżej).
 
-Katalogi PDF INOX 304 i INOX 316L w identyfikacji Armatex (`pliki/katalog-besco-inox-304.pdf`,
-`pliki/katalog-besco-inox-316l.pdf`) składa `python3 tools/katalog_pdf.py inox-304` / `inox-316l`
-(`pip install playwright==1.56.0 pymupdf fonttools brotli`): okładka, strona o systemie ze spisem treści, strony produktów
-w dwóch kolumnach i tylna okładka z kontaktami. Tabele są w `tools/katalog-pdf/<linia>.json` (INOX 304: 296 indeksów,
-INOX 316L: 253, sprawdzone z katalogami Besco), teksty i parametry linii w `LINES` w skrypcie, wygląd w
-`tools/katalog-pdf/katalog.css` (kolory i fonty jak w `c.css`). Zdjęcia biorą się z `img/besco/*-l.webp`, chyba że w
-`tools/katalog-pdf/foto/` leży wersja powiększona do druku (INOX 316L: zdjęcia ze strony mają ok. 100 px, więc są
-powiększone 4× modelem ESRGAN z pakietu npm `@upscalerjs/esrgan-thick`, skrypt `tools/powieksz_zdjecia.py`). Podział na strony i spis treści liczy skrypt;
-jeśli któraś kolumna się przelewa, przerywa pracę. Podgląd do innego pliku: `--out x.pdf`.
+## Katalogi PDF
+
+Wszystkie katalogi w `pliki/` (oprócz instrukcji montażu Tectite) są katalogami Armatex składanymi z danych:
+`python3 tools/katalog_pdf.py <katalog>` albo `wszystkie` (`pip install playwright==1.56.0 pymupdf fonttools brotli`).
+Katalogi: `besco-2026`, `inox-304`, `inox-316l`, `tectite`, `kuterlite`. Każdy ma okładkę, stronę o katalogu ze spisem
+treści (INOX: parametry i grupy; wieloseryjne: tabela serii), strony produktów w dwóch kolumnach (działy, karty ze
+zdjęciem i tabelą), panel wyceny i tylną okładkę z kontaktami. Treść każdego katalogu (teksty, parametry serii, atesty,
+marka) jest w `KATALOGI` w skrypcie, wygląd w `tools/katalog-pdf/katalog.css` (kolory i fonty jak w `c.css`), logo
+marek w `tools/katalog-pdf/`. Podział na strony i spis treści liczy skrypt; jeśli coś się przelewa, przerywa pracę.
+Podgląd do innego pliku: `--out x.pdf`. Po zmianie liczby stron lub rozmiaru pliku popraw opisy w `DOCS` i w menu
+w `tools/strony.py` (oraz w `tools/en.json`, `tools/uk.json`).
+
+Dane: `tools/katalog-pdf/<katalog>.json`. INOX 304 z warstwy tekstowej katalogu Besco (296 indeksów), INOX 316L
+z `data/besco-2026.json` sprawdzony z katalogiem (253). Besco 2026, Tectite i Kuterlite składa
+`python3 tools/katalog_dane.py oryginalny-katalog-kuterlite.pdf` z `data/besco-2026.json` i `data/pegler.json`:
+Besco 2026 sprawdzony z katalogiem producenta (poprawki w `POPRAWKI_BESCO`), Kuterlite bez serii K600 i K700
+(jak na stronie), z wymiarami uciętymi w danych strony odczytanymi z oryginalnego katalogu Kuterlite.
+Zdjęcia: `img/besco/*-l.webp` i `img/pegler/`, chyba że w `tools/katalog-pdf/foto/` leży wersja powiększona do druku
+(zdjęcia ze strony mają zwykle 100–250 px): `python3 tools/powieksz_zdjecia.py <node_modules> <katalog>...`
+(model ESRGAN z pakietu npm `@upscalerjs/esrgan-thick`, instalacja w opisie skryptu).
 
 ## Formularz
 

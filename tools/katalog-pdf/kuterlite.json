@@ -1,0 +1,2038 @@
+[
+ {
+  "id": "kuterlite-zlaczka-prosta-k910x",
+  "kod": "K910X",
+  "nazwa": "Złączka prosta",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k910x-zlaczka-prosta-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "10",
+    "43015K",
+    5,
+    250
+   ],
+   [
+    "12",
+    "43016K",
+    5,
+    250
+   ],
+   [
+    "15",
+    "43017K",
+    5,
+    150
+   ],
+   [
+    "18",
+    "43018K",
+    5,
+    80
+   ],
+   [
+    "22",
+    "43019K",
+    5,
+    80
+   ],
+   [
+    "28",
+    "43020K",
+    5,
+    50
+   ],
+   [
+    "35",
+    "43021K",
+    1,
+    25
+   ],
+   [
+    "42",
+    "43022K",
+    1,
+    15
+   ],
+   [
+    "54",
+    "43023K",
+    1,
+    10
+   ],
+   [
+    "12 × 10",
+    "43029K",
+    5,
+    200
+   ],
+   [
+    "15 × 8",
+    "43025K",
+    5,
+    150
+   ],
+   [
+    "15 × 10",
+    "43031K",
+    5,
+    150
+   ],
+   [
+    "15 × 12",
+    "43028K",
+    5,
+    150
+   ],
+   [
+    "18 × 15",
+    "43033K",
+    5,
+    100
+   ],
+   [
+    "22 × 15",
+    "43035K",
+    5,
+    100
+   ],
+   [
+    "28 × 22",
+    "43037K",
+    5,
+    50
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-zlaczka-z-gz-gwint-stozkowy-k911x",
+  "kod": "K911X",
+  "nazwa": "Złączka z GZ (gwint stożkowy)",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k911x-zlaczka-z-gz-gwint-stozk-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "12 × 3/8″",
+    "43051K",
+    5,
+    250
+   ],
+   [
+    "12 × 1/2″",
+    "43052K",
+    5,
+    200
+   ],
+   [
+    "15 × 1/4″",
+    "43053K",
+    5,
+    150
+   ],
+   [
+    "15 × 3/8″",
+    "43054K",
+    5,
+    150
+   ],
+   [
+    "15 × 1/2″",
+    "43055K",
+    5,
+    150
+   ],
+   [
+    "15 × 3/4″",
+    "43056K",
+    5,
+    100
+   ],
+   [
+    "18 × 1/2″",
+    "43057K",
+    5,
+    150
+   ],
+   [
+    "22 × 1/2″",
+    "43058K",
+    5,
+    100
+   ],
+   [
+    "22 × 3/4″",
+    "43059K",
+    5,
+    100
+   ],
+   [
+    "22 × 1″",
+    "43060K",
+    5,
+    70
+   ],
+   [
+    "28 × 3/4″",
+    "43061K",
+    5,
+    50
+   ],
+   [
+    "28 × 1″",
+    "43062K",
+    5,
+    50
+   ],
+   [
+    "35 × 1″",
+    "43064K",
+    1,
+    30
+   ],
+   [
+    "35 × 1 1/4″",
+    "43065K",
+    1,
+    25
+   ],
+   [
+    "42 × 1 1/2″",
+    "43066K",
+    1,
+    25
+   ],
+   [
+    "54 × 2″",
+    "43067K",
+    1,
+    12
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-zlaczka-z-gz-gwint-walcowy-k911px",
+  "kod": "K911PX",
+  "nazwa": "Złączka z GZ (gwint walcowy)",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k911px-zlaczka-z-gz-gwint-walco-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "8 × 1/4″",
+    "43005K",
+    5,
+    250
+   ],
+   [
+    "10 × 3/8″",
+    "43006K",
+    5,
+    250
+   ],
+   [
+    "15 × 1/2″",
+    "43001K",
+    5,
+    150
+   ],
+   [
+    "15 × 3/4″",
+    "43008K",
+    5,
+    100
+   ],
+   [
+    "22 × 3/4″",
+    "43002K",
+    5,
+    100
+   ],
+   [
+    "22 × 1″",
+    "43003K",
+    5,
+    70
+   ],
+   [
+    "28 × 1″",
+    "43004K",
+    5,
+    50
+   ],
+   [
+    "35 × 1 1/4″",
+    "43009K",
+    1,
+    25
+   ],
+   [
+    "42 × 1 1/2″",
+    "43010K",
+    1,
+    20
+   ],
+   [
+    "54 × 2″",
+    "43011K",
+    1,
+    10
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-zlaczka-zbiornikowa-dluga-z-gz-gwint-walcowy-k911lbx",
+  "kod": "K911LBX",
+  "nazwa": "Złączka zbiornikowa długa z GZ (gwint walcowy)",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k911lbx-zlaczka-zbiornikowa-dlug-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "22 × 3/4″",
+    "43074K",
+    5,
+    50
+   ],
+   [
+    "28 × 1″",
+    "43075K",
+    1,
+    30
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-zlaczka-zbiornikowa-z-gz-gwint-walcowy-k911tcx",
+  "kod": "K911TCX",
+  "nazwa": "Złączka zbiornikowa z GZ (gwint walcowy)",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k911tcx-zlaczka-zbiornikowa-z-gz-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 1/2″",
+    "43069K",
+    5,
+    100
+   ],
+   [
+    "22 × 3/4″",
+    "43070K",
+    5,
+    70
+   ],
+   [
+    "28 × 1″",
+    "43071K",
+    5,
+    40
+   ],
+   [
+    "35 × 1 1/4″",
+    "43077K",
+    1,
+    25
+   ],
+   [
+    "42 × 1 1/2″",
+    "43078K",
+    1,
+    20
+   ],
+   [
+    "54 × 2″",
+    "43079K",
+    1,
+    10
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-zlaczka-z-gw-k912x",
+  "kod": "K912X",
+  "nazwa": "Złączka z GW",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k912x-zlaczka-z-gw-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "12 × 3/8″",
+    "43085K",
+    5,
+    200
+   ],
+   [
+    "12 × 1/2″",
+    "43086K",
+    5,
+    150
+   ],
+   [
+    "15 × 3/8″",
+    "43087K",
+    5,
+    150
+   ],
+   [
+    "15 × 1/2″",
+    "43088K",
+    5,
+    150
+   ],
+   [
+    "15 × 3/4″",
+    "43089K",
+    5,
+    125
+   ],
+   [
+    "18 × 1/2″",
+    "43090K",
+    5,
+    100
+   ],
+   [
+    "18 × 3/4″",
+    "43094K",
+    5,
+    50
+   ],
+   [
+    "22 × 1/2″",
+    "43091K",
+    5,
+    100
+   ],
+   [
+    "22 × 3/4″",
+    "43092K",
+    5,
+    100
+   ],
+   [
+    "22 × 1″",
+    "43093K",
+    5,
+    75
+   ],
+   [
+    "28 × 1″",
+    "43095K",
+    5,
+    50
+   ],
+   [
+    "35 × 1 1/4″",
+    "43098K",
+    1,
+    25
+   ],
+   [
+    "42 × 1 1/2″",
+    "43099K",
+    1,
+    25
+   ],
+   [
+    "54 × 2″",
+    "43100K",
+    1,
+    12
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-kolano-k915x",
+  "kod": "K915X",
+  "nazwa": "Kolano",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k915x-kolano-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "12",
+    "43121K",
+    5,
+    150
+   ],
+   [
+    "15",
+    "43122K",
+    5,
+    100
+   ],
+   [
+    "18",
+    "43123K",
+    5,
+    75
+   ],
+   [
+    "22",
+    "43124K",
+    5,
+    60
+   ],
+   [
+    "28",
+    "43125K",
+    5,
+    40
+   ],
+   [
+    "35",
+    "43126K",
+    1,
+    20
+   ],
+   [
+    "42",
+    "43127K",
+    1,
+    15
+   ],
+   [
+    "54",
+    "43128K",
+    1,
+    6
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-kolano-z-gz-gwint-stozkowy-k916x",
+  "kod": "K916X",
+  "nazwa": "Kolano z GZ (gwint stożkowy)",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k916x-kolano-z-gz-gwint-stozko-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "12 × 3/8″",
+    "43153K",
+    5,
+    200
+   ],
+   [
+    "12 × 1/2″",
+    "43152K",
+    5,
+    150
+   ],
+   [
+    "15 × 3/8″",
+    "43154K",
+    5,
+    150
+   ],
+   [
+    "15 × 1/2″",
+    "43155K",
+    5,
+    125
+   ],
+   [
+    "18 × 1/2″",
+    "43157K",
+    5,
+    90
+   ],
+   [
+    "22 × 3/4″",
+    "43158K",
+    5,
+    70
+   ],
+   [
+    "22 × 1″",
+    "43159K",
+    5,
+    50
+   ],
+   [
+    "28 × 1″",
+    "43161K",
+    5,
+    40
+   ],
+   [
+    "35 × 1 1/4″",
+    "43162K",
+    1,
+    20
+   ],
+   [
+    "42 × 1 1/2″",
+    "43163K",
+    1,
+    15
+   ],
+   [
+    "54 × 2″",
+    "43164K",
+    1,
+    8
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-kolano-z-gz-gwint-walcowy-k916px",
+  "kod": "K916PX",
+  "nazwa": "Kolano z GZ (gwint walcowy)",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k916px-kolano-z-gz-gwint-walcow-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 1/2″",
+    "43185K",
+    5,
+    100
+   ],
+   [
+    "22 × 3/4″",
+    "43186K",
+    5,
+    60
+   ],
+   [
+    "22 × 1″",
+    "43188K",
+    5,
+    50
+   ],
+   [
+    "28 × 1″",
+    "43187K",
+    5,
+    40
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-kolano-dlugie-z-gz-gwint-walcowy-k916lbx",
+  "kod": "K916LBX",
+  "nazwa": "Kolano długie z GZ (gwint walcowy)",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k916lbx-kolano-dlugie-z-gz-gwint-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "22 × 3/4″",
+    "43177K",
+    5,
+    30
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-kolano-z-gw-k917x",
+  "kod": "K917X",
+  "nazwa": "Kolano z GW",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k917x-kolano-z-gw-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "12 × 3/8″",
+    "43198K",
+    5,
+    225
+   ],
+   [
+    "12 × 1/2″",
+    "43197K",
+    5,
+    125
+   ],
+   [
+    "15 × 3/8″",
+    "43199K",
+    5,
+    125
+   ],
+   [
+    "15 × 1/2″",
+    "43200K",
+    5,
+    125
+   ],
+   [
+    "15 × 3/4″",
+    "43201K",
+    5,
+    60
+   ],
+   [
+    "18 × 1/2″",
+    "43202K",
+    5,
+    100
+   ],
+   [
+    "22 × 3/4″",
+    "43203K",
+    5,
+    60
+   ],
+   [
+    "22 × 1″",
+    "43204K",
+    5,
+    50
+   ],
+   [
+    "28 × 1″",
+    "43205K",
+    5,
+    40
+   ],
+   [
+    "35 × 1 1/4″",
+    "43206K",
+    1,
+    20
+   ],
+   [
+    "42 × 1 1/2″",
+    "43207K",
+    1,
+    12
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-kolano-scienne-z-gw-k917wx",
+  "kod": "K917WX",
+  "nazwa": "Kolano ścienne z GW",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k917wx-kolano-scienne-z-gw-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 1/2″",
+    "43213K",
+    5,
+    70
+   ],
+   [
+    "22 × 3/4″",
+    "43215K",
+    5,
+    40
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-trojnik-rownoprzelotowy-k918x",
+  "kod": "K918X",
+  "nazwa": "Trójnik równoprzelotowy",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k918x-trojnik-rownoprzelotowy-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "10",
+    "43236K",
+    5,
+    200
+   ],
+   [
+    "12",
+    "43237K",
+    5,
+    100
+   ],
+   [
+    "15",
+    "43238K",
+    5,
+    75
+   ],
+   [
+    "18",
+    "43239K",
+    5,
+    50
+   ],
+   [
+    "22",
+    "43240K",
+    5,
+    40
+   ],
+   [
+    "28",
+    "43241K",
+    5,
+    20
+   ],
+   [
+    "35",
+    "43242K",
+    1,
+    12
+   ],
+   [
+    "42",
+    "43243K",
+    1,
+    10
+   ],
+   [
+    "54",
+    "43244K",
+    1,
+    5
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-trojnik-z-redukcja-odejscia-k918bx",
+  "kod": "K918BX",
+  "nazwa": "Trójnik z redukcją odejścia",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k918bx-trojnik-z-redukcja-odejs-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15 × 15 × 12",
+    "43252K",
+    5,
+    80
+   ],
+   [
+    "22 × 22 × 15",
+    "43254K",
+    5,
+    50
+   ],
+   [
+    "28 × 28 × 15",
+    "43256K",
+    5,
+    30
+   ],
+   [
+    "28 × 28 × 22",
+    "43257K",
+    5,
+    20
+   ],
+   [
+    "35 × 35 × 15",
+    "43258K",
+    1,
+    20
+   ],
+   [
+    "35 × 35 × 28",
+    "43260K",
+    1,
+    15
+   ],
+   [
+    "42 × 42 × 22",
+    "43261K",
+    1,
+    10
+   ],
+   [
+    "42 × 42 × 28",
+    "43262K",
+    1,
+    10
+   ],
+   [
+    "54 × 54 × 28",
+    "43264K",
+    1,
+    5
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-trojnik-redukcyjny-jeden-koniec-k918ex",
+  "kod": "K918EX",
+  "nazwa": "Trójnik redukcyjny (jeden koniec)",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k918ex-trojnik-redukcyjny-jeden-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15 × 12 × 15",
+    "43273K",
+    5,
+    60
+   ],
+   [
+    "22 × 15 × 22",
+    "43275K",
+    5,
+    40
+   ],
+   [
+    "28 × 15 × 28",
+    "43276K",
+    5,
+    30
+   ],
+   [
+    "28 × 22 × 28",
+    "43277K",
+    1,
+    25
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-trojnik-redukcyjny-koniec-i-odejscie-k918ebx",
+  "kod": "K918EBX",
+  "nazwa": "Trójnik redukcyjny (koniec i odejście)",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k918ebx-trojnik-redukcyjny-konie-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "22 × 15 × 15",
+    "43289K",
+    5,
+    30
+   ],
+   [
+    "28 × 22 × 22",
+    "43293K",
+    1,
+    30
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-trojnik-redukcyjny-oba-konce-k918eex",
+  "kod": "K918EEX",
+  "nazwa": "Trójnik redukcyjny (oba końce)",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k918eex-trojnik-redukcyjny-oba-k-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15 × 15 × 22",
+    "43302K",
+    1,
+    30
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-trojnik-z-gz-na-koncu-k920x",
+  "kod": "K920X",
+  "nazwa": "Trójnik z GZ na końcu",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k920x-trojnik-z-gz-na-koncu-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 1/2″ × 15",
+    "43311K",
+    5,
+    70
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-trojnik-z-odejsciem-gz-k920hx",
+  "kod": "K920HX",
+  "nazwa": "Trójnik z odejściem GZ",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k920hx-trojnik-z-odejsciem-gz-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 15 × 1/2″",
+    "43321K",
+    5,
+    70
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-czwornik-k923x",
+  "kod": "K923X",
+  "nazwa": "Czwórnik",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k923x-czwornik-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "43329K",
+    5,
+    50
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-przylacze-kranowe-proste-z-nakretka-ks926x",
+  "kod": "KS926X",
+  "nazwa": "Przyłącze kranowe proste z nakrętką",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-ks926x-przylacze-kranowe-proste-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 1/2″",
+    "43346K",
+    5,
+    150
+   ],
+   [
+    "15 × 3/4″",
+    "43347K",
+    5,
+    100
+   ],
+   [
+    "22 × 3/4″",
+    "43349K",
+    5,
+    80
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-przylacze-kranowe-katowe-z-nakretka-k927x",
+  "kod": "K927X",
+  "nazwa": "Przyłącze kranowe kątowe z nakrętką",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k927x-przylacze-kranowe-katowe-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 1/2″",
+    "43356K",
+    5,
+    100
+   ],
+   [
+    "22 × 3/4″",
+    "43357K",
+    5,
+    60
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-trojnik-z-odejsciem-gw-k930x",
+  "kod": "K930X",
+  "nazwa": "Trójnik z odejściem GW",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k930x-trojnik-z-odejsciem-gw-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 15 × 1/4″",
+    "43370K",
+    5,
+    75
+   ],
+   [
+    "15 × 15 × 1/2″",
+    "43369K",
+    5,
+    75
+   ],
+   [
+    "22 × 22 × 1/2″",
+    "43372K",
+    5,
+    45
+   ],
+   [
+    "28 × 28 × 1/2″",
+    "43374K",
+    1,
+    25
+   ],
+   [
+    "28 × 28 × 1″",
+    "43376K",
+    1,
+    25
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-trojnik-z-gw-na-koncu-k930ex",
+  "kod": "K930EX",
+  "nazwa": "Trójnik z GW na końcu",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k930ex-trojnik-z-gw-na-koncu-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 1/2″ × 15",
+    "43384K",
+    5,
+    75
+   ],
+   [
+    "22 × 1/2″ × 22",
+    "43386K",
+    1,
+    40
+   ],
+   [
+    "22 × 3/4″ × 22",
+    "43387K",
+    5,
+    40
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-adapter-z-gw-k941x",
+  "kod": "K941X",
+  "nazwa": "Adapter z GW",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k941x-adapter-z-gw-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "22 × 3/4″",
+    "43426K",
+    1,
+    70
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-redukcja-jednoczesciowa-k947x",
+  "kod": "K947X",
+  "nazwa": "Redukcja jednoczęściowa",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k947x-redukcja-jednoczesciowa-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15 × 8",
+    "43429K",
+    5,
+    400
+   ],
+   [
+    "15 × 10",
+    "43428K",
+    5,
+    400
+   ],
+   [
+    "15 × 12",
+    "43430K",
+    5,
+    250
+   ],
+   [
+    "18 × 12",
+    "43437K",
+    5,
+    150
+   ],
+   [
+    "18 × 15",
+    "43431K",
+    5,
+    400
+   ],
+   [
+    "22 × 12",
+    "43432K",
+    5,
+    300
+   ],
+   [
+    "22 × 15",
+    "43433K",
+    5,
+    300
+   ],
+   [
+    "22 × 18",
+    "43434K",
+    5,
+    200
+   ],
+   [
+    "28 × 15",
+    "43435K",
+    5,
+    200
+   ],
+   [
+    "28 × 22",
+    "43436K",
+    5,
+    200
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-zestaw-redukcyjny-k948x",
+  "kod": "K948X",
+  "nazwa": "Zestaw redukcyjny",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k948x-zestaw-redukcyjny-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "35 × 22",
+    "43455K",
+    1,
+    60
+   ],
+   [
+    "35 × 28",
+    "43456K",
+    1,
+    60
+   ],
+   [
+    "42 × 22",
+    "43459K",
+    1,
+    75
+   ],
+   [
+    "42 × 35",
+    "43461K",
+    1,
+    60
+   ],
+   [
+    "54 × 22",
+    "43463K",
+    1,
+    40
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-przylacze-zbiornikowe-z-kolnierzem-ks950x",
+  "kod": "KS950X",
+  "nazwa": "Przyłącze zbiornikowe z kołnierzem",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-ks950x-przylacze-zbiornikowe-z--l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "35",
+    "43477K",
+    1,
+    25
+   ],
+   [
+    "42",
+    "43478K",
+    1,
+    12
+   ],
+   [
+    "54",
+    "43479K",
+    1,
+    12
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-zaslepka-k951x",
+  "kod": "K951X",
+  "nazwa": "Zaślepka",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k951x-zaslepka-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "12",
+    "43489K",
+    5,
+    300
+   ],
+   [
+    "15",
+    "43490K",
+    5,
+    200
+   ],
+   [
+    "22",
+    "43492K",
+    5,
+    150
+   ],
+   [
+    "28",
+    "43493K",
+    5,
+    80
+   ],
+   [
+    "35",
+    "43494K",
+    1,
+    35
+   ],
+   [
+    "42",
+    "43495K",
+    1,
+    30
+   ],
+   [
+    "54",
+    "43496K",
+    1,
+    20
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-mijanka-k953x",
+  "kod": "K953X",
+  "nazwa": "Mijanka",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k953x-mijanka-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "43500K",
+    5,
+    50
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-korek-zaslepiajacy-k972x",
+  "kod": "K972X",
+  "nazwa": "Korek zaślepiający",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k972x-korek-zaslepiajacy-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15",
+    "43531K",
+    5,
+    375
+   ],
+   [
+    "22 (1/2″)",
+    "43533K",
+    5,
+    300
+   ],
+   [
+    "28 (3/4″)",
+    "43534K",
+    5,
+    200
+   ],
+   [
+    "35 (1″)",
+    "43535K",
+    1,
+    100
+   ],
+   [
+    "42 (1 1/4″)",
+    "43536K",
+    1,
+    75
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-adapter-typ-a-x-typ-b-do-miedzi-miekkiej-k900",
+  "kod": "K900",
+  "nazwa": "Adapter typ A × typ B do miedzi miękkiej",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k900-adapter-typ-a-x-typ-b-do-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "62544K",
+    5,
+    150
+   ],
+   [
+    "22",
+    "62547K",
+    5,
+    120
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-kolano-chrom-k915xcp",
+  "kod": "K915XCP",
+  "nazwa": "Kolano (chrom)",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k915xcp-kolano-chrom-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "47122K",
+    5,
+    100
+   ],
+   [
+    "35",
+    "61946K",
+    1,
+    20
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-kolano-scienne-z-gw-chrom-k917wxcp",
+  "kod": "K917WXCP",
+  "nazwa": "Kolano ścienne z GW (chrom)",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k917wxcp-kolano-scienne-z-gw-chro-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 1/2″",
+    "47213K",
+    1,
+    50
+   ],
+   [
+    "22 × 3/4″",
+    "61966K",
+    1,
+    40
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-trojnik-rownoprzelotowy-chrom-k918xcp",
+  "kod": "K918XCP",
+  "nazwa": "Trójnik równoprzelotowy (chrom)",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k918xcp-trojnik-rownoprzelotowy--l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "47238K",
+    5,
+    75
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-trojnik-z-redukcja-odejscia-chrom-k918bxcp",
+  "kod": "K918BXCP",
+  "nazwa": "Trójnik z redukcją odejścia (chrom)",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k918bxcp-trojnik-z-redukcja-odejs-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "28 × 28 × 15",
+    "61969K",
+    1,
+    20
+   ],
+   [
+    "28 × 28 × 22",
+    "61970K",
+    1,
+    20
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-redukcja-jednoczesciowa-chrom-k947xcp",
+  "kod": "K947XCP",
+  "nazwa": "Redukcja jednoczęściowa (chrom)",
+  "seria": "kuterlite-k900",
+  "zdjecie": "img/pegler/k-k947xcp-redukcja-jednoczesciowa--l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "22 × 15",
+    "61984K",
+    1,
+    150
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-zawor-odcinajacy-k551",
+  "kod": "K551",
+  "nazwa": "Zawór odcinający",
+  "seria": "kuterlite-zawory",
+  "zdjecie": "img/pegler/k-k551-zawor-odcinajacy-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "61602",
+    1,
+    20
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-zawor-odcinajacy-z-brazu-pe-x-miedz-pl59a",
+  "kod": "PL59A",
+  "nazwa": "Zawór odcinający z brązu PE × miedź",
+  "seria": "kuterlite-zawory",
+  "zdjecie": "img/pegler/k-pl59a-zawor-odcinajacy-z-brazu-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "32 × 28",
+    "504059",
+    1,
+    2
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-zawor-do-urzadzen-prosty-k637",
+  "kod": "K637",
+  "nazwa": "Zawór do urządzeń, prosty",
+  "seria": "kuterlite-zawory",
+  "zdjecie": "img/pegler/k-k637-zawor-do-urzadzen-prosty-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 3/4″",
+    "44011",
+    10,
+    100
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-zawor-do-urzadzen-katowy-k638",
+  "kod": "K638",
+  "nazwa": "Zawór do urządzeń, kątowy",
+  "seria": "kuterlite-zawory",
+  "zdjecie": "img/pegler/k-k638-zawor-do-urzadzen-katowy-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 3/4″",
+    "44012",
+    10,
+    80
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-zawor-do-urzadzen-trojnikowy-k639",
+  "kod": "K639",
+  "nazwa": "Zawór do urządzeń, trójnikowy",
+  "seria": "kuterlite-zawory",
+  "zdjecie": "img/pegler/k-k639-zawor-do-urzadzen-trojni-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "15 × 15 × 3/4″",
+    "44013",
+    10,
+    60
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-zawor-zwrotny-pojedynczy-k424",
+  "kod": "K424",
+  "nazwa": "Zawór zwrotny pojedynczy",
+  "seria": "kuterlite-zawory",
+  "zdjecie": "img/pegler/k-k424-zawor-zwrotny-pojedynczy-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "42062",
+    10,
+    60
+   ],
+   [
+    "22",
+    "42063",
+    5,
+    30
+   ],
+   [
+    "28",
+    "42064",
+    5,
+    30
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-zawor-zwrotny-pojedynczy-z-gw-k426",
+  "kod": "K426",
+  "nazwa": "Zawór zwrotny pojedynczy z GW",
+  "seria": "kuterlite-zawory",
+  "zdjecie": "img/pegler/k-k426-zawor-zwrotny-pojedynczy-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "1/2″",
+    "42065",
+    24,
+    120
+   ],
+   [
+    "3/4″",
+    "42066",
+    12,
+    60
+   ],
+   [
+    "1″",
+    "42067",
+    6,
+    30
+   ],
+   [
+    "1 1/4″",
+    "42077",
+    5,
+    20
+   ],
+   [
+    "1 1/2″",
+    "42078",
+    1,
+    10
+   ],
+   [
+    "2″",
+    "42079",
+    1,
+    6
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-zawor-zwrotny-podwojny-k4424",
+  "kod": "K4424",
+  "nazwa": "Zawór zwrotny podwójny",
+  "seria": "kuterlite-zawory",
+  "zdjecie": "img/pegler/k-k4424-zawor-zwrotny-podwojny-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "42068",
+    5,
+    30
+   ],
+   [
+    "22",
+    "42069",
+    5,
+    30
+   ],
+   [
+    "28",
+    "42070",
+    5,
+    30
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-zawor-zwrotny-podwojny-k4426",
+  "kod": "K4426",
+  "nazwa": "Zawór zwrotny podwójny",
+  "seria": "kuterlite-zawory",
+  "zdjecie": "img/pegler/k-k4426-zawor-zwrotny-podwojny-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "1/2″",
+    "42071",
+    5,
+    30
+   ],
+   [
+    "3/4″",
+    "42072",
+    5,
+    30
+   ],
+   [
+    "1″",
+    "42073",
+    1,
+    32
+   ],
+   [
+    "1 1/4″",
+    "42074",
+    1,
+    16
+   ],
+   [
+    "1 1/2″",
+    "42075",
+    1,
+    12
+   ],
+   [
+    "2″",
+    "42076",
+    1,
+    8
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-zawor-kulowy-odcinajacy-k480",
+  "kod": "K480",
+  "nazwa": "Zawór kulowy odcinający",
+  "seria": "kuterlite-zawory",
+  "zdjecie": "img/pegler/k-k480-zawor-kulowy-odcinajacy-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "44051",
+    10,
+    100
+   ],
+   [
+    "22",
+    "44054",
+    5,
+    60
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-zawor-kulowy-cwiercobrotowy-z-dzwignia-pb300",
+  "kod": "PB300",
+  "nazwa": "Zawór kulowy ćwierćobrotowy z dźwignią",
+  "seria": "kuterlite-zawory",
+  "zdjecie": "img/pegler/k-pb300-zawor-kulowy-cwiercobrot-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "45001",
+    10,
+    80
+   ],
+   [
+    "22",
+    "45002",
+    10,
+    40
+   ],
+   [
+    "28",
+    "45003",
+    5,
+    20
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-zawor-kulowy-pelnoprzelotowy-chromowany-pb300t",
+  "kod": "PB300T",
+  "nazwa": "Zawór kulowy pełnoprzelotowy chromowany",
+  "seria": "kuterlite-zawory",
+  "zdjecie": "img/pegler/k-pb300t-zawor-kulowy-pelnoprzelo-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "45013",
+    10,
+    80
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-zestaw-wodomierzowy-pb360wmk",
+  "kod": "PB360WMK",
+  "nazwa": "Zestaw wodomierzowy",
+  "seria": "kuterlite-zawory",
+  "zdjecie": "img/pegler/k-pb360wmk-zestaw-wodomierzowy-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "15",
+    "254360",
+    1,
+    25
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-nakretka-zaciskowa-k678a",
+  "kod": "K678A",
+  "nazwa": "Nakrętka zaciskowa",
+  "seria": "kuterlite-akcesoria",
+  "zdjecie": "img/pegler/k-k678a-nakretka-zaciskowa-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "6",
+    "72001K",
+    10,
+    0
+   ],
+   [
+    "10",
+    "74003K",
+    10,
+    800
+   ],
+   [
+    "12",
+    "74004K",
+    10,
+    600
+   ],
+   [
+    "15",
+    "74005K",
+    25,
+    550
+   ],
+   [
+    "18",
+    "74006K",
+    25,
+    400
+   ],
+   [
+    "22",
+    "74012K",
+    10,
+    250
+   ],
+   [
+    "22 (18 TPI)",
+    "74007K",
+    10,
+    250
+   ],
+   [
+    "28",
+    "74013K",
+    5,
+    175
+   ],
+   [
+    "35",
+    "74009K",
+    5,
+    150
+   ],
+   [
+    "42",
+    "74010K",
+    5,
+    50
+   ],
+   [
+    "54",
+    "74011K",
+    5,
+    50
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-tuleja-gwintowana-szesciokatna-k964",
+  "kod": "K964",
+  "nazwa": "Tuleja gwintowana sześciokątna",
+  "seria": "kuterlite-akcesoria",
+  "zdjecie": "img/pegler/k-k964-tuleja-gwintowana-szesci-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "1″ × 3/4″",
+    "74703K",
+    5,
+    0
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-tulejka-wzmacniajaca-k690",
+  "kod": "K690",
+  "nazwa": "Tulejka wzmacniająca",
+  "seria": "kuterlite-akcesoria",
+  "zdjecie": "img/pegler/k-k690-tulejka-wzmacniajaca-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "10 × 8",
+    "72354",
+    10,
+    1000
+   ],
+   [
+    "12 × 10",
+    "72357",
+    100,
+    0
+   ],
+   [
+    "15 × 13",
+    "72360",
+    10,
+    500
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-pierscien-zaciskowy-k978b",
+  "kod": "K978B",
+  "nazwa": "Pierścień zaciskowy",
+  "seria": "kuterlite-akcesoria",
+  "zdjecie": "img/pegler/k-k978b-pierscien-zaciskowy-l.webp",
+  "gwint": false,
+  "wiersze": [
+   [
+    "6",
+    "74014K",
+    10,
+    0
+   ],
+   [
+    "8",
+    "74015K",
+    10,
+    2500
+   ],
+   [
+    "10",
+    "74016K",
+    10,
+    1000
+   ],
+   [
+    "12",
+    "74017K",
+    10,
+    1000
+   ],
+   [
+    "15",
+    "74018K",
+    10,
+    1000
+   ],
+   [
+    "18",
+    "74019K",
+    10,
+    600
+   ],
+   [
+    "22",
+    "74020K",
+    10,
+    800
+   ],
+   [
+    "28",
+    "74021K",
+    5,
+    350
+   ],
+   [
+    "35",
+    "74022K",
+    5,
+    200
+   ],
+   [
+    "42",
+    "74023K",
+    5,
+    150
+   ],
+   [
+    "54",
+    "74024K",
+    5,
+    75
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-pierscien-zaciskowy-do-rur-calowych-k978c",
+  "kod": "K978C",
+  "nazwa": "Pierścień zaciskowy do rur calowych",
+  "seria": "kuterlite-akcesoria",
+  "zdjecie": "img/pegler/k-k978c-pierscien-zaciskowy-do-r-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "22 × 3/4″",
+    "74026K",
+    10,
+    500
+   ],
+   [
+    "35 × 1 1/4″",
+    "74027K",
+    5,
+    150
+   ],
+   [
+    "42 × 1 1/2″",
+    "74028K",
+    5,
+    150
+   ]
+  ]
+ },
+ {
+  "id": "kuterlite-tulejka-wzmacniajaca-k1766c-akcesoria",
+  "kod": "K1766C",
+  "nazwa": "Tulejka wzmacniająca",
+  "seria": "kuterlite-akcesoria",
+  "zdjecie": "img/pegler/k-k1766c-tulejka-wzmacniajaca-l.webp",
+  "gwint": true,
+  "wiersze": [
+   [
+    "3/8″",
+    "22170",
+    25,
+    800
+   ],
+   [
+    "1/2″",
+    "22171",
+    25,
+    600
+   ],
+   [
+    "3/4″",
+    "22172",
+    10,
+    300
+   ]
+  ]
+ }
+]
