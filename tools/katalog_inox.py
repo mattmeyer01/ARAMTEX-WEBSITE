@@ -77,10 +77,13 @@ def parse_304(doc):
                 groups.append(cur)
                 i += 1
                 continue
-            art = [w for w in ws if 270 <= w[0] < 380]
+            # długie numery („3130R-108.22.108”) zaczynają się już od x≈266, więc kolumnę
+            # artykułu wyznacza pierwsze słowo w formacie numeru, a nie stała granica x
+            k = next((k for k, w in enumerate(ws) if 240 <= w[0] < 380 and re.match(r'^\d{4}[A-Z]?-', w[4])), None)
+            art = [w for w in ws[k:] if w[0] < 380] if k is not None else []
             nums = [w for w in ws if w[0] >= 380]
-            if cur and art and len(nums) >= 2 and re.match(r'^\d{4}', art[0][4]):
-                size = ' '.join(w[4] for w in ws if 100 <= w[0] < 270)
+            if cur and art and len(nums) >= 2:
+                size = ' '.join(w[4] for w in ws[:k] if 100 <= w[0])
                 cur['rows'].append([' '.join(w[4] for w in art), size, int(nums[-2][4]), int(nums[-1][4])])
             i += 1
         on = [g for g in groups if g['page'] == n]

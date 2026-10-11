@@ -36,7 +36,7 @@ SYS=[
   pics=[('besco-press-v','Miedziany trójnik press'),('besco-gaz','Trójnik press do gazu z żółtym oznaczeniem'),('besco-stal','Trójnik press ze stali węglowej')],
   seria='cu-press-water-v,cu-press-water-m,cu-press-gas-v,cu-press-gas-m,steel-press-m,inox-304-press-m,inox-316l-press-m,press-ball-valve',
   src='katalogi Besco 2026 i Besco INOX',
-  lines=[('INOX 304, Stainless Steel, press, profil M','Besco','inox-304-press-m','15–108 mm','woda pitna, CO','16 bar',['PZH'],'287','linie/besco-inox-304'),
+  lines=[('INOX 304, Stainless Steel, press, profil M','Besco','inox-304-press-m','15–108 mm','woda pitna, CO','16 bar',['PZH'],'296','linie/besco-inox-304'),
    ('Gutpress Copper, profil V','Besco','cu-press-water-v','12–54 mm','woda pitna, CO, przemysł','16 bar',['DVGW','KIWA','WRAS','RISE','PZH'],'257','linie/besco-press-v'),
    ('Gutpress Copper, profil M','Besco','cu-press-water-m','12–108 mm','woda pitna, CO, przemysł','16 bar',['DVGW','WRAS','RISE','PZH'],'294','linie/besco-press-m'),
    ('Gutpress Copper do gazu, V i M','Besco','cu-press-gas-v,cu-press-gas-m','15–35 mm','gaz ziemny, LPG','5 bar',['DVGW','INiG'],'211','linie/besco-gaz'),
