@@ -306,6 +306,9 @@ def head(title,desc,extra='',path=''):
 PDF='../pliki/katalog-besco-2026.pdf'
 PDF_TECTITE='../pliki/katalog-tectite.pdf'
 PDF_INOX={'inox-304-press-m':'../pliki/katalog-besco-inox-304.pdf','inox-316l-press-m':'../pliki/katalog-besco-inox-316l.pdf'}
+# serie z własnym katalogiem Armatex (przycisk „Katalog PDF” na stronach produktów)
+PDF_GAZ='../pliki/katalog-gutpress-gaz.pdf'; PDF_ZAWORY='../pliki/katalog-gutpress-zawory.pdf'
+PDF_INOX.update({'cu-press-gas-v':PDF_GAZ,'cu-press-gas-m':PDF_GAZ,'press-ball-valve':PDF_ZAWORY})
 PDF_KUTERLITE='../pliki/katalog-kuterlite.pdf'
 PDF_TECTITE_MONTAZ='../pliki/instrukcja-montazu-tectite.pdf'
 ICO_SEARCH='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>'
@@ -1594,6 +1597,8 @@ DOCS=[
  ('besco','katalog','Katalog Besco – Złączki Zaprasowane / Złączki Lutowane','Press V i M, gaz, stal węglowa, zawory kulowe, lutowane EN 1254, ANSI i G-size: 1 936 indeksów z numerami artykułów i opakowaniami.','PDF · 3,7 MB · 44 strony',f'<a class="ghost ghost--pdf" href="{PDF}" target="_blank" rel="noopener">Pobierz</a>'),
  ('besco','katalog','Katalog Besco INOX 316L – Złączki Zaprasowane','Złączki press ze stali nierdzewnej 316L, profil M, 15–168,3 mm: woda, ogrzewanie, przemysł. Aprobaty DVGW i WRAS.','PDF · 0,6 MB · 9 stron',f'<a class="ghost ghost--pdf" href="{PDF_INOX["inox-316l-press-m"]}" target="_blank" rel="noopener">Pobierz</a>'),
  ('besco','katalog','Katalog Besco INOX 304 – Złączki Zaprasowane','Złączki press ze stali nierdzewnej 304, profil M, 15–108 mm, do wody pitnej i ogrzewania. Atest higieniczny PZH.','PDF · 0,8 MB · 10 stron',f'<a class="ghost ghost--pdf" href="{PDF_INOX["inox-304-press-m"]}" target="_blank" rel="noopener">Pobierz</a>'),
+ ('besco','katalog','Katalog Gutpress Gaz – Złączki Zaprasowane do Gazu','Złączki press z miedzi i brązu do instalacji gazowych, profil V i M, 15–28 mm: 143 indeksy z wymiarami i rysunkami technicznymi, narzędzia REMS, instrukcja zaciskania. DVGW, INiG.','PDF · 2,1 MB · 20 stron',f'<a class="ghost ghost--pdf" href="{PDF_GAZ}" target="_blank" rel="noopener">Pobierz</a>'),
+ ('besco','katalog','Katalog Gutpress – Zawory Kulowe Zaprasowywane','Zawory kulowe press × press, press × GW i press × śrubunek w profilu V i M, 15–54 mm: 37 indeksów z wymiarami i rysunkami. DVGW, WRAS, PZH.','PDF · 0,9 MB · 6 stron',f'<a class="ghost ghost--pdf" href="{PDF_ZAWORY}" target="_blank" rel="noopener">Pobierz</a>'),
  ('pegler','katalog','Katalog Tectite – Złączki Na Wcisk','Tectite Classic, Pro i 316, zawory na wcisk Pegler i akcesoria Tec-Tools: 525 indeksów z wymiarami i numerami artykułów.','PDF · 2,5 MB · 19 stron',f'<a class="ghost ghost--pdf" href="{PDF_TECTITE}" target="_blank" rel="noopener">Pobierz</a>'),
  ('pegler','katalog','Katalog Kuterlite – Złączki Skręcane','Złączki skręcane Kuterlite: K900 Pro do miedzi, zawory i akcesoria. 246 indeksów z wymiarami, numerami artykułów i opakowaniami zbiorczymi.','PDF · 1,7 MB · 12 stron',f'<a class="ghost ghost--pdf" href="{PDF_KUTERLITE}" target="_blank" rel="noopener">Pobierz</a>'),
  ('pegler','instrukcja','Instrukcja montażu Tectite','Montaż złączek na wcisk krok po kroku: cięcie, gratowanie, głębokość wsunięcia, tulejki do PEX i PB, luzy montażowe, rury Tectite.','PDF · 0,9 MB · 7 stron',f'<a class="ghost ghost--pdf" href="{PDF_TECTITE_MONTAZ}" target="_blank" rel="noopener">Pobierz</a>'),
