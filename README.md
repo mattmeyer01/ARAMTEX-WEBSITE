@@ -135,6 +135,13 @@ tym samym stylem i drukiem (`drukuj()` w `tools/katalog_pdf.py`, dodatki w `tool
 pochodzi z instrukcji Pegler Yorkshire, zdjęcia i rysunki z `tools/katalog-pdf/instrukcja/` (wyjęte z oryginału, małe
 zdjęcia powiększone ESRGAN).
 
+Katalogi Gutpress (`pliki/katalog-gutpress-gaz.pdf`, 20 stron, i `pliki/katalog-gutpress-zawory.pdf`, 6 stron) składa
+`python3 tools/katalog_gutpress.py gaz` / `zawory`: karty na całą szerokość ze zdjęciem, tabelą zamówień, rysunkiem
+technicznym i tabelą wymiarów; wysokości kart mierzy przeglądarka. Dane i obrazy (`tools/katalog-pdf/gutpress-*.json`,
+`tools/katalog-pdf/gutpress/`) składa `python3 tools/gutpress_dane.py <katalog gazowy>.pdf <katalog zaworów>.pdf` z polskich
+katalogów Besco/Armatex; numery artykułów są jak w tych katalogach (część różni się zapisem od `data/besco-2026.json`).
+Strony produktów linii gazowych i zaworów kulowych linkują do tych katalogów (`PDF_INOX` w `tools/strony.py`).
+
 Dane: `tools/katalog-pdf/<katalog>.json`. INOX 304 z warstwy tekstowej katalogu Besco (296 indeksów), INOX 316L
 z `data/besco-2026.json` sprawdzony z katalogiem (253). Besco 2026, Tectite i Kuterlite składa
 `python3 tools/katalog_dane.py oryginalny-katalog-kuterlite.pdf` z `data/besco-2026.json` i `data/pegler.json`:

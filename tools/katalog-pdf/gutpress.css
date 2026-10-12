@@ -1,0 +1,83 @@
+/* Katalogi Gutpress (gaz, zawory): karty techniczne na całą szerokość; dodatki do katalog.css */
+.gp .stack { display: flex; flex-direction: column; gap: 12pt; }
+.gp .sh { flex: 0 0 auto; height: 58pt; }
+.gp .sh.meta { height: 70pt; }
+.meas .mi { display: flow-root; }
+
+.tc { border: .75pt solid var(--line); border-radius: 7pt; overflow: hidden; flex: 0 0 auto; }
+.tc .hd { display: flex; align-items: center; gap: 10pt; padding: 7pt 12pt; background: var(--stone); border-bottom: .75pt solid var(--line); }
+.tc .pb { flex: 0 0 22pt; height: 22pt; border-radius: 4pt; background: var(--navy); color: #fff; font-family: var(--mono); font-size: 10pt;
+  display: flex; align-items: center; justify-content: center; }
+.tc .kod { font-family: var(--mono); font-size: 7pt; letter-spacing: .08em; color: var(--red); }
+.tc .kod em { font-style: normal; color: var(--ink-60); text-transform: uppercase; margin-right: 3pt; }
+.tc h3 { font-size: 12pt; font-weight: 600; color: var(--navy); line-height: 1.1; margin-top: 1pt; }
+.tc .op { margin-left: auto; font-family: var(--mono); font-size: 6.6pt; letter-spacing: .04em; color: var(--ink-60); text-align: right; }
+
+.tc .bd { display: grid; grid-template-columns: 80pt 190pt 1fr; gap: 12pt; padding: 9pt 12pt; align-items: center; }
+.tc .fo { display: flex; align-items: center; justify-content: center; height: 70pt; }
+.tc .fo img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.tc .dr { display: flex; gap: 6pt; align-items: center; justify-content: center; height: 96pt; }
+.tc .dr img { max-height: 100%; max-width: 100%; object-fit: contain; min-width: 0; }
+.tc .dr.n2 img { max-width: 50%; }
+
+.gp table { table-layout: auto; }
+.gp table.ord { width: 100%; border-collapse: collapse; }
+.gp table.ord th, .gp table.tech th, .gp table.taba th { font-family: var(--mono); font-size: 5.8pt; font-weight: 500; letter-spacing: .05em;
+  text-transform: uppercase; color: var(--ink-60); text-align: left; padding: 3pt 5pt; border-bottom: .75pt solid var(--line); height: auto; white-space: nowrap; }
+.gp table.ord td { font-size: 7.6pt; padding: 1.8pt 5pt; height: auto; }
+.gp table.ord td:nth-child(2) { font-family: var(--mono); font-size: 7pt; color: var(--navy); }
+.gp table.ord td:nth-child(n+3), .gp table.ord th:nth-child(n+3) { text-align: right; }
+.gp table.ord tbody tr, .gp table.tech tbody tr, .gp table.taba tbody tr { height: auto; }
+.gp table th:nth-child(1), .gp table td:first-child { padding-left: 5pt; }
+
+.tc .tw { padding: 0 12pt 8pt; }
+.tc .tl { display: block; font-family: var(--mono); font-size: 6pt; letter-spacing: .1em; text-transform: uppercase; color: var(--red); margin-bottom: 2pt; }
+.gp table.tech { width: 100%; border-collapse: collapse; }
+.gp table.tech th { text-align: center; padding: 3pt 2pt; font-size: 5.6pt; letter-spacing: .02em; }
+.gp table.tech td { font-size: 6.6pt; padding: 1.6pt 2pt; text-align: center; height: auto; white-space: nowrap; font-weight: 400; }
+.gp table.tech td:first-child { font-weight: 500; text-align: left; padding-left: 5pt; }
+.gp table.tech th:first-child { text-align: left; }
+.tc:not(.zaw) table.tech td:last-child { font-family: var(--mono); font-size: 6pt; color: var(--ink-60); }
+
+/* zawory */
+.tc.zaw .bd { grid-template-columns: 150pt 1fr 170pt; }
+.tc .fo.big { height: 110pt; }
+.tc.zaw .dr { height: 120pt; }
+.ft { list-style: none; }
+.ft li { display: grid; grid-template-columns: 58pt 1fr; gap: 6pt; font-size: 7.4pt; line-height: 1.35; padding: 3pt 0; border-bottom: .75pt solid var(--line); }
+.ft b { font-family: var(--mono); font-size: 6pt; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-60); padding-top: 1pt; }
+.gp table.taba { width: 100%; border-collapse: collapse; margin-top: 4pt; }
+.gp table.taba th { white-space: normal; text-transform: none; font-size: 6pt; text-align: center; letter-spacing: 0; }
+.gp table.taba td { font-size: 7pt; padding: 2.5pt 3pt; text-align: center; border-bottom: .75pt solid var(--line); height: auto; }
+.gp table.taba td:first-child { text-align: left; font-weight: 600; color: var(--navy); }
+
+/* okładka: znaki zamiast PZH */
+.cover .facts .badges { display: flex; align-items: center; gap: 8pt; }
+.cover .facts .badges b { font-size: 12pt; font-weight: 600; color: var(--navy); }
+.cover .facts .badges { flex-direction: column; align-items: flex-start; gap: 3pt; }
+.cover .facts .badges img { width: 44pt; height: 44pt; }
+.badges3 .bdg { display: flex; gap: 10pt; align-items: center; margin-bottom: 6pt; }
+.badges3 .bdg img { width: auto !important; height: 24pt !important; }
+.toc .taba { margin-bottom: 4pt; }
+.toc .h4 + .taba { margin-top: 2pt; }
+
+/* REMS */
+.rems .jaws { display: grid; grid-template-columns: 110pt 1fr 1fr; gap: 16pt; align-items: start; }
+.rems .jaws > img { width: 100%; }
+.rems .jw h4 { font-size: 9pt; font-weight: 600; color: var(--navy); margin-bottom: 4pt; }
+.rems .note, .gp .note { margin-top: 10pt; background: var(--stone); border-left: 3pt solid var(--red); border-radius: 0 6pt 6pt 0; padding: 7pt 11pt; font-size: 8pt; line-height: 1.45; }
+.prs { display: grid; grid-template-columns: 1fr 1fr; gap: 10pt 16pt; }
+.pr { display: grid; grid-template-columns: 70pt 1fr; gap: 10pt; align-items: center; border-bottom: .75pt solid var(--line); padding-bottom: 8pt; }
+.pr img { width: 70pt; }
+.pr b { font-size: 9pt; font-weight: 600; color: var(--navy); }
+.pr p { font-size: 7.6pt; line-height: 1.4; color: var(--ink-60); margin: 2pt 0; }
+.pr span { font-family: var(--mono); font-size: 6.6pt; color: var(--red); }
+
+/* instrukcja */
+.inst { margin-top: 10pt; display: grid; grid-template-columns: 1fr 1fr; gap: 9pt 16pt; }
+.is { display: grid; grid-template-columns: 92pt 1fr; gap: 9pt; align-items: start; }
+.is.noimg { grid-template-columns: 1fr; }
+.is img { width: 92pt; border-radius: 5pt; border: .75pt solid var(--line); }
+.is b { font-size: 8.6pt; font-weight: 600; color: var(--navy); }
+.is p { font-size: 7.5pt; line-height: 1.42; margin-top: 2pt; }
+.warn2 { background: var(--navy) !important; color: #fff; }
