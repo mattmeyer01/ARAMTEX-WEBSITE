@@ -41,8 +41,8 @@
 <link rel="preload" href="../assets/fonts/onest-cyrillic-wght-normal.woff2" as="font" type="font/woff2" crossorigin="">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Armatex", "item": "https://armatex.pl/ua/"}, {"@type": "ListItem", "position": 2, "name": "Компресійні фітинги", "item": "https://armatex.pl/ua/zlaczki-skrecane-kuterlite.html"}, {"@type": "ListItem", "position": 3, "name": "Підключення до бака з фланцем KS950X", "item": "https://armatex.pl/ua/kuterlite-przylacze-zbiornikowe-z-kolnierzem-ks950x.html"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ItemList", "name": "Підключення до бака з фланцем KS950X", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Pegler Yorkshire Підключення до бака з фланцем 35mm, арт. 43477K"}, {"@type": "ListItem", "position": 2, "name": "Pegler Yorkshire Підключення до бака з фланцем 42mm, арт. 43478K"}, {"@type": "ListItem", "position": 3, "name": "Pegler Yorkshire Підключення до бака з фланцем 54mm, арт. 43479K"}]}</script>
-<link rel="stylesheet" href="../c.css?v=3f968d91">
-<script src="../c.js?v=ad242a4d" defer=""></script>
+<link rel="stylesheet" href="../c.css?v=075f62c4">
+<script src="../c.js?v=c2757a61" defer=""></script>
 <!-- Privacy-friendly analytics by Plausible -->
 <script async="" src="https://plausible.io/js/pa-CNyUZto2tv84oI9tbRSnx.js"></script>
 <script>
@@ -54,6 +54,29 @@
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W55J48T5" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
+<script>(function(){var d=document,h=d.documentElement,w=window;
+try{var r=d.referrer,n=w.performance&&performance.getEntriesByType?performance.getEntriesByType('navigation')[0]:0;
+if((r&&new URL(r).origin===location.origin)||(n&&n.type==='back_forward')||d.visibilityState==='hidden'||(navigator.connection&&navigator.connection.saveData)||matchMedia('(prefers-reduced-motion: reduce)').matches)return}catch(e){return}
+var X={"pl": [["Zaprasowane", "Na wcisk", "Skręcane", "Lutowane"], "Dystrybutor złączek Besco i Pegler Yorkshire"], "en": [["Press", "Push-fit", "Compression", "Solder"], "Distributor of Besco and Pegler Yorkshire fittings"], "uk": [["Прес", "Push-fit", "Компресійні", "Під пайку"], "Дистриб'ютор фітингів Besco і Pegler Yorkshire"]},T=X[h.lang]||X.pl,o=d.createElement('div'),k='',l='',i,W=h.clientWidth||innerWidth,H=h.clientHeight||innerHeight;
+for(i=0;i<4;i++){k+='<b class="pl__k" style="left:'+(i+1)*25+'%"></b>';l+='<li>'+T[0][i]+'</li>'}
+o.className='pl';o.setAttribute('aria-hidden','true');
+o.innerHTML='<div class="pl__h pl__h--a"></div><div class="pl__h pl__h--b"></div><svg class="pl__cut" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none"><line x1="0" y1="'+H*.63+'" x2="'+W+'" y2="'+H*.37+'" pathLength="100"/></svg><div class="pl__c"><img class="pl__logo" src="../img/logo-light.webp?v=e75668d4" alt="" width="300" height="52"><div class="pl__pipe"><i class="pl__fill"></i>'+k+'</div><ol class="pl__m">'+l+'</ol></div><p class="pl__cap">'+T[1]+'</p><p class="pl__n"><b>0</b><span>%</span></p>';
+h.classList.add('intro');d.body.insertBefore(o,d.body.firstChild);
+var num=o.querySelector('.pl__n b'),ks=o.querySelectorAll('.pl__k'),ls=o.querySelectorAll('.pl__m li'),p=0,g=4,t0=0,end=0,fired=0;
+function up(v){if(v>g)g=v}
+function go(){if(fired)return;fired=1;h.classList.remove('intro');try{d.dispatchEvent(new Event('armatex:intro'))}catch(e){}}
+function out(){end=1;go();if(o.parentNode)o.parentNode.removeChild(o)}
+function done(){end=1;o.classList.add('pl--done');setTimeout(function(){o.classList.add('pl--cut')},200);setTimeout(function(){o.classList.add('pl--out');go()},450);setTimeout(out,1300)}
+d.addEventListener('DOMContentLoaded',function(){up(40);var im=[].filter.call(d.images,function(x){return x.loading!=='lazy'&&!o.contains(x)}),c=0,f=!d.fonts;
+function chk(){if(c>=im.length&&f)up(100)}function one(){c++;up(40+50*c/im.length);chk()}if(!im.length)up(90);
+im.forEach(function(x){if(x.complete)one();else{x.addEventListener('load',one);x.addEventListener('error',one)}});if(d.fonts)d.fonts.ready.then(function(){f=1;chk()});chk()});
+w.addEventListener('load',function(){up(100)});
+function tick(t){try{if(end)return;if(!t0)t0=t;var e=t-t0,q=Math.min(Math.max(e-100,0)/800,1);if(e>4000)g=100;
+var goal=Math.min(g,100*q*q*(3-2*q));p+=(goal-p)*.16;if(goal-p<.5)p=goal;
+o.style.setProperty('--p',p/100);num.textContent=Math.floor(p);for(i=0;i<4;i++){ks[i].classList.toggle('on',p>=(i+1)*25);ls[i].classList.toggle('on',p>=(i+1)*25)}
+if(p>=100)done();else requestAnimationFrame(tick)}catch(x){out()}}
+o.addEventListener('click',function(){if(!end)done()});d.addEventListener('keydown',function(e){if(e.key==='Escape'&&!end)done()});
+requestAnimationFrame(tick);setTimeout(out,7000)})();</script>
 <div class="abar" data-id="inox-2026" role="region" aria-label="Оголошення">
 <p class="abar__t"><span class="abar__new">Новинка</span> <span class="abar__txt"><span class="abar__l">Вводимо нову систему INOX 304: прес-фітинги з нержавіючої сталі</span> <span class="abar__s">Фітинги INOX 304</span></span> <a class="abar__more" href="zlaczki-zaprasowane-press.html#linie" aria-haspopup="dialog" aria-controls="inoxDlg">Детальніше</a></p>
 </div>
