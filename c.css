@@ -1019,3 +1019,52 @@ button.sy-find[aria-expanded="true"]::after { content: " ▴"; }
 .foot__lk { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem 1.4rem; }
 .foot__ck { padding: 0; border: 0; background: none; color: inherit; font: inherit; cursor: pointer; }
 .foot__ck:hover { color: #fff; }
+
+/* Intro przy wejściu na stronę z zewnątrz (INTRO_JS w tools/strony.py, na początku <body>). Skrypt dodaje klasę
+   intro do <html> i kurtynę .pl tylko przy wejściu spoza strony (bez odsyłacza z armatex.pl), nie przy powrocie
+   „wstecz”, nie w tle karty i nie przy prefers-reduced-motion. Bez JS nic się nie pokazuje. Animacje wejścia
+   strony czekają (paused), aż kurtyna się rozsunie, a .in / .odo w c.js ruszają po zdarzeniu armatex:intro. */
+.intro .hero__media img, .intro .hero h1 .ln > span, .intro .hero__sub, .intro .hero__ctas, .intro .pcard,
+.intro .phead h1, .intro .phead .lead, .intro .phead__ctas, .intro .phead__facts, .intro .ck { animation-play-state: paused; }
+.pl { position: fixed; inset: 0; z-index: 200; color: #fff; --p: 0; }
+.pl__h { position: absolute; inset: 0; background: radial-gradient(120% 90% at 50% 42%, var(--navy-2), var(--navy) 55%, var(--navy-3)); transition: transform .8s cubic-bezier(.76,0,.24,1); will-change: transform; }
+.pl__h::after { content: ''; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px); background-size: 56px 56px; background-position: 50% 50%; -webkit-mask-image: radial-gradient(75% 65% at 50% 45%, #000, transparent); mask-image: radial-gradient(75% 65% at 50% 45%, #000, transparent); }
+/* połówki zachodzą na siebie o 1 px, żeby na skośnym szwie nie prześwitywała strona */
+.pl__h--a { clip-path: polygon(0 0, 100% 0, 100% calc(37% + 1px), 0 calc(63% + 1px)); }
+.pl__h--b { clip-path: polygon(0 calc(63% - 1px), 100% calc(37% - 1px), 100% 100%, 0 100%); }
+.pl--out .pl__h--a { transform: translate(-5%, -100%); }
+.pl--out .pl__h--b { transform: translate(5%, 100%); }
+/* cięcie po skosie (jak paski w logo): linia rysuje się od lewej, potem połówki się rozjeżdżają */
+.pl__cut { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.pl__cut line { stroke: var(--red); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 100; stroke-dashoffset: 100; filter: drop-shadow(0 0 6px rgba(255,90,70,.9)); }
+.pl--cut .pl__cut line { stroke-dashoffset: 0; transition: stroke-dashoffset .3s cubic-bezier(.6,0,.2,1); }
+.pl--out .pl__cut { opacity: 0; transition: opacity .35s .15s; }
+.pl__c { position: absolute; left: 50%; top: 46%; width: min(540px, calc(100% - 2 * var(--g))); display: grid; justify-items: center; transform: translate(-50%, -50%); transition: opacity .25s, transform .45s var(--ease-out); }
+.pl__logo { width: min(240px, 58vw); height: auto; opacity: 0; transform: translateY(10px); animation: plIn .5s var(--ease-out) forwards; }
+@keyframes plIn { to { opacity: 1; transform: none; } }
+/* „rura”: wypełnia się według postępu ładowania; cztery złączki = cztery metody łączenia */
+.pl__pipe { position: relative; width: 100%; height: 8px; margin-top: 2.6rem; border-radius: 99px; background: rgba(255,255,255,.09); box-shadow: inset 0 1px 2px rgba(0,0,0,.5); opacity: 0; animation: plIn .45s .08s var(--ease-out) forwards; }
+.pl__fill { position: absolute; inset: 0; overflow: hidden; border-radius: inherit; background: linear-gradient(90deg, var(--red-2), var(--red) 55%, var(--red-soft)); box-shadow: 0 0 18px rgba(220,41,30,.55); clip-path: inset(0 calc(100% - var(--p) * 100%) 0 0 round 99px); }
+.pl__fill::after { content: ''; position: absolute; top: 0; bottom: 0; width: 28%; background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent); animation: plSheen 1.1s linear infinite; }
+@keyframes plSheen { from { left: -30%; } to { left: 100%; } }
+.pl__k { position: absolute; top: 50%; width: 10px; height: 20px; margin: -10px 0 0 -5px; border-radius: 3px; background: linear-gradient(#6a7a96, #34445f); box-shadow: 0 0 0 1px rgba(255,255,255,.12); transition: background .3s, box-shadow .3s, transform .3s var(--ease-out); }
+.pl__k:last-child { margin-left: -10px; }
+.pl__k.on { background: linear-gradient(#fff, #d9dde5); box-shadow: 0 0 14px rgba(255,255,255,.7); transform: scaleY(1.15); }
+.pl__pipe::after { content: ''; position: absolute; right: -14px; top: 50%; width: 28px; height: 28px; margin-top: -14px; border: 2px solid var(--red-soft); border-radius: 50%; opacity: 0; }
+.pl--done .pl__pipe::after { animation: plRing .55s var(--ease-out); }
+@keyframes plRing { from { opacity: 1; transform: scale(.4); } to { opacity: 0; transform: scale(3.2); } }
+.pl--done .pl__fill { filter: brightness(1.4); transition: filter .2s; }
+.pl__m { list-style: none; width: 100%; margin: 1.1rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); font: 500 .64rem/1.2 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.34); opacity: 0; animation: plIn .45s .14s var(--ease-out) forwards; }
+.pl__m li { text-align: right; transition: color .35s; }
+.pl__m li.on { color: #fff; }
+.pl__cap { position: absolute; left: var(--g); bottom: calc(var(--g) * .9 + .35rem); max-width: 24ch; margin: 0; font: 500 .66rem/1.6 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.5); transition: opacity .25s; }
+.pl__n { position: absolute; right: var(--g); bottom: calc(var(--g) * .9); margin: 0; display: flex; align-items: flex-start; font: 600 clamp(4.4rem, 12vw, 10rem)/.8 var(--sans); letter-spacing: -.06em; font-variant-numeric: tabular-nums; transition: opacity .25s, transform .45s var(--ease-out); }
+.pl__n span { margin: .1em 0 0 .08em; color: var(--red); font-size: .3em; letter-spacing: 0; }
+.pl--cut .pl__c { opacity: 0; transform: translate(-50%, -50%) scale(.96); }
+.pl--cut .pl__n, .pl--cut .pl__cap { opacity: 0; }
+.pl--cut .pl__n { transform: translateY(12px); }
+@media (max-width: 600px) {
+  .pl__m { font-size: .54rem; letter-spacing: .06em; }
+  .pl__cap { max-width: 18ch; font-size: .58rem; }
+}
+@media print { .pl { display: none; } }

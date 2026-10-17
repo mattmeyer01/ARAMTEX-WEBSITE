@@ -212,8 +212,12 @@
       if (t._reels) runOdo(t._reels); else t.classList.add('on');
     });
   }, { rootMargin: '0px 0px -15% 0px' });
-  $$('.odo').forEach(function (o) { o._reels = buildOdo(o); io.observe(o); });
-  $$('.in').forEach(function (el, i) { el.style.transitionDelay = (i % 3) * 0.1 + 's'; io.observe(el); });
+  $$('.odo').forEach(function (o) { o._reels = buildOdo(o); });
+  $$('.in').forEach(function (el, i) { el.style.transitionDelay = (i % 3) * 0.1 + 's'; });
+  // Przy intro (INTRO_JS w tools/strony.py, klasa intro na <html>) wejścia ruszają dopiero, gdy kurtyna się rozsuwa.
+  function startIn() { $$('.odo, .in').forEach(function (el) { io.observe(el); }); }
+  if (document.documentElement.classList.contains('intro')) document.addEventListener('armatex:intro', startIn, { once: true });
+  else startIn();
 
   // Magnetyczne CTA (BYQ Magnetic Button)
   if (!reduce && matchMedia('(hover: hover) and (pointer: fine)').matches) {
