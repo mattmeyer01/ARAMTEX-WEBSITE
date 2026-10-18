@@ -272,7 +272,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 # 100 % = obrazy bez lazy i fonty gotowe (albo zdarzenie load). Czas: co najmniej INTRO_MIN ms do 100 %, najwyżej
 # INTRO_MAX ms czekania na stronę; awaryjnie kurtyna znika po 5 s.
 INTRO_ON=True                 # False wyłącza intro na wszystkich stronach
-INTRO_MIN,INTRO_MAX=500,2500
+INTRO_MIN,INTRO_MAX=850,2500
 INTRO_TXT={'pl':(['Zaprasowane','Na wcisk','Skręcane','Lutowane'],'Dystrybutor złączek Besco i Pegler Yorkshire'),
            'en':(['Press','Push-fit','Compression','Solder'],'Distributor of Besco and Pegler Yorkshire fittings'),
            'uk':(['Прес','Push-fit','Компресійні','Під пайку'],"Дистриб'ютор фітингів Besco і Pegler Yorkshire")}
@@ -288,7 +288,7 @@ var num=o.querySelector('.pl__n b'),ks=o.querySelectorAll('.pl__k'),ls=o.querySe
 function up(v){if(v>g)g=v}
 function go(){if(fired)return;fired=1;h.classList.remove('intro');try{d.dispatchEvent(new Event('armatex:intro'))}catch(e){}}
 function out(){end=1;go();if(o.parentNode)o.parentNode.removeChild(o)}
-function done(){end=1;o.classList.add('pl--done');setTimeout(function(){o.classList.add('pl--out');go()},150);setTimeout(out,600)}
+function done(){end=1;o.classList.add('pl--done');setTimeout(function(){o.classList.add('pl--out');go()},250);setTimeout(out,700)}
 d.addEventListener('DOMContentLoaded',function(){up(40);var im=[].filter.call(d.images,function(x){return x.loading!=='lazy'&&!o.contains(x)}),c=0,f=!d.fonts;
 function chk(){if(c>=im.length&&f)up(100)}function one(){c++;up(40+50*c/im.length);chk()}if(!im.length)up(90);
 im.forEach(function(x){if(x.complete)one();else{x.addEventListener('load',one);x.addEventListener('error',one)}});if(d.fonts)d.fonts.ready.then(function(){f=1;chk()});chk()});
