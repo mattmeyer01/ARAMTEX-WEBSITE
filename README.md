@@ -172,7 +172,8 @@ Na kopii w GitHub Pages formularz nie działa (pokazuje komunikat z telefonem i 
 1. **Indeksowanie jest włączone** (strona działa pod armatex.pl). Wyjątek: `404.html` ma `noindex`.
 2. Adresy kanoniczne, Open Graph, `sitemap.xml` i dane strukturalne zakładają domenę `https://armatex.pl/`
    (stała `SITE` w generatorze).
-3. Uzupełnij godziny otwarcia i profile firmy (`openingHours`, `sameAs`) w danych `WholesaleStore`.
+3. Godziny otwarcia (`openingHoursSpecification`) i profil LinkedIn (`sameAs`) są w danych `WholesaleStore`. Adres profilu
+   (`LINKEDIN` w `tools/strony.py`) jest też w stopce (Kontakt) i w sekcji kontaktu. Kolejne profile dopisz do `sameAs`.
 4. Przy zmianie domeny ze starej strony ustaw przekierowania 301 ze starych adresów.
 5. Tło sekcji kontaktu na stronie głównej ładuje się z CDN Higgsfield (`d8j0ntlcm91z4.cloudfront.net`);
    warto pobrać je do `img/` i podmienić adres.
