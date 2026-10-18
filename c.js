@@ -631,6 +631,33 @@
   var PROFIL = ['Hurtownia / sklep instalacyjny', 'Firma instalacyjna / HVAC', 'Generalny wykonawca / deweloper', 'Przemysł / utrzymanie ruchu', 'Zarządca budynków / instytucja publiczna', 'Inny'];
   // Formularz: walidacja i wysyłka do Netlify Forms (AJAX), bez przeładowania strony
   var form = $('#form');
+  // Po wysłaniu: karta formularza zamienia się w potwierdzenie (style .form--ok, .form__ok w c.css):
+  // rysowany znak ✓, adres, na który odpowiemy, liczba pozycji z listy do wyceny, telefon i „Wyślij kolejne zapytanie”.
+  function poz(n) {
+    var d = n % 10, s = n % 100;
+    return L(n === 1 ? 'pozycja' : d >= 2 && d <= 4 && (s < 12 || s > 14) ? 'pozycje' : 'pozycji', n === 1 ? 'item' : 'items',
+      d === 1 && s !== 11 ? 'позиція' : d >= 2 && d <= 4 && (s < 12 || s > 14) ? 'позиції' : 'позицій');
+  }
+  function formOk(em, n) {
+    var p = $('.form__ok', form), k = '', a;
+    if (!p) { p = document.createElement('div'); p.className = 'form__ok'; form.appendChild(p); }
+    for (a = 0; a < 12; a++) k += '<i style="--a:' + a * 30 + 'deg"></i>';
+    p.innerHTML = '<div class="form__okic" aria-hidden="true">' + k + '<svg viewBox="0 0 52 52"><circle cx="26" cy="26" r="24"/><path d="M15 27.5l7.5 7.5L38 19"/></svg></div>' +
+      '<h2 class="form__okt" tabindex="-1">' + L('Dziękujemy! Zapytanie wysłane.', 'Thank you! Your enquiry has been sent.', 'Дякуємо! Запит надіслано.') + '</h2>' +
+      '<p>' + L('Odpowiemy w ciągu jednego dnia roboczego', 'We will reply within one working day', 'Відповімо протягом одного робочого дня') +
+      (em ? L(' na adres ', ' to ', ' на адресу ') + '<b></b>' : '') + '.</p>' +
+      (n ? '<p class="form__okn">' + L('Lista do wyceny: ', 'Quote list: ', 'Список для розрахунку ціни: ') + n + ' ' + poz(n) + '.</p>' : '') +
+      '<p>' + L('Pilne? Zadzwoń: ', 'Urgent? Call ', 'Терміново? Телефонуйте: ') + '<a href="tel:+48513191502">' + L('513 191 502', '+48 513 191 502', '+48 513 191 502') + '</a></p>' +
+      '<button type="button" class="ghost form__again">' + L('Wyślij kolejne zapytanie', 'Send another enquiry', 'Надіслати ще один запит') + '</button>';
+    if (em) $('b', p).textContent = em;   // adres z formularza tylko jako tekst
+    form.classList.add('form--ok');
+    $('.form__again', p).addEventListener('click', function () {
+      form.classList.remove('form--ok'); p.remove();
+      var f1 = $('.f input, .f select, .f textarea', form); if (f1) f1.focus();
+    });
+    form.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+    $('.form__okt', p).focus({ preventScroll: true });
+  }
   if (form) form.addEventListener('submit', function (e) {
     e.preventDefault();
     var st = $('#fs'), bad = null;
@@ -659,9 +686,10 @@
     }).then(function (r) { if (!r.ok) throw new Error('http ' + r.status); })
       .then(function () {
         track('Zapytanie wysłane', stat);
-        form.reset(); st.classList.add('is-ok');
-        st.textContent = L('Dziękujemy. Zapytanie dotarło, odpowiemy w ciągu jednego dnia roboczego.', 'Thank you. Your enquiry has been received; we will reply within one working day.', 'Дякуємо. Запит отримано, відповімо протягом одного робочого дня.');
+        var em = ($('[type=email]', form) || {}).value || '';
+        form.reset(); st.textContent = '';
         try { localStorage.removeItem('armatex-rfq'); } catch (err) {}
+        formOk(em.trim(), stat.pozycje);
       })
       .catch(function () { st.classList.add('is-err'); st.textContent = L('Nie udało się wysłać formularza. Napisz na biuro@armatex.pl lub zadzwoń: 513 191 502.', 'The form could not be sent. Please e-mail biuro@armatex.pl or call +48 513 191 502.', 'Не вдалося надіслати форму. Напишіть на biuro@armatex.pl або зателефонуйте: +48 513 191 502.'); })
       .then(function () { btn.disabled = false; });

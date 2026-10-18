@@ -165,6 +165,9 @@ stała `FORM_NAME` w `tools/strony.py`). Netlify wykrywa go przy wdrożeniu po a
 zapisuje zgłoszenia w panelu (Forms) i wysyła powiadomienia. Jednorazowo w panelu Netlify:
 **Forms → Enable form detection**, potem po wdrożeniu **Forms → zapytanie → Form notifications →
 Email notification** na `biuro@armatex.pl`. Temat maila ustawia ukryte pole `subject`.
+Po udanym wysłaniu karta formularza zamienia się w potwierdzenie (`formOk` w `c.js`, style `.form--ok`/`.form__ok` w `c.css`):
+rysowany znak ✓, adres e-mail, na który odpowiemy (z formularza, wstawiany jako tekst), liczba pozycji z listy do wyceny,
+telefon i przycisk „Wyślij kolejne zapytanie”. Fokus przechodzi na tytuł potwierdzenia.
 Na kopii w GitHub Pages formularz nie działa (pokazuje komunikat z telefonem i e-mailem).
 
 ## Przed startem w wyszukiwarkach
