@@ -356,6 +356,9 @@ button, input, textarea, select { font: inherit; color: inherit; }
 .consent { display: flex; gap: .6rem; margin-top: 1rem; font-size: .82rem; color: var(--ink-60); }
 .consent input { accent-color: var(--red); margin-top: .2rem; }
 .form .mag { width: 100%; margin-top: 1.4rem; }
+/* przycisk wysyłki: bez napisu i poświaty „za kursorem”, tylko płynne przyciemnienie (hover) i mocniejsze przy kliknięciu */
+.form .mag::before { display: none; }
+.form .mag:active { background: #9c1a11; }
 .form__s { margin-top: .8rem; min-height: 1.3em; font-size: .88rem; color: var(--red); }
 .form__s.is-ok { color: #1f7a4d; }
 .f.is-bad input, .f.is-bad textarea { border-color: var(--red); background: #fff; }
