@@ -1240,7 +1240,7 @@ CTA_BOX=f'''      <div class="cta" style="margin-top:clamp(3rem,6vw,4.5rem)">
 firma=phead([('O firmie','o-firmie.html')],'O firmie','Armatex. Dystrybutor złączek dla hurtowni.',
   'Działamy od 1991 roku. Jesteśmy oficjalnym przedstawicielem Pegler Yorkshire w Polsce, a od 2016 roku dystrybutorem firmy Besco. Z magazynu w Olsztynie dostarczamy złączki i armaturę obu producentów do hurtowni w całej Polsce.',
   [('Na rynku','od 1991'),('Dystrybutor Besco','od 2016'),('Indeksy','ponad 3 200'),('Wysyłka','24 h')],
-  f'<a class="mag" href="{ask("Chcemy poznać ofertę Armatex.")}"><span>Zapytaj o wycenę</span></a><a class="ghost" href="wspolpraca.html">Jak współpracujemy</a>')+f'''
+  f'<a class="mag" href="{ask("Chcemy poznać ofertę Armatex.")}"><span>Zapytaj o wycenę</span></a><a class="ghost" href="wspolpraca.html">Jak współpracujemy</a><a class="ghost ghost--in" href="{LINKEDIN}" target="_blank" rel="noopener">{ICO_IN}LinkedIn</a>')+f'''
   <section class="section section--tight">
     <div class="wrap">
       <div class="yard__grid">
