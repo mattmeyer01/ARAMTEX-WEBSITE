@@ -266,39 +266,39 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 '''.replace('%ID%',GTM_ID) if GTM_ID else ''
 # Intro (style .pl w c.css): kurtyna z logo, „rurą” wypełnianą według postępu ładowania (DOM, obrazy bez lazy,
-# zdarzenie load) i licznikiem; przy 100% błysk, cięcie po skosie i rozsunięcie połówek. Tylko przy wejściu
+# zdarzenie load) i licznikiem; przy 100% krótki błysk z pierścieniem i kurtyna się rozpływa. Tylko przy wejściu
 # z zewnątrz (odsyłacz spoza strony albo brak), nie przy „wstecz”, nie w tle karty, nie przy prefers-reduced-motion
 # ani oszczędzaniu danych (Save-Data). Kliknięcie albo Esc kończy intro od razu.
 # 100 % = obrazy bez lazy i fonty gotowe (albo zdarzenie load). Czas: co najmniej INTRO_MIN ms do 100 %, najwyżej
-# INTRO_MAX ms czekania na stronę; awaryjnie kurtyna znika po 7 s.
+# INTRO_MAX ms czekania na stronę; awaryjnie kurtyna znika po 5 s.
 INTRO_ON=True                 # False wyłącza intro na wszystkich stronach
-INTRO_MIN,INTRO_MAX=800,4000
+INTRO_MIN,INTRO_MAX=500,2500
 INTRO_TXT={'pl':(['Zaprasowane','Na wcisk','Skręcane','Lutowane'],'Dystrybutor złączek Besco i Pegler Yorkshire'),
            'en':(['Press','Push-fit','Compression','Solder'],'Distributor of Besco and Pegler Yorkshire fittings'),
            'uk':(['Прес','Push-fit','Компресійні','Під пайку'],"Дистриб'ютор фітингів Besco і Pegler Yorkshire")}
 INTRO_JS='''<script>(function(){var d=document,h=d.documentElement,w=window;
 try{var r=d.referrer,n=w.performance&&performance.getEntriesByType?performance.getEntriesByType('navigation')[0]:0;
 if((r&&new URL(r).origin===location.origin)||(n&&n.type==='back_forward')||d.visibilityState==='hidden'||(navigator.connection&&navigator.connection.saveData)||matchMedia('(prefers-reduced-motion: reduce)').matches)return}catch(e){return}
-var X=%TXT%,T=X[h.lang]||X.pl,o=d.createElement('div'),k='',l='',i,W=h.clientWidth||innerWidth,H=h.clientHeight||innerHeight;
+var X=%TXT%,T=X[h.lang]||X.pl,o=d.createElement('div'),k='',l='',i;
 for(i=0;i<4;i++){k+='<b class="pl__k" style="left:'+(i+1)*25+'%"></b>';l+='<li>'+T[0][i]+'</li>'}
 o.className='pl';o.setAttribute('aria-hidden','true');
-o.innerHTML='<div class="pl__h pl__h--a"></div><div class="pl__h pl__h--b"></div><svg class="pl__cut" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="none"><line x1="0" y1="'+H*.63+'" x2="'+W+'" y2="'+H*.37+'" pathLength="100"/></svg><div class="pl__c"><img class="pl__logo" src="../img/logo-light.webp" alt="" width="300" height="52"><div class="pl__pipe"><i class="pl__fill"></i>'+k+'</div><ol class="pl__m">'+l+'</ol></div><p class="pl__cap">'+T[1]+'</p><p class="pl__n"><b>0</b><span>%</span></p>';
+o.innerHTML='<div class="pl__c"><img class="pl__logo" src="../img/logo-light.webp" alt="" width="300" height="52"><div class="pl__pipe"><i class="pl__fill"></i>'+k+'</div><ol class="pl__m">'+l+'</ol></div><p class="pl__cap">'+T[1]+'</p><p class="pl__n"><b>0</b><span>%</span></p>';
 h.classList.add('intro');d.body.insertBefore(o,d.body.firstChild);
 var num=o.querySelector('.pl__n b'),ks=o.querySelectorAll('.pl__k'),ls=o.querySelectorAll('.pl__m li'),p=0,g=4,t0=0,end=0,fired=0;
 function up(v){if(v>g)g=v}
 function go(){if(fired)return;fired=1;h.classList.remove('intro');try{d.dispatchEvent(new Event('armatex:intro'))}catch(e){}}
 function out(){end=1;go();if(o.parentNode)o.parentNode.removeChild(o)}
-function done(){end=1;o.classList.add('pl--done');setTimeout(function(){o.classList.add('pl--cut')},200);setTimeout(function(){o.classList.add('pl--out');go()},450);setTimeout(out,1300)}
+function done(){end=1;o.classList.add('pl--done');setTimeout(function(){o.classList.add('pl--out');go()},150);setTimeout(out,600)}
 d.addEventListener('DOMContentLoaded',function(){up(40);var im=[].filter.call(d.images,function(x){return x.loading!=='lazy'&&!o.contains(x)}),c=0,f=!d.fonts;
 function chk(){if(c>=im.length&&f)up(100)}function one(){c++;up(40+50*c/im.length);chk()}if(!im.length)up(90);
 im.forEach(function(x){if(x.complete)one();else{x.addEventListener('load',one);x.addEventListener('error',one)}});if(d.fonts)d.fonts.ready.then(function(){f=1;chk()});chk()});
 w.addEventListener('load',function(){up(100)});
-function tick(t){try{if(end)return;if(!t0)t0=t;var e=t-t0,q=Math.min(Math.max(e-100,0)/%MIN%,1);if(e>%MAX%)g=100;
-var goal=Math.min(g,100*q*q*(3-2*q));p+=(goal-p)*.16;if(goal-p<.5)p=goal;
+function tick(t){try{if(end)return;if(!t0)t0=t;var e=t-t0,q=Math.min(e/%MIN%,1);if(e>%MAX%)g=100;
+var goal=Math.min(g,100*q);p+=(goal-p)*.3;if(goal-p<.6)p=goal;
 o.style.setProperty('--p',p/100);num.textContent=Math.floor(p);for(i=0;i<4;i++){ks[i].classList.toggle('on',p>=(i+1)*25);ls[i].classList.toggle('on',p>=(i+1)*25)}
 if(p>=100)done();else requestAnimationFrame(tick)}catch(x){out()}}
 o.addEventListener('click',function(){if(!end)done()});d.addEventListener('keydown',function(e){if(e.key==='Escape'&&!end)done()});
-requestAnimationFrame(tick);setTimeout(out,7000)})();</script>
+requestAnimationFrame(tick);setTimeout(out,5000)})();</script>
 '''.replace('%TXT%',json.dumps({c:[t[0],t[1]] for c,t in INTRO_TXT.items()},ensure_ascii=False)).replace('%MIN%',str(INTRO_MIN)).replace('%MAX%',str(INTRO_MAX))
 def head(title,desc,extra='',path=''):
     ta,da=title.replace('"','&quot;'),desc.replace('"','&quot;')   # cudzysłów cala (1/2") w atrybucie content
