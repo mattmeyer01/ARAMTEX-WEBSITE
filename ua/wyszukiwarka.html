@@ -65,12 +65,12 @@ var num=o.querySelector('.pl__n b'),ks=o.querySelectorAll('.pl__k'),ls=o.querySe
 function up(v){if(v>g)g=v}
 function go(){if(fired)return;fired=1;h.classList.remove('intro');try{d.dispatchEvent(new Event('armatex:intro'))}catch(e){}}
 function out(){end=1;go();if(o.parentNode)o.parentNode.removeChild(o)}
-function done(){end=1;o.classList.add('pl--done');setTimeout(function(){o.classList.add('pl--out');go()},150);setTimeout(out,600)}
+function done(){end=1;o.classList.add('pl--done');setTimeout(function(){o.classList.add('pl--out');go()},250);setTimeout(out,700)}
 d.addEventListener('DOMContentLoaded',function(){up(40);var im=[].filter.call(d.images,function(x){return x.loading!=='lazy'&&!o.contains(x)}),c=0,f=!d.fonts;
 function chk(){if(c>=im.length&&f)up(100)}function one(){c++;up(40+50*c/im.length);chk()}if(!im.length)up(90);
 im.forEach(function(x){if(x.complete)one();else{x.addEventListener('load',one);x.addEventListener('error',one)}});if(d.fonts)d.fonts.ready.then(function(){f=1;chk()});chk()});
 w.addEventListener('load',function(){up(100)});
-function tick(t){try{if(end)return;if(!t0)t0=t;var e=t-t0,q=Math.min(e/500,1);if(e>2500)g=100;
+function tick(t){try{if(end)return;if(!t0)t0=t;var e=t-t0,q=Math.min(e/850,1);if(e>2500)g=100;
 var goal=Math.min(g,100*q);p+=(goal-p)*.3;if(goal-p<.6)p=goal;
 o.style.setProperty('--p',p/100);num.textContent=Math.floor(p);for(i=0;i<4;i++){ks[i].classList.toggle('on',p>=(i+1)*25);ls[i].classList.toggle('on',p>=(i+1)*25)}
 if(p>=100)done();else requestAnimationFrame(tick)}catch(x){out()}}

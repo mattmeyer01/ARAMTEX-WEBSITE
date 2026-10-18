@@ -18,7 +18,7 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
 - `site.webmanifest`: nazwa i ikony strony dla telefonów (ikony w `assets/img/`).
 - `data/`: `besco-2026.json` (Besco), `pegler.json` (Tectite, Kuterlite) i `katalog.json` (dane wyszukiwarki, składane przez generator).
 - Intro przy wejściu na stronę: granatowa kurtyna z logo, „rurą” wypełnianą według postępu ładowania (cztery złączki =
-  cztery metody łączenia) i licznikiem 0–100 %; przy 100 % krótki błysk i kurtyna się rozpływa (całość ok. 1 s). Skrypt `INTRO_JS` w `tools/strony.py` (na początku
+  cztery metody łączenia) i licznikiem 0–100 %; przy 100 % krótki błysk i kurtyna się rozpływa (całość ok. 1,5 s: pasek 0,85 s, pauza 0,25 s, zanikanie 0,4 s). Skrypt `INTRO_JS` w `tools/strony.py` (na początku
   `<body>`, przełącznik `INTRO_ON`, czasy `INTRO_MIN`/`INTRO_MAX`, teksty PL/EN/UK w `INTRO_TXT`), style `.pl` w `c.css`.
   Pokazuje się tylko przy wejściu z zewnątrz (odsyłacz spoza strony albo brak), nie przy przejściach między podstronami,
   nie przy „wstecz”, nie w karcie otwartej w tle, nie przy `prefers-reduced-motion`, przy oszczędzaniu danych ani na 404. Kliknięcie
