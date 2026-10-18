@@ -211,12 +211,15 @@ def grp_links(sids, open_first=False):
 
 import json
 SITE='https://armatex.pl/'
+# profil firmy na LinkedIn: stopka (Kontakt), sekcja kontaktu (strona główna i kontakt), dane firmy dla Google (sameAs)
+LINKEDIN='https://www.linkedin.com/company/phu-armatex'
+ICO_IN='<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>'
 def ld(obj): return '  <script type="application/ld+json">'+json.dumps(obj,ensure_ascii=False)+'</script>\n'
 LD_ORG=ld({"@context":"https://schema.org","@graph":[
   {"@type":"WholesaleStore","@id":SITE+"#firma","name":"Armatex","url":SITE,
    "logo":SITE+"img/logo-dark.webp","image":SITE+"img/og/armatex-og.jpg",
    "description":"Dystrybutor złączek i armatury Besco oraz Pegler Yorkshire dla hurtowni instalacyjnych w całej Polsce: złączki zaprasowane (press), na wcisk, skręcane i lutowane.",
-   "telephone":"+48 513 191 502","email":"biuro@armatex.pl","foundingDate":"1991",
+   "telephone":"+48 513 191 502","email":"biuro@armatex.pl","foundingDate":"1991","sameAs":[LINKEDIN],
    "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"18:00"}],
    "legalName":"P.H.U. ARMATEX Sp. J. A. J. Bunda","taxID":"7393814110",
    "identifier":[{"@type":"PropertyValue","propertyID":"KRS","value":"0000371628"},{"@type":"PropertyValue","propertyID":"REGON","value":"280563743"}],
@@ -390,7 +393,7 @@ FOOT='''<footer class="foot">
     </div>
     <div><h2>Oferta</h2><ul>'''+''.join(f'<li><a href="{s["slug"]}.html">{s["name"]}</a></li>' for s in SYS)+'''</ul></div>
     <div><h2>Armatex</h2><ul><li><a href="wyszukiwarka.html">Wyszukiwarka indeksów</a></li><li><a href="'''+PDF+'''" target="_blank" rel="noopener">Katalog Besco 2026 (PDF)</a></li><li><a href="do-pobrania.html">Do pobrania</a></li><li><a href="poradniki.html">Poradniki</a></li><li><a href="o-firmie.html">O firmie</a></li><li><a href="wspolpraca.html">Współpraca</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
-    <div><h2>Kontakt</h2><ul><li><a href="tel:+48513191502">513 191 502</a></li><li><a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a></li><li class="foot__addr"><small>Biuro i magazyn</small>ul. Składowa 3a, 10-421 Olsztyn<br>pn–pt 7:00–18:00</li></ul></div>
+    <div><h2>Kontakt</h2><ul><li><a href="tel:+48513191502">513 191 502</a></li><li><a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a></li><li><a class="foot__in" href="'''+LINKEDIN+'''" target="_blank" rel="noopener">'''+ICO_IN+'''LinkedIn</a></li><li class="foot__addr"><small>Biuro i magazyn</small>ul. Składowa 3a, 10-421 Olsztyn<br>pn–pt 7:00–18:00</li></ul></div>
   </div>
   <div class="wrap foot__bar">
     <div class="foot__co">
@@ -611,6 +614,9 @@ kontakt_home=re.sub(r'<div class="close__bg" aria-hidden="true" data-hf><img [^>
 assert 'cloudfront' not in kontakt_home
 kontakt_home=kontakt_home.replace('<h2 class="h2">Porozmawiajmy o warunkach dla Twojej hurtowni.</h2>','<h2 class="h2">Porozmawiajmy o ofercie dla Twojej firmy.</h2>')
 kontakt_home=kontakt_home.replace('<h3>Zapytanie o warunki współpracy</h3>','<h2 class="form__t">Zapytanie o wycenę</h2>')
+# pod listą osób: profil firmy na LinkedIn
+assert kontakt_home.count('</div>\n        </div>\n      </div>\n      <form')==1
+kontakt_home=kontakt_home.replace('</div>\n        </div>\n      </div>\n      <form',f'</div>\n        </div>\n        <a class="close__in" href="{LINKEDIN}" target="_blank" rel="noopener">{ICO_IN}Armatex na LinkedIn</a>\n      </div>\n      <form',1)
 steps=frag('      <div class="steps">','      </div>\n      <div class="aud">').replace('      <div class="aud">','').rstrip()
 stats='''      <div class="stats">
         <div class="stat"><b><span class="odo" data-odo="1991" data-year aria-label="1991">1991</span><i> r.</i></b><span>założenia przedsiębiorstwa</span></div>
