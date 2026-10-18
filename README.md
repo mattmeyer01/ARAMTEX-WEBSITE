@@ -18,11 +18,11 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
 - `site.webmanifest`: nazwa i ikony strony dla telefonów (ikony w `assets/img/`).
 - `data/`: `besco-2026.json` (Besco), `pegler.json` (Tectite, Kuterlite) i `katalog.json` (dane wyszukiwarki, składane przez generator).
 - Intro przy wejściu na stronę: granatowa kurtyna z logo, „rurą” wypełnianą według postępu ładowania (cztery złączki =
-  cztery metody łączenia), licznikiem 0–100 % i rozcięciem po skosie. Skrypt `INTRO_JS` w `tools/strony.py` (na początku
+  cztery metody łączenia) i licznikiem 0–100 %; przy 100 % krótki błysk i kurtyna się rozpływa (całość ok. 1 s). Skrypt `INTRO_JS` w `tools/strony.py` (na początku
   `<body>`, przełącznik `INTRO_ON`, czasy `INTRO_MIN`/`INTRO_MAX`, teksty PL/EN/UK w `INTRO_TXT`), style `.pl` w `c.css`.
   Pokazuje się tylko przy wejściu z zewnątrz (odsyłacz spoza strony albo brak), nie przy przejściach między podstronami,
   nie przy „wstecz”, nie w karcie otwartej w tle, nie przy `prefers-reduced-motion`, przy oszczędzaniu danych ani na 404. Kliknięcie
-  albo Esc kończy je od razu. Nic nie zapisuje w przeglądarce. Animacje wejścia strony (`.hero`, `.phead`, `.in`, liczniki) czekają do rozsunięcia kurtyny
+  albo Esc kończy je od razu. Nic nie zapisuje w przeglądarce. Animacje wejścia strony (`.hero`, `.phead`, `.in`, liczniki) czekają, aż kurtyna zacznie znikać
   (klasa `intro` na `<html>`, zdarzenie `armatex:intro`).
 - Pasek nowości nad menu (INOX 304) i okno z opisem: `bar_html()` w `tools/strony.py`, style `.abar` i `.adlg`
   w `c.css`, obsługa w `c.js`. Pasek nie ma przycisku zamykania i jest na każdej stronie (klasa `has-bar`
