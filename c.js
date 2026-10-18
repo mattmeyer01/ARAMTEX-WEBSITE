@@ -219,18 +219,6 @@
   if (document.documentElement.classList.contains('intro')) document.addEventListener('armatex:intro', startIn, { once: true });
   else startIn();
 
-  // Magnetyczne CTA (BYQ Magnetic Button); przycisk „Wyślij zapytanie” w formularzu tylko ciemnieje (c.css: .form .mag)
-  if (!reduce && matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    $$('.mag').forEach(function (b) {
-      if (b.closest('.form')) return;
-      b.addEventListener('pointermove', function (e) {
-        var r = b.getBoundingClientRect(), x = e.clientX - r.left - r.width / 2, y = e.clientY - r.top - r.height / 2;
-        b.style.setProperty('--mx', x * 0.18 + 'px'); b.style.setProperty('--my', y * 0.3 + 'px');
-        b.style.setProperty('--hx', x * 0.4 + 'px'); b.style.setProperty('--hy', y * 0.4 + 'px');
-      });
-      b.addEventListener('pointerleave', function () { ['--mx', '--my', '--hx', '--hy'].forEach(function (k) { b.style.removeProperty(k); }); });
-    });
-  }
 
   // Lista do wyceny: pozycja = [art, {q, l, u, p}], p = [[jednostka, szt. w jednostce], ...], u = indeks w p
   function packFix(v, def) {
