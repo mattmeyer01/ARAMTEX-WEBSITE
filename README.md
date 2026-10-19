@@ -61,6 +61,9 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
   Strona produktu kładzie zdjęcie na beżowej ramce (`mix-blend-mode: multiply`), więc jego tło musi być białe, inaczej
   w ramce widać drugą, ciemniejszą. Brakujące pliki `-l` tworzy `python3 tools/tlo_produktu.py` (dzieli piksele przez kolor
   tła miniatury), a generator ostrzega, gdy któreś zdjęcie dałoby podwójną ramkę.
+  67 grup Gutpress (miedź V i M do wody i gazu, stal węglowa) ma zdjęcia produktowe od Besco zamiast wycinków z katalogu PDF:
+  `python3 -I tools/zdjecia_besco.py <rozpakowane paczki zdjęć>` zapisuje miniaturę, wersję `-l` (720 px) i wersję do druku
+  w `tools/katalog-pdf/foto/` (800 px); pary plik–grupa (sprawdzone wzrokowo) są w skrypcie.
   Generator dopisuje do każdego adresu zdjęcia `?v=<skrót treści>`, więc podmiana pliku pod tą samą nazwą
   od razu trafia do przeglądarek mimo 7-dniowego cache `/img/*`.
 - `pliki/katalog-*.pdf`: katalogi Armatex (Besco 2026, Besco INOX 304 i 316L, Tectite, Kuterlite) składane z danych przez
@@ -156,7 +159,8 @@ Besco 2026 sprawdzony z katalogiem producenta (poprawki w `POPRAWKI_BESCO`), Kut
 (jak na stronie), z wymiarami uciętymi w danych strony odczytanymi z oryginalnego katalogu Kuterlite.
 Zdjęcia: `img/besco/*-l.webp` i `img/pegler/`, chyba że w `tools/katalog-pdf/foto/` leży wersja powiększona do druku
 (zdjęcia ze strony mają zwykle 100–250 px): `python3 tools/powieksz_zdjecia.py <node_modules> <katalog>...`
-(model ESRGAN z pakietu npm `@upscalerjs/esrgan-thick`, instalacja w opisie skryptu).
+(model ESRGAN z pakietu npm `@upscalerjs/esrgan-thick`, instalacja w opisie skryptu). Grupy ze zdjęciami od Besco
+mają w `foto/` wersję z `tools/zdjecia_besco.py`, bez powiększania.
 
 ## Formularz
 
