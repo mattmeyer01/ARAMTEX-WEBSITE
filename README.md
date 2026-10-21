@@ -70,7 +70,12 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
   `tools/katalog_pdf.py` (niżej, „Katalogi PDF”). Katalog Besco 2026 jest w menu „Oferta → Katalogi”.
 - `pliki/instrukcja-montazu-tectite.pdf`: instrukcja montażu Tectite w identyfikacji Armatex (`tools/instrukcja_tectite.py`); link na stronie Tectite, w „Do pobrania” i w poradniku „Tectite czy press?”.
 - `assets/`: fonty (Outfit, IBM Plex Mono) i favicony.
-- `sitemap.xml`, `robots.txt`.
+- `sitemap.xml`, `robots.txt`, `llms.txt`. `llms.txt` (format llmstxt.org) to streszczenie strony dla asystentów AI
+  (ChatGPT, Claude, Perplexity): firma, systemy z liniami i parametrami, poradniki, pytania partnerów i hurtowni, zamawianie.
+  Składa go generator z tych samych danych co strony (`SYS`, `ART`, `HOME_FAQ`, `WSP_FAQ`), więc nie edytuj go ręcznie.
+- Pytania i odpowiedzi (FAQ): strona główna (`HOME_FAQ`), strony systemów (`faq` w `SYS`), Współpraca (`WSP_FAQ`)
+  i poradniki (`ART_FAQ`, sekcja „Najczęstsze pytania” na końcu artykułu). Każda lista trafia też do danych FAQPage
+  (`ld_faq()`), więc pytania w danych strukturalnych są zawsze takie same jak na stronie. Odpowiedzi tylko z treści strony.
 - `tools/`: generator stron i skrypty danych (niżej).
 
 ## Zmiany treści: generator
