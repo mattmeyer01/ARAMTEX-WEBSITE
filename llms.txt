@@ -93,5 +93,6 @@ Tak. Wyceniamy całe specyfikacje, kompletujemy dostawy etapami i doradzamy zami
 
 ## Optional
 
+- [Pełna treść strony](https://armatex.pl/llms-full.txt): tekst stron firmy, systemów i wszystkich poradników w jednym pliku.
 - [English version](https://armatex.pl/en/) · [Українська версія](https://armatex.pl/ua/)
 - [Mapa strony](https://armatex.pl/sitemap.xml): wszystkie strony grup produktów z numerami artykułów i rozmiarami.
