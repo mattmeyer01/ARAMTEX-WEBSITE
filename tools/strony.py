@@ -707,7 +707,7 @@ pre=re.sub(r'\s*<link rel="preload" as="image"[^>]*>','',pre)
 pre+='  <link rel="preload" as="image" href="../img/hero/hero-paleta-2000.webp" imagesrcset="../img/hero/hero-paleta-1200.webp 1200w, ../img/hero/hero-paleta-2000.webp 2000w" imagesizes="100vw" media="(min-width: 721px)" fetchpriority="high">\n'
 pre+='  <link rel="preload" as="image" href="../img/hero/hero-paleta-m.webp" media="(max-width: 720px)" fetchpriority="high">\n'
 pre=pre.replace('<link rel="preload" as="image" href="'+NEW+'_min.webp" media="(max-width: 720px)" fetchpriority="high" data-hf>','') if pre.count(NEW+'_min.webp')>1 else pre
-page('index.html','Armatex – Dystrybutor złączek Besco i Pegler Yorkshire','Armatex (P.H.U. ARMATEX Sp. J. A. J. Bunda), Olsztyn: dystrybutor złączek Besco i Pegler Yorkshire dla hurtowni w całej Polsce. Od 1991 r., wysyłka w 24 h.','index',home,pre+LD_ORG)
+page('index.html','Armatex – Dystrybutor złączek Besco i Pegler Yorkshire','Armatex z Olsztyna: dystrybutor złączek Besco i Pegler Yorkshire dla hurtowni w całej Polsce od 1991 r. Ponad 3 200 indeksów, wysyłka w 24 h.','index',home,pre+LD_ORG)
 
 # ---------------- strony systemów
 def thumb(ph,alt):
