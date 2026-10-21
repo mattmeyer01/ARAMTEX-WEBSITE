@@ -581,6 +581,13 @@ def card(s,cls='syc in'):
 def faqlist(items, first_open=True):
     return '\n'.join(f'        <details class="qa" name="faq"{" open" if (i==0 and first_open) else ""}><summary>{q}<i aria-hidden="true"></i></summary><p>{a}</p></details>' for i,(q,a) in enumerate(items))
 
+# dane FAQPage z pytań widocznych na stronie (dla Google i asystentów AI). Odpowiedź z odnośnikami zostaje w HTML,
+# bez nich idzie jako zwykły tekst; i18n.py tłumaczy jedną i drugą jak tekst strony.
+import html as _html
+def ld_faq(items):
+    return ld({"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":_html.unescape(q),
+      "acceptedAnswer":{"@type":"Answer","text":a if '<' in a else _html.unescape(a)}} for q,a in items]})
+
 
 # ---------------- strona główna
 hero=frag('  <section class="hero"','  </section>')
@@ -626,6 +633,13 @@ stats='''      <div class="stats">
       </div>'''
 docs=frag('  <section class="docs" id="dokumenty">','  </section>').replace('</ul>\n        <a class="ghost"','</ul>\n        '+cert_tiles(['PZH','INiG','ITB'],cls='certs--dark')+'\n        <a class="ghost"',1).replace('<a class="ghost" href="#kontakt" data-topic="Jesteśmy hurtownią i prosimy o dostęp do bazy dokumentów technicznych.">','<a class="ghost" href="'+ask('Jesteśmy hurtownią i prosimy o dostęp do bazy dokumentów technicznych.')+'">').replace('src="img/besco/','src="../img/besco/')
 assert 'kontakt.html?temat=' in docs
+HOME_FAQ=[
+ ('Jak szybko dostanę ofertę?','W ciągu jednego dnia roboczego. Oferta zawiera ceny hurtowe, dostępność i terminy dostaw dla systemów lub indeksów, które chcesz prowadzić.'),
+ ('Czy współpracujecie tylko z hurtowniami?','Nie. Sprzedajemy każdemu, ale najwięcej i najczęściej kupują od nas hurtownie instalacyjne, dlatego pod nie ustawiamy stany, logistykę i warunki. Kupują u nas także firmy instalacyjne, generalni wykonawcy, zakłady przemysłowe i zarządcy budynków. <a href="kontakt.html#formularz">Napisz, czego potrzebujesz</a>, a dobierzemy formę współpracy.'),
+ ('Jakie marki i systemy dystrybuujecie?','Besco Fittings &amp; Connectors: Gutpress Copper w profilach V i M, serie gazowe, Gutpress Carbon Steel, stal nierdzewna INOX 304 i 316L press, złączki lutowane i Gutpress Zawory Kulowe V i M. Pegler Yorkshire: złączki na wcisk Tectite, złączki skręcane Kuterlite i zawory na wcisk. Razem ponad 3 200 indeksów.'),
+ ('Jaki jest czas dostawy?','Wysyłka z magazynu w Olsztynie w 24 godziny od potwierdzenia zamówienia. Duże zamówienia dowozimy własnym transportem.'),
+ ('Czy mogę zamówić po numerze artykułu?','Tak. Wpisz numery w <a href="kontakt.html#formularz">formularzu zapytania</a> albo zbuduj listę w <a href="wyszukiwarka.html">wyszukiwarce produktów</a>: '+N_ALL_TXT+' pozycji Besco, Tectite i Kuterlite pogrupowanych według linii. Dodaj indeksy, podaj ilości i wyślij do wyceny.'),
+ ('Jak uzyskać dostęp do dokumentów?','Poproś o dostęp przez formularz. Po weryfikacji firmy udostępniamy karty katalogowe, atesty i deklaracje w ciągu jednego dnia roboczego.')]
 home=f'''
 {hero}
 
@@ -688,13 +702,7 @@ home=f'''
         <a class="ulink" href="tel:+48513191502">Zadzwoń: 513 191 502</a>
       </div>
       <div>
-{faqlist([
- ('Jak szybko dostanę ofertę?','W ciągu jednego dnia roboczego. Oferta zawiera ceny hurtowe, dostępność i terminy dostaw dla systemów lub indeksów, które chcesz prowadzić.'),
- ('Czy współpracujecie tylko z hurtowniami?','Nie. Sprzedajemy każdemu, ale najwięcej i najczęściej kupują od nas hurtownie instalacyjne, dlatego pod nie ustawiamy stany, logistykę i warunki. Kupują u nas także firmy instalacyjne, generalni wykonawcy, zakłady przemysłowe i zarządcy budynków. <a href="kontakt.html#formularz">Napisz, czego potrzebujesz</a>, a dobierzemy formę współpracy.'),
- ('Jakie marki i systemy dystrybuujecie?','Besco Fittings &amp; Connectors: Gutpress Copper w profilach V i M, serie gazowe, Gutpress Carbon Steel, stal nierdzewna INOX 304 i 316L press, złączki lutowane i Gutpress Zawory Kulowe V i M. Pegler Yorkshire: złączki na wcisk Tectite, złączki skręcane Kuterlite i zawory na wcisk. Razem około 2 900 indeksów.'),
- ('Jaki jest czas dostawy?','Wysyłka z magazynu w Olsztynie w 24 godziny od potwierdzenia zamówienia. Duże zamówienia dowozimy własnym transportem.'),
- ('Czy mogę zamówić po numerze artykułu?','Tak. Wpisz numery w <a href="kontakt.html#formularz">formularzu zapytania</a> albo zbuduj listę w <a href="wyszukiwarka.html">wyszukiwarce produktów</a>: '+N_ALL_TXT+' pozycji Besco, Tectite i Kuterlite pogrupowanych według linii. Dodaj indeksy, podaj ilości i wyślij do wyceny.'),
- ('Jak uzyskać dostęp do dokumentów?','Poproś o dostęp przez formularz. Po weryfikacji firmy udostępniamy karty katalogowe, atesty i deklaracje w ciągu jednego dnia roboczego.')])}
+{faqlist(HOME_FAQ)}
       </div>
     </div>
   </section>
@@ -707,7 +715,7 @@ pre=re.sub(r'\s*<link rel="preload" as="image"[^>]*>','',pre)
 pre+='  <link rel="preload" as="image" href="../img/hero/hero-paleta-2000.webp" imagesrcset="../img/hero/hero-paleta-1200.webp 1200w, ../img/hero/hero-paleta-2000.webp 2000w" imagesizes="100vw" media="(min-width: 721px)" fetchpriority="high">\n'
 pre+='  <link rel="preload" as="image" href="../img/hero/hero-paleta-m.webp" media="(max-width: 720px)" fetchpriority="high">\n'
 pre=pre.replace('<link rel="preload" as="image" href="'+NEW+'_min.webp" media="(max-width: 720px)" fetchpriority="high" data-hf>','') if pre.count(NEW+'_min.webp')>1 else pre
-page('index.html','Armatex – Dystrybutor złączek Besco i Pegler Yorkshire','Armatex z Olsztyna: dystrybutor złączek Besco i Pegler Yorkshire dla hurtowni w całej Polsce od 1991 r. Ponad 3 200 indeksów, wysyłka w 24 h.','index',home,pre+LD_ORG)
+page('index.html','Armatex – Dystrybutor złączek Besco i Pegler Yorkshire','Armatex z Olsztyna: dystrybutor złączek Besco i Pegler Yorkshire dla hurtowni w całej Polsce od 1991 r. Ponad 3 200 indeksów, wysyłka w 24 h.','index',home,pre+LD_ORG+ld_faq(HOME_FAQ))
 
 # ---------------- strony systemów
 def thumb(ph,alt):
@@ -878,7 +886,7 @@ for s in SYS:
     </div>
   </section>
 '''
-    page(f'{s["slug"]}.html',s['seotitle'],s['metadesc'],s['slug'],body,ld_system(s))
+    page(f'{s["slug"]}.html',s['seotitle'],s['metadesc'],s['slug'],body,ld_system(s)+ld_faq(s['faq']))
 
 def grp_by_method():
     """Linie w czterech blokach jak w menu Oferta: zaprasowane, na wcisk, skręcane, lutowane."""
@@ -949,6 +957,13 @@ page('wyszukiwarka.html','Wyszukiwarka produktów: złączki Besco, Tectite, Kut
 frame='''      <figure class="frame">
         <img src="../img/hero/hero-paleta-1200.webp" srcset="../img/hero/hero-paleta-1200.webp 1200w, ../img/hero/hero-paleta-2000.webp 2000w" sizes="(max-width: 1280px) 100vw, 1280px" alt="Paleta z kartonami złączek w magazynie Armatex w Olsztynie" width="1200" height="670" loading="lazy" decoding="async">
       </figure>'''
+WSP_FAQ=[
+ ('Czy Armatex jest oficjalnym przedstawicielem Pegler Yorkshire?','Tak. Jesteśmy oficjalnym przedstawicielem Pegler Yorkshire w Polsce (złączki na wcisk Tectite i skręcane Kuterlite), a od 2016 roku dystrybutorem Besco (złączki zaprasowane Gutpress, INOX 304 i 316L, lutowane).'),
+ ('Gdzie hurtownia kupi złączki Besco, Tectite i Kuterlite?','U nas: z magazynu w Olsztynie dostarczamy złączki i armaturę obu producentów do hurtowni instalacyjnych w całej Polsce. O wycenę mogą też zapytać firmy instalacyjne, generalni wykonawcy i zakłady przemysłowe.'),
+ ('Jak zacząć współpracę?','Wyślij listę asortymentu formularzem, mailem albo telefonicznie: systemy lub indeksy, które chcesz prowadzić, i szacowane ilości. W ciągu jednego dnia roboczego dostaniesz ofertę z cenami hurtowymi, dostępnością i terminami dostaw.'),
+ ('Czy są ceny progowe i rezerwacje stanów?','Tak. Odbiorcy regularni mają ceny progowe. Rezerwujemy stany pod kontrakty Twoich klientów i razem planujemy dostawy przed sezonem grzewczym.'),
+ ('Jakie dokumenty dostanie hurtownia?','Atesty higieniczne PZH, deklaracje właściwości użytkowych (DoP), aprobaty producentów (DVGW, KIWA, WRAS, RISE, INiG) i katalogi PDF. Bazę dokumentów udostępniamy hurtowniom po weryfikacji, w ciągu jednego dnia roboczego.'),
+ ('Czy obsługujecie większe inwestycje?','Tak. Wyceniamy całe specyfikacje, kompletujemy dostawy etapami i doradzamy zamienniki, kiedy pozycja ma długi termin.')]
 wsp=f'''
   <section class="phead">
     <div class="wrap">
@@ -987,6 +1002,20 @@ wsp=f'''
 
 {docs}
 
+  <section class="section section--tight section--stone" id="faq">
+    <div class="wrap faq">
+      <div class="faq__intro">
+        <span class="label kicker">Pytania</span>
+        <h2 class="h2">Pytania hurtowni.</h2>
+        <p class="lead">O współpracę, warunki i dokumenty. Pytania techniczne o poszczególne systemy znajdziesz na ich stronach.</p>
+        <a class="ulink" href="tel:+48513191502">Zadzwoń: 513 191 502</a>
+      </div>
+      <div>
+{faqlist(WSP_FAQ)}
+      </div>
+    </div>
+  </section>
+
   <section class="section section--tight" id="projekty">
     <div class="wrap">
       <div class="yard__grid">
@@ -1007,7 +1036,7 @@ wsp=f'''
     </div>
   </section>
 '''
-page('wspolpraca.html','Współpraca z hurtowniami – dystrybutor złączek | Armatex','Współpraca z Armatex dla hurtowni: magazyn w Olsztynie, wysyłka w 24 h, zatowarowanie na sezon, dokumenty do złączek Besco i Pegler Yorkshire.','wspolpraca',wsp,ld_crumbs([('Współpraca','wspolpraca.html')]))
+page('wspolpraca.html','Współpraca z hurtowniami – dystrybutor złączek | Armatex','Współpraca z Armatex dla hurtowni: magazyn w Olsztynie, wysyłka w 24 h, zatowarowanie na sezon, dokumenty do złączek Besco i Pegler Yorkshire.','wspolpraca',wsp,ld_crumbs([('Współpraca','wspolpraca.html')])+ld_faq(WSP_FAQ))
 
 # ---------------- kontakt
 kon=kontakt_home.replace('<section class="section close" id="kontakt">','<section class="section close close--top" id="formularz" data-top>')
@@ -1286,9 +1315,46 @@ page('o-firmie.html','O firmie – Armatex, dystrybutor złączek dla hurtowni',
 
 # ---- Poradniki
 PSRC='Źródło danych: katalog Besco Fittings &amp; Connectors 2026'
+# Najczęstsze pytania na końcu poradników (sekcja „Najczęstsze pytania” i dane FAQPage). Odpowiedzi tylko z treści poradnika.
+ART_FAQ={
+ 'poradnik-profil-v-czy-m':[
+  ('Czy złączkę w profilu M można zaprasować szczęką V?','Według katalogu Besco 2026 tak, w zakresie DN12–28. Powyżej 28 mm używa się szczęki w profilu zgodnym ze złączką.'),
+  ('W jakim profilu są złączki press Besco powyżej 54 mm?','Tylko w profilu M. Miedź Gutpress Copper i Gutpress Carbon Steel w profilu M sięgają 108 mm, a INOX 316L 168,3 mm.'),
+  ('Jak sprawdzić, w jakim profilu pracuje instalator?','Oznaczenie konturu jest na szczęce zaciskarki. Klient ze szczękami V kupuje złączki V, a klient ze szczękami M złączki M.')],
+ 'poradnik-numery-artykulow-besco':[
+  ('Co oznacza numer GP5001-15?','Łuk 90° wz z linii Gutpress Copper w profilu V do wody, średnica 15 mm. GP to przedrostek linii, 5001 to kształt, a liczba po myślniku to rozmiar.'),
+  ('Co oznaczają litery R, G i S w numerze Besco?','R to wersja redukcyjna, G wersja z gwintem (w profilu M i w stali), a S wersja przesuwna.'),
+  ('Jak odróżnić po numerze linię do wody od linii do gazu?','W profilu V linia gazowa ma przedrostek GPG, a wodna GP. W profilu M grupy do wody zaczynają się od 6, a do gazu od 7.')],
+ 'poradnik-zlaczki-zaprasowane-do-gazu':[
+  ('Jakie parametry mają złączki press Besco do gazu?','Średnice 15–35 mm, ciśnienie do 5 bar, temperatura od −20 do 70 °C, gaz ziemny i LPG, norma EN 1254-7, aprobaty DVGW i INiG. W profilu V to linia GPG, w profilu M seria 7000.'),
+  ('Czy do gazu można użyć złączek press z linii do wody?','Nie. Do instalacji gazowych nie stosuje się złączek z linii wodnych, nawet jeśli pasują wymiarem i profilem.'),
+  ('Kto wykonuje instalację gazową na złączkach press?','Instalator z uprawnieniami, zgodnie z przepisami. Aprobaty i deklaracje do linii gazowych udostępniamy hurtowniom w bazie dokumentów po weryfikacji.')],
+ 'poradnik-metody-laczenia-rur':[
+  ('Które złączki montuje się bez ognia?','Zaprasowane (press), na wcisk (Tectite) i skręcane (Kuterlite). Palnika, lutu i topnika wymagają tylko złączki lutowane.'),
+  ('Które połączenia można rozebrać?','Skręcane Kuterlite (pierścień zostaje na rurze) oraz na wcisk Tectite Classic, Pro i 316. Złączek zaprasowanych nie da się rozłączyć, a lutowane tylko przez rozlutowanie.'),
+  ('Jakie średnice obejmuje każda metoda?','Zaprasowane z miedzi i stali węglowej 12–108 mm (INOX 316L do 168,3 mm), na wcisk 10–54 mm, skręcane 8–54 mm, lutowane 6–108 mm oraz calowe 1/4″–4 1/8″.')],
+ 'poradnik-zlaczki-do-stali-weglowej':[
+  ('Czy złączki do stali węglowej nadają się do wody pitnej?','Nie. Żaden z tych katalogów nie przewiduje stali węglowej do wody pitnej. Do wody pitnej są Gutpress Copper, Besco INOX 304 i 316L, Tectite Classic i Sprint z atestem PZH albo Tectite 316.'),
+  ('Czy stal węglową można stosować w układzie otwartym?','Nie. Tectite Carbon jest opisany wyłącznie do niewentylowanych obiegów zamkniętych, a Tectite Pro z rurą stalową tylko do obiegów zamkniętych. W układzie otwartym do wody stale dopływa tlen, a stal węglowa w natlenionej wodzie koroduje.'),
+  ('Czym różni się stal węglowa od nierdzewnej w złączkach?','To dwa różne materiały. Złączki do stali węglowej łączą rury stalowe w ogrzewaniu i chłodzeniu, a stal nierdzewna (Besco INOX 304 i 316L, Tectite 316) jest też do wody pitnej. Nie zamienia się ich między sobą.')],
+ 'poradnik-tectite-czy-press':[
+  ('Kiedy wybrać Tectite zamiast złączek zaprasowanych?','Przy serwisie i remontach bez zaciskarki, prądu i palnika, w miejscach, gdzie nie wolno użyć ognia, przy rurach PEX i PB oraz gdy połączenie trzeba będzie rozłączyć (Classic, Pro i 316).'),
+  ('Jaką gwarancję daje producent na Tectite?','25 lat na Tectite Sprint, Classic, Pro i 316, a 30 lat przy montażu z rurami Yorkshire.'),
+  ('Czym łączyć instalację gazową: Tectite czy press?','Do gazu polecamy osobne linie press Besco: GPG w profilu V i serię 7000 w profilu M, z aprobatami DVGW i INiG.')],
+ 'poradnik-kuterlite-a-zlaczki-zaprasowane':[
+  ('Czy złączki zaciskowe to to samo co zaprasowane?','Nie. Złączki zaciskowe to potoczna nazwa złączek skręcanych, takich jak Kuterlite: pierścień zaciska się na rurze przy dokręcaniu nakrętki. Złączki zaprasowane (press) zaprasowuje się zaciskarką ze szczęką V lub M.'),
+  ('Do jakich rur są złączki Kuterlite K900 Pro?','Do rur miedzianych 8–54 mm. Końcówki typu A są do miedzi półtwardej (EN 1057 R250), a adapter K1870X zmienia je na typ B do miedzi miękkiej (R220).'),
+  ('Czy złączkę skręcaną można rozebrać?','Tak, ale pierścień zostaje na rurze. Nakrętki i pierścienie są osobno jako części zamienne, np. K978B.')],
+ 'poradnik-aprobaty-dvgw-kiwa-wras':[
+  ('Co oznacza atest higieniczny PZH?','Że wyrób może mieć kontakt z wodą przeznaczoną do spożycia. Wydaje go Narodowy Instytut Zdrowia Publicznego PZH – Państwowy Instytut Badawczy.'),
+  ('Jakich dokumentów wymaga się na polskiej budowie?','Najczęściej atestu higienicznego PZH przy instalacjach wody pitnej i deklaracji właściwości użytkowych (DoP) producenta, a przy gazie certyfikatu INiG. Wymagania w danej inwestycji określa projekt i inspektor nadzoru.'),
+  ('Które złączki z oferty mają aprobatę DVGW?','Besco Gutpress Copper w profilach V i M, linie do gazu, lutowane EN 1254, INOX 316L i Gutpress Zawory Kulowe V i M. Zakres i ważność potwierdza sam certyfikat.')],
+}
 ART=[]
 def art(slug,title,seo,desc,lead,mins,body,rel,src=PSRC):
     ART.append(dict(slug=slug,title=title,desc=desc,lead=lead,mins=mins))
+    faq=ART_FAQ.get(slug,[])
+    if faq: body+='\n        <h2 id="faq">Najczęstsze pytania</h2>\n'+''.join(f'        <h3>{q}</h3>\n        <p>{a}</p>\n' for q,a in faq)
     toc=''.join(f'<li><a href="#{a}">{t}</a></li>' for a,t in re.findall(r'<h2 id="([^"]+)">([^<]+)</h2>',body))
     rl=''.join(f'<li>{x}</li>' for x in rel)
     html=phead([('Poradniki','poradniki.html'),(title,slug+'.html')],f'Poradnik · {mins} min czytania',title,lead)+f'''
@@ -1309,7 +1375,7 @@ def art(slug,title,seo,desc,lead,mins,body,rel,src=PSRC):
     ldart=ld({"@context":"https://schema.org","@type":"Article","headline":title,"description":desc,"inLanguage":"pl-PL",
       "datePublished":DZIS,"dateModified":DZIS,"mainEntityOfPage":SITE+slug+'.html',"image":SITE+"img/og/armatex-og.jpg",
       "author":{"@type":"Organization","name":"Armatex","url":SITE},"publisher":{"@id":SITE+"#firma"}})
-    page(slug+'.html',seo,desc,'poradniki',html,ld_crumbs([('Poradniki','poradniki.html'),(title,slug+'.html')])+ldart)
+    page(slug+'.html',seo,desc,'poradniki',html,ld_crumbs([('Poradniki','poradniki.html'),(title,slug+'.html')])+ldart+(ld_faq(faq) if faq else ''))
 
 art('poradnik-profil-v-czy-m','Profil V czy M? Jak dobrać złączki zaprasowane do zaciskarki',
  'Profil V czy M – złączki zaprasowane Besco | Armatex',
@@ -1846,6 +1912,47 @@ today=datetime.date.today().isoformat()
 sm='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'  <url><loc>{SITE}{u}</loc><lastmod>{today}</lastmod></url>\n' for u in urls+[LANG_DIR[c]+'/'+x for c in LANGS_ON for x in urls])+'</urlset>\n'
 open(OUT+'sitemap.xml','w',encoding='utf-8').write(sm)
 open(OUT+'robots.txt','w',encoding='utf-8').write(f'User-agent: *\nAllow: /\n\nSitemap: {SITE}sitemap.xml\n')
+# llms.txt (llmstxt.org): streszczenie strony dla asystentów AI (ChatGPT, Claude, Perplexity), składane z tych samych
+# danych co strony: systemy z liniami, poradniki, pytania partnerów i hurtowni. Linki z UTM nie są potrzebne:
+# ruch z asystentów Plausible rozpoznaje po odsyłaczu.
+def _txt(h): return _html.unescape(re.sub(r'<[^>]+>','',h))
+def _sys_md(x):
+    ls=''.join(f'  - {l[0]} ({l[1]}): {l[3]}, {l[5]}, {l[4]}'+(f'; {", ".join(l[6])}' if l[6] else '')+f'; indeksy: {l[7]}\n' for l in x['lines'])
+    return f'- [{x["h1"]}]({SITE}{x["slug"]}.html): {_txt(x["short"])} {x["cntw"]}.\n'+ls
+LLMS=f"""# Armatex
+
+> Armatex (P.H.U. ARMATEX Sp. J. A. J. Bunda, Olsztyn) to dystrybutor złączek i armatury dla hurtowni instalacyjnych
+> w całej Polsce: oficjalny przedstawiciel Pegler Yorkshire w Polsce (złączki na wcisk Tectite, skręcane Kuterlite)
+> i od 2016 roku dystrybutor Besco (złączki zaprasowane Gutpress, INOX 304 i 316L, lutowane). Strona nie ma sklepu
+> ani cen: ceny hurtowe, dostępność i terminy dostaw są w ofercie przygotowywanej w ciągu jednego dnia roboczego.
+
+- Na rynku instalacyjnym od 1991 roku. Cztery metody łączenia (zaprasowane, na wcisk, skręcane, lutowane), {N_ALL_TXT} indeksów w wyszukiwarce.
+- Sprzedajemy każdemu, najczęściej hurtowniom instalacyjnym; kupują też firmy instalacyjne, generalni wykonawcy, zakłady przemysłowe i zarządcy budynków. Sami nie wykonujemy instalacji.
+- Magazyn: ul. Składowa 3a, 10-421 Olsztyn. Wysyłka w 24 godziny od potwierdzenia zamówienia, duże zamówienia własnym transportem.
+- Kontakt: biuro 513 191 502, biuro@armatex.pl; sprzedaż Piotr Stelmach 798 807 106, piotr@armatex.pl; pn–pt 7:00–18:00.
+- Zapytanie o wycenę: {SITE}kontakt.html#formularz (można wkleić numery artykułów albo zbudować listę w wyszukiwarce).
+
+## Systemy i linie produktów
+
+{''.join(_sys_md(x) for x in SYS)}
+## Poradniki
+
+{''.join(f'- [{a["title"]}]({SITE}{a["slug"]}.html): {_txt(a["desc"])}{chr(10)}' for a in ART)}
+## Najczęstsze pytania
+
+{''.join(f'### {_txt(q)}{chr(10)}{_txt(a)}{chr(10)}{chr(10)}' for q,a in HOME_FAQ+WSP_FAQ)}## Zamawianie
+
+- [Wyszukiwarka produktów]({SITE}wyszukiwarka.html): {N_ALL_TXT} indeksów Besco, Tectite i Kuterlite z opakowaniami zbiorczymi; lista do wyceny.
+- [Współpraca z hurtowniami]({SITE}wspolpraca.html): magazyn, logistyka, zatowarowanie, baza dokumentów.
+- [Do pobrania]({SITE}do-pobrania.html): katalogi PDF Besco, Tectite i Kuterlite; atesty i deklaracje dla hurtowni po weryfikacji.
+- [O firmie]({SITE}o-firmie.html) · [Kontakt]({SITE}kontakt.html)
+
+## Optional
+
+- [English version]({SITE}en/) · [Українська версія]({SITE}ua/)
+- [Mapa strony]({SITE}sitemap.xml): wszystkie strony grup produktów z numerami artykułów i rozmiarami.
+"""
+open(OUT+'llms.txt','w',encoding='utf-8').write(LLMS)
 print('grupy',len(GROUPS),'url',len(urls))
 # teksty bez tłumaczenia (wersja EN): uzupełnij tools/en.json
 for c in LANGS_ON:

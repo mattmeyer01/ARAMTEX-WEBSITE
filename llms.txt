@@ -1,0 +1,97 @@
+# Armatex
+
+> Armatex (P.H.U. ARMATEX Sp. J. A. J. Bunda, Olsztyn) to dystrybutor złączek i armatury dla hurtowni instalacyjnych
+> w całej Polsce: oficjalny przedstawiciel Pegler Yorkshire w Polsce (złączki na wcisk Tectite, skręcane Kuterlite)
+> i od 2016 roku dystrybutor Besco (złączki zaprasowane Gutpress, INOX 304 i 316L, lutowane). Strona nie ma sklepu
+> ani cen: ceny hurtowe, dostępność i terminy dostaw są w ofercie przygotowywanej w ciągu jednego dnia roboczego.
+
+- Na rynku instalacyjnym od 1991 roku. Cztery metody łączenia (zaprasowane, na wcisk, skręcane, lutowane), 3 256 indeksów w wyszukiwarce.
+- Sprzedajemy każdemu, najczęściej hurtowniom instalacyjnym; kupują też firmy instalacyjne, generalni wykonawcy, zakłady przemysłowe i zarządcy budynków. Sami nie wykonujemy instalacji.
+- Magazyn: ul. Składowa 3a, 10-421 Olsztyn. Wysyłka w 24 godziny od potwierdzenia zamówienia, duże zamówienia własnym transportem.
+- Kontakt: biuro 513 191 502, biuro@armatex.pl; sprzedaż Piotr Stelmach 798 807 106, piotr@armatex.pl; pn–pt 7:00–18:00.
+- Zapytanie o wycenę: https://armatex.pl/kontakt.html#formularz (można wkleić numery artykułów albo zbudować listę w wyszukiwarce).
+
+## Systemy i linie produktów
+
+- [Złączki zaprasowane press Besco](https://armatex.pl/zlaczki-zaprasowane-press.html): Gutpress Copper w profilach V i M, linie gazowe, Gutpress Carbon Steel, stal nierdzewna INOX i Gutpress Zawory Kulowe V i M. 1 592 indeksy.
+  - INOX 304, Stainless Steel, press, profil M (Besco): 15–108 mm, 16 bar, woda pitna, CO; PZH; indeksy: 296
+  - Gutpress Copper, profil V (Besco): 12–54 mm, 16 bar, woda pitna, CO, przemysł; DVGW, KIWA, WRAS, RISE, PZH; indeksy: 257
+  - Gutpress Copper, profil M (Besco): 12–108 mm, 16 bar, woda pitna, CO, przemysł; DVGW, WRAS, RISE, PZH; indeksy: 294
+  - Gutpress Copper do gazu, V i M (Besco): 15–35 mm, 5 bar, gaz ziemny, LPG; DVGW, INiG; indeksy: 211
+  - Gutpress Carbon Steel, profil M (Besco): 12–108 mm, 16 bar, CO w obiegu zamkniętym, sprężone powietrze; ITB; indeksy: 256
+  - INOX 316L, Stainless Steel, press, profil M (Besco): 15–168,3 mm, 16 bar, woda, CO, przemysł; DVGW, WRAS, PZH; indeksy: 253
+  - Gutpress Zawory Kulowe V i M (Besco): 15–54 mm, 16 bar, woda, CO; DVGW, WRAS; indeksy: 25
+- [Złączki na wcisk Tectite](https://armatex.pl/zlaczki-na-wcisk-tectite.html): Tectite Classic, Pro, 316 i Carbon oraz zawory na wcisk. Montaż bez narzędzi i ognia. ok. 530 indeksów.
+  - Tectite Classic (Pegler Yorkshire): 10–28 mm, 16 bar z miedzią, woda, CO · miedź, PEX, PB; WRAS, PZH; indeksy: 251
+  - Tectite Pro i Carbon (Pegler Yorkshire): 15–54 mm, Pro demontowalne, woda, CO, chłodzenie · także stal węglowa; indeksy: 115
+  - Tectite 316 (Pegler Yorkshire): 15–54 mm, demontowalne, rury ze stali nierdzewnej; indeksy: 114
+  - Zawory i filtry na wcisk (Pegler Yorkshire): 15–54 mm, kulowe, odcinające, mieszające, PT550, PT913, TX300, TX405, TX480; indeksy: 19
+  - Akcesoria i narzędzia Tec-Tools (Pegler Yorkshire): 10–54 mm, do montażu systemu, tulejki, gratowniki, mierniki; indeksy: ok. 30
+- [Złączki skręcane Kuterlite](https://armatex.pl/zlaczki-skrecane-kuterlite.html): Kuterlite K900 Pro do miedzi 8–54 mm oraz zawory z końcówkami zaciskowymi. 246 indeksów.
+  - Kuterlite K900 Pro (KN 900) (Pegler Yorkshire): 8–54 mm, złączki, kolana, przejścia GW/GZ, rury miedziane; indeksy: ok. 185
+  - Zawory z końcówkami zaciskowymi (Pegler Yorkshire): 15–28 mm, kurki, zawory odcinające, woda, podłączenia urządzeń; indeksy: ok. 30
+- [Złączki lutowane Besco](https://armatex.pl/zlaczki-lutowane.html): Kształtki EN 1254 serii 4000 i 5000, calowe ANSI B16.22 i G-size do 80 bar. 893 indeksy.
+  - Seria 4000 i 5000, EN 1254 (Besco): 6–108 mm, 25 bar, woda, CO, gaz, przemysł; DVGW, KIWA, WRAS, PZH; indeksy: 513
+  - Calowe ANSI B16.22, seria K (Besco): 1/4″–4 1/8″, 25 bar, woda, CO, gaz, przemysł; indeksy: 315
+  - G-size do wysokich ciśnień (Besco): 22–76,1 mm, 20–80 bar · do 150 °C, chłodnictwo, przemysł; indeksy: 65
+
+## Poradniki
+
+- [Profil V czy M? Jak dobrać złączki zaprasowane do zaciskarki](https://armatex.pl/poradnik-profil-v-czy-m.html): Czym różni się profil V od M w złączkach zaprasowanych, które linie Besco są w którym profilu i jak dobrać zatowarowanie hurtowni do szczęk klientów.
+- [Jak czytać numery artykułów Besco](https://armatex.pl/poradnik-numery-artykulow-besco.html): Budowa numeru artykułu Besco: przedrostek linii, numer kształtu, przyrostki i rozmiar. Przykłady dla press V i M, gazu, stali, lutowanych, ANSI i G-size.
+- [Złączki zaprasowane do gazu: parametry, aprobaty i oznaczenia](https://armatex.pl/poradnik-zlaczki-zaprasowane-do-gazu.html): Złączki press do gazu Besco w profilu V i M: średnice 15–35 mm, 5 bar, −20…70 °C, EN 1254-7, aprobaty DVGW i INiG. Numery, kształty i różnice względem linii wodnych.
+- [Zaprasowane, na wcisk, skręcane czy lutowane? Porównanie metod łączenia](https://armatex.pl/poradnik-metody-laczenia-rur.html): Porównanie czterech metod łączenia rur: złączki zaprasowane (press), na wcisk (push-fit), skręcane i lutowane. Narzędzia, średnice, rury i typowi klienci.
+- [Złączki do stali węglowej: gdzie wolno, a gdzie nie](https://armatex.pl/poradnik-zlaczki-do-stali-weglowej.html): Gdzie stosować złączki do rur ze stali węglowej: ogrzewanie, chłodzenie, sprężone powietrze. Czego unikać: woda pitna i układy otwarte. Besco press i Tectite.
+- [Tectite czy press? Kiedy złączki na wcisk, a kiedy zaprasowane](https://armatex.pl/poradnik-tectite-czy-press.html): Złączki na wcisk Tectite czy zaprasowane press Besco? Porównanie narzędzi, średnic, rur, ciśnień i temperatur. Kiedy które wybrać i jak ułożyć ofertę hurtowni.
+- [Kuterlite a złączki zaprasowane: czym się różnią złączki skręcane od press](https://armatex.pl/poradnik-kuterlite-a-zlaczki-zaprasowane.html): Złączki zaciskowe (skręcane) Kuterlite i zaprasowane press to dwa różne systemy. Różnice: narzędzia, pierścień, średnice, rury, demontaż, zastosowania.
+- [Aprobaty DVGW, KIWA, WRAS, RISE i INiG: co oznaczają](https://armatex.pl/poradnik-aprobaty-dvgw-kiwa-wras.html): Co oznaczają aprobaty DVGW, KIWA, WRAS, RISE i INiG na złączkach, które linie Besco i Tectite je mają i jakie dokumenty są potrzebne w Polsce: atest PZH i DoP.
+
+## Najczęstsze pytania
+
+### Jak szybko dostanę ofertę?
+W ciągu jednego dnia roboczego. Oferta zawiera ceny hurtowe, dostępność i terminy dostaw dla systemów lub indeksów, które chcesz prowadzić.
+
+### Czy współpracujecie tylko z hurtowniami?
+Nie. Sprzedajemy każdemu, ale najwięcej i najczęściej kupują od nas hurtownie instalacyjne, dlatego pod nie ustawiamy stany, logistykę i warunki. Kupują u nas także firmy instalacyjne, generalni wykonawcy, zakłady przemysłowe i zarządcy budynków. Napisz, czego potrzebujesz, a dobierzemy formę współpracy.
+
+### Jakie marki i systemy dystrybuujecie?
+Besco Fittings & Connectors: Gutpress Copper w profilach V i M, serie gazowe, Gutpress Carbon Steel, stal nierdzewna INOX 304 i 316L press, złączki lutowane i Gutpress Zawory Kulowe V i M. Pegler Yorkshire: złączki na wcisk Tectite, złączki skręcane Kuterlite i zawory na wcisk. Razem ponad 3 200 indeksów.
+
+### Jaki jest czas dostawy?
+Wysyłka z magazynu w Olsztynie w 24 godziny od potwierdzenia zamówienia. Duże zamówienia dowozimy własnym transportem.
+
+### Czy mogę zamówić po numerze artykułu?
+Tak. Wpisz numery w formularzu zapytania albo zbuduj listę w wyszukiwarce produktów: 3 256 pozycji Besco, Tectite i Kuterlite pogrupowanych według linii. Dodaj indeksy, podaj ilości i wyślij do wyceny.
+
+### Jak uzyskać dostęp do dokumentów?
+Poproś o dostęp przez formularz. Po weryfikacji firmy udostępniamy karty katalogowe, atesty i deklaracje w ciągu jednego dnia roboczego.
+
+### Czy Armatex jest oficjalnym przedstawicielem Pegler Yorkshire?
+Tak. Jesteśmy oficjalnym przedstawicielem Pegler Yorkshire w Polsce (złączki na wcisk Tectite i skręcane Kuterlite), a od 2016 roku dystrybutorem Besco (złączki zaprasowane Gutpress, INOX 304 i 316L, lutowane).
+
+### Gdzie hurtownia kupi złączki Besco, Tectite i Kuterlite?
+U nas: z magazynu w Olsztynie dostarczamy złączki i armaturę obu producentów do hurtowni instalacyjnych w całej Polsce. O wycenę mogą też zapytać firmy instalacyjne, generalni wykonawcy i zakłady przemysłowe.
+
+### Jak zacząć współpracę?
+Wyślij listę asortymentu formularzem, mailem albo telefonicznie: systemy lub indeksy, które chcesz prowadzić, i szacowane ilości. W ciągu jednego dnia roboczego dostaniesz ofertę z cenami hurtowymi, dostępnością i terminami dostaw.
+
+### Czy są ceny progowe i rezerwacje stanów?
+Tak. Odbiorcy regularni mają ceny progowe. Rezerwujemy stany pod kontrakty Twoich klientów i razem planujemy dostawy przed sezonem grzewczym.
+
+### Jakie dokumenty dostanie hurtownia?
+Atesty higieniczne PZH, deklaracje właściwości użytkowych (DoP), aprobaty producentów (DVGW, KIWA, WRAS, RISE, INiG) i katalogi PDF. Bazę dokumentów udostępniamy hurtowniom po weryfikacji, w ciągu jednego dnia roboczego.
+
+### Czy obsługujecie większe inwestycje?
+Tak. Wyceniamy całe specyfikacje, kompletujemy dostawy etapami i doradzamy zamienniki, kiedy pozycja ma długi termin.
+
+## Zamawianie
+
+- [Wyszukiwarka produktów](https://armatex.pl/wyszukiwarka.html): 3 256 indeksów Besco, Tectite i Kuterlite z opakowaniami zbiorczymi; lista do wyceny.
+- [Współpraca z hurtowniami](https://armatex.pl/wspolpraca.html): magazyn, logistyka, zatowarowanie, baza dokumentów.
+- [Do pobrania](https://armatex.pl/do-pobrania.html): katalogi PDF Besco, Tectite i Kuterlite; atesty i deklaracje dla hurtowni po weryfikacji.
+- [O firmie](https://armatex.pl/o-firmie.html) · [Kontakt](https://armatex.pl/kontakt.html)
+
+## Optional
+
+- [English version](https://armatex.pl/en/) · [Українська версія](https://armatex.pl/ua/)
+- [Mapa strony](https://armatex.pl/sitemap.xml): wszystkie strony grup produktów z numerami artykułów i rozmiarami.
