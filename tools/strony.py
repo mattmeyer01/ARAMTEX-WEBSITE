@@ -1949,10 +1949,74 @@ LLMS=f"""# Armatex
 
 ## Optional
 
+- [Pełna treść strony]({SITE}llms-full.txt): tekst stron firmy, systemów i wszystkich poradników w jednym pliku.
 - [English version]({SITE}en/) · [Українська версія]({SITE}ua/)
 - [Mapa strony]({SITE}sitemap.xml): wszystkie strony grup produktów z numerami artykułów i rozmiarami.
 """
 open(OUT+'llms.txt','w',encoding='utf-8').write(LLMS)
+# llms-full.txt: pełna treść najważniejszych stron (firma, współpraca, systemy, poradniki, do pobrania) w jednym pliku
+# Markdown, żeby asystent nie musiał otwierać kolejnych linków. Składany z gotowego HTML (część <main>), bez menu, zdjęć
+# i list produktów; tabele zostają, wykresy jako lista wartości. Strony grup produktów (tabele indeksów) są tylko
+# w sitemap.xml, bo z nimi plik miałby kilka MB.
+from bs4 import BeautifulSoup as _BS, NavigableString as _NS
+_MD_SKIP={'script','style','svg','noscript','form','button','select','input','picture','img','video','template','dialog','caption'}
+_MD_DROP={'label','kicker','abar','adlg','ck','mag','ghost','ulink','crumbs','art__side','sr','sy-prod','sy-act','sy-pics','cta','sys','pl','gs','ctab'}
+def _md_t(el): return re.sub(r'\s+',' ',el.get_text(' ',strip=True)).replace(' ,',',').replace(' .','.').replace('( ','(').replace(' )',')').replace(' :',':')
+def _md_in(el):
+    out=[]
+    for c in el.children:
+        if isinstance(c,_NS): out.append(str(c)); continue
+        if c.name=='a' and c.get('href','').endswith('.pdf') and 'ghost' in (c.get('class') or []):
+            out.append(f' [PDF]({SITE+c["href"]})'); continue
+        if c.name in _MD_SKIP or c.has_attr('hidden') or _MD_DROP & set(c.get('class') or []): continue
+        if c.name=='br': out.append(' · '); continue
+        if c.name in ('b','strong'): out.append(f'**{_md_t(c)}** '); continue
+        h=c.get('href','') if c.name=='a' else ''
+        if h and not h.startswith(('tel:','mailto:','#')):
+            t=_md_t(c); out.append(f'[{t}]({h if h.startswith("http") else SITE+h})' if t else '')
+        else: out.append(' '+_md_in(c)+' ' if c.name in ('span','td','th','div') else _md_in(c))
+    return re.sub(r'\s+',' ',''.join(out)).replace(' ,',',').replace(' .','.').replace('( ','(').replace(' )',')').strip()
+def _md_table(t):
+    rows=[[_md_in(c) for c in tr.find_all(['th','td'],recursive=False) if not _MD_DROP & set(c.get('class') or [])]
+          for tr in t.find_all('tr') if not _MD_DROP & set(tr.get('class') or [])]
+    rows=[r for r in rows if any(r)]
+    if not rows: return ''
+    n=max(len(r) for r in rows); rows=[r+['']*(n-len(r)) for r in rows]
+    keep=[i for i in range(n) if any(r[i] for r in rows)]; rows=[[r[i] for i in keep] for r in rows]; n=len(keep)
+    return '\n'.join(['| '+' | '.join(rows[0])+' |','|'+'---|'*n]+['| '+' | '.join(r)+' |' for r in rows[1:]])
+def _md_walk(el,out):
+    for c in el.children:
+        if isinstance(c,_NS) or c.name in _MD_SKIP or c.has_attr('hidden'): continue
+        cls=set(c.get('class') or [])
+        if _MD_DROP & cls: continue
+        if c.name in ('h1','h2','h3','h4'):
+            t=_md_t(c)
+            if t: out.append('#'*int(c.name[1])+' '+t)
+        elif c.name in ('b','strong'): out.append('**'+_md_t(c)+'**')
+        elif c.name=='p':
+            t=_md_in(c)
+            if t: out.append(t)
+        elif c.name in ('ul','ol'):
+            li=[_md_in(x) for x in c.find_all('li',recursive=False)]
+            if any(li): out.append('\n'.join('- '+x for x in li if x))
+        elif c.name=='table': out.append(_md_table(c))
+        elif c.name=='dl': out.append('\n'.join(f'- **{_md_t(dt)}:** {_md_in(dt.find_next_sibling("dd"))}' for dt in c.find_all('dt')))
+        elif c.name=='details' and 'qa' in cls and c.find('p'): out.append(f'**{_md_t(c.summary)}**\n{_md_in(c.find("p"))}')
+        elif c.name=='figure' and 'chart' in cls:
+            cap=c.find('figcaption'); _md_walk(cap,out) if cap else None
+            out.append('\n'.join('- '+' · '.join(x for x in b['data-tip'].split('|') if x.strip()) for b in c.find_all(attrs={'data-tip':True})))
+        else: _md_walk(c,out)
+def _md_page(name):
+    out=[]; _md_walk(_BS(open(OUT+name,encoding='utf-8').read(),'html.parser').find('main'),out)
+    out=[x for x in out if x.strip()]
+    lvl=lambda x: len(x)-len(x.lstrip('#')) if x.startswith('#') else 9     # nagłówek bez treści pod nim (np. lista kart) wypada
+    out=[x for i,x in enumerate(out) if lvl(x)==9 or (i+1<len(out) and lvl(out[i+1])>lvl(x))]
+    return '\n\n'.join(out)
+_full=[LLMS.split('\n## ')[0].rstrip(),'Pełna treść stron armatex.pl. Krótszy spis z linkami: '+SITE+'llms.txt']
+for name in ['o-firmie.html','wspolpraca.html']+[x['slug']+'.html' for x in SYS]+[a['slug']+'.html' for a in ART]+['do-pobrania.html']:
+    _full.append('---\n\nAdres: '+SITE+name+'\n\n'+_md_page(name))
+_full.append('---\n\n# Pytania partnerów\n\nAdres: '+SITE+'#faq\n\n'+'\n\n'.join(f'**{_txt(q)}**\n{_txt(a)}' for q,a in HOME_FAQ))
+open(OUT+'llms-full.txt','w',encoding='utf-8').write('\n\n'.join(_full)+'\n')
 print('grupy',len(GROUPS),'url',len(urls))
 # teksty bez tłumaczenia (wersja EN): uzupełnij tools/en.json
 for c in LANGS_ON:
