@@ -37,9 +37,7 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
   `wybor`: `wszystkie`, `statystyki`, `marketing` albo `odrzucone`). Strony 404 wysyłają `404`
   (`JS404` w `tools/strony.py`). Pobrania plików, linki wychodzące i wysłania formularzy (`Form: Submission`)
   liczy sam Plausible. Nowe zdarzenie trzeba też dopisać do polityki prywatności (pkt 2).
-- Menedżer tagów Google (GTM): `GTM_ID` w `tools/strony.py` (pusty wyłącza GTM). Kod GTM nie pobiera `gtm.js` od razu, tylko przy
-  pierwszym dotknięciu, kliknięciu, klawiszu albo przewinięciu, a najpóźniej 2,5 s po zdarzeniu `load` (130 kB skryptu nie konkuruje
-  ze zdjęciem hero, LCP na telefonie krótszy o ok. 1 s). Zdarzenia dataLayer z tego czasu GTM obsługuje po załadowaniu. `head()` wstawia przed kodem GTM
+- Menedżer tagów Google (GTM): `GTM_ID` w `tools/strony.py` (pusty wyłącza GTM). `head()` wstawia przed kodem GTM
   tryb zgody Google z domyślnym „brak zgody” (`ad_storage`, `ad_user_data`, `ad_personalization`, `analytics_storage`),
   więc tagi Google z kontenera (GA4, Google Ads) nie zapisują cookies. Fragment `noscript` stoi zaraz po `<body>`.
 - Okno zgody na pliki cookies (`c.js`, style `.ck` w `c.css`): „Akceptuję wszystkie”, „Odrzucam” i „Ustawienia”
