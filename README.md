@@ -191,8 +191,8 @@ Na kopii w GitHub Pages formularz nie działa (pokazuje komunikat z telefonem i 
 3. Godziny otwarcia (`openingHoursSpecification`) i profil LinkedIn (`sameAs`) są w danych `WholesaleStore`. Adres profilu
    (`LINKEDIN` w `tools/strony.py`) jest też w stopce (Kontakt), w sekcji kontaktu i jako przycisk w nagłówku strony „O firmie”. Kolejne profile dopisz do `sameAs`.
 4. Przy zmianie domeny ze starej strony ustaw przekierowania 301 ze starych adresów.
-5. Tło sekcji kontaktu na stronie głównej ładuje się z CDN Higgsfield (`d8j0ntlcm91z4.cloudfront.net`);
-   warto pobrać je do `img/` i podmienić adres.
+5. Zdjęcia hero i tło sekcji kontaktu są w `img/hero/`. Adresy CDN Higgsfield (`d8j0ntlcm91z4.cloudfront.net`) zostały
+   tylko w szablonie `tools/szablon-c.html`; generator podmienia je na pliki lokalne (żadna wygenerowana strona nie odwołuje się do CDN).
 6. Potwierdź u Besco prawo do udostępniania katalogu PDF.
 
 ## Strona 404
