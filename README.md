@@ -73,6 +73,13 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
 - `sitemap.xml`, `robots.txt`.
 - `tools/`: generator stron i skrypty danych (niżej).
 
+## Marketing (agenci Claude)
+
+`marketing/` i `.claude/` to narzędzia do treści w social mediach, nie część strony: profil marki (`marketing/marka.md`),
+bank tematów, szkice, agenci kanałów (`.claude/agents/`: blog, LinkedIn, Facebook, Instagram, wizytówka Google,
+newsletter, YouTube) i proces (`.claude/skills/omnichannel/SKILL.md`). Opis w `marketing/README.md`.
+Workflow Pages usuwa oba katalogi przed publikacją, a na Netlify blokuje je `_redirects`.
+
 ## Zmiany treści: generator
 
 Strony HTML są generowane, więc zmiany w treści rób w `tools/strony.py` (szablon sekcji:

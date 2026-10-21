@@ -504,6 +504,10 @@
 # Wersje językowe: ukraińska wersja przeniesiona z /uk/ na /ua/ (X 2026)
 /uk                          /ua/                               301!
 /uk/*                        /ua/:splat                         301!
+# pliki robocze marketingu i agentów Claude nie są częścią strony
+/marketing/*                 /404.html                          404!
+/.claude/*                   /404.html                          404!
+
 # nieistniejący adres pod /en/ lub /ua/ pokazuje stronę 404 w tym języku
 /en/*                        /en/404.html                       404
 /ua/*                        /ua/404.html                       404
