@@ -31,9 +31,6 @@ jobs:
         with:
           enablement: true
 
-      - name: Usunięcie plików roboczych (marketing, agenci Claude)
-        run: rm -rf marketing .claude
-
       - name: Spakowanie strony
         uses: actions/upload-pages-artifact@v3
         with:
