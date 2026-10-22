@@ -1351,8 +1351,17 @@ ART_FAQ={
   ('Które złączki z oferty mają aprobatę DVGW?','Besco Gutpress Copper w profilach V i M, linie do gazu, lutowane EN 1254, INOX 316L i Gutpress Zawory Kulowe V i M. Zakres i ważność potwierdza sam certyfikat.')],
 }
 ART=[]
-def art(slug,title,seo,desc,lead,mins,body,rel,src=PSRC):
-    ART.append(dict(slug=slug,title=title,desc=desc,lead=lead,mins=mins))
+def art(slug,title,seo,desc,lead,mins,body,rel,src=PSRC,opublikowano=None,zmieniono=None):
+    """Poradnik. opublikowano/zmieniono: 'RRRR-MM-DD' (Article.datePublished/dateModified w JSON-LD, „Stan na” w stopce).
+    Daty są stałe, żeby generator nie zmieniał ich przy każdym uruchomieniu; zmieniono wpisz przy zmianie treści
+    poradnika (także jego ART_FAQ). Bez opublikowano generator bierze dzisiejszą datę i ostrzega."""
+    if not opublikowano:
+        print(f'UWAGA: poradnik {slug} bez opublikowano=, data publikacji = {DZIS}; wpisz opublikowano={DZIS!r} w art(...)')
+        opublikowano=DZIS
+    zmieniono=zmieniono or opublikowano
+    for d in (opublikowano,zmieniono): _dt.date.fromisoformat(d)
+    if zmieniono<opublikowano: raise ValueError(f'{slug}: zmieniono {zmieniono} przed opublikowano {opublikowano}')
+    ART.append(dict(slug=slug,title=title,desc=desc,lead=lead,mins=mins,opublikowano=opublikowano,zmieniono=zmieniono))
     faq=ART_FAQ.get(slug,[])
     if faq: body+='\n        <h2 id="faq">Najczęstsze pytania</h2>\n'+''.join(f'        <h3>{q}</h3>\n        <p>{a}</p>\n' for q,a in faq)
     toc=''.join(f'<li><a href="#{a}">{t}</a></li>' for a,t in re.findall(r'<h2 id="([^"]+)">([^<]+)</h2>',body))
@@ -1362,7 +1371,7 @@ def art(slug,title,seo,desc,lead,mins,body,rel,src=PSRC):
     <div class="wrap art">
       <article class="prose">
 {body}
-        <p class="prose__src">{src}. Stan na {DZIS[:4]} r.</p>
+        <p class="prose__src">{src}. Stan na {zmieniono[:4]} r.</p>
       </article>
       <aside class="art__side">
         <div class="art__box"><span class="label">W tym poradniku</span><ol>{toc}</ol></div>
@@ -1373,7 +1382,7 @@ def art(slug,title,seo,desc,lead,mins,body,rel,src=PSRC):
   </section>
 '''
     ldart=ld({"@context":"https://schema.org","@type":"Article","headline":title,"description":desc,"inLanguage":"pl-PL",
-      "datePublished":DZIS,"dateModified":DZIS,"mainEntityOfPage":SITE+slug+'.html',"image":SITE+"img/og/armatex-og.jpg",
+      "datePublished":opublikowano,"dateModified":zmieniono,"mainEntityOfPage":SITE+slug+'.html',"image":SITE+"img/og/armatex-og.jpg",
       "author":{"@type":"Organization","name":"Armatex","url":SITE},"publisher":{"@id":SITE+"#firma"}})
     page(slug+'.html',seo,desc,'poradniki',html,ld_crumbs([('Poradniki','poradniki.html'),(title,slug+'.html')])+ldart+(ld_faq(faq) if faq else ''))
 
@@ -1409,7 +1418,8 @@ art('poradnik-profil-v-czy-m','Profil V czy M? Jak dobrać złączki zaprasowane
         </ul>
         <h2 id="zamowienie">Jak zamówić</h2>
         <p>Wszystkie indeksy znajdziesz w <a href="wyszukiwarka.html?seria=cu-press-water-v#katalog">wyszukiwarce profilu V</a> i <a href="wyszukiwarka.html?seria=cu-press-water-m#katalog">profilu M</a>. Dodaj pozycje do listy, ustaw ilości w kartonach lub workach i wyślij do wyceny.</p>''',
- ['<a href="zlaczki-zaprasowane-press.html">Złączki zaprasowane press Besco</a>',glink('GP5001','Łuk 90° wz, profil V (GP5001)','Łuk 90'),glink('6001','Łuk 90° wz, profil M (6001)','Łuk 90'),'<a href="poradnik-numery-artykulow-besco.html">Jak czytać numery artykułów Besco</a>'])
+ ['<a href="zlaczki-zaprasowane-press.html">Złączki zaprasowane press Besco</a>',glink('GP5001','Łuk 90° wz, profil V (GP5001)','Łuk 90'),glink('6001','Łuk 90° wz, profil M (6001)','Łuk 90'),'<a href="poradnik-numery-artykulow-besco.html">Jak czytać numery artykułów Besco</a>'],
+ opublikowano='2026-09-27',zmieniono='2026-10-21')
 
 art('poradnik-numery-artykulow-besco','Jak czytać numery artykułów Besco',
  'Numery artykułów Besco – jak je czytać | Armatex',
@@ -1463,7 +1473,8 @@ art('poradnik-numery-artykulow-besco','Jak czytać numery artykułów Besco',
         <p>Wyjątek: w liniach press M (woda i gaz) numery artykułów w tabelach katalogu to długie kody liczbowe, np. <code>682001212</code>. Na stronach grup są w tabelach razem z rozmiarem, np. w grupie <code>6001</code>.</p>
         <h2 id="szukaj">Zamawianie po numerze</h2>
         <p>Numery artykułów wpisz w <a href="kontakt.html#formularz">formularzu zapytania</a> albo zbuduj listę w <a href="wyszukiwarka.html">wyszukiwarce produktów</a>: otwórz linię, np. press V, wybierz grupę <code>GP5001</code> i dodaj potrzebne średnice.</p>''',
- ['<a href="wyszukiwarka.html">Wyszukiwarka indeksów</a>','<a href="poradnik-profil-v-czy-m.html">Profil V czy M?</a>','<a href="zlaczki-lutowane.html">Złączki lutowane Besco</a>'])
+ ['<a href="wyszukiwarka.html">Wyszukiwarka indeksów</a>','<a href="poradnik-profil-v-czy-m.html">Profil V czy M?</a>','<a href="zlaczki-lutowane.html">Złączki lutowane Besco</a>'],
+ opublikowano='2026-09-27',zmieniono='2026-10-21')
 
 GAS_V=[G for G in groups_of('cu-press-gas-v')]
 gas_list=''.join(f'<li><a href="{G["slug"]}.html">{G["name"]}</a> <code>{G["code"]}</code></li>' for G in GAS_V)
@@ -1492,7 +1503,8 @@ art('poradnik-zlaczki-zaprasowane-do-gazu','Złączki zaprasowane do gazu: param
         <ul class="cols">{gas_list}</ul>
         <h2 id="dokumenty">Dokumenty dla klientów</h2>
         <p>Przy instalacjach gazowych instalatorzy i inwestorzy częściej pytają o dokumenty. Aprobaty i deklaracje do linii gazowych udostępniamy hurtowniom w <a href="do-pobrania.html">bazie dokumentów</a> po weryfikacji. Samą instalację gazową wykonuje instalator z uprawnieniami, zgodnie z przepisami.</p>''',
- ['<a href="wyszukiwarka.html?seria=cu-press-gas-v,cu-press-gas-m#katalog">Wszystkie indeksy gazowe w wyszukiwarce</a>','<a href="zlaczki-zaprasowane-press.html">Złączki zaprasowane press Besco</a>','<a href="do-pobrania.html">Do pobrania: katalogi i dokumenty</a>'])
+ ['<a href="wyszukiwarka.html?seria=cu-press-gas-v,cu-press-gas-m#katalog">Wszystkie indeksy gazowe w wyszukiwarce</a>','<a href="zlaczki-zaprasowane-press.html">Złączki zaprasowane press Besco</a>','<a href="do-pobrania.html">Do pobrania: katalogi i dokumenty</a>'],
+ opublikowano='2026-09-27',zmieniono='2026-10-21')
 
 art('poradnik-metody-laczenia-rur','Zaprasowane, na wcisk, skręcane czy lutowane? Porównanie metod łączenia',
  'Złączki zaprasowane, na wcisk, skręcane, lutowane – porównanie | Armatex',
@@ -1521,7 +1533,8 @@ art('poradnik-metody-laczenia-rur','Zaprasowane, na wcisk, skręcane czy lutowan
         <h2 id="oferta">Co to oznacza dla hurtowni</h2>
         <p>Te metody nie konkurują ze sobą, tylko obsługują różnych klientów: instalatora z zaciskarką, serwisanta bez narzędzi, klienta przy ladzie i chłodnika. Pełna oferta czterech metod od jednego dostawcy pozwala obsłużyć ich wszystkich z jednej faktury.</p>''',
  ['<a href="index.html#systemy">Wszystkie systemy złączek</a>','<a href="poradnik-profil-v-czy-m.html">Profil V czy M?</a>','<a href="poradnik-zlaczki-zaprasowane-do-gazu.html">Złączki zaprasowane do gazu</a>'],
- src='Źródło danych: katalogi Besco 2026 i Tectite 2026, cennik Kuterlite (październik 2024)')
+ src='Źródło danych: katalogi Besco 2026 i Tectite 2026, cennik Kuterlite (październik 2024)',
+ opublikowano='2026-09-27',zmieniono='2026-10-21')
 
 # ---- Poradniki: stal, Tectite czy press, Kuterlite a press, PE, aprobaty
 art('poradnik-zlaczki-do-stali-weglowej','Złączki do stali węglowej: gdzie wolno, a gdzie nie',
@@ -1558,7 +1571,8 @@ art('poradnik-zlaczki-do-stali-weglowej','Złączki do stali węglowej: gdzie wo
         <h2 id="zamowienie">Jak zamówić</h2>
         <p>Wszystkie kształtki stalowe Besco znajdziesz w <a href="wyszukiwarka.html?seria=steel-press-m#katalog">wyszukiwarce</a>, np. {glink('2270','mufa 2270','Mufa')}, {glink('2001','łuk 90° wz 2001','Łuk 90')} czy {glink('2510','kołnierz PN 16 2510','Kołnierz')}. Tectite Carbon i Pro wycenimy na zapytanie.</p>''',
  ['<a href="zlaczki-zaprasowane-press.html">Złączki zaprasowane press Besco</a>','<a href="zlaczki-na-wcisk-tectite.html">Złączki na wcisk Tectite</a>','<a href="poradnik-tectite-czy-press.html">Tectite czy press?</a>','<a href="poradnik-profil-v-czy-m.html">Profil V czy M?</a>'],
- src='Źródło danych: katalogi Besco 2026 i Tectite 2026')
+ src='Źródło danych: katalogi Besco 2026 i Tectite 2026',
+ opublikowano='2026-09-28',zmieniono='2026-10-21')
 
 art('poradnik-tectite-czy-press','Tectite czy press? Kiedy złączki na wcisk, a kiedy zaprasowane',
  'Tectite czy press – złączki na wcisk czy zaprasowane | Armatex',
@@ -1604,7 +1618,8 @@ art('poradnik-tectite-czy-press','Tectite czy press? Kiedy złączki na wcisk, a
         <h2 id="hurtownia">Co to oznacza dla hurtowni</h2>
         <p>Tectite i press nie konkurują, tylko obsługują różnych klientów: serwisanta i instalatora bez zaciskarki oraz firmę wykonawczą przy większych instalacjach. Oba systemy są w naszej ofercie, więc hurtownia zamówi je na jednej fakturze.</p>''',
  ['<a href="zlaczki-na-wcisk-tectite.html">Złączki na wcisk Tectite</a>','<a href="zlaczki-zaprasowane-press.html">Złączki zaprasowane press Besco</a>','<a href="poradnik-metody-laczenia-rur.html">Porównanie czterech metod łączenia</a>','<a href="poradnik-zlaczki-do-stali-weglowej.html">Złączki do stali węglowej</a>'],
- src='Źródło danych: katalogi Besco 2026 i Tectite 2026')
+ src='Źródło danych: katalogi Besco 2026 i Tectite 2026',
+ opublikowano='2026-09-28',zmieniono='2026-10-21')
 
 art('poradnik-kuterlite-a-zlaczki-zaprasowane','Kuterlite a złączki zaprasowane: czym się różnią złączki skręcane od press',
  'Złączki skręcane Kuterlite a zaprasowane press | Armatex',
@@ -1636,7 +1651,8 @@ art('poradnik-kuterlite-a-zlaczki-zaprasowane','Kuterlite a złączki zaprasowan
         <h2 id="hurtownia">Co to oznacza dla hurtowni</h2>
         <p>Skręcane i press to dwie osobne grupy klientów i dwa osobne stany. Przy skręcanych opłaca się trzymać też nakrętki i pierścienie na sztuki, bo klienci dokupują je przy naprawach.</p>''',
  ['<a href="zlaczki-skrecane-kuterlite.html">Złączki skręcane Kuterlite</a>','<a href="zlaczki-zaprasowane-press.html">Złączki zaprasowane press Besco</a>','<a href="poradnik-metody-laczenia-rur.html">Porównanie metod łączenia</a>'],
- src='Źródło danych: katalog Besco 2026, cennik Kuterlite (październik 2024)')
+ src='Źródło danych: katalog Besco 2026, cennik Kuterlite (październik 2024)',
+ opublikowano='2026-09-28',zmieniono='2026-10-21')
 
 art('poradnik-aprobaty-dvgw-kiwa-wras','Aprobaty DVGW, KIWA, WRAS, RISE i INiG: co oznaczają',
  'Aprobaty DVGW, KIWA, WRAS, RISE, INiG – co oznaczają | Armatex',
@@ -1684,7 +1700,8 @@ art('poradnik-aprobaty-dvgw-kiwa-wras','Aprobaty DVGW, KIWA, WRAS, RISE i INiG: 
         <h2 id="dokumenty">Jak zdobyć dokumenty</h2>
         <p>Atesty, deklaracje i certyfikaty do linii Besco i Pegler Yorkshire udostępniamy hurtowniom w <a href="do-pobrania.html">bazie dokumentów</a> po weryfikacji. Jeśli klient pyta o konkretny indeks, podaj jego numer w <a href="kontakt.html#formularz">zapytaniu</a>, a dobierzemy właściwy dokument.</p>''',
  ['<a href="do-pobrania.html">Do pobrania: katalogi i dokumenty</a>','<a href="poradnik-zlaczki-zaprasowane-do-gazu.html">Złączki zaprasowane do gazu</a>','<a href="zlaczki-zaprasowane-press.html">Złączki zaprasowane press Besco</a>','<a href="zlaczki-na-wcisk-tectite.html">Złączki na wcisk Tectite</a>'],
- src='Źródło danych: katalogi Besco 2026 i Tectite 2026')
+ src='Źródło danych: katalogi Besco 2026 i Tectite 2026',
+ opublikowano='2026-09-28',zmieniono='2026-10-21')
 
 cards=''.join(f'<a class="pcard2" href="{a["slug"]}.html"><span class="label">Poradnik · {a["mins"]} min</span><b>{a["title"]}</b><p>{a["lead"]}</p><span class="pcard2__go" aria-hidden="true">Czytaj →</span></a>' for a in ART)
 porad=phead([('Poradniki','poradniki.html')],'Poradniki','Poradniki dla hurtowni instalacyjnych.',
