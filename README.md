@@ -10,7 +10,10 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
   `zlaczki-skrecane-kuterlite.html`, `zlaczki-lutowane.html`; `wyszukiwarka.html` (wyszukiwarka 1 936 indeksów Besco
   z listą do wyceny), `do-pobrania.html` (katalogi i dokumenty z filtrem), `o-firmie.html`, `wspolpraca.html`, `kontakt.html`.
 - Poradniki: `poradniki.html` i artykuły `poradnik-*.html` (dane Article w JSON-LD). Nowy poradnik dodaje się
-  wywołaniem `art(...)` w `tools/strony.py`; lista, menu i sitemap aktualizują się same.
+  wywołaniem `art(...)` w `tools/strony.py`; lista, menu i sitemap aktualizują się same. Każde `art(...)` ma
+  `opublikowano='RRRR-MM-DD'` (`datePublished`) i `zmieniono='RRRR-MM-DD'` (`dateModified` i „Stan na … r.” w stopce,
+  domyślnie data publikacji). Przy zmianie treści poradnika, także jego pytań w `ART_FAQ`, wpisz nową datę w `zmieniono`.
+  Bez `opublikowano` generator bierze dzisiejszą datę i wypisuje ostrzeżenie: daty zmieniałyby się przy każdym uruchomieniu.
 - Strony grup produktów: 161 × `besco-*.html`, 224 × `tectite-*.html` / `kuterlite-*.html`. Tabela rozmiarów
   z numerami artykułów, wybór ilości i jednostki (karton, worek, opakowanie, sztuki) i „Dodaj” do listy do wyceny.
   Lista jest zapisywana w przeglądarce (`localStorage`, klucz `armatex-rfq`) i trafia do formularza.
