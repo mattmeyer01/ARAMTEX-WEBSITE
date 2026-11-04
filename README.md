@@ -24,7 +24,7 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
   nie przy „wstecz”, nie w karcie otwartej w tle, nie przy `prefers-reduced-motion`, przy oszczędzaniu danych ani na 404. Kliknięcie
   albo Esc kończy je od razu. Nic nie zapisuje w przeglądarce. Animacje wejścia strony (`.hero`, `.phead`, `.in`, liczniki) czekają, aż kurtyna zacznie znikać
   (klasa `intro` na `<html>`, zdarzenie `armatex:intro`).
-- Pasek nowości nad menu (INOX 304) i okno z opisem: `bar_html()` w `tools/strony.py`, style `.abar` i `.adlg`
+- Pasek nowości nad menu (INOX 304L) i okno z opisem: `bar_html()` w `tools/strony.py`, style `.abar` i `.adlg`
   w `c.css`, obsługa w `c.js`. Pasek nie ma przycisku zamykania i jest na każdej stronie (klasa `has-bar`
   w znaczniku `<html>`). `BAR_ID` to identyfikator komunikatu w statystykach, `BAR_ID=None` wyłącza pasek na wszystkich stronach.
 - Statystyki odwiedzin: Plausible Analytics (bez cookies i bez zapisu w przeglądarce). Skrypt wstawia `head()`
@@ -70,7 +70,7 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
   powiększone ESRGAN ×4 (jak w `tools/powieksz_zdjecia.py`) z poprzednich plików 200–400 px; do podmiany, gdy będą zdjęcia od producenta.
   Generator dopisuje do każdego adresu zdjęcia `?v=<skrót treści>`, więc podmiana pliku pod tą samą nazwą
   od razu trafia do przeglądarek mimo 7-dniowego cache `/img/*`.
-- `pliki/katalog-*.pdf`: katalogi Armatex (Besco 2026, Besco INOX 304 i 316L, Tectite, Kuterlite) składane z danych przez
+- `pliki/katalog-*.pdf`: katalogi Armatex (Besco 2026, Besco INOX 304L i 316L, Tectite, Kuterlite) składane z danych przez
   `tools/katalog_pdf.py` (niżej, „Katalogi PDF”). Katalog Besco 2026 jest w menu „Oferta → Katalogi”.
 - `pliki/instrukcja-montazu-tectite.pdf`: instrukcja montażu Tectite w identyfikacji Armatex (`tools/instrukcja_tectite.py`); link na stronie Tectite, w „Do pobrania” i w poradniku „Tectite czy press?”.
 - `assets/`: fonty (Outfit, IBM Plex Mono) i favicony.
@@ -135,8 +135,8 @@ i własne strony 404 (`/en/*`, `/ua/*` w `_redirects`; stare adresy `/uk/*` → 
 
 ## Złączki INOX
 
-`tools/katalog_inox.py` dopisuje do `data/besco-2026.json` linie INOX 304 i INOX 316L z oryginalnych katalogów Besco
-(INOX 304: `Katalog_INOX_304.pdf`, INOX 316L: oryginalny katalog Besco INOX 316L).
+`tools/katalog_inox.py` dopisuje do `data/besco-2026.json` linie INOX 304L i INOX 316L z oryginalnych katalogów Besco
+(INOX 304L: `Katalog_INOX_304.pdf`, INOX 316L: oryginalny katalog Besco INOX 316L).
 Uruchamiaj go **po** `tools/katalog_besco.py`, bo ten nadpisuje cały plik danych. Katalog 316L ma tekst zamieniony na krzywe,
 więc skrypt czyta go przez OCR (`pip install rapidocr_onnxruntime`) i sprawdza numery artykułów względem kodu grupy.
 Skrypt czyta oryginalne katalogi Besco, a nie `pliki/katalog-besco-inox-*.pdf`, które są już katalogami Armatex (niżej).
@@ -165,7 +165,7 @@ technicznym i tabelą wymiarów; wysokości kart mierzy przeglądarka. Dane i ob
 katalogów Besco/Armatex; numery artykułów są jak w tych katalogach (część różni się zapisem od `data/besco-2026.json`).
 Strony produktów linii gazowych i zaworów kulowych linkują do tych katalogów (`PDF_INOX` w `tools/strony.py`).
 
-Dane: `tools/katalog-pdf/<katalog>.json`. INOX 304 z warstwy tekstowej katalogu Besco (296 indeksów), INOX 316L
+Dane: `tools/katalog-pdf/<katalog>.json`. INOX 304L z warstwy tekstowej katalogu Besco (296 indeksów), INOX 316L
 z `data/besco-2026.json` sprawdzony z katalogiem (253). Besco 2026, Tectite i Kuterlite składa
 `python3 tools/katalog_dane.py oryginalny-katalog-kuterlite.pdf` z `data/besco-2026.json` i `data/pegler.json`:
 Besco 2026 sprawdzony z katalogiem producenta (poprawki w `POPRAWKI_BESCO`), Kuterlite bez serii K600 i K700

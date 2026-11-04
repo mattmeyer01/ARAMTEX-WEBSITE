@@ -2,7 +2,7 @@
 
 > Armatex (P.H.U. ARMATEX Sp. J. A. J. Bunda, Olsztyn) to dystrybutor złączek i armatury dla hurtowni instalacyjnych
 > w całej Polsce: oficjalny przedstawiciel Pegler Yorkshire w Polsce (złączki na wcisk Tectite, skręcane Kuterlite)
-> i od 2016 roku dystrybutor Besco (złączki zaprasowane Gutpress, INOX 304 i 316L, lutowane). Strona nie ma sklepu
+> i od 2016 roku dystrybutor Besco (złączki zaprasowane Gutpress, INOX 304L i 316L, lutowane). Strona nie ma sklepu
 > ani cen: ceny hurtowe, dostępność i terminy dostaw są w ofercie przygotowywanej w ciągu jednego dnia roboczego.
 
 - Na rynku instalacyjnym od 1991 roku. Cztery metody łączenia (zaprasowane, na wcisk, skręcane, lutowane), 3 256 indeksów w wyszukiwarce.
@@ -46,7 +46,7 @@ Na zapytanie odpowiadamy w ciągu jednego dnia roboczego: ceny, dostępność i 
 
 ### Press, gaz, stal i lutowane
 
-Gutpress Copper w profilach V i M (12–108 mm), linie do gazu, Gutpress Carbon Steel, stal nierdzewna INOX 304 i 316L press, kształtki lutowane EN 1254, calowe ANSI i G-size oraz Gutpress Zawory Kulowe V i M. 2 476 pozycji Besco w naszej [wyszukiwarce](https://armatex.pl/wyszukiwarka.html). Aprobaty DVGW, KIWA, WRAS, RISE i INiG oraz certyfikaty PZH i ITB, zależnie od linii.
+Gutpress Copper w profilach V i M (12–108 mm), linie do gazu, Gutpress Carbon Steel, stal nierdzewna INOX 304L i 316L press, kształtki lutowane EN 1254, calowe ANSI i G-size oraz Gutpress Zawory Kulowe V i M. 2 476 pozycji Besco w naszej [wyszukiwarce](https://armatex.pl/wyszukiwarka.html). Aprobaty DVGW, KIWA, WRAS, RISE i INiG oraz certyfikaty PZH i ITB, zależnie od linii.
 
 ### Tectite i Kuterlite
 
@@ -124,7 +124,7 @@ Atesty i karty katalogowe do każdej pozycji. Hurtowniom udostępniamy bazę po 
 O współpracę, warunki i dokumenty. Pytania techniczne o poszczególne systemy znajdziesz na ich stronach.
 
 **Czy Armatex jest oficjalnym przedstawicielem Pegler Yorkshire?**
-Tak. Jesteśmy oficjalnym przedstawicielem Pegler Yorkshire w Polsce (złączki na wcisk Tectite i skręcane Kuterlite), a od 2016 roku dystrybutorem Besco (złączki zaprasowane Gutpress, INOX 304 i 316L, lutowane).
+Tak. Jesteśmy oficjalnym przedstawicielem Pegler Yorkshire w Polsce (złączki na wcisk Tectite i skręcane Kuterlite), a od 2016 roku dystrybutorem Besco (złączki zaprasowane Gutpress, INOX 304L i 316L, lutowane).
 
 **Gdzie hurtownia kupi złączki Besco, Tectite i Kuterlite?**
 U nas: z magazynu w Olsztynie dostarczamy złączki i armaturę obu producentów do hurtowni instalacyjnych w całej Polsce. O wycenę mogą też zapytać firmy instalacyjne, generalni wykonawcy i zakłady przemysłowe.
@@ -159,7 +159,7 @@ Adres: https://armatex.pl/zlaczki-zaprasowane-press.html
 
 # Złączki zaprasowane press Besco
 
-Miedziane systemy press (złączki zaprasowywane) w profilach V i M, serie do gazu, press ze stali węglowej i nierdzewnej (INOX 304 i 316L) oraz zawory kulowe. Miedź według EN 1254-7. Armatex jest dystrybutorem Besco od 2016 roku.
+Miedziane systemy press (złączki zaprasowywane) w profilach V i M, serie do gazu, press ze stali węglowej i nierdzewnej (INOX 304L i 316L) oraz zawory kulowe. Miedź według EN 1254-7. Armatex jest dystrybutorem Besco od 2016 roku.
 
 - **Indeksy:** 1 592
 - **Średnice:** 12–168,3 mm
@@ -174,7 +174,7 @@ Miedziane systemy press (złączki zaprasowywane) w profilach V i M, serie do ga
 
 | Linia | Średnice | Zastosowanie | Parametry | Indeksy |
 |---|---|---|---|---|
-| **INOX 304, Stainless Steel, press, profil M** | 15–108 mm | woda pitna, CO | 16 bar PZH | 296 |
+| **INOX 304L, Stainless Steel, press, profil M** | 15–108 mm | woda pitna, CO | 16 bar PZH | 296 |
 | **Gutpress Copper, profil V** | 12–54 mm | woda pitna, CO, przemysł | 16 bar DVGW KIWA WRAS RISE PZH | 257 |
 | **Gutpress Copper, profil M** | 12–108 mm | woda pitna, CO, przemysł | 16 bar DVGW WRAS RISE PZH | 294 |
 | **Gutpress Copper do gazu, V i M** | 15–35 mm | gaz ziemny, LPG | 5 bar DVGW INiG | 211 |
@@ -201,8 +201,8 @@ Linie GP Gas w profilu V i M: średnice 15–35 mm, do 5 bar, od −20 do 70 °C
 **Do czego służy Gutpress Carbon Steel?**
 Do zamkniętych instalacji grzewczych i sprężonego powietrza. Profil M, średnice 12–108 mm, do 16 bar, od −10 do 110 °C.
 
-**Czym różni się INOX 304 od INOX 316L?**
-Obie linie to złączki press ze stali nierdzewnej w profilu M, do 16 bar, od −10 do 110 °C, i obie mają atest higieniczny PZH do instalacji wody pitnej i ciepłej wody użytkowej. INOX 304: woda pitna i ogrzewanie, średnice 15–108 mm. INOX 316L: według katalogów Besco woda, ogrzewanie i przemysł, aprobaty DVGW i WRAS, średnice 15–168,3 mm (atest PZH obejmuje 15–108 mm).
+**Czym różni się INOX 304L od INOX 316L?**
+Obie linie to złączki press ze stali nierdzewnej w profilu M, do 16 bar, od −10 do 110 °C, i obie mają atest higieniczny PZH do instalacji wody pitnej i ciepłej wody użytkowej. INOX 304L: woda pitna i ogrzewanie, średnice 15–108 mm. INOX 316L: według katalogów Besco woda, ogrzewanie i przemysł, aprobaty DVGW i WRAS, średnice 15–168,3 mm (atest PZH obejmuje 15–108 mm).
 
 **Jakie aprobaty mają złączki miedziane press?**
 Profil V: DVGW, KIWA, WRAS, RISE i certyfikat PZH. Profil M: DVGW, WRAS, RISE i certyfikat PZH. Linie gazowe: DVGW i certyfikat INiG. Wszystkie według EN 1254-7.
@@ -411,7 +411,7 @@ Dla hurtowni oznacza to prostą rzecz: klient z szczękami V kupi złączki V, a
 | Gutpress Copper · gaz | V i M | 15–35 mm | 5 bar, −20…70 °C | DVGW, INiG |
 | Gutpress Carbon Steel | M | 12–108 mm | 16 bar, −10…110 °C | ITB |
 | INOX 316L, Stainless Steel | M | 15–168,3 mm | 16 bar, −10…110 °C | DVGW, WRAS, PZH |
-| INOX 304, Stainless Steel | M | 15–108 mm | 16 bar, −10…110 °C | PZH |
+| INOX 304L, Stainless Steel | M | 15–108 mm | 16 bar, −10…110 °C | PZH |
 | Gutpress Zawory Kulowe V i M | V i M | 15–54 mm | 16 bar, −10…110 °C | DVGW, WRAS |
 
 Miedź według EN 1254-7. Średnice powyżej 54 mm (do 108 mm) są w profilu M, zarówno w miedzi, jak i w stali węglowej.
@@ -469,7 +469,7 @@ Większość numerów ma cztery części: **przedrostek linii**, **numer kształ
 | 6… | Gutpress Copper, profil M, woda | grupa 6001 |
 | 7… | Gutpress Copper, profil M, gaz | grupa 7001 |
 | 2… | Gutpress Carbon Steel, profil M | 2270-15 |
-| 3… | INOX 304, Stainless Steel, press, profil M | 3270-15 |
+| 3… | INOX 304L, Stainless Steel, press, profil M | 3270-15 |
 | 12… | INOX 316L, Stainless Steel, press, profil M (numery bez myślnika) | 120001515 |
 | K | Miedź calowa ANSI B16.22, seria K | K5001-1/2 |
 | G | Miedź G-size do wysokich ciśnień | G5001-22 |
@@ -669,13 +669,13 @@ Wspólny mianownik: **układy zamknięte**, czyli instalacje grzewcze i chłodz�
 
 ## Gdzie stali węglowej nie stosować
 
-- **Woda pitna, ciepła i zimna woda użytkowa.** Żaden z tych katalogów nie przewiduje stali węglowej do wody pitnej. Tu sprawdzą się Gutpress Copper Besco, Besco INOX 304 i 316L, [Tectite Classic i Sprint](https://armatex.pl/zlaczki-na-wcisk-tectite.html) z atestem PZH albo Tectite 316 ze stali nierdzewnej.
+- **Woda pitna, ciepła i zimna woda użytkowa.** Żaden z tych katalogów nie przewiduje stali węglowej do wody pitnej. Tu sprawdzą się Gutpress Copper Besco, Besco INOX 304L i 316L, [Tectite Classic i Sprint](https://armatex.pl/zlaczki-na-wcisk-tectite.html) z atestem PZH albo Tectite 316 ze stali nierdzewnej.
 - **Układy otwarte.** Tectite Carbon jest opisany wyłącznie do niewentylowanych obiegów zamkniętych, a Tectite Pro z rurą stalową tylko do obiegów zamkniętych. W układzie otwartym do wody stale dopływa świeży tlen, a stal węglowa w natlenionej wodzie koroduje.
 - **Gaz.** Besco nie opisuje stali press do gazu. Do instalacji gazowych mamy osobne linie z miedzi (GPG i seria 7000) z aprobatami DVGW i INiG. Więcej w poradniku [Złączki zaprasowane do gazu](https://armatex.pl/poradnik-zlaczki-zaprasowane-do-gazu.html).
 
 ## Stal węglowa to nie stal nierdzewna
 
-Nazwy są podobne, ale to dwa różne materiały. Tectite 316 jest ze stali nierdzewnej i według producenta jest projektowany do instalacji wody pitnej oraz przemysłu spożywczego i farmaceutycznego. W systemie press Besco stal nierdzewna to linie [INOX 316L](https://armatex.pl/wyszukiwarka.html?seria=inox-316l-press-m#katalog) (woda, ogrzewanie, przemysł; aprobaty DVGW i WRAS, atest PZH) i [INOX 304](https://armatex.pl/wyszukiwarka.html?seria=inox-304-press-m#katalog) (woda pitna, ogrzewanie; atest PZH). Złączki do stali węglowej łączą rury stalowe w ogrzewaniu i chłodzeniu. Nie zamienia się ich między sobą i nie łączy z rurami innego rodzaju niż przewiduje producent.
+Nazwy są podobne, ale to dwa różne materiały. Tectite 316 jest ze stali nierdzewnej i według producenta jest projektowany do instalacji wody pitnej oraz przemysłu spożywczego i farmaceutycznego. W systemie press Besco stal nierdzewna to linie [INOX 316L](https://armatex.pl/wyszukiwarka.html?seria=inox-316l-press-m#katalog) (woda, ogrzewanie, przemysł; aprobaty DVGW i WRAS, atest PZH) i [INOX 304L](https://armatex.pl/wyszukiwarka.html?seria=inox-304-press-m#katalog) (woda pitna, ogrzewanie; atest PZH). Złączki do stali węglowej łączą rury stalowe w ogrzewaniu i chłodzeniu. Nie zamienia się ich między sobą i nie łączy z rurami innego rodzaju niż przewiduje producent.
 
 ## Co to oznacza dla hurtowni
 
@@ -691,7 +691,7 @@ Wszystkie kształtki stalowe Besco znajdziesz w [wyszukiwarce](https://armatex.p
 
 ### Czy złączki do stali węglowej nadają się do wody pitnej?
 
-Nie. Żaden z tych katalogów nie przewiduje stali węglowej do wody pitnej. Do wody pitnej są Gutpress Copper, Besco INOX 304 i 316L, Tectite Classic i Sprint z atestem PZH albo Tectite 316.
+Nie. Żaden z tych katalogów nie przewiduje stali węglowej do wody pitnej. Do wody pitnej są Gutpress Copper, Besco INOX 304L i 316L, Tectite Classic i Sprint z atestem PZH albo Tectite 316.
 
 ### Czy stal węglową można stosować w układzie otwartym?
 
@@ -699,7 +699,7 @@ Nie. Tectite Carbon jest opisany wyłącznie do niewentylowanych obiegów zamkni
 
 ### Czym różni się stal węglowa od nierdzewnej w złączkach?
 
-To dwa różne materiały. Złączki do stali węglowej łączą rury stalowe w ogrzewaniu i chłodzeniu, a stal nierdzewna (Besco INOX 304 i 316L, Tectite 316) jest też do wody pitnej. Nie zamienia się ich między sobą.
+To dwa różne materiały. Złączki do stali węglowej łączą rury stalowe w ogrzewaniu i chłodzeniu, a stal nierdzewna (Besco INOX 304L i 316L, Tectite 316) jest też do wody pitnej. Nie zamienia się ich między sobą.
 
 Źródło danych: katalogi Besco 2026 i Tectite 2026. Stan na 2026 r.
 
@@ -858,7 +858,7 @@ Obok aprobat w katalogach pojawia się norma. **EN 1254-7** to europejska norma 
 | Besco lutowane EN 1254 | DVGW, KIWA, WRAS, PZH |
 | Besco Gutpress Carbon Steel | ITB |
 | Besco INOX 316L, Stainless Steel | DVGW, WRAS, PZH |
-| Besco INOX 304, Stainless Steel | PZH |
+| Besco INOX 304L, Stainless Steel | PZH |
 | Besco Gutpress Zawory Kulowe V i M | DVGW, WRAS |
 | Tectite Sprint i Classic | WRAS, PZH |
 | Tectite Pro i 316 | WRAS |
@@ -907,7 +907,7 @@ Katalogi i instrukcje pobierzesz od razu. Atesty, deklaracje i aprobaty udostęp
 
 - **Katalog Besco – Złączki Zaprasowane / Złączki Lutowane** Press V i M, gaz, stal węglowa, zawory kulowe, lutowane EN 1254, ANSI i G-size: 1 936 indeksów z numerami artykułów i opakowaniami. [PDF](https://armatex.pl/pliki/katalog-besco-2026.pdf)
 - **Katalog Besco INOX 316L – Złączki Zaprasowane** Złączki press ze stali nierdzewnej 316L, profil M, 15–168,3 mm: woda, ogrzewanie, przemysł. Aprobaty DVGW i WRAS. [PDF](https://armatex.pl/pliki/katalog-besco-inox-316l.pdf)
-- **Katalog Besco INOX 304 – Złączki Zaprasowane** Złączki press ze stali nierdzewnej 304, profil M, 15–108 mm, do wody pitnej i ogrzewania. Atest higieniczny PZH. [PDF](https://armatex.pl/pliki/katalog-besco-inox-304.pdf)
+- **Katalog Besco INOX 304L – Złączki Zaprasowane** Złączki press ze stali nierdzewnej 304L, profil M, 15–108 mm, do wody pitnej i ogrzewania. Atest higieniczny PZH. [PDF](https://armatex.pl/pliki/katalog-besco-inox-304.pdf)
 - **Katalog Gutpress Gaz – Złączki Zaprasowane do Gazu** Złączki press z miedzi i brązu do instalacji gazowych, profil V i M, 15–28 mm: 143 indeksy z wymiarami i rysunkami technicznymi, narzędzia REMS, instrukcja zaciskania. DVGW, INiG. [PDF](https://armatex.pl/pliki/katalog-gutpress-gaz.pdf)
 - **Katalog Gutpress – Zawory Kulowe Zaprasowywane** Zawory kulowe press × press, press × GW i press × śrubunek w profilu V i M, 15–54 mm: 37 indeksów z wymiarami i rysunkami. DVGW, WRAS, PZH. [PDF](https://armatex.pl/pliki/katalog-gutpress-zawory.pdf)
 - **Katalog Tectite – Złączki Na Wcisk** Tectite Classic, Pro i 316, zawory na wcisk Pegler i akcesoria Tec-Tools: 525 indeksów z wymiarami i numerami artykułów. [PDF](https://armatex.pl/pliki/katalog-tectite.pdf)
@@ -930,7 +930,7 @@ W ciągu jednego dnia roboczego. Oferta zawiera ceny hurtowe, dostępność i te
 Nie. Sprzedajemy każdemu, ale najwięcej i najczęściej kupują od nas hurtownie instalacyjne, dlatego pod nie ustawiamy stany, logistykę i warunki. Kupują u nas także firmy instalacyjne, generalni wykonawcy, zakłady przemysłowe i zarządcy budynków. Napisz, czego potrzebujesz, a dobierzemy formę współpracy.
 
 **Jakie marki i systemy dystrybuujecie?**
-Besco Fittings & Connectors: Gutpress Copper w profilach V i M, serie gazowe, Gutpress Carbon Steel, stal nierdzewna INOX 304 i 316L press, złączki lutowane i Gutpress Zawory Kulowe V i M. Pegler Yorkshire: złączki na wcisk Tectite, złączki skręcane Kuterlite i zawory na wcisk. Razem ponad 3 200 indeksów.
+Besco Fittings & Connectors: Gutpress Copper w profilach V i M, serie gazowe, Gutpress Carbon Steel, stal nierdzewna INOX 304L i 316L press, złączki lutowane i Gutpress Zawory Kulowe V i M. Pegler Yorkshire: złączki na wcisk Tectite, złączki skręcane Kuterlite i zawory na wcisk. Razem ponad 3 200 indeksów.
 
 **Jaki jest czas dostawy?**
 Wysyłka z magazynu w Olsztynie w 24 godziny od potwierdzenia zamówienia. Duże zamówienia dowozimy własnym transportem.
