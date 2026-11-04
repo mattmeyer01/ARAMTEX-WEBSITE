@@ -1,4 +1,4 @@
-"""Dołącza złączki zaprasowane Besco ze stali nierdzewnej (INOX 304 i INOX 316L) do danych strony.
+"""Dołącza złączki zaprasowane Besco ze stali nierdzewnej (INOX 304L i INOX 316L) do danych strony.
 
 Użycie (po tools/katalog_besco.py, bo dopisuje do jego wyniku):
     pip install pymupdf pillow rapidocr_onnxruntime
@@ -23,7 +23,7 @@ import katalog_besco as kb  # noqa: E402
 
 OUT = kb.OUT
 META = {
-    'inox-304-press-m': dict(name='INOX 304, Stainless Steel, press, profil M', short='INOX 304 press', bar='16 bar', temp='−10…110 °C',
+    'inox-304-press-m': dict(name='INOX 304L, Stainless Steel, press, profil M', short='INOX 304L press', bar='16 bar', temp='−10…110 °C',
                              media='ogrzewanie', std='', appr=['CE']),
     'inox-316l-press-m': dict(name='INOX 316L, Stainless Steel, press, profil M', short='INOX 316L press', bar='16 bar', temp='−10…110 °C',
                               media='woda, ogrzewanie, przemysł', std='', appr=['DVGW', 'WRAS']),

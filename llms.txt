@@ -2,7 +2,7 @@
 
 > Armatex (P.H.U. ARMATEX Sp. J. A. J. Bunda, Olsztyn) to dystrybutor złączek i armatury dla hurtowni instalacyjnych
 > w całej Polsce: oficjalny przedstawiciel Pegler Yorkshire w Polsce (złączki na wcisk Tectite, skręcane Kuterlite)
-> i od 2016 roku dystrybutor Besco (złączki zaprasowane Gutpress, INOX 304 i 316L, lutowane). Strona nie ma sklepu
+> i od 2016 roku dystrybutor Besco (złączki zaprasowane Gutpress, INOX 304L i 316L, lutowane). Strona nie ma sklepu
 > ani cen: ceny hurtowe, dostępność i terminy dostaw są w ofercie przygotowywanej w ciągu jednego dnia roboczego.
 
 - Na rynku instalacyjnym od 1991 roku. Cztery metody łączenia (zaprasowane, na wcisk, skręcane, lutowane), 3 256 indeksów w wyszukiwarce.
@@ -14,7 +14,7 @@
 ## Systemy i linie produktów
 
 - [Złączki zaprasowane press Besco](https://armatex.pl/zlaczki-zaprasowane-press.html): Gutpress Copper w profilach V i M, linie gazowe, Gutpress Carbon Steel, stal nierdzewna INOX i Gutpress Zawory Kulowe V i M. 1 592 indeksy.
-  - INOX 304, Stainless Steel, press, profil M (Besco): 15–108 mm, 16 bar, woda pitna, CO; PZH; indeksy: 296
+  - INOX 304L, Stainless Steel, press, profil M (Besco): 15–108 mm, 16 bar, woda pitna, CO; PZH; indeksy: 296
   - Gutpress Copper, profil V (Besco): 12–54 mm, 16 bar, woda pitna, CO, przemysł; DVGW, KIWA, WRAS, RISE, PZH; indeksy: 257
   - Gutpress Copper, profil M (Besco): 12–108 mm, 16 bar, woda pitna, CO, przemysł; DVGW, WRAS, RISE, PZH; indeksy: 294
   - Gutpress Copper do gazu, V i M (Besco): 15–35 mm, 5 bar, gaz ziemny, LPG; DVGW, INiG; indeksy: 211
@@ -55,7 +55,7 @@ W ciągu jednego dnia roboczego. Oferta zawiera ceny hurtowe, dostępność i te
 Nie. Sprzedajemy każdemu, ale najwięcej i najczęściej kupują od nas hurtownie instalacyjne, dlatego pod nie ustawiamy stany, logistykę i warunki. Kupują u nas także firmy instalacyjne, generalni wykonawcy, zakłady przemysłowe i zarządcy budynków. Napisz, czego potrzebujesz, a dobierzemy formę współpracy.
 
 ### Jakie marki i systemy dystrybuujecie?
-Besco Fittings & Connectors: Gutpress Copper w profilach V i M, serie gazowe, Gutpress Carbon Steel, stal nierdzewna INOX 304 i 316L press, złączki lutowane i Gutpress Zawory Kulowe V i M. Pegler Yorkshire: złączki na wcisk Tectite, złączki skręcane Kuterlite i zawory na wcisk. Razem ponad 3 200 indeksów.
+Besco Fittings & Connectors: Gutpress Copper w profilach V i M, serie gazowe, Gutpress Carbon Steel, stal nierdzewna INOX 304L i 316L press, złączki lutowane i Gutpress Zawory Kulowe V i M. Pegler Yorkshire: złączki na wcisk Tectite, złączki skręcane Kuterlite i zawory na wcisk. Razem ponad 3 200 indeksów.
 
 ### Jaki jest czas dostawy?
 Wysyłka z magazynu w Olsztynie w 24 godziny od potwierdzenia zamówienia. Duże zamówienia dowozimy własnym transportem.
@@ -67,7 +67,7 @@ Tak. Wpisz numery w formularzu zapytania albo zbuduj listę w wyszukiwarce produ
 Poproś o dostęp przez formularz. Po weryfikacji firmy udostępniamy karty katalogowe, atesty i deklaracje w ciągu jednego dnia roboczego.
 
 ### Czy Armatex jest oficjalnym przedstawicielem Pegler Yorkshire?
-Tak. Jesteśmy oficjalnym przedstawicielem Pegler Yorkshire w Polsce (złączki na wcisk Tectite i skręcane Kuterlite), a od 2016 roku dystrybutorem Besco (złączki zaprasowane Gutpress, INOX 304 i 316L, lutowane).
+Tak. Jesteśmy oficjalnym przedstawicielem Pegler Yorkshire w Polsce (złączki na wcisk Tectite i skręcane Kuterlite), a od 2016 roku dystrybutorem Besco (złączki zaprasowane Gutpress, INOX 304L i 316L, lutowane).
 
 ### Gdzie hurtownia kupi złączki Besco, Tectite i Kuterlite?
 U nas: z magazynu w Olsztynie dostarczamy złączki i armaturę obu producentów do hurtowni instalacyjnych w całej Polsce. O wycenę mogą też zapytać firmy instalacyjne, generalni wykonawcy i zakłady przemysłowe.

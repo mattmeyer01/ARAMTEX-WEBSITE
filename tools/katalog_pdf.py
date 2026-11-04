@@ -1,4 +1,4 @@
-"""Składa katalogi PDF w identyfikacji Armatex: Besco 2026, Besco INOX 304 i 316L, Tectite, Kuterlite.
+"""Składa katalogi PDF w identyfikacji Armatex: Besco 2026, Besco INOX 304L i 316L, Tectite, Kuterlite.
 
 Użycie:
     pip install playwright==1.56.0 pymupdf fonttools brotli
@@ -10,7 +10,7 @@ Użycie:
 Dane (tools/katalog-pdf/):
     <katalog>.json  grupy: id, kod, nazwa, seria (katalogi wieloseryjne), zdjecie (ścieżka od katalogu głównego), gwint,
                     wiersze [wymiar, nr artykułu, opak. 1, opak. 2] (ilości None, gdy producent ich nie podaje).
-                    INOX 304 z warstwy tekstowej katalogu Besco, INOX 316L z data/besco-2026.json (OCR) sprawdzone
+                    INOX 304L z warstwy tekstowej katalogu Besco, INOX 316L z data/besco-2026.json (OCR) sprawdzone
                     wiersz po wierszu z katalogiem; Besco 2026, Tectite i Kuterlite składa tools/katalog_dane.py.
     besco.png, pegler-dark.png, pegler-light.png, tectite.png   logo marek (z katalogów producentów)
     pzh.webp        znak „Produkt z atestem” NIZP PZH-PIB
@@ -71,7 +71,9 @@ WYSZUKIWARKA = ('armatex.pl/wyszukiwarka', '1 936 indeksów Besco z listą do wy
 def inox(name, material, sizes, sizes_od, app, app_cover, h2, extra_specs, cover_tag, pzh, pzh_cover, hero, sections, opis):
     """Katalogi INOX: jedna linia, działy według rodzaju kształtek, spis treści z grupami."""
     return dict(
-        file=f'katalog-besco-{name.lower().replace(" ", "-")}.pdf', title=f'Złączki zaprasowane Besco {name}',
+        # adres pliku stały mimo zmiany nazwy linii (INOX 304 → 304L): linki w mailach, wyszukiwarkach i na stronie
+        file={'INOX 304L': 'katalog-besco-inox-304.pdf'}.get(name, f'katalog-besco-{name.lower().replace(" ", "-")}.pdf'),
+        title=f'Złączki zaprasowane Besco {name}',
         header=f'Złączki zaprasowane {name} · profil M', brand=BESCO, head_logo='besco.png', kod='Besco', qty=OPAK,
         cover=dict(eyebrow='Produkty marki Besco · stal nierdzewna · system press', small='Złączki zaprasowane', big=name,
                    sub=f'Profil M · Ø {sizes} · {{grupy}} · {{indeksy}}{cover_tag}', hero=hero,
@@ -94,9 +96,9 @@ def ser(sid, name, sizes, bar, temp, media, appr=''):
 
 KATALOGI = {
     'inox-304': inox(
-        'INOX 304', 'Stal nierdzewna 304', '15–108 mm', 'od 15 do 108 mm', 'Ogrzewanie i woda pitna', 'Ogrzewanie<br>i woda pitna',
+        'INOX 304L', 'Stal nierdzewna 304L', '15–108 mm', 'od 15 do 108 mm', 'Ogrzewanie i woda pitna', 'Ogrzewanie<br>i woda pitna',
         'Złączki press ze stali nierdzewnej do instalacji wody pitnej i ogrzewania', [], '',
-        'Złączki INOX 304 mają atest higieniczny Narodowego Instytutu Zdrowia Publicznego PZH – PIB '
+        'Złączki INOX 304L mają atest higieniczny Narodowego Instytutu Zdrowia Publicznego PZH – PIB '
         '(B.BK.60110.1654.2026) do instalacji wody pitnej i ciepłej wody użytkowej.',
         'atest higieniczny<br>PZH', ('3002', '3130', '3270G'),
         [('Mufy, redukcje i zaślepki', ['3270', '3271', '3240', '3243', '3301']),
@@ -127,7 +129,7 @@ KATALOGI = {
         intro=dict(h2='Złączki zaprasowane, lutowane i zawory kulowe Besco',
                    lead='Miedziane złączki zaprasowane Gutpress Copper (profil V i M, woda i gaz), Gutpress Carbon Steel, zawory '
                         'kulowe press oraz kształtki lutowane EN 1254, ANSI B16.22 i G-size: {grupy} produktów i {indeksy}. '
-                        'Złączki INOX 304 i 316L mają osobne katalogi.',
+                        'Złączki INOX 304L i 316L mają osobne katalogi.',
                    boxes=[('pzh', 'Atest higieniczny PZH', 'Złączki Gutpress Copper do wody w profilach V i M mają atest higieniczny '
                                                            'Narodowego Instytutu Zdrowia Publicznego PZH – PIB.')],
                    legend=LEGEND_PRESS + [('V, M', 'profil zaprasowania')], toc='sections'),
