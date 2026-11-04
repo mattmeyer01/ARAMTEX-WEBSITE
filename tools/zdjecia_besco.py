@@ -18,6 +18,9 @@ Dla każdej grupy zapisuje (nadpisuje):
     img/besco/<klucz>-l.webp        strona produktu: dłuższy bok 720 px, białe tło (ramka strony robi multiply)
     tools/katalog-pdf/foto/<klucz>.webp   druk katalogu PDF: dłuższy bok 800 px (ok. 300 dpi na okładce), białe tło
 Mniejszych zdjęć nie powiększamy.
+
+Te same zdjęcia (DODATKI) idą też na karty systemów (strona główna, menu, strony systemów: img/oferta/, 600 px, dwa razy
+więcej niż karta pokazuje, ostre na ekranach Retina) i do miniatury linii INOX 316L (img/linie/, 240 px). Białe tło.
 """
 import os
 import sys
@@ -59,6 +62,13 @@ MAPA = {
     '1085': ['i316-x23'], '1002G': ['i316-x22'], '1001G': ['i316-x21'], '1472G': ['i316-x20'], '1270G': ['i316-x29'],
     '1243G': ['i316-x28'], '1130G': ['i316-x36'], '1358G': ['i316-x35'], '1331G': ['i316-x34'], '1280': ['i316-x42'],
     '1281': ['i316-x41'], '1510': ['i316-x40'],
+}
+
+DODATKI = {
+    'GP5130': [('img/oferta/besco-press-v.webp', 600)],
+    'GPG5130': [('img/oferta/besco-gaz.webp', 600)],
+    '23100': [('img/oferta/besco-stal.webp', 600)],
+    '1130': [('img/linie/besco-inox-316l.webp', 240)],
 }
 
 
@@ -119,6 +129,9 @@ def main(src):
             th = fit(im, 240)
             ImageChops.multiply(th, Image.new('RGB', th.size, STONE)).save(os.path.join(R, f'img/besco/{k}.webp'), 'WEBP', quality=82, method=6)
             fit(im, 800).save(os.path.join(R, f'tools/katalog-pdf/foto/{k}.webp'), 'WEBP', quality=90, method=6)
+        for path, n in DODATKI.get(stem, []):
+            fit(im, n).save(os.path.join(R, path), 'WEBP', quality=88, method=6)
+            keys = keys + [path]
         print(stem, '→', ', '.join(keys), im.size)
     print(sum(len(MAPA[k]) for k in files), 'zdjęć grup z', len(files), 'plików')
 

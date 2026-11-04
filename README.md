@@ -64,7 +64,10 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
   67 grup Gutpress (miedź V i M do wody i gazu, stal węglowa) i 22 z 23 grup INOX 316L (bez 12350 Łuk 90° zz) mają zdjęcia
   produktowe od Besco zamiast wycinków z katalogu PDF:
   `python3 -I tools/zdjecia_besco.py <rozpakowane paczki zdjęć>` (jedna lub kilka paczek; grupy bez pliku pomija) zapisuje miniaturę, wersję `-l` (720 px) i wersję do druku
-  w `tools/katalog-pdf/foto/` (800 px); pary plik–grupa (sprawdzone wzrokowo) są w skrypcie.
+  w `tools/katalog-pdf/foto/` (800 px); pary plik–grupa (sprawdzone wzrokowo) są w skrypcie. Ten sam skrypt robi zdjęcia kart
+  systemów `img/oferta/besco-press-v`, `besco-gaz`, `besco-stal` (600 px, ostre na ekranach Retina) i `img/linie/besco-inox-316l`.
+  Karty `img/oferta/tectite-classic`, `kuterlite` i `besco-lut` nie mają zdjęć w wysokiej rozdzielczości: to wersje 600 px
+  powiększone ESRGAN ×4 (jak w `tools/powieksz_zdjecia.py`) z poprzednich plików 200–400 px; do podmiany, gdy będą zdjęcia od producenta.
   Generator dopisuje do każdego adresu zdjęcia `?v=<skrót treści>`, więc podmiana pliku pod tą samą nazwą
   od razu trafia do przeglądarek mimo 7-dniowego cache `/img/*`.
 - `pliki/katalog-*.pdf`: katalogi Armatex (Besco 2026, Besco INOX 304 i 316L, Tectite, Kuterlite) składane z danych przez
