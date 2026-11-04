@@ -5,11 +5,13 @@ Użycie:
     python3 tools/strony.py
     python3 tools/katalog_pdf.py besco-2026      # katalog PDF też bierze nowe zdjęcia (foto/)
 
-KATALOG_ZE_ZDJECIAMI to rozpakowane paczki od Besco (01-V copper, 03-M copper, 05-M carbon steel), przeszukiwane
-rekurencyjnie. Plik dopasowujemy po początku nazwy: GP5001.jpg, 68000(6270).jpg, 23310(2092G,…).jpg.
+KATALOG_ZE_ZDJECIAMI to rozpakowane paczki od Besco (01-V copper, 03-M copper, 05-M carbon steel,
+07- INOX M316L item picture), przeszukiwane rekurencyjnie. Można podać jedną paczkę: grupy bez pliku są pomijane
+(skrypt je wypisuje), a jeśli nie znajdzie żadnego pliku, przerywa pracę. Plik dopasowujemy po początku nazwy: GP5001.jpg, 68000(6270).jpg, 23310(2092G,…).jpg.
 Pary sprawdzone wzrokowo z obecnymi zdjęciami grup (ten sam kształt i te same końcówki). Numery 5-cyfrowe
 (68xxx, 79xxx) są początkiem numerów artykułów w data/besco-2026.json. Pliki bez pary w katalogu 2026
-(np. GPG5085, 79040, 2358G, 2030, 2950, 2960) pomijamy.
+(np. GPG5085, 79040, 2358G, 2030, 2950, 2960) pomijamy. INOX 316L: pliki mają stare kody Besco 1xxx (jak 3xxx
+w INOX 304), grupy na stronie numery artykułów 12xxx; brak zdjęcia dla 1030 (12350 Łuk 90° zz).
 
 Dla każdej grupy zapisuje (nadpisuje):
     img/besco/<klucz>.webp          miniatura: dłuższy bok 240 px, tło kamienne strony (jak tools/katalog_besco.py)
@@ -51,6 +53,12 @@ MAPA = {
     '23410': ['x917'], '23430': ['x919'], '23450': ['x946'], '23460': ['x947'],
     '23110': ['x937'],      # zwężony koniec przelotu (22 × 22 × 15); x928 i x938 mają zwężone odejście, zostają
     '23310': ['x948'],      # kolano z GZ; Besco: „2092G, wcześniej błędnie 2090G”, w katalogu 2026 nadal 2090G
+    # INOX 316L press M (stary kod → grupa 12xxx)
+    '1270': ['i316-x81'], '1271': ['i316-x80'], '1002': ['i316-x79'], '1001': ['i316-x6'], '1041': ['i316-x4'],
+    '1040': ['i316-x3'], '1243': ['i316-x11'], '1130': ['i316-x10'], '1130R': ['i316-x16'], '1301': ['i316-x15'],
+    '1085': ['i316-x23'], '1002G': ['i316-x22'], '1001G': ['i316-x21'], '1472G': ['i316-x20'], '1270G': ['i316-x29'],
+    '1243G': ['i316-x28'], '1130G': ['i316-x36'], '1358G': ['i316-x35'], '1331G': ['i316-x34'], '1280': ['i316-x42'],
+    '1281': ['i316-x41'], '1510': ['i316-x40'],
 }
 
 
@@ -96,11 +104,15 @@ def main(src):
             stem = os.path.splitext(f.replace('（', '(').replace('）', ')'))[0].split('(')[0].strip()
             if stem in MAPA:
                 files[stem] = os.path.join(dp, f)
+    if not files:
+        sys.exit('Nie znalazłem żadnego pliku z MAPA w ' + src)
     brak = sorted(set(MAPA) - set(files))
     if brak:
-        sys.exit('Brak plików: ' + ', '.join(brak))
+        print('Pominięte (brak pliku):', ', '.join(brak))
     os.makedirs(os.path.join(R, 'tools/katalog-pdf/foto'), exist_ok=True)
     for stem, keys in MAPA.items():
+        if stem not in files:
+            continue
         im = clean(Image.open(files[stem]).convert('RGB'))
         for k in keys:
             fit(im, 720).save(os.path.join(R, f'img/besco/{k}-l.webp'), 'WEBP', quality=90, method=6)
@@ -108,7 +120,7 @@ def main(src):
             ImageChops.multiply(th, Image.new('RGB', th.size, STONE)).save(os.path.join(R, f'img/besco/{k}.webp'), 'WEBP', quality=82, method=6)
             fit(im, 800).save(os.path.join(R, f'tools/katalog-pdf/foto/{k}.webp'), 'WEBP', quality=90, method=6)
         print(stem, '→', ', '.join(keys), im.size)
-    print(sum(len(v) for v in MAPA.values()), 'zdjęć grup z', len(MAPA), 'plików')
+    print(sum(len(MAPA[k]) for k in files), 'zdjęć grup z', len(files), 'plików')
 
 
 if __name__ == '__main__':

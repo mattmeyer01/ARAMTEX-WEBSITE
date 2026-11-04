@@ -61,8 +61,9 @@ instalacyjnych. Bez procesu budowania na serwerze: HTML + CSS + JS, publikowane 
   Strona produktu kładzie zdjęcie na beżowej ramce (`mix-blend-mode: multiply`), więc jego tło musi być białe, inaczej
   w ramce widać drugą, ciemniejszą. Brakujące pliki `-l` tworzy `python3 tools/tlo_produktu.py` (dzieli piksele przez kolor
   tła miniatury), a generator ostrzega, gdy któreś zdjęcie dałoby podwójną ramkę.
-  67 grup Gutpress (miedź V i M do wody i gazu, stal węglowa) ma zdjęcia produktowe od Besco zamiast wycinków z katalogu PDF:
-  `python3 -I tools/zdjecia_besco.py <rozpakowane paczki zdjęć>` zapisuje miniaturę, wersję `-l` (720 px) i wersję do druku
+  67 grup Gutpress (miedź V i M do wody i gazu, stal węglowa) i 22 z 23 grup INOX 316L (bez 12350 Łuk 90° zz) mają zdjęcia
+  produktowe od Besco zamiast wycinków z katalogu PDF:
+  `python3 -I tools/zdjecia_besco.py <rozpakowane paczki zdjęć>` (jedna lub kilka paczek; grupy bez pliku pomija) zapisuje miniaturę, wersję `-l` (720 px) i wersję do druku
   w `tools/katalog-pdf/foto/` (800 px); pary plik–grupa (sprawdzone wzrokowo) są w skrypcie.
   Generator dopisuje do każdego adresu zdjęcia `?v=<skrót treści>`, więc podmiana pliku pod tą samą nazwą
   od razu trafia do przeglądarek mimo 7-dniowego cache `/img/*`.
