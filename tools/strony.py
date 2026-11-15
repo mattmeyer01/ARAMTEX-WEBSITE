@@ -1688,6 +1688,91 @@ art('poradnik-aprobaty-dvgw-kiwa-wras','Aprobaty DVGW, KIWA, WRAS, RISE i INiG: 
  ['<a href="do-pobrania.html">Do pobrania: katalogi i dokumenty</a>','<a href="poradnik-zlaczki-zaprasowane-do-gazu.html">Złączki zaprasowane do gazu</a>','<a href="zlaczki-zaprasowane-press.html">Złączki zaprasowane press Besco</a>','<a href="zlaczki-na-wcisk-tectite.html">Złączki na wcisk Tectite</a>'],
  src='Źródło danych: katalogi Besco 2026 i Tectite 2026')
 
+art('poradnik-tectite-classic-pro-316','Tectite Classic, Pro czy 316? Którą linię podać klientowi',
+ 'Tectite Classic, Pro czy 316 – którą linię wybrać | Armatex',
+ 'Tectite Classic, Pro czy 316? Średnice, rury, demontaż, ciśnienia i numery artykułów 15 mm w jednej tabeli. Poradnik dla hurtowni instalacyjnych.',
+ 'Klient przy ladzie prosi o „Tectite”, a w katalogu są trzy linie złączek na wcisk. Porównujemy Classic, Pro i 316: rury, średnice, parametry i numery artykułów, żeby Twoja hurtownia podała właściwą kształtkę za pierwszym razem.',6,'''
+        <h2 id="trzy-linie">Trzy linie, trzy przedrostki</h2>
+        <p>Złączki na wcisk <a href="zlaczki-na-wcisk-tectite.html">Tectite</a> od Pegler Yorkshire są w ofercie w trzech liniach. Linię najszybciej poznasz po początku kodu grupy: <strong>T</strong> to Classic, <strong>TX</strong> to Pro, <strong>TS</strong> to 316.</p>
+        <div class="tw"><table>
+        <thead><tr><th>Linia</th><th>Kod grupy</th><th>Średnice</th><th>Rury</th><th>Demontaż</th><th>Grupy · indeksy</th></tr></thead>
+        <tbody>
+        <tr><td><strong>Tectite Classic</strong></td><td>T…, np. <a href="tectite-zlaczka-prosta-t1.html">T1</a>, <a href="tectite-kolano-t12.html">T12</a>, <a href="tectite-trojnik-t24.html">T24</a></td><td>10–28 mm</td><td>miedź; PEX i PB z tulejką</td><td>tak</td><td>42 · 248</td></tr>
+        <tr><td><strong>Tectite Pro</strong></td><td>TX…, np. <a href="tectite-dwuzlaczka-tx1.html">TX1</a>, <a href="tectite-kolano-90-st-tx12.html">TX12</a>, <a href="tectite-trojnik-rownoprzelotowy-tx24.html">TX24</a></td><td>15–54 mm</td><td>miedź; PEX i PB z tulejką; stal węglowa ocynkowana</td><td>tak</td><td>22 · 115</td></tr>
+        <tr><td><strong>Tectite 316</strong></td><td>TS…, np. <a href="tectite-dwuzlaczka-ts1.html">TS1</a>, <a href="tectite-kolano-90-st-ts12.html">TS12</a>, <a href="tectite-trojnik-rownoprzelotowy-ts24.html">TS24</a></td><td>15–54 mm</td><td>stal nierdzewna kwasoodporna</td><td>tak</td><td>17 · 114</td></tr>
+        </tbody>
+        </table></div>
+        <ul>
+        <li><strong>Classic</strong> to mosiądz DZR do wody i CO, z atestem higienicznym PZH i aprobatą WRAS. W linii są też wersje chromowane z oznaczeniem CP, np. <a href="tectite-trojnik-chrom-t24cp.html">trójnik T24CP</a>.</li>
+        <li><strong>Pro</strong> obsługuje wodę, CO i chłodzenie oraz rury ze stali węglowej ocynkowanej. Na stronie systemu występuje razem z linią Carbon do stali węglowej, która w odróżnieniu od Pro jest niedemontowalna.</li>
+        <li><strong>316</strong> jest przeznaczona do rur ze stali nierdzewnej. Według tabeli kompatybilności producenta łączy także miedź i stal węglową.</li>
+        </ul>
+        <p>Producent daje 25 lat gwarancji na Classic, Pro i 316 z rurami innych producentów oraz 30 lat z rurami Yorkshire i rurami rekomendowanymi, jeśli montaż jest zgodny z instrukcją.</p>
+        <h2 id="pytania-przy-ladzie">Którą linię podać: pytania przy ladzie</h2>
+        <p>Instalator rzadko mówi „poproszę Pro”. Mówi, jaką ma rurę i co naprawia. Tak to przełożyć na linię:</p>
+        <ul>
+        <li><strong>Miedź do 28 mm, woda albo CO</strong>: Tectite Classic.</li>
+        <li><strong>PEX albo PB</strong>: Classic albo Pro, zawsze z tulejką. Tulejki to grupa <a href="tectite-tulejka-do-qualpex-t66.html">T66</a> (21 rozmiarów). Dla tej samej średnicy jest tam kilka numerów artykułów, więc przed zamówieniem sprawdź w katalogu Tectite, która tulejka pasuje do rury klienta.</li>
+        <li><strong>Stal węglowa ocynkowana</strong>: Tectite Pro.</li>
+        <li><strong>Stal nierdzewna</strong>: Tectite 316.</li>
+        <li><strong>35, 42 albo 54 mm</strong>: Pro albo 316. Classic kończy się na 28 mm.</li>
+        <li><strong>Połączenie, które trzeba będzie rozłączyć</strong>: Classic, Pro i 316 są demontowalne.</li>
+        <li><strong>Gaz</strong>: nie Tectite. Do gazu są osobne linie press Besco, opisane w poradniku <a href="poradnik-zlaczki-zaprasowane-do-gazu.html">Złączki zaprasowane do gazu</a>.</li>
+        </ul>
+        <p>Do kompletu na wcisk są też zawory i filtry Pegler, np. <a href="tectite-zawor-kulowy-na-wcisk-pt550.html">zawór kulowy PT550</a> w średnicach 15–54 mm.</p>
+        <h2 id="parametry">Ciśnienie i temperatura w każdej linii</h2>
+        <p>Dopuszczalne ciśnienie w Tectite zależy od linii, rury, średnicy i temperatury. Dane z tabeli producenta:</p>
+        <div class="tw"><table>
+        <thead><tr><th>Linia i rura</th><th>do 30 °C</th><th>65 °C</th><th>maks. temperatura</th></tr></thead>
+        <tbody>
+        <tr><td>Classic · miedź</td><td>16 bar</td><td>10 bar</td><td>6 bar przy 95 °C</td></tr>
+        <tr><td>Classic · PEX lub PB</td><td>12 bar (do 20 °C)</td><td>6 bar</td><td>3 bar przy 92 °C</td></tr>
+        <tr><td>Pro i 316 do 28 mm · miedź lub stal nierdzewna</td><td>20 bar</td><td>16 bar</td><td>10 bar przy 114 °C</td></tr>
+        <tr><td>Pro i 316 od 35 mm</td><td>16 bar</td><td>10 bar</td><td>6 bar przy 90 °C</td></tr>
+        </tbody>
+        </table></div>
+        <p>Minimalna temperatura w tabeli to −24 °C z miedzią i −20 °C z PEX. Producent zaleca próbę ciśnieniową każdego układu po montażu, ciśnieniem do 1,5 raza wyższym od roboczego. Porównanie z parametrami złączek zaprasowanych znajdziesz w poradniku <a href="poradnik-tectite-czy-press.html">Tectite czy press</a>.</p>
+        <h2 id="numery-15-mm">Ta sama kształtka 15 mm w trzech liniach</h2>
+        <p>Numery artykułów Tectite w różnych liniach wyglądają podobnie i łatwo je pomylić przy przepisywaniu zamówienia. Przykład dla średnicy 15 mm:</p>
+        <div class="tw"><table>
+        <thead><tr><th>Kształtka 15 mm</th><th>Classic</th><th>Pro</th><th>316</th></tr></thead>
+        <tbody>
+        <tr><td>Złączka prosta / dwuzłączka</td><td><a href="tectite-zlaczka-prosta-t1.html">T1</a> · 45114</td><td><a href="tectite-dwuzlaczka-tx1.html">TX1</a> · 65114</td><td><a href="tectite-dwuzlaczka-ts1.html">TS1</a> · 25114</td></tr>
+        <tr><td>Kolano 90°</td><td><a href="tectite-kolano-t12.html">T12</a> · 45516</td><td><a href="tectite-kolano-90-st-tx12.html">TX12</a> · 65516</td><td><a href="tectite-kolano-90-st-ts12.html">TS12</a> · 25516</td></tr>
+        <tr><td>Trójnik</td><td><a href="tectite-trojnik-t24.html">T24</a> · 45666</td><td><a href="tectite-trojnik-rownoprzelotowy-tx24.html">TX24</a> · 65666</td><td><a href="tectite-trojnik-rownoprzelotowy-ts24.html">TS24</a> · 25666</td></tr>
+        </tbody>
+        </table></div>
+        <p>Końcówki numerów się powtarzają, różni je pierwsza cyfra. Nie traktuj jej jednak jako reguły: w linii Pro średnice 35–54 mm mają numery zaczynające się od 4, np. TX1 35 mm to 45126, a TX12 35 mm to 45530.</p>
+        <ul>
+        <li>Zamawiaj po kodzie grupy (T, TX, TS) <strong>i</strong> pełnym numerze artykułu.</li>
+        <li>Sprawdź średnicę w danej linii: T1 i TS1 mają rozmiar 18 mm, a TX1, TX12 i TX24 go nie mają.</li>
+        <li>W razie wątpliwości wpisz numer w <a href="wyszukiwarka.html">wyszukiwarce</a>: strona grupy pokaże linię i wszystkie rozmiary.</li>
+        </ul>
+        <h2 id="pomylki">Najczęstsze pomyłki</h2>
+        <ul>
+        <li><strong>Tectite 316 to nie INOX 316L press.</strong> Tectite 316 to złączki na wcisk Pegler Yorkshire, a INOX 316L to <a href="zlaczki-zaprasowane-press.html">złączki zaprasowane Besco</a> w profilu M. To różne systemy montażu i nie zamienia się ich między sobą. Więcej o myleniu rodzajów stali w poradniku <a href="poradnik-zlaczki-do-stali-weglowej.html">Złączki do stali węglowej</a>.</li>
+        <li><strong>PEX bez tulejki.</strong> Rury PEX i PB łączy się w Tectite z tulejką. Jeśli klient bierze złączki do tworzywa, dopytaj o tulejki T66.</li>
+        <li><strong>Classic do dużych średnic.</strong> Classic ma średnice 10–28 mm. Powyżej jest Pro albo 316.</li>
+        <li><strong>Pro i Carbon jako jedno.</strong> Obie linie łączą stal węglową, ale tylko Pro jest demontowalna.</li>
+        <li><strong>Tectite do gazu.</strong> Do instalacji gazowych są linie press Besco z aprobatami DVGW i INiG.</li>
+        </ul>
+        <h2 id="polka">Co to oznacza dla Twojej hurtowni</h2>
+        <p>Tectite kupują serwisanci, instalatorzy bez zaciskarki i klienci remontowi: montaż odbywa się bez narzędzi zasilanych prądem i bez otwartego ognia. Dlatego linie warto dobrać do tego, kto przychodzi do Twojej lady:</p>
+        <ul>
+        <li><strong>Serwis i remonty w domach</strong>: Tectite Classic w średnicach, które klienci biorą najczęściej, do tego tulejki <a href="tectite-tulejka-do-qualpex-t66.html">T66</a> i narzędzia Tec-Tools, np. <a href="tectite-gratownik-cu-s120.html">gratownik S120</a> albo <a href="tectite-gratownik-i-miernik-cr-t110.html">gratownik i miernik T110</a>.</li>
+        <li><strong>Firmy wykonawcze, większe średnice, stal</strong>: Tectite Pro i 316 w średnicach do 54 mm, zamawiane pod konkretne zlecenie po numerach artykułów.</li>
+        </ul>
+        <p>Przy inwestycjach z wodą pitną klienci pytają o atest PZH. Tectite Classic go ma, a dokumenty udostępniamy hurtowniom po weryfikacji. Znaczenie skrótów na złączkach wyjaśnia poradnik <a href="poradnik-aprobaty-dvgw-kiwa-wras.html">Aprobaty DVGW, KIWA, WRAS</a>.</p>
+        <h2 id="zamowienie">Jak zamówić albo zapytać o wycenę</h2>
+        <ol>
+        <li>Otwórz <a href="wyszukiwarka.html">wyszukiwarkę produktów</a> i wybierz linię: Tectite Classic, Tectite Pro albo Tectite 316.</li>
+        <li>Wejdź w grupę, np. T12 albo TX24, i dodaj potrzebne rozmiary przyciskiem „Dodaj”.</li>
+        <li>Wyślij listę do wyceny. Możesz też wpisać numery artykułów w <a href="kontakt.html#formularz">formularzu zapytania</a>.</li>
+        </ol>
+        <p>Ofertę z cenami hurtowymi i dostępnością przygotujemy w ciągu jednego dnia roboczego. Katalog Tectite (Classic, Pro, 316, zawory i akcesoria) oraz instrukcję montażu pobierzesz od razu w zakładce <a href="do-pobrania.html">Do pobrania</a>. Wolisz zapytać od razu? Zadzwoń: 513 191 502, pn–pt 7:00–18:00.</p>''',
+ ['<a href="zlaczki-na-wcisk-tectite.html">Złączki na wcisk Tectite</a>','<a href="poradnik-tectite-czy-press.html">Tectite czy press?</a>','<a href="poradnik-zlaczki-do-stali-weglowej.html">Złączki do stali węglowej</a>','<a href="wyszukiwarka.html">Wyszukiwarka indeksów</a>','<a href="do-pobrania.html">Do pobrania: katalogi i dokumenty</a>'],
+ src='Źródło danych: katalog Tectite 2026 (Pegler Yorkshire)')
+
 cards=''.join(f'<a class="pcard2" href="{a["slug"]}.html"><span class="label">Poradnik · {a["mins"]} min</span><b>{a["title"]}</b><p>{a["lead"]}</p><span class="pcard2__go" aria-hidden="true">Czytaj →</span></a>' for a in ART)
 porad=phead([('Poradniki','poradniki.html')],'Poradniki','Poradniki dla hurtowni instalacyjnych.',
   'Praktyczna wiedza o złączkach Besco i Pegler Yorkshire: dobór profilu, numery artykułów, gaz, stal węglowa, porównania metod łączenia i aprobaty.')+f'''
