@@ -220,7 +220,7 @@ LD_ORG=ld({"@context":"https://schema.org","@graph":[
    "logo":SITE+"img/logo-dark.webp","image":SITE+"img/og/armatex-og.jpg",
    "description":"Dystrybutor złączek i armatury Besco oraz Pegler Yorkshire dla hurtowni instalacyjnych w całej Polsce: złączki zaprasowane (press), na wcisk, skręcane i lutowane.",
    "telephone":"+48 513 191 502","email":"biuro@armatex.pl","foundingDate":"1991","sameAs":[LINKEDIN],
-   "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"18:00"}],
+   "openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"07:00","closes":"15:00"}],
    "legalName":"P.H.U. ARMATEX Sp. J. A. J. Bunda","taxID":"7393814110",
    "identifier":[{"@type":"PropertyValue","propertyID":"KRS","value":"0000371628"},{"@type":"PropertyValue","propertyID":"REGON","value":"280563743"}],
    "address":{"@type":"PostalAddress","streetAddress":"ul. Składowa 3a","postalCode":"10-421","addressLocality":"Olsztyn","addressCountry":"PL"},
@@ -395,7 +395,7 @@ FOOT='''<footer class="foot">
     </div>
     <div><h2>Oferta</h2><ul>'''+''.join(f'<li><a href="{s["slug"]}.html">{s["name"]}</a></li>' for s in SYS)+'''</ul></div>
     <div><h2>Armatex</h2><ul><li><a href="wyszukiwarka.html">Wyszukiwarka indeksów</a></li><li><a href="'''+PDF+'''" target="_blank" rel="noopener">Katalog Besco 2026 (PDF)</a></li><li><a href="do-pobrania.html">Do pobrania</a></li><li><a href="poradniki.html">Poradniki</a></li><li><a href="o-firmie.html">O firmie</a></li><li><a href="wspolpraca.html">Współpraca</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
-    <div><h2>Kontakt</h2><ul><li><a href="tel:+48513191502">513 191 502</a></li><li><a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a></li><li><a class="foot__in" href="'''+LINKEDIN+'''" target="_blank" rel="noopener">'''+ICO_IN+'''LinkedIn</a></li><li class="foot__addr"><small>Biuro i magazyn</small>ul. Składowa 3a, 10-421 Olsztyn<br>pn–pt 7:00–18:00</li></ul></div>
+    <div><h2>Kontakt</h2><ul><li><a href="tel:+48513191502">513 191 502</a></li><li><a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a></li><li><a class="foot__in" href="'''+LINKEDIN+'''" target="_blank" rel="noopener">'''+ICO_IN+'''LinkedIn</a></li><li class="foot__addr"><small>Biuro i magazyn</small>ul. Składowa 3a, 10-421 Olsztyn<br>pn–pt 7:00–15:00</li></ul></div>
   </div>
   <div class="wrap foot__bar">
     <div class="foot__co">
@@ -1059,7 +1059,7 @@ kontakt=f'''
     </div>
   </section>
 '''
-page('kontakt.html','Kontakt – zapytanie ofertowe dla hurtowni | Armatex','Kontakt z Armatex: tel. 513 191 502, biuro@armatex.pl, ul. Składowa 3a, Olsztyn, pn–pt 7:00–18:00. Zapytania o złączki Besco i Pegler Yorkshire.','kontakt',kontakt,ld_crumbs([('Kontakt','kontakt.html')]))
+page('kontakt.html','Kontakt – zapytanie ofertowe dla hurtowni | Armatex','Kontakt z Armatex: tel. 513 191 502, biuro@armatex.pl, ul. Składowa 3a, Olsztyn, pn–pt 7:00–15:00. Zapytania o złączki Besco i Pegler Yorkshire.','kontakt',kontakt,ld_crumbs([('Kontakt','kontakt.html')]))
 
 # ---------------- strony grup produktów (Besco, Tectite, Kuterlite)
 SYSD={x['slug']:x for x in SYS}
@@ -1307,7 +1307,7 @@ firma=phead([('O firmie','o-firmie.html')],'O firmie','Armatex. Dystrybutor zł�
       <div class="team">
         <div class="in"><span class="team__av" aria-hidden="true">PS</span><div><span class="label">Sprzedaż</span><b>Piotr Stelmach</b><p><a href="tel:+48798807106">798 807 106</a> · <a href="mailto:piotr@armatex.pl">piotr@armatex.pl</a></p></div></div>
         <div class="in"><span class="team__av" aria-hidden="true">MZ</span><div><span class="label">Magazyn</span><b>Martyna Zielińska</b><p><a href="tel:+48512945936">512 945 936</a> · <a href="mailto:martyna@armatex.pl">martyna@armatex.pl</a></p></div></div>
-        <div class="in"><span class="team__av" aria-hidden="true">B</span><div><span class="label">Biuro</span><b>P.H.U. ARMATEX Sp. J. A. J. Bunda</b><p>ul. Składowa 3a, 10-421 Olsztyn<br>pn–pt 7:00–18:00</p><p><a href="tel:+48513191502">513 191 502</a> · <a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a></p></div></div>
+        <div class="in"><span class="team__av" aria-hidden="true">B</span><div><span class="label">Biuro</span><b>P.H.U. ARMATEX Sp. J. A. J. Bunda</b><p>ul. Składowa 3a, 10-421 Olsztyn<br>pn–pt 7:00–15:00</p><p><a href="tel:+48513191502">513 191 502</a> · <a href="mailto:biuro@armatex.pl">biuro@armatex.pl</a></p></div></div>
       </div>
 {CTA_BOX}
     </div>
@@ -1931,7 +1931,7 @@ LLMS=f"""# Armatex
 - Na rynku instalacyjnym od 1991 roku. Cztery metody łączenia (zaprasowane, na wcisk, skręcane, lutowane), {N_ALL_TXT} indeksów w wyszukiwarce.
 - Sprzedajemy każdemu, najczęściej hurtowniom instalacyjnym; kupują też firmy instalacyjne, generalni wykonawcy, zakłady przemysłowe i zarządcy budynków. Sami nie wykonujemy instalacji.
 - Magazyn: ul. Składowa 3a, 10-421 Olsztyn. Wysyłka w 24 godziny od potwierdzenia zamówienia, duże zamówienia własnym transportem.
-- Kontakt: biuro 513 191 502, biuro@armatex.pl; sprzedaż Piotr Stelmach 798 807 106, piotr@armatex.pl; pn–pt 7:00–18:00.
+- Kontakt: biuro 513 191 502, biuro@armatex.pl; sprzedaż Piotr Stelmach 798 807 106, piotr@armatex.pl; pn–pt 7:00–15:00.
 - Zapytanie o wycenę: {SITE}kontakt.html#formularz (można wkleić numery artykułów albo zbudować listę w wyszukiwarce).
 
 ## Systemy i linie produktów
